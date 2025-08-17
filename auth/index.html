@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - THRIVE Work</title>
+    
+    <!-- THRIVE Branding -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <meta name="theme-color" content="#FFD700">
+    
+    <!-- THRIVE CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/orbital-logo.css">
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/" style="text-decoration: none;">
+                    <span class="th-icon-small">Th</span>
+                    <span class="logo-text">THRIVE</span>
+                    <span class="logo-subtitle">WORK</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="auth-container" style="min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+        <div class="auth-card glass-card" style="max-width: 400px; width: 100%; padding: 3rem; margin: 2rem;">
+            
+            <!-- Sign In Form -->
+            <div id="signin-form">
+                <h2 style="color: var(--primary-yellow); margin-bottom: 1rem; text-align: center;">
+                    Welcome to THRIVE Work
+                </h2>
+                <p style="color: var(--text-light); text-align: center; margin-bottom: 2rem;">
+                    Enter your email to sign in or create an account
+                </p>
+                
+                <form onsubmit="handleSignIn(event)">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="email" style="color: var(--text-light); display: block; margin-bottom: 0.5rem;">
+                            Email Address
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            required
+                            placeholder="you@company.com"
+                            style="width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white;"
+                        >
+                    </div>
+                    
+                    <div class="form-options" style="margin-bottom: 1.5rem;">
+                        <label style="display: flex; align-items: center; color: var(--text-light); cursor: pointer;">
+                            <input type="checkbox" id="is-company" style="margin-right: 0.5rem;">
+                            I'm signing up my company
+                        </label>
+                    </div>
+                    
+                    <!-- Company fields (hidden by default) -->
+                    <div id="company-fields" style="display: none; margin-bottom: 1.5rem;">
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="company-name" style="color: var(--text-light); display: block; margin-bottom: 0.5rem;">
+                                Company Name
+                            </label>
+                            <input 
+                                type="text" 
+                                id="company-name" 
+                                name="companyName"
+                                placeholder="Acme Corp"
+                                style="width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white;"
+                            >
+                        </div>
+                        
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="employee-count" style="color: var(--text-light); display: block; margin-bottom: 0.5rem;">
+                                Number of Employees
+                            </label>
+                            <select 
+                                id="employee-count" 
+                                name="employeeCount"
+                                style="width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white;"
+                            >
+                                <option value="">Select...</option>
+                                <option value="1-10">1-10</option>
+                                <option value="11-50">11-50</option>
+                                <option value="51-100">51-100</option>
+                                <option value="101-500">101-500</option>
+                                <option value="500+">500+</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="cta-button primary" style="width: 100%;">
+                        Send Magic Link
+                    </button>
+                </form>
+                
+                <!-- Status messages -->
+                <div id="auth-loader" style="display: none; text-align: center; margin-top: 1rem; color: var(--primary-yellow);"></div>
+                <div id="auth-success" style="display: none; text-align: center; margin-top: 1rem; color: #4ade80;"></div>
+                <div id="auth-error" style="display: none; text-align: center; margin-top: 1rem; color: #f87171;"></div>
+            </div>
+            
+            <!-- Check Email Message (shown after sending OTP) -->
+            <div id="check-email" style="display: none; text-align: center;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">📧</div>
+                <h2 style="color: var(--primary-yellow); margin-bottom: 1rem;">
+                    Check Your Email
+                </h2>
+                <p style="color: var(--text-light); margin-bottom: 2rem;">
+                    We've sent a magic link to <strong id="sent-email"></strong>
+                </p>
+                <p style="color: var(--text-light); font-size: 0.9rem;">
+                    Click the link in the email to sign in. You can close this tab.
+                </p>
+                
+                <button onclick="resetSignIn()" class="cta-button secondary" style="margin-top: 2rem;">
+                    Use Different Email
+                </button>
+            </div>
+            
+        </div>
+    </main>
+
+    <script src="/assets/js/auth.js"></script>
+    <script>
+        // Toggle company fields
+        document.getElementById('is-company').addEventListener('change', function(e) {
+            const companyFields = document.getElementById('company-fields');
+            companyFields.style.display = e.target.checked ? 'block' : 'none';
+            
+            // Make company fields required when shown
+            const inputs = companyFields.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.required = e.target.checked;
+            });
+        });
+        
+        // Handle sign in form submission
+        async function handleSignIn(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const email = formData.get('email');
+            const isCompany = document.getElementById('is-company').checked;
+            
+            let companyData = null;
+            if (isCompany) {
+                companyData = {
+                    companyName: formData.get('companyName'),
+                    employeeCount: formData.get('employeeCount')
+                };
+            }
+            
+            const result = await signInWithOTP(email, isCompany, companyData);
+            
+            if (result.success) {
+                // Show check email message
+                document.getElementById('signin-form').style.display = 'none';
+                document.getElementById('check-email').style.display = 'block';
+                document.getElementById('sent-email').textContent = email;
+            }
+        }
+        
+        // Reset to sign in form
+        function resetSignIn() {
+            document.getElementById('signin-form').style.display = 'block';
+            document.getElementById('check-email').style.display = 'none';
+            document.getElementById('email').value = '';
+            document.getElementById('is-company').checked = false;
+            document.getElementById('company-fields').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

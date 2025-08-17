@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signing in... - THRIVE Work</title>
+    
+    <!-- THRIVE Branding -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <meta name="theme-color" content="#FFD700">
+    
+    <!-- THRIVE CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/orbital-logo.css">
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/" style="text-decoration: none;">
+                    <span class="th-icon-small">Th</span>
+                    <span class="logo-text">THRIVE</span>
+                    <span class="logo-subtitle">WORK</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="auth-container" style="min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+        <div class="glass-card" style="max-width: 400px; width: 100%; padding: 3rem; margin: 2rem; text-align: center;">
+            
+            <div class="loading-spinner" style="margin: 2rem auto;">
+                <div class="spinner" style="width: 50px; height: 50px; border: 3px solid rgba(255,255,255,0.2); border-top-color: var(--primary-yellow); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+            </div>
+            
+            <h2 style="color: var(--primary-yellow); margin-bottom: 1rem;">
+                Signing you in...
+            </h2>
+            
+            <p style="color: var(--text-light);">
+                Please wait while we verify your magic link
+            </p>
+            
+            <div id="auth-error" style="display: none; color: #f87171; margin-top: 2rem;"></div>
+            
+        </div>
+    </main>
+
+    <style>
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+
+    <script src="/assets/js/auth.js"></script>
+    <script>
+        // This page handles the magic link callback
+        // The auth.js script will handle the redirect
+    </script>
+</body>
+</html>
