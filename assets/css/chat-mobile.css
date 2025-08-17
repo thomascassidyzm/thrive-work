@@ -1,0 +1,389 @@
+/* THRIVE Chat Mobile Optimization */
+
+/* PWA Bottom Navigation */
+.pwa-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.pwa-bottom-nav-inner {
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.pwa-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    padding: 0.5rem;
+    border-radius: 10px;
+    min-width: 60px;
+    position: relative;
+}
+
+.pwa-nav-item:active {
+    transform: scale(0.95);
+}
+
+.pwa-nav-item.active {
+    color: var(--primary-yellow);
+}
+
+.pwa-nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--primary-yellow);
+    border-radius: 50%;
+}
+
+.pwa-nav-icon {
+    margin-bottom: 0; /* Remove margin since no label below */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; /* Slightly larger since no label */
+    height: 28px;
+}
+
+.pwa-nav-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.pwa-nav-label {
+    display: none; /* Hide labels but keep icons centered */
+}
+
+/* Show bottom nav on all pages */
+.pwa-bottom-nav {
+    display: block !important;
+}
+
+/* Add padding to body to account for fixed bottom nav */
+body {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom)) !important;
+}
+
+/* Ensure footer doesn't overlap bottom nav */
+.footer {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom)) !important;
+}
+
+@media (display-mode: standalone) {
+    /* Additional PWA-specific styles */
+    
+    /* Hide top navbar and hamburger menu in PWA */
+    .navbar {
+        display: none !important;
+    }
+    
+    /* Adjust body padding for bottom nav */
+    body {
+        padding-top: 0 !important;
+        padding-bottom: calc(60px + env(safe-area-inset-bottom)) !important;
+    }
+    
+    /* Footer adjusts for bottom nav */
+    .footer {
+        padding-bottom: calc(60px + env(safe-area-inset-bottom)) !important;
+    }
+    
+    /* Adjust hero section without navbar */
+    .hero {
+        padding-top: env(safe-area-inset-top, 20px);
+    }
+}
+
+/* Mobile-First Chat Container */
+#chat-container {
+    background: var(--glass-white);
+    backdrop-filter: var(--blur-amount);
+    border: var(--glass-border);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-glass);
+    margin-bottom: 2rem;
+}
+
+/* Chat Messages Area */
+#chat-messages {
+    height: 600px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+    text-align: left;
+}
+
+/* Chat Controls */
+.chat-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Chat Input Area */
+.chat-input-container {
+    display: flex;
+    gap: 1rem;
+}
+
+#chat-input {
+    flex: 1;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-white-light);
+    color: var(--text-white);
+    font-size: 1rem;
+}
+
+#send-button {
+    padding: 1rem 2rem;
+}
+
+/* Coach Cards Grid */
+.coach-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Hide conversation starters on mobile completely */
+@media (max-width: 768px) {
+    .quick-questions-container {
+        display: none !important;
+    }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    /* Full-screen chat on mobile */
+    #chat-container {
+        padding: 1rem;
+        margin: 0 -1rem;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    
+    /* Dynamic height based on viewport */
+    #chat-messages {
+        height: calc(100vh - 300px); /* Viewport minus controls and navbar */
+        min-height: 300px;
+        max-height: 500px;
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
+    
+    /* Move clear button flush to right edge */
+    .chat-controls {
+        position: absolute;
+        top: 0.5rem;
+        right: 0;
+        margin: 0;
+    }
+    
+    #clear-chat-button {
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.2);
+        color: rgba(255,255,255,0.5);
+        padding: 0.25rem 0.75rem;
+        font-size: 0.75rem;
+        border-radius: 5px 0 0 5px;
+        border-right: none;
+    }
+    
+    #chat-status {
+        text-align: center;
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+    
+    /* Optimize input area for mobile */
+    .chat-input-container {
+        position: relative;
+    }
+    
+    #chat-input {
+        padding: 0.75rem;
+        padding-right: 85px; /* More space for send button */
+        font-size: 16px; /* Prevent iOS zoom */
+        -webkit-appearance: none; /* Remove iOS styling */
+    }
+    
+    #send-button {
+        position: absolute;
+        right: 2px; /* Small gap from edge */
+        top: 2px;
+        bottom: 2px;
+        padding: 0 1rem; /* Slightly smaller padding */
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-radius: 8px;
+        font-size: 0.85rem;
+    }
+    
+    /* Coach selection for mobile */
+    .coach-selection-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+    
+    .coach-card {
+        padding: 0.75rem !important;
+        font-size: 0.85rem;
+    }
+    
+    .coach-card h4 {
+        font-size: 1rem;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .coach-card p {
+        font-size: 0.75rem !important;
+        line-height: 1.2;
+    }
+    
+    /* Hide coach images on mobile to save space */
+    .coach-card img {
+        display: none;
+    }
+    
+    /* Elegant full-width message styling */
+    #chat-messages > div {
+        margin-bottom: 1rem !important;
+        padding: 1rem !important;
+        font-size: 0.95rem;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        border-radius: 12px;
+    }
+    
+    /* User messages - subtle yellow accent */
+    #chat-messages > div[style*="background: var(--primary-yellow)"] {
+        background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05)) !important;
+        border: 1px solid rgba(255, 215, 0, 0.2) !important;
+        color: var(--text-white) !important;
+        text-align: left !important;
+    }
+    
+    /* Assistant messages - elegant glass effect */
+    #chat-messages > div[style*="background: var(--glass-white-medium)"] {
+        background: rgba(255, 255, 255, 0.03) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+}
+
+/* Small mobile (iPhone SE, etc) */
+@media (max-width: 400px) {
+    #chat-messages {
+        height: calc(100vh - 350px);
+    }
+    
+    .coach-selection-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    #send-button {
+        padding: 0 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    #chat-messages {
+        height: calc(100vh - 250px);
+        min-height: 200px;
+        max-height: 300px;
+    }
+    
+    .coach-selection-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+    
+    .coach-card {
+        min-width: 150px;
+    }
+}
+
+/* Touch-friendly adjustments */
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets */
+    button, .quick-question {
+        min-height: 44px;
+    }
+    
+    #chat-input {
+        min-height: 44px;
+    }
+    
+    /* Prevent double-tap zoom */
+    * {
+        touch-action: manipulation;
+    }
+    
+    /* Better scrolling */
+    #chat-messages {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+    /* Fix for iOS keyboard pushing content up */
+    #chat-container {
+        position: relative;
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    /* Prevent input zoom on iOS */
+    #chat-input {
+        font-size: 16px !important;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    /* Already using dark theme by default */
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

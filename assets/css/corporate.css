@@ -1,0 +1,110 @@
+/* THRIVE Corporate Page Styles */
+
+.corporate-hero {
+    background: linear-gradient(135deg, rgba(255, 255, 0, 0.15) 0%, rgba(255, 255, 0, 0.05) 100%);
+    padding: 120px 0 80px;
+    text-align: center;
+    border-bottom: 2px solid rgba(255, 255, 0, 0.3);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.stat-card {
+    background: rgba(255, 255, 0, 0.1);
+    border: 2px solid rgba(255, 255, 0, 0.4);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.problem-section {
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    padding: 4rem 0;
+}
+
+.solution-section {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    padding: 4rem 0;
+}
+
+.roi-calculator {
+    background: rgba(255, 255, 0, 0.1);
+    border: 2px solid rgba(255, 255, 0, 0.4);
+    border-radius: 20px;
+    padding: 3rem;
+    margin: 3rem 0;
+}
+
+.partnership-models {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.partnership-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.partnership-card:hover {
+    border-color: rgba(255, 255, 0, 0.6);
+    background: rgba(255, 255, 0, 0.05);
+}
+
+.partnership-card.featured {
+    border-color: rgba(255, 255, 0, 0.6);
+    background: rgba(255, 255, 0, 0.1);
+    position: relative;
+}
+
+.featured-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .partnership-models {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+}

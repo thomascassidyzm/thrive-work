@@ -1,0 +1,398 @@
+/* THRIVE Orbital Logo - Thorium (Th) Design */
+
+.orbital-logo-container {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.th-orbital-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.orbital-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ring {
+    position: absolute;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    animation: rotate 20s linear infinite;
+    transform-style: preserve-3d;
+}
+
+/* Electron particles */
+.ring::before,
+.ring::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #ffd700 0%, #ffed4e 50%, transparent 70%);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.ring::before {
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ring::after {
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ring:nth-child(1) {
+    width: 280px;
+    height: 280px;
+    top: -140px;
+    left: -140px;
+    border-color: rgba(255, 215, 0, 0.4);
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+    animation: rotate3d 25s linear infinite;
+}
+
+.ring:nth-child(1)::before,
+.ring:nth-child(1)::after {
+    width: 10px;
+    height: 10px;
+}
+
+.ring:nth-child(2) {
+    width: 220px;
+    height: 220px;
+    top: -110px;
+    left: -110px;
+    border-color: rgba(255, 215, 0, 0.25);
+    animation: rotate3d-reverse 18s linear infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.2));
+}
+
+.ring:nth-child(2)::before,
+.ring:nth-child(2)::after {
+    width: 7px;
+    height: 7px;
+}
+
+.ring:nth-child(3) {
+    width: 160px;
+    height: 160px;
+    top: -80px;
+    left: -80px;
+    border-color: rgba(255, 215, 0, 0.15);
+    animation: rotate3d 12s linear infinite;
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.15));
+}
+
+.ring:nth-child(3)::before,
+.ring:nth-child(3)::after {
+    width: 5px;
+    height: 5px;
+}
+
+.th-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #1a1a1a;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 15px 50px rgba(255, 215, 0, 0.4),
+        0 5px 15px rgba(0, 0, 0, 0.2),
+        inset 0 2px 0 rgba(255, 255, 255, 0.3);
+    z-index: 10;
+    position: relative;
+}
+
+.atomic-number {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(26, 26, 26, 0.7);
+}
+
+/* Enhanced 3D rotation animations */
+@keyframes rotate3d {
+    from { 
+        transform: rotate(0deg) rotateX(15deg);
+    }
+    to { 
+        transform: rotate(360deg) rotateX(15deg);
+    }
+}
+
+@keyframes rotate3d-reverse {
+    from { 
+        transform: rotate(360deg) rotateY(10deg);
+    }
+    to { 
+        transform: rotate(0deg) rotateY(10deg);
+    }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Pulse animation for electrons */
+@keyframes electronPulse {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.2);
+    }
+}
+
+/* Combine animations for electrons */
+.ring:nth-child(1)::before,
+.ring:nth-child(1)::after {
+    animation: electronPulse 3s ease-in-out infinite;
+}
+
+.ring:nth-child(2)::before {
+    animation: electronPulse 2.5s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+.ring:nth-child(2)::after {
+    animation: electronPulse 2.5s ease-in-out infinite;
+    animation-delay: 1.5s;
+}
+
+.ring:nth-child(3)::before {
+    animation: electronPulse 2s ease-in-out infinite;
+    animation-delay: 0.3s;
+}
+
+.ring:nth-child(3)::after {
+    animation: electronPulse 2s ease-in-out infinite;
+    animation-delay: 1.3s;
+}
+
+/* Responsive sizes */
+@media (max-width: 768px) {
+    .orbital-logo-container {
+        width: 300px;
+        height: 400px;
+    }
+    
+    .orbital-brand-name {
+        font-size: 2.5rem;
+    }
+    
+    .orbital-tagline {
+        font-size: 0.9rem;
+    }
+    
+    .th-orbital-container {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .ring:nth-child(1) {
+        width: 230px;
+        height: 230px;
+        top: -115px;
+        left: -115px;
+    }
+    
+    .ring:nth-child(2) {
+        width: 180px;
+        height: 180px;
+        top: -90px;
+        left: -90px;
+    }
+    
+    .ring:nth-child(3) {
+        width: 130px;
+        height: 130px;
+        top: -65px;
+        left: -65px;
+    }
+    
+    .th-center {
+        width: 100px;
+        height: 100px;
+        font-size: 3rem;
+        border-radius: 16px;
+    }
+    
+    .atomic-number {
+        font-size: 0.9rem;
+        top: 6px;
+        left: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .orbital-logo-container {
+        width: 250px;
+        height: 350px;
+    }
+    
+    .orbital-brand-name {
+        font-size: 2rem;
+    }
+    
+    .orbital-tagline {
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+    }
+    
+    .th-orbital-container {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .ring:nth-child(1) {
+        width: 180px;
+        height: 180px;
+        top: -90px;
+        left: -90px;
+        border-width: 1.5px;
+    }
+    
+    .ring:nth-child(2) {
+        width: 140px;
+        height: 140px;
+        top: -70px;
+        left: -70px;
+        border-width: 1.5px;
+    }
+    
+    .ring:nth-child(3) {
+        width: 100px;
+        height: 100px;
+        top: -50px;
+        left: -50px;
+        border-width: 1px;
+    }
+    
+    .th-center {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+        border-radius: 14px;
+    }
+    
+    .atomic-number {
+        font-size: 0.8rem;
+        top: 5px;
+        left: 6px;
+    }
+}
+
+/* Small icon sizes for navbar */
+.th-icon-small {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+/* Adjust nav logo alignment */
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+/* Orbital logo text elements */
+.orbital-text-container {
+    text-align: center;
+    animation: fadeIn 1.5s ease-out;
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+}
+
+.orbital-brand-name {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+.orbital-tagline {
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: rgba(255, 215, 0, 0.7);
+    margin: 0.5rem 0 0 0;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        filter: brightness(1) drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
+    }
+    50% {
+        filter: brightness(1.1) drop-shadow(0 0 30px rgba(255, 215, 0, 0.6));
+    }
+}
+
+/* Integration with existing hero section */
+.hero-visual .orbital-logo-container {
+    animation: float-gentle 8s ease-in-out infinite;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+@keyframes float-gentle {
+    0%, 100% {
+        transform: translateY(0) rotateX(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotateX(2deg);
+    }
+    50% {
+        transform: translateY(-15px) rotateX(0deg);
+    }
+    75% {
+        transform: translateY(-10px) rotateX(-2deg);
+    }
+}

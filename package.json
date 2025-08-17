@@ -1,0 +1,13 @@
+{
+  "name": "thrive-work",
+  "version": "1.0.0",
+  "description": "THRIVE Work - Workplace Wellbeing Assessment Platform",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build required'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": ["wellbeing", "workplace", "assessment", "THRIVE"],
+  "author": "THRIVE",
+  "license": "ISC"
+}

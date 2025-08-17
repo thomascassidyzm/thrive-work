@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THRIVE Assessment - Pattern Recognition for Wellbeing</title>
+    
+    <!-- THRIVE Branding -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <meta name="theme-color" content="#FFD700">
+    
+    <!-- THRIVE CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/orbital-logo.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/" style="text-decoration: none;">
+                    <span class="th-icon-small">Th</span>
+                    <span class="logo-text">THRIVE</span>
+                    <span class="logo-subtitle">WORK</span>
+                </a>
+            </div>
+            <div class="nav-progress">
+                <div class="progress-mini">
+                    <span id="questions-completed">0</span>/60 questions
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="assessment-container">
+        <div class="container">
+            <!-- Dimension Selector -->
+            <div class="dimension-selector" style="margin: 2rem 0;">
+                <div class="dimensions-tabs" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <button class="dimension-tab" data-dimension="time">
+                        <span class="tab-letter">T</span>
+                        <span class="tab-status">⭕</span>
+                    </button>
+                    <button class="dimension-tab" data-dimension="health">
+                        <span class="tab-letter">H</span>
+                        <span class="tab-status">⭕</span>
+                    </button>
+                    <button class="dimension-tab" data-dimension="relationships">
+                        <span class="tab-letter">R</span>
+                        <span class="tab-status">⭕</span>
+                    </button>
+                    <button class="dimension-tab" data-dimension="identity">
+                        <span class="tab-letter">I</span>
+                        <span class="tab-status">⭕</span>
+                    </button>
+                    <button class="dimension-tab" data-dimension="vitality">
+                        <span class="tab-letter">V</span>
+                        <span class="tab-status">⭕</span>
+                    </button>
+                    <button class="dimension-tab" data-dimension="environment">
+                        <span class="tab-letter">E</span>
+                        <span class="tab-status">⭕</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question Display -->
+            <div class="question-card glass-card" style="max-width: 800px; margin: 0 auto; padding: 3rem;">
+                <div class="question-number" style="color: var(--primary-yellow); margin-bottom: 1rem;">
+                    Question <span id="current-question">1</span> of 10
+                </div>
+                
+                <h2 class="question-text" id="question-text" style="color: var(--text-white); margin-bottom: 2rem;">
+                    Loading question...
+                </h2>
+                
+                <div class="answer-options" id="answer-options">
+                    <!-- Options will be dynamically inserted -->
+                </div>
+                
+                <div class="navigation-buttons" style="margin-top: 3rem; display: flex; justify-content: space-between;">
+                    <button class="nav-btn" id="prev-btn" onclick="previousQuestion()" style="visibility: hidden;">
+                        ← Previous
+                    </button>
+                    <button class="nav-btn cta-button primary" id="next-btn" onclick="nextQuestion()" disabled>
+                        Next →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Progress Overview -->
+            <div class="progress-overview" style="margin-top: 3rem;">
+                <div class="glass-card" style="padding: 2rem;">
+                    <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">Your Progress</h3>
+                    <div class="overall-progress">
+                        <div class="progress-bar" style="background: rgba(255,255,255,0.1); border-radius: 10px; height: 20px;">
+                            <div class="progress-fill" id="overall-progress" style="background: var(--primary-yellow); height: 100%; border-radius: 10px; width: 0%; transition: width 0.3s;">
+                            </div>
+                        </div>
+                        <p style="color: var(--text-light); margin-top: 1rem;">
+                            <span id="total-completed">0</span> of 60 questions completed
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/assets/js/assessment.js"></script>
+</body>
+</html>
