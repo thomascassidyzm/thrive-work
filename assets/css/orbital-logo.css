@@ -377,7 +377,8 @@
 
 /* Integration with existing hero section */
 .hero-visual .orbital-logo-container {
-    animation: float-gentle 8s ease-in-out infinite;
+    /* Remove floating animation - just subtle pulse after load */
+    /* animation: float-gentle 8s ease-in-out infinite; */
     transform-style: preserve-3d;
     perspective: 1000px;
 }

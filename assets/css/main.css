@@ -233,9 +233,9 @@ h3 { font-size: var(--font-size-md); }
 }
 
 .cta-button.primary:hover {
-    transform: translateY(-3px);
     box-shadow: var(--shadow-yellow-glow-strong), var(--shadow-depth);
     background: linear-gradient(135deg, var(--primary-yellow-bright) 0%, var(--accent-yellow) 100%);
+    filter: brightness(1.15);
 }
 
 .cta-button.secondary {
@@ -247,8 +247,8 @@ h3 { font-size: var(--font-size-md); }
 
 .cta-button.secondary:hover {
     background: var(--glass-white-medium);
-    transform: translateY(-2px);
     box-shadow: var(--shadow-glass-strong);
+    filter: brightness(1.1);
 }
 
 .cta-button.large {
@@ -638,10 +638,10 @@ h3 { font-size: var(--font-size-md); }
 }
 
 .domain-card:hover {
-    transform: translateY(-8px);
     border-color: var(--glass-border-yellow);
     background: var(--glass-yellow);
     box-shadow: var(--shadow-yellow-glow), var(--shadow-depth);
+    filter: brightness(1.05);
 }
 
 .domain-card:hover::before {
@@ -1048,8 +1048,8 @@ h3 { font-size: var(--font-size-md); }
 
 .glass-card:hover {
     background: var(--glass-white-medium);
-    transform: translateY(-3px);
     box-shadow: var(--shadow-glass-strong);
+    filter: brightness(1.05);
 }
 
 .glass-card:hover::before {
@@ -1084,9 +1084,9 @@ h3 { font-size: var(--font-size-md); }
 }
 
 .glass-card-premium:hover {
-    transform: translateY(-5px);
     box-shadow: var(--shadow-yellow-glow), var(--shadow-depth);
     border-color: var(--glass-border-yellow);
+    filter: brightness(1.1);
 }
 
 .glass-card-premium:hover::before {

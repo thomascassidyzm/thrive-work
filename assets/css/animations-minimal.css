@@ -1,0 +1,109 @@
+/* THRIVE Minimal Animations - Fast, snappy load with no bouncing */
+
+/* Simple instant fade for page load */
+@keyframes quickFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* No animations on initial load - everything appears instantly */
+.hero-content,
+.hero-title,
+.hero-subtitle,
+.hero-description,
+.hero-cta,
+.section-title,
+.card,
+.feature-card,
+.testimonial,
+.step,
+.navbar,
+.footer {
+    /* Remove all animations - load instantly */
+    animation: none !important;
+    opacity: 1 !important;
+}
+
+/* Optional: subtle pulse for the orbital logo AFTER page loads */
+@keyframes gentlePulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.95;
+        transform: scale(1.02);
+    }
+}
+
+/* Apply gentle animation to orbital logo after 1 second */
+.orbital-logo-container {
+    animation: gentlePulse 4s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+/* Keep the orbital rings rotating smoothly */
+.orbital-rings {
+    animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Disable all hover movements - just color/brightness changes */
+.cta-button:hover,
+.domain-card:hover,
+.glass-card:hover,
+.glass-card-premium:hover {
+    transform: none !important;
+}
+
+/* Simple brightness change on hover */
+.cta-button:hover {
+    filter: brightness(1.15);
+    transition: filter 0.2s ease;
+}
+
+.domain-card:hover,
+.glass-card:hover {
+    filter: brightness(1.1);
+    border-color: var(--glass-border-yellow);
+    transition: filter 0.2s ease, border-color 0.2s ease;
+}
+
+/* Keep the shimmer effect for the button but no movement */
+.cta-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent);
+    transition: left 0.5s ease-out;
+    pointer-events: none;
+}
+
+.cta-button:hover::after {
+    left: 100%;
+}
+
+/* Disable all transform animations */
+* {
+    transition-property: opacity, filter, border-color, background-color, color !important;
+    transition-duration: 0.2s !important;
+    transition-timing-function: ease-out !important;
+}
+
+/* Completely disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
