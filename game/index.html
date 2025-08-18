@@ -576,42 +576,42 @@
                 </div>
             </div>
 
-            <!-- Preliminary Results Screen (10 questions) -->
-            <div id="preliminary-screen" class="results-container" style="display: none;">
-                <div class="results-title">Early Patterns Emerging!</div>
+            <!-- Domain Completion Screen (10 questions) -->
+            <div id="domain-complete-screen" class="results-container" style="display: none;">
+                <div class="results-title" id="domain-complete-title">TIME Domain Complete!</div>
                 
-                <div id="preliminary-content">
-                    <!-- Preliminary content will be inserted here -->
+                <div id="domain-complete-content">
+                    <!-- Domain completion content will be inserted here -->
                 </div>
 
                 <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 3rem; flex-wrap: wrap;">
-                    <button class="cta-button primary" onclick="continueFromPreliminary()" style="min-width: 200px;">
-                        🗺️ Continue Questions
-                        <br><small>Build deeper insights</small>
+                    <button class="cta-button primary" onclick="continueToNextDomain()" style="min-width: 250px;">
+                        ➡️ Next Domain
+                        <br><small id="next-domain-hint">Continue assessment</small>
                     </button>
-                    <button class="cta-button secondary" onclick="goToAICoaching()" style="min-width: 200px;">
-                        💬 AI Analysis
-                        <br><small>Explore patterns with coach</small>
+                    <button class="cta-button secondary" onclick="viewProgress()" style="min-width: 200px; display: none;" id="view-progress-btn">
+                        📊 View Progress
+                        <br><small>See overall patterns</small>
                     </button>
                 </div>
             </div>
 
-            <!-- Choice Point Screen (30 questions) -->
-            <div id="choice-screen" class="results-container" style="display: none;">
-                <div class="results-title">Interesting Patterns Emerging!</div>
+            <!-- OCEAN Analysis Screen (30 questions / 3 domains) -->
+            <div id="ocean-screen" class="results-container" style="display: none;">
+                <div class="results-title">Initial OCEAN Profile Emerging</div>
                 
-                <div id="choice-content">
-                    <!-- Choice point content will be inserted here -->
+                <div id="ocean-content">
+                    <!-- OCEAN analysis content will be inserted here -->
                 </div>
 
                 <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 3rem; flex-wrap: wrap;">
-                    <button class="cta-button primary" onclick="chooseContinueMapping()" style="min-width: 250px;">
-                        🗺️ Continue Mapping
-                        <br><small>Get more questions for higher precision</small>
+                    <button class="cta-button primary" onclick="continueToNextDomain()" style="min-width: 250px;">
+                        🗺️ Continue Assessment
+                        <br><small>Complete remaining domains</small>
                     </button>
-                    <button class="cta-button primary" onclick="chooseStartCoaching()" style="min-width: 250px;">
-                        🤝 Start Coaching
-                        <br><small>Explore patterns with an AI coach</small>
+                    <button class="cta-button primary" onclick="startOceanCoaching()" style="min-width: 250px;">
+                        🤝 AI Coaching
+                        <br><small>Explore your OCEAN profile</small>
                     </button>
                 </div>
             </div>
@@ -661,6 +661,9 @@
         </div>
     </div>
 
+    <!-- Load THRIVE Assessment Logic -->
+    <script src="thrive-assessment-logic.js"></script>
+    
     <script type="module">
         // Get dimension from URL parameters
         const urlParams = new URLSearchParams(window.location.search);
@@ -798,6 +801,11 @@
         let selectedQuestions = [];
         let isReflecting = false;
         let lastResponse = null;
+        
+        // Initialize THRIVE assessment tracking
+        if (dimension && window.THRIVEAssessment) {
+            window.THRIVEAssessment.state.currentDomain = dimension.toLowerCase();
+        }
 
         // Smart question selection algorithm - starts with universal launch questions
         function selectOptimalQuestions() {
@@ -875,8 +883,14 @@
             console.log('Showing question', currentQuestion + 1, 'of', selectedQuestions.length);
             
             if (currentQuestion >= selectedQuestions.length) {
-                console.log('All questions completed, showing results');
-                showResults();
+                console.log('Domain questions completed');
+                if (dimension && window.THRIVEAssessment) {
+                    // THRIVE domain complete
+                    showDomainComplete();
+                } else {
+                    // Original flow
+                    showResults();
+                }
                 return;
             }
 
@@ -1537,6 +1551,254 @@
             window.location.href = '../chat/?fromAssessment=true&questionCount=' + responses.length;
         }
 
+        // THRIVE Domain Completion Functions
+        function showDomainComplete() {
+            console.log('Domain complete:', dimension);
+            
+            // Save responses to assessment state
+            if (window.THRIVEAssessment) {
+                const assessment = window.THRIVEAssessment;
+                assessment.state.allResponses.push(...responses);
+                assessment.state.completedDomains.push(dimension.toLowerCase());
+                
+                // Generate domain summary
+                const summary = assessment.generateDomainSummary(dimension.toLowerCase(), responses);
+                assessment.state.domainSummaries[dimension.toLowerCase()] = summary;
+                
+                // Save to localStorage for persistence
+                localStorage.setItem('thriveAssessmentState', JSON.stringify(assessment.state));
+                
+                // Update UI
+                document.getElementById('question-screen').style.display = 'none';
+                document.getElementById('domain-complete-screen').style.display = 'block';
+                
+                // Update title
+                const titleMap = {
+                    time: 'TIME',
+                    health: 'HEALTH',
+                    relationships: 'RELATIONSHIPS',
+                    identity: 'IDENTITY',
+                    vitality: 'VITALITY',
+                    environment: 'ENVIRONMENT'
+                };
+                document.getElementById('domain-complete-title').textContent = 
+                    `${titleMap[dimension.toLowerCase()]} Domain Complete!`;
+                
+                // Generate domain summary content
+                const oceanScores = assessment.calculateOceanScores(responses);
+                const patterns = summary.patterns;
+                
+                let summaryHTML = `
+                    <div style="text-align: left; margin-bottom: 2rem;">
+                        <p style="font-size: 1.1rem; line-height: 1.6; color: #e0e0e0; margin-bottom: 1.5rem;">
+                            You've completed the <strong>${titleMap[dimension.toLowerCase()]}</strong> assessment. 
+                            Your responses reveal important patterns about your ${summary.description}.
+                        </p>
+                        
+                        <div style="background: rgba(255, 255, 0, 0.1); border: 1px solid rgba(255, 255, 0, 0.3); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                            <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">📊 Domain Insights</h3>
+                            <p style="color: #c0c0c0; line-height: 1.5; margin-bottom: 1rem;">
+                                Based on your 10 responses, we're seeing patterns that suggest ${getDomainInsight(dimension.toLowerCase(), patterns, oceanScores)}.
+                            </p>
+                        </div>
+                `;
+                
+                // Show progress if more than 1 domain completed
+                if (assessment.state.completedDomains.length > 1) {
+                    summaryHTML += `
+                        <div style="background: rgba(255, 255, 255, 0.05); border-radius: 10px; padding: 1rem; margin-bottom: 1rem;">
+                            <p style="color: #a0a0a0; text-align: center;">
+                                <strong>Progress:</strong> ${assessment.state.completedDomains.length} of 6 domains completed 
+                                (${assessment.state.allResponses.length} total questions answered)
+                            </p>
+                        </div>
+                    `;
+                    
+                    // Show view progress button after 2+ domains
+                    document.getElementById('view-progress-btn').style.display = 'block';
+                }
+                
+                // Check if we should show OCEAN analysis (after 3 domains)
+                if (assessment.shouldShowOceanAnalysis()) {
+                    summaryHTML += `
+                        <div style="background: rgba(0, 255, 0, 0.05); border: 1px solid rgba(0, 255, 0, 0.3); border-radius: 10px; padding: 1rem; margin-top: 1rem;">
+                            <p style="color: #4ade80; text-align: center; font-weight: bold;">
+                                ✨ OCEAN personality profile now available! Complete more domains for deeper insights.
+                            </p>
+                        </div>
+                    `;
+                }
+                
+                summaryHTML += '</div>';
+                document.getElementById('domain-complete-content').innerHTML = summaryHTML;
+                
+                // Update next domain hint
+                const nextDomain = assessment.getNextDomain(dimension.toLowerCase());
+                if (nextDomain) {
+                    const nextDomainName = titleMap[nextDomain];
+                    document.getElementById('next-domain-hint').textContent = `Continue with ${nextDomainName}`;
+                } else {
+                    document.getElementById('next-domain-hint').textContent = 'Complete assessment';
+                }
+            }
+        }
+        
+        function getDomainInsight(domain, patterns, oceanScores) {
+            // Generate domain-specific insight based on patterns
+            const insights = {
+                time: () => {
+                    if (patterns.overcommitted > 5) return 'you may be overextending yourself with too many commitments';
+                    if (patterns.balanced > 5) return 'you have a healthy approach to time management';
+                    return 'your relationship with time shows mixed patterns worth exploring';
+                },
+                health: () => {
+                    if (patterns.stressed > 5) return 'stress may be impacting your physical wellbeing';
+                    if (patterns.resilient > 5) return 'you have strong health resilience practices';
+                    return 'your health patterns show areas of both strength and concern';
+                },
+                vitality: () => {
+                    if (patterns.burnout_risk > 5) return 'early warning signs of burnout may be present';
+                    if (patterns.energized > 5) return 'you maintain good energy and motivation';
+                    return 'your energy levels show variable patterns';
+                },
+                relationships: () => {
+                    if (patterns.connected > 5) return 'you have strong workplace connections';
+                    if (patterns.isolated > 5) return 'you may benefit from stronger workplace relationships';
+                    return 'your relationship patterns are complex and worth exploring';
+                },
+                identity: () => {
+                    if (patterns.aligned > 5) return 'your work aligns well with your values';
+                    if (patterns.conflicted > 5) return 'there may be tension between your role and authentic self';
+                    return 'your professional identity is evolving';
+                },
+                environment: () => {
+                    if (patterns.supported > 5) return 'your workplace environment supports your wellbeing';
+                    if (patterns.toxic > 5) return 'your work environment may be impacting your wellbeing';
+                    return 'your workplace has both supportive and challenging elements';
+                }
+            };
+            
+            return insights[domain] ? insights[domain]() : 'interesting patterns in this area';
+        }
+        
+        function continueToNextDomain() {
+            if (window.THRIVEAssessment) {
+                const assessment = window.THRIVEAssessment;
+                const completedCount = assessment.state.completedDomains.length;
+                
+                // Check if we should show OCEAN analysis (after 3 domains)
+                if (completedCount === 3 && !window.oceanShown) {
+                    window.oceanShown = true;
+                    showOceanAnalysis();
+                    return;
+                }
+                
+                // Get next domain
+                const nextDomain = assessment.getNextDomain(dimension.toLowerCase());
+                if (nextDomain) {
+                    // Navigate to next domain assessment
+                    window.location.href = `/game/?dimension=${nextDomain}`;
+                } else {
+                    // All domains complete - show final results
+                    showFinalResults();
+                }
+            }
+        }
+        
+        function showOceanAnalysis() {
+            if (window.THRIVEAssessment) {
+                const assessment = window.THRIVEAssessment;
+                const oceanSummary = assessment.generateOceanSummary();
+                
+                document.getElementById('domain-complete-screen').style.display = 'none';
+                document.getElementById('ocean-screen').style.display = 'block';
+                
+                // Generate OCEAN content
+                let oceanHTML = `
+                    <div style="text-align: left; margin-bottom: 2rem;">
+                        <p style="font-size: 1.1rem; line-height: 1.6; color: #e0e0e0; margin-bottom: 1.5rem;">
+                            After <strong>${oceanSummary.questionCount} questions</strong> across <strong>${oceanSummary.domainsCompleted} domains</strong>, 
+                            we can now provide an initial OCEAN personality profile. These are general tendencies, not fixed traits.
+                        </p>
+                        
+                        <div style="background: rgba(255, 255, 0, 0.1); border: 1px solid rgba(255, 255, 0, 0.3); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                            <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">🧠 Your OCEAN Tendencies</h3>
+                `;
+                
+                // Display each OCEAN trait
+                const traitNames = {
+                    O: 'Openness',
+                    C: 'Conscientiousness',
+                    E: 'Extraversion',
+                    A: 'Agreeableness',
+                    N: 'Neuroticism'
+                };
+                
+                Object.keys(traitNames).forEach(trait => {
+                    const score = oceanSummary.scores[trait];
+                    const tendency = assessment.getOceanTendency(trait, score);
+                    
+                    oceanHTML += `
+                        <div style="margin-bottom: 1rem;">
+                            <strong style="color: var(--primary-yellow);">${traitNames[trait]}:</strong>
+                            <span style="color: #e0e0e0;">${tendency.level}</span>
+                            <p style="color: #a0a0a0; font-size: 0.9rem; margin-top: 0.3rem;">${tendency.desc}</p>
+                        </div>
+                    `;
+                });
+                
+                oceanHTML += '</div>';
+                
+                // Add concerns if any
+                if (oceanSummary.concerns.length > 0) {
+                    oceanHTML += `
+                        <div style="background: rgba(255, 100, 100, 0.1); border: 1px solid rgba(255, 100, 100, 0.3); border-radius: 10px; padding: 1rem; margin-bottom: 1rem;">
+                            <h4 style="color: #ff6b6b; margin-bottom: 0.5rem;">⚠️ Areas for Attention</h4>
+                            <ul style="color: #e0a0a0; margin: 0; padding-left: 1.5rem;">
+                                ${oceanSummary.concerns.map(c => `<li>${c}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                }
+                
+                oceanHTML += `
+                    <p style="color: #a0a0a0; font-size: 0.9rem; text-align: center; margin-top: 1.5rem;">
+                        Complete all 6 domains (60 questions) for a comprehensive personality profile with percentile rankings.
+                    </p>
+                </div>`;
+                
+                document.getElementById('ocean-content').innerHTML = oceanHTML;
+            }
+        }
+        
+        function viewProgress() {
+            // Show overall progress across all domains
+            showOceanAnalysis();
+        }
+        
+        function startOceanCoaching() {
+            // Send to AI coaching with OCEAN focus
+            if (window.THRIVEAssessment) {
+                const assessment = window.THRIVEAssessment;
+                const oceanSummary = assessment.generateOceanSummary();
+                
+                // Prepare OCEAN-focused coaching context
+                const coachingData = {
+                    type: 'ocean_analysis',
+                    oceanScores: oceanSummary.scores,
+                    concerns: oceanSummary.concerns,
+                    completedDomains: assessment.state.completedDomains,
+                    allResponses: assessment.state.allResponses,
+                    timestamp: Date.now()
+                };
+                
+                localStorage.setItem('thriveOceanContext', JSON.stringify(coachingData));
+                
+                // Redirect to AI chat with OCEAN focus
+                window.location.href = '../chat/?analysis=ocean&questions=' + oceanSummary.questionCount;
+            }
+        }
+        
         // Make functions global for button onclick handlers
         window.startGame = startGame;
         window.continueFromGlimpse = continueFromGlimpse;
@@ -1549,6 +1811,11 @@
         window.continueGame = continueGame;
         window.startCoachingFromResults = startCoachingFromResults;
         window.restartGame = restartGame;
+        window.showDomainComplete = showDomainComplete;
+        window.continueToNextDomain = continueToNextDomain;
+        window.showOceanAnalysis = showOceanAnalysis;
+        window.viewProgress = viewProgress;
+        window.startOceanCoaching = startOceanCoaching;
         
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
