@@ -318,6 +318,13 @@ h3 { font-size: var(--font-size-md); }
     text-shadow: var(--shadow-yellow-glow);
 }
 
+.logo-subtitle {
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--text-white);
+    margin-left: 0.3rem;
+}
+
 .nav-menu {
     display: flex;
     gap: var(--spacing-md);
