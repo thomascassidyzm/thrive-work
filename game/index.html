@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What Are You Like? | THRIVE Discovery Game</title>
-    <meta name="description" content="Take the revolutionary 10-minute self-discovery game that reveals the gap between who you think you are and who you actually are.">
+    <title>THRIVE Work Assessment</title>
+    <meta name="description" content="Evidence-based workplace wellbeing assessment. Identify stress patterns and receive personalized recommendations for improved workplace mental health.">
 
     <!-- Favicon and App Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
@@ -530,14 +530,14 @@
             <!-- Welcome Screen -->
             <div id="welcome-screen">
                 <div class="logo">THRIVE</div>
-                <div class="subtitle">What Are You Like?</div>
-                <div class="description">
-                    Discover the hidden patterns that shape your decisions. This isn't just another personality test—it's a journey into your unconscious mind that reveals the gaps between who you think you are and who you actually are.
+                <div class="subtitle" id="dimension-title">Workplace Wellbeing Assessment</div>
+                <div class="description" id="dimension-description">
+                    This assessment helps identify patterns in your workplace wellbeing across multiple dimensions.
                 </div>
-                <div class="description">
-                    <span class="highlight">10 minutes. Life-changing insights. Completely free.</span>
+                <div class="description" id="dimension-focus">
+                    <span class="highlight">10 questions. Personalized insights. Evidence-based recommendations.</span>
                 </div>
-                <button class="start-button" onclick="startGame()">START EXPLORING</button>
+                <button class="start-button" onclick="startGame()">BEGIN ASSESSMENT</button>
             </div>
 
             <!-- Question Screen -->
@@ -670,7 +670,51 @@
         let dimensionModule;
         let dimensionName = '';
         
+        // Dimension-specific content for splash screen
+        const dimensionContent = {
+            time: {
+                title: 'TIME Dimension Assessment',
+                description: 'Assess your relationship with time, work-life balance, and boundary management. Understand how time pressures and scheduling patterns affect your wellbeing.',
+                focus: '10 questions about rhythm, balance, and boundaries.'
+            },
+            health: {
+                title: 'HEALTH Dimension Assessment',
+                description: 'Evaluate your physical and mental health practices. Identify areas where stress manifests physically and discover sustainable wellness strategies.',
+                focus: '10 questions about energy, stress, and resilience.'
+            },
+            relationships: {
+                title: 'RELATIONSHIPS Dimension Assessment',
+                description: 'Explore your workplace relationships and communication patterns. Understand team dynamics and identify opportunities for stronger connections.',
+                focus: '10 questions about connection, communication, and support.'
+            },
+            identity: {
+                title: 'IDENTITY Dimension Assessment',
+                description: 'Examine your sense of purpose and values alignment at work. Discover how authentically you can express yourself in your professional role.',
+                focus: '10 questions about purpose, values, and authenticity.'
+            },
+            vitality: {
+                title: 'VITALITY Dimension Assessment',
+                description: 'Measure your energy levels, motivation, and engagement at work. Identify early warning signs of burnout and pathways to renewed enthusiasm.',
+                focus: '10 questions about energy, motivation, and burnout risk.'
+            },
+            environment: {
+                title: 'ENVIRONMENT Dimension Assessment',
+                description: 'Evaluate your workplace culture, physical environment, and organizational support. Understand how your context impacts your wellbeing.',
+                focus: '10 questions about culture, workspace, and psychological safety.'
+            }
+        };
+        
         if (dimension) {
+            // Update splash screen with dimension-specific content
+            const content = dimensionContent[dimension.toLowerCase()];
+            if (content) {
+                document.getElementById('dimension-title').textContent = content.title;
+                document.getElementById('dimension-description').textContent = content.description;
+                document.getElementById('dimension-focus').innerHTML = `<span class="highlight">${content.focus}</span>`;
+                // Update page title
+                document.title = `${content.title} | THRIVE Work`;
+            }
+            
             switch(dimension.toLowerCase()) {
                 case 'time':
                     dimensionModule = await import('../question-banks/thrive-time-questions.js');
