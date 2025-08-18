@@ -1,16 +1,6 @@
-/* THRIVE Minimal Animations - Fast, snappy load with no bouncing */
+/* THRIVE Minimal Animations - No page load animations, keep hover effects */
 
-/* CRITICAL: Override ALL animations to prevent layout shift */
-* {
-    animation: none !important;
-    animation-delay: 0s !important;
-    animation-fill-mode: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-}
-
-/* No animations on initial load - everything appears instantly */
+/* Override ONLY page load animations - everything appears instantly */
 .hero-content,
 .hero-title,
 .hero-subtitle,
@@ -25,25 +15,26 @@
 .footer,
 .orbital-text-container,
 .orbital-brand-name,
-.orbital-tagline {
-    /* Remove all animations - load instantly */
+.orbital-tagline,
+.domain-card,
+.glass-card {
+    /* Remove page load animations - load instantly */
     animation: none !important;
     animation-delay: 0s !important;
     animation-fill-mode: none !important;
     opacity: 1 !important;
-    transform: none !important;
 }
 
-/* Restore only essential animations after page load */
+/* Keep all the good animations and hover effects */
+
+/* Orbital rings rotation */
 @keyframes rotate {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-/* Keep the orbital rings rotating smoothly - but override the global rule */
 .orbital-rings .ring {
     animation: rotate 30s linear infinite !important;
-    opacity: 1 !important;
 }
 
 .orbital-rings .ring:nth-child(1) {
@@ -58,52 +49,41 @@
     animation: rotate 35s linear infinite !important;
 }
 
-/* Disable all hover movements - just color/brightness changes */
-.cta-button:hover,
-.domain-card:hover,
-.glass-card:hover,
-.glass-card-premium:hover {
-    transform: none !important;
+/* Restore particle floating animation */
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-10px) rotate(360deg);
+        opacity: 0;
+    }
 }
 
-/* Simple brightness change on hover */
-.cta-button:hover {
-    filter: brightness(1.15);
-    transition: filter 0.2s ease;
+.particle {
+    animation: float 6s infinite linear !important;
 }
 
-.domain-card:hover,
-.glass-card:hover {
-    filter: brightness(1.1);
-    border-color: var(--glass-border-yellow);
-    transition: filter 0.2s ease, border-color 0.2s ease;
+/* Gradient animation for text */
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
-/* Keep the shimmer effect for the button but no movement */
-.cta-button::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent);
-    transition: left 0.5s ease-out;
-    pointer-events: none;
-}
-
-.cta-button:hover::after {
-    left: 100%;
-}
-
-/* Disable all transform animations */
-* {
-    transition-property: opacity, filter, border-color, background-color, color !important;
-    transition-duration: 0.2s !important;
-    transition-timing-function: ease-out !important;
+.highlight,
+.logo-text {
+    animation: gradientShift 3s ease-in-out infinite !important;
 }
 
 /* Completely disable animations for users who prefer reduced motion */
