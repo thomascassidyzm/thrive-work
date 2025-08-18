@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>Chat - THRIVE</title>
+    <meta name="description" content="Chat with our AI coaches about patterns, relationships, business challenges, and personal growth using proven THRIVE methodology.">
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#FFD700">
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#FFD700">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="THRIVE">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/icon-512.png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/orbital-logo.css">
+    <link rel="stylesheet" href="../assets/css/chat-mobile.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../" style="text-decoration: none;">
+                    <span class="th-icon-small">Th</span>
+                <span class="logo-text">THRIVE</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="../" class="nav-link">Home</a>
+                <a href="../about/" class="nav-link">About</a>
+                <a href="../partners/" class="nav-link">Partners</a>
+                <a href="../corporate/" class="nav-link">Corporate</a>
+                <a href="../coaching/" class="nav-link">Coaching</a>
+                <a href="../blog/" class="nav-link">Blog</a>
+                <a href="./" class="nav-link">Chat</a>
+            </div>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- AI Coaching Hero -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="hero-container" style="grid-template-columns: 1fr;">
+            <div class="hero-content" style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <h1 class="hero-title">Chat with <span class="highlight">THRIVE</span></h1>
+                <p class="hero-subtitle">
+                    Explore patterns, relationships, and personal growth through conversation
+                </p>
+                <div class="hero-description">
+                    <p>Choose a coach based on what you're working on. Simple, straightforward conversations about what's on your mind.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Claude Chat Interface -->
+    <section class="container" style="padding: 4rem 0;">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2 style="color: var(--primary-color); margin-bottom: 2rem; font-size: 2rem;">Choose a Coach</h2>
+            <p style="color: var(--text-light); margin-bottom: 2rem; font-size: 1.1rem;">Pick based on what you're working on. All use the same core methods.</p>
+            
+            <!-- Coach Selection -->
+            <div id="coach-selection" style="margin-bottom: 2rem;">
+                <div class="coach-selection-grid">
+                    <div class="coach-card active" data-coach="tom" style="background: var(--glass-white-light); border: 2px solid var(--primary-yellow); border-radius: var(--border-radius); padding: 1rem; cursor: pointer; transition: var(--transition-smooth);">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <img src="../assets/images/tom-headshot.jpg" alt="Tom" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                            <div>
+                                <h4 style="color: var(--primary-yellow); margin-bottom: 0.5rem;">🎯 Tom</h4>
+                                <p style="color: var(--text-light); font-size: 0.9rem;">Relationships • Personal mastery • Life purpose</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="coach-card" data-coach="liz" style="background: var(--glass-white-light); border: 2px solid transparent; border-radius: var(--border-radius); padding: 1rem; cursor: pointer; transition: var(--transition-smooth); display: flex; align-items: center; gap: 1rem;">
+                        <img src="../assets/images/liz-headshot.jpg" alt="Liz" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                        <div>
+                            <h4 style="color: var(--text-white); margin-bottom: 0.5rem;">🌟 Liz</h4>
+                            <p style="color: var(--text-light); font-size: 0.9rem;">Identity work • Self-worth • Feeling good about being YOU</p>
+                        </div>
+                    </div>
+                    <div class="coach-card" data-coach="alastair" style="background: var(--glass-white-light); border: 2px solid transparent; border-radius: var(--border-radius); padding: 1rem; cursor: pointer; transition: var(--transition-smooth);">
+                        <h4 style="color: var(--text-white); margin-bottom: 0.5rem;">🧠 Alastair</h4>
+                        <p style="color: var(--text-light); font-size: 0.9rem;">Addictions • Compulsive patterns • OCD</p>
+                    </div>
+                    <div class="coach-card" data-coach="kainne" style="background: var(--glass-white-light); border: 2px solid transparent; border-radius: var(--border-radius); padding: 1rem; cursor: pointer; transition: var(--transition-smooth);">
+                        <h4 style="color: var(--text-white); margin-bottom: 0.5rem;">🎵 Kainne</h4>
+                        <p style="color: var(--text-light); font-size: 0.9rem;">Business • Getting things done • ADHD</p>
+                    </div>
+                    <div class="coach-card" data-coach="edward" style="background: var(--glass-white-light); border: 2px solid transparent; border-radius: var(--border-radius); padding: 1rem; cursor: pointer; transition: var(--transition-smooth);">
+                        <h4 style="color: var(--text-white); margin-bottom: 0.5rem;">📖 Edward</h4>
+                        <p style="color: var(--text-light); font-size: 0.9rem;">Foundations • Self-acceptance • Limiting beliefs</p>
+                    </div>
+                    <div class="coach-card" data-coach="dom" style="background: var(--glass-white-light); border: 2px solid transparent; border-radius: var(--border-radius); padding: 1rem; cursor: pointer; transition: var(--transition-smooth);">
+                        <h4 style="color: var(--text-white); margin-bottom: 0.5rem;">⚽ Dom</h4>
+                        <p style="color: var(--text-light); font-size: 0.9rem;">Performance • Strategy • Mental toughness</p>
+                    </div>
+                </div>
+            </div>
+            <div style="background: rgba(255, 255, 0, 0.1); border: 1px solid rgba(255, 255, 0, 0.3); border-radius: 10px; padding: 1rem; margin-bottom: 2rem; font-size: 0.9rem; color: var(--text-light);">
+                <strong>💬 Simple Chat:</strong> Just conversation. No sign-up required.
+            </div>
+            
+            <!-- Chat Container -->
+            <div id="chat-container">
+                <div id="chat-messages"></div>
+                <div class="chat-controls">
+                    <button id="clear-chat-button">Clear Chat</button>
+                    <div style="flex: 1;"></div>
+                    <span id="chat-status"></span>
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" id="chat-input" placeholder="Ask me anything about THRIVE..." autocomplete="off" autocorrect="on" autocapitalize="sentences" spellcheck="true">
+                    <button id="send-button" class="cta-button primary">Send</button>
+                </div>
+            </div>
+            
+            <!-- Coaching Starters -->
+            <div class="quick-questions-container" style="margin-bottom: 2rem;">
+                <h3 style="color: var(--text-light); margin-bottom: 1rem;">Coaching Conversation Starters:</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                    <button class="quick-question" data-question="What are the two gateway questions that change everything?">The Gateway Tools</button>
+                    <button class="quick-question" data-question="I feel stuck in a pattern I can't break">I feel stuck in a pattern</button>
+                    <button class="quick-question" data-question="I'm dealing with stress and want to understand my automatic responses">Help with stress patterns</button>
+                    <button class="quick-question" data-question="I want to explore the Script Framework">Tell me about Scripts</button>
+                    <button class="quick-question" data-question="I'm confused about a decision I need to make">Help with decision-making</button>
+                    <button class="quick-question" data-question="Tell me about RAS programming and Mind Adverts">Advanced techniques</button>
+                    <button class="quick-question" data-question="What coaching programs does THRIVE offer?">THRIVE programs</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="background: rgba(255, 255, 255, 0.02); padding: 4rem 0;">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                
+                <div style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 2rem; margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">How accurate are the THRIVE assessments?</h3>
+                    <p style="color: var(--text-medium);">THRIVE uses pattern recognition, not diagnosis. We reflect back what we notice in your responses and invite you to explore what resonates. The accuracy comes from your honest self-reflection, not our algorithms.</p>
+                </div>
+                
+                <div style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 2rem; margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Is my data private and secure?</h3>
+                    <p style="color: var(--text-medium);">Absolutely. We never share your assessment data or personal information. Your responses are used only to generate your personalized insights and are stored securely.</p>
+                </div>
+                
+                <div style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 2rem; margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Can I retake assessments?</h3>
+                    <p style="color: var(--text-medium);">Yes! We encourage retaking assessments as you grow and change. It's fascinating to see how your patterns evolve over time.</p>
+                </div>
+                
+                <div style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 2rem; margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">How is THRIVE different from other personality tests?</h3>
+                    <p style="color: var(--text-medium);">THRIVE focuses on behavior patterns, not personality types. We reveal the gap between your conscious values and unconscious actions, giving you specific areas for growth rather than fixed labels.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Haven't Taken Your Assessment Yet?</h2>
+                <p>Start your self-discovery journey with our free 10-minute assessment.</p>
+                <a href="../game/" class="cta-button primary large">
+                    PLAY THE GAME
+                    <span class="button-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">THRIVE</h3>
+                    <p>Bridging the gap between who you think you are and who you actually are.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Discover</h4>
+                    <ul>
+                        <li><a href="../game/">Play the Game</a></li>
+                        <li><a href="../partners/">Partner Network</a></li>
+                        <li><a href="../about/">About THRIVE</a></li>
+                        <li><a href="../blog/">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Transform</h4>
+                    <ul>
+                        <li><a href="../coaching/">Coaching Programs</a></li>
+                        <li><a href="../partners/">Partner Network</a></li>
+                        <!-- <li><a href="#resources">Resources</a></li> -->
+                        <!-- <li><a href="#community">Community</a></li> -->
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="./">Chat</a></li>
+                        <!-- <li><a href="#faq">FAQ</a></li> -->
+                        <!-- <li><a href="#privacy">Privacy</a></li> -->
+                        <!-- <li><a href="#terms">Terms</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 THRIVE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PWA Bottom Navigation -->
+    <nav class="pwa-bottom-nav">
+        <div class="pwa-bottom-nav-inner">
+            <a href="../" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+                <span class="pwa-nav-label">Home</span>
+            </a>
+            <a href="../game/" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                </svg>
+                <span class="pwa-nav-label">Game</span>
+            </a>
+            <a href="./" class="pwa-nav-item active" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+                </svg>
+                <span class="pwa-nav-label">Chat</span>
+            </a>
+            <a href="../partners/" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+                <span class="pwa-nav-label">More</span>
+            </a>
+            <a href="../about/" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                </svg>
+                <span class="pwa-nav-label">About</span>
+            </a>
+        </div>
+    </nav>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/chat.js?v=20250815-1300"></script>
+    
+    <style>
+        .quick-question {
+            background: var(--glass-white-light);
+            border: var(--glass-border);
+            border-radius: var(--border-radius);
+            padding: 0.5rem 1rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-size: 0.9rem;
+        }
+        
+        .quick-question:hover {
+            background: var(--glass-yellow-light);
+            color: var(--primary-yellow);
+            transform: translateY(-2px);
+        }
+        
+        #chat-input {
+            outline: none;
+        }
+        
+        #chat-input:focus {
+            border-color: var(--primary-yellow);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        
+        #chat-messages::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        #chat-messages::-webkit-scrollbar-track {
+            background: var(--glass-white-light);
+            border-radius: 4px;
+        }
+        
+        #chat-messages::-webkit-scrollbar-thumb {
+            background: var(--primary-yellow);
+            border-radius: 4px;
+        }
+        
+        .coach-card:hover {
+            background: var(--glass-white-medium) !important;
+            transform: translateY(-2px);
+        }
+        
+        #clear-chat-button:hover {
+            background: rgba(255,255,255,0.2) !important;
+            transform: translateY(-1px);
+        }
+        
+        .coach-card.active {
+            background: var(--glass-white-medium) !important;
+        }
+    </style>
+</body>
+</html>

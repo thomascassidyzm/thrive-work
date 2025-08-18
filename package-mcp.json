@@ -1,0 +1,22 @@
+{
+  "name": "thrive-coaching-mcp-server",
+  "version": "1.0.0",
+  "description": "THRIVE Coaching MCP Orchestrator for Claude Desktop",
+  "type": "module",
+  "main": "thrive-coaching-mcp-server.js",
+  "scripts": {
+    "start": "node thrive-coaching-mcp-server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "keywords": [
+    "thrive",
+    "coaching",
+    "mcp",
+    "claude",
+    "tom-cassidy"
+  ],
+  "author": "THRIVE Team",
+  "license": "MIT"
+}

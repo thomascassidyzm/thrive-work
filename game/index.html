@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Are You Like? | THRIVE Discovery Game</title>
+    <meta name="description" content="Take the revolutionary 10-minute self-discovery game that reveals the gap between who you think you are and who you actually are.">
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#FFD700">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/orbital-logo.css">
+    <link rel="stylesheet" href="../assets/css/chat-mobile.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-weight: var(--font-weight-regular);
+            background: var(--gradient-hero);
+            background-attachment: fixed;
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary-yellow);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-10px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .game-container {
+            background: var(--glass-white);
+            backdrop-filter: var(--blur-strong);
+            -webkit-backdrop-filter: var(--blur-strong);
+            border-radius: var(--border-radius-xl);
+            padding: 3rem;
+            border: var(--glass-border-strong);
+            box-shadow: var(--shadow-glass-strong);
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--glass-yellow-light) 0%, var(--glass-white-light) 100%);
+            opacity: 0.4;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: var(--primary-yellow);
+            text-decoration: none;
+            font-weight: var(--font-weight-semibold);
+            transition: var(--transition-smooth);
+            z-index: 100;
+        }
+
+        .back-link:hover {
+            color: var(--primary-yellow-bright);
+            text-shadow: var(--shadow-yellow-glow);
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: var(--font-weight-bold);
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--primary-yellow-bright) 50%, var(--accent-yellow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease-in-out infinite;
+            margin-bottom: 1rem;
+            text-shadow: var(--shadow-yellow-glow);
+            position: relative;
+            z-index: 10;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-light);
+            position: relative;
+            z-index: 10;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #c0c0c0;
+        }
+
+        .highlight {
+            color: var(--primary-yellow);
+            font-weight: var(--font-weight-bold);
+            position: relative;
+            z-index: 10;
+        }
+
+        .start-button {
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--primary-yellow-bright) 100%);
+            color: var(--bg-black);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px var(--glass-border-yellow);
+            margin-top: 1rem;
+        }
+
+        .start-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 255, 0, 0.6);
+        }
+
+        .question-container {
+            display: none;
+            text-align: left;
+        }
+
+        .question-number {
+            color: var(--primary-yellow);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            color: var(--text-white);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .option {
+            background: var(--glass-white);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-white);
+            font-size: var(--font-size-base);
+            line-height: 1.4;
+        }
+
+        .option:hover {
+            background: rgba(255, 255, 0, 0.1);
+            border-color: var(--glass-border-yellow);
+            transform: translateX(5px);
+        }
+
+        .reflection-screen {
+            display: none;
+            text-align: center;
+        }
+
+        .reflection-title {
+            color: var(--primary-yellow);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .reflection-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+        }
+
+        .reflection-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .reflection-button {
+            background: var(--glass-white);
+            border: 2px solid var(--glass-border-yellow);
+            color: var(--text-white);
+            padding: 1rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: var(--font-size-base);
+        }
+
+        .reflection-button:hover {
+            background: rgba(255, 255, 0, 0.2);
+            border-color: rgba(255, 255, 0, 0.6);
+        }
+
+        .results-container {
+            display: none;
+            text-align: center;
+        }
+
+        .results-title {
+            color: var(--primary-yellow);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .pattern-result {
+            background: rgba(255, 255, 0, 0.1);
+            border: 2px solid var(--glass-border-yellow);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .pattern-title {
+            color: var(--primary-yellow);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .pattern-description {
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .domains-section {
+            margin: 2rem 0;
+        }
+
+        .domains-title {
+            color: var(--primary-yellow);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .domains-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .domain-card {
+            background: var(--glass-white);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .domain-card.recommended {
+            border-color: rgba(255, 255, 0, 0.6);
+            background: rgba(255, 255, 0, 0.1);
+        }
+
+        .domain-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .domain-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .domain-title {
+            color: var(--primary-yellow);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .domain-description {
+            color: #c0c0c0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .recommended-badge {
+            background: var(--primary-yellow);
+            color: var(--bg-black);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        .coaching-section {
+            background: rgba(255, 255, 0, 0.1);
+            border: 2px solid var(--glass-border-yellow);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .coaching-title {
+            color: var(--primary-yellow);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .coaching-description {
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .coaching-benefits {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .coaching-benefits li {
+            color: #c0c0c0;
+            margin-bottom: 0.5rem;
+        }
+
+        .coaching-cta {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .coaching-button {
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--primary-yellow-bright) 100%);
+            color: var(--bg-black);
+            border: none;
+            padding: 1.5rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            line-height: 1.3;
+            max-width: 400px;
+        }
+
+        .coaching-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 0, 0.4);
+        }
+
+        .restart-button {
+            background: var(--glass-white);
+            border: 2px solid var(--glass-border-yellow);
+            color: var(--text-white);
+            padding: 1rem 2rem;
+            font-size: var(--font-size-base);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .restart-button:hover {
+            background: rgba(255, 255, 0, 0.1);
+            border-color: rgba(255, 255, 0, 0.6);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--primary-yellow-bright) 100%);
+            color: var(--bg-black);
+            border: none;
+            padding: 1.5rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 0, 0.4);
+        }
+
+        .cta-button small {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: normal;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .cta-button.secondary {
+            background: var(--glass-white);
+            border: 2px solid var(--glass-border-yellow);
+            color: var(--text-white);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 0, 0.2);
+            border-color: rgba(255, 255, 0, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .game-container {
+                padding: 2rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .domains-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .email-form {
+                flex-direction: column;
+            }
+
+            .email-input {
+                min-width: 100%;
+            }
+
+            .back-link {
+                top: 1rem;
+                left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../" class="back-link">← Back to THRIVE</a>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="game-container">
+            <!-- Welcome Screen -->
+            <div id="welcome-screen">
+                <div class="logo">THRIVE</div>
+                <div class="subtitle">What Are You Like?</div>
+                <div class="description">
+                    Discover the hidden patterns that shape your decisions. This isn't just another personality test—it's a journey into your unconscious mind that reveals the gaps between who you think you are and who you actually are.
+                </div>
+                <div class="description">
+                    <span class="highlight">10 minutes. Life-changing insights. Completely free.</span>
+                </div>
+                <button class="start-button" onclick="startGame()">START EXPLORING</button>
+            </div>
+
+            <!-- Question Screen -->
+            <div id="question-screen" class="question-container">
+                <div class="question-number" id="question-number"></div>
+                <div class="question-text" id="question-text"></div>
+                <div class="options" id="options"></div>
+            </div>
+
+            <!-- Reflection Screen -->
+            <div id="reflection-screen" class="reflection-screen">
+                <div class="reflection-title">🤔 Take a Moment to Reflect</div>
+                <div class="reflection-text">
+                    You've just made a choice. Before we continue, take a moment to consider: 
+                    Is this response truly aligned with how you want to show up in the world, 
+                    or was it more of an automatic reaction?
+                </div>
+                <div class="reflection-buttons">
+                    <button class="reflection-button" onclick="changeAnswer()">I Want to Change My Answer</button>
+                    <button class="reflection-button" onclick="continueGame()">I'm Sure - Continue</button>
+                </div>
+            </div>
+
+            <!-- Glimpse Checkpoint Screen (5 questions) -->
+            <div id="glimpse-screen" class="results-container" style="display: none;">
+                <div class="results-title">First Glimpses!</div>
+                
+                <div id="glimpse-content">
+                    <!-- Glimpse content will be inserted here -->
+                </div>
+
+                <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 2rem;">
+                    <button class="cta-button primary" onclick="continueFromGlimpse()" style="min-width: 200px;">
+                        Keep Going! 🚀
+                    </button>
+                </div>
+            </div>
+
+            <!-- Preliminary Results Screen (10 questions) -->
+            <div id="preliminary-screen" class="results-container" style="display: none;">
+                <div class="results-title">Early Patterns Emerging!</div>
+                
+                <div id="preliminary-content">
+                    <!-- Preliminary content will be inserted here -->
+                </div>
+
+                <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 3rem; flex-wrap: wrap;">
+                    <button class="cta-button primary" onclick="continueFromPreliminary()" style="min-width: 200px;">
+                        🗺️ Continue Questions
+                        <br><small>Build deeper insights</small>
+                    </button>
+                    <button class="cta-button secondary" onclick="goToAICoaching()" style="min-width: 200px;">
+                        💬 AI Analysis
+                        <br><small>Explore patterns with coach</small>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Choice Point Screen (30 questions) -->
+            <div id="choice-screen" class="results-container" style="display: none;">
+                <div class="results-title">Interesting Patterns Emerging!</div>
+                
+                <div id="choice-content">
+                    <!-- Choice point content will be inserted here -->
+                </div>
+
+                <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 3rem; flex-wrap: wrap;">
+                    <button class="cta-button primary" onclick="chooseContinueMapping()" style="min-width: 250px;">
+                        🗺️ Continue Mapping
+                        <br><small>Get more questions for higher precision</small>
+                    </button>
+                    <button class="cta-button primary" onclick="chooseStartCoaching()" style="min-width: 250px;">
+                        🤝 Start Coaching
+                        <br><small>Explore patterns with an AI coach</small>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div id="results-screen" class="results-container">
+                <div class="results-title">Your Behavioral Patterns</div>
+                
+                <div class="pattern-result" id="pattern-result">
+                    <!-- Pattern analysis will be inserted here -->
+                </div>
+
+                <div class="domains-section">
+                    <div class="domains-title">🚀 Your Script Framework Journey Awaits</div>
+                    <div class="description">
+                        Based on your responses, we've identified the areas where you have the greatest potential for transformation. 
+                        Click on any domain below to explore deeper insights, personalized coaching, and specific strategies for your growth.
+                    </div>
+                    
+                    <div class="domains-grid" id="domains-grid">
+                        <!-- Domain cards will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="coaching-section">
+                    <div class="coaching-title">🤝 Dive Deeper with AI Coaching</div>
+                    <div class="coaching-description">
+                        This summary is just the beginning. Get your complete detailed analysis through a personalized coaching conversation that covers:
+                    </div>
+                    <ul class="coaching-benefits">
+                        <li><strong>In-depth pattern exploration</strong> of each behavioral tendency</li>
+                        <li><strong>Personalized implementation steps</strong> for your Script Framework transformation</li>
+                        <li><strong>Specific growth experiments</strong> tailored to your patterns</li>
+                        <li><strong>Real-world application strategies</strong> for your unique situations</li>
+                        <li><strong>Ongoing support</strong> for your transformation journey</li>
+                    </ul>
+                    <div class="coaching-cta">
+                        <button class="coaching-button" onclick="startCoachingFromResults()">
+                            💬 EXPLORE YOUR PATTERNS WITH TOM
+                            <span style="display: block; font-size: 0.9rem; font-weight: normal; margin-top: 0.3rem;">Get personalized insights and action steps</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="restart-button" onclick="restartGame()">Explore Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import our question banks
+        import { universalLaunchQuestions } from '../question-banks/universal-launch-questions.js';
+        import { groupDynamicsQuestions } from '../question-banks/group-dynamics-questions.js';
+        import { authorityRelationshipsQuestions } from '../question-banks/authority-relationships-questions.js';
+        import { conflictPatternsQuestions } from '../question-banks/conflict-patterns-questions.js';
+        import { creativeExpressionQuestions } from '../question-banks/creative-expression-questions.js';
+        import { trustVulnerabilityQuestions } from '../question-banks/trust-vulnerability-questions.js';
+        import { disciplineImpulseQuestions } from '../question-banks/discipline-impulse-questions.js';
+        import { AdaptiveQuestionEngine } from '../engines/adaptive-question-engine.js';
+        import { PatternAnalysisEngine } from '../engines/pattern-analysis-engine.js';
+        import { DynamicOceanAnalysis } from '../engines/dynamic-ocean-analysis.js';
+        import { GameCoachingIntegration } from '../engines/game-coaching-integration.js';
+
+        // Universal launch questions for initial experience
+        const launchQuestionBank = universalLaunchQuestions;
+        
+        // Full question bank for expanded assessment - now with complete OCEAN coverage
+        const fullQuestionBank = [
+            ...groupDynamicsQuestions,
+            ...authorityRelationshipsQuestions,
+            ...conflictPatternsQuestions,
+            ...creativeExpressionQuestions,
+            ...trustVulnerabilityQuestions,
+            ...disciplineImpulseQuestions
+        ];
+
+        console.log(`🎮 Game loaded with ${launchQuestionBank.length} launch questions and ${fullQuestionBank.length} expanded questions!`);
+
+        // Initialize the integrated game system
+        const gameSystem = new GameCoachingIntegration();
+
+        // Game state
+        let currentQuestion = 0;
+        let responses = [];
+        let selectedQuestions = [];
+        let isReflecting = false;
+        let lastResponse = null;
+
+        // Smart question selection algorithm - starts with universal launch questions
+        function selectOptimalQuestions() {
+            console.log('Starting question selection...');
+            console.log('Launch questions available:', launchQuestionBank.length);
+            
+            // Randomize questions for variety each time
+            const shuffled = [...launchQuestionBank].sort(() => Math.random() - 0.5);
+            const selected = shuffled.slice(0, 10);
+            
+            // Ensure we have reflection triggers at positions 3, 6, 9
+            const reflectionQuestions = selected.filter(q => q.reflectionTrigger);
+            const nonReflectionQuestions = selected.filter(q => !q.reflectionTrigger);
+            
+            console.log('Reflection questions found:', reflectionQuestions.length);
+            console.log('Non-reflection questions found:', nonReflectionQuestions.length);
+            
+            // Build final array with reflection triggers at specific positions
+            const result = [];
+            let reflectionIndex = 0;
+            let nonReflectionIndex = 0;
+            
+            for (let i = 0; i < 10; i++) {
+                if ([2, 5, 8].includes(i) && reflectionIndex < reflectionQuestions.length) {
+                    // Position 3, 6, 9 (0-indexed as 2, 5, 8) - use reflection questions
+                    result.push(reflectionQuestions[reflectionIndex]);
+                    reflectionIndex++;
+                } else if (nonReflectionIndex < nonReflectionQuestions.length) {
+                    // Other positions - use non-reflection questions
+                    result.push(nonReflectionQuestions[nonReflectionIndex]);
+                    nonReflectionIndex++;
+                } else if (reflectionIndex < reflectionQuestions.length) {
+                    // Fill remaining with reflection questions if needed
+                    result.push(reflectionQuestions[reflectionIndex]);
+                    reflectionIndex++;
+                }
+            }
+            
+            console.log('Selected questions:', result.length);
+            console.log('Questions:', result.map(q => q.id));
+            
+            return result;
+        }
+
+        // Initialize particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Start the game
+        function startGame() {
+            console.log('Starting game...');
+            selectedQuestions = selectOptimalQuestions();
+            currentQuestion = 0;
+            responses = [];
+            
+            console.log('Selected questions for this game:', selectedQuestions.length);
+            
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('question-screen').style.display = 'block';
+            
+            showQuestion();
+        }
+
+        // Show current question with variable option support
+        function showQuestion() {
+            console.log('Showing question', currentQuestion + 1, 'of', selectedQuestions.length);
+            
+            if (currentQuestion >= selectedQuestions.length) {
+                console.log('All questions completed, showing results');
+                showResults();
+                return;
+            }
+
+            const question = selectedQuestions[currentQuestion];
+            console.log(`Current question: ${question.id} with ${question.options.length} options`);
+            
+            document.getElementById('question-number').textContent = `Question ${currentQuestion + 1} of ${selectedQuestions.length}`;
+            document.getElementById('question-text').textContent = question.scenario;
+            
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            
+            // Handle variable number of options (2, 3, or 4)
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                optionElement.textContent = option.text;
+                optionElement.onclick = () => selectOption(index, option, question);
+                
+                // Add visual variety based on option count
+                if (question.options.length === 2) {
+                    optionElement.style.padding = '1.5rem';
+                    optionElement.style.fontSize = '1.1rem';
+                } else if (question.options.length === 3) {
+                    optionElement.style.padding = '1.3rem';
+                } else {
+                    optionElement.style.padding = '1.2rem';
+                }
+                
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            // Adjust container layout based on option count
+            if (question.options.length === 2) {
+                optionsContainer.style.gap = '1.5rem';
+            } else {
+                optionsContainer.style.gap = '1rem';
+            }
+            
+            // Clear any previous selection styling
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+                opt.style.background = 'var(--glass-white)';
+                opt.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+            });
+        }
+
+        // Handle option selection with new system integration
+        function selectOption(optionIndex, option, question) {
+            console.log('Option selected:', optionIndex, option.text.substring(0, 30) + '...');
+            
+            // Visual feedback for selection
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.style.background = 'var(--glass-white)';
+                opt.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+            });
+            
+            const selectedOption = document.querySelectorAll('.option')[optionIndex];
+            selectedOption.style.background = 'rgba(255, 255, 0, 0.2)';
+            selectedOption.style.borderColor = 'rgba(255, 255, 0, 0.6)';
+            
+            // Create response in new format
+            const response = {
+                questionId: question.id,
+                selectedOption: option,
+                questionData: question,
+                optionIndex: optionIndex,
+                timestamp: Date.now()
+            };
+            
+            responses.push(response);
+            currentQuestion++;
+            
+            // Store responses for continuation
+            localStorage.setItem('thriveGameResponses', JSON.stringify(responses));
+            
+            // Check if we should show any checkpoint or continue
+            const checkpointType = checkForChoicePoint();
+            
+            setTimeout(() => {
+                if (checkpointType === 'glimpse') {
+                    showGlimpseCheckpoint();
+                } else if (checkpointType === 'preliminary') {
+                    showPreliminaryResults();
+                } else if (checkpointType === 'coaching') {
+                    showChoicePoint();
+                } else if (checkpointType === 'ocean') {
+                    showOceanCheckpoint();
+                } else {
+                    showQuestion();
+                }
+            }, 500);
+        }
+
+        // Global state for choice handling
+        let shouldContinueMapping = true;
+        let choicePointShown = false;
+
+        // Check if we should show any checkpoint
+        function checkForChoicePoint() {
+            // Skip the 5 question checkpoint - go straight to 10
+            // if (responses.length === 5 && !window.checkpoint5Shown) {
+            //     window.checkpoint5Shown = true;
+            //     return 'glimpse';
+            // }
+            
+            // 10 question checkpoint - offer AI analysis or continue
+            if (responses.length === 10 && !window.checkpoint10Shown) {
+                window.checkpoint10Shown = true;
+                return 'preliminary';
+            }
+            
+            // 30 question checkpoint - coaching choice
+            if (responses.length === 30 && !window.checkpoint30Shown) {
+                window.checkpoint30Shown = true;
+                return 'coaching';
+            }
+            
+            // 50 question checkpoint - OCEAN analysis available
+            if (responses.length === 50 && !window.checkpoint50Shown) {
+                window.checkpoint50Shown = true;
+                return 'ocean';
+            }
+            
+            // Continue mapping if they chose to or haven't hit major choice point
+            if (responses.length < 30 || shouldContinueMapping) {
+                // Get more questions from the adaptive engine
+                if (selectedQuestions.length <= currentQuestion) {
+                    const moreQuestions = getNextQuestionSet();
+                    selectedQuestions.push(...moreQuestions);
+                }
+            }
+            
+            return false; // Continue with questions
+        }
+
+        // Get next set of questions from the full question bank
+        function getNextQuestionSet() {
+            // After initial 10 universal questions, use the full question bank
+            const availableQuestions = fullQuestionBank.filter(q => 
+                !responses.some(r => r.questionId === q.id)
+            );
+            
+            // Select 20 random questions
+            const shuffled = availableQuestions.sort(() => Math.random() - 0.5);
+            return shuffled.slice(0, Math.min(20, shuffled.length));
+        }
+
+        // Show reflection screen
+        function showReflection() {
+            isReflecting = true;
+            document.getElementById('question-screen').style.display = 'none';
+            document.getElementById('reflection-screen').style.display = 'block';
+        }
+
+        // Handle reflection choice
+        function changeAnswer() {
+            console.log('User wants to change answer');
+            isReflecting = false;
+            document.getElementById('reflection-screen').style.display = 'none';
+            document.getElementById('question-screen').style.display = 'block';
+            // Don't advance question, let them choose again
+        }
+
+        function continueGame() {
+            console.log('User confirmed answer, continuing');
+            lastResponse.wasReflected = true;
+            responses.push(lastResponse);
+            currentQuestion++;
+            isReflecting = false;
+            
+            document.getElementById('reflection-screen').style.display = 'none';
+            document.getElementById('question-screen').style.display = 'block';
+            
+            setTimeout(() => showQuestion(), 300); // Small delay for smooth transition
+        }
+
+        // Analyze responses and show results
+        function showResults() {
+            console.log('Showing results for', responses.length, 'responses');
+            
+            document.getElementById('question-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'block';
+            
+            const analysis = analyzeResponses();
+            displayResults(analysis);
+        }
+
+        // Analyze response patterns
+        function analyzeResponses() {
+            const automaticCount = responses.filter(r => r.option.pattern === 'automatic').length;
+            const consciousCount = responses.filter(r => r.option.pattern === 'conscious').length;
+            const automaticPercentage = (automaticCount / responses.length) * 100;
+            const reflectionCount = responses.filter(r => r.wasReflected).length;
+            
+            console.log('Analysis:', {
+                automatic: automaticCount,
+                conscious: consciousCount,
+                automaticPercentage: automaticPercentage,
+                reflections: reflectionCount
+            });
+            
+            // Count responses by domain
+            const domainCounts = {};
+            responses.forEach(response => {
+                const domain = response.option.domain;
+                if (!domainCounts[domain]) domainCounts[domain] = { automatic: 0, conscious: 0, total: 0 };
+                domainCounts[domain][response.option.pattern]++;
+                domainCounts[domain].total++;
+            });
+            
+            // Determine pattern type
+            let patternType, patternTitle, patternDescription;
+            
+            if (automaticPercentage >= 70) {
+                patternType = 'significant_automatic';
+                patternTitle = '🎯 Significant Automatic Pattern Detected';
+                patternDescription = `Your responses reveal a strong tendency toward automatic, script-driven choices. This is incredibly common and represents your greatest opportunity for transformation. When you begin making more conscious choices aligned with your authentic desires, you'll unlock unprecedented levels of fulfillment and success.${reflectionCount > 0 ? ` Notably, you took time to reflect on ${reflectionCount} of your answers, which shows developing self-awareness - a key indicator of growth potential.` : ''}`;
+            } else if (automaticPercentage >= 40) {
+                patternType = 'mixed_pattern';
+                patternTitle = '⚖️ Mixed Pattern Recognition';
+                patternDescription = `You show a blend of automatic and conscious responses, indicating you're in a transition phase of developing greater self-awareness. You're conscious in some areas while still operating from scripts in others.${reflectionCount > 0 ? ` Your willingness to reflect on ${reflectionCount} answers shows you're actively developing the skill of conscious choice-making.` : ''}`;
+            } else {
+                patternType = 'conscious_orientation';
+                patternTitle = '🌟 Conscious Choice Orientation';
+                patternDescription = `You demonstrate a strong tendency toward conscious, intentional decision-making. This is relatively rare and indicates well-developed self-awareness.${reflectionCount > 0 ? ` Your reflection on ${reflectionCount} answers shows sophisticated self-monitoring skills.` : ''} Your growth opportunity lies in deepening this consciousness and helping others develop similar awareness.`;
+            }
+            
+            // Identify top 3 areas for Script Framework recommendations
+            const domainScores = Object.entries(domainCounts).map(([domain, counts]) => ({
+                domain,
+                automaticPercentage: (counts.automatic / counts.total) * 100,
+                total: counts.total
+            })).sort((a, b) => b.automaticPercentage - a.automaticPercentage);
+            
+            const topDomains = domainScores.slice(0, 3).map(d => d.domain);
+            
+            return {
+                patternType,
+                patternTitle,
+                patternDescription,
+                automaticPercentage,
+                consciousPercentage: 100 - automaticPercentage,
+                reflectionCount,
+                domainCounts,
+                topDomains
+            };
+        }
+
+        // Display results
+        function displayResults(analysis, isPreliminary = false) {
+            // Show pattern analysis
+            let patternDescription = analysis.patternDescription;
+            if (isPreliminary) {
+                patternDescription = `<div style="background: rgba(255, 255, 0, 0.1); border: 1px solid rgba(255, 255, 0, 0.3); border-radius: 10px; padding: 1rem; margin-bottom: 1rem;"><strong>📊 Preliminary Report</strong> - Based on your first ${responses.length} responses. Confidence will increase significantly with more questions!</div>` + patternDescription;
+            }
+            
+            document.getElementById('pattern-result').innerHTML = `
+                <div class="pattern-title">${analysis.patternTitle}</div>
+                <div class="pattern-description">${patternDescription}</div>
+            `;
+            
+            // Show Script Framework transformation areas
+            const scriptAreas = {
+                thoughts: { icon: '🧠', title: 'THOUGHT PATTERNS', description: 'Your core transformation area. Explore how your thinking patterns shape your reality and discover the scripts running in the background of your mind.' },
+                health: { icon: '💪', title: 'BODY WISDOM', description: 'How your thoughts affect your physical experience. Build conscious awareness of the mind-body connection in your Script Framework.' },
+                relationships: { icon: '❤️', title: 'CONNECTION SCRIPTS', description: 'Mental patterns in relationships. Transform how your thought scripts affect your connections and communication with others.' },
+                income: { icon: '💰', title: 'ABUNDANCE THINKING', description: 'Mental patterns around money and value. Transform your unconscious thought scripts about worth, abundance, and financial success.' },
+                vision: { icon: '🌟', title: 'CLARITY THINKING', description: 'Thought patterns about your future. Distinguish authentic vision thinking from inherited mental scripts and expectations.' },
+                energy: { icon: '⚡', title: 'MENTAL ENERGY', description: 'How your thoughts drain or energize you. Learn to protect your mental space and invest your thinking power consciously.' }
+            };
+            
+            const domainsGrid = document.getElementById('domains-grid');
+            domainsGrid.innerHTML = '';
+            
+            Object.entries(scriptAreas).forEach(([areaKey, area]) => {
+                const isRecommended = analysis.topDomains.includes(areaKey);
+                const card = document.createElement('div');
+                card.className = `domain-card ${isRecommended ? 'recommended' : ''}`;
+                card.innerHTML = `
+                    <div class="domain-icon">${area.icon}</div>
+                    <div class="domain-title">${area.title}</div>
+                    <div class="domain-description">${area.description}</div>
+                    ${isRecommended ? '<div class="recommended-badge">⭐ Focus area for your Script Framework transformation</div>' : ''}
+                `;
+                card.onclick = () => {
+                    window.location.href = '../partners/';
+                };
+                domainsGrid.appendChild(card);
+            });
+        }
+
+        // Start coaching from results screen
+        function startCoachingFromResults() {
+            console.log('User chose to start coaching from results');
+            
+            // Prepare coaching handoff with full assessment data
+            const coachingData = prepareCoachingHandoff();
+            
+            // Store assessment data in multiple places for safety
+            const assessmentData = {
+                responses: responses,
+                coachingData: coachingData,
+                questionCount: responses.length,
+                timestamp: Date.now(),
+                fromResults: true,
+                version: '1.0'
+            };
+            
+            // Primary storage
+            localStorage.setItem('thriveAssessmentContext', JSON.stringify(coachingData));
+            
+            // Backup storage
+            localStorage.setItem('thriveAssessmentBackup', JSON.stringify(assessmentData));
+            
+            // Session storage as additional backup
+            sessionStorage.setItem('thriveAssessmentContext', JSON.stringify(coachingData));
+            
+            // Also keep raw responses
+            localStorage.setItem('thriveGameResponses', JSON.stringify(responses));
+            
+            console.log('💾 Assessment data saved in multiple locations for safety');
+            console.log('🎯 Responses:', responses.length, 'questions');
+            
+            // Redirect to coaching with results context flag
+            window.location.href = '../chat/?fromAssessment=true&fromResults=true&questionCount=' + responses.length;
+        }
+
+        // Restart the game
+        function restartGame() {
+            // Clear all game data and start fresh
+            currentQuestion = 0;
+            responses = [];
+            selectedQuestions = [];
+            isReflecting = false;
+            lastResponse = null;
+            
+            // Clear checkpoint flags
+            window.checkpoint5Shown = false;
+            window.checkpoint10Shown = false;
+            window.checkpoint30Shown = false;
+            window.checkpoint50Shown = false;
+            
+            // Clear stored assessment data
+            localStorage.removeItem('thriveAssessmentContext');
+            localStorage.removeItem('thriveGameResponses');
+            
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('welcome-screen').style.display = 'block';
+        }
+
+        // Checkpoint functions
+        function showGlimpseCheckpoint() {
+            console.log('Showing glimpse checkpoint at 5 questions');
+            
+            const glimpseAnalysis = analyzeCurrentPatterns();
+            
+            document.getElementById('question-screen').style.display = 'none';
+            document.getElementById('glimpse-screen').style.display = 'block';
+            
+            const glimpseContent = `
+                <div style="text-align: left; margin-bottom: 2rem;">
+                    <p style="font-size: 1.1rem; line-height: 1.6; color: #e0e0e0; margin-bottom: 1.5rem;">
+                        Just 5 questions in and we're already seeing hints of something interesting! 
+                        ${glimpseAnalysis.previewInsight || 'Your responses suggest some unique behavioral tendencies that would be fascinating to explore further.'}
+                    </p>
+                    
+                    <div style="background: rgba(255, 255, 0, 0.1); border: 1px solid rgba(255, 255, 0, 0.3); border-radius: 10px; padding: 1.5rem;">
+                        <p style="color: #c0c0c0; line-height: 1.5; text-align: center;">
+                            <strong>Early glimpses suggest:</strong> You have a distinctive approach to social situations and decision-making. 
+                            The more questions you answer, the clearer and more precise the picture becomes!
+                        </p>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('glimpse-content').innerHTML = glimpseContent;
+        }
+        
+        function showPreliminaryResults() {
+            console.log('Showing preliminary results at 10 questions');
+            
+            const prelimAnalysis = analyzeCurrentPatterns();
+            const confidence = Math.min((responses.length / 30) * 0.6, 0.6); // Max 60% confidence at 10 questions
+            
+            document.getElementById('question-screen').style.display = 'none';
+            document.getElementById('preliminary-screen').style.display = 'block';
+            
+            const prelimContent = `
+                <div style="text-align: left; margin-bottom: 2rem;">
+                    <p style="font-size: 1.1rem; line-height: 1.6; color: #e0e0e0; margin-bottom: 1.5rem;">
+                        With 10 responses, we're starting to see emerging patterns in your current behavior! 
+                        <strong>Remember: You are a verb, not a noun.</strong> These are tendencies you can always choose to change.
+                        ${prelimAnalysis.previewInsight || ''}
+                    </p>
+                    
+                    <div style="background: rgba(255, 255, 0, 0.1); border: 1px solid rgba(255, 255, 0, 0.3); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">🌱 Pattern Emergence: Early Stage</h3>
+                        <p style="color: #c0c0c0; line-height: 1.5; margin-bottom: 1rem;">
+                            We're noticing tendencies in how you currently handle <strong>${prelimAnalysis.dominantPattern?.replace(/_/g, ' ') || 'various situations'}</strong>.
+                        </p>
+                        <p style="color: #a0a0a0; font-size: 0.9rem; font-style: italic;">
+                            💡 <strong>Note:</strong> For deeper personality insights (like OCEAN analysis), we need 50+ questions.
+                            But even now, we can explore what your patterns mean and how you might choose differently!
+                        </p>
+                    </div>
+                    
+                    <p style="font-size: 1rem; color: #c0c0c0; line-height: 1.5;">
+                        <strong>You can:</strong> Continue mapping for much higher precision, or see what we've learned so far in a preliminary report.
+                    </p>
+                </div>
+            `;
+            
+            document.getElementById('preliminary-content').innerHTML = prelimContent;
+        }
+
+        function showOceanCheckpoint() {
+            console.log('Showing OCEAN checkpoint at 50 questions');
+            
+            const analysis = analyzeResponses();
+            
+            document.getElementById('question-screen').style.display = 'none';
+            document.getElementById('preliminary-screen').style.display = 'block';
+            
+            const oceanContent = `
+                <div style="text-align: left; margin-bottom: 2rem;">
+                    <h2 style="color: var(--primary-yellow); margin-bottom: 1rem;">🌊 Deep Pattern Analysis Available!</h2>
+                    <p style="font-size: 1.1rem; line-height: 1.6; color: #e0e0e0; margin-bottom: 1.5rem;">
+                        With 50 responses, we now have enough data for a comprehensive behavioral analysis!
+                    </p>
+                    
+                    <div style="background: rgba(255, 255, 0, 0.1); border: 1px solid rgba(255, 255, 0, 0.3); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">🎯 Remember: You Are a Verb, Not a Noun</h3>
+                        <p style="color: #c0c0c0; line-height: 1.5; margin-bottom: 1rem;">
+                            These patterns show how you're <strong>currently choosing</strong> to respond, not who you fundamentally are.
+                            Every pattern we identify is something you can consciously change at any moment.
+                        </p>
+                        <p style="color: #a0a0a0; font-size: 0.95rem;">
+                            Your behavioral tendencies are like habits - they feel automatic but aren't fixed.
+                            Understanding them gives you the power to choose differently.
+                        </p>
+                    </div>
+                    
+                    <p style="font-size: 1rem; color: #c0c0c0; line-height: 1.5;">
+                        <strong>Ready to explore your patterns?</strong> Our AI coaches can help you understand what these tendencies mean
+                        and how to consciously shape them going forward.
+                    </p>
+                </div>
+            `;
+            
+            document.getElementById('preliminary-content').innerHTML = oceanContent;
+            
+            // Update button text for OCEAN checkpoint
+            document.querySelector('#preliminary-screen .cta-button.primary').innerHTML = `
+                🔍 Continue Mapping
+                <br><small>Even deeper insights</small>
+            `;
+            
+            document.querySelector('#preliminary-screen .cta-button.secondary').innerHTML = `
+                🧠 Full AI Analysis
+                <br><small>Explore your patterns</small>
+            `;
+        }
+        
+        function showChoicePoint() {
+            console.log('Showing choice point at 30 questions');
+            
+            // Analyze current patterns for preview
+            const previewAnalysis = analyzeCurrentPatterns();
+            
+            document.getElementById('question-screen').style.display = 'none';
+            document.getElementById('choice-screen').style.display = 'block';
+            
+            // Generate choice point content
+            const choiceContent = generateChoicePointContent(previewAnalysis);
+            document.getElementById('choice-content').innerHTML = choiceContent;
+        }
+        
+        function generateChoicePointContent(analysis) {
+            return `
+                <div style="text-align: left; margin-bottom: 2rem;">
+                    <p style="font-size: 1.1rem; line-height: 1.6; color: #e0e0e0; margin-bottom: 1.5rem;">
+                        After 30 questions, we're starting to see some fascinating patterns in how you navigate different situations. 
+                        Your responses suggest interesting behavioral tendencies around group dynamics, authority relationships, and conflict handling.
+                    </p>
+                    
+                    <div style="background: rgba(255, 255, 0, 0.1); border: 1px solid rgba(255, 255, 0, 0.3); border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem;">
+                        <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">🎯 What We're Seeing So Far</h3>
+                        <p style="color: #c0c0c0; line-height: 1.5;">
+                            ${analysis.previewInsight || 'You have a unique combination of behavioral patterns that would be interesting to explore further. Some clear tendencies are emerging around how you handle social situations, make decisions under pressure, and navigate relationships.'}
+                        </p>
+                    </div>
+                    
+                    <p style="font-size: 1rem; color: #c0c0c0; line-height: 1.5;">
+                        <strong>You have two excellent options:</strong> Continue mapping for even more precision, or start exploring what we've discovered with an AI coach who can help you understand how these patterns play out in your life.
+                    </p>
+                </div>
+            `;
+        }
+        
+        function chooseContinueMapping() {
+            console.log('User chose to continue mapping');
+            shouldContinueMapping = true;
+            
+            document.getElementById('choice-screen').style.display = 'none';
+            document.getElementById('question-screen').style.display = 'block';
+            
+            // Continue with more questions
+            showQuestion();
+        }
+        
+        function chooseStartCoaching() {
+            console.log('User chose to start coaching');
+            
+            // Prepare coaching handoff
+            const coachingData = prepareCoachingHandoff();
+            
+            // Store assessment data in localStorage for handoff
+            localStorage.setItem('thriveAssessmentContext', JSON.stringify(coachingData));
+            
+            // Redirect to coaching with a simple flag
+            window.location.href = '../chat/?fromAssessment=true';
+        }
+        
+        function analyzeCurrentPatterns() {
+            // Quick analysis of current response patterns
+            const patternCounts = {};
+            
+            responses.forEach(response => {
+                const patternType = response.selectedOption.pattern_type;
+                if (patternType) {
+                    patternCounts[patternType] = (patternCounts[patternType] || 0) + 1;
+                }
+            });
+            
+            // Find most common pattern for preview
+            const dominantPattern = Object.keys(patternCounts).reduce((a, b) => 
+                patternCounts[a] > patternCounts[b] ? a : b, Object.keys(patternCounts)[0]
+            );
+            
+            const previewInsights = {
+                'harmony_keeper': 'You often prioritize group harmony and relationships, which suggests a thoughtful, collaborative approach to social situations.',
+                'natural_leader': 'You tend to step up when groups need direction, indicating natural leadership instincts and comfort with responsibility.',
+                'conflict_avoider': 'You prefer to keep things peaceful rather than rock the boat, showing consideration for others\' comfort and relationship preservation.',
+                'authority_deferrer': 'You naturally respect authority figures and work well within established structures, demonstrating respect for expertise and order.',
+                'immediate_confronter': 'You address issues directly when you notice them, showing courage and commitment to resolution.',
+                'private_addresser': 'You prefer handling conflicts one-on-one rather than in groups, demonstrating thoughtfulness about others\' dignity.'
+            };
+            
+            return {
+                dominantPattern,
+                frequency: patternCounts[dominantPattern] || 0,
+                previewInsight: previewInsights[dominantPattern] || 'You have a unique behavioral signature that combines multiple interesting patterns.'
+            };
+        }
+        
+        function prepareCoachingHandoff() {
+            const behavioralSignature = buildBehavioralSignature();
+            
+            // Generate OCEAN analysis
+            const oceanEngine = new DynamicOceanAnalysis();
+            const oceanAnalysis = oceanEngine.analyzeBehavioralTendencies(responses);
+            
+            return {
+                responses: responses,
+                behavioralSignature: behavioralSignature,
+                oceanAnalysis: oceanAnalysis,
+                questionCount: responses.length,
+                timestamp: Date.now(),
+                source: 'behavioral_assessment',
+                readyForCoaching: true
+            };
+        }
+        
+        function buildBehavioralSignature() {
+            const signature = {};
+            
+            responses.forEach(response => {
+                const domain = response.questionData.domain || 'general';
+                const patternType = response.selectedOption.pattern_type;
+                
+                if (!signature[domain]) {
+                    signature[domain] = {};
+                }
+                
+                if (patternType) {
+                    signature[domain][patternType] = (signature[domain][patternType] || 0) + 1;
+                }
+            });
+            
+            return signature;
+        }
+        
+        // Checkpoint navigation functions
+        function continueFromGlimpse() {
+            console.log('User chose to continue from glimpse checkpoint');
+            document.getElementById('glimpse-screen').style.display = 'none';
+            document.getElementById('question-screen').style.display = 'block';
+            showQuestion();
+        }
+        
+        function continueFromPreliminary() {
+            console.log('User chose to continue from checkpoint at', responses.length, 'questions');
+            
+            // If we've exhausted the initial questions, add more from the full bank
+            if (currentQuestion >= selectedQuestions.length) {
+                console.log('Adding more questions from expanded bank...');
+                
+                // Get questions we haven't asked yet
+                const askedIds = new Set(selectedQuestions.map(q => q.id));
+                const availableQuestions = fullQuestionBank.filter(q => !askedIds.has(q.id));
+                
+                // Shuffle and add 20 more questions
+                const shuffled = [...availableQuestions].sort(() => Math.random() - 0.5);
+                const additionalQuestions = shuffled.slice(0, 20);
+                
+                selectedQuestions.push(...additionalQuestions);
+                console.log('Added', additionalQuestions.length, 'new questions. Total:', selectedQuestions.length);
+            }
+            
+            document.getElementById('preliminary-screen').style.display = 'none';
+            document.getElementById('question-screen').style.display = 'block';
+            showQuestion();
+        }
+        
+        function goToAICoaching() {
+            console.log('User chose AI coaching analysis at', responses.length, 'questions');
+            
+            // Prepare coaching context with current responses
+            const analysis = analyzeResponses();
+            const coachingData = gameSystem.prepareCoachingContext(responses, analysis);
+            
+            // Store assessment data in multiple places for safety
+            const assessmentData = {
+                responses: responses,
+                analysis: analysis,
+                coachingData: coachingData,
+                questionCount: responses.length,
+                timestamp: Date.now(),
+                version: '1.0'
+            };
+            
+            // Primary storage
+            localStorage.setItem('thriveAssessmentContext', JSON.stringify(coachingData));
+            
+            // Backup storage
+            localStorage.setItem('thriveAssessmentBackup', JSON.stringify(assessmentData));
+            
+            // Session storage as additional backup
+            sessionStorage.setItem('thriveAssessmentContext', JSON.stringify(coachingData));
+            
+            console.log('💾 Assessment data saved in 3 locations for safety');
+            
+            // Store current game responses for continuation
+            localStorage.setItem('thriveGameResponses', JSON.stringify(responses));
+            
+            // Redirect to AI chat for deeper analysis
+            window.location.href = '../chat/?fromAssessment=true&questionCount=' + responses.length;
+        }
+
+        // Make functions global for button onclick handlers
+        window.startGame = startGame;
+        window.continueFromGlimpse = continueFromGlimpse;
+        window.continueFromPreliminary = continueFromPreliminary;
+        window.goToAICoaching = goToAICoaching;
+        window.showOceanCheckpoint = showOceanCheckpoint;
+        window.chooseContinueMapping = chooseContinueMapping;
+        window.chooseStartCoaching = chooseStartCoaching;
+        window.changeAnswer = changeAnswer;
+        window.continueGame = continueGame;
+        window.startCoachingFromResults = startCoachingFromResults;
+        window.restartGame = restartGame;
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Page loaded, creating particles');
+            createParticles();
+        });
+    </script>
+
+    <!-- PWA Bottom Navigation -->
+    <nav class="pwa-bottom-nav">
+        <div class="pwa-bottom-nav-inner">
+            <a href="../" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+                <span class="pwa-nav-label">Home</span>
+            </a>
+            <a href="./" class="pwa-nav-item active" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                </svg>
+                <span class="pwa-nav-label">Game</span>
+            </a>
+            <a href="../chat/" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+                </svg>
+                <span class="pwa-nav-label">Chat</span>
+            </a>
+            <a href="../coaching/" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <span class="pwa-nav-label">Coach</span>
+            </a>
+            <a href="../partners/" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+                <span class="pwa-nav-label">More</span>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

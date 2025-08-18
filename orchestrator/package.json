@@ -1,0 +1,36 @@
+{
+  "name": "thrive-web-orchestrator",
+  "version": "1.0.0",
+  "description": "THRIVE Web Orchestrator - HTTP server for coaching requests",
+  "type": "module",
+  "main": "thrive-local-orchestrator.js",
+  "scripts": {
+    "start": "node thrive-local-orchestrator.js",
+    "dev": "node thrive-local-orchestrator.js",
+    "pm2:start": "pm2 start ecosystem.config.js",
+    "pm2:stop": "pm2 stop ecosystem.config.js",
+    "pm2:restart": "pm2 restart ecosystem.config.js",
+    "pm2:logs": "pm2 logs",
+    "pm2:status": "pm2 status",
+    "tunnel:test": "npx cloudflared tunnel --url http://localhost:4568"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "cors": "^2.8.5",
+    "socket.io": "^4.5.0",
+    "dotenv": "^16.0.0",
+    "chokidar": "^3.5.3"
+  },
+  "devDependencies": {
+    "pm2": "^5.3.0",
+    "cloudflared": "^0.5.1"
+  },
+  "keywords": [
+    "thrive",
+    "coaching",
+    "orchestrator",
+    "api"
+  ],
+  "author": "THRIVE Team",
+  "license": "MIT"
+}

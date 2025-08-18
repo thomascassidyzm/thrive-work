@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THRIVE Icon Generator</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .icon-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+        
+        .icon-preview {
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Base icon styles */
+        .th-icon {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: #1a1a1a;
+            position: relative;
+        }
+        
+        /* Favicon - 16x16 */
+        .icon-favicon-16 {
+            width: 16px;
+            height: 16px;
+            border-radius: 2px;
+            font-size: 9px;
+        }
+        
+        /* Favicon - 32x32 */
+        .icon-favicon-32 {
+            width: 32px;
+            height: 32px;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+        
+        /* PWA Icons */
+        .icon-72 {
+            width: 72px;
+            height: 72px;
+            border-radius: 10px;
+            font-size: 32px;
+            box-shadow: 0 4px 16px rgba(255, 215, 0, 0.3);
+        }
+        
+        .icon-96 {
+            width: 96px;
+            height: 96px;
+            border-radius: 12px;
+            font-size: 42px;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .icon-120 {
+            width: 120px;
+            height: 120px;
+            border-radius: 16px;
+            font-size: 52px;
+            box-shadow: 0 8px 24px rgba(255, 215, 0, 0.3);
+        }
+        
+        .icon-128 {
+            width: 128px;
+            height: 128px;
+            border-radius: 16px;
+            font-size: 56px;
+            box-shadow: 0 8px 28px rgba(255, 215, 0, 0.3);
+        }
+        
+        .icon-144 {
+            width: 144px;
+            height: 144px;
+            border-radius: 18px;
+            font-size: 62px;
+            box-shadow: 0 10px 32px rgba(255, 215, 0, 0.3);
+        }
+        
+        .icon-152 {
+            width: 152px;
+            height: 152px;
+            border-radius: 20px;
+            font-size: 66px;
+            box-shadow: 0 10px 36px rgba(255, 215, 0, 0.3);
+        }
+        
+        .icon-167 {
+            width: 167px;
+            height: 167px;
+            border-radius: 22px;
+            font-size: 72px;
+            box-shadow: 0 12px 40px rgba(255, 215, 0, 0.3);
+        }
+        
+        .icon-180 {
+            width: 180px;
+            height: 180px;
+            border-radius: 24px;
+            font-size: 78px;
+            box-shadow: 0 12px 44px rgba(255, 215, 0, 0.3);
+        }
+        
+        .icon-192 {
+            width: 192px;
+            height: 192px;
+            border-radius: 26px;
+            font-size: 84px;
+            box-shadow: 0 14px 48px rgba(255, 215, 0, 0.3);
+        }
+        
+        .icon-384 {
+            width: 384px;
+            height: 384px;
+            border-radius: 48px;
+            font-size: 168px;
+            box-shadow: 0 20px 64px rgba(255, 215, 0, 0.3);
+        }
+        
+        .icon-512 {
+            width: 512px;
+            height: 512px;
+            border-radius: 64px;
+            font-size: 224px;
+            box-shadow: 0 24px 80px rgba(255, 215, 0, 0.3);
+        }
+        
+        /* Special iOS rounded corners */
+        .ios-rounded {
+            border-radius: 22.37%;
+        }
+        
+        .instructions {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .instructions h2 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+        
+        .instructions ol {
+            line-height: 1.8;
+        }
+        
+        .instructions code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            color: #ffed4e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>THRIVE Icon Generator</h1>
+        <p>All icon sizes for favicon, PWA, and app icons using the Thorium (Th) design</p>
+        
+        <div class="instructions">
+            <h2>📸 How to Export These Icons</h2>
+            <ol>
+                <li>Take screenshots of each icon below</li>
+                <li>Use an image editor or online tool to save them as PNG files</li>
+                <li>Name them according to their size (e.g., <code>icon-192.png</code>)</li>
+                <li>For favicons, also create <code>favicon.ico</code> with 16x16 and 32x32 sizes</li>
+                <li>Place them in <code>/assets/images/</code> directory</li>
+            </ol>
+        </div>
+        
+        <div class="icon-grid">
+            <!-- Favicons -->
+            <div class="icon-item">
+                <div class="icon-preview">
+                    <div class="th-icon icon-favicon-16">T</div>
+                </div>
+                <h3>Favicon 16x16</h3>
+                <code>favicon-16.png</code>
+            </div>
+            
+            <div class="icon-item">
+                <div class="icon-preview">
+                    <div class="th-icon icon-favicon-32">Th</div>
+                </div>
+                <h3>Favicon 32x32</h3>
+                <code>favicon-32.png</code>
+            </div>
+            
+            <!-- PWA/App Icons -->
+            <div class="icon-item">
+                <div class="icon-preview">
+                    <div class="th-icon icon-72">Th</div>
+                </div>
+                <h3>Android 72x72</h3>
+                <code>icon-72.png</code>
+            </div>
+            
+            <div class="icon-item">
+                <div class="icon-preview">
+                    <div class="th-icon icon-96">Th</div>
+                </div>
+                <h3>Android 96x96</h3>
+                <code>icon-96.png</code>
+            </div>
+            
+            <div class="icon-item">
+                <div class="icon-preview">
+                    <div class="th-icon icon-120 ios-rounded">Th</div>
+                </div>
+                <h3>iPhone Retina 120x120</h3>
+                <code>icon-120.png</code>
+            </div>
+            
+            <div class="icon-item">
+                <div class="icon-preview">
+                    <div class="th-icon icon-128">Th</div>
+                </div>
+                <h3>Android 128x128</h3>
+                <code>icon-128.png</code>
+            </div>
+            
+            <div class="icon-item">
+                <div class="icon-preview">
+                    <div class="th-icon icon-144">Th</div>
+                </div>
+                <h3>Android 144x144</h3>
+                <code>icon-144.png</code>
+            </div>
+            
+            <div class="icon-item">
+                <div class="icon-preview">
+                    <div class="th-icon icon-152 ios-rounded">Th</div>
+                </div>
+                <h3>iPad 152x152</h3>
+                <code>icon-152.png</code>
+            </div>
+            
+            <div class="icon-item">
+                <div class="icon-preview">
+                    <div class="th-icon icon-167 ios-rounded">Th</div>
+                </div>
+                <h3>iPad Pro 167x167</h3>
+                <code>icon-167.png</code>
+            </div>
+            
+            <div class="icon-item">
+                <div class="icon-preview">
+                    <div class="th-icon icon-180 ios-rounded">Th</div>
+                </div>
+                <h3>iPhone 180x180</h3>
+                <code>icon-180.png</code>
+            </div>
+            
+            <div class="icon-item">
+                <div class="icon-preview">
+                    <div class="th-icon icon-192">Th</div>
+                </div>
+                <h3>Android/PWA 192x192</h3>
+                <code>icon-192.png</code>
+            </div>
+            
+            <div class="icon-item">
+                <div class="icon-preview">
+                    <div class="th-icon icon-384">Th</div>
+                </div>
+                <h3>Android HD 384x384</h3>
+                <code>icon-384.png</code>
+            </div>
+        </div>
+        
+        <div style="margin: 3rem 0;">
+            <h2>Large Icon (512x512)</h2>
+            <div style="display: flex; justify-content: center; margin: 2rem 0;">
+                <div class="th-icon icon-512">Th</div>
+            </div>
+            <p style="text-align: center;"><code>icon-512.png</code> - PWA/Play Store</p>
+        </div>
+        
+        <div class="instructions">
+            <h2>🎨 Apple Touch Icon</h2>
+            <p>For <code>apple-touch-icon.png</code>, use the 180x180 size with iOS rounded corners.</p>
+            
+            <h2>📱 Update References</h2>
+            <p>After generating icons, update these files:</p>
+            <ul>
+                <li><code>index.html</code> - favicon and apple-touch-icon links</li>
+                <li><code>manifest.json</code> - PWA icon references</li>
+                <li>All other HTML pages - favicon links</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

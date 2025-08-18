@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THRIVE Work - Workplace Wellbeing Assessment</title>
-    <meta name="description" content="Discover how your people are really doing across six dimensions of workplace wellbeing. Pattern-based insights, not diagnoses.">
+    <title>THRIVE Work - Workplace Wellbeing Assessment | Transform Your Organization</title>
+    <meta name="description" content="Comprehensive workplace wellbeing assessment platform. Identify risks before they become expensive claims. 60% reduction in mental health costs.">
     
-    <!-- THRIVE Branding -->
+    <!-- Favicon and App Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#FFD700">
-    
-    <!-- THRIVE CSS -->
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/assets/css/orbital-logo.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/chat-mobile.css">
+    <link rel="stylesheet" href="assets/css/orbital-logo.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -25,163 +27,301 @@
                 <span class="logo-subtitle">WORK</span>
             </div>
             <div class="nav-menu">
-                <a href="/assessment/" class="nav-link">Assessment</a>
-                <a href="/dashboard/" class="nav-link">For Companies</a>
-                <a href="/about/" class="nav-link">How It Works</a>
-                <a href="/contact/" class="nav-link">Contact</a>
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#assessment" class="nav-link">Assessment</a>
+                <a href="partners/" class="nav-link">Partners</a>
+                <a href="medical-legitimacy/" class="nav-link">Medical Legitimacy</a>
+                <a href="auth/" class="nav-link">Sign In</a>
+            </div>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Discover How Your People Are <span class="highlight">Really</span> Doing</h1>
-            <p class="subtitle">Six dimensions of wellbeing. Complete pattern recognition. Real insights.</p>
-        </div>
-    </header>
-
-    <section class="thrive-dimensions" style="padding: 4rem 0;">
-        <div class="container">
-            <h2 class="section-title">The <span class="highlight">THRIVE</span> Assessment</h2>
-            <p class="section-intro" style="color: var(--text-light); margin-bottom: 3rem;">Start anywhere. Each dimension reveals patterns across your whole life.<br>
-            Complete all six for comprehensive insights.</p>
-            
-            <div class="dimensions-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                <div class="glass-card" style="padding: 2rem; text-align: center;" data-dimension="time">
-                    <div class="dimension-letter" style="font-size: 3rem; color: var(--primary-yellow); font-weight: bold; margin-bottom: 1rem;">T</div>
-                    <h3 style="color: var(--text-white); margin-bottom: 1rem;">TIME</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">Rhythm, balance, and boundaries. How you structure your days.</p>
-                    <button class="cta-button primary" style="width: 100%;" onclick="startAssessment('time')">Start Here</button>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="particles" id="particles"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Employee <span class="highlight">Wellbeing Assessment</span><br>Tool
+                </h1>
+                <p class="hero-subtitle">
+                    Comprehensive questionnaires • Individual insights • Actionable recommendations
+                </p>
+                <div class="hero-description">
+                    <p>THRIVE helps employees understand their wellbeing across 6 key dimensions. Our questionnaires identify stress, physical issues, mental health patterns, and personality characteristics (OCEAN analysis) to provide personalized recommendations.</p>
                 </div>
-
-                <div class="glass-card" style="padding: 2rem; text-align: center;" data-dimension="health">
-                    <div class="dimension-letter" style="font-size: 3rem; color: var(--primary-yellow); font-weight: bold; margin-bottom: 1rem;">H</div>
-                    <h3 style="color: var(--text-white); margin-bottom: 1rem;">HEALTH</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">Energy, sleep, and physical vitality. Your body's patterns.</p>
-                    <button class="cta-button primary" style="width: 100%;" onclick="startAssessment('health')">Start Here</button>
-                </div>
-
-                <div class="glass-card" style="padding: 2rem; text-align: center;" data-dimension="relationships">
-                    <div class="dimension-letter" style="font-size: 3rem; color: var(--primary-yellow); font-weight: bold; margin-bottom: 1rem;">R</div>
-                    <h3 style="color: var(--text-white); margin-bottom: 1rem;">RELATIONSHIPS</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">Connection, support, and belonging. How you relate.</p>
-                    <button class="cta-button primary" style="width: 100%;" onclick="startAssessment('relationships')">Start Here</button>
-                </div>
-
-                <div class="glass-card" style="padding: 2rem; text-align: center;" data-dimension="identity">
-                    <div class="dimension-letter" style="font-size: 3rem; color: var(--primary-yellow); font-weight: bold; margin-bottom: 1rem;">I</div>
-                    <h3 style="color: var(--text-white); margin-bottom: 1rem;">IDENTITY</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">Purpose, values, and authentic self. Who you are.</p>
-                    <button class="cta-button primary" style="width: 100%;" onclick="startAssessment('identity')">Start Here</button>
-                </div>
-
-                <div class="glass-card" style="padding: 2rem; text-align: center;" data-dimension="vitality">
-                    <div class="dimension-letter" style="font-size: 3rem; color: var(--primary-yellow); font-weight: bold; margin-bottom: 1rem;">V</div>
-                    <h3 style="color: var(--text-white); margin-bottom: 1rem;">VITALITY</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">Growth, learning, and what energizes you. How you thrive.</p>
-                    <button class="cta-button primary" style="width: 100%;" onclick="startAssessment('vitality')">Start Here</button>
-                </div>
-
-                <div class="glass-card" style="padding: 2rem; text-align: center;" data-dimension="environment">
-                    <div class="dimension-letter" style="font-size: 3rem; color: var(--primary-yellow); font-weight: bold; margin-bottom: 1rem;">E</div>
-                    <h3 style="color: var(--text-white); margin-bottom: 1rem;">ENVIRONMENT</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">Spaces, culture, and conditions. Where you flourish.</p>
-                    <button class="cta-button primary" style="width: 100%;" onclick="startAssessment('environment')">Start Here</button>
+                <div class="hero-cta">
+                    <a href="assessment/" class="cta-button primary">
+                        START ASSESSMENT
+                        <span class="button-arrow">→</span>
+                    </a>
+                    <p class="cta-subtext">Takes about 10 minutes • Immediate personal report</p>
                 </div>
             </div>
-
-            <div class="progress-tracker">
-                <h3>Your Progress</h3>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 0%"></div>
-                </div>
-                <p class="progress-text">0 of 60 questions completed</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="how-it-works">
-        <div class="container">
-            <h2>Pattern Recognition, Not Diagnosis</h2>
-            <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Behavioral Mirror</h3>
-                    <p>We reflect patterns you might not notice yourself - like how a fish doesn't see water.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🧩</div>
-                    <h3>Holistic Picture</h3>
-                    <p>Everything connects. Sleep affects work affects relationships. We show you how.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">📊</div>
-                    <h3>Statistical Patterns</h3>
-                    <p>Based on research, not opinion. Patterns that correlate with wellbeing outcomes.</p>
+            <div class="hero-visual">
+                <div class="orbital-logo-container">
+                    <div class="th-orbital-container">
+                        <div class="orbital-rings">
+                            <div class="ring"></div>
+                            <div class="ring"></div>
+                            <div class="ring"></div>
+                        </div>
+                        <div class="th-center">
+                            <div class="atomic-number">90</div>
+                            Th
+                        </div>
+                    </div>
+                    <div class="orbital-text-container">
+                        <h2 class="orbital-brand-name">THRIVE</h2>
+                        <p class="orbital-tagline">Elemental Transformation</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="for-companies">
+    <!-- What We Assess Section -->
+    <section class="social-proof">
         <div class="container">
-            <h2>For Forward-Thinking Companies</h2>
-            <p class="section-intro">See how well you're enabling your people to THRIVE</p>
-            
-            <div class="company-benefits">
-                <div class="benefit">
-                    <h3>Real Engagement</h3>
-                    <p>70%+ participation because it's actually interesting, not another survey</p>
+            <h2 style="text-align: center; color: var(--primary-yellow); margin-bottom: 2rem;">What We Assess</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 10px;">
+                    <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">Workplace Stress</h3>
+                    <p style="color: var(--text-light);">Work-life balance, time management, pressure levels, boundary setting</p>
                 </div>
-                <div class="benefit">
-                    <h3>Anonymous Insights</h3>
-                    <p>Aggregate patterns showing where support is needed, privacy protected</p>
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 10px;">
+                    <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">Physical Health</h3>
+                    <p style="color: var(--text-light);">Energy levels, sleep patterns, physical symptoms, health behaviors</p>
                 </div>
-                <div class="benefit">
-                    <h3>Proactive Wellbeing</h3>
-                    <p>Spot patterns before they become problems, reduce sick days and turnover</p>
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 10px;">
+                    <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">Mental Health</h3>
+                    <p style="color: var(--text-light);">Anxiety, depression indicators, emotional regulation, coping mechanisms</p>
                 </div>
-            </div>
-            
-            <div class="cta-section">
-                <a href="/dashboard/demo" class="cta-button">View Sample Dashboard</a>
-                <a href="/contact" class="cta-button secondary">Book Demo</a>
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 10px;">
+                    <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">Personality (OCEAN)</h3>
+                    <p style="color: var(--text-light);">Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism</p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 10px;">
+                    <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">Relationships</h3>
+                    <p style="color: var(--text-light);">Team dynamics, communication patterns, conflict resolution, social support</p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 10px;">
+                    <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">Work Environment</h3>
+                    <p style="color: var(--text-light);">Workspace satisfaction, culture fit, psychological safety, resources</p>
+                </div>
             </div>
         </div>
     </section>
 
+
+    <!-- THRIVE Assessment Framework Section -->
+    <section id="assessment" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">6-Dimension THRIVE Assessment</h2>
+            <p class="section-subtitle">Comprehensive wellbeing framework for workplace mental health</p>
+            
+            <div class="domains-grid" style="margin: 3rem 0;">
+                <div class="domain-card">
+                    <div class="domain-icon" style="background: var(--primary-yellow); color: #000;">T</div>
+                    <h3 class="domain-title">TIME</h3>
+                    <p style="color: var(--text-light); margin: 1rem 0;">Rhythm, balance, and boundaries. How employees manage time pressures and work-life integration.</p>
+                </div>
+                
+                <div class="domain-card">
+                    <div class="domain-icon" style="background: var(--primary-yellow); color: #000;">H</div>
+                    <h3 class="domain-title">HEALTH</h3>
+                    <p style="color: var(--text-light); margin: 1rem 0;">Physical and mental resilience. Energy levels, stress management, and sustainable practices.</p>
+                </div>
+                
+                <div class="domain-card">
+                    <div class="domain-icon" style="background: var(--primary-yellow); color: #000;">R</div>
+                    <h3 class="domain-title">RELATIONSHIPS</h3>
+                    <p style="color: var(--text-light); margin: 1rem 0;">Connection and communication. Team dynamics, conflict resolution, and social support.</p>
+                </div>
+                
+                <div class="domain-card">
+                    <div class="domain-icon" style="background: var(--primary-yellow); color: #000;">I</div>
+                    <h3 class="domain-title">IDENTITY</h3>
+                    <p style="color: var(--text-light); margin: 1rem 0;">Purpose and values alignment. Role clarity, meaning, and authentic expression.</p>
+                </div>
+                
+                <div class="domain-card">
+                    <div class="domain-icon" style="background: var(--primary-yellow); color: #000;">V</div>
+                    <h3 class="domain-title">VITALITY</h3>
+                    <p style="color: var(--text-light); margin: 1rem 0;">Energy and motivation. Engagement levels, burnout risk, and sustainable performance.</p>
+                </div>
+                
+                <div class="domain-card">
+                    <div class="domain-icon" style="background: var(--primary-yellow); color: #000;">E</div>
+                    <h3 class="domain-title">ENVIRONMENT</h3>
+                    <p style="color: var(--text-light); margin: 1rem 0;">Context and culture. Physical workspace, psychological safety, and organizational climate.</p>
+                </div>
+            </div>
+
+            <div class="glass-yellow" style="border-radius: 30px; padding: 3rem; margin-top: 3rem; text-align: center;">
+                <h3 class="text-gradient text-glow" style="margin-bottom: 1.5rem;">How It Works</h3>
+                <p style="color: var(--text-light); margin-bottom: 2rem;">
+                    60 carefully designed questions across the 6 dimensions. Each question serves multiple purposes - assessing wellbeing while building a complete OCEAN personality profile.
+                </p>
+                <a href="assessment/" class="cta-button primary" style="margin-top: 1rem;">
+                    START YOUR ASSESSMENT
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get Section -->
+    <section id="insights" class="domains">
+        <div class="container">
+            <h2 class="section-title">What You Get</h2>
+            <p class="section-subtitle">Comprehensive reports and actionable recommendations</p>
+            
+            <div class="domains-grid">
+                <div class="domain-card">
+                    <div class="domain-icon">📋</div>
+                    <h3 class="domain-title">Personal Report</h3>
+                    <div style="margin: 1rem 0; font-size: 0.9rem; color: var(--text-medium);">
+                        <p><strong>Wellbeing Scores:</strong> Across all 6 dimensions</p>
+                        <p><strong>Personality Profile:</strong> Full OCEAN analysis</p>
+                        <p><strong>Risk Areas:</strong> What to watch for</p>
+                        <p><strong>Recommendations:</strong> Specific actions to take</p>
+                        <p><strong>Resources:</strong> Tools and support options</p>
+                    </div>
+                </div>
+                
+                <div class="domain-card">
+                    <div class="domain-icon">🏢</div>
+                    <h3 class="domain-title">Company Insights</h3>
+                    <div style="margin: 1rem 0; font-size: 0.9rem; color: var(--text-medium);">
+                        <p><strong>Team Trends:</strong> Department-level patterns</p>
+                        <p><strong>Risk Identification:</strong> Who needs support</p>
+                        <p><strong>Culture Assessment:</strong> Environment factors</p>
+                        <p><strong>Intervention Ideas:</strong> What to implement</p>
+                        <p><strong>Progress Tracking:</strong> Measure improvements</p>
+                    </div>
+                </div>
+                
+                <div class="domain-card">
+                    <div class="domain-icon">🛠️</div>
+                    <h3 class="domain-title">Action Options</h3>
+                    <div style="margin: 1rem 0; font-size: 0.9rem; color: var(--text-medium);">
+                        <p><strong>Individual:</strong> Stress management, health changes</p>
+                        <p><strong>Team:</strong> Communication training, workload adjustments</p>
+                        <p><strong>Company:</strong> Policy changes, environment improvements</p>
+                        <p><strong>Professional:</strong> Counseling, coaching, medical referrals</p>
+                        <p><strong>Monitoring:</strong> Regular check-ins and reassessment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start?</h2>
+                <p>Take the assessment to understand your wellbeing across all 6 dimensions and get personalized recommendations.</p>
+                <a href="assessment/" class="cta-button primary large">
+                    START ASSESSMENT
+                    <span class="button-arrow">→</span>
+                </a>
+                <p class="cta-guarantee">Takes about 10 minutes • Complete report immediately</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>THRIVE WORK</h3>
-                    <p>Pattern-based wellbeing insights for modern workplaces</p>
+                <div class="footer-section">
+                    <h3 class="footer-title">THRIVE Work</h3>
+                    <p>Transforming workplace wellbeing through comprehensive assessment and early intervention.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                        <a href="#" class="social-link">Instagram</a>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <h4>Product</h4>
-                    <a href="/assessment/">Take Assessment</a>
-                    <a href="/how-it-works/">How It Works</a>
-                    <a href="/science/">The Science</a>
+                <div class="footer-section">
+                    <h4>Assessment</h4>
+                    <ul>
+                        <li><a href="assessment/">Take Assessment</a></li>
+                        <li><a href="#assessment">6 Dimensions</a></li>
+                        <li><a href="partners/">Network Partners</a></li>
+                        <li><a href="medical-legitimacy/">Medical Legitimacy</a></li>
+                    </ul>
                 </div>
-                <div class="footer-links">
-                    <h4>For Companies</h4>
-                    <a href="/dashboard/demo">View Demo</a>
-                    <a href="/pricing/">Pricing</a>
-                    <a href="/contact/">Contact Sales</a>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="dashboard/">Dashboard</a></li>
+                        <li><a href="auth/">Support</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Documentation</a></li>
+                    </ul>
                 </div>
-                <div class="footer-links">
-                    <h4>Legal</h4>
-                    <a href="/privacy/">Privacy Policy</a>
-                    <a href="/terms/">Terms of Service</a>
-                    <a href="/gdpr/">GDPR Compliance</a>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about/">About</a></li>
+                        <li><a href="auth/">Contact</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 THRIVE Work. All rights reserved.</p>
+                <p>&copy; 2024 THRIVE Work. All rights reserved. Transforming workplace wellbeing through evidence-based assessment.</p>
             </div>
         </div>
     </footer>
 
-    <script src="/assets/js/main.js"></script>
+    <!-- PWA Bottom Navigation -->
+    <nav class="pwa-bottom-nav">
+        <div class="pwa-bottom-nav-inner">
+            <a href="./" class="pwa-nav-item active" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+                <span class="pwa-nav-label">Home</span>
+            </a>
+            <a href="game/" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                </svg>
+                <span class="pwa-nav-label">Game</span>
+            </a>
+            <a href="chat/" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+                </svg>
+                <span class="pwa-nav-label">Chat</span>
+            </a>
+            <a href="coaching/" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <span class="pwa-nav-label">Coach</span>
+            </a>
+            <a href="partners/" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+                <span class="pwa-nav-label">More</span>
+            </a>
+        </div>
+    </nav>
+
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

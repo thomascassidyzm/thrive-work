@@ -1,13 +1,46 @@
 {
-  "name": "thrive-work",
+  "name": "thrive-website",
   "version": "1.0.0",
-  "description": "THRIVE Work - Workplace Wellbeing Assessment Platform",
+  "description": "THRIVE Website Ecosystem - Revolutionary self-discovery platform with AI coaching integration",
+  "type": "module",
+  "main": "index.html",
   "scripts": {
-    "dev": "vercel dev",
-    "build": "echo 'No build required'",
-    "deploy": "vercel --prod"
+    "dev": "npx serve . -l 3000",
+    "start": "npx serve . -l 3000",
+    "mcp-server": "node mcp-server/server.js",
+    "bridge": "node bridge-server/server.js"
   },
-  "keywords": ["wellbeing", "workplace", "assessment", "THRIVE"],
-  "author": "THRIVE",
-  "license": "ISC"
+  "keywords": [
+    "thrive",
+    "self-discovery",
+    "psychology",
+    "assessment",
+    "patterns",
+    "transformation",
+    "coaching",
+    "ai-coaching",
+    "mcp",
+    "claude-api"
+  ],
+  "author": "THRIVE Development Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/thrive-website.git"
+  },
+  "homepage": "https://thrive-website.vercel.app",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.2",
+    "canvas": "^3.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.0",
+    "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "serve": "^14.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
 }

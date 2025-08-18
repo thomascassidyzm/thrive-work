@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting - THRIVE Operating System for Humans</title>
+    <meta name="description" content="THRIVE has evolved from 6 domains to the Operating System for Humans with Advanced Partner Network.">
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#FFD700">
+    <script>
+        // Redirect to partners page
+        window.location.replace('/partners/');
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(ellipse at center, #0F172A 0%, #0A0E1A 50%, #000000 100%);
+            color: #F8FAFC;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .redirect-message {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 3rem;
+            max-width: 500px;
+        }
+        .logo {
+            background: linear-gradient(135deg, #FFD700 0%, #FFED4A 50%, #FFF59D 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-message">
+        <div class="logo">THRIVE</div>
+        <h1>We've Evolved!</h1>
+        <p>THRIVE has moved beyond the 6 domains to become <strong>The Operating System for Humans</strong> with our Advanced Partner Network.</p>
+        <p>Redirecting you to our new approach...</p>
+        <p><a href="/partners/" style="color: #FFD700;">Continue to Partner Network →</a></p>
+    </div>
+</body>
+</html>
