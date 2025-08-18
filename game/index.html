@@ -662,7 +662,47 @@
     </div>
 
     <script type="module">
-        // Import our question banks
+        // Get dimension from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const dimension = urlParams.get('dimension');
+        
+        // Import THRIVE dimension questions based on parameter
+        let dimensionModule;
+        let dimensionName = '';
+        
+        if (dimension) {
+            switch(dimension.toLowerCase()) {
+                case 'time':
+                    dimensionModule = await import('../question-banks/thrive-time-questions.js');
+                    dimensionName = 'TIME';
+                    break;
+                case 'health':
+                    dimensionModule = await import('../question-banks/thrive-health-questions.js');
+                    dimensionName = 'HEALTH';
+                    break;
+                case 'relationships':
+                    dimensionModule = await import('../question-banks/thrive-relationships-questions.js');
+                    dimensionName = 'RELATIONSHIPS';
+                    break;
+                case 'identity':
+                    dimensionModule = await import('../question-banks/thrive-identity-questions.js');
+                    dimensionName = 'IDENTITY';
+                    break;
+                case 'vitality':
+                    dimensionModule = await import('../question-banks/thrive-vitality-questions.js');
+                    dimensionName = 'VITALITY';
+                    break;
+                case 'environment':
+                    dimensionModule = await import('../question-banks/thrive-environment-questions.js');
+                    dimensionName = 'ENVIRONMENT';
+                    break;
+                default:
+                    // Fall back to original questions if no dimension specified
+                    break;
+            }
+        }
+        
+        // Import original question banks as fallback
         import { universalLaunchQuestions } from '../question-banks/universal-launch-questions.js';
         import { groupDynamicsQuestions } from '../question-banks/group-dynamics-questions.js';
         import { authorityRelationshipsQuestions } from '../question-banks/authority-relationships-questions.js';
@@ -675,18 +715,33 @@
         import { DynamicOceanAnalysis } from '../engines/dynamic-ocean-analysis.js';
         import { GameCoachingIntegration } from '../engines/game-coaching-integration.js';
 
-        // Universal launch questions for initial experience
-        const launchQuestionBank = universalLaunchQuestions;
+        // Use THRIVE dimension questions if available, otherwise use original
+        let launchQuestionBank, fullQuestionBank;
         
-        // Full question bank for expanded assessment - now with complete OCEAN coverage
-        const fullQuestionBank = [
-            ...groupDynamicsQuestions,
-            ...authorityRelationshipsQuestions,
-            ...conflictPatternsQuestions,
-            ...creativeExpressionQuestions,
-            ...trustVulnerabilityQuestions,
-            ...disciplineImpulseQuestions
-        ];
+        if (dimensionModule) {
+            // Use THRIVE dimension questions
+            const questionKey = `thrive${dimensionName.charAt(0).toUpperCase() + dimensionName.slice(1).toLowerCase()}Questions`;
+            const dimensionQuestions = dimensionModule[questionKey] || [];
+            launchQuestionBank = dimensionQuestions;
+            fullQuestionBank = dimensionQuestions;
+            
+            // Update UI to show dimension
+            const titleElement = document.querySelector('.game-title');
+            if (titleElement) {
+                titleElement.textContent = `THRIVE ${dimensionName} Assessment`;
+            }
+        } else {
+            // Use original question banks
+            launchQuestionBank = universalLaunchQuestions;
+            fullQuestionBank = [
+                ...groupDynamicsQuestions,
+                ...authorityRelationshipsQuestions,
+                ...conflictPatternsQuestions,
+                ...creativeExpressionQuestions,
+                ...trustVulnerabilityQuestions,
+                ...disciplineImpulseQuestions
+            ];
+        }
 
         console.log(`🎮 Game loaded with ${launchQuestionBank.length} launch questions and ${fullQuestionBank.length} expanded questions!`);
 

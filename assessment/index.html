@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THRIVE Assessment - Pattern Recognition for Wellbeing</title>
+    <title>THRIVE Assessment - Choose Your Dimension</title>
     
     <!-- THRIVE Branding -->
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
@@ -12,6 +12,180 @@
     <!-- THRIVE CSS -->
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/orbital-logo.css">
+    
+    <style>
+        .assessment-selection {
+            min-height: 100vh;
+            padding: 120px 0 80px;
+            background: var(--gradient-hero);
+            position: relative;
+        }
+        
+        .dimension-cards-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .assessment-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .assessment-title {
+            font-size: 3rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .assessment-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .dimension-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .dimension-card {
+            background: var(--glass-white);
+            backdrop-filter: var(--blur-strong);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dimension-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .dimension-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-yellow);
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
+        }
+        
+        .dimension-card:hover::before {
+            opacity: 1;
+        }
+        
+        .dimension-letter {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-yellow);
+            color: #000;
+            font-size: 2.5rem;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .dimension-name {
+            font-size: 1.5rem;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .dimension-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .dimension-questions {
+            font-size: 0.9rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1.5rem;
+        }
+        
+        .dimension-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+        
+        .status-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .status-icon.completed {
+            background: #4ade80;
+            color: #000;
+        }
+        
+        .progress-overview {
+            background: var(--glass-white);
+            backdrop-filter: var(--blur-strong);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 30px;
+            position: relative;
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, var(--primary-yellow), var(--primary-yellow-bright));
+            height: 100%;
+            transition: width 0.5s ease;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .dimension-cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .assessment-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -23,88 +197,180 @@
                     <span class="logo-subtitle">WORK</span>
                 </a>
             </div>
-            <div class="nav-progress">
-                <div class="progress-mini">
-                    <span id="questions-completed">0</span>/60 questions
-                </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/assessment/" class="nav-link active">Assessment</a>
+                <a href="/partners/" class="nav-link">Partners</a>
+                <a href="/medical-legitimacy/" class="nav-link">Medical Legitimacy</a>
+                <a href="/auth/" class="nav-link">Sign In</a>
+            </div>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
     </nav>
 
-    <main class="assessment-container">
-        <div class="container">
-            <!-- Dimension Selector -->
-            <div class="dimension-selector" style="margin: 2rem 0;">
-                <div class="dimensions-tabs" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                    <button class="dimension-tab" data-dimension="time">
-                        <span class="tab-letter">T</span>
-                        <span class="tab-status">⭕</span>
-                    </button>
-                    <button class="dimension-tab" data-dimension="health">
-                        <span class="tab-letter">H</span>
-                        <span class="tab-status">⭕</span>
-                    </button>
-                    <button class="dimension-tab" data-dimension="relationships">
-                        <span class="tab-letter">R</span>
-                        <span class="tab-status">⭕</span>
-                    </button>
-                    <button class="dimension-tab" data-dimension="identity">
-                        <span class="tab-letter">I</span>
-                        <span class="tab-status">⭕</span>
-                    </button>
-                    <button class="dimension-tab" data-dimension="vitality">
-                        <span class="tab-letter">V</span>
-                        <span class="tab-status">⭕</span>
-                    </button>
-                    <button class="dimension-tab" data-dimension="environment">
-                        <span class="tab-letter">E</span>
-                        <span class="tab-status">⭕</span>
-                    </button>
-                </div>
+    <main class="assessment-selection">
+        <div class="dimension-cards-container">
+            <div class="assessment-header">
+                <h1 class="assessment-title">Choose Your Assessment Dimension</h1>
+                <p class="assessment-subtitle">
+                    Complete all 6 dimensions to get your comprehensive wellbeing profile. 
+                    Each dimension takes about 2 minutes.
+                </p>
             </div>
 
-            <!-- Question Display -->
-            <div class="question-card glass-card" style="max-width: 800px; margin: 0 auto; padding: 3rem;">
-                <div class="question-number" style="color: var(--primary-yellow); margin-bottom: 1rem;">
-                    Question <span id="current-question">1</span> of 10
+            <div class="dimension-cards-grid">
+                <!-- TIME Dimension -->
+                <div class="dimension-card" onclick="startDimension('time')">
+                    <div class="dimension-letter">T</div>
+                    <h3 class="dimension-name">TIME</h3>
+                    <p class="dimension-description">
+                        Rhythm, balance, and boundaries. How you manage time pressures and work-life integration.
+                    </p>
+                    <div class="dimension-questions">10 questions</div>
+                    <div class="dimension-status">
+                        <span class="status-icon" id="status-time">⭕</span>
+                        <span id="status-text-time">Not started</span>
+                    </div>
                 </div>
-                
-                <h2 class="question-text" id="question-text" style="color: var(--text-white); margin-bottom: 2rem;">
-                    Loading question...
-                </h2>
-                
-                <div class="answer-options" id="answer-options">
-                    <!-- Options will be dynamically inserted -->
+
+                <!-- HEALTH Dimension -->
+                <div class="dimension-card" onclick="startDimension('health')">
+                    <div class="dimension-letter">H</div>
+                    <h3 class="dimension-name">HEALTH</h3>
+                    <p class="dimension-description">
+                        Physical and mental resilience. Energy levels, stress management, and sustainable practices.
+                    </p>
+                    <div class="dimension-questions">10 questions</div>
+                    <div class="dimension-status">
+                        <span class="status-icon" id="status-health">⭕</span>
+                        <span id="status-text-health">Not started</span>
+                    </div>
                 </div>
-                
-                <div class="navigation-buttons" style="margin-top: 3rem; display: flex; justify-content: space-between;">
-                    <button class="nav-btn" id="prev-btn" onclick="previousQuestion()" style="visibility: hidden;">
-                        ← Previous
-                    </button>
-                    <button class="nav-btn cta-button primary" id="next-btn" onclick="nextQuestion()" disabled>
-                        Next →
-                    </button>
+
+                <!-- RELATIONSHIPS Dimension -->
+                <div class="dimension-card" onclick="startDimension('relationships')">
+                    <div class="dimension-letter">R</div>
+                    <h3 class="dimension-name">RELATIONSHIPS</h3>
+                    <p class="dimension-description">
+                        Connection and communication. Team dynamics, conflict resolution, and social support.
+                    </p>
+                    <div class="dimension-questions">10 questions</div>
+                    <div class="dimension-status">
+                        <span class="status-icon" id="status-relationships">⭕</span>
+                        <span id="status-text-relationships">Not started</span>
+                    </div>
+                </div>
+
+                <!-- IDENTITY Dimension -->
+                <div class="dimension-card" onclick="startDimension('identity')">
+                    <div class="dimension-letter">I</div>
+                    <h3 class="dimension-name">IDENTITY</h3>
+                    <p class="dimension-description">
+                        Purpose and values alignment. Role clarity, meaning, and authentic expression.
+                    </p>
+                    <div class="dimension-questions">10 questions</div>
+                    <div class="dimension-status">
+                        <span class="status-icon" id="status-identity">⭕</span>
+                        <span id="status-text-identity">Not started</span>
+                    </div>
+                </div>
+
+                <!-- VITALITY Dimension -->
+                <div class="dimension-card" onclick="startDimension('vitality')">
+                    <div class="dimension-letter">V</div>
+                    <h3 class="dimension-name">VITALITY</h3>
+                    <p class="dimension-description">
+                        Energy and motivation. Engagement levels, burnout risk, and sustainable performance.
+                    </p>
+                    <div class="dimension-questions">10 questions</div>
+                    <div class="dimension-status">
+                        <span class="status-icon" id="status-vitality">⭕</span>
+                        <span id="status-text-vitality">Not started</span>
+                    </div>
+                </div>
+
+                <!-- ENVIRONMENT Dimension -->
+                <div class="dimension-card" onclick="startDimension('environment')">
+                    <div class="dimension-letter">E</div>
+                    <h3 class="dimension-name">ENVIRONMENT</h3>
+                    <p class="dimension-description">
+                        Context and culture. Physical workspace, psychological safety, and organizational climate.
+                    </p>
+                    <div class="dimension-questions">10 questions</div>
+                    <div class="dimension-status">
+                        <span class="status-icon" id="status-environment">⭕</span>
+                        <span id="status-text-environment">Not started</span>
+                    </div>
                 </div>
             </div>
 
             <!-- Progress Overview -->
-            <div class="progress-overview" style="margin-top: 3rem;">
-                <div class="glass-card" style="padding: 2rem;">
-                    <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">Your Progress</h3>
-                    <div class="overall-progress">
-                        <div class="progress-bar" style="background: rgba(255,255,255,0.1); border-radius: 10px; height: 20px;">
-                            <div class="progress-fill" id="overall-progress" style="background: var(--primary-yellow); height: 100%; border-radius: 10px; width: 0%; transition: width 0.3s;">
-                            </div>
-                        </div>
-                        <p style="color: var(--text-light); margin-top: 1rem;">
-                            <span id="total-completed">0</span> of 60 questions completed
-                        </p>
+            <div class="progress-overview">
+                <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">Overall Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="overall-progress" style="width: 0%;">
+                        <span id="progress-text">0 of 60 questions completed</span>
                     </div>
                 </div>
+                <p style="color: var(--text-light); margin-top: 1rem;">
+                    Complete all dimensions to unlock your comprehensive wellbeing report
+                </p>
             </div>
         </div>
     </main>
 
-    <script src="/assets/js/assessment.js"></script>
+    <script>
+        // Check localStorage for completed dimensions
+        function updateProgress() {
+            const savedState = localStorage.getItem('thriveAssessment');
+            if (savedState) {
+                const state = JSON.parse(savedState);
+                const totalAnswered = Object.keys(state.responses || {}).length;
+                const progressPercent = (totalAnswered / 60) * 100;
+                
+                // Update overall progress bar
+                const progressFill = document.getElementById('overall-progress');
+                const progressText = document.getElementById('progress-text');
+                if (progressFill) {
+                    progressFill.style.width = progressPercent + '%';
+                }
+                if (progressText) {
+                    progressText.textContent = `${totalAnswered} of 60 questions completed`;
+                }
+                
+                // Update dimension statuses
+                if (state.completedDimensions) {
+                    state.completedDimensions.forEach(dim => {
+                        const statusIcon = document.getElementById(`status-${dim}`);
+                        const statusText = document.getElementById(`status-text-${dim}`);
+                        if (statusIcon) {
+                            statusIcon.textContent = '✓';
+                            statusIcon.classList.add('completed');
+                        }
+                        if (statusText) {
+                            statusText.textContent = 'Completed';
+                        }
+                    });
+                }
+            }
+        }
+        
+        // Start a specific dimension
+        function startDimension(dimension) {
+            // Save the selected dimension
+            localStorage.setItem('currentDimension', dimension);
+            // Redirect to the game interface with the dimension parameter
+            window.location.href = `/game/?dimension=${dimension}`;
+        }
+        
+        // Update progress on page load
+        document.addEventListener('DOMContentLoaded', updateProgress);
+    </script>
+
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>
