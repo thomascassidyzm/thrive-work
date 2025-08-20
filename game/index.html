@@ -1820,19 +1820,36 @@
         
         // Skip to chat with current data
         function skipToChat() {
-            // Save current assessment data
-            const assessmentData = {
-                questionCount: responses.length,
-                dimension: dimension,
-                responses: responses,
-                patterns: analyzeCurrentPatterns(),
-                timestamp: new Date().toISOString()
-            };
+            console.log('skipToChat() called');
             
-            localStorage.setItem('thrive_assessment_data', JSON.stringify(assessmentData));
-            
-            // Redirect to chat
-            window.location.href = '../chat/?fromAssessment=true&questionCount=' + responses.length;
+            try {
+                // Save current assessment data
+                let patterns = {};
+                try {
+                    patterns = analyzeCurrentPatterns();
+                } catch (e) {
+                    console.log('Pattern analysis failed:', e);
+                    patterns = { note: 'Analysis unavailable' };
+                }
+                
+                const assessmentData = {
+                    questionCount: responses.length,
+                    dimension: dimension || 'general',
+                    responses: responses,
+                    patterns: patterns,
+                    timestamp: new Date().toISOString()
+                };
+                
+                localStorage.setItem('thrive_assessment_data', JSON.stringify(assessmentData));
+                console.log('Assessment data saved, redirecting...');
+                
+                // Redirect to chat
+                window.location.href = '../chat/?fromAssessment=true&questionCount=' + responses.length;
+            } catch (error) {
+                console.error('Error in skipToChat:', error);
+                // Fallback redirect
+                window.location.href = '../chat/';
+            }
         }
 
         // THRIVE Domain Completion Functions
