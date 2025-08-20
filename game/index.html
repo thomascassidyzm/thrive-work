@@ -585,14 +585,23 @@
                 </div>
 
                 <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 3rem; flex-wrap: wrap;">
-                    <button class="cta-button primary" onclick="continuePlaying()" style="min-width: 250px;">
+                    <button class="cta-button primary" onclick="showDomainSelector()" style="min-width: 250px;">
                         🔍 Continue Mapping
-                        <br><small>Get deeper insights</small>
+                        <br><small>Choose next dimension</small>
                     </button>
                     <button class="cta-button secondary" onclick="skipToChat()" style="min-width: 200px;">
                         💬 Chat with AI Coach
                         <br><small>Explore what we've found</small>
                     </button>
+                </div>
+            </div>
+
+            <!-- Domain Selection Screen -->
+            <div id="domain-selector-screen" class="results-container" style="display: none;">
+                <div class="results-title">Choose Your Next Dimension</div>
+                
+                <div id="domain-selector-content">
+                    <!-- Domain selection content will be inserted here -->
                 </div>
             </div>
 
@@ -1615,11 +1624,198 @@
             window.location.href = '../chat/?fromAssessment=true&questionCount=' + responses.length;
         }
 
-        // Continue from preliminary results
+        // Continue from preliminary results - show domain selector
         function continuePlaying() {
+            showDomainSelector();
+        }
+        
+        // Show domain selection screen with progress tracking
+        function showDomainSelector() {
             document.getElementById('preliminary-screen').style.display = 'none';
-            document.getElementById('question-screen').style.display = 'block';
-            showNextQuestion();
+            document.getElementById('domain-selector-screen').style.display = 'block';
+            
+            // Get completed domains from localStorage
+            const completedDomains = JSON.parse(localStorage.getItem('thriveCompletedDomains') || '[]');
+            const currentDomain = dimension.toLowerCase();
+            
+            // Add current domain if not already in completed list
+            if (!completedDomains.includes(currentDomain)) {
+                completedDomains.push(currentDomain);
+                localStorage.setItem('thriveCompletedDomains', JSON.stringify(completedDomains));
+            }
+            
+            const domains = {
+                time: {
+                    name: 'TIME',
+                    emoji: '⏰',
+                    description: 'Work-life balance and boundary management',
+                    subtitle: '10 questions about time, priorities, and boundaries'
+                },
+                health: {
+                    name: 'HEALTH',
+                    emoji: '🧠',
+                    description: 'Physical and mental wellness at work',
+                    subtitle: '10 questions about stress, energy, and wellbeing'
+                },
+                relationships: {
+                    name: 'RELATIONSHIPS',
+                    emoji: '👥',
+                    description: 'Team dynamics and communication',
+                    subtitle: '10 questions about workplace connections'
+                },
+                identity: {
+                    name: 'IDENTITY',
+                    emoji: '🎯',
+                    description: 'Purpose and values alignment',
+                    subtitle: '10 questions about meaning and authenticity'
+                },
+                vitality: {
+                    name: 'VITALITY',
+                    emoji: '⚡',
+                    description: 'Energy and motivation levels',
+                    subtitle: '10 questions about engagement and burnout'
+                },
+                environment: {
+                    name: 'ENVIRONMENT',
+                    emoji: '🏢',
+                    description: 'Workplace culture and context',
+                    subtitle: '10 questions about your work environment'
+                }
+            };
+            
+            const confidenceLevel = Math.min(40 + (completedDomains.length - 1) * 25, 95);
+            
+            let domainCards = '';
+            Object.keys(domains).forEach(domainKey => {
+                const domain = domains[domainKey];
+                const isCompleted = completedDomains.includes(domainKey);
+                const isCurrent = domainKey === currentDomain;
+                
+                domainCards += `
+                    <div class="domain-card ${isCompleted ? 'completed' : ''} ${isCurrent ? 'current' : ''}" 
+                         ${!isCompleted ? `onclick="selectDomain('${domainKey}')"` : ''}>
+                        <div class="domain-emoji">${domain.emoji}</div>
+                        <div class="domain-content">
+                            <h3>${domain.name}</h3>
+                            <p>${domain.description}</p>
+                            <small>${domain.subtitle}</small>
+                        </div>
+                        <div class="domain-status">
+                            ${isCompleted ? '✅' : isCurrent ? '⭐' : '○'}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            const selectorContent = `
+                <div style="margin-bottom: 2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="color: #e0e0e0; font-weight: bold;">Overall Confidence</span>
+                        <span style="color: var(--primary-yellow); font-weight: bold; font-size: 1.3rem;">${confidenceLevel}%</span>
+                    </div>
+                    <div style="height: 12px; background: rgba(255, 255, 255, 0.1); border-radius: 6px; overflow: hidden; border: 1px solid var(--primary-yellow);">
+                        <div style="width: ${confidenceLevel}%; height: 100%; background: linear-gradient(90deg, var(--primary-yellow), #ffd700); transition: width 0.8s ease;"></div>
+                    </div>
+                    <p style="color: #a0a0a0; font-size: 0.9rem; margin-top: 0.5rem; text-align: center;">
+                        ${completedDomains.length}/6 dimensions complete
+                    </p>
+                </div>
+                
+                <p style="color: #e0e0e0; margin-bottom: 2rem; text-align: center;">
+                    Select your next dimension to explore. Each adds depth to your behavioral profile.
+                </p>
+                
+                <div class="domain-selector-grid">
+                    ${domainCards}
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="cta-button secondary" onclick="skipToChat()">
+                        💬 Chat with AI Coach Instead
+                        <br><small>Explore your ${completedDomains.length} completed dimension${completedDomains.length !== 1 ? 's' : ''}</small>
+                    </button>
+                </div>
+                
+                <style>
+                    .domain-selector-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                        gap: 1rem;
+                        margin: 2rem 0;
+                    }
+                    
+                    .domain-card {
+                        background: rgba(255, 255, 255, 0.05);
+                        border: 2px solid rgba(255, 215, 0, 0.2);
+                        border-radius: 15px;
+                        padding: 1.5rem;
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .domain-card:hover:not(.completed) {
+                        border-color: var(--primary-yellow);
+                        background: rgba(255, 215, 0, 0.1);
+                        transform: translateY(-2px);
+                    }
+                    
+                    .domain-card.completed {
+                        background: rgba(255, 215, 0, 0.1);
+                        border-color: var(--primary-yellow);
+                        cursor: default;
+                    }
+                    
+                    .domain-card.current {
+                        background: rgba(255, 215, 0, 0.2);
+                        border-color: var(--primary-yellow);
+                        cursor: default;
+                    }
+                    
+                    .domain-emoji {
+                        font-size: 2rem;
+                        min-width: 60px;
+                        text-align: center;
+                    }
+                    
+                    .domain-content {
+                        flex: 1;
+                    }
+                    
+                    .domain-content h3 {
+                        color: var(--primary-yellow);
+                        margin-bottom: 0.5rem;
+                        font-size: 1.1rem;
+                    }
+                    
+                    .domain-content p {
+                        color: #e0e0e0;
+                        margin-bottom: 0.3rem;
+                        font-size: 0.95rem;
+                    }
+                    
+                    .domain-content small {
+                        color: #a0a0a0;
+                        font-size: 0.8rem;
+                    }
+                    
+                    .domain-status {
+                        font-size: 1.5rem;
+                        min-width: 30px;
+                        text-align: center;
+                    }
+                </style>
+            `;
+            
+            document.getElementById('domain-selector-content').innerHTML = selectorContent;
+        }
+        
+        // Select a domain and start assessment
+        function selectDomain(selectedDomain) {
+            // Redirect to new domain assessment
+            window.location.href = `?dimension=${selectedDomain}`;
         }
         
         // Skip to chat with current data
