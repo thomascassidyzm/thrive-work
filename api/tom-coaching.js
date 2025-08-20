@@ -1730,3 +1730,6 @@ TOM'S ACTUAL RESPONSES FROM TRANSCRIPTS:
     });
   }
 }
+
+// Export COACH_PROMPTS for use in other API files
+export { COACH_PROMPTS };
