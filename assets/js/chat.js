@@ -191,12 +191,12 @@ const coachThinkingPatterns = {
 
 // Welcome messages by coach
 const welcomeMessages = {
-    tom: "Hello! I'm Tom. I work with relationships, personal mastery, and that general sense that more is out there for us. So... what's on your mind today?",
-    liz: "Hi! I'm Liz. I work with identity, self-worth, and helping you feel good about being YOU. How can I help today?",
-    alastair: "Hi there! I'm Alastair. I work with addictions, compulsive patterns, and things like OCD. What's going on for you right now?",
-    kainne: "Hey! I'm Kainne. I focus on business challenges, getting things done, and ADHD-related patterns. So... how can I help today?",
-    edward: "Hello! I'm Edward. I work with psychological foundations, self-acceptance, and transforming limiting beliefs into conscious choices. What would you like to explore today?",
-    dom: "Right! I'm Dom. I work with performance, discipline, and strategy - bringing elite sports psychology to life challenges. Think of me as your tactical coach. What's your next play?"
+    tom: "Hello, I'm Tom. What's going on for you at the moment? Work stuff, life stuff, or that feeling that something needs to shift?",
+    liz: "Hi, I'm Liz. How's your energy these days? I often find people come to me when they're feeling a bit depleted or stuck. What's happening with you?",
+    alastair: "Hi there, I'm Alastair. Whether it's stress patterns, ADHD chaos, or just feeling overwhelmed - what brings you here today?",
+    kainne: "Hey, I'm Kainne. Most people find me when they're juggling too much or struggling with boundaries. What's your situation?",
+    edward: "Hello, I'm Edward. I'm curious - is it the team dynamics, the environment, or something else entirely that's on your mind?",
+    dom: "Alright, I'm Dom. Are you looking to level up your own game or sort out team dynamics? What's the challenge?"
 };
 
 // Fallback responses for API failures
