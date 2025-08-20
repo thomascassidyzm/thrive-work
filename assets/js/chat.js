@@ -397,6 +397,25 @@ async function sendMessage(message, assessmentContext = null) {
         console.log('🎯 Using stored assessment data for coaching context');
     }
     
+    // Also check localStorage for completed assessments
+    if (!assessmentContext) {
+        const stored = localStorage.getItem('thrive_assessment_data');
+        if (stored) {
+            const data = JSON.parse(stored);
+            assessmentContext = {
+                questionsCompleted: data.questionCount,
+                strongestDimensions: Object.entries(data.dimensions || {})
+                    .sort((a, b) => b[1].confidence - a[1].confidence)
+                    .slice(0, 2)
+                    .map(([dim]) => dim),
+                oceanProfile: data.oceanProfile,
+                assessmentDate: data.completedAt,
+                confidenceLevel: data.questionCount >= 30 ? 'high' : data.questionCount >= 20 ? 'moderate' : 'emerging'
+            };
+            console.log('📊 Loaded assessment context from storage:', assessmentContext);
+        }
+    }
+    
     addMessage('user', message);
     chatInput.value = '';
     
