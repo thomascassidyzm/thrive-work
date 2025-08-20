@@ -23,6 +23,7 @@
     justify-content: space-around;
     align-items: center;
     padding: 0 1rem;
+    padding-bottom: 5px; /* Raise icons 5px higher */
 }
 
 .pwa-nav-item {
@@ -50,7 +51,7 @@
 .pwa-nav-item.active::after {
     content: '';
     position: absolute;
-    bottom: -8px;
+    bottom: -3px; /* Adjusted for raised icons */
     left: 50%;
     transform: translateX(-50%);
     width: 4px;
@@ -64,8 +65,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28px; /* Slightly larger since no label */
-    height: 28px;
+    width: 34px; /* 20% larger (was 28px) */
+    height: 34px; /* 20% larger (was 28px) */
 }
 
 .pwa-nav-icon svg {
