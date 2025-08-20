@@ -576,6 +576,26 @@
                 </div>
             </div>
 
+            <!-- Preliminary Results Screen (10 questions) -->
+            <div id="preliminary-screen" class="results-container" style="display: none;">
+                <div class="results-title">Patterns Emerging!</div>
+                
+                <div id="preliminary-content">
+                    <!-- Preliminary results content will be inserted here -->
+                </div>
+
+                <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 3rem; flex-wrap: wrap;">
+                    <button class="cta-button primary" onclick="continuePlaying()" style="min-width: 250px;">
+                        🔍 Continue Mapping
+                        <br><small>Get deeper insights</small>
+                    </button>
+                    <button class="cta-button secondary" onclick="skipToChat()" style="min-width: 200px;">
+                        💬 Chat with AI Coach
+                        <br><small>Explore what we've found</small>
+                    </button>
+                </div>
+            </div>
+
             <!-- Domain Completion Screen (10 questions) -->
             <div id="domain-complete-screen" class="results-container" style="display: none;">
                 <div class="results-title" id="domain-complete-title">TIME Domain Complete!</div>
@@ -1548,6 +1568,30 @@
             localStorage.setItem('thriveGameResponses', JSON.stringify(responses));
             
             // Redirect to AI chat for deeper analysis
+            window.location.href = '../chat/?fromAssessment=true&questionCount=' + responses.length;
+        }
+
+        // Continue from preliminary results
+        function continuePlaying() {
+            document.getElementById('preliminary-screen').style.display = 'none';
+            document.getElementById('question-screen').style.display = 'block';
+            showNextQuestion();
+        }
+        
+        // Skip to chat with current data
+        function skipToChat() {
+            // Save current assessment data
+            const assessmentData = {
+                questionCount: responses.length,
+                dimension: dimension,
+                responses: responses,
+                patterns: analyzeCurrentPatterns(),
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('thrive_assessment_data', JSON.stringify(assessmentData));
+            
+            // Redirect to chat
             window.location.href = '../chat/?fromAssessment=true&questionCount=' + responses.length;
         }
 
