@@ -15,7 +15,7 @@ async function getCoachingPrompts() {
   
   try {
     // Fetch prompts from the website (same domain in production)
-    const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://thrive-work.vercel.app';
+    const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://www.thrive-work.com';
     const response = await fetch(`${baseUrl}/coaching-prompts/`);
     if (!response.ok) {
       throw new Error('Failed to fetch coaching prompts');
