@@ -1294,32 +1294,76 @@
             console.log('Showing preliminary results at 10 questions');
             
             const prelimAnalysis = analyzeCurrentPatterns();
-            const confidence = Math.min((responses.length / 30) * 0.6, 0.6); // Max 60% confidence at 10 questions
+            const confidencePercentage = 40; // 40% confidence after 10 questions
             
             document.getElementById('question-screen').style.display = 'none';
             document.getElementById('preliminary-screen').style.display = 'block';
             
             const prelimContent = `
                 <div style="text-align: left; margin-bottom: 2rem;">
+                    <!-- Confidence Indicator -->
+                    <div style="margin-bottom: 2rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <span style="color: #e0e0e0; font-weight: bold;">Analysis Confidence</span>
+                            <span style="color: var(--primary-yellow); font-weight: bold; font-size: 1.2rem;">${confidencePercentage}%</span>
+                        </div>
+                        <div style="height: 12px; background: rgba(255, 255, 255, 0.1); border-radius: 6px; overflow: hidden; border: 1px solid var(--primary-yellow);">
+                            <div style="width: ${confidencePercentage}%; height: 100%; background: linear-gradient(90deg, var(--primary-yellow), #ffd700); transition: width 0.8s ease;"></div>
+                        </div>
+                        <p style="color: #a0a0a0; font-size: 0.9rem; margin-top: 0.5rem; text-align: center;">
+                            Early patterns detected • Continue for deeper insights
+                        </p>
+                    </div>
+
+                    <!-- Neural Map Visualization -->
+                    <div style="display: flex; justify-content: center; margin: 2rem 0;">
+                        <svg width="200" height="200" style="filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));">
+                            <!-- Central node (current dimension) -->
+                            <circle cx="100" cy="100" r="25" 
+                                    fill="rgba(255, 215, 0, 0.4)"
+                                    stroke="#FFD700" stroke-width="3"/>
+                            <text x="100" y="108" text-anchor="middle" fill="#FFD700" font-size="14" font-weight="bold">
+                                ${dimension.charAt(0).toUpperCase()}
+                            </text>
+                            
+                            <!-- Faded future nodes -->
+                            <circle cx="50" cy="50" r="15" 
+                                    fill="rgba(255, 215, 0, 0.1)"
+                                    stroke="rgba(255, 215, 0, 0.3)" stroke-width="2"/>
+                            <circle cx="150" cy="50" r="15" 
+                                    fill="rgba(255, 215, 0, 0.1)"
+                                    stroke="rgba(255, 215, 0, 0.3)" stroke-width="2"/>
+                            <circle cx="50" cy="150" r="15" 
+                                    fill="rgba(255, 215, 0, 0.1)"
+                                    stroke="rgba(255, 215, 0, 0.3)" stroke-width="2"/>
+                            <circle cx="150" cy="150" r="15" 
+                                    fill="rgba(255, 215, 0, 0.1)"
+                                    stroke="rgba(255, 215, 0, 0.3)" stroke-width="2"/>
+                            
+                            <!-- Progress text in center -->
+                            <text x="100" y="130" text-anchor="middle" fill="#FFD700" font-size="12">
+                                1/6
+                            </text>
+                        </svg>
+                    </div>
+                    
                     <p style="font-size: 1.1rem; line-height: 1.6; color: #e0e0e0; margin-bottom: 1.5rem;">
-                        With 10 responses, we're starting to see emerging patterns in your current behavior! 
+                        With 10 responses, we're starting to see emerging patterns! 
                         <strong>Remember: You are a verb, not a noun.</strong> These are tendencies you can always choose to change.
-                        ${prelimAnalysis.previewInsight || ''}
                     </p>
                     
-                    <div style="background: rgba(255, 255, 0, 0.1); border: 1px solid rgba(255, 255, 0, 0.3); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
-                        <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">🌱 Pattern Emergence: Early Stage</h3>
+                    <div style="background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">🌱 ${dimension.toUpperCase()} Patterns Detected</h3>
                         <p style="color: #c0c0c0; line-height: 1.5; margin-bottom: 1rem;">
-                            We're noticing tendencies in how you currently handle <strong>${prelimAnalysis.dominantPattern?.replace(/_/g, ' ') || 'various situations'}</strong>.
+                            We're noticing how you currently approach <strong>${prelimAnalysis.dominantPattern?.replace(/_/g, ' ') || dimension.toLowerCase() + ' situations'}</strong>.
                         </p>
-                        <p style="color: #a0a0a0; font-size: 0.9rem; font-style: italic;">
-                            💡 <strong>Note:</strong> For deeper personality insights (like OCEAN analysis), we need 50+ questions.
-                            But even now, we can explore what your patterns mean and how you might choose differently!
+                        <p style="color: #a0a0a0; font-size: 0.9rem;">
+                            💡 <strong>Continue to 20 questions:</strong> Reach 65% confidence and unlock deeper pattern analysis.
                         </p>
                     </div>
                     
-                    <p style="font-size: 1rem; color: #c0c0c0; line-height: 1.5;">
-                        <strong>You can:</strong> Continue mapping for much higher precision, or see what we've learned so far in a preliminary report.
+                    <p style="font-size: 1rem; color: #c0c0c0; line-height: 1.5; text-align: center;">
+                        <strong>Your choice:</strong> Continue mapping for higher precision, or explore what we've found so far with an AI coach.
                     </p>
                 </div>
             `;
