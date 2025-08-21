@@ -264,6 +264,22 @@
     <script src="../assets/js/chat.js?v=20250815-1300"></script>
     
     <style>
+        /* Typing Animation Cursor */
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background-color: var(--primary-yellow);
+            animation: blink 1s infinite;
+            margin-left: 2px;
+            vertical-align: text-bottom;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
         .quick-question {
             background: var(--glass-white-light);
             border: var(--glass-border);

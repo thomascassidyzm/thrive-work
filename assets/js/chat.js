@@ -303,10 +303,58 @@ function startStatusUpdates(messageId) {
 // Message Handling
 // ================================
 
-function addMessage(role, content) {
+// Human-like typing animation for coach responses
+async function typeMessage(content, messageDiv, contentDiv) {
+    // Calculate typing speed based on content
+    const words = content.split(' ').length;
+    const baseSpeed = 30; // Base milliseconds per character
+    const variability = 15; // Random variation in speed
+    
+    // Split content into chunks for more natural typing
+    const sentences = content.match(/[^.!?]+[.!?]+/g) || [content];
+    let fullText = '';
+    
+    for (const sentence of sentences) {
+        // Type each sentence with natural pauses
+        for (let i = 0; i < sentence.length; i++) {
+            fullText += sentence[i];
+            contentDiv.innerHTML = fullText + '<span class="typing-cursor">|</span>';
+            
+            // Natural typing rhythm
+            let delay = baseSpeed + Math.random() * variability;
+            
+            // Longer pauses for punctuation
+            if ('.!?,;:'.includes(sentence[i])) {
+                delay += 100 + Math.random() * 200;
+            }
+            
+            // Occasional "thinking" pauses
+            if (Math.random() < 0.02) {
+                delay += 200 + Math.random() * 300;
+            }
+            
+            await new Promise(resolve => setTimeout(resolve, delay));
+            
+            // Auto-scroll as typing
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Pause between sentences
+        await new Promise(resolve => setTimeout(resolve, 100 + Math.random() * 200));
+    }
+    
+    // Remove cursor when done
+    contentDiv.innerHTML = fullText;
+    
+    // Save after typing complete
+    saveChatHistory();
+}
+
+function addMessage(role, content, useTypingAnimation = false) {
     const messageId = 'msg-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
     const messageDiv = document.createElement('div');
     messageDiv.id = messageId;
+    messageDiv.className = `message ${role}`; // Add CSS classes for message extraction
     messageDiv.style.cssText = `
         margin-bottom: 1rem;
         padding: 1rem 1.25rem;
@@ -328,11 +376,21 @@ function addMessage(role, content) {
     };
     const coachName = role === 'user' ? 'You' : coachNames[selectedCoach] || 'Coach';
     
-    messageDiv.innerHTML = `<div style="font-size: 0.75rem; opacity: 0.6; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">${coachName}</div>${content}`;
+    // Create structure for typing animation
+    const headerDiv = document.createElement('div');
+    headerDiv.style.cssText = 'font-size: 0.75rem; opacity: 0.6; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;';
+    headerDiv.textContent = coachName;
+    
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'message-content';
+    
+    messageDiv.appendChild(headerDiv);
+    messageDiv.appendChild(contentDiv);
     chatMessages.appendChild(messageDiv);
     
-    // Add subtle animation for new messages
-    if (role === 'assistant') {
+    // Handle typing animation for assistant messages
+    if (role === 'assistant' && useTypingAnimation) {
+        // Fade in the message container
         messageDiv.style.opacity = '0';
         messageDiv.style.transform = 'translateY(10px)';
         setTimeout(() => {
@@ -340,10 +398,28 @@ function addMessage(role, content) {
             messageDiv.style.opacity = '1';
             messageDiv.style.transform = 'translateY(0)';
         }, 50);
+        
+        // Start typing animation after fade in
+        setTimeout(() => {
+            typeMessage(content, messageDiv, contentDiv);
+        }, 350);
+    } else {
+        // Instant display for user messages or when animation is disabled
+        contentDiv.innerHTML = content;
+        
+        if (role === 'assistant') {
+            messageDiv.style.opacity = '0';
+            messageDiv.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+                messageDiv.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                messageDiv.style.opacity = '1';
+                messageDiv.style.transform = 'translateY(0)';
+            }, 50);
+        }
+        
+        // Auto-save chat after adding message
+        saveChatHistory();
     }
-    
-    // Auto-save chat after adding message
-    saveChatHistory();
     
     // Smart scrolling behavior
     if (role === 'assistant') {
@@ -513,7 +589,7 @@ async function sendMessage(message, assessmentContext = null) {
         if (data.content && data.content[0]) {
             // Show which coaching method was used
             console.log('Coaching response from:', data.source);
-            addMessage('assistant', data.content[0].text);
+            addMessage('assistant', data.content[0].text, true); // Enable typing animation
         } else {
             throw new Error('No response content');
         }
@@ -529,7 +605,7 @@ async function sendMessage(message, assessmentContext = null) {
         // Tom Cassidy's specific coaching responses
         const response = getTomResponse(message);
         setTimeout(() => {
-            addMessage('assistant', response);
+            addMessage('assistant', response, true); // Enable typing animation for fallback too
         }, 500 + Math.random() * 1000);
     }
 }
