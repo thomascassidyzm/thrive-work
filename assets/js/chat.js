@@ -303,48 +303,130 @@ function startStatusUpdates(messageId) {
 // Message Handling
 // ================================
 
-// Human-like typing animation for coach responses
+// Human-like typing animation with realistic variations
 async function typeMessage(content, messageDiv, contentDiv) {
-    // Calculate typing speed based on content
-    const words = content.split(' ').length;
-    const baseSpeed = 20; // Base milliseconds per character (faster for better reading flow)
-    const variability = 10; // Random variation in speed (reduced to match faster base)
+    let displayText = '';
+    let currentPosition = 0;
+    const words = content.split(' ');
     
-    // Split content into chunks for more natural typing
-    const sentences = content.match(/[^.!?]+[.!?]+/g) || [content];
-    let fullText = '';
+    // Analyze word complexity for variable speeds
+    const getWordComplexity = (word) => {
+        // Longer words and technical terms typed slower
+        if (word.length > 8) return 'complex';
+        if (word.length > 5) return 'medium';
+        if (/[A-Z]/.test(word) && word.length > 1) return 'proper'; // Proper nouns
+        if (/['"]/.test(word)) return 'quoted'; // Quoted text - more careful
+        return 'simple';
+    };
     
-    for (const sentence of sentences) {
-        // Type each sentence with natural pauses
-        for (let i = 0; i < sentence.length; i++) {
-            fullText += sentence[i];
-            contentDiv.innerHTML = fullText + '<span class="typing-cursor">|</span>';
+    // Simulate occasional corrections (backspace and retype)
+    const simulateCorrection = async (currentText, correction) => {
+        // Backspace animation
+        for (let i = 0; i < correction; i++) {
+            currentText = currentText.slice(0, -1);
+            contentDiv.innerHTML = currentText + '<span class="typing-cursor">|</span>';
+            await new Promise(resolve => setTimeout(resolve, 30 + Math.random() * 20));
+        }
+        return currentText;
+    };
+    
+    // Type each word with natural variations
+    for (let wordIndex = 0; wordIndex < words.length; wordIndex++) {
+        const word = words[wordIndex];
+        const complexity = getWordComplexity(word);
+        const nextWord = wordIndex < words.length - 1 ? ' ' : '';
+        
+        // Random pause before some words (thinking)
+        if (Math.random() < 0.08) { // 8% chance of pause before word
+            await new Promise(resolve => setTimeout(resolve, 200 + Math.random() * 400));
+        }
+        
+        // Type the word character by character
+        for (let charIndex = 0; charIndex < word.length; charIndex++) {
+            const char = word[charIndex];
+            displayText += char;
             
-            // Natural typing rhythm
-            let delay = baseSpeed + Math.random() * variability;
+            // Variable speed based on complexity and position
+            let delay = 15; // Base faster speed
             
-            // Longer pauses for punctuation (reduced for faster flow)
-            if ('.!?,;:'.includes(sentence[i])) {
-                delay += 80 + Math.random() * 120;
+            // Adjust for word complexity
+            switch(complexity) {
+                case 'complex':
+                    delay = 25 + Math.random() * 20;
+                    break;
+                case 'medium':
+                    delay = 20 + Math.random() * 15;
+                    break;
+                case 'proper':
+                    delay = 22 + Math.random() * 15;
+                    break;
+                case 'quoted':
+                    delay = 25 + Math.random() * 10;
+                    break;
+                default:
+                    delay = 15 + Math.random() * 10;
             }
             
-            // Occasional "thinking" pauses (reduced frequency and duration)
-            if (Math.random() < 0.015) {
-                delay += 100 + Math.random() * 200;
+            // Occasional mid-word hesitation (like hitting wrong key)
+            if (charIndex > 2 && Math.random() < 0.02) { // 2% chance
+                await new Promise(resolve => setTimeout(resolve, 150 + Math.random() * 200));
             }
             
+            // Natural slowdown at word endings
+            if (charIndex === word.length - 1) {
+                delay += 10 + Math.random() * 20;
+            }
+            
+            contentDiv.innerHTML = displayText + '<span class="typing-cursor">|</span>';
             await new Promise(resolve => setTimeout(resolve, delay));
             
-            // Auto-scroll as typing
+            // Auto-scroll
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
         
-        // Pause between sentences (reduced for better flow)
-        await new Promise(resolve => setTimeout(resolve, 50 + Math.random() * 100));
+        // Occasional self-correction (3% chance after completing a word)
+        if (wordIndex > 0 && Math.random() < 0.03 && word.length > 3) {
+            // Pause like realizing mistake
+            await new Promise(resolve => setTimeout(resolve, 100 + Math.random() * 200));
+            
+            // Backspace some characters
+            const backspaceCount = Math.min(word.length, 3 + Math.floor(Math.random() * 3));
+            displayText = await simulateCorrection(displayText, backspaceCount);
+            
+            // Small pause before retyping
+            await new Promise(resolve => setTimeout(resolve, 50 + Math.random() * 100));
+            
+            // Retype the end of the word
+            const retypeFrom = word.length - backspaceCount;
+            for (let i = retypeFrom; i < word.length; i++) {
+                displayText += word[i];
+                contentDiv.innerHTML = displayText + '<span class="typing-cursor">|</span>';
+                await new Promise(resolve => setTimeout(resolve, 18 + Math.random() * 12));
+            }
+        }
+        
+        // Add space after word (except last word)
+        if (nextWord) {
+            displayText += nextWord;
+            contentDiv.innerHTML = displayText + '<span class="typing-cursor">|</span>';
+            
+            // Natural pause after punctuation
+            if (/[.!?,;:]$/.test(word)) {
+                await new Promise(resolve => setTimeout(resolve, 100 + Math.random() * 150));
+            } else {
+                // Regular space pause
+                await new Promise(resolve => setTimeout(resolve, 20 + Math.random() * 30));
+            }
+        }
+        
+        // Occasional longer thinking pause mid-sentence (5% chance)
+        if (wordIndex > 2 && wordIndex < words.length - 2 && Math.random() < 0.05) {
+            await new Promise(resolve => setTimeout(resolve, 300 + Math.random() * 500));
+        }
     }
     
     // Remove cursor when done
-    contentDiv.innerHTML = fullText;
+    contentDiv.innerHTML = content; // Use original content (no typos left)
     
     // Save after typing complete
     saveChatHistory();
