@@ -307,8 +307,8 @@ function startStatusUpdates(messageId) {
 async function typeMessage(content, messageDiv, contentDiv) {
     // Calculate typing speed based on content
     const words = content.split(' ').length;
-    const baseSpeed = 30; // Base milliseconds per character
-    const variability = 15; // Random variation in speed
+    const baseSpeed = 20; // Base milliseconds per character (faster for better reading flow)
+    const variability = 10; // Random variation in speed (reduced to match faster base)
     
     // Split content into chunks for more natural typing
     const sentences = content.match(/[^.!?]+[.!?]+/g) || [content];
@@ -323,14 +323,14 @@ async function typeMessage(content, messageDiv, contentDiv) {
             // Natural typing rhythm
             let delay = baseSpeed + Math.random() * variability;
             
-            // Longer pauses for punctuation
+            // Longer pauses for punctuation (reduced for faster flow)
             if ('.!?,;:'.includes(sentence[i])) {
-                delay += 100 + Math.random() * 200;
+                delay += 80 + Math.random() * 120;
             }
             
-            // Occasional "thinking" pauses
-            if (Math.random() < 0.02) {
-                delay += 200 + Math.random() * 300;
+            // Occasional "thinking" pauses (reduced frequency and duration)
+            if (Math.random() < 0.015) {
+                delay += 100 + Math.random() * 200;
             }
             
             await new Promise(resolve => setTimeout(resolve, delay));
@@ -339,8 +339,8 @@ async function typeMessage(content, messageDiv, contentDiv) {
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
         
-        // Pause between sentences
-        await new Promise(resolve => setTimeout(resolve, 100 + Math.random() * 200));
+        // Pause between sentences (reduced for better flow)
+        await new Promise(resolve => setTimeout(resolve, 50 + Math.random() * 100));
     }
     
     // Remove cursor when done
