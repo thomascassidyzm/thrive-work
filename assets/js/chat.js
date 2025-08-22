@@ -308,7 +308,7 @@ async function typeMessage(content, messageDiv, contentDiv) {
     let displayText = '';
     const words = content.split(' ');
     
-    // Break content into thought chunks (phrase-based bursts)
+    // Break content into thought chunks (conversational speech patterns)
     const getThoughtChunks = (words) => {
         const chunks = [];
         let currentChunk = [];
@@ -316,11 +316,11 @@ async function typeMessage(content, messageDiv, contentDiv) {
         for (let i = 0; i < words.length; i++) {
             currentChunk.push(words[i]);
             
-            // End chunk at natural breaks
+            // End chunk at natural speech breaks (longer phrases, less frequent pauses)
             const word = words[i];
-            const isNaturalBreak = /[.!?,;:]$/.test(word) || 
-                                   (currentChunk.length >= 3 && Math.random() < 0.3) ||
-                                   currentChunk.length >= 8;
+            const isNaturalBreak = /[.!?]$/.test(word) || // Only major punctuation
+                                   (currentChunk.length >= 8 && Math.random() < 0.25) || // Less frequent random breaks
+                                   currentChunk.length >= 15; // Longer chunks before forced break
             
             if (isNaturalBreak || i === words.length - 1) {
                 chunks.push(currentChunk.join(' '));
@@ -348,35 +348,35 @@ async function typeMessage(content, messageDiv, contentDiv) {
         const chunk = chunks[chunkIndex];
         const isLastChunk = chunkIndex === chunks.length - 1;
         
-        // Thinking pause before burst (longer but less frequent)
+        // Natural speech pauses (less frequent, but more substantial when they occur)
         if (chunkIndex > 0) {
-            const pauseDuration = Math.random() < 0.6 ? 
-                400 + Math.random() * 800 :  // 60% chance: longer thinking pause
-                100 + Math.random() * 200;   // 40% chance: shorter pause
+            const pauseDuration = Math.random() < 0.4 ? 
+                800 + Math.random() * 1200 :  // 40% chance: thinking pause (0.8-2s)
+                200 + Math.random() * 400;    // 60% chance: breath pause (0.2-0.6s)
                 
             await new Promise(resolve => setTimeout(resolve, pauseDuration));
         }
         
-        // Type the entire chunk in a burst (voice-to-text speed)
+        // Type the entire chunk at conversational speech pace
         for (let charIndex = 0; charIndex < chunk.length; charIndex++) {
             displayText += chunk[charIndex];
             
-            // Fast, consistent burst typing (like voice dictation)
-            let delay = 12 + Math.random() * 8; // Very fast base (12-20ms)
+            // Conversational speaking pace (faster than typing, slower than reading)
+            let delay = 25 + Math.random() * 15; // Speaking pace base (25-40ms)
             
-            // Slight variations for realism but keep it bursty
+            // Natural speech variations
             if (chunk[charIndex] === ' ') {
-                delay = 15 + Math.random() * 10; // Spaces slightly slower
+                delay = 35 + Math.random() * 15; // Word boundaries slower
             } else if (/[aeiou]/i.test(chunk[charIndex])) {
-                delay = 10 + Math.random() * 6; // Vowels slightly faster
+                delay = 20 + Math.random() * 10; // Vowels flow faster
             } else if (/[.!?,;:]/.test(chunk[charIndex])) {
-                delay = 20 + Math.random() * 15; // Punctuation slightly more careful
+                delay = 50 + Math.random() * 25; // Punctuation with emphasis
             }
             
             contentDiv.innerHTML = displayText + '<span class="typing-cursor">|</span>';
             await new Promise(resolve => setTimeout(resolve, delay));
             
-            // Auto-scroll during burst
+            // Auto-scroll during typing
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
         
