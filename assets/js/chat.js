@@ -361,16 +361,16 @@ async function typeMessage(content, messageDiv, contentDiv) {
         for (let charIndex = 0; charIndex < chunk.length; charIndex++) {
             displayText += chunk[charIndex];
             
-            // Conversational speaking pace (faster than typing, slower than reading)
-            let delay = 25 + Math.random() * 15; // Speaking pace base (25-40ms)
+            // Fast speech/reading pace (optimized for reading speed)
+            let delay = 15 + Math.random() * 10; // Fast speech base (15-25ms)
             
-            // Natural speech variations
+            // Minimal variations for speed while keeping natural feel
             if (chunk[charIndex] === ' ') {
-                delay = 35 + Math.random() * 15; // Word boundaries slower
+                delay = 20 + Math.random() * 10; // Word boundaries slightly slower
             } else if (/[aeiou]/i.test(chunk[charIndex])) {
-                delay = 20 + Math.random() * 10; // Vowels flow faster
+                delay = 12 + Math.random() * 8; // Vowels flow fastest
             } else if (/[.!?,;:]/.test(chunk[charIndex])) {
-                delay = 50 + Math.random() * 25; // Punctuation with emphasis
+                delay = 30 + Math.random() * 15; // Punctuation with brief emphasis
             }
             
             contentDiv.innerHTML = displayText + '<span class="typing-cursor">|</span>';
