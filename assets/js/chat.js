@@ -101,6 +101,109 @@ const sendButton = document.getElementById('send-button');
 const quickQuestions = document.querySelectorAll('.quick-question');
 const coachCards = document.querySelectorAll('.coach-card');
 
+// ================================
+// Analytics Tracking (Enterprise Insights)
+// ================================
+
+let analyticsState = {
+    sessionStartTime: null,
+    messageCount: 0,
+    lastMessageTime: null,
+    sessionId: null,
+    topicIndicators: new Set()
+};
+
+async function logAnalyticsEvent(eventType, additionalData = {}) {
+    try {
+        const now = Date.now();
+        const sessionDuration = analyticsState.sessionStartTime ? now - analyticsState.sessionStartTime : null;
+        
+        const eventData = {
+            event_type: eventType,
+            coach: selectedCoach,
+            message_count: analyticsState.messageCount,
+            session_duration_ms: sessionDuration,
+            topic_indicators: Array.from(analyticsState.topicIndicators),
+            device_info: {
+                mobile: /iPhone|iPad|iPod|Android/i.test(navigator.userAgent),
+                browser: navigator.userAgent.split(' ').pop().split('/')[0]
+            },
+            ...additionalData
+        };
+        
+        const response = await fetch('/api/analytics', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(eventData)
+        });
+        
+        if (response.ok) {
+            const result = await response.json();
+            if (!analyticsState.sessionId) {
+                analyticsState.sessionId = result.session_id;
+            }
+        }
+    } catch (error) {
+        // Silently fail - don't break chat experience
+        console.log('Analytics logging failed (non-critical):', error.message);
+    }
+}
+
+function extractTopicIndicators(message) {
+    // Extract non-personal topic indicators for enterprise insights
+    const workTopics = [
+        'stress', 'burnout', 'workload', 'deadlines', 'pressure',
+        'team', 'colleague', 'manager', 'leadership', 'meeting',
+        'communication', 'conflict', 'feedback', 'performance',
+        'career', 'promotion', 'change', 'uncertainty', 'goals',
+        'balance', 'time', 'priority', 'focus', 'productivity',
+        'anxiety', 'overwhelmed', 'stuck', 'frustrated', 'confused'
+    ];
+    
+    const lowerMessage = message.toLowerCase();
+    workTopics.forEach(topic => {
+        if (lowerMessage.includes(topic)) {
+            analyticsState.topicIndicators.add(topic);
+        }
+    });
+}
+
+function startAnalyticsSession() {
+    if (!analyticsState.sessionStartTime) {
+        analyticsState.sessionStartTime = Date.now();
+        logAnalyticsEvent('session_start');
+    }
+}
+
+function trackMessageSent(message) {
+    analyticsState.messageCount++;
+    analyticsState.lastMessageTime = Date.now();
+    extractTopicIndicators(message);
+    logAnalyticsEvent('message_sent');
+}
+
+function trackMessageReceived(responseTime = null) {
+    const additionalData = responseTime ? { response_time_ms: responseTime } : {};
+    logAnalyticsEvent('message_received', additionalData);
+}
+
+function endAnalyticsSession() {
+    logAnalyticsEvent('session_end');
+}
+
+// Track page abandonment
+window.addEventListener('beforeunload', () => {
+    if (analyticsState.sessionStartTime) {
+        navigator.sendBeacon('/api/analytics', JSON.stringify({
+            event_type: 'session_abandoned',
+            coach: selectedCoach,
+            message_count: analyticsState.messageCount,
+            session_duration_ms: Date.now() - analyticsState.sessionStartTime,
+            topic_indicators: Array.from(analyticsState.topicIndicators)
+        }));
+    }
+});
+
 // Coach-specific thinking patterns
 const coachThinkingPatterns = {
     tom: [
@@ -534,6 +637,10 @@ function addMessage(role, content, useTypingAnimation = false) {
 async function sendMessage(message, assessmentContext = null) {
     if (!message.trim()) return;
     
+    // Start analytics tracking for enterprise insights
+    startAnalyticsSession();
+    trackMessageSent(message);
+    
     // Use stored assessment data if available and not explicitly passed
     if (!assessmentContext && window.currentAssessmentData) {
         assessmentContext = window.currentAssessmentData;
@@ -609,6 +716,7 @@ async function sendMessage(message, assessmentContext = null) {
     
     try {
         console.log('Calling Tom Cassidy coaching API...');
+        const requestStartTime = Date.now();
         
         // Call our Tom Cassidy coaching API
         // Get conversation history from chat messages
@@ -656,6 +764,11 @@ async function sendMessage(message, assessmentContext = null) {
         if (data.content && data.content[0]) {
             // Show which coaching method was used
             console.log('Coaching response from:', data.source);
+            
+            // Track response received with timing for enterprise metrics
+            const responseTime = Date.now() - requestStartTime;
+            trackMessageReceived(responseTime);
+            
             addMessage('assistant', data.content[0].text, true); // Enable typing animation
         } else {
             throw new Error('No response content');
@@ -672,6 +785,8 @@ async function sendMessage(message, assessmentContext = null) {
         // Tom Cassidy's specific coaching responses
         const response = getTomResponse(message);
         setTimeout(() => {
+            // Track fallback response (no timing data available)
+            trackMessageReceived();
             addMessage('assistant', response, true); // Enable typing animation for fallback too
         }, 500 + Math.random() * 1000);
     }
