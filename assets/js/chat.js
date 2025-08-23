@@ -348,11 +348,11 @@ async function typeMessage(content, messageDiv, contentDiv) {
         const chunk = chunks[chunkIndex];
         const isLastChunk = chunkIndex === chunks.length - 1;
         
-        // Natural speech pauses (less frequent, but more substantial when they occur)
+        // Shorter, less frequent pauses for smoother flow
         if (chunkIndex > 0) {
-            const pauseDuration = Math.random() < 0.4 ? 
-                800 + Math.random() * 1200 :  // 40% chance: thinking pause (0.8-2s)
-                200 + Math.random() * 400;    // 60% chance: breath pause (0.2-0.6s)
+            const pauseDuration = Math.random() < 0.3 ? 
+                400 + Math.random() * 600 :   // 30% chance: brief thinking pause (0.4-1s)
+                100 + Math.random() * 200;    // 70% chance: quick breath (0.1-0.3s)
                 
             await new Promise(resolve => setTimeout(resolve, pauseDuration));
         }
@@ -361,16 +361,16 @@ async function typeMessage(content, messageDiv, contentDiv) {
         for (let charIndex = 0; charIndex < chunk.length; charIndex++) {
             displayText += chunk[charIndex];
             
-            // Fast speech/reading pace (optimized for reading speed)
-            let delay = 15 + Math.random() * 10; // Fast speech base (15-25ms)
+            // Steady fast typing (less bursty, more consistent flow)
+            let delay = 10 + Math.random() * 5; // Faster base (10-15ms)
             
-            // Minimal variations for speed while keeping natural feel
+            // Minimal variations for smooth flow
             if (chunk[charIndex] === ' ') {
-                delay = 20 + Math.random() * 10; // Word boundaries slightly slower
+                delay = 12 + Math.random() * 6; // Spaces barely slower
             } else if (/[aeiou]/i.test(chunk[charIndex])) {
-                delay = 12 + Math.random() * 8; // Vowels flow fastest
+                delay = 8 + Math.random() * 4; // Vowels fastest
             } else if (/[.!?,;:]/.test(chunk[charIndex])) {
-                delay = 30 + Math.random() * 15; // Punctuation with brief emphasis
+                delay = 18 + Math.random() * 10; // Brief punctuation pause
             }
             
             contentDiv.innerHTML = displayText + '<span class="typing-cursor">|</span>';
