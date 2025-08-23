@@ -399,9 +399,9 @@ async function typeMessage(content, messageDiv, contentDiv) {
             }
         }
         
-        // Add space between chunks with natural typing delay
-        if (!isLastChunk && !/[\s.!?,;:]$/.test(chunk)) {
-            await new Promise(resolve => setTimeout(resolve, 20)); // Brief pause before space
+        // Add space between chunks with natural typing delay (always add space between chunks)
+        if (!isLastChunk && !displayText.endsWith(' ')) {
+            await new Promise(resolve => setTimeout(resolve, 15)); // Brief pause before space
             displayText += ' ';
             contentDiv.innerHTML = displayText + '<span class="typing-cursor">|</span>';
         }
