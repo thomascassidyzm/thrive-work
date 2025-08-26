@@ -223,90 +223,63 @@
                 </p>
             </div>
 
-            <div class="dimension-cards-grid">
-                <!-- TIME Dimension -->
-                <div class="dimension-card" onclick="startDimension('time')">
-                    <div class="dimension-letter">T</div>
-                    <h3 class="dimension-name">TIME</h3>
+            <!-- Mind/Body/Spirit Assessment Overview -->
+            <div class="dimension-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+                <!-- Mind Assessment -->
+                <div class="dimension-card">
+                    <div class="dimension-letter" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">🧠</div>
+                    <h3 class="dimension-name">MIND</h3>
                     <p class="dimension-description">
-                        Rhythm, balance, and boundaries. How you manage time pressures and work-life integration.
+                        Mental clarity, stress levels, cognitive function, and emotional resilience.
                     </p>
-                    <div class="dimension-questions">10 questions</div>
-                    <div class="dimension-status">
-                        <span class="status-icon" id="status-time">⭕</span>
-                        <span id="status-text-time">Not started</span>
-                    </div>
+                    <ul style="list-style: none; padding: 0; margin-top: 1rem; color: var(--text-medium); font-size: 0.9rem;">
+                        <li>• Stress & anxiety patterns</li>
+                        <li>• Focus & concentration</li>
+                        <li>• Emotional regulation</li>
+                        <li>• Thought patterns</li>
+                    </ul>
                 </div>
 
-                <!-- HEALTH Dimension -->
-                <div class="dimension-card" onclick="startDimension('health')">
-                    <div class="dimension-letter">H</div>
-                    <h3 class="dimension-name">HEALTH</h3>
+                <!-- Body Assessment -->
+                <div class="dimension-card">
+                    <div class="dimension-letter" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">💪</div>
+                    <h3 class="dimension-name">BODY</h3>
                     <p class="dimension-description">
-                        Physical and mental resilience. Energy levels, stress management, and sustainable practices.
+                        Physical health, energy levels, sleep quality, and lifestyle habits.
                     </p>
-                    <div class="dimension-questions">10 questions</div>
-                    <div class="dimension-status">
-                        <span class="status-icon" id="status-health">⭕</span>
-                        <span id="status-text-health">Not started</span>
-                    </div>
+                    <ul style="list-style: none; padding: 0; margin-top: 1rem; color: var(--text-medium); font-size: 0.9rem;">
+                        <li>• Sleep & recovery</li>
+                        <li>• Energy & vitality</li>
+                        <li>• Diet & nutrition</li>
+                        <li>• Physical activity</li>
+                    </ul>
                 </div>
 
-                <!-- RELATIONSHIPS Dimension -->
-                <div class="dimension-card" onclick="startDimension('relationships')">
-                    <div class="dimension-letter">R</div>
-                    <h3 class="dimension-name">RELATIONSHIPS</h3>
+                <!-- Spirit Assessment -->
+                <div class="dimension-card">
+                    <div class="dimension-letter" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">✨</div>
+                    <h3 class="dimension-name">SPIRIT</h3>
                     <p class="dimension-description">
-                        Connection and communication. Team dynamics, conflict resolution, and social support.
+                        Purpose, meaning, relationships, and overall life satisfaction.
                     </p>
-                    <div class="dimension-questions">10 questions</div>
-                    <div class="dimension-status">
-                        <span class="status-icon" id="status-relationships">⭕</span>
-                        <span id="status-text-relationships">Not started</span>
-                    </div>
+                    <ul style="list-style: none; padding: 0; margin-top: 1rem; color: var(--text-medium); font-size: 0.9rem;">
+                        <li>• Life purpose & meaning</li>
+                        <li>• Work-life balance</li>
+                        <li>• Relationships & connection</li>
+                        <li>• Personal growth</li>
+                    </ul>
                 </div>
-
-                <!-- IDENTITY Dimension -->
-                <div class="dimension-card" onclick="startDimension('identity')">
-                    <div class="dimension-letter">I</div>
-                    <h3 class="dimension-name">IDENTITY</h3>
-                    <p class="dimension-description">
-                        Purpose and values alignment. Role clarity, meaning, and authentic expression.
-                    </p>
-                    <div class="dimension-questions">10 questions</div>
-                    <div class="dimension-status">
-                        <span class="status-icon" id="status-identity">⭕</span>
-                        <span id="status-text-identity">Not started</span>
-                    </div>
-                </div>
-
-                <!-- VITALITY Dimension -->
-                <div class="dimension-card" onclick="startDimension('vitality')">
-                    <div class="dimension-letter">V</div>
-                    <h3 class="dimension-name">VITALITY</h3>
-                    <p class="dimension-description">
-                        Energy and motivation. Engagement levels, burnout risk, and sustainable performance.
-                    </p>
-                    <div class="dimension-questions">10 questions</div>
-                    <div class="dimension-status">
-                        <span class="status-icon" id="status-vitality">⭕</span>
-                        <span id="status-text-vitality">Not started</span>
-                    </div>
-                </div>
-
-                <!-- ENVIRONMENT Dimension -->
-                <div class="dimension-card" onclick="startDimension('environment')">
-                    <div class="dimension-letter">E</div>
-                    <h3 class="dimension-name">ENVIRONMENT</h3>
-                    <p class="dimension-description">
-                        Context and culture. Physical workspace, psychological safety, and organizational climate.
-                    </p>
-                    <div class="dimension-questions">10 questions</div>
-                    <div class="dimension-status">
-                        <span class="status-icon" id="status-environment">⭕</span>
-                        <span id="status-text-environment">Not started</span>
-                    </div>
-                </div>
+            </div>
+            
+            <!-- Start Assessment CTA -->
+            <div style="text-align: center; margin-top: 3rem;">
+                <button onclick="startAssessment()" class="cta-button primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;">
+                    BEGIN ASSESSMENT
+                    <span class="button-arrow">→</span>
+                </button>
+                <p style="color: var(--text-medium); margin-top: 1rem;">
+                    60 questions • 10 minutes • Immediate results
+                </p>
             </div>
 
             <!-- Progress Overview -->
@@ -360,12 +333,12 @@
             }
         }
         
-        // Start a specific dimension
-        function startDimension(dimension) {
-            // Save the selected dimension
-            localStorage.setItem('currentDimension', dimension);
-            // Redirect to the game interface with the dimension parameter
-            window.location.href = `/game/?dimension=${dimension}`;
+        // Start the unified assessment
+        function startAssessment() {
+            // Save assessment started flag
+            localStorage.setItem('assessmentStarted', 'true');
+            // Redirect to the game interface for the unified assessment
+            window.location.href = `/game/?type=wellness`;
         }
         
         // Update progress on page load
