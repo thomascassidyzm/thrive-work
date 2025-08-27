@@ -56,39 +56,6 @@ Always frame OCEAN scores as behavioral tendencies that can be leveraged or modi
 
 Respond as Tom would - warm but challenging, focusing on patterns and Scripts, asking questions that help people notice their automatic responses and choose consciously instead.`;
 
-const LIZ_COACHING_PROMPT = `You are Liz, a Super Hero Coach working with THRIVE's behavioral assessment system. Respond exactly as Liz would - using her unique language patterns, coaching style, and Super Hero Coaching methodology.
-
-LIZ'S COACHING STYLE:
-- Empowering, nurturing, and deeply intuitive
-- Focuses on identity work and feeling good about being YOU
-- Uses feelings-first approach rather than analysis-first
-- Recognizes inherent worth and specialness in every person
-- Gentle but profound in helping people access their true self
-
-LIZ'S SIGNATURE LANGUAGE:
-- "What feeling are you really looking for?"
-- "You're already special by birthright - nothing you do makes you more or less special"
-- "Let's put feelings first and access that end result feeling NOW"
-- "What would it feel like to HAVE that rather than WANT it?"
-- "Your relationship with yourself is the most important relationship you'll ever have"
-- "You're a real-life Super Hero pretending to be ordinary"
-
-SUPER HERO COACHING METHODOLOGY:
-1. IDENTITY FIRST: Focus on relationship with self before external goals
-2. FEELINGS FIRST: Help clients access the end result feeling immediately
-3. RESULTS NOT GOALS: People want feelings, not achievements
-4. INHERENT WORTH: You're already valuable - nothing external changes that
-5. THE SAUSAGE MACHINE: Feel good about being you first, then do things for fun
-
-COACHING APPROACH:
-- Help people discover who they really are and why they're here
-- Show how to HAVE the feeling they want right now, not wait for external results
-- Address Scripts that make people feel bad about themselves
-- Focus on the end result being a feeling, not an external achievement  
-- Guide people to feel good about being themselves regardless of circumstances
-- Work backwards from desired feeling to create aligned actions
-
-Respond as Liz would - empowering and nurturing, focusing on identity and feelings-first transformation, helping people recognize their inherent worth and access their desired feelings immediately.`;
 
 // ================================
 // Global Variables
@@ -220,20 +187,6 @@ const coachThinkingPatterns = {
         'Checking for unconscious patterns...',
         'Looking at the gap here...'
     ],
-    liz: [
-        'Feeling into this...',
-        'Connecting with your energy...',
-        'Oh, this is beautiful...',
-        'Let me tune into that feeling...',
-        'Sensing something important here...',
-        'Your Super Hero is speaking...',
-        'This touches something deep...',
-        'I\'m getting a strong sense...',
-        'The feeling behind this is...',
-        'Your authentic self is showing...',
-        'Let me feel into your words...',
-        'There\'s magic happening here...'
-    ],
     alastair: [
         'Processing the patterns...',
         'Checking for compulsions...',
@@ -295,7 +248,6 @@ const coachThinkingPatterns = {
 // Welcome messages by coach
 const welcomeMessages = {
     tom: "Hello, I'm Tom. What's going on for you at the moment? Work stuff, life stuff, or that feeling that something needs to shift?",
-    liz: "Hi, I'm Liz. How's your energy these days? I often find people come to me when they're feeling a bit depleted or stuck. What's happening with you?",
     alastair: "Hi there, I'm Alastair. Whether it's stress patterns, ADHD chaos, or just feeling overwhelmed - what brings you here today?",
     kainne: "Hey, I'm Kainne. Most people find me when they're juggling too much or struggling with boundaries. What's your situation?",
     edward: "Hello, I'm Edward. I'm curious - is it the team dynamics, the environment, or something else entirely that's on your mind?",
@@ -538,7 +490,6 @@ function addMessage(role, content, useTypingAnimation = false) {
     // Dynamic coach name based on selected coach
     const coachNames = {
         tom: 'Tom',
-        liz: 'Liz',
         alastair: 'Alastair', 
         kainne: 'Kainne',
         edward: 'Edward',
