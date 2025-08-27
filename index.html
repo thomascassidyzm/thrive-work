@@ -18,8 +18,222 @@
     <!-- animations-minimal.css must be last to override all animations -->
     <link rel="stylesheet" href="assets/css/animations-minimal.css">
     
-    <!-- Mobile Responsive Fixes -->
+    <!-- Theme System & Mobile Responsive Fixes -->
     <style>
+        /* Theme Variables */
+        :root[data-theme="dark"] {
+            /* Keep existing dark theme variables as default */
+        }
+        
+        :root[data-theme="light"] {
+            /* Light theme colors */
+            --primary-yellow: #D4A500;
+            --primary-yellow-bright: #FFD700;
+            --primary-yellow-dim: #B8860B;
+            
+            /* Light backgrounds */
+            --bg-black: #FFFFFF;
+            --bg-deep-blue: #F8F9FA;
+            --bg-dark-blue: #E9ECEF;
+            --bg-slate: #DEE2E6;
+            --bg-navy: #CED4DA;
+            
+            /* Legacy mapping */
+            --bg-dark: #F8F9FA;
+            --bg-medium: #E9ECEF;
+            --bg-light: #DEE2E6;
+            
+            /* Glass effects for light mode */
+            --glass-white: rgba(0, 0, 0, 0.03);
+            --glass-white-light: rgba(0, 0, 0, 0.02);
+            --glass-white-medium: rgba(0, 0, 0, 0.05);
+            --glass-white-strong: rgba(0, 0, 0, 0.08);
+            --glass-yellow: rgba(212, 165, 0, 0.1);
+            
+            /* Text colors for light mode */
+            --text-white: #212529;
+            --text-light: #343A40;
+            --text-medium: #495057;
+            --text-dim: #6C757D;
+            --text-dark: #ADB5BD;
+            
+            /* Light mode specific */
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --card-border: rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: var(--primary-yellow);
+            border: none;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--bg-deep-blue);
+        }
+        
+        /* Light mode specific styles */
+        [data-theme="light"] body {
+            background: var(--bg-deep-blue);
+            color: var(--text-light);
+        }
+        
+        [data-theme="light"] .hero {
+            background: 
+                /* Gradient overlay for readability */
+                linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(248, 249, 250, 0.92) 100%),
+                /* Abstract pattern - can be replaced with actual image */
+                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+                /* Base color */
+                #FAFAFA !important;
+            position: relative;
+        }
+        
+        /* Placeholder for background image - ready for real images */
+        [data-theme="light"] .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Uncomment and add image URL when ready:
+            background-image: url('/assets/images/people-collaboration.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            */
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 215, 0, 0.01),
+                rgba(255, 215, 0, 0.01) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+            z-index: 0;
+        }
+        
+        [data-theme="light"] .hero-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        [data-theme="light"] .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        [data-theme="light"] .nav-link {
+            color: var(--text-medium) !important;
+        }
+        
+        [data-theme="light"] .nav-link:hover {
+            color: var(--primary-yellow) !important;
+        }
+        
+        [data-theme="light"] #value {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%) !important;
+        }
+        
+        [data-theme="light"] #value > div > div > div > div {
+            background: white !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+            border: 1px solid rgba(0, 0, 0, 0.06) !important;
+        }
+        
+        [data-theme="light"] .partner-card {
+            background: white !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+        }
+        
+        [data-theme="light"] .cta-button.primary {
+            background: var(--primary-yellow);
+            color: var(--text-light);
+        }
+        
+        [data-theme="light"] .footer {
+            background: var(--bg-slate);
+            color: var(--text-medium);
+        }
+        
+        /* Light mode section improvements */
+        [data-theme="light"] #ecosystem {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.98) 0%, rgba(255, 255, 255, 0.98) 100%) !important;
+        }
+        
+        [data-theme="light"] #insights {
+            background: white !important;
+        }
+        
+        [data-theme="light"] .section-title,
+        [data-theme="light"] h2 {
+            color: var(--text-light) !important;
+        }
+        
+        [data-theme="light"] .highlight {
+            color: var(--primary-yellow) !important;
+            background: linear-gradient(120deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+            padding: 0 0.5rem;
+            border-radius: 4px;
+        }
+        
+        /* Better contrast for light mode cards */
+        [data-theme="light"] .dimension-card,
+        [data-theme="light"] .domain-card {
+            background: white !important;
+            border: 1px solid rgba(0, 0, 0, 0.08) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+        }
+        
+        [data-theme="light"] .cta-section {
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFFEF7 100%) !important;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Info message for theme selection */
+        .theme-info {
+            position: fixed;
+            top: 80px;
+            right: 30px;
+            background: var(--primary-yellow);
+            color: var(--bg-deep-blue);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 999;
+        }
+        
+        .theme-info.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
         /* Mobile hero fixes */
         @media (max-width: 768px) {
             .hero {
@@ -97,6 +311,20 @@
     </style>
 </head>
 <body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="theme-icon-light" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 18a6 6 0 110-12 6 6 0 010 12zm0-2a4 4 0 100-8 4 4 0 000 8zM11 1h2v6h-2V1zm0 16h2v6h-2v-6zM3.515 4.929l1.414-1.414L9.5 8.086 8.086 9.5 3.515 4.929v0zM16.5 8.086l4.571-4.571 1.414 1.414L17.914 9.5 16.5 8.086zM23 11v2h-6v-2h6zM7 11v2H1v-2h6zm14.485 7.071l-1.414 1.414-4.571-4.571 1.414-1.414 4.571 4.571v0zM8.086 14.5l-4.571 4.571-1.414-1.414L6.672 13.086 8.086 14.5v0z"/>
+        </svg>
+        <svg class="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+        </svg>
+    </button>
+    
+    <!-- Theme Info Notification -->
+    <div class="theme-info" id="themeInfo">
+        <span id="themeMessage">Light mode activated</span>
+    </div>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -533,5 +761,51 @@
     </nav>
 
     <script src="assets/js/main.js"></script>
+    
+    <!-- Theme Toggle Script -->
+    <script>
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+        
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+            showThemeNotification(newTheme);
+        }
+        
+        function showThemeNotification(theme) {
+            const themeInfo = document.getElementById('themeInfo');
+            const themeMessage = document.getElementById('themeMessage');
+            
+            themeMessage.textContent = theme === 'light' 
+                ? 'Light mode - Corporate presentation style' 
+                : 'Dark mode - Premium experience';
+            
+            themeInfo.classList.add('show');
+            
+            setTimeout(() => {
+                themeInfo.classList.remove('show');
+            }, 3000);
+        }
+        
+        function updateThemeIcon(theme) {
+            const lightIcon = document.querySelector('.theme-icon-light');
+            const darkIcon = document.querySelector('.theme-icon-dark');
+            
+            if (theme === 'light') {
+                lightIcon.style.display = 'none';
+                darkIcon.style.display = 'block';
+            } else {
+                lightIcon.style.display = 'block';
+                darkIcon.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
