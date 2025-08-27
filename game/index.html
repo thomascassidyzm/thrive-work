@@ -484,6 +484,18 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(255, 255, 0, 0.3);
         }
+        
+        /* Entry button hover effects */
+        .entry-button:hover {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05)) !important;
+            border-color: var(--primary-yellow) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2);
+        }
+        
+        .entry-button:active {
+            transform: translateY(0);
+        }
 
         @media (max-width: 768px) {
             .container {
@@ -518,6 +530,11 @@
                 top: 1rem;
                 left: 1rem;
             }
+            
+            /* Entry points responsive layout */
+            .entry-points {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
         }
     </style>
 </head>
@@ -529,15 +546,72 @@
         <div class="game-container">
             <!-- Welcome Screen -->
             <div id="welcome-screen">
-                <div class="logo">THRIVE</div>
-                <div class="subtitle" id="dimension-title">Workplace Wellbeing Assessment</div>
-                <div class="description" id="dimension-description">
-                    This assessment helps identify patterns in your workplace wellbeing across multiple dimensions.
+                <div class="logo">Mind-Body Diagnostic</div>
+                <div class="subtitle" id="dimension-title">Let's Start With What Matters Most to You</div>
+                <div class="description" id="dimension-description" style="margin-bottom: 2rem;">
+                    Choose what's been on your mind lately. We'll start there and build a complete picture of your wellbeing.
                 </div>
-                <div class="description" id="dimension-focus">
-                    <span class="highlight">10 questions. Personalized insights. Evidence-based recommendations.</span>
+                
+                <!-- Entry Points Grid -->
+                <div class="entry-points" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                    <button class="entry-button" onclick="startWithConcern('sleep')" style="padding: 1.2rem; background: var(--glass-white); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 15px; cursor: pointer; transition: all 0.3s;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">😴</div>
+                        <div style="font-weight: bold; color: var(--text-white);">Sleep Issues</div>
+                        <small style="color: var(--text-medium);">Quality & rest</small>
+                    </button>
+                    
+                    <button class="entry-button" onclick="startWithConcern('energy')" style="padding: 1.2rem; background: var(--glass-white); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 15px; cursor: pointer; transition: all 0.3s;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚡</div>
+                        <div style="font-weight: bold; color: var(--text-white);">Low Energy</div>
+                        <small style="color: var(--text-medium);">Fatigue & vitality</small>
+                    </button>
+                    
+                    <button class="entry-button" onclick="startWithConcern('stress')" style="padding: 1.2rem; background: var(--glass-white); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 15px; cursor: pointer; transition: all 0.3s;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌪️</div>
+                        <div style="font-weight: bold; color: var(--text-white);">Stress</div>
+                        <small style="color: var(--text-medium);">Overwhelm & pressure</small>
+                    </button>
+                    
+                    <button class="entry-button" onclick="startWithConcern('anxiety')" style="padding: 1.2rem; background: var(--glass-white); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 15px; cursor: pointer; transition: all 0.3s;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">😰</div>
+                        <div style="font-weight: bold; color: var(--text-white);">Anxiety</div>
+                        <small style="color: var(--text-medium);">Worry & tension</small>
+                    </button>
+                    
+                    <button class="entry-button" onclick="startWithConcern('mood')" style="padding: 1.2rem; background: var(--glass-white); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 15px; cursor: pointer; transition: all 0.3s;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">💙</div>
+                        <div style="font-weight: bold; color: var(--text-white);">Low Mood</div>
+                        <small style="color: var(--text-medium);">Depression signs</small>
+                    </button>
+                    
+                    <button class="entry-button" onclick="startWithConcern('focus')" style="padding: 1.2rem; background: var(--glass-white); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 15px; cursor: pointer; transition: all 0.3s;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
+                        <div style="font-weight: bold; color: var(--text-white);">Focus</div>
+                        <small style="color: var(--text-medium);">Concentration</small>
+                    </button>
+                    
+                    <button class="entry-button" onclick="startWithConcern('relationships')" style="padding: 1.2rem; background: var(--glass-white); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 15px; cursor: pointer; transition: all 0.3s;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">👥</div>
+                        <div style="font-weight: bold; color: var(--text-white);">Relationships</div>
+                        <small style="color: var(--text-medium);">Work & personal</small>
+                    </button>
+                    
+                    <button class="entry-button" onclick="startWithConcern('balance')" style="padding: 1.2rem; background: var(--glass-white); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 15px; cursor: pointer; transition: all 0.3s;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚖️</div>
+                        <div style="font-weight: bold; color: var(--text-white);">Balance</div>
+                        <small style="color: var(--text-medium);">Work-life</small>
+                    </button>
                 </div>
-                <button class="start-button" onclick="startGame()">BEGIN ASSESSMENT</button>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="start-button" onclick="startWithConcern('general')" style="background: transparent; border: 1px solid var(--primary-yellow); color: var(--primary-yellow); padding: 0.8rem 2rem;">
+                        Or Start With General Assessment →
+                    </button>
+                </div>
+                
+                <div class="description" id="dimension-focus" style="margin-top: 2rem;">
+                    <span class="highlight">60 questions total • Adaptive path • Immediate insights</span>
+                </div>
             </div>
 
             <!-- Question Screen -->
@@ -692,6 +766,103 @@
 
     <!-- Load THRIVE Assessment Logic -->
     <script src="thrive-assessment-logic.js"></script>
+    
+    <!-- Concern-based adaptive path logic -->
+    <script>
+        // Store the user's concern to adapt the question flow
+        let userConcern = null;
+        
+        // Define question paths for each concern
+        const concernPaths = {
+            sleep: {
+                name: "Sleep & Rest",
+                startQuestions: ['sleep_quality', 'sleep_duration', 'sleep_consistency', 'wake_refreshed', 'nighttime_worry'],
+                relatedAreas: ['energy', 'stress', 'anxiety', 'physical'],
+                priority: 'body'
+            },
+            energy: {
+                name: "Energy & Vitality",  
+                startQuestions: ['energy_morning', 'energy_afternoon', 'energy_consistency', 'fatigue_level', 'motivation'],
+                relatedAreas: ['sleep', 'diet', 'exercise', 'mood'],
+                priority: 'body'
+            },
+            stress: {
+                name: "Stress & Overwhelm",
+                startQuestions: ['stress_level', 'workload', 'deadlines', 'pressure_handling', 'recovery_time'],
+                relatedAreas: ['anxiety', 'sleep', 'relationships', 'balance'],
+                priority: 'mind'
+            },
+            anxiety: {
+                name: "Anxiety & Worry",
+                startQuestions: ['worry_frequency', 'future_concerns', 'physical_tension', 'panic_symptoms', 'avoidance'],
+                relatedAreas: ['stress', 'sleep', 'focus', 'relationships'],
+                priority: 'mind'
+            },
+            mood: {
+                name: "Mood & Depression",
+                startQuestions: ['mood_stability', 'enjoyment', 'hopelessness', 'isolation', 'motivation_loss'],
+                relatedAreas: ['energy', 'sleep', 'relationships', 'purpose'],
+                priority: 'mind'
+            },
+            focus: {
+                name: "Focus & Concentration",
+                startQuestions: ['attention_span', 'distractibility', 'memory', 'decision_making', 'mental_clarity'],
+                relatedAreas: ['sleep', 'stress', 'energy', 'anxiety'],
+                priority: 'mind'
+            },
+            relationships: {
+                name: "Relationships",
+                startQuestions: ['team_dynamics', 'conflict_handling', 'support_system', 'communication', 'boundaries'],
+                relatedAreas: ['stress', 'mood', 'balance', 'identity'],
+                priority: 'integration'
+            },
+            balance: {
+                name: "Work-Life Balance", 
+                startQuestions: ['work_hours', 'home_disconnect', 'personal_time', 'boundary_setting', 'life_satisfaction'],
+                relatedAreas: ['stress', 'relationships', 'energy', 'purpose'],
+                priority: 'integration'
+            },
+            general: {
+                name: "General Assessment",
+                startQuestions: ['overall_wellbeing', 'main_challenges', 'support_needs', 'change_readiness', 'goals'],
+                relatedAreas: ['stress', 'energy', 'mood', 'relationships'],
+                priority: 'comprehensive'
+            }
+        };
+        
+        function startWithConcern(concern) {
+            userConcern = concern;
+            localStorage.setItem('userConcern', concern);
+            
+            // Track entry point for analytics
+            localStorage.setItem('entryPoint', concern);
+            
+            // Update the welcome message to reflect their choice
+            const concernPath = concernPaths[concern];
+            if (concernPath) {
+                const subtitle = document.getElementById('dimension-title');
+                if (subtitle) {
+                    subtitle.textContent = `Starting with ${concernPath.name}`;
+                }
+            }
+            
+            // Start the assessment with adapted flow
+            startGame();
+        }
+        
+        // Override the startGame function to use concern-based flow
+        const originalStartGame = window.startGame || (() => {});
+        window.startGame = function() {
+            // If there's a concern, adapt the question order
+            if (userConcern && concernPaths[userConcern]) {
+                // This will be handled by the assessment logic
+                console.log('Starting assessment with concern:', userConcern);
+            }
+            
+            // Call original start game
+            originalStartGame();
+        };
+    </script>
     
     <script type="module">
         // Get dimension from URL parameters
