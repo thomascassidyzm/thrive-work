@@ -242,6 +242,20 @@ const coachThinkingPatterns = {
         'Measuring your commitment...',
         'Assessing your team dynamics...',
         'Calculating the success factors...'
+    ],
+    cindy: [
+        'Noticing the Script showing up...',
+        'Interesting what the Script is saying...',
+        'Let me look at this pattern...',
+        'The Script seems to be telling you...',
+        'This is classic Script territory...',
+        'I hear the Script in that...',
+        'Let\'s see what\'s underneath...',
+        'The Script is being quite loud here...',
+        'Ah, there\'s that familiar voice...',
+        'Let me reflect on what I\'m hearing...',
+        'This Script has been around a while...',
+        'Looking at what the Script wants...'
     ]
 };
 
@@ -251,7 +265,8 @@ const welcomeMessages = {
     alastair: "Hi there, I'm Alastair. Whether it's stress patterns, ADHD chaos, or just feeling overwhelmed - what brings you here today?",
     kainne: "Hey, I'm Kainne. Most people find me when they're juggling too much or struggling with boundaries. What's your situation?",
     edward: "Hello, I'm Edward. I'm curious - is it the team dynamics, the environment, or something else entirely that's on your mind?",
-    dom: "Alright, I'm Dom. Are you looking to level up your own game or sort out team dynamics? What's the challenge?"
+    dom: "Alright, I'm Dom. Are you looking to level up your own game or sort out team dynamics? What's the challenge?",
+    cindy: "Hi, I'm Cindy. I specialize in helping you recognize the Script - that critical inner voice that sounds like wisdom but isn't. What's the Script been telling you lately?"
 };
 
 // Fallback responses for API failures
@@ -493,7 +508,8 @@ function addMessage(role, content, useTypingAnimation = false) {
         alastair: 'Alastair', 
         kainne: 'Kainne',
         edward: 'Edward',
-        dom: 'Dom'
+        dom: 'Dom',
+        cindy: 'Cindy'
     };
     const coachName = role === 'user' ? 'You' : coachNames[selectedCoach] || 'Coach';
     
