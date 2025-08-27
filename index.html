@@ -17,6 +17,84 @@
     <link rel="stylesheet" href="assets/css/orbital-logo.css">
     <!-- animations-minimal.css must be last to override all animations -->
     <link rel="stylesheet" href="assets/css/animations-minimal.css">
+    
+    <!-- Mobile Responsive Fixes -->
+    <style>
+        /* Mobile hero fixes */
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 100px !important; /* Add more top padding on mobile */
+            }
+            
+            .hero-container {
+                padding-top: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem !important;
+                line-height: 1.3 !important;
+                margin-top: 1rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem !important;
+            }
+            
+            .hero-description {
+                font-size: 0.95rem !important;
+                padding: 0 1rem;
+            }
+            
+            /* Stack Employer/Employee cards vertically on mobile */
+            #value .container > div:last-child {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            
+            #value h2 {
+                font-size: 1.8rem !important;
+            }
+            
+            #value h3 {
+                font-size: 1.4rem !important;
+            }
+            
+            #value h4 {
+                font-size: 1rem !important;
+            }
+            
+            #value ul li {
+                font-size: 0.85rem !important;
+            }
+            
+            #value > div {
+                padding: 2rem 1rem !important;
+            }
+            
+            /* Adjust padding for mobile */
+            #value .container > div > div {
+                padding: 1.5rem !important;
+            }
+            
+            /* Hide or shrink orbital logo on mobile */
+            .hero-visual {
+                display: none !important;
+            }
+            
+            .hero-content {
+                max-width: 100% !important;
+                text-align: center;
+            }
+        }
+        
+        /* Tablet fixes */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            #value .container > div:last-child {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -93,7 +171,7 @@
             <h2 style="text-align: center; color: var(--primary-yellow); margin-bottom: 1rem; font-size: 2.5rem;">One Assessment. Two Winners.</h2>
             <p style="text-align: center; color: var(--text-medium); margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">THRIVE creates value for employers through data and cost reduction, while giving employees genuine personal insights and access to professional support.</p>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto;" class="value-grid">
                 <!-- Employer Benefits -->
                 <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%); padding: 2.5rem; border-radius: 15px; border: 1px solid rgba(255, 215, 0, 0.2);">
                     <h3 style="color: var(--primary-yellow); margin-bottom: 1.5rem; font-size: 1.8rem;">For Employers</h3>
