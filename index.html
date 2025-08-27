@@ -33,6 +33,14 @@
             color: var(--primary-yellow);
             z-index: 10000;
         }
+        
+        /* Mobile responsive for win-win section */
+        @media (max-width: 768px) {
+            .value-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -69,20 +77,20 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    Employee <span class="highlight">Wellbeing Assessment</span><br>Tool
+                    Transform Employee Wellbeing<br>Into <span class="highlight">Business Value</span>
                 </h1>
                 <p class="hero-subtitle">
-                    Comprehensive questionnaires • Individual insights • Actionable recommendations
+                    Mind • Body alignment diagnostic for your workforce
                 </p>
                 <div class="hero-description">
-                    <p>THRIVE helps employees understand their wellbeing across 6 key dimensions. Our questionnaires identify stress, physical issues, mental health patterns, and personality characteristics (OCEAN analysis) to provide personalized recommendations.</p>
+                    <p><strong>Health and mental fitness absence costs are rising.</strong> Our diagnostic assessment evaluates mind-body alignment—identifying those who need support early and connecting them to the right resources through our partner ecosystem before issues escalate.</p>
                 </div>
                 <div class="hero-cta">
-                    <a href="assessment/" class="cta-button primary">
-                        START ASSESSMENT
+                    <a href="#value" class="cta-button primary">
+                        SEE THE VALUE
                         <span class="button-arrow">→</span>
                     </a>
-                    <p class="cta-subtext">Takes about 10 minutes • Immediate personal report</p>
+                    <p class="cta-subtext">One assessment creates value for employers and employees</p>
                 </div>
             </div>
             <div class="hero-visual">
@@ -107,80 +115,128 @@
         </div>
     </section>
 
-    <!-- What We Assess Section -->
-    <section class="social-proof">
+    <!-- Win-Win Value Proposition -->
+    <section id="value" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);">
         <div class="container">
-            <h2 style="text-align: center; color: var(--primary-yellow); margin-bottom: 2rem;">What We Assess</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 10px;">
-                    <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">Workplace Stress</h3>
-                    <p style="color: var(--text-light);">Work-life balance, time management, pressure levels, boundary setting</p>
+            <h2 style="text-align: center; color: var(--primary-yellow); margin-bottom: 1rem; font-size: 2.5rem;">One Assessment. Two Winners.</h2>
+            <p style="text-align: center; color: var(--text-medium); margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">Our diagnostic creates value for employers through data and cost reduction, while giving employees genuine personal insights and access to professional support.</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto;" class="value-grid">
+                <!-- Employer Benefits -->
+                <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%); padding: 2.5rem; border-radius: 15px; border: 1px solid rgba(255, 215, 0, 0.2);">
+                    <h3 style="color: var(--primary-yellow); margin-bottom: 1.5rem; font-size: 1.8rem;">For Employers</h3>
+                    <div style="space-y: 1rem;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">📊 Strategic Insights</h4>
+                            <ul style="list-style: none; padding-left: 1rem; color: var(--text-medium); font-size: 0.95rem;">
+                                <li style="margin-bottom: 0.3rem;">• Risk identification by department</li>
+                                <li style="margin-bottom: 0.3rem;">• Early warning indicators</li>
+                                <li style="margin-bottom: 0.3rem;">• Workforce wellness trends</li>
+                                <li style="margin-bottom: 0.3rem;">• Intervention tracking</li>
+                            </ul>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">💰 Cost Management</h4>
+                            <ul style="list-style: none; padding-left: 1rem; color: var(--text-medium); font-size: 0.95rem;">
+                                <li style="margin-bottom: 0.3rem;">• Reduce health & mental fitness absence costs</li>
+                                <li style="margin-bottom: 0.3rem;">• Lower insurance claims</li>
+                                <li style="margin-bottom: 0.3rem;">• Better EAP utilization</li>
+                                <li style="margin-bottom: 0.3rem;">• Preventative approach</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">🎯 Business Outcomes</h4>
+                            <ul style="list-style: none; padding-left: 1rem; color: var(--text-medium); font-size: 0.95rem;">
+                                <li style="margin-bottom: 0.3rem;">• Improved retention</li>
+                                <li style="margin-bottom: 0.3rem;">• Enhanced productivity</li>
+                                <li style="margin-bottom: 0.3rem;">• Better culture metrics</li>
+                                <li style="margin-bottom: 0.3rem;">• Duty of care compliance</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 10px;">
-                    <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">Physical Health</h3>
-                    <p style="color: var(--text-light);">Energy levels, sleep patterns, physical symptoms, health behaviors</p>
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 10px;">
-                    <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">Mental Health</h3>
-                    <p style="color: var(--text-light);">Anxiety, depression indicators, emotional regulation, coping mechanisms</p>
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 10px;">
-                    <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">Personality (OCEAN)</h3>
-                    <p style="color: var(--text-light);">Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism</p>
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 10px;">
-                    <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">Relationships</h3>
-                    <p style="color: var(--text-light);">Team dynamics, communication patterns, conflict resolution, social support</p>
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 10px;">
-                    <h3 style="color: var(--primary-yellow); margin-bottom: 1rem;">Work Environment</h3>
-                    <p style="color: var(--text-light);">Workspace satisfaction, culture fit, psychological safety, resources</p>
+                
+                <!-- Employee Benefits -->
+                <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%); padding: 2.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <h3 style="color: var(--primary-yellow); margin-bottom: 1.5rem; font-size: 1.8rem;">For Employees</h3>
+                    <div style="space-y: 1rem;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">🧠 Mind Assessment</h4>
+                            <ul style="list-style: none; padding-left: 1rem; color: var(--text-medium); font-size: 0.95rem;">
+                                <li style="margin-bottom: 0.3rem;">• Stress & resilience scoring</li>
+                                <li style="margin-bottom: 0.3rem;">• Cognitive function evaluation</li>
+                                <li style="margin-bottom: 0.3rem;">• Emotional regulation patterns</li>
+                                <li style="margin-bottom: 0.3rem;">• Focus & clarity metrics</li>
+                            </ul>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">💪 Body Assessment</h4>
+                            <ul style="list-style: none; padding-left: 1rem; color: var(--text-medium); font-size: 0.95rem;">
+                                <li style="margin-bottom: 0.3rem;">• Energy & vitality levels</li>
+                                <li style="margin-bottom: 0.3rem;">• Sleep quality analysis</li>
+                                <li style="margin-bottom: 0.3rem;">• Physical symptom tracking</li>
+                                <li style="margin-bottom: 0.3rem;">• Health behavior patterns</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">✨ Real Outcomes</h4>
+                            <ul style="list-style: none; padding-left: 1rem; color: var(--text-medium); font-size: 0.95rem;">
+                                <li style="margin-bottom: 0.3rem;">• Personalized action plans</li>
+                                <li style="margin-bottom: 0.3rem;">• Access to specialist support</li>
+                                <li style="margin-bottom: 0.3rem;">• Improved wellbeing scores</li>
+                                <li style="margin-bottom: 0.3rem;">• Better life balance</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
 
-    <!-- What You Get Section -->
-    <section id="insights" class="domains">
+    <!-- Partner Ecosystem: What Happens Next -->
+    <section id="ecosystem" class="domains" style="background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);">
         <div class="container">
-            <h2 class="section-title">What You Get</h2>
-            <p class="section-subtitle">Comprehensive reports and actionable recommendations</p>
+            <h2 class="section-title">What Happens After the Assessment?</h2>
+            <p class="section-subtitle">Personalized pathways to the right professional support</p>
             
             <div class="domains-grid">
+                <!-- Mind Support -->
                 <div class="domain-card">
-                    <div class="domain-icon">📋</div>
-                    <h3 class="domain-title">Personal Report</h3>
+                    <div class="domain-icon">🧠</div>
+                    <h3 class="domain-title">Mind Support</h3>
                     <div style="margin: 1rem 0; font-size: 0.9rem; color: var(--text-medium);">
-                        <p><strong>Wellbeing Scores:</strong> Across all 6 dimensions</p>
-                        <p><strong>Personality Profile:</strong> Full OCEAN analysis</p>
-                        <p><strong>Risk Areas:</strong> What to watch for</p>
-                        <p><strong>Recommendations:</strong> Specific actions to take</p>
-                        <p><strong>Resources:</strong> Tools and support options</p>
+                        <p><strong>NeuroEvaluator:</strong> Advanced brain screening</p>
+                        <p><strong>Personality (OCEAN):</strong> Deep behavioral analysis</p>
+                        <p><strong>AI Coaches:</strong> 24/7 mental fitness support</p>
+                        <p><strong>ClearMinds:</strong> Hypnotherapy for stress & anxiety</p>
+                        <p><strong>Neurofeedback:</strong> Brain training sessions</p>
                     </div>
                 </div>
                 
+                <!-- Body Support -->
                 <div class="domain-card">
-                    <div class="domain-icon">🏢</div>
-                    <h3 class="domain-title">Company Insights</h3>
+                    <div class="domain-icon">💪</div>
+                    <h3 class="domain-title">Body Support</h3>
                     <div style="margin: 1rem 0; font-size: 0.9rem; color: var(--text-medium);">
-                        <p><strong>Team Trends:</strong> Department-level patterns</p>
-                        <p><strong>Risk Identification:</strong> Who needs support</p>
-                        <p><strong>Culture Assessment:</strong> Environment factors</p>
-                        <p><strong>Intervention Ideas:</strong> What to implement</p>
-                        <p><strong>Progress Tracking:</strong> Measure improvements</p>
+                        <p><strong>Concierge Health:</strong> Blood work & biomarkers</p>
+                        <p><strong>Hormone Analysis:</strong> Endocrine optimization</p>
+                        <p><strong>Nutrition Plans:</strong> Personalized diet protocols</p>
+                        <p><strong>Sleep Optimization:</strong> Recovery improvement</p>
+                        <p><strong>Physical Therapy:</strong> Movement & pain management</p>
                     </div>
                 </div>
                 
+                <!-- Integration -->
                 <div class="domain-card">
-                    <div class="domain-icon">🛠️</div>
-                    <h3 class="domain-title">Action Options</h3>
+                    <div class="domain-icon">🔄</div>
+                    <h3 class="domain-title">Mind-Body Integration</h3>
                     <div style="margin: 1rem 0; font-size: 0.9rem; color: var(--text-medium);">
-                        <p><strong>Individual:</strong> Stress management, health changes</p>
-                        <p><strong>Team:</strong> Communication training, workload adjustments</p>
-                        <p><strong>Company:</strong> Policy changes, environment improvements</p>
-                        <p><strong>Professional:</strong> Counseling, coaching, medical referrals</p>
-                        <p><strong>Monitoring:</strong> Regular check-ins and reassessment</p>
+                        <p><strong>Holistic Approach:</strong> Treating the whole person</p>
+                        <p><strong>Progress Tracking:</strong> Regular reassessments</p>
+                        <p><strong>Coordinated Care:</strong> Partners work together</p>
+                        <p><strong>Evidence-Based:</strong> Proven interventions</p>
+                        <p><strong>Continuous Support:</strong> Long-term wellness</p>
                     </div>
                 </div>
             </div>
@@ -193,13 +249,19 @@
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2>Ready to Start?</h2>
-                <p>Take the assessment to understand your wellbeing across all 6 dimensions and get personalized recommendations.</p>
-                <a href="assessment/" class="cta-button primary large">
-                    START ASSESSMENT
-                    <span class="button-arrow">→</span>
-                </a>
-                <p class="cta-guarantee">Takes about 10 minutes • Complete report immediately</p>
+                <h2>Let's Discuss Your Needs</h2>
+                <p>See how our diagnostic can integrate with your existing benefits package to deliver measurable improvements in employee wellbeing and business outcomes.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="assessment/" class="cta-button primary large">
+                        VIEW DEMO
+                        <span class="button-arrow">→</span>
+                    </a>
+                    <a href="#ecosystem" class="cta-button" style="background: rgba(255, 255, 255, 0.1); border: 1px solid var(--primary-yellow); padding: 1rem 2rem; font-size: 1.1rem;">
+                        EXPLORE PARTNERS
+                        <span class="button-arrow">→</span>
+                    </a>
+                </div>
+                <p class="cta-guarantee">60-question diagnostic • Immediate insights • Partner support network</p>
             </div>
         </div>
     </section>
