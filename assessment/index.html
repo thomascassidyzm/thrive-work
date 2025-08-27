@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THRIVE Assessment - Choose Your Dimension</title>
+    <title>Mind-Body Diagnostic Assessment</title>
     
     <!-- THRIVE Branding -->
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
@@ -325,51 +325,8 @@
     </main>
 
     <script>
-        // Check localStorage for completed dimensions
-        function updateProgress() {
-            const savedState = localStorage.getItem('thriveAssessment');
-            if (savedState) {
-                const state = JSON.parse(savedState);
-                const totalAnswered = Object.keys(state.responses || {}).length;
-                const progressPercent = (totalAnswered / 60) * 100;
-                
-                // Update overall progress bar
-                const progressFill = document.getElementById('overall-progress');
-                const progressText = document.getElementById('progress-text');
-                if (progressFill) {
-                    progressFill.style.width = progressPercent + '%';
-                }
-                if (progressText) {
-                    progressText.textContent = `${totalAnswered} of 60 questions completed`;
-                }
-                
-                // Update dimension statuses
-                if (state.completedDimensions) {
-                    state.completedDimensions.forEach(dim => {
-                        const statusIcon = document.getElementById(`status-${dim}`);
-                        const statusText = document.getElementById(`status-text-${dim}`);
-                        if (statusIcon) {
-                            statusIcon.textContent = '✓';
-                            statusIcon.classList.add('completed');
-                        }
-                        if (statusText) {
-                            statusText.textContent = 'Completed';
-                        }
-                    });
-                }
-            }
-        }
-        
-        // Start a specific dimension
-        function startDimension(dimension) {
-            // Save the selected dimension
-            localStorage.setItem('currentDimension', dimension);
-            // Redirect to the game interface with the dimension parameter
-            window.location.href = `/game/?dimension=${dimension}`;
-        }
-        
-        // Update progress on page load
-        document.addEventListener('DOMContentLoaded', updateProgress);
+        // Simple navigation handler
+        // Assessment now goes straight to the unified mind-body questionnaire
     </script>
 
 
