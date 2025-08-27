@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THRIVE Evaluation Journey - Multi-Stage Assessment</title>
+    <meta name="description" content="A comprehensive 3-stage evaluation to understand your unique patterns and guide you to the perfect THRIVE program.">
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#FFD700">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../" style="text-decoration: none;">
+                    <span class="th-icon-small">Th</span>
+                    <span class="logo-text">THRIVE</span>
+                    <span class="logo-subtitle">WORK</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="../" class="nav-link">Home</a>
+                <a href="../game/" class="nav-link">Diagnostic</a>
+                <a href="../chat/" class="nav-link">Chat</a>
+                <a href="../coaching/" class="nav-link">Coaching</a>
+                <a href="../partners/" class="nav-link">Partners</a>
+                <a href="../about/" class="nav-link">About</a>
+                <a href="../auth/" class="nav-link">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero-section" style="text-align: center; padding: 4rem 0;">
+                <div class="hero-content">
+                    <h1 class="hero-title">Your THRIVE Evaluation Journey</h1>
+                    <p class="hero-subtitle">A comprehensive 3-stage process to understand your unique patterns and guide you to the perfect program</p>
+                </div>
+            </section>
+
+            <!-- Progress Indicator -->
+            <div class="evaluation-progress" style="margin: 3rem 0;">
+                <div class="progress-container" style="display: flex; justify-content: center; align-items: center; gap: 2rem;">
+                    <div class="stage-indicator" data-stage="1">
+                        <div class="stage-circle active" style="width: 50px; height: 50px; border-radius: 50%; background: var(--primary-yellow); color: var(--dark-bg); display: flex; align-items: center; justify-content: center; font-weight: bold;">1</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Diagnostic</p>
+                    </div>
+                    <div class="progress-line" style="width: 100px; height: 2px; background: rgba(255,255,255,0.2);"></div>
+                    <div class="stage-indicator" data-stage="2">
+                        <div class="stage-circle" style="width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.1); color: var(--text-light); display: flex; align-items: center; justify-content: center; font-weight: bold;">2</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Neuro-Eval</p>
+                    </div>
+                    <div class="progress-line" style="width: 100px; height: 2px; background: rgba(255,255,255,0.2);"></div>
+                    <div class="stage-indicator" data-stage="3">
+                        <div class="stage-circle" style="width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.1); color: var(--text-light); display: flex; align-items: center; justify-content: center; font-weight: bold;">3</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Deep Insights</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Stage Content -->
+            <div class="evaluation-content" style="min-height: 60vh;">
+                <!-- Stage 1: Diagnostic -->
+                <div id="stage-1" class="evaluation-stage active">
+                    <div class="stage-header" style="text-align: center; margin-bottom: 3rem;">
+                        <h2>Stage 1: Baseline Diagnostic</h2>
+                        <p style="color: var(--text-light); font-size: 1.1rem;">Let's understand your current patterns and behavioral tendencies</p>
+                    </div>
+                    
+                    <div class="diagnostic-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                        <div class="diagnostic-card" style="background: var(--glass-white-light); border: var(--glass-border); border-radius: var(--border-radius); padding: 2rem; cursor: pointer; transition: var(--transition-smooth);">
+                            <h3>🎯 Quick Diagnostic</h3>
+                            <p style="color: var(--text-light); margin: 1rem 0;">15 questions, 5 minutes</p>
+                            <p style="font-size: 0.9rem; color: var(--text-light);">Get immediate insights into your key patterns</p>
+                            <button class="cta-button" onclick="startDiagnostic('quick')">Start Quick Assessment</button>
+                        </div>
+                        
+                        <div class="diagnostic-card" style="background: var(--glass-white-light); border: var(--glass-border); border-radius: var(--border-radius); padding: 2rem; cursor: pointer; transition: var(--transition-smooth);">
+                            <h3>🔬 Comprehensive Diagnostic</h3>
+                            <p style="color: var(--text-light); margin: 1rem 0;">50+ questions, 15 minutes</p>
+                            <p style="font-size: 0.9rem; color: var(--text-light);">Deep analysis of all behavioral dimensions</p>
+                            <button class="cta-button" onclick="startDiagnostic('comprehensive')">Start Full Assessment</button>
+                        </div>
+                        
+                        <div class="diagnostic-card" style="background: var(--glass-white-light); border: var(--glass-border); border-radius: var(--border-radius); padding: 2rem; cursor: pointer; transition: var(--transition-smooth);">
+                            <h3>🎲 Intelligent Diagnostic</h3>
+                            <p style="color: var(--text-light); margin: 1rem 0;">Adaptive questions, ~10 minutes</p>
+                            <p style="font-size: 0.9rem; color: var(--text-light);">AI-powered assessment that adapts to your responses</p>
+                            <button class="cta-button" onclick="startDiagnostic('intelligent')">Start Smart Assessment</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 2: Neuro-Evaluation (Hidden initially) -->
+                <div id="stage-2" class="evaluation-stage" style="display: none;">
+                    <div class="stage-header" style="text-align: center; margin-bottom: 3rem;">
+                        <h2>Stage 2: Neuro-Evaluation</h2>
+                        <p style="color: var(--text-light); font-size: 1.1rem;">Understanding your neurological and cognitive patterns with Dr T</p>
+                    </div>
+                    
+                    <div class="neuro-eval-content">
+                        <!-- Stage 1 Summary -->
+                        <div class="stage1-summary" style="background: var(--glass-white-light); border: var(--glass-border); border-radius: var(--border-radius); padding: 2rem; margin-bottom: 2rem;">
+                            <h3>📊 Your Stage 1 Results</h3>
+                            <div id="stage1-recap" style="color: var(--text-light); margin-top: 1rem;">
+                                Loading your diagnostic results...
+                            </div>
+                        </div>
+
+                        <!-- Neuro-Evaluation Options -->
+                        <div class="neuro-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                            <div class="neuro-card" style="background: var(--glass-white-light); border: var(--glass-border); border-radius: var(--border-radius); padding: 2rem; cursor: pointer; transition: var(--transition-smooth);">
+                                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ff6b6b, #ee5a52); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                                        🧠
+                                    </div>
+                                    <h3 style="margin: 0;">Cognitive Processing Assessment</h3>
+                                </div>
+                                <p style="color: var(--text-light); margin-bottom: 1rem;">Understand how your brain processes information, makes decisions, and handles stress</p>
+                                <ul style="color: var(--text-light); font-size: 0.9rem; margin-left: 1rem;">
+                                    <li>Processing speed patterns</li>
+                                    <li>Decision-making preferences</li>
+                                    <li>Stress response mapping</li>
+                                    <li>Attention & focus analysis</li>
+                                </ul>
+                                <button class="cta-button" onclick="startNeuroEval('cognitive')" style="margin-top: 1rem; width: 100%;">Start Cognitive Assessment</button>
+                            </div>
+                            
+                            <div class="neuro-card" style="background: var(--glass-white-light); border: var(--glass-border); border-radius: var(--border-radius); padding: 2rem; cursor: pointer; transition: var(--transition-smooth);">
+                                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #4ecdc4, #44a08d); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                                        ⚡
+                                    </div>
+                                    <h3 style="margin: 0;">Neural Efficiency Scan</h3>
+                                </div>
+                                <p style="color: var(--text-light); margin-bottom: 1rem;">Measure your brain's energy patterns and optimization opportunities</p>
+                                <ul style="color: var(--text-light); font-size: 0.9rem; margin-left: 1rem;">
+                                    <li>Mental energy distribution</li>
+                                    <li>Fatigue pattern recognition</li>
+                                    <li>Peak performance windows</li>
+                                    <li>Recovery optimization</li>
+                                </ul>
+                                <button class="cta-button" onclick="startNeuroEval('efficiency')" style="margin-top: 1rem; width: 100%;">Start Efficiency Scan</button>
+                            </div>
+                            
+                            <div class="neuro-card full-width" style="background: var(--glass-white-light); border: var(--glass-border); border-radius: var(--border-radius); padding: 2rem; cursor: pointer; transition: var(--transition-smooth); grid-column: 1 / -1;">
+                                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                                        🔬
+                                    </div>
+                                    <h3 style="margin: 0;">Comprehensive Neural Profile (Recommended)</h3>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: center;">
+                                    <div>
+                                        <p style="color: var(--text-light); margin-bottom: 1rem;">Complete neurological assessment combining cognitive processing, efficiency scanning, and personalized optimization recommendations.</p>
+                                        <p style="color: var(--primary-yellow); font-weight: 600; margin-bottom: 1rem;">✨ Most comprehensive insights</p>
+                                    </div>
+                                    <div>
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.9rem; color: var(--text-light);">
+                                            <div>• Cognitive processing<br>• Neural efficiency<br>• Stress resilience<br>• Focus optimization</div>
+                                            <div>• Memory patterns<br>• Decision frameworks<br>• Energy management<br>• Performance timing</div>
+                                        </div>
+                                        <button class="cta-button primary" onclick="startNeuroEval('comprehensive')" style="margin-top: 1rem; width: 100%;">Start Complete Assessment</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dr T Introduction -->
+                        <div class="dr-t-intro" style="background: linear-gradient(135deg, rgba(103, 58, 183, 0.1), rgba(63, 81, 181, 0.1)); border: 1px solid rgba(103, 58, 183, 0.3); border-radius: var(--border-radius); padding: 2rem; text-align: center;">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #673ab7, #3f51b5); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem;">
+                                👨‍⚕️
+                            </div>
+                            <h3>Meet Dr T</h3>
+                            <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
+                                Your neuro-evaluation will be guided by Dr T, our neurological specialist who integrates cutting-edge neuroscience 
+                                with practical insights to understand your unique brain patterns and optimization opportunities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 3: Deep Insights (Hidden initially) -->
+                <div id="stage-3" class="evaluation-stage" style="display: none;">
+                    <div class="stage-header" style="text-align: center; margin-bottom: 3rem;">
+                        <h2>Stage 3: Deep Insights & Recommendations</h2>
+                        <p style="color: var(--text-light); font-size: 1.1rem;">Your complete profile and pathway to transformation</p>
+                    </div>
+                    
+                    <div class="insights-content">
+                        <!-- Combined Results Summary -->
+                        <div class="combined-results" style="background: var(--glass-white-light); border: var(--glass-border); border-radius: var(--border-radius); padding: 2rem; margin-bottom: 3rem;">
+                            <h3>🎯 Your Complete THRIVE Profile</h3>
+                            <div id="combined-summary" style="margin-top: 2rem;">
+                                <div class="profile-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                                    <div class="stage-summary">
+                                        <h4>📊 Mental Fitness Analysis</h4>
+                                        <div id="stage1-summary-brief"></div>
+                                    </div>
+                                    <div class="stage-summary">
+                                        <h4>🧠 Neurological Profile</h4>
+                                        <div id="stage2-summary-brief"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recommendation Engine Results -->
+                        <div class="recommendations" style="margin-bottom: 3rem;">
+                            <h3 style="text-align: center; margin-bottom: 2rem;">🚀 Your Transformation Pathway</h3>
+                            
+                            <!-- Path Recommendation -->
+                            <div id="path-recommendation" style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05)); border: 2px solid var(--primary-yellow); border-radius: var(--border-radius); padding: 2rem; margin-bottom: 2rem; text-align: center;">
+                                <div class="recommendation-loading">
+                                    <div style="display: inline-block; animation: spin 1s linear infinite;">⚡</div>
+                                    <p>Analyzing your complete profile...</p>
+                                </div>
+                            </div>
+
+                            <!-- Program Options -->
+                            <div class="program-options" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                                <!-- The Collective Option -->
+                                <div class="program-card collective-card" style="background: var(--glass-white-light); border: var(--glass-border); border-radius: var(--border-radius); padding: 2rem; opacity: 0.7; transition: var(--transition-smooth);">
+                                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4ecdc4, #44a08d); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem;">
+                                            👥
+                                        </div>
+                                        <h3>The Collective</h3>
+                                        <p style="color: var(--text-light); font-size: 0.9rem;">Group Programs & Community</p>
+                                    </div>
+                                    <ul style="color: var(--text-light); font-size: 0.9rem; margin-left: 1rem; margin-bottom: 1.5rem;">
+                                        <li>365 Life Program</li>
+                                        <li>Bio Optimization</li>
+                                        <li>Peer Learning Groups</li>
+                                        <li>Community Support</li>
+                                    </ul>
+                                    <button class="cta-button" onclick="selectProgram('collective')" style="width: 100%; opacity: 0.7;" disabled>Analyzing Fit...</button>
+                                </div>
+
+                                <!-- The Panel Option -->
+                                <div class="program-card panel-card" style="background: var(--glass-white-light); border: var(--glass-border); border-radius: var(--border-radius); padding: 2rem; opacity: 0.7; transition: var(--transition-smooth);">
+                                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem;">
+                                            👨‍⚕️
+                                        </div>
+                                        <h3>The Panel</h3>
+                                        <p style="color: var(--text-light); font-size: 0.9rem;">Premium 1:1 Programs</p>
+                                    </div>
+                                    <ul style="color: var(--text-light); font-size: 0.9rem; margin-left: 1rem; margin-bottom: 1.5rem;">
+                                        <li>Classified Coaching</li>
+                                        <li>Conquering Life</li>
+                                        <li>Head-based Training</li>
+                                        <li>Executive Support</li>
+                                    </ul>
+                                    <button class="cta-button" onclick="selectProgram('panel')" style="width: 100%; opacity: 0.7;" disabled>Analyzing Fit...</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Center -->
+                        <div class="action-center" style="background: var(--glass-white-light); border: var(--glass-border); border-radius: var(--border-radius); padding: 2rem; text-align: center;">
+                            <h3>Ready to Begin Your Transformation?</h3>
+                            <p style="color: var(--text-light); margin-bottom: 2rem;">Your complete evaluation is ready. Choose your next step:</p>
+                            
+                            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                                <button class="cta-button primary" onclick="proceedToProgram()" style="min-width: 200px;" disabled id="proceed-btn">
+                                    🚀 Start Program
+                                    <br><small>Begin your journey</small>
+                                </button>
+                                <button class="cta-button secondary" onclick="chatWithCoach()" style="min-width: 200px;">
+                                    💬 Discuss Results
+                                    <br><small>Chat with an AI coach</small>
+                                </button>
+                                <button class="cta-button" onclick="downloadReport()" style="min-width: 200px;">
+                                    📄 Get Full Report
+                                    <br><small>Download your insights</small>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="evaluation-nav" style="display: flex; justify-content: space-between; margin-top: 3rem;">
+                <button id="prev-btn" class="nav-button" style="background: transparent; border: 2px solid var(--primary-yellow); color: var(--primary-yellow); padding: 1rem 2rem; border-radius: var(--border-radius); cursor: pointer; opacity: 0.5;" disabled>← Previous Stage</button>
+                <button id="next-btn" class="nav-button" style="background: var(--primary-yellow); color: var(--dark-bg); padding: 1rem 2rem; border-radius: var(--border-radius); cursor: pointer; border: none; opacity: 0.5;" disabled>Next Stage →</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- PWA Bottom Navigation -->
+    <nav class="pwa-bottom-nav">
+        <div class="pwa-bottom-nav-inner">
+            <a href="../" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+                <span class="pwa-nav-label">Home</span>
+            </a>
+            <a href="../game/" class="pwa-nav-item active" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                </svg>
+                <span class="pwa-nav-label">Diagnostic</span>
+            </a>
+            <a href="../chat/" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+                </svg>
+                <span class="pwa-nav-label">Chat</span>
+            </a>
+            <a href="../coaching/" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <span class="pwa-nav-label">Coach</span>
+            </a>
+            <a href="../partners/" class="pwa-nav-item" data-nav="internal">
+                <svg class="pwa-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                </svg>
+                <span class="pwa-nav-label">More</span>
+            </a>
+        </div>
+    </nav>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Evaluation Flow State Management
+        let currentStage = 1;
+        let evaluationData = {
+            stage1: null,
+            stage2: null,
+            stage3: null,
+            recommendedPath: null
+        };
+
+        // Stage Navigation
+        function moveToStage(stageNumber) {
+            // Hide current stage
+            document.querySelectorAll('.evaluation-stage').forEach(stage => {
+                stage.style.display = 'none';
+                stage.classList.remove('active');
+            });
+
+            // Update progress indicators
+            document.querySelectorAll('.stage-circle').forEach((circle, index) => {
+                circle.classList.remove('active');
+                if (index + 1 <= stageNumber) {
+                    circle.style.background = 'var(--primary-yellow)';
+                    circle.style.color = 'var(--dark-bg)';
+                } else {
+                    circle.style.background = 'rgba(255,255,255,0.1)';
+                    circle.style.color = 'var(--text-light)';
+                }
+            });
+
+            // Show target stage
+            const targetStage = document.getElementById(`stage-${stageNumber}`);
+            if (targetStage) {
+                targetStage.style.display = 'block';
+                targetStage.classList.add('active');
+                currentStage = stageNumber;
+            }
+
+            // Update navigation buttons
+            updateNavigationButtons();
+        }
+
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            prevBtn.disabled = currentStage === 1;
+            prevBtn.style.opacity = currentStage === 1 ? '0.5' : '1';
+
+            // Next button logic will be more complex based on completion status
+            const stageCompleted = evaluationData[`stage${currentStage}`] !== null;
+            nextBtn.disabled = !stageCompleted || currentStage === 3;
+            nextBtn.style.opacity = (!stageCompleted || currentStage === 3) ? '0.5' : '1';
+        }
+
+        // Diagnostic Starter Functions
+        function startDiagnostic(type) {
+            // Store diagnostic type
+            localStorage.setItem('thrive_diagnostic_type', type);
+            
+            // Route to appropriate diagnostic
+            switch(type) {
+                case 'quick':
+                    window.location.href = '../game/?mode=quick';
+                    break;
+                case 'comprehensive':
+                    window.location.href = '../game/?mode=comprehensive';
+                    break;
+                case 'intelligent':
+                    window.location.href = '../game/?mode=intelligent';
+                    break;
+                default:
+                    window.location.href = '../game/';
+            }
+        }
+
+        // Navigation Event Listeners
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            if (currentStage > 1) {
+                moveToStage(currentStage - 1);
+            }
+        });
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            if (currentStage < 3 && evaluationData[`stage${currentStage}`]) {
+                moveToStage(currentStage + 1);
+            }
+        });
+
+        // Neuro-Evaluation Functions
+        function startNeuroEval(type) {
+            // Store neuro-evaluation type
+            localStorage.setItem('thrive_neuro_type', type);
+            
+            // For now, simulate the neuro-evaluation with a delay and then complete Stage 2
+            // In a real implementation, this would launch the appropriate neuro assessment
+            console.log('Starting neuro-evaluation:', type);
+            
+            // Show loading state
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '⚡ Starting Assessment...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                // Simulate completion
+                completeStage2(type);
+            }, 3000);
+        }
+        
+        function completeStage2(type) {
+            const stage2Data = {
+                neuroType: type,
+                timestamp: Date.now(),
+                completed: true,
+                results: {
+                    type: type,
+                    summary: `${type} neuro-evaluation completed`,
+                    recommendations: ['Optimize cognitive load', 'Enhance focus periods', 'Improve recovery patterns']
+                }
+            };
+            
+            evaluationData.stage2 = stage2Data;
+            localStorage.setItem('thrive_stage2_complete', JSON.stringify(stage2Data));
+            
+            // Move to stage 3
+            moveToStage(3);
+            console.log('Stage 2 completed, moving to Stage 3');
+        }
+        
+        function loadStage1Recap() {
+            const stage1Data = localStorage.getItem('thrive_stage1_complete');
+            const recapDiv = document.getElementById('stage1-recap');
+            
+            if (stage1Data && recapDiv) {
+                const data = JSON.parse(stage1Data);
+                const analysis = data.analysis;
+                
+                recapDiv.innerHTML = `
+                    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1.5rem; align-items: center;">
+                        <div>
+                            <p><strong>Diagnostic Mode:</strong> ${data.diagnosticMode.charAt(0).toUpperCase() + data.diagnosticMode.slice(1)}</p>
+                            <p><strong>Responses:</strong> ${data.responses.length} questions</p>
+                            <p><strong>Pattern Type:</strong> ${analysis.patternTitle}</p>
+                        </div>
+                        <div style="background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); border-radius: 8px; padding: 1rem; font-size: 0.9rem;">
+                            ${analysis.patternDescription.replace(/<[^>]*>/g, '').substring(0, 200)}...
+                        </div>
+                    </div>
+                `;
+            } else {
+                recapDiv.innerHTML = '<p style="color: #ff6b6b;">No Stage 1 results found. Please complete Stage 1 first.</p>';
+            }
+        }
+
+        // Check for returning users with completed stages
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check URL parameters for stage routing
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('stage')) {
+                const targetStage = parseInt(urlParams.get('stage'));
+                if (targetStage >= 1 && targetStage <= 3) {
+                    setTimeout(() => moveToStage(targetStage), 100);
+                }
+            }
+            
+            // Check if user has completed any stages
+            const completedStage1 = localStorage.getItem('thrive_stage1_complete');
+            if (completedStage1) {
+                evaluationData.stage1 = JSON.parse(completedStage1);
+                // Load stage 1 recap when stage 2 is shown
+                setTimeout(loadStage1Recap, 500);
+                
+                // Move to next incomplete stage
+                const completedStage2 = localStorage.getItem('thrive_stage2_complete');
+                if (completedStage2) {
+                    evaluationData.stage2 = JSON.parse(completedStage2);
+                    if (!urlParams.has('stage')) {
+                        moveToStage(3);
+                    }
+                } else if (!urlParams.has('stage')) {
+                    moveToStage(2);
+                }
+            }
+            updateNavigationButtons();
+        });
+        
+        // Stage 3 Functions - Deep Insights & Recommendations
+        function loadStage3Analysis() {
+            console.log('Loading Stage 3 analysis...');
+            
+            // Load stage summaries
+            loadStageSummaries();
+            
+            // Start recommendation engine
+            setTimeout(() => {
+                runRecommendationEngine();
+            }, 2000);
+        }
+        
+        function loadStageSummaries() {
+            const stage1Data = JSON.parse(localStorage.getItem('thrive_stage1_complete') || '{}');
+            const stage2Data = JSON.parse(localStorage.getItem('thrive_stage2_complete') || '{}');
+            
+            // Stage 1 Summary
+            const stage1Div = document.getElementById('stage1-summary-brief');
+            if (stage1Div && stage1Data.analysis) {
+                stage1Div.innerHTML = `
+                    <p><strong>Pattern:</strong> ${stage1Data.analysis.patternTitle}</p>
+                    <p><strong>Automatic Response:</strong> ${Math.round((stage1Data.responses.filter(r => r.option.pattern === 'automatic').length / stage1Data.responses.length) * 100)}%</p>
+                    <p><strong>Key Focus:</strong> ${stage1Data.analysis.topDomains ? stage1Data.analysis.topDomains[0] : 'Mind-body alignment'}</p>
+                `;
+            }
+            
+            // Stage 2 Summary  
+            const stage2Div = document.getElementById('stage2-summary-brief');
+            if (stage2Div && stage2Data.results) {
+                stage2Div.innerHTML = `
+                    <p><strong>Assessment:</strong> ${stage2Data.results.type.charAt(0).toUpperCase() + stage2Data.results.type.slice(1)}</p>
+                    <p><strong>Profile:</strong> ${stage2Data.results.summary}</p>
+                    <p><strong>Focus:</strong> Cognitive optimization</p>
+                `;
+            }
+        }
+        
+        function runRecommendationEngine() {
+            const stage1Data = JSON.parse(localStorage.getItem('thrive_stage1_complete') || '{}');
+            const stage2Data = JSON.parse(localStorage.getItem('thrive_stage2_complete') || '{}');
+            
+            // Simulate recommendation engine analysis
+            const recommendationDiv = document.getElementById('path-recommendation');
+            
+            // Calculate recommendation based on data
+            let recommendedPath = 'collective'; // default
+            let confidence = 75;
+            
+            if (stage1Data.analysis) {
+                const automaticPercentage = (stage1Data.responses.filter(r => r.option.pattern === 'automatic').length / stage1Data.responses.length) * 100;
+                if (automaticPercentage > 60 || stage2Data.neuroType === 'comprehensive') {
+                    recommendedPath = 'panel';
+                    confidence = 85;
+                }
+            }
+            
+            // Update recommendation display
+            setTimeout(() => {
+                recommendationDiv.innerHTML = `
+                    <div style="margin-bottom: 1rem;">
+                        <h3 style="color: var(--primary-yellow); margin-bottom: 0.5rem;">🎯 Recommended Path: ${recommendedPath === 'panel' ? 'The Panel' : 'The Collective'}</h3>
+                        <div style="background: rgba(255,255,255,0.1); border-radius: 20px; padding: 0.5rem; margin-bottom: 1rem;">
+                            <div style="width: ${confidence}%; height: 8px; background: var(--primary-yellow); border-radius: 20px; transition: width 2s ease;"></div>
+                        </div>
+                        <p style="font-size: 0.9rem; color: var(--text-light);">${confidence}% confidence match</p>
+                    </div>
+                    <p style="margin-bottom: 1rem;">
+                        ${recommendedPath === 'panel' 
+                            ? 'Based on your complex patterns and comprehensive neuro-profile, you would benefit most from personalized 1:1 support with our expert panel.'
+                            : 'Your profile suggests you would thrive in our community-based programs with peer support and group learning dynamics.'
+                        }
+                    </p>
+                `;
+                
+                // Enable recommended program card
+                enableProgramCard(recommendedPath);
+                
+            }, 1000);
+        }
+        
+        function enableProgramCard(recommendedPath) {
+            const collectiveCard = document.querySelector('.collective-card');
+            const panelCard = document.querySelector('.panel-card');
+            
+            // Reset both cards
+            [collectiveCard, panelCard].forEach(card => {
+                if (card) {
+                    card.style.opacity = '0.7';
+                    const button = card.querySelector('button');
+                    if (button) {
+                        button.disabled = true;
+                        button.innerHTML = 'Analyzing Fit...';
+                    }
+                }
+            });
+            
+            // Enable recommended card
+            const recommendedCard = recommendedPath === 'collective' ? collectiveCard : panelCard;
+            if (recommendedCard) {
+                recommendedCard.style.opacity = '1';
+                recommendedCard.style.border = '2px solid var(--primary-yellow)';
+                
+                const button = recommendedCard.querySelector('button');
+                if (button) {
+                    button.disabled = false;
+                    button.innerHTML = '⭐ Recommended Choice';
+                    button.style.background = 'var(--primary-yellow)';
+                    button.style.color = 'var(--dark-bg)';
+                }
+            }
+            
+            // Enable other card with lower emphasis
+            const otherCard = recommendedPath === 'collective' ? panelCard : collectiveCard;
+            setTimeout(() => {
+                if (otherCard) {
+                    otherCard.style.opacity = '0.9';
+                    const button = otherCard.querySelector('button');
+                    if (button) {
+                        button.disabled = false;
+                        button.innerHTML = 'Alternative Option';
+                    }
+                }
+            }, 1500);
+            
+            // Enable proceed button
+            setTimeout(() => {
+                const proceedBtn = document.getElementById('proceed-btn');
+                if (proceedBtn) {
+                    proceedBtn.disabled = false;
+                    proceedBtn.style.opacity = '1';
+                }
+            }, 2000);
+        }
+        
+        // Program Selection Functions
+        let selectedProgram = null;
+        
+        function selectProgram(program) {
+            selectedProgram = program;
+            console.log('Selected program:', program);
+            
+            // Update UI to show selection
+            document.querySelectorAll('.program-card').forEach(card => {
+                card.style.border = 'var(--glass-border)';
+            });
+            
+            const selectedCard = document.querySelector(`.${program}-card`);
+            if (selectedCard) {
+                selectedCard.style.border = '3px solid var(--primary-yellow)';
+            }
+            
+            // Update proceed button
+            const proceedBtn = document.getElementById('proceed-btn');
+            if (proceedBtn) {
+                proceedBtn.innerHTML = `🚀 Start ${program === 'collective' ? 'The Collective' : 'The Panel'}<br><small>Begin your journey</small>`;
+            }
+        }
+        
+        function proceedToProgram() {
+            if (!selectedProgram) {
+                // Auto-select recommended program
+                const recommendationText = document.getElementById('path-recommendation').textContent;
+                selectedProgram = recommendationText.includes('The Panel') ? 'panel' : 'collective';
+            }
+            
+            // Save complete evaluation data
+            const evaluationComplete = {
+                stage1: JSON.parse(localStorage.getItem('thrive_stage1_complete') || '{}'),
+                stage2: JSON.parse(localStorage.getItem('thrive_stage2_complete') || '{}'),
+                selectedProgram: selectedProgram,
+                completedTimestamp: Date.now()
+            };
+            
+            localStorage.setItem('thrive_evaluation_complete', JSON.stringify(evaluationComplete));
+            
+            // Route to appropriate program page
+            if (selectedProgram === 'collective') {
+                window.location.href = '../collective/';
+            } else {
+                window.location.href = '../panel/';
+            }
+        }
+        
+        function chatWithCoach() {
+            // Pass evaluation context to chat
+            const evaluationContext = {
+                completedEvaluation: true,
+                stage1: JSON.parse(localStorage.getItem('thrive_stage1_complete') || '{}'),
+                stage2: JSON.parse(localStorage.getItem('thrive_stage2_complete') || '{}'),
+                fromEvaluation: true
+            };
+            
+            localStorage.setItem('thriveEvaluationContext', JSON.stringify(evaluationContext));
+            window.location.href = '../chat/?fromEvaluation=true';
+        }
+        
+        function downloadReport() {
+            // Generate and download comprehensive report
+            const reportData = {
+                stage1: JSON.parse(localStorage.getItem('thrive_stage1_complete') || '{}'),
+                stage2: JSON.parse(localStorage.getItem('thrive_stage2_complete') || '{}'),
+                generated: new Date().toISOString()
+            };
+            
+            const reportText = `THRIVE Evaluation Report
+Generated: ${new Date().toLocaleString()}
+
+STAGE 1 - MENTAL FITNESS ANALYSIS
+${reportData.stage1.analysis ? reportData.stage1.analysis.patternDescription.replace(/<[^>]*>/g, '') : 'No data available'}
+
+STAGE 2 - NEUROLOGICAL PROFILE
+${reportData.stage2.results ? reportData.stage2.results.summary : 'No data available'}
+
+RECOMMENDATIONS
+${selectedProgram ? `Recommended Program: ${selectedProgram === 'collective' ? 'The Collective' : 'The Panel'}` : 'Complete evaluation to see recommendations'}
+            `;
+            
+            const blob = new Blob([reportText], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'THRIVE-Evaluation-Report.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+        
+        // Override moveToStage to trigger Stage 3 analysis
+        const originalMoveToStage = moveToStage;
+        moveToStage = function(stageNumber) {
+            originalMoveToStage(stageNumber);
+            
+            if (stageNumber === 3) {
+                setTimeout(loadStage3Analysis, 500);
+            }
+        };
+
+        // Add hover effects to diagnostic cards
+        document.querySelectorAll('.diagnostic-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.background = 'var(--glass-white-medium)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.background = 'var(--glass-white-light)';
+            });
+        });
+    </script>
+
+    <style>
+        /* Evaluation-specific styles */
+        .evaluation-stage {
+            transition: all 0.5s ease;
+        }
+        
+        .diagnostic-card:hover {
+            transform: translateY(-5px);
+            background: var(--glass-white-medium) !important;
+        }
+        
+        .nav-button {
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-button:not(:disabled):hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        .stage-indicator {
+            text-align: center;
+        }
+        
+        .progress-line {
+            transition: background 0.3s ease;
+        }
+        
+        .stage-circle {
+            transition: all 0.3s ease;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .program-card {
+            transition: all 0.3s ease;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</body>
+</html>

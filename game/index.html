@@ -1277,6 +1277,44 @@
             
             const analysis = analyzeResponses();
             displayResults(analysis);
+            
+            // Add return to evaluation button if applicable
+            if (returnToEvaluation) {
+                addReturnToEvaluationButton();
+                saveStage1Results(analysis);
+            }
+        }
+        
+        // Add return to evaluation button
+        function addReturnToEvaluationButton() {
+            const actionsDiv = document.querySelector('#results-screen .content > div:last-child');
+            if (actionsDiv && !document.getElementById('return-evaluation-btn')) {
+                const returnButton = document.createElement('button');
+                returnButton.id = 'return-evaluation-btn';
+                returnButton.className = 'cta-button primary';
+                returnButton.style.cssText = 'min-width: 250px; background: linear-gradient(135deg, #00ff96, #00cc77);';
+                returnButton.innerHTML = `
+                    ⬅️ Return to Evaluation
+                    <br><small>Continue to Stage 2</small>
+                `;
+                returnButton.onclick = () => {
+                    window.location.href = '../evaluation/?stage=2';
+                };
+                actionsDiv.insertBefore(returnButton, actionsDiv.firstChild);
+            }
+        }
+        
+        // Save Stage 1 results for evaluation flow
+        function saveStage1Results(analysis) {
+            const stage1Data = {
+                diagnosticMode: diagnosticMode,
+                responses: responses,
+                analysis: analysis,
+                timestamp: Date.now(),
+                completed: true
+            };
+            localStorage.setItem('thrive_stage1_complete', JSON.stringify(stage1Data));
+            console.log('Stage 1 results saved for evaluation flow');
         }
 
         // Analyze response patterns
@@ -1346,6 +1384,11 @@
             let patternDescription = analysis.patternDescription;
             if (isPreliminary) {
                 patternDescription = `<div style="background: rgba(255, 255, 0, 0.1); border: 1px solid rgba(255, 255, 0, 0.3); border-radius: 10px; padding: 1rem; margin-bottom: 1rem;"><strong>📊 Preliminary Report</strong> - Based on your first ${responses.length} responses. Confidence will increase significantly with more questions!</div>` + patternDescription;
+            }
+            
+            // Add evaluation flow return info if applicable
+            if (returnToEvaluation && !isPreliminary) {
+                patternDescription = `<div style="background: rgba(0, 255, 150, 0.1); border: 1px solid rgba(0, 255, 150, 0.3); border-radius: 10px; padding: 1rem; margin-bottom: 1rem;"><strong>✅ Stage 1 Complete!</strong> Your diagnostic results have been saved. Ready to move to Stage 2 of your evaluation journey?</div>` + patternDescription;
             }
             
             document.getElementById('pattern-result').innerHTML = `
@@ -2293,9 +2336,55 @@
         window.skipToChat = skipToChat;
         
         // Initialize the page
+        // Diagnostic Mode Detection for New Flow
+        let diagnosticMode = 'standard';
+        let returnToEvaluation = false;
+
+        // Check URL parameters for diagnostic mode
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('mode')) {
+            diagnosticMode = urlParams.get('mode');
+            returnToEvaluation = true;
+            console.log('Diagnostic mode:', diagnosticMode);
+        }
+
+        // Question sets based on diagnostic mode
+        const diagnosticConfigs = {
+            quick: {
+                maxQuestions: 15,
+                title: 'Quick Mental Fitness Diagnostic',
+                description: 'A rapid assessment to identify your key patterns'
+            },
+            comprehensive: {
+                maxQuestions: 50,
+                title: 'Comprehensive Mental Fitness Analysis',
+                description: 'Deep dive into all aspects of your mental fitness'
+            },
+            intelligent: {
+                maxQuestions: 25,
+                title: 'Adaptive Mental Fitness Assessment',
+                description: 'AI-powered assessment that adapts to your responses'
+            },
+            standard: {
+                maxQuestions: 30,
+                title: 'THRIVE Mental Fitness Diagnostic',
+                description: 'Understand your mind-body patterns and unlock your potential'
+            }
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Page loaded, creating particles');
             createParticles();
+            
+            // Update title and description based on diagnostic mode
+            if (diagnosticMode !== 'standard') {
+                const config = diagnosticConfigs[diagnosticMode];
+                const titleElement = document.querySelector('.hero-title');
+                const descElement = document.querySelector('.hero-subtitle');
+                
+                if (titleElement) titleElement.textContent = config.title;
+                if (descElement) descElement.textContent = config.description;
+            }
         });
     </script>
 
