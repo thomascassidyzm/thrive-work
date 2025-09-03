@@ -37,26 +37,99 @@
     animation: headGlow 4s ease-in-out infinite;
 }
 
-/* Brain center with neural activity */
+/* Brain center with proper brain shape */
 .brain-center {
     position: absolute;
     top: 50%;
     left: 48%;
     transform: translate(-50%, -60%);
     width: 160px;
-    height: 140px;
+    height: 120px;
     background: linear-gradient(135deg, 
         rgba(255, 215, 0, 0.8) 0%,
         rgba(255, 237, 78, 0.9) 30%,
         rgba(255, 193, 7, 0.7) 70%,
         rgba(255, 215, 0, 0.8) 100%);
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    
+    /* Brain shape using border-radius */
+    border-radius: 
+        80px 80px 60px 60px / 
+        60px 60px 40px 40px;
+    
     box-shadow: 
         0 0 40px rgba(255, 215, 0, 0.6),
         0 0 80px rgba(255, 215, 0, 0.3),
         inset 0 0 20px rgba(255, 255, 255, 0.2);
     animation: brainPulse 2s ease-in-out infinite;
     z-index: 10;
+}
+
+/* Add brain hemisphere division */
+.brain-center::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 80%;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(255, 215, 0, 0.4) 20%,
+        rgba(255, 215, 0, 0.6) 50%,
+        rgba(255, 215, 0, 0.4) 80%,
+        transparent 100%
+    );
+    border-radius: 2px;
+    z-index: 1;
+}
+
+/* Left brain lobe */
+.brain-center::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    width: 35%;
+    height: 25%;
+    background: rgba(255, 237, 78, 0.3);
+    border-radius: 50% 30% 40% 60%;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    animation: lobePulse 2.5s ease-in-out infinite;
+    animation-delay: 0.3s;
+}
+
+/* Right brain lobe detail */
+.brain-lobe-right {
+    position: absolute;
+    top: 25%;
+    right: 10%;
+    width: 30%;
+    height: 20%;
+    background: rgba(255, 237, 78, 0.3);
+    border-radius: 30% 50% 60% 40%;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    animation: lobePulse 2.5s ease-in-out infinite;
+    animation-delay: 0.7s;
+}
+
+/* Brain stem */
+.brain-stem {
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 30px;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 215, 0, 0.7) 0%,
+        rgba(255, 215, 0, 0.5) 50%,
+        rgba(255, 215, 0, 0.3) 100%
+    );
+    border-radius: 0 0 50% 50%;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
 }
 
 /* Neural pathways */
@@ -207,6 +280,17 @@
         box-shadow: 
             0 0 50px rgba(255, 215, 0, 0.8),
             0 0 100px rgba(255, 215, 0, 0.4);
+    }
+}
+
+@keyframes lobePulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.1);
     }
 }
 
