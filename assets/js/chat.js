@@ -1145,7 +1145,8 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Tom Cassidy AI Coaching - Version 3.0 - PWA Edition!');
     
     // Register service worker for PWA
-    if ('serviceWorker' in navigator) {
+    // DISABLED DURING DEVELOPMENT - NO CACHING!
+    if (false && 'serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js')
             .then(reg => console.log('Service Worker registered'))
             .catch(err => console.log('Service Worker registration failed'));
