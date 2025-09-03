@@ -51,7 +51,7 @@
     background-position: center;
     
     /* Perfect blend mode technique - makes black transparent */
-    /* mix-blend-mode: screen; */
+    mix-blend-mode: screen;
     filter: brightness(1.2) contrast(1.1);
     
     /* Enhanced glow effects to match the brain's golden energy */
