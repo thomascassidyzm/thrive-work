@@ -45,14 +45,8 @@
     transform: translate(-50%, -50%);
     width: 220px;
     height: 220px;
-    /* Modern WebP with PNG fallback - 92KB vs 835KB! */
-    background-image: url('../images/transparent-thrive-brain-compressed.png?v=1756441000');
-    /* WebP support detection via CSS */
-    background-image: 
-        image-set(
-            url('../images/transparent-thrive-brain.webp?v=1756441000') type('image/webp'),
-            url('../images/transparent-thrive-brain-compressed.png?v=1756441000') type('image/png')
-        );
+    /* Use original transparent PNG for now - debug the compression */
+    background-image: url('../images/transparent-thrive-brain-new.png?v=1756441000');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
