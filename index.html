@@ -85,14 +85,7 @@
 </head>
 <body>
     <!-- Commit Hash Display -->
-    <div class="commit-hash" id="commit-hash">Loading...</div>
-    <script>
-        // Auto-update commit hash from git
-        fetch('/api/commit-hash', {cache: 'no-store'})
-            .then(r => r.text())
-            .then(hash => document.getElementById('commit-hash').textContent = 'Commit: ' + hash.trim())
-            .catch(() => document.getElementById('commit-hash').textContent = 'Commit: 11a00f5');
-    </script>
+    <div class="commit-hash">Commit: 9395b8e</div>
     
     <!-- Navigation -->
     <nav class="navbar">
