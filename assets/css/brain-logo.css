@@ -45,18 +45,13 @@
     transform: translate(-50%, -50%);
     width: 220px;
     height: 220px;
-    background-image: url('../images/transparent-thrive-brain.jpg?v=1756440000');
+    background-image: url('../images/transparent-thrive-brain.png?v=1756441000');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     
-    /* Make black transparent using multiple techniques */
-    mix-blend-mode: screen;
-    filter: brightness(1.4) contrast(1.3) saturate(1.2);
-    
-    /* Create a radial mask to hide the dark edges */
-    -webkit-mask-image: radial-gradient(ellipse 60% 70% at center, black 40%, transparent 90%);
-    mask-image: radial-gradient(ellipse 60% 70% at center, black 40%, transparent 90%);
+    /* REAL transparency - no blend mode hacks needed! */
+    filter: brightness(1.1) contrast(1.1) saturate(1.2);
     
     /* Enhanced glow effects to match the brain's golden energy */
     box-shadow: 
