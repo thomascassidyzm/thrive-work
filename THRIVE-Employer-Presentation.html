@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THRIVE Work - Employer Presentation</title>
+    <style>
+        /* Print-optimized styles */
+        @page {
+            size: A4 landscape;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.4;
+            color: #ffffff;
+            background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+        }
+
+        .slide {
+            width: 100%;
+            height: 100vh;
+            min-height: 21cm;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2cm;
+            page-break-before: always;
+            page-break-after: always;
+            page-break-inside: avoid;
+            position: relative;
+            background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+            box-sizing: border-box;
+        }
+
+        .slide:first-child {
+            page-break-before: avoid;
+        }
+
+        .slide:last-child {
+            page-break-after: avoid;
+        }
+
+        /* THRIVE Branding */
+        .thrive-logo {
+            position: absolute;
+            top: 1cm;
+            right: 1cm;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+        }
+
+        .th-icon {
+            width: 40px;
+            height: 40px;
+            background: #FFD700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0A0E1A;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .logo-text {
+            color: #FFD700;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-subtitle {
+            color: #8B949E;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #FFD700;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #FFD700;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+
+        h4 {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #E5E5E5;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #8B949E;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #FFD700;
+            text-align: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            border-left: 4px solid #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        /* Layout Components */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .highlight-card {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+        }
+
+        .warning-card {
+            background: rgba(239, 68, 68, 0.1);
+            border: 2px solid rgba(239, 68, 68, 0.4);
+        }
+
+        .success-card {
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+        }
+
+        .bullet-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .bullet-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            color: #E5E5E5;
+        }
+
+        .bullet-list li:before {
+            content: "•";
+            color: #FFD700;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .check-list li:before {
+            content: "✓";
+            color: #22c55e;
+        }
+
+        .cross-list li:before {
+            content: "✗";
+            color: #ef4444;
+        }
+
+        .large-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .metric {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #FFD700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .timeline-number {
+            width: 40px;
+            height: 40px;
+            background: #FFD700;
+            color: #0A0E1A;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 auto 0.5rem;
+        }
+
+        /* Print-specific adjustments */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .slide {
+                width: 100%;
+                height: 21cm;
+                min-height: 21cm;
+                max-height: 21cm;
+                background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                page-break-before: always !important;
+                page-break-after: always !important;
+                page-break-inside: avoid !important;
+                margin: 0;
+                padding: 1.5cm;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+            }
+            
+            .slide:first-child {
+                page-break-before: avoid !important;
+            }
+            
+            .slide:last-child {
+                page-break-after: avoid !important;
+            }
+            
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: The Hidden Legal Crisis -->
+    <div class="slide">
+        <div class="thrive-logo">
+            <div class="th-icon">Th</div>
+            <span class="logo-text">THRIVE</span>
+            <span class="logo-subtitle">WORK</span>
+        </div>
+        
+        <div class="center">
+            <h1>Mental Health at Work:<br>From Legal Liability to Strategic Advantage</h1>
+            <p class="subtitle">When your mind isn't right, everything else becomes harder</p>
+        </div>
+
+        <div class="two-column">
+            <div>
+                <h3>The Legal Reality</h3>
+                <ul class="bullet-list">
+                    <li><strong>"You should have known I had autism/ADHD/anxiety"</strong></li>
+                    <li>No formal diagnosis required for reasonable adjustments</li>
+                    <li>Constructive dismissal claims within 3 months</li>
+                    <li>Average tribunal settlement £15,000+ plus legal fees</li>
+                </ul>
+            </div>
+            <div class="warning-card">
+                <h4>🚨 Real Case Example</h4>
+                <p style="color: #E5E5E5; margin-bottom: 1rem;">Employee complained of misogynistic behavior</p>
+                <p style="color: #E5E5E5; margin-bottom: 1rem;">When challenged → claimed undiagnosed autism</p>
+                <p style="color: #E5E5E5; margin-bottom: 1rem;">Left company → brought discrimination claim</p>
+                <p style="color: #ef4444; font-weight: bold;"><strong>Result:</strong> Expensive legal battle over "should have known"</p>
+            </div>
+        </div>
+
+        <div class="quote">
+            "When your mind isn't right, everything else becomes harder"
+        </div>
+    </div>
+
+    <!-- Slide 2: UK Legal Framework (2024) -->
+    <div class="slide">
+        <div class="thrive-logo">
+            <div class="th-icon">Th</div>
+            <span class="logo-text">THRIVE</span>
+            <span class="logo-subtitle">WORK</span>
+        </div>
+
+        <h1>Your Legal Obligations Just Got Clearer</h1>
+        <p class="subtitle">UK Legal Framework (2024)</p>
+
+        <div class="two-column">
+            <div class="card">
+                <h3>Equality Act 2010 (2024 Amendments)</h3>
+                <ul class="bullet-list">
+                    <li>Mental health conditions = disability protection</li>
+                    <li><strong>"Should have known" standard</strong> - you must recognize signs</li>
+                    <li>Reasonable adjustments <strong>mandatory</strong></li>
+                    <li>No formal diagnosis required from employee</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Health & Safety at Work Act 1974</h3>
+                <ul class="bullet-list">
+                    <li>Mental health = physical health (equal treatment)</li>
+                    <li>HSE's new "Core Standards" for workplace mental health</li>
+                    <li>Risk assessment <strong>must include</strong> mental health risks</li>
+                    <li>First-aid assessments now include mental health needs</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-card center">
+            <h3>The Impossible Standard</h3>
+            <div class="two-column large-text">
+                <div>
+                    <ul class="bullet-list cross-list">
+                        <li><strong>Can't ask:</strong> "Do you have a mental health condition?"</li>
+                        <li><strong>Can't discriminate:</strong> Based on suspected conditions</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="bullet-list check-list">
+                        <li><strong>Must provide:</strong> Reasonable adjustments if you "ought to know"</li>
+                        <li><strong>Must accommodate:</strong> Even undiagnosed conditions</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="color: #FFD700; font-size: 1.3rem; margin-top: 1rem;"><strong>You're expected to be a mental health expert, but legally can't ask the questions</strong></p>
+        </div>
+    </div>
+
+    <!-- Slide 3: THRIVE Solution -->
+    <div class="slide">
+        <div class="thrive-logo">
+            <div class="th-icon">Th</div>
+            <span class="logo-text">THRIVE</span>
+            <span class="logo-subtitle">WORK</span>
+        </div>
+
+        <h1>Turn Liability Into Advantage</h1>
+        <p class="subtitle">Proactive Protection + Employee Empowerment</p>
+
+        <div class="two-column">
+            <div class="success-card">
+                <h3>Legal Protection Through Professional Assessment</h3>
+                <ul class="bullet-list check-list">
+                    <li><strong>Offer to Everyone</strong> - No discrimination risk</li>
+                    <li><strong>Professional Identification</strong> - Not employer guesswork</li>
+                    <li><strong>Document Support Offered</strong> - Clear duty of care evidence</li>
+                    <li><strong>"We Provided" Defense</strong> - Comprehensive assessment available</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Win-Win Outcomes</h3>
+                <div style="margin-bottom: 1.5rem;">
+                    <h4>What Employees Get</h4>
+                    <ul class="bullet-list">
+                        <li>Self-understanding of their patterns vs. current challenges</li>
+                        <li>Professional pathways matched to their specific needs</li>
+                        <li>Workplace protection before crisis hits</li>
+                        <li>Career empowerment through proactive management</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>What Employers Get</h4>
+                    <ul class="bullet-list">
+                        <li>Legal compliance through proactive reasonable adjustments</li>
+                        <li>Cost prevention - stop tribunal claims before they start</li>
+                        <li>Better communication framework for taboo conversations</li>
+                        <li>Stronger teams who understand and manage themselves</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote">
+            "Transform from playing disability detective to offering professional support"
+        </div>
+    </div>
+
+    <!-- Slide 4: Complete Mental Fitness Ecosystem -->
+    <div class="slide">
+        <div class="thrive-logo">
+            <div class="th-icon">Th</div>
+            <span class="logo-text">THRIVE</span>
+            <span class="logo-subtitle">WORK</span>
+        </div>
+
+        <h1>Complete Mental Fitness Ecosystem</h1>
+        <p class="subtitle">Assessment → Diagnosis → Professional Support → Results</p>
+
+        <div class="three-column">
+            <div class="card">
+                <h3>1. Professional Assessment</h3>
+                <ul class="bullet-list">
+                    <li><strong>Dual-Layer Analysis:</strong> Stable patterns + current challenges</li>
+                    <li><strong>Medical-Grade Validation:</strong> WHO-5, DASS-21, Maslach Burnout</li>
+                    <li><strong>OCEAN Personality:</strong> Complete behavioral profile + Script analysis</li>
+                    <li><strong>Starting Point:</strong> Finally - clear direction for mental fitness</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>2. Expert Partner Network</h3>
+                <div style="margin-bottom: 1rem;">
+                    <h4>🧠 Mind Support</h4>
+                    <ul class="bullet-list" style="font-size: 0.9rem;">
+                        <li>Clear Minds: Clinical hypnotherapy</li>
+                        <li>Smart Start: Neurofeedback & brain training</li>
+                        <li>CBT Network: Evidence-based therapy</li>
+                        <li>Precision Psychiatry: Medical interventions</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>💪 Body Foundation</h4>
+                    <ul class="bullet-list" style="font-size: 0.9rem;">
+                        <li>Goodbody Clinic: Comprehensive health testing</li>
+                        <li>Biomarker Analysis: Hormones, inflammation</li>
+                        <li>Wearable Tech: Continuous monitoring</li>
+                        <li>Precision Nutrition: Targeted supplementation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <h3>3. Coordinated Experience</h3>
+                <ul class="bullet-list">
+                    <li>Secure health data (employee controls access)</li>
+                    <li>International consultation support</li>
+                    <li>Progress tracking and optimization</li>
+                    <li>All partners work together</li>
+                </ul>
+                
+                <div class="highlight-card" style="margin-top: 1rem;">
+                    <h4>ROI Impact</h4>
+                    <ul class="bullet-list">
+                        <li><span class="metric" style="font-size: 1.5rem;">60%</span>reduction in mental health-related costs</li>
+                        <li>Early intervention prevents crisis management</li>
+                        <li>Healthier teams = better performance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Implementation & Pricing -->
+    <div class="slide">
+        <div class="thrive-logo">
+            <div class="th-icon">Th</div>
+            <span class="logo-text">THRIVE</span>
+            <span class="logo-subtitle">WORK</span>
+        </div>
+
+        <h1>Simple Rollout, Immediate Protection</h1>
+        <p class="subtitle">Implementation & Pricing</p>
+
+        <div class="two-column">
+            <div>
+                <h3>4-Week Implementation</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-number">1</div>
+                        <h4>Setup</h4>
+                        <p style="color: #E5E5E5; font-size: 0.9rem;">Company instance, SSO integration, customize scenarios</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">2</div>
+                        <h4>Pilot</h4>
+                        <p style="color: #E5E5E5; font-size: 0.9rem;">Volunteer group, gather feedback, manager briefing</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">3</div>
+                        <h4>Rollout</h4>
+                        <p style="color: #E5E5E5; font-size: 0.9rem;">All-hands introduction, email invitations, compliance training</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">4</div>
+                        <h4>Support</h4>
+                        <p style="color: #E5E5E5; font-size: 0.9rem;">Weekly reports, monthly trends, quarterly analysis</p>
+                    </div>
+                </div>
+
+                <div class="highlight-card">
+                    <h3>Expected Outcomes (6 months)</h3>
+                    <div class="two-column">
+                        <ul class="bullet-list">
+                            <li><span class="metric">↓ 40%</span>stress-related absence</li>
+                            <li><span class="metric">↓ 60%</span>tribunal risk exposure</li>
+                        </ul>
+                        <ul class="bullet-list">
+                            <li><span class="metric">↑ 25%</span>employee engagement</li>
+                            <li><span class="metric">↑ 35%</span>early issue identification</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3>Investment</h3>
+                <div class="success-card" style="margin-bottom: 1.5rem;">
+                    <h4>Core Platform: £10/employee/month</h4>
+                    <ul class="bullet-list">
+                        <li>Dual assessment system</li>
+                        <li>AI coaching (unlimited)</li>
+                        <li>Monthly aggregate reports</li>
+                        <li>Legal compliance documentation</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>Partner Access: Pay-per-use</h4>
+                    <ul class="bullet-list">
+                        <li>Human coaching: £100/session</li>
+                        <li>Specialized testing: Partner rates</li>
+                        <li>Coordinated care included</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-card" style="margin-top: 1.5rem;">
+                    <h4>💡 Cost Comparison</h4>
+                    <p style="color: #E5E5E5; margin-bottom: 0.5rem;">One tribunal claim: £15,000+ legal fees</p>
+                    <p style="color: #E5E5E5; margin-bottom: 0.5rem;">100 employees for 1 year: £12,000</p>
+                    <p style="color: #FFD700; font-weight: bold;">Prevent one claim = pay for entire program</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Next Steps -->
+    <div class="slide">
+        <div class="thrive-logo">
+            <div class="th-icon">Th</div>
+            <span class="logo-text">THRIVE</span>
+            <span class="logo-subtitle">WORK</span>
+        </div>
+
+        <div class="center">
+            <h1>Transform Your Legal Risk Into Competitive Advantage</h1>
+            <p class="subtitle">Next Steps - Pilot Program</p>
+        </div>
+
+        <div class="two-column">
+            <div class="highlight-card">
+                <h3>Proposed Pilot: 50 Employees, 3 Months</h3>
+                <p style="color: #FFD700; font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Investment: £1,500 total</p>
+                <p style="color: #E5E5E5; margin-bottom: 1.5rem;">(£10/employee/month × 50 × 3)</p>
+
+                <h4>What You Get:</h4>
+                <ul class="bullet-list check-list">
+                    <li>Complete legal protection documentation</li>
+                    <li>Professional mental health support system</li>
+                    <li>Aggregate workforce insights (anonymous)</li>
+                    <li>ROI measurement and reporting</li>
+                    <li>Full setup and ongoing support</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Success Metrics We'll Track</h3>
+                <ul class="bullet-list">
+                    <li>Reduction in stress-related sick days</li>
+                    <li>Employee engagement scores</li>
+                    <li>Early intervention success rate</li>
+                    <li>Legal compliance documentation quality</li>
+                    <li>Manager confidence in mental health conversations</li>
+                </ul>
+
+                <h3 style="margin-top: 2rem;">Why Start Now?</h3>
+                <ul class="bullet-list">
+                    <li><strong>Legal Protection:</strong> Document duty of care immediately</li>
+                    <li><strong>Cost Prevention:</strong> Stop expensive claims before they happen</li>
+                    <li><strong>Culture Transformation:</strong> Show employees you genuinely care</li>
+                    <li><strong>Competitive Edge:</strong> Attract talent who value real wellbeing</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="center" style="margin-top: 2rem;">
+            <div class="highlight-card">
+                <h3>Contact Information</h3>
+                <div class="two-column large-text">
+                    <div>
+                        <p><strong>Email:</strong> hello@thrively.work</p>
+                        <p><strong>Phone:</strong> +44 (0) 20 XXXX XXXX</p>
+                    </div>
+                    <div>
+                        <p><strong>Website:</strong> thrively.work</p>
+                        <p><strong>LinkedIn:</strong> /company/thrive-work</p>
+                    </div>
+                </div>
+                
+                <div class="quote" style="margin-top: 1.5rem;">
+                    "We exist because we have found a way to help people thrive"
+                </div>
+
+                <p style="color: #22c55e; font-size: 1.2rem; font-weight: bold; margin-top: 1rem;">
+                    <strong>Guarantee:</strong> If you don't see measurable legal protection and employee engagement improvements in 90 days, we'll refund your investment.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
