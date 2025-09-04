@@ -4,7 +4,7 @@
     /* CSS Grid approach for precise positioning */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* 6 columns for T-H-R-i-V-E */
-    grid-template-rows: 2fr auto auto; /* Larger brain area, main text, subtitle */
+    grid-template-rows: 3fr auto auto; /* Even larger brain area, tighter text spacing */
     width: 500px;
     height: 600px;
     background: transparent;
@@ -393,7 +393,8 @@
     animation-delay: 0.5s;
     animation-fill-mode: both;
     z-index: 5; /* Below brain and animations */
-    align-self: center;
+    align-self: start; /* Move text up closer to brain */
+    margin-top: -40px; /* Pull text up to connect brain stem with 'i' dot */
 }
 
 .brain-brand-name {
