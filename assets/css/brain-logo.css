@@ -394,7 +394,7 @@
     animation-fill-mode: both;
     z-index: 5; /* Below brain and animations */
     align-self: start; /* Move text up closer to brain */
-    margin-top: -40px; /* Pull text up to connect brain stem with 'i' dot */
+    margin-top: -80px; /* Pull text much closer to connect brain stem with 'i' dot */
 }
 
 .brain-brand-name {
