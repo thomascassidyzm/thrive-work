@@ -43,13 +43,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 220px;
-    height: 220px;
-    /* Actually properly transparent PNG! */
-    background-image: url('../images/brain-final.png?v=1725416400');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    /* No fixed size - image will be inline */
+    width: auto;
+    height: auto;
+    max-width: 220px;
+    max-height: 220px;
     
     /* REAL transparency with simple glow - no container effects! */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
