@@ -57,7 +57,7 @@
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
     
     animation: brainPulse 3s ease-in-out infinite;
-    z-index: 20; /* Brain on TOP so animations show through it */
+    z-index: 100; /* Brain OVERLAY on top of all animations */
     
     /* Ensure the image is crisp */
     image-rendering: -webkit-optimize-contrast;
