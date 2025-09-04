@@ -2,13 +2,16 @@
 
 .brain-logo-container {
     position: relative;
-    width: 400px;
-    height: 500px;
+    width: 500px;
+    height: 600px;
+    /* Single card containing everything */
+    background: transparent;
+    border: 1px solid rgba(255, 215, 0, 0.1); /* Subtle border for debugging */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 2rem;
+    justify-content: flex-end; /* Text at bottom */
+    padding: 2rem;
 }
 
 .thrive-brain-container {
@@ -49,11 +52,12 @@
 /* Brain center with actual brain image */
 .brain-center {
     position: absolute;
-    top: -20%;  /* Position stem to be dot on 'i' */
-    left: 50%; /* Center above the 'i' in THRiVE */
-    transform: translate(-50%, -50%);
-    width: 280px;  /* Reasonable size */
-    height: 280px;
+    /* Position so brain stem aligns with 'i' dot */
+    bottom: 180px; /* Distance above text */  
+    left: calc(50% + 32px); /* Offset to align with 'i' position */
+    transform: translate(-50%, 0);
+    width: 300px;
+    height: 300px;
     
     /* REAL transparency with simple glow - no container effects! */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
@@ -381,7 +385,10 @@
     animation: fadeIn 1.5s ease-out;
     animation-delay: 0.5s;
     animation-fill-mode: both;
-    position: relative;
+    position: absolute;
+    bottom: 20px; /* At bottom of card */
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 5; /* Below brain and animations */
 }
 
