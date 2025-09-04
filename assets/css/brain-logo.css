@@ -1,23 +1,19 @@
 /* THRIVE Brain Logo - Thriving Neural Activity Design */
 
 .brain-logo-container {
-    /* CSS Grid approach for precise positioning */
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* 6 columns for T-H-R-i-V-E */
-    grid-template-rows: 3fr auto auto; /* Even larger brain area, tighter text spacing */
+    /* Simple container for absolute positioning - PIXEL PERFECT CONTROL */
+    position: relative;
     width: 500px;
     height: 600px;
     background: transparent;
-    gap: 0;
-    place-items: center;
-    position: relative;
+    /* All children will be absolutely positioned for precision */
 }
 
 .thrive-brain-container {
-    /* Grid positioning - span all columns and brain row */
-    grid-column: 1 / -1; /* Span all columns */
-    grid-row: 1; /* Brain area row */
-    position: relative;
+    /* Simple absolute positioned container for brain and animations */
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     /* Ensure NO background whatsoever */
@@ -26,7 +22,7 @@
     box-shadow: none !important;
     /* Container for all brain elements and animations */
     overflow: visible;
-    display: contents; /* Let children participate in parent grid */
+    pointer-events: none; /* Let clicks pass through */
 }
 
 /* Head profile DISABLED - was creating the dark square background!
@@ -50,16 +46,14 @@
 }
 */
 
-/* Brain center with actual brain image */
+/* Brain center with actual brain image - ABSOLUTE POSITIONING FOR PRECISION */
 .brain-center {
-    /* Grid positioning - place in 'i' column */
-    grid-column: 4; /* 4th column for 'i' in T-H-R-i-V-E */
-    grid-row: 1;
+    position: absolute;
+    top: 80px; /* Precise pixel positioning from top */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
     width: 280px; /* Bigger brain */
     height: 280px;
-    /* Brain stem should extend down to be the dot on 'i' */
-    align-self: center; /* Higher positioning */
-    margin-bottom: -20px; /* Closer to 'i' letter */
     
     /* REAL transparency with simple glow - no container effects! */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
@@ -225,18 +219,17 @@
     animation-delay: 2.2s;
 }
 
-/* Enhanced thought energy waves */
+/* Enhanced thought energy waves - ABSOLUTE POSITIONING FOR PRECISION */
 .thought-wave {
-    /* Grid positioning - same as brain center */
-    grid-column: 4; /* Same column as brain */
-    grid-row: 1;
+    position: absolute;
+    top: 220px; /* Center on brain location */
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 40px;  /* Small starting size */
     height: 40px;
     border: 2px solid rgba(255, 215, 0, 0.5);
     border-radius: 50%;
     animation: thoughtExpand 5s ease-out infinite;
-    align-self: center; /* Center in brain area */
-    justify-self: center;
     z-index: 50; /* Above brain */
 }
 
@@ -383,18 +376,18 @@
     }
 }
 
-/* Brain logo text elements */
+/* Brain logo text elements - ABSOLUTE POSITIONING FOR PRECISION */
 .brain-text-container {
-    /* Grid positioning - span all columns, bottom rows */
-    grid-column: 1 / -1; /* Span all 6 columns */
-    grid-row: 2 / 4; /* Span text rows */
+    position: absolute;
+    bottom: 80px; /* Precise distance from bottom */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
     text-align: center;
     animation: fadeIn 1.5s ease-out;
     animation-delay: 0.5s;
     animation-fill-mode: both;
     z-index: 5; /* Below brain and animations */
-    align-self: start; /* Move text up closer to brain */
-    margin-top: -80px; /* Pull text much closer to connect brain stem with 'i' dot */
+    width: 100%; /* Full width for centering */
 }
 
 .brain-brand-name {
