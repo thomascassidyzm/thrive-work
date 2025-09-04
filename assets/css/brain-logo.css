@@ -22,6 +22,9 @@
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
+    /* Let content show through transparent brain */
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* Head profile DISABLED - was creating the dark square background!
