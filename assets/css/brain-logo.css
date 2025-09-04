@@ -12,19 +12,15 @@
 }
 
 .thrive-brain-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     width: 300px;
     height: 300px;
     /* Ensure NO background whatsoever */
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    /* Let content show through transparent brain */
-    z-index: 1;
-    pointer-events: none;
+    /* Center the brain above its text */
+    margin: 0 auto;
 }
 
 /* Head profile DISABLED - was creating the dark square background!
