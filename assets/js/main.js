@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeScrollEffects();
     initializeDomainCards();
+    fetchCommitHash();
 });
 
 // Initialize floating particles
@@ -271,3 +272,40 @@ document.addEventListener('keydown', function(e) {
 });
 
 // Mobile menu styles are now handled in main.css
+
+// Automatically fetch and display current commit hash
+async function fetchCommitHash() {
+    const commitDisplay = document.getElementById('commit-display');
+    if (!commitDisplay) return;
+    
+    try {
+        // Try GitHub API first
+        const response = await fetch('https://api.github.com/repos/thomascassidyzm/thrive-work/commits/main');
+        const data = await response.json();
+        const shortHash = data.sha.substring(0, 7);
+        commitDisplay.textContent = `Commit: ${shortHash}`;
+        
+        // Also show last commit time for extra info
+        const commitDate = new Date(data.commit.author.date);
+        const timeAgo = getTimeAgo(commitDate);
+        commitDisplay.title = `Last commit: ${timeAgo} - ${data.commit.message.split('\n')[0]}`;
+    } catch (error) {
+        // Fallback - just show that we tried
+        commitDisplay.textContent = 'Commit: Live';
+        commitDisplay.title = 'Unable to fetch commit info';
+        console.log('Could not fetch commit info:', error);
+    }
+}
+
+// Helper function to show time ago
+function getTimeAgo(date) {
+    const now = new Date();
+    const diffMs = now - date;
+    const diffMinutes = Math.floor(diffMs / (1000 * 60));
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    
+    if (diffMinutes < 60) return `${diffMinutes} minutes ago`;
+    if (diffHours < 24) return `${diffHours} hours ago`;
+    return `${diffDays} days ago`;
+}
