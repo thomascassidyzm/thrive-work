@@ -15,6 +15,10 @@
     position: relative;
     width: 300px;
     height: 300px;
+    /* Ensure NO background whatsoever */
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 /* Head profile DISABLED - was creating the dark square background!
