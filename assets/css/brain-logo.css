@@ -49,7 +49,7 @@
 /* Brain center with actual brain image - ABSOLUTE POSITIONING FOR PRECISION */
 .brain-center {
     position: absolute;
-    top: 80px; /* Precise pixel positioning from top */
+    top: 120px; /* Move brain down to connect with 'i' */
     left: 50%;
     transform: translateX(-50%); /* Center horizontally */
     width: 280px; /* Bigger brain */
@@ -222,7 +222,7 @@
 /* Enhanced thought energy waves - ABSOLUTE POSITIONING FOR PRECISION */
 .thought-wave {
     position: absolute;
-    top: 220px; /* Center on brain location */
+    top: 260px; /* Center on new brain location */
     left: 50%;
     transform: translate(-50%, -50%);
     width: 40px;  /* Small starting size */
@@ -379,7 +379,7 @@
 /* Brain logo text elements - ABSOLUTE POSITIONING FOR PRECISION */
 .brain-text-container {
     position: absolute;
-    bottom: 80px; /* Precise distance from bottom */
+    top: 360px; /* Position text right below brain stem */
     left: 50%;
     transform: translateX(-50%); /* Center horizontally */
     text-align: center;
