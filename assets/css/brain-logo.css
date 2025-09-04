@@ -61,7 +61,7 @@
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
     
     animation: brainPulse 3s ease-in-out infinite;
-    z-index: 10;
+    z-index: 20; /* Brain on TOP so animations show through it */
     
     /* Ensure the image is crisp */
     image-rendering: -webkit-optimize-contrast;
@@ -116,6 +116,7 @@
     border-radius: 2px;
     opacity: 0;
     animation: neuralFire 3s ease-in-out infinite;
+    z-index: 10; /* Behind brain so they show through it */
 }
 
 /* Multiple neural pathways with different timings */
@@ -186,6 +187,7 @@
     border-radius: 50%;
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
     animation: synapsePulse 2s ease-in-out infinite;
+    z-index: 10; /* Behind brain so they show through it */
 }
 
 /* Position synapse nodes */
@@ -380,6 +382,8 @@
     animation: fadeIn 1.5s ease-out;
     animation-delay: 0.5s;
     animation-fill-mode: both;
+    position: relative;
+    z-index: 5; /* Below brain and animations */
 }
 
 .brain-brand-name {
