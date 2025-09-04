@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollEffects();
     initializeDomainCards();
     fetchCommitHash();
+    initializePreciseBrainPositioning();
 });
 
 // Initialize floating particles
@@ -308,4 +309,75 @@ function getTimeAgo(date) {
     if (diffMinutes < 60) return `${diffMinutes} minutes ago`;
     if (diffHours < 24) return `${diffHours} hours ago`;
     return `${diffDays} days ago`;
+}
+
+// PRECISE BRAIN POSITIONING - JavaScript measurement for pixel-perfect alignment
+function initializePreciseBrainPositioning() {
+    const brainElement = document.querySelector('.brain-center');
+    const textElement = document.querySelector('.brain-brand-name');
+    const brainContainer = document.querySelector('.brain-logo-container');
+    
+    if (!brainElement || !textElement || !brainContainer) return;
+    
+    // Wait for fonts to load and elements to render
+    setTimeout(() => {
+        positionBrainPrecisely();
+    }, 100);
+    
+    // Also reposition on resize
+    window.addEventListener('resize', () => {
+        positionBrainPrecisely();
+    });
+}
+
+function positionBrainPrecisely() {
+    const brainElement = document.querySelector('.brain-center');
+    const textElement = document.querySelector('.brain-brand-name');
+    const brainContainer = document.querySelector('.brain-logo-container');
+    
+    if (!brainElement || !textElement || !brainContainer) return;
+    
+    // Get the text bounds
+    const textBounds = textElement.getBoundingClientRect();
+    const containerBounds = brainContainer.getBoundingClientRect();
+    
+    // Calculate the position of the 'i' in "THRiVE"
+    const text = textElement.textContent || "THRiVE";
+    const fontSize = parseFloat(getComputedStyle(textElement).fontSize);
+    const letterSpacing = parseFloat(getComputedStyle(textElement).letterSpacing) || 0;
+    
+    // Approximate width per character (this varies by font but gives us a baseline)
+    const charWidth = fontSize * 0.6; // Rough estimate for most fonts
+    
+    // Position of 'i' (4th character: T-H-R-i)
+    const iIndex = 3; // 0-based index
+    const iOffsetFromLeft = (iIndex * (charWidth + letterSpacing)) + (charWidth * 0.5);
+    
+    // Calculate exact pixel position
+    const iAbsoluteX = textBounds.left + iOffsetFromLeft;
+    const iRelativeX = iAbsoluteX - containerBounds.left;
+    
+    // Position brain so its center (and stem) aligns with 'i' dot
+    const brainWidth = 280;
+    const brainLeft = iRelativeX - (brainWidth / 2);
+    
+    // Position brain above text with stem connecting to 'i' dot
+    const textTop = textBounds.top - containerBounds.top;
+    const brainTop = textTop - 280 - 10; // Brain height + small gap
+    
+    // Apply positioning with CSS custom properties for precision
+    brainElement.style.left = brainLeft + 'px';
+    brainElement.style.top = brainTop + 'px';
+    brainElement.style.transform = 'none'; // Remove transform to use exact positioning
+    
+    // Also update thought waves to center on new brain position
+    const thoughtWaves = document.querySelectorAll('.thought-wave');
+    thoughtWaves.forEach(wave => {
+        wave.style.left = (iRelativeX - 20) + 'px'; // Center on brain
+        wave.style.top = (brainTop + 140) + 'px'; // Center of brain
+        wave.style.transform = 'none';
+    });
+    
+    console.log(`Brain positioned: left=${brainLeft}px, top=${brainTop}px`);
+    console.log(`'i' calculated at: ${iRelativeX}px from container left`);
 }
