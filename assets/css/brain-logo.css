@@ -49,8 +49,8 @@
 /* Brain center with actual brain image */
 .brain-center {
     position: absolute;
-    top: 25%;  /* Higher up */
-    left: 25%; /* Further left */
+    top: 15%;  /* Even higher to align stem with 'i' */
+    left: 30%; /* Adjust to align stem with 'i' */
     transform: translate(-50%, -50%);
     width: 350px;  /* Even bigger */
     height: 350px; /* Even bigger */
@@ -222,13 +222,14 @@
 /* Enhanced thought energy waves */
 .thought-wave {
     position: absolute;
-    top: 15%;
-    right: -5%;
-    width: 80px;
-    height: 80px;
+    top: 25%;  /* Center in brain */
+    left: 30%; /* Center in brain */
+    width: 120px;  /* Larger starting size */
+    height: 120px;
     border: 2px solid rgba(255, 215, 0, 0.5);
     border-radius: 50%;
     animation: thoughtExpand 5s ease-out infinite;
+    transform: translate(-50%, -50%); /* Center the circles */
 }
 
 .thought-wave:nth-child(11) {
@@ -343,14 +344,14 @@
 
 @keyframes thoughtExpand {
     0% {
-        transform: scale(0);
+        transform: translate(-50%, -50%) scale(0);
         opacity: 0.6;
     }
     50% {
         opacity: 0.4;
     }
     100% {
-        transform: scale(3);
+        transform: translate(-50%, -50%) scale(6);  /* Much larger expansion */
         opacity: 0;
     }
 }
