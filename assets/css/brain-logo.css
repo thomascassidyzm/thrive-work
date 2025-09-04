@@ -49,11 +49,11 @@
 /* Brain center with actual brain image */
 .brain-center {
     position: absolute;
-    top: 35%;  /* Move up */
-    left: 35%; /* Move left */
+    top: 25%;  /* Higher up */
+    left: 25%; /* Further left */
     transform: translate(-50%, -50%);
-    width: 280px;  /* Make bigger */
-    height: 280px; /* Make bigger */
+    width: 350px;  /* Even bigger */
+    height: 350px; /* Even bigger */
     
     /* REAL transparency with simple glow - no container effects! */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
