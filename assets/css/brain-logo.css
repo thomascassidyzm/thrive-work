@@ -46,11 +46,11 @@
 }
 */
 
-/* Brain center - PROPERLY POSITIONED */
+/* Brain center - POSITIONED OVER ANIMATIONS */
 .brain-center {
     position: absolute;
     top: 50px;
-    left: 50%;
+    left: 30%; /* Move left to overlay animations */
     transform: translateX(-50%);
     width: 320px;
     height: 320px;
@@ -223,7 +223,7 @@
 .thought-wave {
     position: absolute;
     top: 210px; /* Center of brain */
-    left: 50%;
+    left: 30%; /* Align with brain position */
     transform: translate(-50%, -50%);
     width: 40px;  /* Small starting size */
     height: 40px;
@@ -376,11 +376,11 @@
     }
 }
 
-/* Brain logo text elements - BELOW BRAIN */
+/* Brain logo text elements - BELOW BRAIN, OVER ANIMATIONS */
 .brain-text-container {
     position: absolute;
     bottom: 60px;
-    left: 50%;
+    left: 30%; /* Align with brain position */
     transform: translateX(-50%);
     text-align: center;
     animation: fadeIn 1.5s ease-out;
