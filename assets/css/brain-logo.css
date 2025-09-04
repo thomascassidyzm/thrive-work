@@ -1,31 +1,32 @@
 /* THRIVE Brain Logo - Thriving Neural Activity Design */
 
 .brain-logo-container {
-    position: relative;
+    /* CSS Grid approach for precise positioning */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* 6 columns for T-H-R-i-V-E */
+    grid-template-rows: 1fr auto auto; /* brain area, main text, subtitle */
     width: 500px;
     height: 600px;
-    /* Single card containing everything */
     background: transparent;
-    /* Remove debug border */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end; /* Text at bottom */
-    padding: 2rem;
+    gap: 0;
+    place-items: center;
+    position: relative;
 }
 
 .thrive-brain-container {
+    /* Grid positioning - span all columns and brain row */
+    grid-column: 1 / -1; /* Span all columns */
+    grid-row: 1; /* Brain area row */
     position: relative;
-    width: 400px;  /* Larger card */
-    height: 400px; /* Larger card */
+    width: 100%;
+    height: 100%;
     /* Ensure NO background whatsoever */
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    /* Center the brain above its text */
-    margin: 0 auto;
-    /* Card-like container for all brain elements */
+    /* Container for all brain elements and animations */
     overflow: visible;
+    display: contents; /* Let children participate in parent grid */
 }
 
 /* Head profile DISABLED - was creating the dark square background!
@@ -51,13 +52,14 @@
 
 /* Brain center with actual brain image */
 .brain-center {
-    position: absolute;
-    /* Position so brain stem aligns with 'i' dot */
-    bottom: 50px; /* Even closer - brain stem should touch the 'i' */  
-    left: 56%; /* Fine-tune position over the 'i' in THRiVE */
-    transform: translate(-50%, 0);
-    width: 200px; /* Smaller so stem is more precise */
+    /* Grid positioning - place in 'i' column */
+    grid-column: 4; /* 4th column for 'i' in T-H-R-i-V-E */
+    grid-row: 1;
+    width: 200px;
     height: 200px;
+    /* Brain stem should extend down to be the dot on 'i' */
+    align-self: end;
+    margin-bottom: 20px; /* Gap between stem and 'i' letter */
     
     /* REAL transparency with simple glow - no container effects! */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
@@ -381,15 +383,15 @@
 
 /* Brain logo text elements */
 .brain-text-container {
+    /* Grid positioning - span all columns, bottom rows */
+    grid-column: 1 / -1; /* Span all 6 columns */
+    grid-row: 2 / 4; /* Span text rows */
     text-align: center;
     animation: fadeIn 1.5s ease-out;
     animation-delay: 0.5s;
     animation-fill-mode: both;
-    position: absolute;
-    bottom: 20px; /* At bottom of card */
-    left: 50%;
-    transform: translateX(-50%);
     z-index: 5; /* Below brain and animations */
+    align-self: center;
 }
 
 .brain-brand-name {
