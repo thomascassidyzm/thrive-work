@@ -6,7 +6,7 @@
     height: 600px;
     /* Single card containing everything */
     background: transparent;
-    border: 1px solid rgba(255, 215, 0, 0.1); /* Subtle border for debugging */
+    /* Remove debug border */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,11 +53,11 @@
 .brain-center {
     position: absolute;
     /* Position so brain stem aligns with 'i' dot */
-    bottom: 80px; /* Much closer to text - right above the 'i' */  
-    left: 58%; /* Position over the 'i' in THRiVE */
+    bottom: 50px; /* Even closer - brain stem should touch the 'i' */  
+    left: 56%; /* Fine-tune position over the 'i' in THRiVE */
     transform: translate(-50%, 0);
-    width: 250px; /* Slightly smaller so stem can be the dot */
-    height: 250px;
+    width: 200px; /* Smaller so stem is more precise */
+    height: 200px;
     
     /* REAL transparency with simple glow - no container effects! */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
