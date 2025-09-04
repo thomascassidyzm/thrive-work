@@ -61,6 +61,14 @@
     image-rendering: crisp-edges;
 }
 
+/* Direct brain without containers - SIMPLE! */
+.brain-center-direct {
+    max-width: 300px;
+    max-height: 300px;
+    filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+    animation: brainPulse 3s ease-in-out infinite;
+}
+
 /* Overlay effects disabled - they create apparent background containers
 .brain-center::after {
     content: '';
