@@ -1,12 +1,15 @@
 /* THRIVE Brain Logo - Thriving Neural Activity Design */
 
 .brain-logo-container {
-    /* Simple container for absolute positioning - PIXEL PERFECT CONTROL */
+    /* CENTERED container - overlaid on animations */
     position: relative;
-    width: 500px;
-    height: 600px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background: transparent;
-    /* All children will be absolutely positioned for precision */
 }
 
 .thrive-brain-container {
@@ -46,14 +49,12 @@
 }
 */
 
-/* Brain center with actual brain image - ABSOLUTE POSITIONING FOR PRECISION */
+/* Brain center - CENTERED AND OVERLAID */
 .brain-center {
-    position: absolute;
-    top: 120px; /* Move brain down to connect with 'i' */
-    left: 50%;
-    transform: translateX(-50%); /* Center horizontally */
-    width: 280px; /* Bigger brain */
-    height: 280px;
+    position: relative;
+    width: 350px; /* Bigger brain for impact */
+    height: 350px;
+    margin-bottom: -50px; /* Pull closer to text */
     
     /* REAL transparency with simple glow - no container effects! */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
@@ -219,10 +220,10 @@
     animation-delay: 2.2s;
 }
 
-/* Enhanced thought energy waves - ABSOLUTE POSITIONING FOR PRECISION */
+/* Enhanced thought energy waves - CENTERED ON BRAIN */
 .thought-wave {
     position: absolute;
-    top: 260px; /* Center on new brain location */
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 40px;  /* Small starting size */
@@ -376,18 +377,14 @@
     }
 }
 
-/* Brain logo text elements - ABSOLUTE POSITIONING FOR PRECISION */
+/* Brain logo text elements - CENTERED AND OVERLAID */
 .brain-text-container {
-    position: absolute;
-    top: 360px; /* Position text right below brain stem */
-    left: 50%;
-    transform: translateX(-50%); /* Center horizontally */
+    position: relative;
     text-align: center;
     animation: fadeIn 1.5s ease-out;
     animation-delay: 0.5s;
     animation-fill-mode: both;
     z-index: 5; /* Below brain and animations */
-    width: 100%; /* Full width for centering */
 }
 
 .brain-brand-name {

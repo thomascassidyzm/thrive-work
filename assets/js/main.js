@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollEffects();
     initializeDomainCards();
     fetchCommitHash();
-    initializePreciseBrainPositioning();
+    // initializePreciseBrainPositioning(); // Disabled - using centered CSS approach
 });
 
 // Initialize floating particles
