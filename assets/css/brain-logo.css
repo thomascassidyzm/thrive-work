@@ -13,14 +13,16 @@
 
 .thrive-brain-container {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 400px;  /* Larger card */
+    height: 400px; /* Larger card */
     /* Ensure NO background whatsoever */
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
     /* Center the brain above its text */
     margin: 0 auto;
+    /* Card-like container for all brain elements */
+    overflow: visible;
 }
 
 /* Head profile DISABLED - was creating the dark square background!
@@ -47,11 +49,11 @@
 /* Brain center with actual brain image */
 .brain-center {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 35%;  /* Move up */
+    left: 35%; /* Move left */
     transform: translate(-50%, -50%);
-    width: 220px;
-    height: 220px;
+    width: 280px;  /* Make bigger */
+    height: 280px; /* Make bigger */
     
     /* REAL transparency with simple glow - no container effects! */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
