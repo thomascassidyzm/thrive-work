@@ -53,11 +53,11 @@
 .brain-center {
     position: absolute;
     /* Position so brain stem aligns with 'i' dot */
-    bottom: 120px; /* Closer to text */  
-    left: 52%; /* Slight offset to align stem with 'i' dot */
+    bottom: 80px; /* Much closer to text - right above the 'i' */  
+    left: 58%; /* Position over the 'i' in THRiVE */
     transform: translate(-50%, 0);
-    width: 300px;
-    height: 300px;
+    width: 250px; /* Slightly smaller so stem can be the dot */
+    height: 250px;
     
     /* REAL transparency with simple glow - no container effects! */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
