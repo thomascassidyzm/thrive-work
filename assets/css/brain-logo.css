@@ -4,7 +4,7 @@
     /* CSS Grid approach for precise positioning */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* 6 columns for T-H-R-i-V-E */
-    grid-template-rows: 1fr auto auto; /* brain area, main text, subtitle */
+    grid-template-rows: 2fr auto auto; /* Larger brain area, main text, subtitle */
     width: 500px;
     height: 600px;
     background: transparent;
@@ -55,11 +55,11 @@
     /* Grid positioning - place in 'i' column */
     grid-column: 4; /* 4th column for 'i' in T-H-R-i-V-E */
     grid-row: 1;
-    width: 200px;
-    height: 200px;
+    width: 280px; /* Bigger brain */
+    height: 280px;
     /* Brain stem should extend down to be the dot on 'i' */
-    align-self: end;
-    margin-bottom: 20px; /* Gap between stem and 'i' letter */
+    align-self: center; /* Higher positioning */
+    margin-bottom: -20px; /* Closer to 'i' letter */
     
     /* REAL transparency with simple glow - no container effects! */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
@@ -227,15 +227,17 @@
 
 /* Enhanced thought energy waves */
 .thought-wave {
-    position: absolute;
-    top: -20%;  /* Center on brain stem */
-    left: 50%; /* Center on brain stem */
-    width: 60px;  /* Smaller starting size */
-    height: 60px;
+    /* Grid positioning - same as brain center */
+    grid-column: 4; /* Same column as brain */
+    grid-row: 1;
+    width: 40px;  /* Small starting size */
+    height: 40px;
     border: 2px solid rgba(255, 215, 0, 0.5);
     border-radius: 50%;
     animation: thoughtExpand 5s ease-out infinite;
-    transform: translate(-50%, -50%); /* Center the circles */
+    align-self: center; /* Center in brain area */
+    justify-self: center;
+    z-index: 50; /* Above brain */
 }
 
 .thought-wave:nth-child(11) {
