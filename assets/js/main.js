@@ -337,35 +337,54 @@ function positionBrainPrecisely() {
     
     if (!brainElement || !textElement || !brainContainer) return;
     
-    // Get the text bounds
+    // MORE PRECISE METHOD: Create invisible measuring elements for each character
+    const text = "THRiVE";
+    const computedStyle = getComputedStyle(textElement);
+    
+    // Create a temporary container to measure individual characters
+    const measureDiv = document.createElement('div');
+    measureDiv.style.cssText = `
+        position: absolute;
+        visibility: hidden;
+        font-family: ${computedStyle.fontFamily};
+        font-size: ${computedStyle.fontSize};
+        font-weight: ${computedStyle.fontWeight};
+        letter-spacing: ${computedStyle.letterSpacing};
+        line-height: ${computedStyle.lineHeight};
+        white-space: nowrap;
+    `;
+    document.body.appendChild(measureDiv);
+    
+    // Measure up to the 'i' position
+    measureDiv.textContent = "THR"; // Everything before 'i'
+    const beforeIWidth = measureDiv.offsetWidth;
+    
+    measureDiv.textContent = "THRi"; // Everything including 'i'
+    const includeIWidth = measureDiv.offsetWidth;
+    
+    const iWidth = includeIWidth - beforeIWidth;
+    const iCenterOffset = beforeIWidth + (iWidth / 2);
+    
+    // Clean up measuring element
+    document.body.removeChild(measureDiv);
+    
+    // Get container and text bounds
     const textBounds = textElement.getBoundingClientRect();
     const containerBounds = brainContainer.getBoundingClientRect();
     
-    // Calculate the position of the 'i' in "THRiVE"
-    const text = textElement.textContent || "THRiVE";
-    const fontSize = parseFloat(getComputedStyle(textElement).fontSize);
-    const letterSpacing = parseFloat(getComputedStyle(textElement).letterSpacing) || 0;
-    
-    // Approximate width per character (this varies by font but gives us a baseline)
-    const charWidth = fontSize * 0.6; // Rough estimate for most fonts
-    
-    // Position of 'i' (4th character: T-H-R-i)
-    const iIndex = 3; // 0-based index
-    const iOffsetFromLeft = (iIndex * (charWidth + letterSpacing)) + (charWidth * 0.5);
-    
-    // Calculate exact pixel position
-    const iAbsoluteX = textBounds.left + iOffsetFromLeft;
+    // Calculate exact 'i' center position
+    const iAbsoluteX = textBounds.left + iCenterOffset;
     const iRelativeX = iAbsoluteX - containerBounds.left;
     
-    // Position brain so its center (and stem) aligns with 'i' dot
+    // Position brain so its center (and stem) aligns with 'i' center
     const brainWidth = 280;
     const brainLeft = iRelativeX - (brainWidth / 2);
     
     // Position brain above text with stem connecting to 'i' dot
     const textTop = textBounds.top - containerBounds.top;
-    const brainTop = textTop - 280 - 10; // Brain height + small gap
+    const brainTop = textTop - 280 - 20; // Brain height + gap for stem connection
     
-    // Apply positioning with CSS custom properties for precision
+    // Apply positioning
     brainElement.style.left = brainLeft + 'px';
     brainElement.style.top = brainTop + 'px';
     brainElement.style.transform = 'none'; // Remove transform to use exact positioning
@@ -378,6 +397,7 @@ function positionBrainPrecisely() {
         wave.style.transform = 'none';
     });
     
-    console.log(`Brain positioned: left=${brainLeft}px, top=${brainTop}px`);
-    console.log(`'i' calculated at: ${iRelativeX}px from container left`);
+    console.log(`PRECISE: Brain positioned at left=${brainLeft}px, top=${brainTop}px`);
+    console.log(`PRECISE: 'i' center measured at ${iRelativeX}px from container left`);
+    console.log(`PRECISE: 'i' width=${iWidth}px, offset from text start=${iCenterOffset}px`);
 }
