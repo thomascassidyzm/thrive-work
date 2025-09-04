@@ -271,16 +271,12 @@
 /* Animations */
 @keyframes brainPulse {
     0%, 100% {
-        transform: translate(-50%, -60%) scale(1);
-        box-shadow: 
-            0 0 40px rgba(255, 215, 0, 0.6),
-            0 0 80px rgba(255, 215, 0, 0.3);
+        transform: scale(1);
+        opacity: 1;
     }
     50% {
-        transform: translate(-50%, -60%) scale(1.05);
-        box-shadow: 
-            0 0 50px rgba(255, 215, 0, 0.8),
-            0 0 100px rgba(255, 215, 0, 0.4);
+        transform: scale(1.05);
+        opacity: 1.1;
     }
 }
 
