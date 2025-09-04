@@ -45,8 +45,8 @@
     transform: translate(-50%, -50%);
     width: 220px;
     height: 220px;
-    /* Use original transparent PNG for now - debug the compression */
-    background-image: url('../images/transparent-thrive-brain-new.png?v=1756441000');
+    /* Truly transparent PNG - black background removed */
+    background-image: url('../images/brain-truly-transparent.png?v=1756441000');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
