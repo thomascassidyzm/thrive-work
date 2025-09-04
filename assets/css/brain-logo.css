@@ -49,11 +49,11 @@
 /* Brain center with actual brain image */
 .brain-center {
     position: absolute;
-    top: 15%;  /* Even higher to align stem with 'i' */
-    left: 30%; /* Adjust to align stem with 'i' */
+    top: -20%;  /* Position stem to be dot on 'i' */
+    left: 50%; /* Center above the 'i' in THRiVE */
     transform: translate(-50%, -50%);
-    width: 350px;  /* Even bigger */
-    height: 350px; /* Even bigger */
+    width: 280px;  /* Reasonable size */
+    height: 280px;
     
     /* REAL transparency with simple glow - no container effects! */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
@@ -222,10 +222,10 @@
 /* Enhanced thought energy waves */
 .thought-wave {
     position: absolute;
-    top: 25%;  /* Center in brain */
-    left: 30%; /* Center in brain */
-    width: 120px;  /* Larger starting size */
-    height: 120px;
+    top: -20%;  /* Center on brain stem */
+    left: 50%; /* Center on brain stem */
+    width: 60px;  /* Smaller starting size */
+    height: 60px;
     border: 2px solid rgba(255, 215, 0, 0.5);
     border-radius: 50%;
     animation: thoughtExpand 5s ease-out infinite;
@@ -351,7 +351,7 @@
         opacity: 0.4;
     }
     100% {
-        transform: translate(-50%, -50%) scale(6);  /* Much larger expansion */
+        transform: translate(-50%, -50%) scale(3);  /* Reasonable expansion */
         opacity: 0;
     }
 }
