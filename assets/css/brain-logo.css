@@ -1,5 +1,11 @@
 /* THRIVE Brain Logo - Thriving Neural Activity Design */
 
+/* UNIFIED POSITIONING SYSTEM - All components align to this center point */
+:root {
+    --brain-center-x: 25%; /* Master X position for all brain components */
+    --brain-center-y: 50%; /* Master Y position for brain center (within container) */
+}
+
 .brain-logo-container {
     /* Simple container with proper layout */
     position: relative;
@@ -50,7 +56,7 @@
 .brain-center {
     position: absolute;
     top: 50px;
-    left: 25%; /* Center better over animations */
+    left: var(--brain-center-x); /* Use unified center position */
     transform: translateX(-50%);
     width: 420px; /* Optimal size */
     height: 420px; /* Optimal size */
@@ -122,10 +128,10 @@
     box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
 }
 
-/* Multiple neural pathways with different timings */
+/* Multiple neural pathways with different timings - all positioned relative to brain center */
 .neural-pathway:nth-child(1) {
     top: 30%;
-    left: 20%;
+    left: calc(var(--brain-center-x) - 5%); /* 5% left of brain center */
     width: 80px;
     height: 2px;
     transform: rotate(25deg);
@@ -134,7 +140,7 @@
 
 .neural-pathway:nth-child(2) {
     top: 45%;
-    left: 25%;
+    left: var(--brain-center-x); /* Exactly at brain center */
     width: 60px;
     height: 2px;
     transform: rotate(-15deg);
@@ -143,7 +149,7 @@
 
 .neural-pathway:nth-child(3) {
     top: 60%;
-    left: 30%;
+    left: calc(var(--brain-center-x) + 5%); /* 5% right of brain center */
     width: 70px;
     height: 2px;
     transform: rotate(40deg);
@@ -152,7 +158,7 @@
 
 .neural-pathway:nth-child(4) {
     top: 35%;
-    right: 25%;
+    left: calc(var(--brain-center-x) + 10%); /* 10% right of brain center */
     width: 75px;
     height: 2px;
     transform: rotate(-30deg);
@@ -161,7 +167,7 @@
 
 .neural-pathway:nth-child(5) {
     top: 55%;
-    right: 20%;
+    left: calc(var(--brain-center-x) + 15%); /* 15% right of brain center */
     width: 65px;
     height: 2px;
     transform: rotate(20deg);
@@ -170,7 +176,7 @@
 
 .neural-pathway:nth-child(6) {
     top: 70%;
-    left: 40%;
+    left: calc(var(--brain-center-x) + 15%); /* 15% right of brain center */
     width: 55px;
     height: 2px;
     transform: rotate(-45deg);
@@ -193,38 +199,38 @@
     z-index: 10; /* Behind brain so they show through it */
 }
 
-/* Position synapse nodes with varied timing and intensity */
+/* Position synapse nodes with varied timing and intensity - all relative to brain center */
 .synapse-node:nth-child(7) {
     top: 25%;
-    left: 30%;
+    left: calc(var(--brain-center-x) + 5%); /* 5% right of brain center */
     animation-delay: 0.1s;
     animation-duration: 1.4s;
 }
 
 .synapse-node:nth-child(8) {
     top: 40%;
-    left: 50%;
+    left: calc(var(--brain-center-x) + 25%); /* 25% right of brain center */
     animation-delay: 0.6s;
     animation-duration: 1.8s;
 }
 
 .synapse-node:nth-child(9) {
     top: 55%;
-    left: 35%;
+    left: calc(var(--brain-center-x) + 10%); /* 10% right of brain center */
     animation-delay: 0.9s;
     animation-duration: 1.6s;
 }
 
 .synapse-node:nth-child(10) {
     top: 35%;
-    right: 30%;
+    left: calc(var(--brain-center-x) - 5%); /* 5% left of brain center */
     animation-delay: 1.3s;
     animation-duration: 1.5s;
 }
 
 .synapse-node:nth-child(11) {
     top: 65%;
-    right: 40%;
+    left: calc(var(--brain-center-x) - 10%); /* 10% left of brain center */
     animation-delay: 1.8s;
     animation-duration: 1.7s;
 }
@@ -233,7 +239,7 @@
 .thought-wave {
     position: absolute;
     top: 210px; /* Center of brain */
-    left: 25%; /* Align with brain position */
+    left: var(--brain-center-x); /* Use unified center position */
     transform: translate(-50%, -50%);
     width: 40px;  /* Small starting size */
     height: 40px;
@@ -421,7 +427,7 @@
 .brain-text-container {
     position: absolute;
     bottom: 60px;
-    left: 25%; /* Align with brain position */
+    left: var(--brain-center-x); /* Use unified center position */
     transform: translateX(-50%);
     text-align: center;
     animation: fadeIn 1.5s ease-out;
