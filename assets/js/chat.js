@@ -717,6 +717,27 @@ async function sendMessage(message, assessmentContext = null) {
         
         console.log('Sending conversation history:', conversationHistory.length, 'messages');
         
+        // Get local coaching insights for learning enhancement
+        let localInsights = null;
+        if (window.coachingFeedback) {
+            try {
+                const insights = {};
+                // Get insights for current coach and a few others for comparison
+                const coaches = [selectedCoach, 'tom', 'lucy', 'liz', 'dom', 'alastair', 'kainne', 'edward'];
+                for (const coach of coaches) {
+                    try {
+                        insights[coach] = await window.coachingFeedback.getCoachInsights(coach);
+                    } catch (e) {
+                        // Coach might not have data
+                    }
+                }
+                localInsights = insights;
+                console.log('🧠 Sending local insights to enhance coaching:', localInsights);
+            } catch (e) {
+                console.log('Could not get local insights:', e);
+            }
+        }
+
         const response = await fetch(TOM_COACHING_API, {
             method: 'POST',
             headers: {
@@ -728,7 +749,8 @@ async function sendMessage(message, assessmentContext = null) {
                 coach: selectedCoach,
                 conversation_history: conversationHistory,
                 assessmentContext: assessmentContext,
-                isHandoffSession: assessmentContext !== null
+                isHandoffSession: assessmentContext !== null,
+                local_insights: localInsights // LEARNING ENHANCEMENT
             })
         });
         

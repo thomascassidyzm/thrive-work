@@ -95,11 +95,41 @@ export default async function handler(req, res) {
       systemPrompt += `\n\nYou are responding as ${coach} from the THRIVE team. Focus on your specific expertise while using the THRIVE methodology.`;
     }
     
-    // Learning enhancement: Include effective patterns for this coach
+    // ENHANCED LEARNING: Pull insights from user's local PWA data
+    const localInsights = req.body.local_insights;
+    if (localInsights && localInsights[coach]) {
+      const coachInsights = localInsights[coach];
+      systemPrompt += `\n\n🧠 LEARNING FROM YOUR SUCCESSFUL CONVERSATIONS:`;
+      
+      if (coachInsights.recent_effective && coachInsights.recent_effective.length > 0) {
+        systemPrompt += `\nRecent effective patterns that led to deep engagement:`;
+        coachInsights.recent_effective.slice(0, 3).forEach((pattern, i) => {
+          systemPrompt += `\n${i+1}. Deep conversation (${pattern.conversation_depth} exchanges) on topics: ${pattern.topics?.join(', ') || 'general'}`;
+          if (pattern.effective_responses && pattern.effective_responses.length > 0) {
+            systemPrompt += `\n   Response style: "${pattern.effective_responses[0].substring(0, 150)}..."`;
+          }
+        });
+      }
+      
+      if (coachInsights.avg_engagement && coachInsights.avg_engagement > 0) {
+        systemPrompt += `\nYour average conversation depth: ${coachInsights.avg_engagement.toFixed(1)} exchanges`;
+        if (coachInsights.avg_engagement >= 5) {
+          systemPrompt += `\nExcellent! You consistently create deep, engaging conversations.`;
+        } else if (coachInsights.avg_engagement >= 3) {
+          systemPrompt += `\nGood engagement. Look for opportunities to go deeper with curious questions.`;
+        } else {
+          systemPrompt += `\nFocus on asking curious questions and saying "say more" to increase engagement.`;
+        }
+      }
+      
+      systemPrompt += `\n\nUse these insights to replicate what works while staying authentic to your coaching style.`;
+    }
+    
+    // Fallback: Server-side learning (for when no local insights available)
     const effectivePatterns = getEffectivePatternsForCoach(coach);
-    if (effectivePatterns.length > 0) {
-      const recentEffective = effectivePatterns.slice(-3); // Last 3 effective patterns
-      systemPrompt += `\n\nRecent effective responses that led to deep engagement (${recentEffective.length} patterns):`;
+    if (effectivePatterns.length > 0 && !localInsights) {
+      const recentEffective = effectivePatterns.slice(-3);
+      systemPrompt += `\n\nServer learning - Recent effective responses (${recentEffective.length} patterns):`;
       recentEffective.forEach((pattern, i) => {
         systemPrompt += `\n${i+1}. Deep conversation (${pattern.conversation_depth} exchanges): "${pattern.response_preview}..."`;
       });
