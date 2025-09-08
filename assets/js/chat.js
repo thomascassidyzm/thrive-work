@@ -608,6 +608,14 @@ async function sendMessage(message, assessmentContext = null) {
     startAnalyticsSession();
     trackMessageSent(message);
     
+    // Initialize session tracking if not exists
+    if (!window.currentSessionId) {
+        window.currentSessionId = `session_${Date.now()}`;
+        window.sessionStartTime = Date.now();
+        window.sessionMessageCount = 0;
+    }
+    window.sessionMessageCount++;
+    
     // Use stored assessment data if available and not explicitly passed
     if (!assessmentContext && window.currentAssessmentData) {
         assessmentContext = window.currentAssessmentData;
@@ -737,6 +745,22 @@ async function sendMessage(message, assessmentContext = null) {
             trackMessageReceived(responseTime);
             
             addMessage('assistant', data.content[0].text, true); // Enable typing animation
+            
+            // Log session data to IndexedDB for feedback loop
+            if (window.coachingFeedback) {
+                const sessionDuration = Date.now() - window.sessionStartTime;
+                window.coachingFeedback.logSession({
+                    session_id: window.currentSessionId,
+                    coach: selectedCoach,
+                    message_count: window.sessionMessageCount,
+                    conversation_depth: conversationHistory.length + 1,
+                    session_duration: sessionDuration,
+                    response_time: responseTime,
+                    user_message: message,
+                    coach_response: data.content[0].text.substring(0, 200), // First 200 chars
+                    topics: extractTopicsFromMessage(message)
+                }).catch(err => console.log('Feedback logging error:', err));
+            }
         } else {
             throw new Error('No response content');
         }
@@ -757,6 +781,33 @@ async function sendMessage(message, assessmentContext = null) {
             addMessage('assistant', response, true); // Enable typing animation for fallback too
         }, 500 + Math.random() * 1000);
     }
+}
+
+// ================================
+// Feedback System Helper Functions
+// ================================
+
+function extractTopicsFromMessage(message) {
+    // Simple keyword extraction for topic identification
+    const keywords = {
+        'work': ['work', 'job', 'career', 'boss', 'colleague', 'project', 'meeting'],
+        'relationships': ['relationship', 'partner', 'friend', 'family', 'conflict', 'communication'],
+        'anxiety': ['anxious', 'worried', 'stress', 'panic', 'nervous', 'overwhelmed'],
+        'confidence': ['confidence', 'imposter', 'doubt', 'insecure', 'self-worth'],
+        'change': ['change', 'transition', 'new', 'different', 'stuck', 'move'],
+        'goals': ['goal', 'dream', 'future', 'plan', 'vision', 'want']
+    };
+    
+    const messageWords = message.toLowerCase().split(/\s+/);
+    const topics = [];
+    
+    for (const [topic, words] of Object.entries(keywords)) {
+        if (words.some(word => messageWords.some(msgWord => msgWord.includes(word)))) {
+            topics.push(topic);
+        }
+    }
+    
+    return topics.length > 0 ? topics : ['general'];
 }
 
 // ================================
