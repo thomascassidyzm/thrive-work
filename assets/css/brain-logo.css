@@ -433,7 +433,7 @@
 .brain-text-container {
     position: absolute;
     bottom: 60px;
-    left: calc(var(--brain-center-x) + 5%); /* Shift right so brain stem aligns with i dot */
+    left: calc(var(--brain-center-x) + 2%); /* Shift slightly right so brain stem aligns with i dot */
     transform: translateX(-50%);
     text-align: center;
     animation: fadeIn 1.5s ease-out;
@@ -460,7 +460,7 @@
     font-size: 1rem;
     font-weight: 300;
     letter-spacing: 0.2em;
-    color: rgba(255, 215, 0, 0.7);
+    color: rgba(255, 215, 0, 0.9);
     margin: 0.5rem 0 0 0;
     text-transform: uppercase;
     opacity: 0.9;
