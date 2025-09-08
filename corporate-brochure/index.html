@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../assets/css/brain-logo.css">
     
     <style>
-        /* PDF-optimized styles with proper page breaks */
+        /* PDF-optimized styles for landscape format */
         @media print {
             body {
                 print-color-adjust: exact !important;
@@ -32,35 +32,52 @@
                 color-adjust: exact !important;
             }
             
-            .corporate-section {
-                page-break-inside: avoid;
-                break-inside: avoid;
-                margin-bottom: 2rem;
-            }
-            
-            .page-break {
-                page-break-before: always !important;
-                break-before: page !important;
+            @page {
+                size: A4 landscape;
+                margin: 0.5in;
             }
             
             .title-page {
                 page-break-after: always !important;
                 break-after: page !important;
+                min-height: 100vh;
             }
             
-            /* Ensure sections start on new pages */
+            /* Landscape optimized sections */
             .section-page {
                 page-break-before: always !important;
                 break-before: page !important;
-                min-height: 90vh;
+                min-height: 85vh;
+                display: flex;
+                align-items: center;
+            }
+            
+            /* Two-column layout for landscape content pages */
+            .landscape-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                align-items: start;
+                min-height: 70vh;
+            }
+            
+            .landscape-single {
+                grid-column: 1 / -1;
+                text-align: center;
             }
         }
         
         /* Simple template styling for content pages */
         .simple-content {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 3rem;
+        }
+        
+        .landscape-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
         }
         
         .section-title {
@@ -176,172 +193,175 @@
     </style>
 </head>
 <body>
-    <!-- Title Page - Single Column Layout -->
-    <section class="title-page" style="min-height: 100vh; background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem;">
+    <!-- Title Page - Landscape Optimized -->
+    <section class="title-page" style="min-height: 100vh; background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 2rem;">
         <div class="particles" id="particles"></div>
         
-        <!-- Brain Animation at Top -->
-        <div style="text-align: center; margin-bottom: 2rem;">
-            <div class="brain-logo-container">
-                <div class="thrive-brain-container" style="margin: 0 auto;">
-                    <div class="brain-center">
-                        <img src="../assets/images/brain-final.png" alt="Thriving Brain" class="brain-image">
-                        <!-- Enhanced neural pathways firing -->
-                        <div class="neural-pathway"></div>
-                        <div class="neural-pathway"></div>
-                        <div class="neural-pathway"></div>
-                        <div class="neural-pathway"></div>
-                        <div class="neural-pathway"></div>
-                        <div class="neural-pathway"></div>
-                        <!-- Enhanced synaptic nodes -->
-                        <div class="synapse-node"></div>
-                        <div class="synapse-node"></div>
-                        <div class="synapse-node"></div>
-                        <div class="synapse-node"></div>
-                        <div class="synapse-node"></div>
-                        <!-- Enhanced thought energy waves -->
-                        <div class="thought-wave"></div>
-                        <div class="thought-wave"></div>
-                        <div class="thought-wave"></div>
-                        <!-- Additional energy bursts -->
-                        <div class="energy-burst"></div>
-                        <div class="energy-burst"></div>
-                        <!-- Thought word blocks - transformation cycle -->
-                        <div class="thought-word" data-negative="anxious" data-positive="calm">anxious</div>
-                        <div class="thought-word" data-negative="not sure" data-positive="certain">not sure</div>
-                        <div class="thought-word" data-negative="frustrated" data-positive="peaceful">frustrated</div>
-                        <div class="thought-word" data-negative="tired" data-positive="energized">tired</div>
-                        <div class="thought-word" data-negative="confused" data-positive="clear">confused</div>
-                        <div class="thought-word" data-negative="overwhelmed" data-positive="focused">overwhelmed</div>
-                        <div class="thought-word" data-negative="stressed" data-positive="relaxed">stressed</div>
-                        <div class="thought-word" data-negative="dejected" data-positive="hopeful">dejected</div>
-                        <div class="thought-word" data-negative="uncertain" data-positive="confident">uncertain</div>
-                        <div class="thought-word" data-negative="worried" data-positive="optimistic">worried</div>
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; max-width: 1400px; align-items: center;">
+            <!-- Brain Animation Left Side -->
+            <div style="text-align: center;">
+                <div class="brain-logo-container">
+                    <div class="thrive-brain-container" style="margin: 0 auto;">
+                        <div class="brain-center">
+                            <img src="../assets/images/brain-final.png" alt="Thriving Brain" class="brain-image">
+                            <!-- Enhanced neural pathways firing -->
+                            <div class="neural-pathway"></div>
+                            <div class="neural-pathway"></div>
+                            <div class="neural-pathway"></div>
+                            <div class="neural-pathway"></div>
+                            <div class="neural-pathway"></div>
+                            <div class="neural-pathway"></div>
+                            <!-- Enhanced synaptic nodes -->
+                            <div class="synapse-node"></div>
+                            <div class="synapse-node"></div>
+                            <div class="synapse-node"></div>
+                            <div class="synapse-node"></div>
+                            <div class="synapse-node"></div>
+                            <!-- Enhanced thought energy waves -->
+                            <div class="thought-wave"></div>
+                            <div class="thought-wave"></div>
+                            <div class="thought-wave"></div>
+                            <!-- Additional energy bursts -->
+                            <div class="energy-burst"></div>
+                            <div class="energy-burst"></div>
+                            <!-- Thought word blocks - transformation cycle -->
+                            <div class="thought-word" data-negative="anxious" data-positive="calm">anxious</div>
+                            <div class="thought-word" data-negative="not sure" data-positive="certain">not sure</div>
+                            <div class="thought-word" data-negative="frustrated" data-positive="peaceful">frustrated</div>
+                            <div class="thought-word" data-negative="tired" data-positive="energized">tired</div>
+                            <div class="thought-word" data-negative="confused" data-positive="clear">confused</div>
+                            <div class="thought-word" data-negative="overwhelmed" data-positive="focused">overwhelmed</div>
+                            <div class="thought-word" data-negative="stressed" data-positive="relaxed">stressed</div>
+                            <div class="thought-word" data-negative="dejected" data-positive="hopeful">dejected</div>
+                            <div class="thought-word" data-negative="uncertain" data-positive="confident">uncertain</div>
+                            <div class="thought-word" data-negative="worried" data-positive="optimistic">worried</div>
+                        </div>
                     </div>
+                </div>
+                
+                <!-- THRIVE Title -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <h1 style="font-size: 3.5rem; font-weight: 700; color: var(--text-light); margin: 0; line-height: 1;">
+                        <span class="highlight">THRiVE</span>
+                    </h1>
+                    <p style="color: var(--primary-yellow); font-size: 1.2rem; margin: 0.5rem 0 0 0; font-weight: 600;">Mind In Motion</p>
+                </div>
+            </div>
+            
+            <!-- Content Right Side -->
+            <div>
+                <h2 style="font-size: 2.5rem; font-weight: 600; color: var(--text-light); margin-bottom: 2rem;">Corporate Solutions</h2>
+                
+                <div style="color: var(--text-light); font-size: 1.2rem; line-height: 1.7;">
+                    <p style="margin-bottom: 1.5rem;"><strong>THRIVE is a comprehensive and configurable employee benefits package</strong> that comes with a range of support tools and solutions to enable every individual to take more of a commanding role in their own health and mental fitness.</p>
+                    
+                    <p style="margin-bottom: 1.5rem;">At THRIVE we are dedicated to helping people form a better relationship with their thoughts—from awareness of the negative, to greater access to the positive ones, exactly when and where they are needed most.</p>
+                    
+                    <p>Our purpose is to help companies support their employees to take a lead role in their overall health outcomes and mental fitness. We provide services from tips to tools, systems for learning, and medical solutions—all tailored to each individual in ways that work best for them. Ultimately, it's all designed to inform and ignite positive thinking for better decision-making to achieve the results that matter most to every person.</p>
                 </div>
             </div>
         </div>
-        
-        <!-- THRIVE Title -->
-        <div style="text-align: center; margin-bottom: 1rem;">
-            <h1 style="font-size: 4rem; font-weight: 700; color: var(--text-light); margin: 0; line-height: 1;">
-                <span class="highlight">THRiVE</span>
-            </h1>
-            <p style="color: var(--primary-yellow); font-size: 1.2rem; margin: 0.5rem 0 0 0; font-weight: 600;">Mind In Motion</p>
-        </div>
-        
-        <!-- Title and Description -->
-        <div style="text-align: center; max-width: 800px;">
-            <h2 style="font-size: 2rem; font-weight: 600; color: var(--text-light); margin-bottom: 2rem;">Corporate Solutions</h2>
-            
-            <div style="color: var(--text-light); font-size: 1.1rem; line-height: 1.7; text-align: left;">
-                <p style="margin-bottom: 1.5rem;"><strong>THRIVE is a comprehensive and configurable employee benefits package</strong> that comes with a range of support tools and solutions to enable every individual to take more of a commanding role in their own health and mental fitness.</p>
+    </section>
+
+    <!-- What We Do & How We Do It - Combined Page -->
+    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%);">
+        <div class="landscape-content">
+            <div>
+                <h2 style="color: var(--primary-yellow); font-size: 2.2rem; font-weight: 600; margin-bottom: 2rem; text-align: center;">What We Do</h2>
                 
-                <p style="margin-bottom: 1.5rem;">At THRIVE we are dedicated to helping people form a better relationship with their thoughts—from awareness of the negative, to greater access to the positive ones, exactly when and where they are needed most.</p>
-                
-                <p>Our purpose is to help companies support their employees to take a lead role in their overall health outcomes and mental fitness. We provide services from tips to tools, systems for learning, and medical solutions—all tailored to each individual in ways that work best for them. Ultimately, it's all designed to inform and ignite positive thinking for better decision-making to achieve the results that matter most to every person.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- What We Do Section -->
-    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%);">
-        <div class="simple-content">
-            <h2 class="section-title">What We Do</h2>
-            
-            <p class="content-text">
-                With combined experience spanning decades, we have brought together leading experts in Psychology and Psychiatry. We have formed partnerships with specialists who work to provide each individual with the tools needed to get the best out of their own thoughts, in every situation—from work to home life.
-            </p>
-        </div>
-    </section>
-
-    <!-- How We Do It Section -->
-    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);">
-        <div class="simple-content">
-            <h2 class="section-title">How We Do It</h2>
-            
-            <p class="content-text">
-                We begin with a simple assessment questionnaire which reveals behavioral patterns, and we provide guidance and pointers based on what is shared. So if, for example, an individual talks about poor sleep and anxiety, we know how to help in these areas with ready-made solutions including a highly effective hypnotherapy app which is supported by clinical psychologists and has the fastest growing global community of users—see clearminds.com
-            </p>
-            
-            <p class="content-text">
-                We also provide the employer with an <strong>anonymised, categorised list of the most prominent issues</strong> that surface, which can help managers think about the environment, meeting structures, and how best to communicate support in general to the workforce.
-            </p>
-        </div>
-    </section>
-
-    <!-- Detailed Diagnostics Section -->
-    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%);">
-        <div class="simple-content">
-            <h2 class="section-title">More Detailed Diagnostics</h2>
-            
-            <p class="content-text">
-                If a person suggests, or the questionnaire response points towards a recognised condition—whether diagnosed or not—a clinical diagnosis may be recommended to help them manage or overturn problems that appear to be holding them back.
-            </p>
-            
-            <p class="content-text">
-                Ultimately, it's about helping each person understand where they are and how to get to where they want to be in terms of overall health and mental fitness. We have the full range of services to achieve this.
-            </p>
-            
-            <p class="content-text">
-                <strong>THRIVE, together with leading experts in specific fields, hosts the most comprehensive mental health screening and diagnostics platform</strong> which we use to support individuals to identify and work with almost all forms of mental health function and conditions including:
-            </p>
-            
-            <div class="conditions-grid">
-                <div class="condition-item">Sources of Stress & Anxiety</div>
-                <div class="condition-item">Isolation, Fear & Depression</div>
-                <div class="condition-item">ADHD & ADD</div>
-                <div class="condition-item">OCD</div>
-                <div class="condition-item">Bi Polar</div>
-                <div class="condition-item">PTSD</div>
-                <div class="condition-item">And More...</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Approach Section -->
-    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);">
-        <div class="simple-content">
-            <h2 class="section-title">What We Say and How We Engage People</h2>
-            
-            <p class="content-text">
-                Whether you are in a place where you don't know what's challenging you, or whether you believe or know you have a condition, we have the expertise and resources to support your journey—from tests and diagnostics, treatment and training—to help you on your journey to feeling good and achieve better outcomes.
-            </p>
-            
-            <p class="content-text">
-                What we know is that whether you have a condition, or a collection of thoughts which appear limiting in some way, <strong>you have the power to move through and beyond anything which feels as though it has a hold on you.</strong>
-            </p>
-            
-            <p class="content-text">
-                <strong>Our minds hold the power to keep us healthy and live longer,</strong> simply because better decisions lead to better health outcomes and overall wellbeing.
-            </p>
-        </div>
-    </section>
-
-    <!-- Corporate Partner Benefits Section -->
-    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%);">
-        <div class="simple-content">
-            <h2 class="section-title">For Our Corporate Partners</h2>
-            <p class="section-subtitle">How This Can Work to Better Serve You</p>
-            
-            <div class="legal-box">
-                <div class="legal-title">UK Legal Framework - Equality Act 2010</div>
                 <p class="content-text">
-                    In the UK, an employee can insist on reasonable adjustments for a condition that has not been formally diagnosed. The legal duty under the Equality Act 2010 focuses on the <strong>effects of a physical or mental impairment, not on a formal diagnosis</strong>—which means that the employer should not use the lack of a formal diagnosis as a reason to do nothing. They must focus on the effect of the impairment on the employee's work.
+                    With combined experience spanning decades, we have brought together leading experts in Psychology and Psychiatry. We have formed partnerships with specialists who work to provide each individual with the tools needed to get the best out of their own thoughts, in every situation—from work to home life.
+                </p>
+            </div>
+            
+            <div>
+                <h2 style="color: var(--primary-yellow); font-size: 2.2rem; font-weight: 600; margin-bottom: 2rem; text-align: center;">How We Do It</h2>
+                
+                <p class="content-text">
+                    We begin with a simple assessment questionnaire which reveals behavioral patterns, and we provide guidance and pointers based on what is shared. So if, for example, an individual talks about poor sleep and anxiety, we know how to help in these areas with ready-made solutions including a highly effective hypnotherapy app which is supported by clinical psychologists and has the fastest growing global community of users—see clearminds.com
                 </p>
                 
                 <p class="content-text">
-                    In the context of UK reasonable adjustments law, an employer <strong>"ought reasonably to know"</strong> about an employee's disability if they have received enough information to be put on notice of a potential issue, even if they were not explicitly told.
+                    We also provide the employer with an <strong>anonymised, categorised list of the most prominent issues</strong> that surface, which can help managers think about the environment, meeting structures, and how best to communicate support in general to the workforce.
                 </p>
             </div>
+        </div>
+    </section>
+
+    <!-- Detailed Diagnostics & Our Approach - Combined Page -->
+    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%);">
+        <div class="landscape-content">
+            <div>
+                <h2 style="color: var(--primary-yellow); font-size: 2.2rem; font-weight: 600; margin-bottom: 2rem; text-align: center;">More Detailed Diagnostics</h2>
+                
+                <p class="content-text">
+                    If a person suggests, or the questionnaire response points towards a recognised condition—whether diagnosed or not—a clinical diagnosis may be recommended to help them manage or overturn problems that appear to be holding them back.
+                </p>
+                
+                <p class="content-text">
+                    Ultimately, it's about helping each person understand where they are and how to get to where they want to be in terms of overall health and mental fitness. We have the full range of services to achieve this.
+                </p>
+                
+                <p class="content-text">
+                    <strong>THRIVE, together with leading experts in specific fields, hosts the most comprehensive mental health screening and diagnostics platform</strong> which we use to support individuals to identify and work with almost all forms of mental health function and conditions including:
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 1rem;">
+                    <div class="condition-item" style="font-size: 0.9rem; padding: 0.5rem;">Sources of Stress & Anxiety</div>
+                    <div class="condition-item" style="font-size: 0.9rem; padding: 0.5rem;">Isolation, Fear & Depression</div>
+                    <div class="condition-item" style="font-size: 0.9rem; padding: 0.5rem;">ADHD & ADD</div>
+                    <div class="condition-item" style="font-size: 0.9rem; padding: 0.5rem;">OCD</div>
+                    <div class="condition-item" style="font-size: 0.9rem; padding: 0.5rem;">Bi Polar</div>
+                    <div class="condition-item" style="font-size: 0.9rem; padding: 0.5rem;">PTSD</div>
+                </div>
+            </div>
             
-            <div class="quote-box">
-                <p class="quote-text">
-                    "With mental health issues rising at a rate disproportionate to physical health issues—to the cost of lost productivity, time off and working style adjustments—it is time to get ahead of legislation and act to offer guided solutions to proactively support all workers across communities of professional practice."
+            <div>
+                <h2 style="color: var(--primary-yellow); font-size: 2.2rem; font-weight: 600; margin-bottom: 2rem; text-align: center;">What We Say and How We Engage People</h2>
+                
+                <p class="content-text">
+                    Whether you are in a place where you don't know what's challenging you, or whether you believe or know you have a condition, we have the expertise and resources to support your journey—from tests and diagnostics, treatment and training—to help you on your journey to feeling good and achieve better outcomes.
                 </p>
-                <p class="quote-attribution">
-                    <strong>— The Team at THRIVE</strong>
+                
+                <p class="content-text">
+                    What we know is that whether you have a condition, or a collection of thoughts which appear limiting in some way, <strong>you have the power to move through and beyond anything which feels as though it has a hold on you.</strong>
                 </p>
+                
+                <p class="content-text">
+                    <strong>Our minds hold the power to keep us healthy and live longer,</strong> simply because better decisions lead to better health outcomes and overall wellbeing.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Corporate Partner Benefits Section - Full Page -->
+    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%);">
+        <div class="simple-content">
+            <div class="landscape-single">
+                <h2 class="section-title">For Our Corporate Partners</h2>
+                <p class="section-subtitle">How This Can Work to Better Serve You</p>
+            </div>
+            
+            <div class="landscape-content" style="align-items: start; margin-top: 2rem;">
+                <div class="legal-box">
+                    <div class="legal-title">UK Legal Framework - Equality Act 2010</div>
+                    <p class="content-text">
+                        In the UK, an employee can insist on reasonable adjustments for a condition that has not been formally diagnosed. The legal duty under the Equality Act 2010 focuses on the <strong>effects of a physical or mental impairment, not on a formal diagnosis</strong>—which means that the employer should not use the lack of a formal diagnosis as a reason to do nothing. They must focus on the effect of the impairment on the employee's work.
+                    </p>
+                    
+                    <p class="content-text">
+                        In the context of UK reasonable adjustments law, an employer <strong>"ought reasonably to know"</strong> about an employee's disability if they have received enough information to be put on notice of a potential issue, even if they were not explicitly told.
+                    </p>
+                </div>
+                
+                <div class="quote-box">
+                    <p class="quote-text">
+                        "With mental health issues rising at a rate disproportionate to physical health issues—to the cost of lost productivity, time off and working style adjustments—it is time to get ahead of legislation and act to offer guided solutions to proactively support all workers across communities of professional practice."
+                    </p>
+                    <p class="quote-attribution">
+                        <strong>— The Team at THRIVE</strong>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
