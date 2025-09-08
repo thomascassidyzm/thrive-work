@@ -50,10 +50,10 @@
 .brain-center {
     position: absolute;
     top: 50px;
-    left: 20%; /* Move left to overlay animations */
+    left: 15%; /* Move further left to overlay animations */
     transform: translateX(-50%);
-    width: 320px;
-    height: 320px;
+    width: 384px; /* 20% bigger: 320px * 1.2 */
+    height: 384px; /* 20% bigger: 320px * 1.2 */
     
     /* REAL transparency with simple glow - no container effects! */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
@@ -223,7 +223,7 @@
 .thought-wave {
     position: absolute;
     top: 210px; /* Center of brain */
-    left: 20%; /* Align with brain position */
+    left: 15%; /* Align with brain position */
     transform: translate(-50%, -50%);
     width: 40px;  /* Small starting size */
     height: 40px;
@@ -380,7 +380,7 @@
 .brain-text-container {
     position: absolute;
     bottom: 60px;
-    left: 20%; /* Align with brain position */
+    left: 15%; /* Align with brain position */
     transform: translateX(-50%);
     text-align: center;
     animation: fadeIn 1.5s ease-out;
