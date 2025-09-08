@@ -438,13 +438,17 @@ function startWordTransformationCycle(wordElement) {
     const negativeWord = wordElement.getAttribute('data-negative');
     const positiveWord = wordElement.getAttribute('data-positive');
     
+    console.log(`🔄 Starting cycle for word: ${negativeWord} -> ${positiveWord}`);
+    
     function transformCycle() {
         // Start with negative word (0-5 seconds)
+        console.log(`📝 Setting negative word: ${negativeWord}`);
         wordElement.textContent = negativeWord;
         wordElement.classList.remove('positive');
         
         // Transform to positive word at 5 seconds
         setTimeout(() => {
+            console.log(`✨ Transforming to positive word: ${positiveWord}`);
             wordElement.textContent = positiveWord;
             wordElement.classList.add('positive');
         }, 5000);
