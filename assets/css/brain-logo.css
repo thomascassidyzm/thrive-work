@@ -2,7 +2,7 @@
 
 /* UNIFIED POSITIONING SYSTEM - All components align to this center point */
 :root {
-    --brain-center-x: 25%; /* Master X position for all brain components */
+    --brain-center-x: 30%; /* Master X position for all brain components */
     --brain-center-y: 50%; /* Master Y position for brain center (within container) */
 }
 
@@ -433,7 +433,7 @@
 .brain-text-container {
     position: absolute;
     bottom: 60px;
-    left: calc(var(--brain-center-x) + 2%); /* Shift slightly right so brain stem aligns with i dot */
+    left: var(--brain-center-x); /* Align with brain center */
     transform: translateX(-50%);
     text-align: center;
     animation: fadeIn 1.5s ease-out;
