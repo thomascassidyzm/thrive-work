@@ -52,8 +52,8 @@
     top: 50px;
     left: calc(15% - 50px); /* Move 50px further left */
     transform: translateX(-50%);
-    width: 460px; /* Make bigger: 384px * 1.2 */
-    height: 460px; /* Make bigger: 384px * 1.2 */
+    width: 420px; /* Optimal size */
+    height: 420px; /* Optimal size */
     
     /* REAL transparency with simple glow - no container effects! */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
