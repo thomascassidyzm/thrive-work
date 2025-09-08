@@ -557,17 +557,59 @@
             box-shadow: 0 12px 40px rgba(255, 215, 0, 0.4);
         }
         
-        /* Print Styles */
+        /* Print Styles - Force Chrome to include all styling */
         @media print {
-            body { 
-                background: white !important;
-                -webkit-print-color-adjust: exact;
-                color-adjust: exact;
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
-            .page { box-shadow: none; }
-            .page::before { display: none; }
-            a { color: var(--bg-black); text-decoration: none; }
-            .brain-visual { animation: none; }
+            
+            body { 
+                background: var(--gradient-hero) !important;
+                margin: 0 !important;
+            }
+            
+            .page { 
+                box-shadow: none; 
+                background: var(--gradient-hero) !important;
+            }
+            
+            .page::before { 
+                display: block !important;
+                background-image: 
+                    radial-gradient(2px 2px at 20% 30%, rgba(255, 215, 0, 0.1), transparent),
+                    radial-gradient(1px 1px at 70% 20%, rgba(255, 215, 0, 0.05), transparent),
+                    radial-gradient(1px 1px at 90% 80%, rgba(255, 215, 0, 0.08), transparent) !important;
+            }
+            
+            .header, .value-prop, .column, .cta {
+                background: var(--glass-white-light) !important;
+                border: 1px solid var(--glass-white-medium) !important;
+            }
+            
+            .brain-visual { 
+                animation: none;
+                background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--primary-yellow-bright) 50%, #FFA500 100%) !important;
+            }
+            
+            a { 
+                color: var(--bg-black) !important; 
+                text-decoration: none;
+                background: linear-gradient(135deg, var(--primary-yellow), var(--primary-yellow-bright)) !important;
+            }
+            
+            /* Force all colors to print */
+            .header h1 {
+                background: linear-gradient(135deg, var(--primary-yellow), var(--primary-yellow-bright)) !important;
+                -webkit-background-clip: text !important;
+                -webkit-text-fill-color: transparent !important;
+            }
+            
+            .column h3 {
+                background: linear-gradient(135deg, var(--bg-slate), var(--bg-navy)) !important;
+                color: var(--text-white) !important;
+            }
         }
     </style>
 </head>
