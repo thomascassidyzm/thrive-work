@@ -50,7 +50,7 @@
 .brain-center {
     position: absolute;
     top: 50px;
-    left: calc(15% - 50px); /* Move 50px further left */
+    left: 25%; /* Center better over animations */
     transform: translateX(-50%);
     width: 420px; /* Optimal size */
     height: 420px; /* Optimal size */
@@ -233,7 +233,7 @@
 .thought-wave {
     position: absolute;
     top: 210px; /* Center of brain */
-    left: 15%; /* Align with brain position */
+    left: 25%; /* Align with brain position */
     transform: translate(-50%, -50%);
     width: 40px;  /* Small starting size */
     height: 40px;
@@ -421,7 +421,7 @@
 .brain-text-container {
     position: absolute;
     bottom: 60px;
-    left: 10%; /* Move further left to match brain position */
+    left: 25%; /* Align with brain position */
     transform: translateX(-50%);
     text-align: center;
     animation: fadeIn 1.5s ease-out;
