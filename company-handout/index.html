@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THRIVE - Employee Mental Health Assessment</title>
+    <style>
+        /* Print-optimized CSS for 2-page PDF */
+        @page {
+            size: A4;
+            margin: 0.5in;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.4;
+            color: #2C3E50;
+            background: white;
+        }
+        
+        .page {
+            width: 100%;
+            min-height: 100vh;
+            page-break-after: always;
+            padding: 20px;
+        }
+        
+        .page:last-child {
+            page-break-after: avoid;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #FFD700;
+            padding-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1A1A1A;
+            margin-bottom: 5px;
+        }
+        
+        .header .tagline {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Value Proposition */
+        .value-prop {
+            text-align: center;
+            margin-bottom: 35px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            border-left: 4px solid #FFD700;
+        }
+        
+        .value-prop h2 {
+            font-size: 24px;
+            color: #1A1A1A;
+            margin-bottom: 15px;
+        }
+        
+        .value-prop p {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 12px;
+        }
+        
+        .value-prop .highlight {
+            font-weight: bold;
+            color: #1A1A1A;
+        }
+        
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .column {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .column h3 {
+            font-size: 18px;
+            color: #FFD700;
+            background: #1A1A1A;
+            margin: -20px -20px 15px -20px;
+            padding: 12px 20px;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .benefit-section {
+            margin-bottom: 18px;
+        }
+        
+        .benefit-section h4 {
+            font-size: 14px;
+            color: #1A1A1A;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .emoji {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        .benefit-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+        
+        .benefit-list li {
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 3px;
+            position: relative;
+        }
+        
+        .benefit-list li:before {
+            content: "•";
+            color: #FFD700;
+            position: absolute;
+            left: -12px;
+        }
+        
+        /* Gap Section */
+        .gap-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .gap-section h3 {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #1A1A1A;
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .comparison-side {
+            text-align: center;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        
+        .physical-health {
+            background: #e8f5e8;
+            border: 2px solid #4CAF50;
+        }
+        
+        .mental-health {
+            background: #ffeaa7;
+            border: 2px solid #e17055;
+        }
+        
+        .comparison-side h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .comparison-list {
+            list-style: none;
+            font-size: 12px;
+        }
+        
+        .comparison-list li {
+            margin-bottom: 5px;
+            padding: 3px 0;
+        }
+        
+        .checkmark { color: #4CAF50; }
+        .cross { color: #e17055; }
+        
+        /* Solution Section */
+        .solution {
+            text-align: center;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #1A1A1A;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .solution h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .solution p {
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        
+        /* Support Pathways */
+        .pathways {
+            margin-bottom: 25px;
+        }
+        
+        .pathways h3 {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #1A1A1A;
+        }
+        
+        .pathway-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .pathway {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background: white;
+        }
+        
+        .pathway-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .pathway h4 {
+            font-size: 14px;
+            color: #1A1A1A;
+            margin-bottom: 8px;
+        }
+        
+        .pathway-list {
+            list-style: none;
+            font-size: 11px;
+            color: #666;
+        }
+        
+        .pathway-list li {
+            margin-bottom: 3px;
+        }
+        
+        /* Ripple Effect */
+        .ripple {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .ripple h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #1A1A1A;
+        }
+        
+        .ripple-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .ripple-item {
+            padding: 10px;
+            border-radius: 6px;
+            background: white;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .ripple-item .emoji {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .ripple-item h4 {
+            font-size: 12px;
+            color: #1A1A1A;
+            margin-bottom: 5px;
+        }
+        
+        .ripple-item p {
+            font-size: 10px;
+            color: #666;
+        }
+        
+        /* Call to Action */
+        .cta {
+            text-align: center;
+            background: #1A1A1A;
+            color: #FFD700;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .cta h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .cta p {
+            font-size: 12px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #1A1A1A;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            display: inline-block;
+        }
+        
+        /* Brain Visual */
+        .brain-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .brain-visual {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            margin: 0 auto 10px auto;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+        }
+        
+        .brain-visual::before {
+            content: '🧠';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body { background: white; }
+            .page { box-shadow: none; }
+            a { color: #1A1A1A; text-decoration: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1 -->
+    <div class="page">
+        <div class="header">
+            <h1>THRiVE</h1>
+            <div class="tagline">Mind In Motion</div>
+        </div>
+        
+        <div class="value-prop">
+            <h2>One Assessment. Everyone Wins.</h2>
+            <p>You know that voice in your head? The one having multiple conversations while you're trying to focus? The low-level disruption that leaves you feeling foggy, distracted, always slightly "not quite right"?</p>
+            <p><span class="highlight">We have 30 years of battle-tested solutions.</span> Our diagnostic doesn't just identify problems—it connects you to the exact support you need to move from existing to thriving across every area of your life.</p>
+        </div>
+        
+        <div class="two-column">
+            <div class="column">
+                <h3>For Organizations</h3>
+                
+                <div class="benefit-section">
+                    <h4><span class="emoji">🚀</span>True Competitive Advantage</h4>
+                    <ul class="benefit-list">
+                        <li>Teams that thrive, not just survive</li>
+                        <li>Attract people who value genuine wellbeing</li>
+                        <li>Mental fitness as standard as physical health</li>
+                        <li>Your people bring their best selves to work</li>
+                    </ul>
+                </div>
+                
+                <div class="benefit-section">
+                    <h4><span class="emoji">📈</span>Measurable Impact</h4>
+                    <ul class="benefit-list">
+                        <li>Early intervention prevents expensive crises</li>
+                        <li>Reduced absence and turnover costs</li>
+                        <li>Higher engagement and performance</li>
+                        <li>Clear ROI through prevention, not reaction</li>
+                    </ul>
+                </div>
+                
+                <div class="benefit-section">
+                    <h4><span class="emoji">🌟</span>Transformational Ripple</h4>
+                    <ul class="benefit-list">
+                        <li>Thriving employees create thriving families</li>
+                        <li>Better work culture benefits entire communities</li>
+                        <li>Set the standard others aspire to follow</li>
+                        <li>Build a legacy of human flourishing</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="column">
+                <h3>For Your Employees</h3>
+                
+                <div class="benefit-section">
+                    <h4><span class="emoji">🧠</span>Finally Understand Your Mind</h4>
+                    <ul class="benefit-list">
+                        <li>Identify whether you have 1, 2, or 3 of 600+ neuro conditions</li>
+                        <li>Stop self-diagnosing ADHD—get real clarity</li>
+                        <li>Understand that inner voice and multiple conversations</li>
+                        <li>Connect with your thoughts, not fight them</li>
+                    </ul>
+                </div>
+                
+                <div class="benefit-section">
+                    <h4><span class="emoji">🎯</span>Know Exactly Where to Start</h4>
+                    <ul class="benefit-list">
+                        <li>No more expensive journey of discovery</li>
+                        <li>Direct connection to the right specialists</li>
+                        <li>Skip the fragmented healthcare landscape</li>
+                        <li>Baseline assessment like your annual physical</li>
+                    </ul>
+                </div>
+                
+                <div class="benefit-section">
+                    <h4><span class="emoji">🌟</span>Transform Every Life Domain</h4>
+                    <ul class="benefit-list">
+                        <li>Better decisions, better outcomes everywhere</li>
+                        <li>Present in relationships without cross-contamination</li>
+                        <li>Stop existing, start thriving—at work, home, life</li>
+                        <li>Write your story forward with clarity</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gap-section">
+            <h3>The Gap That's Been Missing</h3>
+            <div class="comparison">
+                <div class="comparison-side physical-health">
+                    <h4>Physical Health ✅</h4>
+                    <p style="font-size: 11px; margin-bottom: 8px;">"The Body Keeps the Score" entered common language.</p>
+                    <ul class="comparison-list">
+                        <li><span class="checkmark">✓</span> Something hurts → Clear path</li>
+                        <li><span class="checkmark">✓</span> Get diagnosis → Find specialist</li>
+                        <li><span class="checkmark">✓</span> Annual physical → Baseline health</li>
+                        <li><span class="checkmark">✓</span> Blood test → Know what's wrong</li>
+                    </ul>
+                </div>
+                <div class="comparison-side mental-health">
+                    <h4>Mental Health ❌</h4>
+                    <p style="font-size: 11px; margin-bottom: 8px;">Fragmented, expensive, confusing landscape.</p>
+                    <ul class="comparison-list">
+                        <li><span class="cross">❌</span> Brain feels foggy → Where to start?</li>
+                        <li><span class="cross">❌</span> Self-diagnose ADHD → No consensus</li>
+                        <li><span class="cross">❌</span> Try CBT → Maybe wrong approach</li>
+                        <li><span class="cross">❌</span> Expensive discovery → Still lost</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution">
+            <h3>Until Now.</h3>
+            <p>THRIVE is the world's first "full blood count" for your mind. Just like you wouldn't buy a car without a diagnostic checklist, why navigate life without understanding how your brain works?</p>
+            <p><strong>Our assessment baselines your neuro markers, identifies exactly what you're dealing with, and connects you directly to the right support—no guesswork, no expensive trial and error.</strong></p>
+        </div>
+    </div>
+    
+    <!-- PAGE 2 -->
+    <div class="page">
+        <div class="pathways">
+            <h3>What Happens After the Assessment?</h3>
+            <p style="text-align: center; font-size: 13px; color: #666; margin-bottom: 20px;">Personalized pathways to the right professional support</p>
+            
+            <div class="pathway-grid">
+                <div class="pathway">
+                    <div class="pathway-icon">🧠</div>
+                    <h4>Mind Support</h4>
+                    <ul class="pathway-list">
+                        <li><strong>NeuroEvaluator:</strong> Advanced brain screening</li>
+                        <li><strong>Personality (OCEAN):</strong> Deep behavioral analysis</li>
+                        <li><strong>Lucy (CBT Specialist):</strong> Script awareness & conscious choice</li>
+                        <li><strong>AI Coaches:</strong> 24/7 mental fitness support</li>
+                        <li><strong>ClearMinds:</strong> Hypnotherapy for stress & anxiety</li>
+                        <li><strong>Neurofeedback:</strong> Brain training sessions</li>
+                    </ul>
+                </div>
+                
+                <div class="pathway">
+                    <div class="pathway-icon">💪</div>
+                    <h4>Body Support</h4>
+                    <ul class="pathway-list">
+                        <li><strong>Concierge Health:</strong> Blood work & biomarkers</li>
+                        <li><strong>Hormone Analysis:</strong> Endocrine optimization</li>
+                        <li><strong>Nutrition Plans:</strong> Personalized diet protocols</li>
+                        <li><strong>Sleep Optimization:</strong> Recovery improvement</li>
+                        <li><strong>Physical Therapy:</strong> Movement & pain management</li>
+                    </ul>
+                </div>
+                
+                <div class="pathway">
+                    <div class="pathway-icon">🔄</div>
+                    <h4>Mind-Body Integration</h4>
+                    <ul class="pathway-list">
+                        <li><strong>Holistic Approach:</strong> Treating the whole person</li>
+                        <li><strong>Progress Tracking:</strong> Regular reassessments</li>
+                        <li><strong>Coordinated Care:</strong> Partners work together</li>
+                        <li><strong>Evidence-Based:</strong> Proven interventions</li>
+                        <li><strong>Continuous Support:</strong> Long-term wellness</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ripple">
+            <h3>Everyone Thrives</h3>
+            <p style="font-size: 12px; margin-bottom: 15px;">When individuals get the clarity they need to move from existing to thriving, the ripple effects create value across every dimension of human experience.</p>
+            
+            <div class="ripple-grid">
+                <div class="ripple-item">
+                    <div class="emoji">🌟</div>
+                    <h4>Individuals</h4>
+                    <p>Move from existing to thriving across all life domains</p>
+                </div>
+                <div class="ripple-item">
+                    <div class="emoji">🚀</div>
+                    <h4>Organizations</h4>
+                    <p>Competitive advantage through genuinely thriving teams</p>
+                </div>
+                <div class="ripple-item">
+                    <div class="emoji">⭐</div>
+                    <h4>Experts</h4>
+                    <p>Connected to people who truly need their expertise</p>
+                </div>
+                <div class="ripple-item">
+                    <div class="emoji">🌍</div>
+                    <h4>Society</h4>
+                    <p>Better mental health outcomes for everyone</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="brain-container">
+            <div class="brain-visual"></div>
+            <p style="font-size: 12px; color: #666;">The world's first "full blood count" for your mind</p>
+        </div>
+        
+        <div class="cta">
+            <h3>Ready to Write Your Story Forward?</h3>
+            <p>Stop existing. Start thriving. Get the clarity you need to transform every area of your life—work, relationships, personal growth, and beyond.</p>
+            <a href="https://www.thrive-work.com/assessment/" class="cta-button">
+                START YOUR ASSESSMENT →
+            </a>
+        </div>
+    </div>
+</body>
+</html>
