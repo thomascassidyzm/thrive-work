@@ -319,21 +319,8 @@ function getTimeAgo(date) {
 
 // PRECISE BRAIN POSITIONING - JavaScript measurement for pixel-perfect alignment
 function initializePreciseBrainPositioning() {
-    const brainElement = document.querySelector('.brain-center');
-    const textElement = document.querySelector('.brain-brand-name');
-    const brainContainer = document.querySelector('.brain-logo-container');
-    
-    if (!brainElement || !textElement || !brainContainer) return;
-    
-    // Wait for fonts to load and elements to render
-    setTimeout(() => {
-        positionBrainPrecisely();
-    }, 100);
-    
-    // Also reposition on resize
-    window.addEventListener('resize', () => {
-        positionBrainPrecisely();
-    });
+    // DISABLED: Let CSS handle all positioning
+    return;
 }
 
 function positionBrainPrecisely() {
