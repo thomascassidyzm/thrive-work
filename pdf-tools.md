@@ -1,5 +1,22 @@
 # 🚀 High-Quality PDF Creation Tools
 
+## THRIVE PDF Templates
+
+### **Corporate Brochure** (`/corporate-brochure/`)
+- **Purpose**: Client presentations and corporate sales
+- **Styling**: Matches hero section design with THRIVE branding
+- **Content**: Comprehensive employee benefits package details
+- **API**: `/api/generate-corporate-pdf` (requires Puppeteer setup)
+- **Features**: 
+  - UK Equality Act 2010 compliance information
+  - Mental health screening platform details
+  - Professional layout for B2B sales
+
+### **Company Handout** (`/company-handout/`)
+- **Purpose**: General company overview
+- **Styling**: Full THRIVE design system
+- **API**: `/api/generate-pdf` (requires Puppeteer setup)
+
 ## Browser-Based Solutions
 1. **Firefox** - Often better than Chrome for print-to-PDF with backgrounds
 2. **Safari** (Mac) - Excellent PDF preservation
