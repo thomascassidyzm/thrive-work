@@ -429,7 +429,7 @@
 .brain-text-container {
     position: absolute;
     bottom: 60px;
-    left: 50%; /* Align with brain center */
+    left: 65%; /* Position THRiVE text to the right */
     transform: translateX(-50%);
     text-align: center;
     animation: fadeIn 1.5s ease-out;
