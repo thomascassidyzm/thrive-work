@@ -5,6 +5,18 @@
 let promptsCache = null;
 let cacheExpiry = 0;
 
+// Simple metrics storage (in production, use a database)
+const sessionMetricsStorage = [];
+const effectivePatterns = {
+  tom: [],
+  lucy: [],
+  liz: [],
+  dom: [],
+  alastair: [],
+  kainne: [],
+  edward: []
+};
+
 async function getCoachingPrompts() {
   const now = Date.now();
   
@@ -56,11 +68,21 @@ export default async function handler(req, res) {
   }
   
   try {
-    const { message, coach = 'tom', conversation_history = [] } = req.body;
+    const { message, coach = 'tom', conversation_history = [], session_id } = req.body;
     
     if (!message) {
       return res.status(400).json({ error: 'Message is required' });
     }
+    
+    // Track session metrics for feedback loop
+    const sessionMetrics = {
+      session_id: session_id || `session_${Date.now()}`,
+      coach: coach,
+      message_count: conversation_history.length + 1,
+      timestamp: new Date().toISOString(),
+      message_length: message.length,
+      conversation_depth: conversation_history.length
+    };
     
     // Get coaching prompts
     const coachingPrompts = await getCoachingPrompts();
@@ -71,6 +93,17 @@ export default async function handler(req, res) {
     // Add coach-specific focus
     if (coach !== 'tom') {
       systemPrompt += `\n\nYou are responding as ${coach} from the THRIVE team. Focus on your specific expertise while using the THRIVE methodology.`;
+    }
+    
+    // Learning enhancement: Include effective patterns for this coach
+    const effectivePatterns = getEffectivePatternsForCoach(coach);
+    if (effectivePatterns.length > 0) {
+      const recentEffective = effectivePatterns.slice(-3); // Last 3 effective patterns
+      systemPrompt += `\n\nRecent effective responses that led to deep engagement (${recentEffective.length} patterns):`;
+      recentEffective.forEach((pattern, i) => {
+        systemPrompt += `\n${i+1}. Deep conversation (${pattern.conversation_depth} exchanges): "${pattern.response_preview}..."`;
+      });
+      systemPrompt += `\n\nUse insights from these successful patterns when relevant.`;
     }
     
     // Only use API if key is configured
@@ -124,9 +157,17 @@ export default async function handler(req, res) {
     
     const data = await claudeResponse.json();
     
+    // Store session metrics for learning (simple approach - log to console for now)
+    // TODO: Replace with database storage or analytics service
+    if (sessionMetrics.conversation_depth > 3) {
+      console.log('🔥 ENGAGED SESSION:', sessionMetrics);
+    }
+    logSessionMetrics(sessionMetrics, data.content[0]?.text || '');
+    
     return res.status(200).json({
       ...data,
-      source: 'claude_api'
+      source: 'claude_api',
+      session_metrics: sessionMetrics // Include for frontend tracking
     });
     
   } catch (error) {
@@ -154,4 +195,51 @@ function generateFallbackResponse(message, coach) {
   };
   
   return responses[coach] || responses.tom;
+}
+
+// Simple feedback loop implementation
+function logSessionMetrics(metrics, response) {
+  // Store metrics (in production, save to database)
+  sessionMetricsStorage.push({
+    ...metrics,
+    response_length: response.length,
+    response_preview: response.substring(0, 100) + '...'
+  });
+  
+  // Identify effective patterns (conversations > 5 exchanges)
+  if (metrics.conversation_depth > 5) {
+    console.log(`✅ EFFECTIVE PATTERN - ${metrics.coach}: Deep conversation (${metrics.conversation_depth} exchanges)`);
+    
+    // Store as effective pattern for this coach
+    effectivePatterns[metrics.coach].push({
+      pattern_type: 'deep_engagement',
+      conversation_depth: metrics.conversation_depth,
+      timestamp: metrics.timestamp,
+      response_preview: response.substring(0, 200)
+    });
+    
+    // Keep only last 10 effective patterns per coach
+    if (effectivePatterns[metrics.coach].length > 10) {
+      effectivePatterns[metrics.coach] = effectivePatterns[metrics.coach].slice(-10);
+    }
+  }
+  
+  // Log quick dropoffs for learning
+  if (metrics.conversation_depth <= 2 && metrics.message_count <= 2) {
+    console.log(`⚠️ QUICK DROPOFF - ${metrics.coach}: Short conversation (${metrics.conversation_depth} exchanges)`);
+  }
+}
+
+// Function to get effective patterns for learning enhancement
+function getEffectivePatternsForCoach(coach) {
+  return effectivePatterns[coach] || [];
+}
+
+// Export metrics for potential analytics dashboard
+function getSessionAnalytics() {
+  return {
+    total_sessions: sessionMetricsStorage.length,
+    effective_patterns: effectivePatterns,
+    recent_sessions: sessionMetricsStorage.slice(-20) // Last 20 sessions
+  };
 }
