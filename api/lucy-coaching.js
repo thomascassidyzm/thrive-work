@@ -1,7 +1,7 @@
-// Cindy Robinett-Cassidy CBT Coaching API
+// Lucy CBT Coaching API
 // BABCP-accredited CBT therapist specializing in the Script methodology
 
-const CINDY_COACHING_STYLE = {
+const LUCY_COACHING_STYLE = {
   core_philosophy: {
     approach: "The Script isn't something to fight or rewrite - it's background noise to notice",
     metaphor: "The Script is like that relative at Christmas still talking their same nonsense. You don't argue with it, you don't try to change it, you just notice it and keep living YOUR story.",
@@ -88,5 +88,5 @@ const CINDY_COACHING_STYLE = {
 
 // Export for use in chat system
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { CINDY_COACHING_STYLE };
+  module.exports = { LUCY_COACHING_STYLE };
 }

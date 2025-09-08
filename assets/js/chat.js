@@ -243,7 +243,7 @@ const coachThinkingPatterns = {
         'Assessing your team dynamics...',
         'Calculating the success factors...'
     ],
-    cindy: [
+    lucy: [
         'Noticing the Script showing up...',
         'Interesting what the Script is saying...',
         'Let me look at this pattern...',
@@ -266,7 +266,7 @@ const welcomeMessages = {
     kainne: "Hey, I'm Kainne. Most people find me when they're juggling too much or struggling with boundaries. What's your situation?",
     edward: "Hello, I'm Edward. I'm curious - is it the team dynamics, the environment, or something else entirely that's on your mind?",
     dom: "Alright, I'm Dom. Are you looking to level up your own game or sort out team dynamics? What's the challenge?",
-    cindy: "Hi, I'm Cindy. I specialize in helping you recognize the Script - that critical inner voice that sounds like wisdom but isn't. What's the Script been telling you lately?"
+    lucy: "Hi, I'm Lucy. I specialize in helping you recognize the Script - that critical inner voice that sounds like wisdom but isn't. What's the Script been telling you lately?"
 };
 
 // Fallback responses for API failures
@@ -509,7 +509,7 @@ function addMessage(role, content, useTypingAnimation = false) {
         kainne: 'Kainne',
         edward: 'Edward',
         dom: 'Dom',
-        cindy: 'Cindy'
+        lucy: 'Lucy'
     };
     const coachName = role === 'user' ? 'You' : coachNames[selectedCoach] || 'Coach';
     
