@@ -583,7 +583,7 @@
     }
 }
 
-/* Thought word blocks - mental noise around brain */
+/* Thought word blocks - transformation cycle from negative to positive */
 .thought-word {
     position: absolute;
     background: rgba(218, 165, 32, 0.15);
@@ -595,11 +595,19 @@
     color: rgba(218, 165, 32, 0.9);
     white-space: nowrap;
     z-index: 4; /* Above brain image */
-    animation: thoughtFade 4s ease-in-out infinite;
+    animation: thoughtPulse 10s ease-in-out infinite;
     opacity: 0;
+    transition: all 0.5s ease-in-out;
 }
 
-/* Staggered positioning around brain */
+/* Positive state styling */
+.thought-word.positive {
+    background: rgba(76, 175, 80, 0.15);
+    border-color: rgba(76, 175, 80, 0.4);
+    color: rgba(76, 175, 80, 0.9);
+}
+
+/* Staggered positioning and transformation timing */
 .thought-word:nth-child(18) { top: 15%; left: 20%; animation-delay: 0s; }
 .thought-word:nth-child(19) { top: 25%; left: 80%; animation-delay: 0.5s; }
 .thought-word:nth-child(20) { top: 45%; left: 15%; animation-delay: 1s; }
@@ -608,19 +616,21 @@
 .thought-word:nth-child(23) { top: 20%; left: 60%; animation-delay: 2.5s; }
 .thought-word:nth-child(24) { top: 35%; left: 85%; animation-delay: 3s; }
 .thought-word:nth-child(25) { top: 75%; left: 10%; animation-delay: 3.5s; }
-.thought-word:nth-child(26) { top: 50%; left: 90%; animation-delay: 0.8s; }
-.thought-word:nth-child(27) { top: 10%; left: 45%; animation-delay: 1.3s; }
+.thought-word:nth-child(26) { top: 50%; left: 90%; animation-delay: 4s; }
+.thought-word:nth-child(27) { top: 10%; left: 45%; animation-delay: 4.5s; }
 
-@keyframes thoughtFade {
-    0%, 90%, 100% {
+@keyframes thoughtPulse {
+    0%, 10%, 90%, 100% {
         opacity: 0;
         transform: scale(0.8);
     }
-    10%, 80% {
-        opacity: 0.8;
+    
+    20%, 80% {
+        opacity: 0.9;
         transform: scale(1);
     }
-    45% {
+    
+    50% {
         opacity: 1;
         transform: scale(1.05);
     }

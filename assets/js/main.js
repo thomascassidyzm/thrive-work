@@ -400,4 +400,48 @@ function positionBrainPrecisely() {
     console.log(`PRECISE: Brain positioned at left=${brainLeft}px, top=${brainTop}px`);
     console.log(`PRECISE: 'i' center measured at ${iRelativeX}px from container left`);
     console.log(`PRECISE: 'i' width=${iWidth}px, offset from text start=${iCenterOffset}px`);
+    
+    // Initialize thought word transformation after positioning is done
+    setTimeout(initializeThoughtTransformation, 500);
+}
+
+// Thought word transformation cycle - negative to positive and back
+function initializeThoughtTransformation() {
+    const thoughtWords = document.querySelectorAll('.thought-word');
+    if (thoughtWords.length === 0) return;
+    
+    console.log(`🧠 Starting thought transformation cycle for ${thoughtWords.length} words`);
+    
+    // Start transformation cycle for each word with staggered timing
+    thoughtWords.forEach((word, index) => {
+        // Each word transforms on its own 10-second cycle, staggered by 1 second
+        const delay = index * 1000; // 1 second stagger between words
+        
+        setTimeout(() => {
+            startWordTransformationCycle(word);
+        }, delay);
+    });
+}
+
+function startWordTransformationCycle(wordElement) {
+    const negativeWord = wordElement.getAttribute('data-negative');
+    const positiveWord = wordElement.getAttribute('data-positive');
+    
+    function transformCycle() {
+        // Start with negative word (0-5 seconds)
+        wordElement.textContent = negativeWord;
+        wordElement.classList.remove('positive');
+        
+        // Transform to positive word at 5 seconds
+        setTimeout(() => {
+            wordElement.textContent = positiveWord;
+            wordElement.classList.add('positive');
+        }, 5000);
+        
+        // Repeat cycle every 10 seconds
+        setTimeout(transformCycle, 10000);
+    }
+    
+    // Start the cycle
+    transformCycle();
 }
