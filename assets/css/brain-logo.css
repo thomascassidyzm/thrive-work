@@ -1,10 +1,6 @@
 /* THRIVE Brain Logo - Thriving Neural Activity Design */
 
-/* UNIFIED POSITIONING SYSTEM - All components align to this center point */
-:root {
-    --brain-center-x: 30%; /* Master X position for all brain components */
-    --brain-center-y: 50%; /* Master Y position for brain center (within container) */
-}
+/* SIMPLE POSITIONING - No more complex variables */
 
 .brain-logo-container {
     /* Simple container with proper layout */
@@ -56,7 +52,7 @@
 .brain-center {
     position: absolute;
     top: 50px;
-    left: var(--brain-center-x); /* Use unified center position */
+    left: 50%; /* Simple center positioning */
     transform: translateX(-50%);
     width: 420px; /* Optimal size */
     height: 420px; /* Optimal size */
@@ -433,7 +429,7 @@
 .brain-text-container {
     position: absolute;
     bottom: 60px;
-    left: var(--brain-center-x); /* Align with brain center */
+    left: 50%; /* Align with brain center */
     transform: translateX(-50%);
     text-align: center;
     animation: fadeIn 1.5s ease-out;
