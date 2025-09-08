@@ -283,11 +283,31 @@ document.addEventListener('keydown', function(e) {
 // Automatically fetch and display current commit hash
 async function fetchCommitHash() {
     const commitDisplay = document.getElementById('commit-display');
-    if (!commitDisplay) return;
+    if (!commitDisplay) {
+        console.log('Commit display element not found');
+        return;
+    }
     
     try {
-        // Try GitHub API first
-        const response = await fetch('https://api.github.com/repos/thomascassidyzm/thrive-work/commits/main');
+        console.log('Fetching commit info...');
+        
+        // Try GitHub API with timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+        
+        const response = await fetch('https://api.github.com/repos/thomascassidyzm/thrive-work/commits/main', {
+            signal: controller.signal,
+            headers: {
+                'Accept': 'application/vnd.github.v3+json'
+            }
+        });
+        
+        clearTimeout(timeoutId);
+        
+        if (!response.ok) {
+            throw new Error(`GitHub API responded with ${response.status}`);
+        }
+        
         const data = await response.json();
         const shortHash = data.sha.substring(0, 7);
         commitDisplay.textContent = `Commit: ${shortHash}`;
@@ -296,11 +316,16 @@ async function fetchCommitHash() {
         const commitDate = new Date(data.commit.author.date);
         const timeAgo = getTimeAgo(commitDate);
         commitDisplay.title = `Last commit: ${timeAgo} - ${data.commit.message.split('\n')[0]}`;
+        
+        console.log('✅ Commit info updated:', shortHash);
+        
     } catch (error) {
-        // Fallback - just show that we tried
-        commitDisplay.textContent = 'Commit: Live';
-        commitDisplay.title = 'Unable to fetch commit info';
-        console.log('Could not fetch commit info:', error);
+        // Fallback - show current timestamp as version
+        const now = new Date();
+        const timestamp = now.toISOString().slice(0, 10); // YYYY-MM-DD
+        commitDisplay.textContent = `Version: ${timestamp}`;
+        commitDisplay.title = 'Live version - commit info unavailable';
+        console.log('Could not fetch commit info, showing date instead:', error.message);
     }
 }
 
