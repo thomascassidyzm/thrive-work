@@ -4,11 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THRIVE - Employee Mental Health Assessment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    
     <style>
-        /* Print-optimized CSS for 2-page PDF */
+        /* Print-optimized CSS with THRIVE website styling */
         @page {
             size: A4;
             margin: 0.5in;
+        }
+        
+        :root {
+            /* THRIVE Color System */
+            --primary-yellow: #FFD700;
+            --primary-yellow-bright: #FFED4A;
+            --primary-yellow-dim: #B8860B;
+            --accent-yellow: #FFF59D;
+            
+            /* Deep Background Colors */
+            --bg-black: #000000;
+            --bg-deep-blue: #0A0E1A;
+            --bg-dark-blue: #0F172A;
+            --bg-slate: #1E293B;
+            --bg-navy: #334155;
+            
+            /* Glass Morphism Colors */
+            --glass-white: rgba(255, 255, 255, 0.1);
+            --glass-white-light: rgba(255, 255, 255, 0.05);
+            --glass-white-medium: rgba(255, 255, 255, 0.15);
+            --glass-white-strong: rgba(255, 255, 255, 0.25);
+            --glass-yellow: rgba(255, 215, 0, 0.1);
+            --glass-yellow-light: rgba(255, 215, 0, 0.05);
+            --glass-yellow-medium: rgba(255, 215, 0, 0.15);
+            
+            /* Text Colors */
+            --text-white: #FFFFFF;
+            --text-light: #F8FAFC;
+            --text-medium: #CBD5E1;
+            --text-dim: #94A3B8;
+            --text-dark: #64748B;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, var(--bg-deep-blue) 0%, var(--bg-dark-blue) 50%, var(--bg-slate) 100%);
+            --gradient-dark: linear-gradient(180deg, var(--bg-black) 0%, var(--bg-deep-blue) 100%);
+            --gradient-hero: radial-gradient(ellipse at center, var(--bg-dark-blue) 0%, var(--bg-deep-blue) 50%, var(--bg-black) 100%);
+            
+            /* Typography */
+            --font-primary: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --border-radius: 20px;
+            --border-radius-lg: 30px;
+            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --shadow-yellow-glow: 0 0 30px rgba(255, 215, 0, 0.3);
         }
         
         * {
@@ -18,130 +65,190 @@
         }
         
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.4;
-            color: #2C3E50;
-            background: white;
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--text-light);
+            background: var(--gradient-hero);
+            min-height: 100vh;
         }
         
         .page {
             width: 100%;
             min-height: 100vh;
             page-break-after: always;
-            padding: 20px;
+            padding: 2rem;
+            position: relative;
         }
         
         .page:last-child {
             page-break-after: avoid;
         }
         
-        /* Header */
+        /* Add subtle particles effect for print */
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, rgba(255, 215, 0, 0.1), transparent),
+                radial-gradient(1px 1px at 70% 20%, rgba(255, 215, 0, 0.05), transparent),
+                radial-gradient(1px 1px at 90% 80%, rgba(255, 215, 0, 0.08), transparent);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Header with THRIVE styling */
         .header {
             text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 3px solid #FFD700;
-            padding-bottom: 20px;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--glass-white-light);
+            border: 1px solid var(--glass-white-medium);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-glass);
+            backdrop-filter: blur(20px);
         }
         
         .header h1 {
-            font-size: 32px;
+            font-size: 3.5rem;
             font-weight: 900;
-            color: #1A1A1A;
-            margin-bottom: 5px;
+            background: linear-gradient(135deg, var(--primary-yellow), var(--primary-yellow-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            text-shadow: var(--shadow-yellow-glow);
         }
         
         .header .tagline {
-            font-size: 14px;
-            color: #666;
+            font-size: 1rem;
+            color: var(--text-medium);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.2em;
+            font-weight: 300;
         }
         
-        /* Value Proposition */
+        /* Value Proposition with glass morphism */
         .value-prop {
             text-align: center;
-            margin-bottom: 35px;
-            padding: 25px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 8px;
-            border-left: 4px solid #FFD700;
+            margin-bottom: 3rem;
+            padding: 2.5rem;
+            background: var(--glass-yellow-light);
+            border: 1px solid var(--glass-yellow-medium);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-glass);
+            backdrop-filter: blur(20px);
+            position: relative;
+        }
+        
+        .value-prop::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-yellow), var(--primary-yellow-bright));
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
         }
         
         .value-prop h2 {
-            font-size: 24px;
-            color: #1A1A1A;
-            margin-bottom: 15px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-yellow);
+            margin-bottom: 1.5rem;
+            text-shadow: var(--shadow-yellow-glow);
         }
         
         .value-prop p {
-            font-size: 14px;
-            color: #444;
-            margin-bottom: 12px;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
         }
         
         .value-prop .highlight {
-            font-weight: bold;
-            color: #1A1A1A;
+            font-weight: 600;
+            color: var(--primary-yellow-bright);
         }
         
-        /* Two Column Layout */
+        /* Two Column Layout with glass morphism */
         .two-column {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 30px;
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
         
         .column {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 20px;
+            background: var(--glass-white-light);
+            border: 1px solid var(--glass-white-medium);
+            border-radius: var(--border-radius);
+            padding: 0;
+            box-shadow: var(--shadow-glass);
+            backdrop-filter: blur(20px);
+            overflow: hidden;
         }
         
         .column h3 {
-            font-size: 18px;
-            color: #FFD700;
-            background: #1A1A1A;
-            margin: -20px -20px 15px -20px;
-            padding: 12px 20px;
-            border-radius: 8px 8px 0 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-white);
+            background: linear-gradient(135deg, var(--bg-slate), var(--bg-navy));
+            margin: 0;
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-yellow);
+        }
+        
+        .column-content {
+            padding: 1.5rem;
         }
         
         .benefit-section {
-            margin-bottom: 18px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefit-section:last-child {
+            margin-bottom: 0;
         }
         
         .benefit-section h4 {
-            font-size: 14px;
-            color: #1A1A1A;
-            margin-bottom: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary-yellow);
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
         }
         
         .emoji {
-            margin-right: 8px;
-            font-size: 16px;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
         }
         
         .benefit-list {
             list-style: none;
-            padding-left: 20px;
+            padding-left: 1.5rem;
         }
         
         .benefit-list li {
-            font-size: 12px;
-            color: #555;
-            margin-bottom: 3px;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            margin-bottom: 0.5rem;
             position: relative;
+            line-height: 1.5;
         }
         
         .benefit-list li:before {
-            content: "•";
-            color: #FFD700;
+            content: "→";
+            color: var(--primary-yellow);
             position: absolute;
-            left: -12px;
+            left: -1.2rem;
+            font-weight: bold;
         }
         
         /* Gap Section */
@@ -367,11 +474,100 @@
             font-size: 40px;
         }
         
+        /* Brain Logo Integration */
+        .brain-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .brain-visual {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--primary-yellow-bright) 50%, #FFA500 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            margin: 0 auto 1rem auto;
+            position: relative;
+            box-shadow: var(--shadow-yellow-glow);
+            animation: brainPulse 4s ease-in-out infinite;
+        }
+        
+        .brain-visual::before {
+            content: '🧠';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+        }
+        
+        @keyframes brainPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: var(--shadow-yellow-glow);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+            }
+        }
+        
+        /* CTA Button with THRIVE styling */
+        .cta {
+            text-align: center;
+            background: var(--glass-white-light);
+            border: 1px solid var(--glass-white-medium);
+            color: var(--text-light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-glass);
+            backdrop-filter: blur(20px);
+        }
+        
+        .cta h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            font-size: 1rem;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-yellow), var(--primary-yellow-bright));
+            color: var(--bg-black);
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            box-shadow: var(--shadow-glass);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(255, 215, 0, 0.4);
+        }
+        
         /* Print Styles */
         @media print {
-            body { background: white; }
+            body { 
+                background: white !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
             .page { box-shadow: none; }
-            a { color: #1A1A1A; text-decoration: none; }
+            .page::before { display: none; }
+            a { color: var(--bg-black); text-decoration: none; }
+            .brain-visual { animation: none; }
         }
     </style>
 </head>
@@ -392,8 +588,8 @@
         <div class="two-column">
             <div class="column">
                 <h3>For Organizations</h3>
-                
-                <div class="benefit-section">
+                <div class="column-content">
+                    <div class="benefit-section">
                     <h4><span class="emoji">🚀</span>True Competitive Advantage</h4>
                     <ul class="benefit-list">
                         <li>Teams that thrive, not just survive</li>
@@ -421,13 +617,14 @@
                         <li>Set the standard others aspire to follow</li>
                         <li>Build a legacy of human flourishing</li>
                     </ul>
+                    </div>
                 </div>
             </div>
             
             <div class="column">
                 <h3>For Your Employees</h3>
-                
-                <div class="benefit-section">
+                <div class="column-content">
+                    <div class="benefit-section">
                     <h4><span class="emoji">🧠</span>Finally Understand Your Mind</h4>
                     <ul class="benefit-list">
                         <li>Identify whether you have 1, 2, or 3 of 600+ neuro conditions</li>
@@ -455,6 +652,7 @@
                         <li>Stop existing, start thriving—at work, home, life</li>
                         <li>Write your story forward with clarity</li>
                     </ul>
+                    </div>
                 </div>
             </div>
         </div>
