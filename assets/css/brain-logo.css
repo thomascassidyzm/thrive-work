@@ -52,7 +52,7 @@
 }
 */
 
-/* Brain center - POSITIONED OVER ANIMATIONS */
+/* Brain center - NOW A CONTAINER FOR BRAIN + ANIMATIONS */
 .brain-center {
     position: absolute;
     top: 50px;
@@ -60,14 +60,20 @@
     transform: translateX(-50%);
     width: 420px; /* Optimal size */
     height: 420px; /* Optimal size */
-    
-    /* REAL transparency with simple glow - no container effects! */
+    /* Container for brain image and animations */
+}
+
+/* The actual brain image */
+.brain-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Brain image styling */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
     opacity: 0.85; /* Allow animations to shine through */
-    
-    /* Remove pulsing - brain stays stable size */
-    /* animation: brainPulse 3s ease-in-out infinite; */
-    z-index: 100; /* Brain OVERLAY on top of all animations */
+    z-index: 2; /* Above animations but they can show through due to opacity */
     
     /* Ensure the image is crisp */
     image-rendering: -webkit-optimize-contrast;
@@ -128,55 +134,55 @@
     box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
 }
 
-/* Multiple neural pathways with different timings - all positioned relative to brain center */
-.neural-pathway:nth-child(1) {
+/* Multiple neural pathways - now positioned within the brain container */
+.neural-pathway:nth-child(2) {
     top: 30%;
-    left: calc(var(--brain-center-x) - 5%); /* 5% left of brain center */
+    left: 15%; /* Within brain container */
     width: 80px;
     height: 2px;
     transform: rotate(25deg);
     animation-delay: 0s;
 }
 
-.neural-pathway:nth-child(2) {
+.neural-pathway:nth-child(3) {
     top: 45%;
-    left: var(--brain-center-x); /* Exactly at brain center */
+    left: 50%; /* Center of brain container */
     width: 60px;
     height: 2px;
     transform: rotate(-15deg);
     animation-delay: 0.5s;
 }
 
-.neural-pathway:nth-child(3) {
+.neural-pathway:nth-child(4) {
     top: 60%;
-    left: calc(var(--brain-center-x) + 5%); /* 5% right of brain center */
+    left: 65%; /* Right side of brain container */
     width: 70px;
     height: 2px;
     transform: rotate(40deg);
     animation-delay: 1s;
 }
 
-.neural-pathway:nth-child(4) {
+.neural-pathway:nth-child(5) {
     top: 35%;
-    left: calc(var(--brain-center-x) + 10%); /* 10% right of brain center */
+    left: 70%; /* Far right of brain container */
     width: 75px;
     height: 2px;
     transform: rotate(-30deg);
     animation-delay: 1.5s;
 }
 
-.neural-pathway:nth-child(5) {
+.neural-pathway:nth-child(6) {
     top: 55%;
-    left: calc(var(--brain-center-x) + 15%); /* 15% right of brain center */
+    left: 75%; /* Far right of brain container */
     width: 65px;
     height: 2px;
     transform: rotate(20deg);
     animation-delay: 2s;
 }
 
-.neural-pathway:nth-child(6) {
+.neural-pathway:nth-child(7) {
     top: 70%;
-    left: calc(var(--brain-center-x) + 15%); /* 15% right of brain center */
+    left: 60%; /* Right side of brain container */
     width: 55px;
     height: 2px;
     transform: rotate(-45deg);
@@ -199,68 +205,68 @@
     z-index: 10; /* Behind brain so they show through it */
 }
 
-/* Position synapse nodes with varied timing and intensity - all relative to brain center */
-.synapse-node:nth-child(7) {
+/* Position synapse nodes within brain container - much simpler! */
+.synapse-node:nth-child(8) {
     top: 25%;
-    left: calc(var(--brain-center-x) + 5%); /* 5% right of brain center */
+    left: 60%;
     animation-delay: 0.1s;
     animation-duration: 1.4s;
 }
 
-.synapse-node:nth-child(8) {
+.synapse-node:nth-child(9) {
     top: 40%;
-    left: calc(var(--brain-center-x) + 25%); /* 25% right of brain center */
+    left: 80%;
     animation-delay: 0.6s;
     animation-duration: 1.8s;
 }
 
-.synapse-node:nth-child(9) {
+.synapse-node:nth-child(10) {
     top: 55%;
-    left: calc(var(--brain-center-x) + 10%); /* 10% right of brain center */
+    left: 65%;
     animation-delay: 0.9s;
     animation-duration: 1.6s;
 }
 
-.synapse-node:nth-child(10) {
+.synapse-node:nth-child(11) {
     top: 35%;
-    left: calc(var(--brain-center-x) - 5%); /* 5% left of brain center */
+    left: 40%;
     animation-delay: 1.3s;
     animation-duration: 1.5s;
 }
 
-.synapse-node:nth-child(11) {
+.synapse-node:nth-child(12) {
     top: 65%;
-    left: calc(var(--brain-center-x) - 10%); /* 10% left of brain center */
+    left: 30%;
     animation-delay: 1.8s;
     animation-duration: 1.7s;
 }
 
-/* Enhanced thought energy waves - CENTERED ON BRAIN */
+/* Enhanced thought energy waves - positioned within brain container */
 .thought-wave {
     position: absolute;
-    top: 210px; /* Center of brain */
-    left: var(--brain-center-x); /* Use unified center position */
+    top: 50%; /* Center of brain container */
+    left: 50%; /* Center of brain container */
     transform: translate(-50%, -50%);
     width: 40px;  /* Small starting size */
     height: 40px;
     border: 2px solid rgba(255, 215, 0, 0.5);
     border-radius: 50%;
     animation: thoughtExpand 5s ease-out infinite;
-    z-index: 50; /* Above brain */
+    z-index: 3; /* Above brain image */
 }
 
-.thought-wave:nth-child(11) {
+.thought-wave:nth-child(14) {
     animation-delay: 1.5s;
     border-color: rgba(255, 215, 0, 0.4);
     top: 20%;
-    right: -8%;
+    left: 85%;
 }
 
-.thought-wave:nth-child(12) {
+.thought-wave:nth-child(15) {
     animation-delay: 3s;
     border-color: rgba(255, 215, 0, 0.3);
     top: 10%;
-    right: -12%;
+    left: 90%;
 }
 
 /* Energy bursts from brain center */
@@ -279,12 +285,12 @@
     animation: energyBurst 3s ease-out infinite;
 }
 
-.energy-burst:nth-child(14) {
+.energy-burst:nth-child(16) {
     animation-delay: 1s;
     animation-duration: 3.5s;
 }
 
-.energy-burst:nth-child(15) {
+.energy-burst:nth-child(17) {
     animation-delay: 2s;
     animation-duration: 2.5s;
 }
