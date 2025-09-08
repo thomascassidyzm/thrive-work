@@ -57,6 +57,7 @@
     
     /* REAL transparency with simple glow - no container effects! */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+    opacity: 0.85; /* Allow animations to shine through */
     
     animation: brainPulse 3s ease-in-out infinite;
     z-index: 100; /* Brain OVERLAY on top of all animations */
@@ -380,7 +381,7 @@
 .brain-text-container {
     position: absolute;
     bottom: 60px;
-    left: 15%; /* Align with brain position */
+    left: 10%; /* Move further left to match brain position */
     transform: translateX(-50%);
     text-align: center;
     animation: fadeIn 1.5s ease-out;
