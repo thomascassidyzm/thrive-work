@@ -107,6 +107,58 @@
             color: var(--primary-yellow);
         }
         
+        /* Enhanced visual emphasis */
+        .highlight-text {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            border-left: 3px solid var(--primary-yellow);
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        
+        .key-point {
+            color: var(--primary-yellow);
+            font-weight: 700;
+            font-size: 1.05em;
+        }
+        
+        .stat-highlight {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%);
+            color: #22c55e;
+            font-weight: 700;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        
+        .emphasis-block {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(255, 215, 0, 0.04) 100%);
+            border-left: 4px solid var(--primary-yellow);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .bullet-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .bullet-list li:before {
+            content: '▶';
+            color: var(--primary-yellow);
+            font-size: 0.8rem;
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+        }
+        
         .highlight-box {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
             border: 1px solid rgba(255, 215, 0, 0.3);
@@ -169,6 +221,45 @@
             font-size: 1rem;
         }
         
+        /* THRIVE logo for each page */
+        .page-logo {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            box-shadow: 
+                0 2px 8px rgba(255, 215, 0, 0.3),
+                0 0 15px rgba(255, 215, 0, 0.2);
+            z-index: 10;
+        }
+        
+        /* Larger logo for title page */
+        .title-page .page-logo {
+            width: 60px;
+            height: 60px;
+            font-size: 1.8rem;
+            top: 2rem;
+            right: 3rem;
+        }
+        
+        /* Ensure logos print correctly */
+        @media print {
+            .page-logo {
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+        }
+        
         @media (max-width: 768px) {
             .corporate-title {
                 font-size: 2.5rem;
@@ -196,6 +287,7 @@
     <!-- Title Page - Landscape Optimized -->
     <section class="title-page" style="min-height: 100vh; background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 2rem;">
         <div class="particles" id="particles"></div>
+        <div class="page-logo">Th</div>
         
         <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; max-width: 1400px; align-items: center;">
             <!-- Brain Animation Left Side -->
@@ -253,58 +345,84 @@
                 <h2 style="font-size: 2.5rem; font-weight: 600; color: var(--text-light); margin-bottom: 2rem;">Corporate Solutions</h2>
                 
                 <div style="color: var(--text-light); font-size: 1.2rem; line-height: 1.7;">
-                    <p style="margin-bottom: 1.5rem;"><strong>THRIVE is a comprehensive and configurable employee benefits package</strong> that comes with a range of support tools and solutions to enable every individual to take more of a commanding role in their own health and mental fitness.</p>
+                    <div class="emphasis-block">
+                        <p style="margin-bottom: 1rem;"><span class="key-point">THRIVE is a comprehensive and configurable employee benefits package</span> that comes with a range of support tools and solutions to enable every individual to take more of a commanding role in their own health and mental fitness.</p>
+                    </div>
                     
-                    <p style="margin-bottom: 1.5rem;">At THRIVE we are dedicated to helping people form a better relationship with their thoughts—from awareness of the negative, to greater access to the positive ones, exactly when and where they are needed most.</p>
+                    <p style="margin-bottom: 1.5rem;">At THRIVE we are dedicated to helping people form a <span class="highlight-text">better relationship with their thoughts</span>—from awareness of the negative, to greater access to the positive ones, exactly when and where they are needed most.</p>
                     
-                    <p>Our purpose is to help companies support their employees to take a lead role in their overall health outcomes and mental fitness. We provide services from tips to tools, systems for learning, and medical solutions—all tailored to each individual in ways that work best for them. Ultimately, it's all designed to inform and ignite positive thinking for better decision-making to achieve the results that matter most to every person.</p>
+                    <p>Our purpose is to help companies support their employees to take a <span class="key-point">lead role in their overall health outcomes and mental fitness</span>. We provide services from tips to tools, systems for learning, and medical solutions—all tailored to each individual in ways that work best for them. Ultimately, it's all designed to <span class="highlight-text">inform and ignite positive thinking for better decision-making</span> to achieve the results that matter most to every person.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- What We Do & How We Do It - Combined Page -->
-    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%);">
+    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%); position: relative;">
+        <div class="page-logo">Th</div>
         <div class="landscape-content">
             <div>
                 <h2 style="color: var(--primary-yellow); font-size: 2.2rem; font-weight: 600; margin-bottom: 2rem; text-align: center;">What We Do</h2>
                 
-                <p class="content-text">
-                    With combined experience spanning decades, we have brought together leading experts in Psychology and Psychiatry. We have formed partnerships with specialists who work to provide each individual with the tools needed to get the best out of their own thoughts, in every situation—from work to home life.
-                </p>
+                <div class="emphasis-block">
+                    <p class="content-text">
+                        With <span class="stat-highlight">combined experience spanning decades</span>, we have brought together <span class="key-point">leading experts in Psychology and Psychiatry</span>. We have formed partnerships with specialists who work to provide each individual with the tools needed to get the best out of their own thoughts, in every situation—from work to home life.
+                    </p>
+                </div>
+                
+                <ul class="bullet-list" style="margin-top: 1rem; color: var(--text-light);">
+                    <li><strong>Expert Team:</strong> Psychology & Psychiatry specialists</li>
+                    <li><strong>Proven Experience:</strong> Decades of combined clinical practice</li>
+                    <li><strong>Comprehensive Approach:</strong> Work to home life support</li>
+                </ul>
             </div>
             
             <div>
                 <h2 style="color: var(--primary-yellow); font-size: 2.2rem; font-weight: 600; margin-bottom: 2rem; text-align: center;">How We Do It</h2>
                 
-                <p class="content-text">
-                    We begin with a simple assessment questionnaire which reveals behavioral patterns, and we provide guidance and pointers based on what is shared. So if, for example, an individual talks about poor sleep and anxiety, we know how to help in these areas with ready-made solutions including a highly effective hypnotherapy app which is supported by clinical psychologists and has the fastest growing global community of users—see clearminds.com
-                </p>
+                <div class="emphasis-block">
+                    <p class="content-text">
+                        We begin with a <span class="key-point">simple assessment questionnaire</span> which reveals behavioral patterns, and we provide guidance and pointers based on what is shared. So if, for example, an individual talks about <span class="highlight-text">poor sleep and anxiety</span>, we know how to help in these areas with ready-made solutions including a highly effective hypnotherapy app which is supported by clinical psychologists and has the <span class="stat-highlight">fastest growing global community of users</span>—see clearminds.com
+                    </p>
+                </div>
                 
-                <p class="content-text">
-                    We also provide the employer with an <strong>anonymised, categorised list of the most prominent issues</strong> that surface, which can help managers think about the environment, meeting structures, and how best to communicate support in general to the workforce.
-                </p>
+                <div class="emphasis-block" style="margin-top: 1.5rem;">
+                    <p class="content-text">
+                        We also provide the employer with an <span class="key-point">anonymised, categorised list of the most prominent issues</span> that surface, which can help managers think about the environment, meeting structures, and how best to communicate support in general to the workforce.
+                    </p>
+                </div>
+                
+                <ul class="bullet-list" style="margin-top: 1rem; color: var(--text-light);">
+                    <li><strong>Assessment:</strong> Reveals behavioral patterns instantly</li>
+                    <li><strong>Ready Solutions:</strong> ClearMinds hypnotherapy app</li>
+                    <li><strong>Employer Insights:</strong> Anonymous categorised reports</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <!-- Detailed Diagnostics & Our Approach - Combined Page -->
-    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%);">
+    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%); position: relative;">
+        <div class="page-logo">Th</div>
         <div class="landscape-content">
             <div>
                 <h2 style="color: var(--primary-yellow); font-size: 2.2rem; font-weight: 600; margin-bottom: 2rem; text-align: center;">More Detailed Diagnostics</h2>
                 
-                <p class="content-text">
-                    If a person suggests, or the questionnaire response points towards a recognised condition—whether diagnosed or not—a clinical diagnosis may be recommended to help them manage or overturn problems that appear to be holding them back.
-                </p>
+                <div class="emphasis-block">
+                    <p class="content-text">
+                        If a person suggests, or the questionnaire response points towards a <span class="key-point">recognised condition—whether diagnosed or not</span>—a clinical diagnosis may be recommended to help them manage or overturn problems that appear to be holding them back.
+                    </p>
+                </div>
                 
                 <p class="content-text">
-                    Ultimately, it's about helping each person understand where they are and how to get to where they want to be in terms of overall health and mental fitness. We have the full range of services to achieve this.
+                    Ultimately, it's about helping each person understand <span class="highlight-text">where they are and how to get to where they want to be</span> in terms of overall health and mental fitness. We have the <span class="key-point">full range of services</span> to achieve this.
                 </p>
                 
-                <p class="content-text">
-                    <strong>THRIVE, together with leading experts in specific fields, hosts the most comprehensive mental health screening and diagnostics platform</strong> which we use to support individuals to identify and work with almost all forms of mental health function and conditions including:
-                </p>
+                <div class="emphasis-block">
+                    <p class="content-text">
+                        <span class="key-point">THRIVE, together with leading experts in specific fields, hosts the most comprehensive mental health screening and diagnostics platform</span> which we use to support individuals to identify and work with almost all forms of mental health function and conditions including:
+                    </p>
+                </div>
                 
                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 1rem;">
                     <div class="condition-item" style="font-size: 0.9rem; padding: 0.5rem;">Sources of Stress & Anxiety</div>
@@ -319,23 +437,30 @@
             <div>
                 <h2 style="color: var(--primary-yellow); font-size: 2.2rem; font-weight: 600; margin-bottom: 2rem; text-align: center;">What We Say and How We Engage People</h2>
                 
-                <p class="content-text">
-                    Whether you are in a place where you don't know what's challenging you, or whether you believe or know you have a condition, we have the expertise and resources to support your journey—from tests and diagnostics, treatment and training—to help you on your journey to feeling good and achieve better outcomes.
-                </p>
+                <div class="emphasis-block">
+                    <p class="content-text">
+                        Whether you are in a place where <span class="highlight-text">you don't know what's challenging you</span>, or whether you believe or know you have a condition, we have the <span class="key-point">expertise and resources to support your journey</span>—from tests and diagnostics, treatment and training—to help you on your journey to feeling good and achieve better outcomes.
+                    </p>
+                </div>
                 
-                <p class="content-text">
-                    What we know is that whether you have a condition, or a collection of thoughts which appear limiting in some way, <strong>you have the power to move through and beyond anything which feels as though it has a hold on you.</strong>
-                </p>
+                <div class="emphasis-block">
+                    <p class="content-text">
+                        What we know is that whether you have a condition, or a collection of thoughts which appear limiting in some way, <span class="key-point">you have the power to move through and beyond anything which feels as though it has a hold on you.</span>
+                    </p>
+                </div>
                 
-                <p class="content-text">
-                    <strong>Our minds hold the power to keep us healthy and live longer,</strong> simply because better decisions lead to better health outcomes and overall wellbeing.
-                </p>
+                <div class="emphasis-block">
+                    <p class="content-text">
+                        <span class="key-point">Our minds hold the power to keep us healthy and live longer,</span> simply because <span class="highlight-text">better decisions lead to better health outcomes</span> and overall wellbeing.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Corporate Partner Benefits Section - Full Page -->
-    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%);">
+    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%); position: relative;">
+        <div class="page-logo">Th</div>
         <div class="simple-content">
             <div class="landscape-single">
                 <h2 class="section-title">For Our Corporate Partners</h2>
@@ -346,12 +471,18 @@
                 <div class="legal-box">
                     <div class="legal-title">UK Legal Framework - Equality Act 2010</div>
                     <p class="content-text">
-                        In the UK, an employee can insist on reasonable adjustments for a condition that has not been formally diagnosed. The legal duty under the Equality Act 2010 focuses on the <strong>effects of a physical or mental impairment, not on a formal diagnosis</strong>—which means that the employer should not use the lack of a formal diagnosis as a reason to do nothing. They must focus on the effect of the impairment on the employee's work.
+                        In the UK, an employee can insist on <span class="key-point">reasonable adjustments for a condition that has not been formally diagnosed</span>. The legal duty under the Equality Act 2010 focuses on the <span class="stat-highlight">effects of a physical or mental impairment, not on a formal diagnosis</span>—which means that the employer should not use the lack of a formal diagnosis as a reason to do nothing. They must focus on the <span class="highlight-text">effect of the impairment on the employee's work</span>.
                     </p>
                     
                     <p class="content-text">
-                        In the context of UK reasonable adjustments law, an employer <strong>"ought reasonably to know"</strong> about an employee's disability if they have received enough information to be put on notice of a potential issue, even if they were not explicitly told.
+                        In the context of UK reasonable adjustments law, an employer <span class="key-point">"ought reasonably to know"</span> about an employee's disability if they have received enough information to be put on notice of a potential issue, even if they were not explicitly told.
                     </p>
+                    
+                    <ul class="bullet-list" style="margin-top: 1rem; color: var(--text-light);">
+                        <li><strong>No formal diagnosis required</strong> for reasonable adjustments</li>
+                        <li><strong>Focus on effects,</strong> not diagnosis labels</li>
+                        <li><strong>Employer duty</strong> to act on reasonable knowledge</li>
+                    </ul>
                 </div>
                 
                 <div class="quote-box">
