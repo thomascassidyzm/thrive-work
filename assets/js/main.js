@@ -405,10 +405,26 @@ function positionBrainPrecisely() {
     setTimeout(initializeThoughtTransformation, 500);
 }
 
+// Also initialize on regular page load (not just after brain positioning)
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize thought transformations immediately for pages without brain positioning
+    setTimeout(() => {
+        const thoughtWords = document.querySelectorAll('.thought-word');
+        if (thoughtWords.length > 0 && !window.thoughtTransformationStarted) {
+            console.log('🧠 Initializing thought transformation from DOMContentLoaded');
+            initializeThoughtTransformation();
+        }
+    }, 1000);
+}
+
 // Thought word transformation cycle - negative to positive and back
 function initializeThoughtTransformation() {
     const thoughtWords = document.querySelectorAll('.thought-word');
     if (thoughtWords.length === 0) return;
+    
+    // Prevent double initialization
+    if (window.thoughtTransformationStarted) return;
+    window.thoughtTransformationStarted = true;
     
     console.log(`🧠 Starting thought transformation cycle for ${thoughtWords.length} words`);
     
