@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../assets/css/brain-logo.css">
     
     <style>
-        /* PDF-optimized styles */
+        /* PDF-optimized styles with proper page breaks */
         @media print {
             body {
                 print-color-adjust: exact !important;
@@ -39,8 +39,20 @@
             }
             
             .page-break {
-                page-break-before: always;
-                break-before: page;
+                page-break-before: always !important;
+                break-before: page !important;
+            }
+            
+            .title-page {
+                page-break-after: always !important;
+                break-after: page !important;
+            }
+            
+            /* Ensure sections start on new pages */
+            .section-page {
+                page-break-before: always !important;
+                break-before: page !important;
+                min-height: 90vh;
             }
         }
         
@@ -217,38 +229,74 @@
     </style>
 </head>
 <body>
-    <!-- Corporate Hero Section -->
-    <section class="corporate-hero">
-        <div class="brain-logo-small">
-            <div class="brain-center" style="width: 100px; height: 100px;">
-                <img src="../assets/images/brain-final.png" alt="THRIVE Brain" style="width: 100%; height: 100%; opacity: 0.5;">
+    <!-- Title Page with Brain Animation -->
+    <section class="hero title-page" style="min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%); position: relative; overflow: hidden;">
+        <div class="particles" id="particles"></div>
+        <div class="hero-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1400px; margin: 0 auto; padding: 0 2rem; align-items: center;">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 3.5rem; font-weight: 700; color: var(--text-light); margin-bottom: 2rem; line-height: 1.2;">
+                    <span class="highlight">THRIVE</span><br>
+                    Corporate Solutions
+                </h1>
+                
+                <div class="hero-description" style="color: var(--text-light); font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem;">
+                    <p style="margin-bottom: 1.5rem;"><strong>THRIVE is a comprehensive and configurable employee benefits package</strong> that comes with a range of support tools and solutions to enable every individual to take more of a commanding role in their own health and mental fitness.</p>
+                    
+                    <p style="margin-bottom: 1.5rem;">At THRIVE we are dedicated to helping people form a better relationship with their thoughts—from awareness of the negative, to greater access to the positive ones, exactly when and where they are needed most.</p>
+                    
+                    <p>Our purpose is to help companies support their employees to take a lead role in their overall health outcomes and mental fitness. We provide services from tips to tools, systems for learning, and medical solutions—all tailored to each individual in ways that work best for them. Ultimately, it's all designed to inform and ignite positive thinking for better decision-making to achieve the results that matter most to every person.</p>
+                </div>
             </div>
-        </div>
-        
-        <div class="corporate-content">
-            <h1 class="corporate-title">
-                <span class="corporate-highlight">THRIVE</span><br>
-                Corporate Solutions
-            </h1>
             
-            <div class="corporate-section">
-                <p class="content-text">
-                    <strong>THRIVE is a comprehensive and configurable employee benefits package</strong> that comes with a range of support tools and solutions to enable every individual to take more of a commanding role in their own health and mental fitness.
-                </p>
-                
-                <p class="content-text">
-                    At THRIVE we are dedicated to helping people form a better relationship with their thoughts—from awareness of the negative, to greater access to the positive ones, exactly when and where they are needed most.
-                </p>
-                
-                <p class="content-text">
-                    Our purpose is to help companies support their employees to take a lead role in their overall health outcomes and mental fitness. We provide services from tips to tools, systems for learning, and medical solutions—all tailored to each individual in ways that work best for them. Ultimately, it's all designed to inform and ignite positive thinking for better decision-making to achieve the results that matter most to every person.
-                </p>
+            <div class="hero-visual">
+                <div class="brain-logo-container">
+                    <div class="thrive-brain-container">
+                        <div class="brain-center">
+                            <img src="../assets/images/brain-final.png" alt="Thriving Brain" class="brain-image">
+                            <!-- Enhanced neural pathways firing -->
+                            <div class="neural-pathway"></div>
+                            <div class="neural-pathway"></div>
+                            <div class="neural-pathway"></div>
+                            <div class="neural-pathway"></div>
+                            <div class="neural-pathway"></div>
+                            <div class="neural-pathway"></div>
+                            <!-- Enhanced synaptic nodes -->
+                            <div class="synapse-node"></div>
+                            <div class="synapse-node"></div>
+                            <div class="synapse-node"></div>
+                            <div class="synapse-node"></div>
+                            <div class="synapse-node"></div>
+                            <!-- Enhanced thought energy waves -->
+                            <div class="thought-wave"></div>
+                            <div class="thought-wave"></div>
+                            <div class="thought-wave"></div>
+                            <!-- Additional energy bursts -->
+                            <div class="energy-burst"></div>
+                            <div class="energy-burst"></div>
+                            <!-- Thought word blocks - transformation cycle -->
+                            <div class="thought-word" data-negative="anxious" data-positive="calm">anxious</div>
+                            <div class="thought-word" data-negative="not sure" data-positive="certain">not sure</div>
+                            <div class="thought-word" data-negative="frustrated" data-positive="peaceful">frustrated</div>
+                            <div class="thought-word" data-negative="tired" data-positive="energized">tired</div>
+                            <div class="thought-word" data-negative="confused" data-positive="clear">confused</div>
+                            <div class="thought-word" data-negative="overwhelmed" data-positive="focused">overwhelmed</div>
+                            <div class="thought-word" data-negative="stressed" data-positive="relaxed">stressed</div>
+                            <div class="thought-word" data-negative="dejected" data-positive="hopeful">dejected</div>
+                            <div class="thought-word" data-negative="uncertain" data-positive="confident">uncertain</div>
+                            <div class="thought-word" data-negative="worried" data-positive="optimistic">worried</div>
+                        </div>
+                    </div>
+                    <div class="brain-text-container">
+                        <h2 class="brain-brand-name">THRiVE</h2>
+                        <p class="brain-tagline">Mind In Motion</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- What We Do Section -->
-    <section style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%);">
+    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%);">
         <div class="corporate-content">
             <div class="corporate-section">
                 <h2 class="section-title">What We Do</h2>
@@ -261,7 +309,7 @@
     </section>
 
     <!-- How We Do It Section -->
-    <section style="padding: 4rem 0; background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);">
+    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);">
         <div class="corporate-content">
             <div class="corporate-section">
                 <h2 class="section-title">How We Do It</h2>
@@ -295,7 +343,7 @@
     </section>
 
     <!-- Detailed Diagnostics Section -->
-    <section class="page-break" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%);">
+    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%);">
         <div class="corporate-content">
             <div class="corporate-section">
                 <h2 class="section-title">More Detailed Diagnostics</h2>
@@ -326,7 +374,7 @@
     </section>
 
     <!-- Our Approach Section -->
-    <section style="padding: 4rem 0; background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);">
+    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);">
         <div class="corporate-content">
             <div class="corporate-section">
                 <h2 class="section-title">What We Say and How We Engage People</h2>
@@ -347,7 +395,7 @@
     </section>
 
     <!-- Corporate Partner Benefits Section -->
-    <section style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%);">
+    <section class="section-page" style="padding: 4rem 0; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 14, 26, 0.95) 100%);">
         <div class="corporate-content">
             <div class="corporate-section">
                 <h2 class="section-title">For Our Corporate Partners</h2>
