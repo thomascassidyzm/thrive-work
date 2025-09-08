@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize thought transformation
     setTimeout(() => {
+        console.log('🔍 Attempting to initialize thought transformation...');
         initializeThoughtTransformation();
     }, 1000);
 });
