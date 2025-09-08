@@ -50,10 +50,10 @@
 .brain-center {
     position: absolute;
     top: 50px;
-    left: 15%; /* Move further left to overlay animations */
+    left: calc(15% - 50px); /* Move 50px further left */
     transform: translateX(-50%);
-    width: 384px; /* 20% bigger: 320px * 1.2 */
-    height: 384px; /* 20% bigger: 320px * 1.2 */
+    width: 460px; /* Make bigger: 384px * 1.2 */
+    height: 460px; /* Make bigger: 384px * 1.2 */
     
     /* REAL transparency with simple glow - no container effects! */
     filter: brightness(1.1) contrast(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
