@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeDomainCards();
     fetchCommitHash();
     // initializePreciseBrainPositioning(); // Disabled - using centered CSS approach
+    
+    // Initialize thought transformation
+    setTimeout(() => {
+        initializeThoughtTransformation();
+    }, 1000);
 });
 
 // Initialize floating particles
@@ -331,6 +336,8 @@ function initializePreciseBrainPositioning() {
 }
 
 function positionBrainPrecisely() {
+    // DISABLED: Let CSS handle positioning instead
+    return;
     const brainElement = document.querySelector('.brain-center');
     const textElement = document.querySelector('.brain-brand-name');
     const brainContainer = document.querySelector('.brain-logo-container');
