@@ -429,7 +429,7 @@
 .brain-text-container {
     position: absolute;
     bottom: 60px;
-    left: 250px; /* Exact center of 500px container */
+    left: 50%; /* Center within brain-logo-container */
     transform: translateX(-50%);
     text-align: center;
     animation: fadeIn 1.5s ease-out;
