@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrive Health Journey - Your Comprehensive Wellness Ecosystem</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #334155;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 50px 0;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #059669 0%, #10b981 50%, #34d399 100%);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Journey Flow Styles */
+        .journey-container {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .journey-path {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: linear-gradient(90deg, #d1fae5 0%, #059669 50%, #d1fae5 100%);
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        .journey-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 2;
+            gap: 20px;
+        }
+
+        .journey-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            font-size: 1.5rem;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .step-number:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .step-description {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        /* Services Grid */
+        .services-section {
+            margin-top: 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 50px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #059669 0%, #10b981 50%, #34d399 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .service-description {
+            color: #64748b;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .service-features li {
+            color: #475569;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Central Hub */
+        .central-hub {
+            text-align: center;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 24px;
+            margin: 60px 0;
+            box-shadow: 0 20px 50px rgba(16, 185, 129, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .central-hub::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .central-hub h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .central-hub p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .central-cta {
+            background: white;
+            color: #059669;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .central-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 0;
+            max-width: 700px;
+            width: 90%;
+            max-height: 85vh;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            padding: 30px 40px 25px;
+            position: relative;
+        }
+
+        .modal-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 0;
+            padding-right: 40px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-body {
+            padding: 40px;
+            overflow-y: auto;
+            max-height: calc(85vh - 120px);
+        }
+
+        .modal-body h3 {
+            color: #059669;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+        }
+
+        .modal-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .modal-body p {
+            color: #475569;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .modal-body ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .modal-body li {
+            color: #475569;
+            margin-bottom: 8px;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 25px 0;
+        }
+
+        .tag {
+            background: #ecfdf5;
+            color: #059669;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid #a7f3d0;
+        }
+
+        .contact-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .contact-card h4 {
+            color: #0f172a;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            margin-bottom: 8px;
+            color: #475569;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .journey-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .journey-path {
+                display: none;
+            }
+
+            .journey-step {
+                margin-bottom: 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .central-hub {
+                padding: 40px 20px;
+            }
+
+            .central-hub h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Thrive Health Ecosystem</h1>
+            <p class="subtitle">Your complete journey to optimal health, wellness, and performance</p>
+        </div>
+
+        <div class="journey-container">
+            <div class="journey-path"></div>
+            <div class="journey-steps">
+                <div class="journey-step">
+                    <div class="step-number" onclick="openModal('step1')">1</div>
+                    <div class="step-title">Assessment</div>
+                    <div class="step-description">Comprehensive health evaluation and personalized strategy development</div>
+                </div>
+                <div class="journey-step">
+                    <div class="step-number" onclick="openModal('step2')">2</div>
+                    <div class="step-title">Coordination</div>
+                    <div class="step-description">Seamless integration of services through dedicated health advocates</div>
+                </div>
+                <div class="journey-step">
+                    <div class="step-number" onclick="openModal('step3')">3</div>
+                    <div class="step-title">Implementation</div>
+                    <div class="step-description">Active participation in your personalized health and wellness programs</div>
+                </div>
+                <div class="journey-step">
+                    <div class="step-number" onclick="openModal('step4')">4</div>
+                    <div class="step-title">Optimization</div>
+                    <div class="step-description">Continuous monitoring, refinement, and enhancement of your health journey</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="central-hub">
+            <h2>Thrive - Your Health Hub</h2>
+            <p>We coordinate all aspects of your health and wellness journey, ensuring seamless integration across all our partner services while maintaining focus on your unique goals and needs.</p>
+            <button class="central-cta" onclick="openModal('thrive')">Discover How Thrive Works</button>
+        </div>
+
+        <div class="services-section">
+            <h2 class="section-title">Our Partner Services</h2>
+            <div class="services-grid">
+                <div class="service-card" onclick="openModal('concierge')">
+                    <div class="service-icon">🏥</div>
+                    <div class="service-title">Concierge Health Advisors</div>
+                    <div class="service-description">Personal health advocacy and care coordination</div>
+                    <ul class="service-features">
+                        <li>Dedicated health advocates</li>
+                        <li>Appointment coordination</li>
+                        <li>24/7 support</li>
+                    </ul>
+                    <button class="cta-button">Learn More</button>
+                </div>
+
+                <div class="service-card" onclick="openModal('goodbody')">
+                    <div class="service-icon">⚕️</div>
+                    <div class="service-title">Goodbody Diagnostics</div>
+                    <div class="service-description">Advanced health assessments and executive screenings</div>
+                    <ul class="service-features">
+                        <li>Executive health MOTs</li>
+                        <li>Advanced diagnostics</li>
+                        <li>Preventative screening</li>
+                    </ul>
+                    <button class="cta-button">Learn More</button>
+                </div>
+
+                <div class="service-card" onclick="openModal('edward')">
+                    <div class="service-icon">🧠</div>
+                    <div class="service-title">Edward Orman Psychology</div>
+                    <div class="service-description">Digital mental wellness and performance optimization</div>
+                    <ul class="service-features">
+                        <li>Mental wellness programs</li>
+                        <li>Stress management</li>
+                        <li>Performance psychology</li>
+                    </ul>
+                    <button class="cta-button">Learn More</button>
+                </div>
+
+                <div class="service-card" onclick="openModal('clearminds')">
+                    <div class="service-icon">🏢</div>
+                    <div class="service-title">Clear Minds B2B</div>
+                    <div class="service-description">Corporate mental health and organizational wellness</div>
+                    <ul class="service-features">
+                        <li>Employee assistance programs</li>
+                        <li>Corporate wellness</li>
+                        <li>Leadership training</li>
+                    </ul>
+                    <button class="cta-button">Learn More</button>
+                </div>
+
+                <div class="service-card" onclick="openModal('dannhauser')">
+                    <div class="service-icon">🔬</div>
+                    <div class="service-title">Dr Thomas Dannhauser</div>
+                    <div class="service-description">Precision psychiatry and personalized mental health</div>
+                    <ul class="service-features">
+                        <li>Precision medicine</li>
+                        <li>Genetic testing</li>
+                        <li>Personalized treatment</li>
+                    </ul>
+                    <button class="cta-button">Learn More</button>
+                </div>
+
+                <div class="service-card" onclick="openModal('specialists')">
+                    <div class="service-icon">🔍</div>
+                    <div class="service-title">Specialist Services</div>
+                    <div class="service-description">Expert care in gastroenterology and metabolic health</div>
+                    <ul class="service-features">
+                        <li>Gut health optimization</li>
+                        <li>Liver diagnostics</li>
+                        <li>Metabolic analysis</li>
+                    </ul>
+                    <button class="cta-button">Learn More</button>
+                </div>
+
+                <div class="service-card" onclick="openModal('financial')">
+                    <div class="service-icon">💰</div>
+                    <div class="service-title">MYN / Concept Financial</div>
+                    <div class="service-description">Health-integrated financial planning and wealth management</div>
+                    <ul class="service-features">
+                        <li>Healthcare budgeting</li>
+                        <li>Investment strategy</li>
+                        <li>Insurance optimization</li>
+                    </ul>
+                    <button class="cta-button">Learn More</button>
+                </div>
+
+                <div class="service-card" onclick="openModal('insurers')">
+                    <div class="service-icon">🛡️</div>
+                    <div class="service-title">Insurance & Benefits</div>
+                    <div class="service-description">Comprehensive insurance optimization and benefits management</div>
+                    <ul class="service-features">
+                        <li>Policy optimization</li>
+                        <li>Claims management</li>
+                        <li>Benefits design</li>
+                    </ul>
+                    <button class="cta-button">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="serviceModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Service Details</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const serviceDetails = {
+            thrive: {
+                title: "Thrive - Your Health Coordination Hub",
+                content: `
+                    <p>Thrive serves as the central coordination platform for your comprehensive health and wellness journey. We connect you with the right specialists, services, and resources at the right time, ensuring seamless integration and optimal outcomes.</p>
+
+                    <h3>How Thrive Works</h3>
+                    <ul>
+                        <li>Initial health assessment and goal setting</li>
+                        <li>Personalized service recommendations</li>
+                        <li>Seamless appointment coordination</li>
+                        <li>Ongoing progress monitoring</li>
+                        <li>Regular strategy optimization</li>
+                        <li>24/7 support and guidance</li>
+                    </ul>
+
+                    <h3>Your Journey with Thrive</h3>
+                    <p>From your first consultation to long-term wellness maintenance, Thrive ensures every aspect of your health journey is coordinated, purposeful, and optimized for your unique needs and lifestyle.</p>
+
+                    <div class="service-tags">
+                        <div class="tag">Care Coordination</div>
+                        <div class="tag">Personalized Health</div>
+                        <div class="tag">Preventative Care</div>
+                        <div class="tag">Holistic Wellness</div>
+                    </div>
+
+                    <div class="contact-card">
+                        <h4>Start Your Thrive Journey</h4>
+                        <p><strong>Email:</strong> hello@thrive.health</p>
+                        <p><strong>Phone:</strong> +44 20 1234 5678</p>
+                        <button class="cta-button">Schedule Initial Consultation</button>
+                    </div>
+                `
+            },
+            step1: {
+                title: "Step 1: Comprehensive Assessment",
+                content: `
+                    <p>Your health journey begins with a thorough assessment of your current health status, lifestyle, goals, and preferences. This forms the foundation for your personalized wellness strategy.</p>
+
+                    <h3>What's Included</h3>
+                    <ul>
+                        <li>Complete health history review</li>
+                        <li>Lifestyle and stress assessment</li>
+                        <li>Goal setting and priority identification</li>
+                        <li>Risk factor analysis</li>
+                        <li>Preference mapping for service selection</li>
+                        <li>Initial health screening recommendations</li>
+                    </ul>
+
+                    <h3>Personalized Strategy Development</h3>
+                    <p>Based on your assessment, we create a comprehensive health strategy that outlines your optimal pathway through our ecosystem of services, ensuring every recommendation aligns with your goals, schedule, and preferences.</p>
+
+                    <div class="service-tags">
+                        <div class="tag">Health Assessment</div>
+                        <div class="tag">Strategy Development</div>
+                        <div class="tag">Goal Setting</div>
+                        <div class="tag">Risk Analysis</div>
+                    </div>
+                `
+            },
+            step2: {
+                title: "Step 2: Care Coordination",
+                content: `
+                    <p>Once your strategy is defined, we coordinate all aspects of your care through our dedicated health advocates who manage appointments, communications, and ensure seamless integration between services.</p>
+
+                    <h3>Coordination Services</h3>
+                    <ul>
+                        <li>Dedicated health advocate assignment</li>
+                        <li>Appointment scheduling and management</li>
+                        <li>Inter-provider communication</li>
+                        <li>Medical record organization</li>
+                        <li>Treatment plan coordination</li>
+                        <li>Progress tracking and reporting</li>
+                    </ul>
+
+                    <h3>Seamless Experience</h3>
+                    <p>Your health advocate ensures that every appointment, test, and treatment is coordinated efficiently, eliminating confusion and ensuring that all providers are aligned with your overall health strategy.</p>
+
+                    <div class="service-tags">
+                        <div class="tag">Care Coordination</div>
+                        <div class="tag">Health Advocacy</div>
+                        <div class="tag">Appointment Management</div>
+                        <div class="tag">Progress Tracking</div>
+                    </div>
+                `
+            },
+            step3: {
+                title: "Step 3: Active Implementation",
+                content: `
+                    <p>With coordination in place, you actively participate in your personalized health programs across our partner services, with ongoing support and guidance from your dedicated health team.</p>
+
+                    <h3>Implementation Activities</h3>
+                    <ul>
+                        <li>Diagnostic assessments and screenings</li>
+                        <li>Mental wellness program participation</li>
+                        <li>Specialist consultations as needed</li>
+                        <li>Financial planning integration</li>
+                        <li>Corporate wellness program enrollment</li>
+                        <li>Regular check-ins and adjustments</li>
+                    </ul>
+
+                    <h3>Supported Journey</h3>
+                    <p>Throughout implementation, you have continuous support from your health advocate who ensures you're making progress toward your goals and that all services remain aligned with your evolving needs.</p>
+
+                    <div class="service-tags">
+                        <div class="tag">Active Participation</div>
+                        <div class="tag">Program Implementation</div>
+                        <div class="tag">Ongoing Support</div>
+                        <div class="tag">Goal Achievement</div>
+                    </div>
+                `
+            },
+            step4: {
+                title: "Step 4: Continuous Optimization",
+                content: `
+                    <p>Your health journey is continuously monitored and optimized based on your progress, changing needs, and new developments in your health and lifestyle.</p>
+
+                    <h3>Optimization Process</h3>
+                    <ul>
+                        <li>Regular progress reviews and assessments</li>
+                        <li>Strategy refinement and updates</li>
+                        <li>New service recommendations as appropriate</li>
+                        <li>Goal adjustment and expansion</li>
+                        <li>Preventative care scheduling</li>
+                        <li>Long-term wellness planning</li>
+                    </ul>
+
+                    <h3>Evolving with You</h3>
+                    <p>As your life, career, and health needs evolve, so does your personalized strategy. We ensure your health approach remains current, effective, and aligned with your changing priorities.</p>
+
+                    <div class="service-tags">
+                        <div class="tag">Continuous Monitoring</div>
+                        <div class="tag">Strategy Optimization</div>
+                        <div class="tag">Preventative Planning</div>
+                        <div class="tag">Long-term Wellness</div>
+                    </div>
+                `
+            },
+            concierge: {
+                title: "Concierge Health Advisors",
+                content: `
+                    <p>Your personal health advocates who coordinate care, schedule appointments, and ensure you receive the highest quality healthcare experience possible.</p>
+
+                    <h3>Concierge Services</h3>
+                    <ul>
+                        <li>Appointment scheduling and coordination</li>
+                        <li>Second opinion facilitation</li>
+                        <li>Medical record organization and management</li>
+                        <li>Healthcare provider communication</li>
+                        <li>Treatment plan coordination</li>
+                        <li>Insurance authorization assistance</li>
+                        <li>24/7 health support hotline</li>
+                    </ul>
+
+                    <h3>Your Personal Health Team</h3>
+                    <p>Each client is assigned a dedicated health advisor who becomes intimately familiar with your health history, preferences, and goals. They act as your advocate throughout your entire healthcare journey.</p>
+
+                    <div class="service-tags">
+                        <div class="tag">Personal Advocacy</div>
+                        <div class="tag">Care Coordination</div>
+                        <div class="tag">24/7 Support</div>
+                        <div class="tag">VIP Healthcare</div>
+                    </div>
+
+                    <div class="contact-card">
+                        <h4>Your Dedicated Health Advocate</h4>
+                        <p>Available around the clock to support and coordinate your healthcare needs.</p>
+                        <button class="cta-button">Meet Your Advisor</button>
+                    </div>
+                `
+            },
+            goodbody: {
+                title: "Goodbody Physical Health Diagnostics",
+                content: `
+                    <p>Comprehensive physical health assessments using cutting-edge diagnostic technology to identify potential health issues before they become serious problems.</p>
+
+                    <h3>Advanced Diagnostic Services</h3>
+                    <ul>
+                        <li>Executive health MOTs and comprehensive physicals</li>
+                        <li>Advanced cardiac imaging and stress testing</li>
+                        <li>Full-body MRI and CT scanning</li>
+                        <li>Cancer screening and early detection</li>
+                        <li>Metabolic and hormonal profiling</li>
+                        <li>Nutritional and fitness assessments</li>
+                        <li>Genetic testing and analysis</li>
+                    </ul>
+
+                    <h3>Preventative Healthcare Excellence</h3>
+                    <p>Our state-of-the-art facilities and expert medical team provide the most thorough health assessments available, designed specifically for busy executives and professionals who demand the best.</p>
+
+                    <div class="service-tags">
+                        <div class="tag">Executive Health</div>
+                        <div class="tag">Preventative Care</div>
+                        <div class="tag">Advanced Imaging</div>
+                        <div class="tag">Early Detection</div>
+                    </div>
+
+                    <div class="contact-card">
+                        <h4>Schedule Your Health MOT</h4>
+                        <p>Comprehensive assessments designed for busy professionals who prioritize their health.</p>
+                        <button class="cta-button">Book Health Assessment</button>
+                    </div>
+                `
+            },
+            edward: {
+                title: "Edward Orman Psychology Programs",
+                content: `
+                    <p>Evidence-based digital psychology programs and resources designed to support mental wellness, stress management, and personal development for modern professionals.</p>
+
+                    <h3>Digital Mental Wellness Programs</h3>
+                    <ul>
+                        <li>Stress management and resilience training</li>
+                        <li>Mindfulness and meditation courses</li>
+                        <li>Cognitive behavioral therapy (CBT) modules</li>
+                        <li>Leadership psychology programs</li>
+                        <li>Work-life balance coaching</li>
+                        <li>Performance psychology training</li>
+                        <li>Comprehensive digital wellness library</li>
+                    </ul>
+
+                    <h3>Evidence-Based Approach</h3>
+                    <p>All programs are developed by licensed psychologists and based on proven therapeutic approaches. Access hundreds of hours of professional content designed specifically for high-achieving individuals.</p>
+
+                    <div class="service-tags">
+                        <div class="tag">Mental Wellness</div>
+                        <div class="tag">Digital Programs</div>
+                        <div class="tag">CBT</div>
+                        <div class="tag">Stress Management</div>
+                    </div>
+
+                    <div class="contact-card">
+                        <h4>Begin Your Mental Wellness Journey</h4>
+                        <p>Access professional psychology programs designed for busy professionals.</p>
+                        <button class="cta-button">Explore Programs</button>
+                    </div>
+                `
+            },
+            clearminds: {
+                title: "Clear Minds B2B Solutions",
+                content: `
+                    <p>Corporate mental health and wellness solutions designed to support employee wellbeing, reduce workplace stress, and improve overall organizational productivity and culture.</p>
+
+                    <h3>Corporate Wellness Services</h3>
+                    <ul>
+                        <li>Employee Assistance Programs (EAP)</li>
+                        <li>Workplace mental health training and workshops</li>
+                        <li>Stress management and resilience programs</li>
+                        <li>Leadership mental health coaching</li>
+                        <li>Team building and psychological safety initiatives</li>
+                        <li>Burnout prevention and recovery programs</li>
+                        <li>Mental health first aid certification</li>
+                    </ul>
+
+                    <h3>Transforming Workplace Culture</h3>
+                    <p>We help organizations create psychologically safe, mentally healthy work environments that support peak performance while prioritizing employee wellbeing and sustainable productivity.</p>
+
+                    <div class="service-tags">
+                        <div class="tag">Corporate Wellness</div>
+                        <div class="tag">EAP Services</div>
+                        <div class="tag">Leadership Training</div>
+                        <div class="tag">Workplace Culture</div>
+                    </div>
+
+                    <div class="contact-card">
+                        <h4>Transform Your Workplace</h4>
+                        <p>Create a mentally healthy, high-performing organization with our B2B solutions.</p>
+                        <button class="cta-button">Schedule Corporate Consultation</button>
+                    </div>
+                `
+            },
+            dannhauser: {
+                title: "Dr Thomas Dannhauser - Precision Psychiatry",
+                content: `
+                    <p>Leading consultant psychiatrist specializing in precision medicine approaches to mental health, combining cutting-edge diagnostic techniques with personalized treatment protocols.</p>
+
+                    <h3>Precision Psychiatry Services</h3>
+                    <ul>
+                        <li>Comprehensive psychiatric assessments</li>
+                        <li>Pharmacogenetic testing for medication optimization</li>
+                        <li>Biomarker analysis and metabolic profiling</li>
+                        <li>Personalized treatment protocol development</li>
+                        <li>Executive mental health programs</li>
+                        <li>Complex case consultation and second opinions</li>
+                        <li>Integrated psychotherapy and medication management</li>
+                    </ul>
+
+                    <h3>Personalized Mental Healthcare</h3>
+                    <p>Dr Dannhauser combines traditional psychiatric expertise with modern precision medicine techniques, using genetic testing, biomarkers, and advanced diagnostics to create truly personalized treatment approaches.</p>
+
+                    <div class="service-tags">
+                        <div class="tag">Precision Medicine</div>
+                        <div class="tag">Genetic Testing</div>
+                        <div class="tag">Biomarker Analysis</div>
+                        <div class="tag">Expert Psychiatrist</div>
+                    </div>
+
+                    <div class="contact-card">
+                        <h4>Personalized Psychiatric Care</h4>
+                        <p>Advanced psychiatry based on your unique genetic and biological profile.</p>
+                        <button class="cta-button">Book Consultation</button>
+                    </div>
+                `
+            },
+            specialists: {
+                title: "Specialist Medical Services",
+                content: `
+                    <p>Direct access to leading medical specialists in gastroenterology, hepatology, and hematology. Expert care for complex digestive and metabolic health conditions.</p>
+
+                    <h3>Specialist Expertise</h3>
+                    <ul>
+                        <li>Gastroenterology and advanced gut health optimization</li>
+                        <li>Hepatology and comprehensive liver function analysis</li>
+                        <li>Advanced blood analysis and hematological assessment</li>
+                        <li>Digestive microbiome testing and optimization</li>
+                        <li>Metabolic disorder diagnosis and treatment</li>
+                        <li>Nutritional therapy and dietary planning</li>
+                        <li>Functional medicine approaches</li>
+                    </ul>
+
+                    <h3>Cutting-Edge Care</h3>
+                    <p>Our specialist network includes some of the UK's most respected consultants in their fields, offering the latest diagnostic techniques and treatment protocols.</p>
+
+                    <div class="service-tags">
+                        <div class="tag">Specialist Care</div>
+                        <div class="tag">Gut Health</div>
+                        <div class="tag">Liver Function</div>
+                        <div class="tag">Blood Analysis</div>
+                    </div>
+
+                    <div class="contact-card">
+                        <h4>Expert Specialist Care</h4>
+                        <p>Fast-track access to leading consultants for complex health conditions.</p>
+                        <button class="cta-button">Request Specialist Referral</button>
+                    </div>
+                `
+            },
+            financial: {
+                title: "MYN / Concept Financial Services",
+                content: `
+                    <p>Comprehensive financial planning that integrates seamlessly with your health and wellness goals. Plan for healthcare costs, build wealth, and secure your financial future.</p>
+
+                    <h3>Health-Focused Financial Planning</h3>
+                    <ul>
+                        <li>Healthcare cost forecasting and planning</li>
+                        <li>Health Savings Account (HSA) optimization</li>
+                        <li>Long-term care insurance planning</li>
+                        <li>Wellness investment strategies</li>
+                        <li>Retirement healthcare budgeting</li>
+                        <li>Tax-efficient health spending</li>
+                        <li>Disability and critical illness planning</li>
+                    </ul>
+
+                    <h3>Integrated Wealth & Health</h3>
+                    <p>We believe true wealth includes both financial security and optimal health. Our advisors specialize in creating financial strategies that support your wellness goals throughout your lifetime.</p>
+
+                    <div class="service-tags">
+                        <div class="tag">Financial Planning</div>
+                        <div class="tag">Healthcare Costs</div>
+                        <div class="tag">Investment Strategy</div>
+                        <div class="tag">Tax Optimization</div>
+                    </div>
+
+                    <div class="contact-card">
+                        <h4>Secure Your Financial Health</h4>
+                        <p>Plan for your healthcare future while building lasting wealth.</p>
+                        <button class="cta-button">Schedule Financial Consultation</button>
+                    </div>
+                `
+            },
+            insurers: {
+                title: "Insurance & Employee Benefits",
+                content: `
+                    <p>Navigate the complex world of health insurance and employee benefits with expert guidance from our trusted partners. Maximize your coverage while minimizing costs.</p>
+
+                    <h3>Services</h3>
+                    <ul>
+                        <li>Health insurance policy analysis and optimization</li>
+                        <li>Employee benefits package design</li>
+                        <li>Claims management and advocacy</li>
+                        <li>Policy comparison and selection guidance</li>
+                        <li>Annual renewal negotiations</li>
+                        <li>Compliance and regulatory support</li>
+                    </ul>
+
+                    <h3>Benefits</h3>
+                    <p>Our insurance partners help you understand complex policies, identify gaps in coverage, and ensure you're getting maximum value from your health insurance investment.</p>
+
+                    <div class="service-tags">
+                        <div class="tag">Insurance Optimization</div>
+                        <div class="tag">Benefits Management</div>
+                        <div class="tag">Claims Support</div>
+                        <div class="tag">Cost Savings</div>
+                    </div>
+
+                    <div class="contact-card">
+                        <h4>Optimize Your Coverage</h4>
+                        <p>Book a consultation to review your current insurance and discover savings opportunities.</p>
+                        <button class="cta-button">Book Insurance Review</button>
+                    </div>
+                `
+            }
+        };
+
+        function openModal(serviceKey) {
+            const modal = document.getElementById('serviceModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            const service = serviceDetails[serviceKey];
+
+            if (service) {
+                modalTitle.textContent = service.title;
+                modalBody.innerHTML = service.content;
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('serviceModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('serviceModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Keyboard support
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
