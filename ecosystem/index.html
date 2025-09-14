@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thrive Health Journey - Your Comprehensive Wellness Ecosystem</title>
+    <title>Thrive Health Ecosystem - Corporate Wellness Solutions</title>
     <style>
         * {
             margin: 0;
@@ -27,7 +27,7 @@
 
         .header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             padding: 50px 0;
             background: white;
             border-radius: 20px;
@@ -58,14 +58,60 @@
             font-size: 1.3rem;
             color: #64748b;
             max-width: 700px;
-            margin: 0 auto;
+            margin: 0 auto 30px auto;
             line-height: 1.5;
         }
 
-        /* Journey Flow Styles */
+        /* View Toggle */
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .toggle-btn {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 12px 24px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .toggle-btn:first-child {
+            border-radius: 10px 0 0 10px;
+        }
+
+        .toggle-btn:last-child {
+            border-radius: 0 10px 10px 0;
+        }
+
+        .toggle-btn.active {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            border-color: #059669;
+        }
+
+        .toggle-btn:hover:not(.active) {
+            border-color: #10b981;
+            background: #f0fdf4;
+        }
+
+        /* Views Container */
+        .view {
+            display: none;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        /* Journey Flow View (existing styles) */
         .journey-container {
             position: relative;
             padding: 40px 0;
+            margin-bottom: 60px;
         }
 
         .journey-path {
@@ -129,24 +175,231 @@
             line-height: 1.4;
         }
 
-        /* Services Grid */
-        .services-section {
-            margin-top: 80px;
+        /* Hub and Spoke View */
+        .hub-spoke-container {
+            position: relative;
+            min-height: 800px;
+            margin: 60px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .section-title {
+        .thrive-hub {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 20px 50px rgba(16, 185, 129, 0.3);
+            z-index: 10;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .thrive-hub:hover {
+            transform: translate(-50%, -50%) scale(1.05);
+            box-shadow: 0 25px 60px rgba(16, 185, 129, 0.4);
+        }
+
+        .hub-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .hub-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
             text-align: center;
-            font-size: 2.2rem;
+        }
+
+        /* Domain Groups */
+        .domain-group {
+            position: absolute;
+        }
+
+        .domain-group.mind {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .domain-group.body {
+            bottom: 0;
+            left: 0;
+            transform: translateY(0);
+        }
+
+        .domain-group.financial {
+            bottom: 0;
+            right: 0;
+            transform: translateY(0);
+        }
+
+        .domain-title {
+            text-align: center;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #0f172a;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
+            padding: 12px 24px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
+        .domain-title.mind {
+            background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+            color: #5b21b6;
+        }
+
+        .domain-title.body {
+            background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+            color: #991b1b;
+        }
+
+        .domain-title.financial {
+            background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+            color: #c2410c;
+        }
+
+        .domain-services {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .spoke-service {
+            background: white;
+            padding: 20px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 240px;
+            text-align: center;
+            position: relative;
+        }
+
+        .spoke-service:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.15);
+        }
+
+        .spoke-service::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: 12px 12px 0 0;
+            transition: all 0.3s ease;
+        }
+
+        .spoke-service.mind::before {
+            background: linear-gradient(90deg, #8b5cf6 0%, #a78bfa 100%);
+        }
+
+        .spoke-service.body::before {
+            background: linear-gradient(90deg, #ef4444 0%, #f87171 100%);
+        }
+
+        .spoke-service.financial::before {
+            background: linear-gradient(90deg, #f97316 0%, #fb923c 100%);
+        }
+
+        .spoke-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .spoke-description {
+            font-size: 0.85rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        /* Connection Lines */
+        .connection-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #d1fae5 20%, #059669 50%, #d1fae5 80%, transparent 100%);
+            z-index: 1;
+        }
+
+        /* Corporate Value Proposition */
+        .corporate-value {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .corporate-value h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .corporate-value p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .value-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .value-desc {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        /* Services Grid */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
-            margin-bottom: 60px;
+            margin: 60px 0;
         }
 
         .service-card {
@@ -242,71 +495,6 @@
         .cta-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
-        }
-
-        /* Central Hub */
-        .central-hub {
-            text-align: center;
-            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-            color: white;
-            padding: 60px 40px;
-            border-radius: 24px;
-            margin: 60px 0;
-            box-shadow: 0 20px 50px rgba(16, 185, 129, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .central-hub::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .central-hub h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .central-hub p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .central-cta {
-            background: white;
-            color: #059669;
-            border: none;
-            padding: 16px 32px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            z-index: 2;
-        }
-
-        .central-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         /* Modal Styles */
@@ -473,15 +661,34 @@
                 margin-bottom: 40px;
             }
 
-            .services-grid {
-                grid-template-columns: 1fr;
+            .hub-spoke-container {
+                flex-direction: column;
+                min-height: auto;
+                gap: 40px;
             }
 
-            .central-hub {
+            .domain-group {
+                position: static;
+                transform: none;
+                margin: 20px 0;
+            }
+
+            .thrive-hub {
+                position: static;
+                transform: none;
+                margin: 20px auto;
+            }
+
+            .toggle-btn {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+
+            .corporate-value {
                 padding: 40px 20px;
             }
 
-            .central-hub h2 {
+            .corporate-value h2 {
                 font-size: 2rem;
             }
         }
@@ -491,43 +698,42 @@
     <div class="container">
         <div class="header">
             <h1>Thrive Health Ecosystem</h1>
-            <p class="subtitle">Your complete journey to optimal health, wellness, and performance</p>
-        </div>
+            <p class="subtitle">Comprehensive corporate wellness solutions for modern organizations</p>
 
-        <div class="journey-container">
-            <div class="journey-path"></div>
-            <div class="journey-steps">
-                <div class="journey-step">
-                    <div class="step-number" onclick="openModal('step1')">1</div>
-                    <div class="step-title">Assessment</div>
-                    <div class="step-description">Comprehensive health evaluation and personalized strategy development</div>
-                </div>
-                <div class="journey-step">
-                    <div class="step-number" onclick="openModal('step2')">2</div>
-                    <div class="step-title">Coordination</div>
-                    <div class="step-description">Seamless integration of services through dedicated health advocates</div>
-                </div>
-                <div class="journey-step">
-                    <div class="step-number" onclick="openModal('step3')">3</div>
-                    <div class="step-title">Implementation</div>
-                    <div class="step-description">Active participation in your personalized health and wellness programs</div>
-                </div>
-                <div class="journey-step">
-                    <div class="step-number" onclick="openModal('step4')">4</div>
-                    <div class="step-title">Optimization</div>
-                    <div class="step-description">Continuous monitoring, refinement, and enhancement of your health journey</div>
-                </div>
+            <div class="view-toggle">
+                <button class="toggle-btn active" onclick="switchView('journey')">Journey Flow</button>
+                <button class="toggle-btn" onclick="switchView('hub-spoke')">Hub & Spoke</button>
             </div>
         </div>
 
-        <div class="central-hub">
-            <h2>Thrive - Your Health Hub</h2>
-            <p>We coordinate all aspects of your health and wellness journey, ensuring seamless integration across all our partner services while maintaining focus on your unique goals and needs.</p>
-            <button class="central-cta" onclick="openModal('thrive')">Discover How Thrive Works</button>
-        </div>
+        <!-- Journey Flow View -->
+        <div id="journey-view" class="view active">
+            <div class="journey-container">
+                <div class="journey-path"></div>
+                <div class="journey-steps">
+                    <div class="journey-step">
+                        <div class="step-number" onclick="openModal('step1')">1</div>
+                        <div class="step-title">Assessment</div>
+                        <div class="step-description">Comprehensive health evaluation and personalized strategy development</div>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number" onclick="openModal('step2')">2</div>
+                        <div class="step-title">Coordination</div>
+                        <div class="step-description">Seamless integration of services through dedicated health advocates</div>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number" onclick="openModal('step3')">3</div>
+                        <div class="step-title">Implementation</div>
+                        <div class="step-description">Active participation in your personalized health and wellness programs</div>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number" onclick="openModal('step4')">4</div>
+                        <div class="step-title">Optimization</div>
+                        <div class="step-description">Continuous monitoring, refinement, and enhancement of your health journey</div>
+                    </div>
+                </div>
+            </div>
 
-        <div class="services-section">
-            <h2 class="section-title">Our Partner Services</h2>
             <div class="services-grid">
                 <div class="service-card" onclick="openModal('concierge')">
                     <div class="service-icon">🏥</div>
@@ -626,6 +832,99 @@
                 </div>
             </div>
         </div>
+
+        <!-- Hub and Spoke View -->
+        <div id="hub-spoke-view" class="view">
+            <div class="hub-spoke-container">
+                <!-- Central Hub -->
+                <div class="thrive-hub" onclick="openModal('thrive')">
+                    <div class="hub-title">Thrive</div>
+                    <div class="hub-subtitle">Central Coordination Hub</div>
+                </div>
+
+                <!-- Mind Domain -->
+                <div class="domain-group mind">
+                    <div class="domain-title mind">🧠 Mind & Mental Wellness</div>
+                    <div class="domain-services">
+                        <div class="spoke-service mind" onclick="openModal('edward')">
+                            <div class="spoke-title">Edward Orman Psychology</div>
+                            <div class="spoke-description">Individual digital wellness programs</div>
+                        </div>
+                        <div class="spoke-service mind" onclick="openModal('clearminds')">
+                            <div class="spoke-title">Clear Minds B2B</div>
+                            <div class="spoke-description">Corporate mental health solutions</div>
+                        </div>
+                        <div class="spoke-service mind" onclick="openModal('dannhauser')">
+                            <div class="spoke-title">Dr Thomas Dannhauser</div>
+                            <div class="spoke-description">Precision psychiatry</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Body Domain -->
+                <div class="domain-group body">
+                    <div class="domain-title body">💪 Body & Physical Health</div>
+                    <div class="domain-services">
+                        <div class="spoke-service body" onclick="openModal('goodbody')">
+                            <div class="spoke-title">Goodbody Diagnostics</div>
+                            <div class="spoke-description">Executive health assessments</div>
+                        </div>
+                        <div class="spoke-service body" onclick="openModal('specialists')">
+                            <div class="spoke-title">Specialist Services</div>
+                            <div class="spoke-description">Gut health & metabolic care</div>
+                        </div>
+                        <div class="spoke-service body" onclick="openModal('concierge')">
+                            <div class="spoke-title">Concierge Health Advisors</div>
+                            <div class="spoke-description">Personal health advocacy</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Domain -->
+                <div class="domain-group financial">
+                    <div class="domain-title financial">💰 Financial & Protection</div>
+                    <div class="domain-services">
+                        <div class="spoke-service financial" onclick="openModal('financial')">
+                            <div class="spoke-title">MYN / Concept Financial</div>
+                            <div class="spoke-description">Health-integrated planning</div>
+                        </div>
+                        <div class="spoke-service financial" onclick="openModal('insurers')">
+                            <div class="spoke-title">Insurance & Benefits</div>
+                            <div class="spoke-description">Coverage optimization</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Corporate Value Proposition -->
+        <div class="corporate-value">
+            <h2>Corporate Wellness Excellence</h2>
+            <p>Transform your organization's approach to employee wellbeing with our integrated ecosystem of mind, body, and financial wellness services.</p>
+
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">📈</div>
+                    <div class="value-title">Measurable ROI</div>
+                    <div class="value-desc">Reduced absenteeism, improved productivity, and enhanced employee retention through comprehensive wellness programs.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <div class="value-title">Seamless Integration</div>
+                    <div class="value-desc">One coordinated ecosystem replaces multiple vendors, simplifying administration and ensuring consistent quality.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <div class="value-title">Personalized Care</div>
+                    <div class="value-desc">Tailored wellness journeys for each employee, from executive health programs to precision mental health support.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔒</div>
+                    <div class="value-title">Enterprise Security</div>
+                    <div class="value-desc">GDPR-compliant, secure handling of sensitive health data with dedicated account management.</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Modal -->
@@ -642,404 +941,437 @@
     </div>
 
     <script>
+        // View switching
+        function switchView(viewName) {
+            // Hide all views
+            document.querySelectorAll('.view').forEach(view => {
+                view.classList.remove('active');
+            });
+
+            // Remove active class from all buttons
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected view
+            document.getElementById(viewName + '-view').classList.add('active');
+
+            // Activate clicked button
+            event.target.classList.add('active');
+        }
+
         const serviceDetails = {
             thrive: {
-                title: "Thrive - Your Health Coordination Hub",
+                title: "Thrive - Your Corporate Health Hub",
                 content: `
-                    <p>Thrive serves as the central coordination platform for your comprehensive health and wellness journey. We connect you with the right specialists, services, and resources at the right time, ensuring seamless integration and optimal outcomes.</p>
+                    <p>Thrive serves as the central coordination platform for your organization's comprehensive health and wellness strategy. We connect your employees with the right specialists, services, and resources at the right time, ensuring seamless integration and optimal outcomes.</p>
 
-                    <h3>How Thrive Works</h3>
+                    <h3>Corporate Coordination Services</h3>
                     <ul>
-                        <li>Initial health assessment and goal setting</li>
-                        <li>Personalized service recommendations</li>
-                        <li>Seamless appointment coordination</li>
-                        <li>Ongoing progress monitoring</li>
-                        <li>Regular strategy optimization</li>
-                        <li>24/7 support and guidance</li>
+                        <li>Employee health strategy development</li>
+                        <li>Multi-provider network management</li>
+                        <li>Personalized employee health journeys</li>
+                        <li>Wellness program integration and tracking</li>
+                        <li>Executive health program management</li>
+                        <li>Corporate wellness ROI measurement</li>
+                        <li>GDPR-compliant health data management</li>
                     </ul>
 
-                    <h3>Your Journey with Thrive</h3>
-                    <p>From your first consultation to long-term wellness maintenance, Thrive ensures every aspect of your health journey is coordinated, purposeful, and optimized for your unique needs and lifestyle.</p>
+                    <h3>Enterprise Value</h3>
+                    <p>Thrive eliminates the complexity of managing multiple wellness vendors by serving as your single point of contact for comprehensive employee health services. Our approach ensures continuity, quality, and measurable outcomes across your entire organization.</p>
 
                     <div class="service-tags">
-                        <div class="tag">Care Coordination</div>
-                        <div class="tag">Personalized Health</div>
-                        <div class="tag">Preventative Care</div>
-                        <div class="tag">Holistic Wellness</div>
+                        <div class="tag">Corporate Coordination</div>
+                        <div class="tag">Employee Wellness</div>
+                        <div class="tag">ROI Measurement</div>
+                        <div class="tag">GDPR Compliant</div>
                     </div>
 
                     <div class="contact-card">
-                        <h4>Start Your Thrive Journey</h4>
-                        <p><strong>Email:</strong> hello@thrive.health</p>
-                        <p><strong>Phone:</strong> +44 20 1234 5678</p>
-                        <button class="cta-button">Schedule Initial Consultation</button>
+                        <h4>Enterprise Partnership</h4>
+                        <p><strong>Email:</strong> corporate@thrive.health</p>
+                        <p><strong>Phone:</strong> +44 (0)20 1234 5678</p>
+                        <button class="cta-button">Schedule Corporate Demo</button>
                     </div>
                 `
             },
             step1: {
-                title: "Step 1: Comprehensive Assessment",
+                title: "Step 1: Organizational Assessment",
                 content: `
-                    <p>Your health journey begins with a thorough assessment of your current health status, lifestyle, goals, and preferences. This forms the foundation for your personalized wellness strategy.</p>
+                    <p>Your corporate wellness journey begins with a comprehensive assessment of your organization's current health culture, employee needs, and strategic objectives. This forms the foundation for your personalized corporate wellness strategy.</p>
 
-                    <h3>What's Included</h3>
+                    <h3>Assessment Components</h3>
                     <ul>
-                        <li>Complete health history review</li>
-                        <li>Lifestyle and stress assessment</li>
-                        <li>Goal setting and priority identification</li>
-                        <li>Risk factor analysis</li>
-                        <li>Preference mapping for service selection</li>
-                        <li>Initial health screening recommendations</li>
+                        <li>Employee health and wellness survey</li>
+                        <li>Current benefits and program analysis</li>
+                        <li>Organizational stress and culture assessment</li>
+                        <li>Leadership wellness priorities</li>
+                        <li>Budget and resource allocation review</li>
+                        <li>Compliance and regulatory requirements</li>
+                        <li>Success metrics and KPI definition</li>
                     </ul>
 
-                    <h3>Personalized Strategy Development</h3>
-                    <p>Based on your assessment, we create a comprehensive health strategy that outlines your optimal pathway through our ecosystem of services, ensuring every recommendation aligns with your goals, schedule, and preferences.</p>
+                    <h3>Strategic Planning</h3>
+                    <p>Based on your assessment, we create a comprehensive corporate wellness strategy that outlines your optimal pathway through our ecosystem of services, ensuring every recommendation aligns with your organizational goals, budget, and employee preferences.</p>
 
                     <div class="service-tags">
-                        <div class="tag">Health Assessment</div>
-                        <div class="tag">Strategy Development</div>
-                        <div class="tag">Goal Setting</div>
-                        <div class="tag">Risk Analysis</div>
+                        <div class="tag">Organizational Assessment</div>
+                        <div class="tag">Strategic Planning</div>
+                        <div class="tag">Employee Surveys</div>
+                        <div class="tag">KPI Development</div>
                     </div>
                 `
             },
             step2: {
-                title: "Step 2: Care Coordination",
+                title: "Step 2: Program Coordination",
                 content: `
-                    <p>Once your strategy is defined, we coordinate all aspects of your care through our dedicated health advocates who manage appointments, communications, and ensure seamless integration between services.</p>
+                    <p>Once your strategy is defined, we coordinate all aspects of your corporate wellness program through our dedicated account management team who handle implementation, communications, and ensure seamless integration between all services.</p>
 
                     <h3>Coordination Services</h3>
                     <ul>
-                        <li>Dedicated health advocate assignment</li>
-                        <li>Appointment scheduling and management</li>
-                        <li>Inter-provider communication</li>
-                        <li>Medical record organization</li>
-                        <li>Treatment plan coordination</li>
+                        <li>Dedicated corporate account manager</li>
+                        <li>Employee enrollment and onboarding</li>
+                        <li>Multi-provider service coordination</li>
+                        <li>Corporate communications and marketing</li>
+                        <li>Manager training and support</li>
                         <li>Progress tracking and reporting</li>
+                        <li>Compliance monitoring and documentation</li>
                     </ul>
 
-                    <h3>Seamless Experience</h3>
-                    <p>Your health advocate ensures that every appointment, test, and treatment is coordinated efficiently, eliminating confusion and ensuring that all providers are aligned with your overall health strategy.</p>
+                    <h3>Seamless Implementation</h3>
+                    <p>Your account manager ensures that every aspect of your wellness program is coordinated efficiently, eliminating administrative burden and ensuring that all providers are aligned with your organizational wellness strategy.</p>
 
                     <div class="service-tags">
-                        <div class="tag">Care Coordination</div>
-                        <div class="tag">Health Advocacy</div>
-                        <div class="tag">Appointment Management</div>
-                        <div class="tag">Progress Tracking</div>
+                        <div class="tag">Account Management</div>
+                        <div class="tag">Program Coordination</div>
+                        <div class="tag">Employee Onboarding</div>
+                        <div class="tag">Compliance Monitoring</div>
                     </div>
                 `
             },
             step3: {
-                title: "Step 3: Active Implementation",
+                title: "Step 3: Employee Engagement",
                 content: `
-                    <p>With coordination in place, you actively participate in your personalized health programs across our partner services, with ongoing support and guidance from your dedicated health team.</p>
+                    <p>With coordination in place, your employees actively participate in their personalized health programs across our partner services, with ongoing support and guidance from their dedicated health advocates and your corporate wellness team.</p>
 
-                    <h3>Implementation Activities</h3>
+                    <h3>Engagement Activities</h3>
                     <ul>
-                        <li>Diagnostic assessments and screenings</li>
+                        <li>Individual health assessments and screenings</li>
                         <li>Mental wellness program participation</li>
                         <li>Specialist consultations as needed</li>
-                        <li>Financial planning integration</li>
-                        <li>Corporate wellness program enrollment</li>
-                        <li>Regular check-ins and adjustments</li>
+                        <li>Financial wellness education and planning</li>
+                        <li>Team wellness challenges and initiatives</li>
+                        <li>Manager wellness training and support</li>
+                        <li>Regular health coaching and check-ins</li>
                     </ul>
 
                     <h3>Supported Journey</h3>
-                    <p>Throughout implementation, you have continuous support from your health advocate who ensures you're making progress toward your goals and that all services remain aligned with your evolving needs.</p>
+                    <p>Throughout implementation, employees have continuous support from their health advocates while your organization receives regular updates on participation, outcomes, and program effectiveness.</p>
 
                     <div class="service-tags">
-                        <div class="tag">Active Participation</div>
-                        <div class="tag">Program Implementation</div>
-                        <div class="tag">Ongoing Support</div>
-                        <div class="tag">Goal Achievement</div>
+                        <div class="tag">Employee Participation</div>
+                        <div class="tag">Health Coaching</div>
+                        <div class="tag">Team Challenges</div>
+                        <div class="tag">Manager Support</div>
                     </div>
                 `
             },
             step4: {
                 title: "Step 4: Continuous Optimization",
                 content: `
-                    <p>Your health journey is continuously monitored and optimized based on your progress, changing needs, and new developments in your health and lifestyle.</p>
+                    <p>Your corporate wellness program is continuously monitored and optimized based on employee feedback, participation data, health outcomes, and evolving organizational needs.</p>
 
                     <h3>Optimization Process</h3>
                     <ul>
-                        <li>Regular progress reviews and assessments</li>
-                        <li>Strategy refinement and updates</li>
-                        <li>New service recommendations as appropriate</li>
-                        <li>Goal adjustment and expansion</li>
-                        <li>Preventative care scheduling</li>
-                        <li>Long-term wellness planning</li>
+                        <li>Quarterly program reviews and assessments</li>
+                        <li>Employee satisfaction and outcome surveys</li>
+                        <li>ROI analysis and reporting</li>
+                        <li>Program refinement and expansion</li>
+                        <li>New service integration as appropriate</li>
+                        <li>Benchmark analysis against industry standards</li>
+                        <li>Strategic planning for following year</li>
                     </ul>
 
-                    <h3>Evolving with You</h3>
-                    <p>As your life, career, and health needs evolve, so does your personalized strategy. We ensure your health approach remains current, effective, and aligned with your changing priorities.</p>
+                    <h3>Evolving with Your Organization</h3>
+                    <p>As your organization grows and employee needs evolve, so does your wellness strategy. We ensure your program remains current, effective, and aligned with your changing business priorities and workforce demographics.</p>
 
                     <div class="service-tags">
-                        <div class="tag">Continuous Monitoring</div>
-                        <div class="tag">Strategy Optimization</div>
-                        <div class="tag">Preventative Planning</div>
-                        <div class="tag">Long-term Wellness</div>
+                        <div class="tag">Program Optimization</div>
+                        <div class="tag">ROI Analysis</div>
+                        <div class="tag">Benchmark Reporting</div>
+                        <div class="tag">Strategic Evolution</div>
                     </div>
                 `
             },
             concierge: {
-                title: "Concierge Health Advisors",
+                title: "Concierge Health Advisors - Corporate Edition",
                 content: `
-                    <p>Your personal health advocates who coordinate care, schedule appointments, and ensure you receive the highest quality healthcare experience possible.</p>
+                    <p>Dedicated health advocates for your employees who coordinate care, schedule appointments, and ensure the highest quality healthcare experience. Our corporate program includes specialized support for busy executives and managers.</p>
 
-                    <h3>Concierge Services</h3>
+                    <h3>Corporate Concierge Services</h3>
                     <ul>
-                        <li>Appointment scheduling and coordination</li>
+                        <li>Dedicated health advocates for senior staff</li>
+                        <li>Employee appointment scheduling and coordination</li>
+                        <li>Corporate health policy navigation</li>
                         <li>Second opinion facilitation</li>
                         <li>Medical record organization and management</li>
-                        <li>Healthcare provider communication</li>
-                        <li>Treatment plan coordination</li>
-                        <li>Insurance authorization assistance</li>
+                        <li>Executive travel health support</li>
                         <li>24/7 health support hotline</li>
+                        <li>Family health coordination services</li>
                     </ul>
 
-                    <h3>Your Personal Health Team</h3>
-                    <p>Each client is assigned a dedicated health advisor who becomes intimately familiar with your health history, preferences, and goals. They act as your advocate throughout your entire healthcare journey.</p>
+                    <h3>Executive Health Support</h3>
+                    <p>Our premium tier includes dedicated health advocates for C-suite and senior management, ensuring minimal disruption to business operations while maintaining optimal health outcomes.</p>
 
                     <div class="service-tags">
-                        <div class="tag">Personal Advocacy</div>
-                        <div class="tag">Care Coordination</div>
-                        <div class="tag">24/7 Support</div>
-                        <div class="tag">VIP Healthcare</div>
+                        <div class="tag">Executive Support</div>
+                        <div class="tag">Employee Advocacy</div>
+                        <div class="tag">24/7 Access</div>
+                        <div class="tag">Corporate Navigation</div>
                     </div>
 
                     <div class="contact-card">
-                        <h4>Your Dedicated Health Advocate</h4>
-                        <p>Available around the clock to support and coordinate your healthcare needs.</p>
-                        <button class="cta-button">Meet Your Advisor</button>
+                        <h4>Corporate Health Advocacy</h4>
+                        <p>Dedicated support for your entire organization's healthcare coordination needs.</p>
+                        <button class="cta-button">Discuss Corporate Rates</button>
                     </div>
                 `
             },
             goodbody: {
-                title: "Goodbody Physical Health Diagnostics",
+                title: "Goodbody Executive Health - Corporate Programs",
                 content: `
-                    <p>Comprehensive physical health assessments using cutting-edge diagnostic technology to identify potential health issues before they become serious problems.</p>
+                    <p>Comprehensive executive health assessments and corporate wellness screenings using cutting-edge diagnostic technology. Designed specifically for corporate health programs and executive teams.</p>
 
-                    <h3>Advanced Diagnostic Services</h3>
+                    <h3>Corporate Health Services</h3>
                     <ul>
-                        <li>Executive health MOTs and comprehensive physicals</li>
-                        <li>Advanced cardiac imaging and stress testing</li>
-                        <li>Full-body MRI and CT scanning</li>
-                        <li>Cancer screening and early detection</li>
-                        <li>Metabolic and hormonal profiling</li>
-                        <li>Nutritional and fitness assessments</li>
-                        <li>Genetic testing and analysis</li>
+                        <li>Executive health MOTs for leadership teams</li>
+                        <li>Corporate wellness screening programs</li>
+                        <li>Advanced cardiac assessment and imaging</li>
+                        <li>Full-body diagnostic scanning</li>
+                        <li>Cancer screening and early detection programs</li>
+                        <li>Corporate fitness and nutrition assessments</li>
+                        <li>Occupational health evaluations</li>
+                        <li>Annual health surveillance programs</li>
                     </ul>
 
-                    <h3>Preventative Healthcare Excellence</h3>
-                    <p>Our state-of-the-art facilities and expert medical team provide the most thorough health assessments available, designed specifically for busy executives and professionals who demand the best.</p>
+                    <h3>Executive-Focused Corporate Care</h3>
+                    <p>Our corporate programs are designed to minimize time away from business operations while delivering comprehensive health insights. Flexible scheduling and priority access for busy executives.</p>
 
                     <div class="service-tags">
                         <div class="tag">Executive Health</div>
+                        <div class="tag">Corporate Screening</div>
                         <div class="tag">Preventative Care</div>
-                        <div class="tag">Advanced Imaging</div>
-                        <div class="tag">Early Detection</div>
+                        <div class="tag">Occupational Health</div>
                     </div>
 
                     <div class="contact-card">
-                        <h4>Schedule Your Health MOT</h4>
-                        <p>Comprehensive assessments designed for busy professionals who prioritize their health.</p>
-                        <button class="cta-button">Book Health Assessment</button>
+                        <h4>Corporate Health Programs</h4>
+                        <p>Comprehensive health assessments designed for corporate wellness initiatives.</p>
+                        <button class="cta-button">Request Corporate Proposal</button>
                     </div>
                 `
             },
             edward: {
-                title: "Edward Orman Psychology Programs",
+                title: "Edward Orman Psychology - Corporate Wellness",
                 content: `
-                    <p>Evidence-based digital psychology programs and resources designed to support mental wellness, stress management, and personal development for modern professionals.</p>
+                    <p>Evidence-based digital psychology programs designed for corporate wellness initiatives. Scalable mental wellness solutions for organizations seeking to support employee mental health and performance optimization.</p>
 
-                    <h3>Digital Mental Wellness Programs</h3>
+                    <h3>Corporate Mental Wellness Programs</h3>
                     <ul>
-                        <li>Stress management and resilience training</li>
-                        <li>Mindfulness and meditation courses</li>
-                        <li>Cognitive behavioral therapy (CBT) modules</li>
-                        <li>Leadership psychology programs</li>
-                        <li>Work-life balance coaching</li>
-                        <li>Performance psychology training</li>
-                        <li>Comprehensive digital wellness library</li>
+                        <li>Employee stress management and resilience training</li>
+                        <li>Leadership psychology and performance programs</li>
+                        <li>Team communication and collaboration training</li>
+                        <li>Corporate mindfulness and focus programs</li>
+                        <li>Work-life integration workshops</li>
+                        <li>Manager mental health training</li>
+                        <li>Burnout prevention and recovery programs</li>
+                        <li>Corporate mental health first aid certification</li>
                     </ul>
 
-                    <h3>Evidence-Based Approach</h3>
-                    <p>All programs are developed by licensed psychologists and based on proven therapeutic approaches. Access hundreds of hours of professional content designed specifically for high-achieving individuals.</p>
+                    <h3>Scalable Digital Platform</h3>
+                    <p>Our corporate platform provides unlimited access to professionally developed content, with usage analytics and progress tracking for organizational wellness measurement.</p>
 
                     <div class="service-tags">
-                        <div class="tag">Mental Wellness</div>
-                        <div class="tag">Digital Programs</div>
-                        <div class="tag">CBT</div>
+                        <div class="tag">Corporate Wellness</div>
+                        <div class="tag">Digital Platform</div>
+                        <div class="tag">Leadership Training</div>
                         <div class="tag">Stress Management</div>
                     </div>
 
                     <div class="contact-card">
-                        <h4>Begin Your Mental Wellness Journey</h4>
-                        <p>Access professional psychology programs designed for busy professionals.</p>
-                        <button class="cta-button">Explore Programs</button>
+                        <h4>Corporate Mental Wellness Platform</h4>
+                        <p>Scalable psychology programs for your entire organization.</p>
+                        <button class="cta-button">Request Corporate Demo</button>
                     </div>
                 `
             },
             clearminds: {
-                title: "Clear Minds B2B Solutions",
+                title: "Clear Minds B2B - Enterprise Solutions",
                 content: `
-                    <p>Corporate mental health and wellness solutions designed to support employee wellbeing, reduce workplace stress, and improve overall organizational productivity and culture.</p>
+                    <p>Comprehensive corporate mental health and organizational wellness solutions designed to transform workplace culture, reduce stress, and improve overall organizational productivity and employee satisfaction.</p>
 
-                    <h3>Corporate Wellness Services</h3>
+                    <h3>Enterprise Wellness Services</h3>
                     <ul>
-                        <li>Employee Assistance Programs (EAP)</li>
-                        <li>Workplace mental health training and workshops</li>
-                        <li>Stress management and resilience programs</li>
-                        <li>Leadership mental health coaching</li>
+                        <li>Enterprise Employee Assistance Programs (EAP)</li>
+                        <li>Organizational mental health strategy development</li>
+                        <li>Leadership mental health training and certification</li>
+                        <li>Workplace stress management programs</li>
                         <li>Team building and psychological safety initiatives</li>
-                        <li>Burnout prevention and recovery programs</li>
-                        <li>Mental health first aid certification</li>
+                        <li>Corporate burnout prevention and intervention</li>
+                        <li>Mental health policy development and implementation</li>
+                        <li>Crisis intervention and support services</li>
                     </ul>
 
-                    <h3>Transforming Workplace Culture</h3>
-                    <p>We help organizations create psychologically safe, mentally healthy work environments that support peak performance while prioritizing employee wellbeing and sustainable productivity.</p>
+                    <h3>Organizational Transformation</h3>
+                    <p>We help organizations create psychologically safe, mentally healthy work environments that support peak performance while prioritizing employee wellbeing, resulting in improved retention and sustainable productivity.</p>
 
                     <div class="service-tags">
-                        <div class="tag">Corporate Wellness</div>
-                        <div class="tag">EAP Services</div>
+                        <div class="tag">Enterprise EAP</div>
+                        <div class="tag">Organizational Change</div>
                         <div class="tag">Leadership Training</div>
-                        <div class="tag">Workplace Culture</div>
+                        <div class="tag">Psychological Safety</div>
                     </div>
 
                     <div class="contact-card">
-                        <h4>Transform Your Workplace</h4>
-                        <p>Create a mentally healthy, high-performing organization with our B2B solutions.</p>
-                        <button class="cta-button">Schedule Corporate Consultation</button>
+                        <h4>Transform Your Organization</h4>
+                        <p>Create a mentally healthy, high-performing workplace culture.</p>
+                        <button class="cta-button">Schedule Enterprise Consultation</button>
                     </div>
                 `
             },
             dannhauser: {
-                title: "Dr Thomas Dannhauser - Precision Psychiatry",
+                title: "Dr Thomas Dannhauser - Corporate Precision Psychiatry",
                 content: `
-                    <p>Leading consultant psychiatrist specializing in precision medicine approaches to mental health, combining cutting-edge diagnostic techniques with personalized treatment protocols.</p>
+                    <p>Leading consultant psychiatrist offering precision medicine approaches to corporate mental health. Specialized executive mental health programs and complex case management for organizations.</p>
 
-                    <h3>Precision Psychiatry Services</h3>
+                    <h3>Corporate Precision Services</h3>
                     <ul>
-                        <li>Comprehensive psychiatric assessments</li>
-                        <li>Pharmacogenetic testing for medication optimization</li>
-                        <li>Biomarker analysis and metabolic profiling</li>
-                        <li>Personalized treatment protocol development</li>
-                        <li>Executive mental health programs</li>
-                        <li>Complex case consultation and second opinions</li>
-                        <li>Integrated psychotherapy and medication management</li>
+                        <li>Executive psychiatric assessments and support</li>
+                        <li>Corporate mental health consultation</li>
+                        <li>Pharmacogenetic testing programs</li>
+                        <li>Biomarker analysis and personalized protocols</li>
+                        <li>Complex case management and consultation</li>
+                        <li>Executive stress and performance optimization</li>
+                        <li>Corporate mental health policy development</li>
+                        <li>Senior leadership mental wellness programs</li>
                     </ul>
 
-                    <h3>Personalized Mental Healthcare</h3>
-                    <p>Dr Dannhauser combines traditional psychiatric expertise with modern precision medicine techniques, using genetic testing, biomarkers, and advanced diagnostics to create truly personalized treatment approaches.</p>
+                    <h3>Executive Mental Health Excellence</h3>
+                    <p>Dr Dannhauser provides confidential, precision-based mental health support for senior executives and leadership teams, combining cutting-edge diagnostics with personalized treatment approaches.</p>
 
                     <div class="service-tags">
+                        <div class="tag">Executive Psychiatry</div>
                         <div class="tag">Precision Medicine</div>
-                        <div class="tag">Genetic Testing</div>
-                        <div class="tag">Biomarker Analysis</div>
-                        <div class="tag">Expert Psychiatrist</div>
+                        <div class="tag">Leadership Support</div>
+                        <div class="tag">Confidential Care</div>
                     </div>
 
                     <div class="contact-card">
-                        <h4>Personalized Psychiatric Care</h4>
-                        <p>Advanced psychiatry based on your unique genetic and biological profile.</p>
-                        <button class="cta-button">Book Consultation</button>
+                        <h4>Executive Mental Health</h4>
+                        <p>Precision psychiatric care for senior leadership and complex cases.</p>
+                        <button class="cta-button">Discuss Executive Programs</button>
                     </div>
                 `
             },
             specialists: {
-                title: "Specialist Medical Services",
+                title: "Specialist Medical Services - Corporate Health",
                 content: `
-                    <p>Direct access to leading medical specialists in gastroenterology, hepatology, and hematology. Expert care for complex digestive and metabolic health conditions.</p>
+                    <p>Corporate access to leading medical specialists in gastroenterology, hepatology, and metabolic health. Priority consultation services for employees with complex health conditions.</p>
 
-                    <h3>Specialist Expertise</h3>
+                    <h3>Corporate Specialist Access</h3>
                     <ul>
-                        <li>Gastroenterology and advanced gut health optimization</li>
-                        <li>Hepatology and comprehensive liver function analysis</li>
-                        <li>Advanced blood analysis and hematological assessment</li>
-                        <li>Digestive microbiome testing and optimization</li>
-                        <li>Metabolic disorder diagnosis and treatment</li>
-                        <li>Nutritional therapy and dietary planning</li>
-                        <li>Functional medicine approaches</li>
+                        <li>Priority specialist consultation scheduling</li>
+                        <li>Corporate gastroenterology and gut health programs</li>
+                        <li>Executive liver function optimization</li>
+                        <li>Advanced blood analysis and metabolic assessment</li>
+                        <li>Corporate digestive health workshops</li>
+                        <li>Nutritional therapy and corporate wellness</li>
+                        <li>Occupational health specialist referrals</li>
+                        <li>Complex case management and coordination</li>
                     </ul>
 
-                    <h3>Cutting-Edge Care</h3>
-                    <p>Our specialist network includes some of the UK's most respected consultants in their fields, offering the latest diagnostic techniques and treatment protocols.</p>
+                    <h3>Priority Corporate Access</h3>
+                    <p>Our corporate partnerships provide priority access to leading specialists, ensuring minimal waiting times and seamless integration with your existing corporate health programs.</p>
 
                     <div class="service-tags">
+                        <div class="tag">Priority Access</div>
+                        <div class="tag">Corporate Programs</div>
                         <div class="tag">Specialist Care</div>
-                        <div class="tag">Gut Health</div>
-                        <div class="tag">Liver Function</div>
-                        <div class="tag">Blood Analysis</div>
+                        <div class="tag">Complex Cases</div>
                     </div>
 
                     <div class="contact-card">
-                        <h4>Expert Specialist Care</h4>
-                        <p>Fast-track access to leading consultants for complex health conditions.</p>
-                        <button class="cta-button">Request Specialist Referral</button>
+                        <h4>Corporate Specialist Access</h4>
+                        <p>Priority consultation services for your organization's specialized health needs.</p>
+                        <button class="cta-button">Discuss Corporate Access</button>
                     </div>
                 `
             },
             financial: {
-                title: "MYN / Concept Financial Services",
+                title: "MYN / Concept Financial - Corporate Wellness",
                 content: `
-                    <p>Comprehensive financial planning that integrates seamlessly with your health and wellness goals. Plan for healthcare costs, build wealth, and secure your financial future.</p>
+                    <p>Corporate financial wellness programs that integrate health and wealth strategies. Comprehensive employee financial education and executive compensation optimization.</p>
 
-                    <h3>Health-Focused Financial Planning</h3>
+                    <h3>Corporate Financial Wellness</h3>
                     <ul>
-                        <li>Healthcare cost forecasting and planning</li>
-                        <li>Health Savings Account (HSA) optimization</li>
-                        <li>Long-term care insurance planning</li>
-                        <li>Wellness investment strategies</li>
-                        <li>Retirement healthcare budgeting</li>
-                        <li>Tax-efficient health spending</li>
-                        <li>Disability and critical illness planning</li>
+                        <li>Employee financial wellness education programs</li>
+                        <li>Corporate healthcare cost forecasting and budgeting</li>
+                        <li>Executive compensation and benefits optimization</li>
+                        <li>Corporate pension and retirement health planning</li>
+                        <li>Employee financial stress management programs</li>
+                        <li>Tax-efficient corporate health benefits strategy</li>
+                        <li>Group insurance optimization and negotiation</li>
+                        <li>Financial wellness workshops and seminars</li>
                     </ul>
 
-                    <h3>Integrated Wealth & Health</h3>
-                    <p>We believe true wealth includes both financial security and optimal health. Our advisors specialize in creating financial strategies that support your wellness goals throughout your lifetime.</p>
+                    <h3>Integrated Corporate Strategy</h3>
+                    <p>We believe employee financial security and health are interconnected. Our corporate programs help organizations create comprehensive benefits packages that support both financial and physical wellness throughout employees' careers.</p>
 
                     <div class="service-tags">
-                        <div class="tag">Financial Planning</div>
-                        <div class="tag">Healthcare Costs</div>
-                        <div class="tag">Investment Strategy</div>
-                        <div class="tag">Tax Optimization</div>
+                        <div class="tag">Financial Wellness</div>
+                        <div class="tag">Benefits Optimization</div>
+                        <div class="tag">Employee Education</div>
+                        <div class="tag">Cost Management</div>
                     </div>
 
                     <div class="contact-card">
-                        <h4>Secure Your Financial Health</h4>
-                        <p>Plan for your healthcare future while building lasting wealth.</p>
-                        <button class="cta-button">Schedule Financial Consultation</button>
+                        <h4>Corporate Financial Wellness</h4>
+                        <p>Comprehensive financial wellness programs for your organization.</p>
+                        <button class="cta-button">Request Corporate Proposal</button>
                     </div>
                 `
             },
             insurers: {
-                title: "Insurance & Employee Benefits",
+                title: "Insurance & Benefits - Corporate Solutions",
                 content: `
-                    <p>Navigate the complex world of health insurance and employee benefits with expert guidance from our trusted partners. Maximize your coverage while minimizing costs.</p>
+                    <p>Corporate insurance and employee benefits optimization services. Expert guidance on health insurance strategies, claims management, and benefits package design for organizations of all sizes.</p>
 
-                    <h3>Services</h3>
+                    <h3>Corporate Insurance Services</h3>
                     <ul>
-                        <li>Health insurance policy analysis and optimization</li>
-                        <li>Employee benefits package design</li>
-                        <li>Claims management and advocacy</li>
-                        <li>Policy comparison and selection guidance</li>
-                        <li>Annual renewal negotiations</li>
-                        <li>Compliance and regulatory support</li>
+                        <li>Corporate health insurance strategy and negotiation</li>
+                        <li>Employee benefits package design and optimization</li>
+                        <li>Group insurance claims management and advocacy</li>
+                        <li>Benefits communication and employee education</li>
+                        <li>Compliance and regulatory guidance</li>
+                        <li>Annual renewal strategy and cost management</li>
+                        <li>Wellness program integration with insurance benefits</li>
+                        <li>Self-insurance feasibility analysis</li>
                     </ul>
 
-                    <h3>Benefits</h3>
-                    <p>Our insurance partners help you understand complex policies, identify gaps in coverage, and ensure you're getting maximum value from your health insurance investment.</p>
+                    <h3>Corporate Benefits Excellence</h3>
+                    <p>Our corporate insurance specialists help organizations optimize their benefits spend while improving employee satisfaction and health outcomes through strategic benefits design and vendor management.</p>
 
                     <div class="service-tags">
-                        <div class="tag">Insurance Optimization</div>
-                        <div class="tag">Benefits Management</div>
-                        <div class="tag">Claims Support</div>
-                        <div class="tag">Cost Savings</div>
+                        <div class="tag">Corporate Benefits</div>
+                        <div class="tag">Cost Optimization</div>
+                        <div class="tag">Claims Management</div>
+                        <div class="tag">Compliance</div>
                     </div>
 
                     <div class="contact-card">
-                        <h4>Optimize Your Coverage</h4>
-                        <p>Book a consultation to review your current insurance and discover savings opportunities.</p>
-                        <button class="cta-button">Book Insurance Review</button>
+                        <h4>Corporate Benefits Optimization</h4>
+                        <p>Strategic insurance and benefits consulting for your organization.</p>
+                        <button class="cta-button">Schedule Benefits Review</button>
                     </div>
                 `
             }
