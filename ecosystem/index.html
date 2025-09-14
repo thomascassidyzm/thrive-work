@@ -179,15 +179,15 @@
         .hub-spoke-container {
             margin: 60px 0;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             grid-template-rows: auto auto auto;
-            gap: 40px;
+            gap: 30px;
             max-width: 1200px;
             margin: 60px auto;
         }
 
         .thrive-hub {
-            grid-column: 1 / -1;
+            grid-column: 2;
             grid-row: 2;
             background: linear-gradient(135deg, #059669 0%, #10b981 100%);
             border-radius: 16px;
@@ -197,8 +197,10 @@
             box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
-            justify-self: center;
-            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .thrive-hub:hover {
@@ -222,21 +224,22 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 20px;
         }
 
         .domain-group.mind {
-            grid-column: 1 / -1;
+            grid-column: 2;
             grid-row: 1;
         }
 
         .domain-group.body {
             grid-column: 1;
-            grid-row: 3;
+            grid-row: 2;
         }
 
         .domain-group.financial {
-            grid-column: 2;
-            grid-row: 3;
+            grid-column: 3;
+            grid-row: 2;
         }
 
         .domain-title {
@@ -270,18 +273,20 @@
         .domain-services {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
+            width: 100%;
         }
 
         .spoke-service {
             background: white;
-            padding: 20px 24px;
+            padding: 16px 20px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             cursor: pointer;
             transition: all 0.3s ease;
-            min-width: 240px;
+            width: 100%;
+            max-width: 280px;
             text-align: center;
             position: relative;
         }
@@ -677,7 +682,6 @@
             .thrive-hub {
                 grid-column: 1;
                 grid-row: 2;
-                max-width: none;
             }
 
             .domain-group.body {
