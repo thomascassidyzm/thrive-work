@@ -242,33 +242,6 @@
             grid-row: 2;
         }
 
-        .domain-title {
-            text-align: center;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 30px;
-            padding: 12px 24px;
-            background: white;
-            border-radius: 25px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .domain-title.mind {
-            background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
-            color: #5b21b6;
-        }
-
-        .domain-title.body {
-            background: linear-gradient(135deg, #fca5a5 0%, #f87171 100%);
-            color: #dc2626;
-        }
-
-        .domain-title.financial {
-            background: linear-gradient(135deg, #fdba74 0%, #fb923c 100%);
-            color: #ea580c;
-        }
 
         .domain-services {
             display: flex;
@@ -302,7 +275,7 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
+            height: 4px;
             border-radius: 12px 12px 0 0;
             transition: all 0.3s ease;
         }
@@ -859,7 +832,6 @@
 
                 <!-- Mind Domain -->
                 <div class="domain-group mind">
-                    <div class="domain-title mind">🧠 Mind & Mental Wellness</div>
                     <div class="domain-services">
                         <div class="spoke-service mind" onclick="openModal('edward')">
                             <div class="spoke-title">Edward Orman Psychology</div>
@@ -878,7 +850,6 @@
 
                 <!-- Body Domain -->
                 <div class="domain-group body">
-                    <div class="domain-title body">💪 Body & Physical Health</div>
                     <div class="domain-services">
                         <div class="spoke-service body" onclick="openModal('goodbody')">
                             <div class="spoke-title">Goodbody Diagnostics</div>
@@ -897,7 +868,6 @@
 
                 <!-- Financial Domain -->
                 <div class="domain-group financial">
-                    <div class="domain-title financial">💰 Financial & Protection</div>
                     <div class="domain-services">
                         <div class="spoke-service financial" onclick="openModal('financial')">
                             <div class="spoke-title">MYN / Concept Financial</div>
