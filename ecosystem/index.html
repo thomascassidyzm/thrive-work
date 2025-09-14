@@ -337,23 +337,24 @@
 
         /* Corporate Value Proposition */
         .corporate-value {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: white;
+            background: white;
             padding: 60px 40px;
             border-radius: 20px;
             margin: 60px 0;
             text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
 
         .corporate-value h2 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 20px;
+            color: #0f172a;
         }
 
         .corporate-value p {
             font-size: 1.2rem;
-            opacity: 0.9;
+            color: #64748b;
             max-width: 800px;
             margin: 0 auto 40px auto;
         }
@@ -366,10 +367,16 @@
         }
 
         .value-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: #f8fafc;
             padding: 30px;
             border-radius: 15px;
-            backdrop-filter: blur(10px);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
         .value-icon {
@@ -381,11 +388,12 @@
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 10px;
+            color: #0f172a;
         }
 
         .value-desc {
             font-size: 0.95rem;
-            opacity: 0.8;
+            color: #64748b;
         }
 
         /* Services Grid */
