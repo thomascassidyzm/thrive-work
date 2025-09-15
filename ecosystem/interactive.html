@@ -611,21 +611,39 @@
         .journey-flow-grid {
             position: relative;
             display: grid;
-            grid-template-columns: minmax(80px, 1fr) auto minmax(80px, 1fr) auto minmax(80px, 1fr) auto minmax(80px, 1fr);
-            gap: 4px;
+            grid-template-columns: 1fr;
+            gap: 12px;
             align-items: center;
             justify-items: center;
             max-width: 100%;
+            padding: 0 20px;
         }
 
-        @media (max-width: 600px) {
+        .journey-flow-grid > div {
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        /* Hide arrows by default */
+        .journey-flow-grid > div[style*="justify-content: center"] {
+            display: none;
+        }
+
+        /* Only use horizontal layout on very wide screens */
+        @media (min-width: 1200px) {
             .journey-flow-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(100px, 1fr) auto minmax(100px, 1fr) auto minmax(100px, 1fr) auto minmax(100px, 1fr);
                 gap: 8px;
+                padding: 0;
+            }
+
+            .journey-flow-grid > div {
+                max-width: none;
+                margin: 0;
             }
 
             .journey-flow-grid > div[style*="justify-content: center"] {
-                display: none;
+                display: flex;
             }
         }
 
@@ -774,22 +792,14 @@
                 padding: 8px 5px !important;
             }
 
-            /* Make journey flow grid responsive */
+            /* Journey flow is already vertical by default, just adjust sizing */
             .journey-flow-grid {
-                display: flex !important;
-                flex-direction: column !important;
                 gap: 8px !important;
-                align-items: center !important;
+                padding: 0 10px !important;
             }
 
             .journey-flow-grid > div {
-                width: auto !important;
                 max-width: 200px !important;
-            }
-
-            /* Hide arrows on mobile for cleaner vertical flow */
-            .journey-flow-grid > div[style*="justify-content: center"] {
-                display: none !important;
             }
 
             /* Tags Mobile */
