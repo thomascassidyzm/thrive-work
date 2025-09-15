@@ -669,6 +669,18 @@
                 font-size: 0.8rem;
                 line-height: 1.4;
             }
+
+            /* PDF buttons mobile */
+            .nav-footer div[style*="display: flex"] {
+                flex-direction: column !important;
+                gap: 8px !important;
+            }
+
+            .nav-footer button {
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
         }
 
         /* Tablet Responsiveness */
@@ -839,6 +851,16 @@
         <div class="nav-footer">
             <p>Click on any service above to learn more • Interactive PDF Guide</p>
             <p style="margin-top: 10px;"><a href="#journey" style="color: #10b981; text-decoration: none; font-weight: 600;">→ View Journey Flow Process</a></p>
+
+            <!-- PDF Download Options -->
+            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #e2e8f0;">
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">📄 Download PDF Versions:</p>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <button onclick="generatePDF('presentation')" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer;">🎨 Colorful PDF</button>
+                    <button onclick="generatePDF('clean')" style="background: #f8fafc; color: #475569; border: 1px solid #e2e8f0; padding: 8px 16px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer;">📋 Clean PDF</button>
+                </div>
+                <p style="font-size: 0.7rem; color: #94a3b8; margin-top: 8px; text-align: center;">Professional PDFs generated automatically</p>
+            </div>
         </div>
     </div>
 
@@ -1457,5 +1479,83 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function generatePDF(type) {
+            // Show loading state
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '⏳ Generating...';
+            button.disabled = true;
+
+            // Determine PDF generation URL based on type
+            let pdfUrl;
+            if (type === 'presentation') {
+                // For colorful PDF with backgrounds
+                pdfUrl = 'https://api.htmlcsstoimage.com/v1/image?' +
+                    'url=' + encodeURIComponent(window.location.href) +
+                    '&format=pdf' +
+                    '&width=1200' +
+                    '&height=900' +
+                    '&print_media_type=true' +
+                    '&background=true';
+            } else {
+                // For clean PDF without backgrounds
+                pdfUrl = 'https://api.htmlcsstoimage.com/v1/image?' +
+                    'url=' + encodeURIComponent(window.location.href) +
+                    '&format=pdf' +
+                    '&width=1200' +
+                    '&height=900' +
+                    '&print_media_type=true' +
+                    '&background=false';
+            }
+
+            // For now, let's use a simpler approach - direct browser print
+            if (type === 'presentation') {
+                // Open in new window and trigger print
+                const printWindow = window.open(window.location.href, '_blank');
+                setTimeout(() => {
+                    printWindow.print();
+                }, 1000);
+            } else {
+                // For clean version, temporarily modify CSS and print
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    @media print {
+                        * {
+                            background: white !important;
+                            background-image: none !important;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+
+                setTimeout(() => {
+                    window.print();
+                    document.head.removeChild(style);
+                }, 100);
+            }
+
+            // Reset button after delay
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 2000);
+        }
+
+        // Add hover effects for buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('[onclick*="generatePDF"]');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-1px)';
+                    this.style.transition = 'transform 0.2s';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
