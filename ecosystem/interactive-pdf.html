@@ -146,15 +146,15 @@
         /* Domain colors */
         .spoke-service.mind {
             border-color: #8b5cf6;
-            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+            background: white;
         }
         .spoke-service.body {
             border-color: #ef4444;
-            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            background: white;
         }
         .spoke-service.financial {
             border-color: #f97316;
-            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+            background: white;
         }
 
         .spoke-title {
@@ -405,7 +405,7 @@
 </head>
 <body>
     <!-- Cover Page -->
-    <div class="page cover-page">
+    <div class="page cover-page" id="cover">
         <h1 class="cover-title">Thrive Health Ecosystem</h1>
         <p class="cover-subtitle">Comprehensive Corporate Wellness Solutions</p>
 
@@ -470,6 +470,93 @@
 
         <div class="nav-footer">
             <p>Click on any service above to learn more • Interactive PDF Guide</p>
+            <p style="margin-top: 10px;"><a href="#journey" style="color: #10b981; text-decoration: none; font-weight: 600;">→ View Journey Flow Process</a></p>
+        </div>
+    </div>
+
+    <!-- Journey Flow Page -->
+    <div class="page service-page" id="journey">
+        <div class="page-navigation">
+            <div class="breadcrumb">
+                <a href="#cover">🏠 Home</a>
+                <span class="breadcrumb-separator">›</span>
+                <span>Journey Flow</span>
+                <span class="breadcrumb-separator">›</span>
+                <span>Process Overview</span>
+            </div>
+            <div class="nav-buttons">
+                <a href="#cover" class="nav-btn">← Overview</a>
+                <a href="#concierge" class="nav-btn primary">Services →</a>
+            </div>
+        </div>
+
+        <div class="service-header">
+            <h1 class="service-title-main">Your Thrive Journey</h1>
+            <p class="service-subtitle-main">Four-Step Process to Optimal Health & Wellness</p>
+        </div>
+
+        <div class="service-content">
+            <div style="position: relative; margin: 30px 0;">
+                <!-- Journey Path -->
+                <div style="position: absolute; top: 50%; left: 10%; right: 10%; height: 3px; background: linear-gradient(90deg, #d1fae5 0%, #059669 50%, #d1fae5 100%); border-radius: 2px; z-index: 1;"></div>
+
+                <!-- Journey Steps -->
+                <div style="display: flex; justify-content: space-between; position: relative; z-index: 2; gap: 15px;">
+                    <div style="flex: 1; text-align: center;">
+                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; font-size: 1.2rem; font-weight: 700; box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);">1</div>
+                        <h3 style="font-size: 1rem; font-weight: 600; color: #0f172a; margin-bottom: 6px;">Assessment</h3>
+                        <p style="font-size: 0.8rem; color: #64748b; line-height: 1.3;">Comprehensive health evaluation and personalized strategy development</p>
+                    </div>
+                    <div style="flex: 1; text-align: center;">
+                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; font-size: 1.2rem; font-weight: 700; box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);">2</div>
+                        <h3 style="font-size: 1rem; font-weight: 600; color: #0f172a; margin-bottom: 6px;">Coordination</h3>
+                        <p style="font-size: 0.8rem; color: #64748b; line-height: 1.3;">Seamless integration of services through dedicated health advocates</p>
+                    </div>
+                    <div style="flex: 1; text-align: center;">
+                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; font-size: 1.2rem; font-weight: 700; box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);">3</div>
+                        <h3 style="font-size: 1rem; font-weight: 600; color: #0f172a; margin-bottom: 6px;">Implementation</h3>
+                        <p style="font-size: 0.8rem; color: #64748b; line-height: 1.3;">Active participation in your personalized health and wellness programs</p>
+                    </div>
+                    <div style="flex: 1; text-align: center;">
+                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; font-size: 1.2rem; font-weight: 700; box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);">4</div>
+                        <h3 style="font-size: 1rem; font-weight: 600; color: #0f172a; margin-bottom: 6px;">Optimization</h3>
+                        <p style="font-size: 0.8rem; color: #64748b; line-height: 1.3;">Continuous monitoring, refinement, and enhancement of your health journey</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Your Comprehensive Journey</h3>
+            <p>Thrive coordinates all aspects of your health and wellness journey, ensuring seamless integration across all our partner services while maintaining focus on your unique goals and needs.</p>
+
+            <h3>What Makes Thrive Different</h3>
+            <ul>
+                <li><strong>Personalized Strategy:</strong> Every journey begins with a comprehensive assessment tailored to your unique health profile, lifestyle, and goals</li>
+                <li><strong>Dedicated Advocacy:</strong> Your personal health advocate manages all coordination, scheduling, and communication across services</li>
+                <li><strong>Seamless Integration:</strong> All our partner services work together as one cohesive ecosystem, not isolated providers</li>
+                <li><strong>Continuous Optimization:</strong> Regular monitoring and strategy refinement ensure your health plan evolves with your changing needs</li>
+                <li><strong>Corporate Focus:</strong> Specialized programs designed specifically for busy executives and corporate wellness initiatives</li>
+            </ul>
+
+            <div class="service-tags">
+                <div class="tag">Personalized Health</div>
+                <div class="tag">Care Coordination</div>
+                <div class="tag">Corporate Wellness</div>
+                <div class="tag">Continuous Support</div>
+            </div>
+
+            <div class="contact-card">
+                <h4>Ready to Start Your Journey?</h4>
+                <p>Connect with our team to begin your personalized health and wellness journey.</p>
+                <button class="cta-button">Schedule Initial Consultation</button>
+            </div>
+        </div>
+
+        <div class="page-footer-nav">
+            <div class="page-info">Page 2 of 10</div>
+            <div class="footer-nav-buttons">
+                <a href="#cover" class="nav-btn">← Overview</a>
+                <a href="#concierge" class="nav-btn">Concierge Health →</a>
+            </div>
         </div>
     </div>
 
@@ -484,7 +571,8 @@
                 <span>Concierge Health</span>
             </div>
             <div class="nav-buttons">
-                <a href="#cover" class="nav-btn primary">← Overview</a>
+                <a href="#journey" class="nav-btn">← Journey</a>
+                <a href="#cover" class="nav-btn primary">Overview</a>
                 <a href="#financial" class="nav-btn">Next →</a>
             </div>
         </div>
@@ -524,9 +612,9 @@
         </div>
 
         <div class="page-footer-nav">
-            <div class="page-info">Page 2 of 9</div>
+            <div class="page-info">Page 3 of 10</div>
             <div class="footer-nav-buttons">
-                <a href="#cover" class="nav-btn">← Overview</a>
+                <a href="#journey" class="nav-btn">← Journey Flow</a>
                 <a href="#financial" class="nav-btn">MYN Financial →</a>
             </div>
         </div>
@@ -587,7 +675,7 @@
         </div>
 
         <div class="page-footer-nav">
-            <div class="page-info">Page 3 of 9</div>
+            <div class="page-info">Page 4 of 10</div>
             <div class="footer-nav-buttons">
                 <a href="#concierge" class="nav-btn">← Concierge Health</a>
                 <a href="#edward" class="nav-btn">Edward Orman →</a>
@@ -647,7 +735,7 @@
         </div>
 
         <div class="page-footer-nav">
-            <div class="page-info">Page 4 of 9</div>
+            <div class="page-info">Page 5 of 10</div>
             <div class="footer-nav-buttons">
                 <a href="#financial" class="nav-btn">← MYN Financial</a>
                 <a href="#dannhauser" class="nav-btn">Dr Dannhauser →</a>
@@ -707,7 +795,7 @@
         </div>
 
         <div class="page-footer-nav">
-            <div class="page-info">Page 5 of 9</div>
+            <div class="page-info">Page 6 of 10</div>
             <div class="footer-nav-buttons">
                 <a href="#edward" class="nav-btn">← Edward Orman</a>
                 <a href="#clearminds" class="nav-btn">Clear Minds →</a>
@@ -767,7 +855,7 @@
         </div>
 
         <div class="page-footer-nav">
-            <div class="page-info">Page 6 of 9</div>
+            <div class="page-info">Page 7 of 10</div>
             <div class="footer-nav-buttons">
                 <a href="#dannhauser" class="nav-btn">← Dr Dannhauser</a>
                 <a href="#specialists" class="nav-btn">Specialists →</a>
@@ -827,7 +915,7 @@
         </div>
 
         <div class="page-footer-nav">
-            <div class="page-info">Page 7 of 9</div>
+            <div class="page-info">Page 8 of 10</div>
             <div class="footer-nav-buttons">
                 <a href="#clearminds" class="nav-btn">← Clear Minds</a>
                 <a href="#goodbody" class="nav-btn">Goodbody →</a>
@@ -887,7 +975,7 @@
         </div>
 
         <div class="page-footer-nav">
-            <div class="page-info">Page 8 of 9</div>
+            <div class="page-info">Page 9 of 10</div>
             <div class="footer-nav-buttons">
                 <a href="#specialists" class="nav-btn">← Specialists</a>
                 <a href="#insurance" class="nav-btn">Insurance →</a>
@@ -947,7 +1035,7 @@
         </div>
 
         <div class="page-footer-nav">
-            <div class="page-info">Page 9 of 9</div>
+            <div class="page-info">Page 10 of 10</div>
             <div class="footer-nav-buttons">
                 <a href="#goodbody" class="nav-btn">← Goodbody Health</a>
                 <a href="#cover" class="nav-btn primary">🏠 Return to Overview</a>
