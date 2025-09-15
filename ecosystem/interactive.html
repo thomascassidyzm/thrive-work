@@ -397,6 +397,301 @@
             display: flex;
             gap: 8px;
         }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .page {
+                padding: 20px 15px;
+                min-height: 100vh;
+                height: auto;
+            }
+
+            /* Cover Page Mobile */
+            .cover-title {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+            }
+
+            .cover-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 40px;
+            }
+
+            /* Hub Spoke Mobile Layout */
+            .hub-spoke-container {
+                width: 100%;
+                max-width: 350px;
+                height: 400px;
+                margin: 20px auto;
+            }
+
+            .thrive-hub {
+                width: 100px;
+                height: 100px;
+            }
+
+            .hub-title {
+                font-size: 1.1rem;
+            }
+
+            .hub-subtitle {
+                font-size: 0.6rem;
+            }
+
+            .spoke-service {
+                width: 85px;
+                height: 60px;
+                padding: 6px;
+            }
+
+            .spoke-title {
+                font-size: 0.6rem;
+                line-height: 1.0;
+                margin-bottom: 2px;
+            }
+
+            .spoke-description {
+                font-size: 0.5rem;
+                line-height: 1.1;
+            }
+
+            /* Adjust spoke positions for mobile */
+            .spoke-1 { top: 20px; }
+            .spoke-2 { top: 60px; right: 60px; }
+            .spoke-3 { right: 30px; }
+            .spoke-4 { bottom: 60px; right: 60px; }
+            .spoke-5 { bottom: 20px; }
+            .spoke-6 { bottom: 60px; left: 60px; }
+            .spoke-7 { left: 30px; }
+            .spoke-8 { top: 60px; left: 60px; }
+
+            /* Service Pages Mobile */
+            .service-title-main {
+                font-size: 1.8rem;
+                margin-bottom: 8px;
+            }
+
+            .service-subtitle-main {
+                font-size: 1rem;
+            }
+
+            .service-content {
+                padding: 0 5px;
+            }
+
+            .service-content h3 {
+                font-size: 1.1rem;
+                margin: 15px 0 8px 0;
+            }
+
+            .service-content p {
+                font-size: 0.9rem;
+                margin-bottom: 12px;
+            }
+
+            .service-content li {
+                font-size: 0.85rem;
+                margin-bottom: 4px;
+            }
+
+            /* Navigation Mobile */
+            .page-navigation {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .breadcrumb {
+                font-size: 0.8rem;
+            }
+
+            .nav-buttons {
+                align-self: stretch;
+                justify-content: space-between;
+            }
+
+            .nav-btn {
+                flex: 1;
+                text-align: center;
+                padding: 10px 8px;
+                font-size: 0.8rem;
+            }
+
+            .page-footer-nav {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .footer-nav-buttons {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .footer-nav-buttons .nav-btn {
+                flex: 1;
+                max-width: 140px;
+            }
+
+            /* Journey Flow Mobile */
+            .service-content > div[style*="position: relative"] {
+                margin: 8px -5px 15px -5px !important;
+                padding: 8px 5px !important;
+            }
+
+            /* Make journey flow grid responsive */
+            #journey .service-content div[style*="grid-template-columns"] {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 8px !important;
+                align-items: center !important;
+            }
+
+            #journey .service-content div[style*="grid-template-columns"] > div {
+                width: auto !important;
+                max-width: 200px !important;
+            }
+
+            /* Hide arrows on mobile for cleaner vertical flow */
+            #journey .service-content div[style*="justify-content: center"] {
+                display: none !important;
+            }
+
+            /* Tags Mobile */
+            .service-tags {
+                justify-content: center;
+                margin: 15px 0;
+            }
+
+            .tag {
+                font-size: 0.7rem;
+                padding: 3px 8px;
+            }
+
+            /* Contact Cards Mobile */
+            .contact-card {
+                margin-top: 15px;
+                padding: 15px;
+            }
+
+            .contact-card h4 {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .nav-footer p {
+                font-size: 0.8rem;
+                line-height: 1.4;
+            }
+        }
+
+        /* Tablet Responsiveness */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .hub-spoke-container {
+                width: 100%;
+                max-width: 500px;
+                height: 450px;
+            }
+
+            .thrive-hub {
+                width: 120px;
+                height: 120px;
+            }
+
+            .spoke-service {
+                width: 100px;
+                height: 70px;
+                padding: 8px;
+            }
+
+            .spoke-title {
+                font-size: 0.65rem;
+            }
+
+            .spoke-description {
+                font-size: 0.55rem;
+            }
+
+            .service-title-main {
+                font-size: 2.2rem;
+            }
+
+            .service-subtitle-main {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cover-title {
+                font-size: 2rem;
+            }
+
+            .cover-subtitle {
+                font-size: 1rem;
+            }
+
+            .hub-spoke-container {
+                max-width: 280px;
+                height: 320px;
+            }
+
+            .thrive-hub {
+                width: 80px;
+                height: 80px;
+            }
+
+            .hub-title {
+                font-size: 0.9rem;
+            }
+
+            .hub-subtitle {
+                font-size: 0.5rem;
+            }
+
+            .spoke-service {
+                width: 70px;
+                height: 50px;
+                padding: 4px;
+            }
+
+            .spoke-title {
+                font-size: 0.5rem;
+            }
+
+            .spoke-description {
+                font-size: 0.4rem;
+            }
+
+            .service-title-main {
+                font-size: 1.5rem;
+            }
+
+            .service-subtitle-main {
+                font-size: 0.9rem;
+            }
+
+            .page {
+                padding: 15px 10px;
+            }
+
+            /* Extra small journey flow */
+            .service-content > div[style*="position: relative"] h3[style*="font-size: 0.85rem"] {
+                font-size: 0.7rem !important;
+            }
+
+            .service-content > div[style*="position: relative"] p[style*="font-size: 0.6rem"] {
+                font-size: 0.5rem !important;
+            }
+        }
     </style>
 </head>
 <body>
