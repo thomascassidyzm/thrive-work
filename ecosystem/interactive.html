@@ -597,6 +597,38 @@
             gap: 8px;
         }
 
+        /* Journey Flow Responsiveness */
+        .journey-flow-container {
+            position: relative;
+            margin: 10px auto 20px auto;
+            max-width: 800px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 6px;
+            padding: 12px 10px;
+            overflow: hidden;
+        }
+
+        .journey-flow-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(80px, 1fr) auto minmax(80px, 1fr) auto minmax(80px, 1fr) auto minmax(80px, 1fr);
+            gap: 4px;
+            align-items: center;
+            justify-items: center;
+            max-width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .journey-flow-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .journey-flow-grid > div[style*="justify-content: center"] {
+                display: none;
+            }
+        }
+
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .container {
@@ -743,20 +775,20 @@
             }
 
             /* Make journey flow grid responsive */
-            #journey .service-content div[style*="grid-template-columns"] {
+            .journey-flow-grid {
                 display: flex !important;
                 flex-direction: column !important;
                 gap: 8px !important;
                 align-items: center !important;
             }
 
-            #journey .service-content div[style*="grid-template-columns"] > div {
+            .journey-flow-grid > div {
                 width: auto !important;
                 max-width: 200px !important;
             }
 
             /* Hide arrows on mobile for cleaner vertical flow */
-            #journey .service-content div[style*="justify-content: center"] {
+            .journey-flow-grid > div[style*="justify-content: center"] {
                 display: none !important;
             }
 
@@ -1009,7 +1041,7 @@
 
         <div class="service-content">
             <!-- Micro Journey Flow -->
-            <div style="position: relative; margin: 10px 0 20px 0; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); border-radius: 6px; padding: 12px 10px; overflow: hidden;">
+            <div class="journey-flow-container">
 
                 <!-- Flow Direction Indicator -->
                 <div style="text-align: center; margin-bottom: 10px;">
@@ -1018,7 +1050,7 @@
                 </div>
 
                 <!-- Micro Flow Container -->
-                <div style="position: relative; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap: 4px; align-items: center; max-width: 100%;">
+                <div class="journey-flow-grid">
 
                     <!-- Step 1: Assessment -->
                     <div style="text-align: center; background: white; border-radius: 4px; padding: 6px 3px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);">
