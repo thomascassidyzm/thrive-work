@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrive Health Ecosystem - Interactive Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @media print {
+            body {
+                background: white !important;
+                color: #000 !important;
+            }
+            .page {
+                page-break-after: always;
+                height: 100vh;
+                max-height: 100vh;
+                padding: 30px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                box-sizing: border-box !important;
+            }
+            .page:last-child {
+                page-break-after: avoid;
+            }
+            .service-content {
+                flex: 1 !important;
+                overflow: hidden !important;
+            }
+            .service-content p, .service-content li {
+                font-size: 0.9rem !important;
+                line-height: 1.4 !important;
+            }
+            .service-content h3 {
+                font-size: 1.2rem !important;
+                margin: 20px 0 10px 0 !important;
+            }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #334155;
+            line-height: 1.5;
+        }
+
+        .page {
+            min-height: 100vh;
+            height: 100vh;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        /* Cover Page */
+        .cover-page {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cover-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .cover-subtitle {
+            font-size: 1.5rem;
+            color: #64748b;
+            margin-bottom: 60px;
+        }
+
+        /* Hub & Spoke Overview */
+        .hub-spoke-container {
+            position: relative;
+            width: 700px;
+            height: 500px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .thrive-hub {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(5, 150, 105, 0.3);
+            z-index: 10;
+        }
+
+        .hub-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .hub-subtitle {
+            font-size: 0.7rem;
+            opacity: 0.9;
+        }
+
+        .spoke-service {
+            position: absolute;
+            width: 120px;
+            height: 80px;
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            z-index: 5;
+            border: 2px solid #e5e7eb;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .spoke-service:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Domain colors */
+        .spoke-service.mind {
+            border-color: #8b5cf6;
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+        }
+        .spoke-service.body {
+            border-color: #ef4444;
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        }
+        .spoke-service.financial {
+            border-color: #f97316;
+            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+        }
+
+        .spoke-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 3px;
+            line-height: 1.1;
+        }
+
+        .spoke-description {
+            font-size: 0.6rem;
+            color: #64748b;
+            line-height: 1.2;
+        }
+
+        /* Positioning */
+        .spoke-1 { top: 40px; left: 50%; transform: translateX(-50%); }
+        .spoke-2 { top: 80px; right: 80px; }
+        .spoke-3 { top: 50%; right: 40px; transform: translateY(-50%); }
+        .spoke-4 { bottom: 80px; right: 80px; }
+        .spoke-5 { bottom: 40px; left: 50%; transform: translateX(-50%); }
+        .spoke-6 { bottom: 80px; left: 80px; }
+        .spoke-7 { top: 50%; left: 40px; transform: translateY(-50%); }
+        .spoke-8 { top: 80px; left: 80px; }
+
+        /* Connection lines */
+        .connection-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent 0%, #10b981 50%, transparent 100%);
+            z-index: 2;
+        }
+
+        .line-1 { top: 60px; left: 50%; width: 2px; height: 110px; transform: translateX(-50%); }
+        .line-2 { top: 140px; right: 140px; width: 80px; height: 2px; transform: rotate(-45deg); transform-origin: left center; }
+        .line-3 { top: 50%; right: 110px; width: 70px; height: 2px; transform: translateY(-50%); }
+        .line-4 { bottom: 140px; right: 140px; width: 80px; height: 2px; transform: rotate(45deg); transform-origin: left center; }
+        .line-5 { bottom: 60px; left: 50%; width: 2px; height: 110px; transform: translateX(-50%); }
+        .line-6 { bottom: 140px; left: 140px; width: 80px; height: 2px; transform: rotate(-45deg); transform-origin: right center; }
+        .line-7 { top: 50%; left: 110px; width: 70px; height: 2px; transform: translateY(-50%); }
+        .line-8 { top: 140px; left: 140px; width: 80px; height: 2px; transform: rotate(45deg); transform-origin: right center; }
+
+        /* Service Pages */
+        .service-page {
+            background: white;
+        }
+
+        .service-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #10b981;
+        }
+
+        .service-title-main {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .service-subtitle-main {
+            font-size: 1.2rem;
+            color: #64748b;
+        }
+
+        .service-content {
+            max-width: 800px;
+            margin: 0 auto;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .service-content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 20px 0 12px 0;
+        }
+
+        .service-content p {
+            margin-bottom: 16px;
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .service-content ul {
+            margin: 16px 0;
+            padding-left: 20px;
+        }
+
+        .service-content li {
+            margin-bottom: 6px;
+            color: #475569;
+            line-height: 1.4;
+            font-size: 0.9rem;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 20px 0;
+        }
+
+        .tag {
+            background: #ecfdf5;
+            color: #059669;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid #a7f3d0;
+        }
+
+        .contact-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .contact-card h4 {
+            color: #0f172a;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        /* Navigation */
+        .nav-footer {
+            margin-top: auto;
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Domain-specific headers */
+        .mind-header { border-color: #8b5cf6; }
+        .body-header { border-color: #ef4444; }
+        .financial-header { border-color: #f97316; }
+
+        .mind-tag { background: #faf5ff; color: #8b5cf6; border-color: #d8b4fe; }
+        .body-tag { background: #fef2f2; color: #ef4444; border-color: #fecaca; }
+        .financial-tag { background: #fff7ed; color: #f97316; border-color: #fed7aa; }
+
+        /* Navigation Components */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .breadcrumb a {
+            color: #10b981;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb-separator {
+            color: #cbd5e1;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: #10b981;
+            color: white;
+            border-color: #10b981;
+        }
+
+        .nav-btn.primary {
+            background: #10b981;
+            color: white;
+            border-color: #10b981;
+        }
+
+        .nav-btn.primary:hover {
+            background: #059669;
+            border-color: #059669;
+        }
+
+        .page-footer-nav {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.85rem;
+        }
+
+        .page-info {
+            color: #64748b;
+        }
+
+        .footer-nav-buttons {
+            display: flex;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cover Page -->
+    <div class="page cover-page">
+        <h1 class="cover-title">Thrive Health Ecosystem</h1>
+        <p class="cover-subtitle">Comprehensive Corporate Wellness Solutions</p>
+
+        <div class="hub-spoke-container">
+            <!-- Connection Lines -->
+            <div class="connection-line line-1"></div>
+            <div class="connection-line line-2"></div>
+            <div class="connection-line line-3"></div>
+            <div class="connection-line line-4"></div>
+            <div class="connection-line line-5"></div>
+            <div class="connection-line line-6"></div>
+            <div class="connection-line line-7"></div>
+            <div class="connection-line line-8"></div>
+
+            <!-- Central Hub -->
+            <div class="thrive-hub">
+                <div class="hub-title">Thrive</div>
+                <div class="hub-subtitle">Central Hub</div>
+            </div>
+
+            <!-- Clickable Spokes -->
+            <a href="#concierge" class="spoke-service mind spoke-1">
+                <div class="spoke-title">Concierge Health</div>
+                <div class="spoke-description">Personal advocacy</div>
+            </a>
+
+            <a href="#financial" class="spoke-service financial spoke-2">
+                <div class="spoke-title">MYN Financial</div>
+                <div class="spoke-description">Health planning</div>
+            </a>
+
+            <a href="#edward" class="spoke-service mind spoke-3">
+                <div class="spoke-title">Edward Orman</div>
+                <div class="spoke-description">Digital wellness</div>
+            </a>
+
+            <a href="#dannhauser" class="spoke-service body spoke-4">
+                <div class="spoke-title">Dr Dannhauser</div>
+                <div class="spoke-description">Precision psychiatry</div>
+            </a>
+
+            <a href="#clearminds" class="spoke-service mind spoke-5">
+                <div class="spoke-title">Clear Minds B2B</div>
+                <div class="spoke-description">Corporate mental health</div>
+            </a>
+
+            <a href="#specialists" class="spoke-service body spoke-6">
+                <div class="spoke-title">Specialist Services</div>
+                <div class="spoke-description">Gut & metabolic health</div>
+            </a>
+
+            <a href="#goodbody" class="spoke-service body spoke-7">
+                <div class="spoke-title">Goodbody</div>
+                <div class="spoke-description">Executive health MOTs</div>
+            </a>
+
+            <a href="#insurance" class="spoke-service financial spoke-8">
+                <div class="spoke-title">Insurance</div>
+                <div class="spoke-description">Benefits optimization</div>
+            </a>
+        </div>
+
+        <div class="nav-footer">
+            <p>Click on any service above to learn more • Interactive PDF Guide</p>
+        </div>
+    </div>
+
+    <!-- Concierge Health Advisors -->
+    <div class="page service-page" id="concierge">
+        <div class="page-navigation">
+            <div class="breadcrumb">
+                <a href="#cover">🏠 Home</a>
+                <span class="breadcrumb-separator">›</span>
+                <span>Mind Domain</span>
+                <span class="breadcrumb-separator">›</span>
+                <span>Concierge Health</span>
+            </div>
+            <div class="nav-buttons">
+                <a href="#cover" class="nav-btn primary">← Overview</a>
+                <a href="#financial" class="nav-btn">Next →</a>
+            </div>
+        </div>
+
+        <div class="service-header mind-header">
+            <h1 class="service-title-main">Concierge Health Advisors</h1>
+            <p class="service-subtitle-main">Corporate Edition - Personal Health Navigation</p>
+        </div>
+
+        <div class="service-content">
+            <p>Dedicated health advocates for your employees who coordinate care, schedule appointments, and ensure the highest quality healthcare experience. Our corporate program includes specialized support for busy executives and managers.</p>
+
+            <h3>Corporate Concierge Services</h3>
+            <ul>
+                <li>Dedicated health advocates for senior staff</li>
+                <li>Employee appointment scheduling and coordination</li>
+                <li>Corporate health policy navigation</li>
+                <li>Second opinion facilitation</li>
+                <li>Medical record organization and management</li>
+                <li>Executive travel health support</li>
+                <li>24/7 health support hotline</li>
+                <li>Family health coordination services</li>
+            </ul>
+
+            <div class="service-tags">
+                <div class="tag mind-tag">Personal Advocacy</div>
+                <div class="tag mind-tag">24/7 Support</div>
+                <div class="tag mind-tag">Executive Care</div>
+                <div class="tag mind-tag">Care Coordination</div>
+            </div>
+
+            <div class="contact-card">
+                <h4>Corporate Concierge Programs</h4>
+                <p>Dedicated health advocacy services for your organization's wellness initiatives.</p>
+                <button class="cta-button">Discuss Corporate Programs</button>
+            </div>
+        </div>
+
+        <div class="page-footer-nav">
+            <div class="page-info">Page 2 of 9</div>
+            <div class="footer-nav-buttons">
+                <a href="#cover" class="nav-btn">← Overview</a>
+                <a href="#financial" class="nav-btn">MYN Financial →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MYN/Concept Financial -->
+    <div class="page service-page" id="financial">
+        <div class="page-navigation">
+            <div class="breadcrumb">
+                <a href="#cover">🏠 Home</a>
+                <span class="breadcrumb-separator">›</span>
+                <span>Financial Domain</span>
+                <span class="breadcrumb-separator">›</span>
+                <span>MYN Financial</span>
+            </div>
+            <div class="nav-buttons">
+                <a href="#concierge" class="nav-btn">← Previous</a>
+                <a href="#cover" class="nav-btn primary">Overview</a>
+                <a href="#edward" class="nav-btn">Next →</a>
+            </div>
+        </div>
+
+        <div class="service-header financial-header">
+            <h1 class="service-title-main">MYN / Concept Financial</h1>
+            <p class="service-subtitle-main">Corporate Wellness - Health-Integrated Financial Planning</p>
+        </div>
+
+        <div class="service-content">
+            <p>Corporate financial wellness programs that integrate health and wealth strategies. Comprehensive employee financial education and executive compensation optimization.</p>
+
+            <h3>Corporate Financial Wellness</h3>
+            <ul>
+                <li>Employee financial wellness education programs</li>
+                <li>Corporate healthcare cost forecasting and budgeting</li>
+                <li>Executive compensation and benefits optimization</li>
+                <li>Corporate pension and retirement health planning</li>
+                <li>Employee financial stress management programs</li>
+                <li>Tax-efficient corporate health benefits strategy</li>
+                <li>Group insurance optimization and negotiation</li>
+                <li>Financial wellness workshops and seminars</li>
+            </ul>
+
+            <h3>Integrated Corporate Strategy</h3>
+            <p>We believe employee financial security and health are interconnected. Our corporate programs help organizations create comprehensive benefits packages that support both financial and physical wellness throughout employees' careers.</p>
+
+            <div class="service-tags">
+                <div class="tag financial-tag">Financial Wellness</div>
+                <div class="tag financial-tag">Benefits Optimization</div>
+                <div class="tag financial-tag">Employee Education</div>
+                <div class="tag financial-tag">Cost Management</div>
+            </div>
+
+            <div class="contact-card">
+                <h4>Corporate Financial Wellness</h4>
+                <p>Comprehensive financial wellness programs for your organization.</p>
+                <button class="cta-button">Request Corporate Proposal</button>
+            </div>
+        </div>
+
+        <div class="page-footer-nav">
+            <div class="page-info">Page 3 of 9</div>
+            <div class="footer-nav-buttons">
+                <a href="#concierge" class="nav-btn">← Concierge Health</a>
+                <a href="#edward" class="nav-btn">Edward Orman →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edward Orman Psychology -->
+    <div class="page service-page" id="edward">
+        <div class="page-navigation">
+            <div class="breadcrumb">
+                <a href="#cover">🏠 Home</a>
+                <span class="breadcrumb-separator">›</span>
+                <span>Mind Domain</span>
+                <span class="breadcrumb-separator">›</span>
+                <span>Edward Orman</span>
+            </div>
+            <div class="nav-buttons">
+                <a href="#financial" class="nav-btn">← Previous</a>
+                <a href="#cover" class="nav-btn primary">Overview</a>
+                <a href="#dannhauser" class="nav-btn">Next →</a>
+            </div>
+        </div>
+
+        <div class="service-header mind-header">
+            <h1 class="service-title-main">Edward Orman Psychology</h1>
+            <p class="service-subtitle-main">Corporate Wellness - Digital Mental Health Programs</p>
+        </div>
+
+        <div class="service-content">
+            <p>Evidence-based digital psychology programs designed for corporate wellness initiatives. Scalable mental wellness solutions for organizations seeking to support employee mental health and performance optimization.</p>
+
+            <h3>Corporate Mental Wellness Programs</h3>
+            <ul>
+                <li>Employee stress management and resilience training</li>
+                <li>Leadership psychology and performance programs</li>
+                <li>Team communication and collaboration training</li>
+                <li>Corporate mindfulness and focus programs</li>
+                <li>Work-life integration workshops</li>
+                <li>Digital therapy and counseling platforms</li>
+                <li>Mental health first aid training for managers</li>
+                <li>Performance optimization coaching</li>
+            </ul>
+
+            <div class="service-tags">
+                <div class="tag mind-tag">Digital Therapy</div>
+                <div class="tag mind-tag">Performance Optimization</div>
+                <div class="tag mind-tag">Stress Management</div>
+                <div class="tag mind-tag">Leadership Training</div>
+            </div>
+
+            <div class="contact-card">
+                <h4>Corporate Mental Wellness</h4>
+                <p>Scalable digital psychology programs for your workforce.</p>
+                <button class="cta-button">Explore Programs</button>
+            </div>
+        </div>
+
+        <div class="page-footer-nav">
+            <div class="page-info">Page 4 of 9</div>
+            <div class="footer-nav-buttons">
+                <a href="#financial" class="nav-btn">← MYN Financial</a>
+                <a href="#dannhauser" class="nav-btn">Dr Dannhauser →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dr Thomas Dannhauser -->
+    <div class="page service-page" id="dannhauser">
+        <div class="page-navigation">
+            <div class="breadcrumb">
+                <a href="#cover">🏠 Home</a>
+                <span class="breadcrumb-separator">›</span>
+                <span>Body Domain</span>
+                <span class="breadcrumb-separator">›</span>
+                <span>Dr Dannhauser</span>
+            </div>
+            <div class="nav-buttons">
+                <a href="#edward" class="nav-btn">← Previous</a>
+                <a href="#cover" class="nav-btn primary">Overview</a>
+                <a href="#clearminds" class="nav-btn">Next →</a>
+            </div>
+        </div>
+
+        <div class="service-header body-header">
+            <h1 class="service-title-main">Dr Thomas Dannhauser</h1>
+            <p class="service-subtitle-main">Precision Psychiatry & Corporate Wellness</p>
+        </div>
+
+        <div class="service-content">
+            <p>Advanced psychiatric care with precision medicine approaches for complex mental health conditions. Corporate programs focus on senior leadership mental health and complex case management.</p>
+
+            <h3>Corporate Precision Psychiatry</h3>
+            <ul>
+                <li>Executive mental health assessments and optimization</li>
+                <li>Complex psychiatric case management for employees</li>
+                <li>Medication optimization and genetic testing</li>
+                <li>Leadership stress and burnout prevention</li>
+                <li>Corporate mental health strategy consultation</li>
+                <li>Advanced diagnostic assessments</li>
+                <li>Personalized treatment protocols</li>
+                <li>Mental health crisis intervention programs</li>
+            </ul>
+
+            <div class="service-tags">
+                <div class="tag body-tag">Precision Medicine</div>
+                <div class="tag body-tag">Executive Care</div>
+                <div class="tag body-tag">Complex Cases</div>
+                <div class="tag body-tag">Crisis Intervention</div>
+            </div>
+
+            <div class="contact-card">
+                <h4>Corporate Precision Psychiatry</h4>
+                <p>Advanced psychiatric care for complex corporate health needs.</p>
+                <button class="cta-button">Discuss Executive Programs</button>
+            </div>
+        </div>
+
+        <div class="page-footer-nav">
+            <div class="page-info">Page 5 of 9</div>
+            <div class="footer-nav-buttons">
+                <a href="#edward" class="nav-btn">← Edward Orman</a>
+                <a href="#clearminds" class="nav-btn">Clear Minds →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clear Minds B2B -->
+    <div class="page service-page" id="clearminds">
+        <div class="page-navigation">
+            <div class="breadcrumb">
+                <a href="#cover">🏠 Home</a>
+                <span class="breadcrumb-separator">›</span>
+                <span>Mind Domain</span>
+                <span class="breadcrumb-separator">›</span>
+                <span>Clear Minds B2B</span>
+            </div>
+            <div class="nav-buttons">
+                <a href="#dannhauser" class="nav-btn">← Previous</a>
+                <a href="#cover" class="nav-btn primary">Overview</a>
+                <a href="#specialists" class="nav-btn">Next →</a>
+            </div>
+        </div>
+
+        <div class="service-header mind-header">
+            <h1 class="service-title-main">Clear Minds B2B</h1>
+            <p class="service-subtitle-main">Enterprise Mental Health Solutions</p>
+        </div>
+
+        <div class="service-content">
+            <p>Comprehensive corporate mental health and organizational wellness solutions designed to transform workplace culture, reduce stress, and improve overall organizational productivity and employee satisfaction.</p>
+
+            <h3>Enterprise Wellness Services</h3>
+            <ul>
+                <li>Enterprise Employee Assistance Programs (EAP)</li>
+                <li>Organizational mental health strategy development</li>
+                <li>Leadership mental health training and certification</li>
+                <li>Workplace stress management programs</li>
+                <li>Team building and psychological safety initiatives</li>
+                <li>Mental health awareness campaigns</li>
+                <li>Suicide prevention and crisis response programs</li>
+                <li>Return-to-work mental health support</li>
+            </ul>
+
+            <div class="service-tags">
+                <div class="tag mind-tag">Enterprise EAP</div>
+                <div class="tag mind-tag">Organizational Strategy</div>
+                <div class="tag mind-tag">Workplace Culture</div>
+                <div class="tag mind-tag">Crisis Response</div>
+            </div>
+
+            <div class="contact-card">
+                <h4>Enterprise Mental Health Solutions</h4>
+                <p>Transform your organizational approach to mental wellness.</p>
+                <button class="cta-button">Request Enterprise Consultation</button>
+            </div>
+        </div>
+
+        <div class="page-footer-nav">
+            <div class="page-info">Page 6 of 9</div>
+            <div class="footer-nav-buttons">
+                <a href="#dannhauser" class="nav-btn">← Dr Dannhauser</a>
+                <a href="#specialists" class="nav-btn">Specialists →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Specialist Services -->
+    <div class="page service-page" id="specialists">
+        <div class="page-navigation">
+            <div class="breadcrumb">
+                <a href="#cover">🏠 Home</a>
+                <span class="breadcrumb-separator">›</span>
+                <span>Body Domain</span>
+                <span class="breadcrumb-separator">›</span>
+                <span>Specialist Services</span>
+            </div>
+            <div class="nav-buttons">
+                <a href="#clearminds" class="nav-btn">← Previous</a>
+                <a href="#cover" class="nav-btn primary">Overview</a>
+                <a href="#goodbody" class="nav-btn">Next →</a>
+            </div>
+        </div>
+
+        <div class="service-header body-header">
+            <h1 class="service-title-main">Specialist Medical Services</h1>
+            <p class="service-subtitle-main">Corporate Health - Gastroenterology & Metabolic Care</p>
+        </div>
+
+        <div class="service-content">
+            <p>Corporate access to leading medical specialists in gastroenterology, hepatology, and metabolic health. Priority consultation services for employees with complex health conditions.</p>
+
+            <h3>Corporate Specialist Access</h3>
+            <ul>
+                <li>Priority specialist consultation scheduling</li>
+                <li>Corporate gastroenterology and gut health programs</li>
+                <li>Executive liver function optimization</li>
+                <li>Advanced blood analysis and metabolic assessment</li>
+                <li>Corporate digestive health workshops</li>
+                <li>Nutritional therapy and corporate wellness</li>
+                <li>Occupational health specialist referrals</li>
+                <li>Complex case management and coordination</li>
+            </ul>
+
+            <div class="service-tags">
+                <div class="tag body-tag">Gastroenterology</div>
+                <div class="tag body-tag">Metabolic Health</div>
+                <div class="tag body-tag">Specialist Care</div>
+                <div class="tag body-tag">Complex Cases</div>
+            </div>
+
+            <div class="contact-card">
+                <h4>Corporate Specialist Access</h4>
+                <p>Priority consultation services for your organization's specialized health needs.</p>
+                <button class="cta-button">Discuss Corporate Access</button>
+            </div>
+        </div>
+
+        <div class="page-footer-nav">
+            <div class="page-info">Page 7 of 9</div>
+            <div class="footer-nav-buttons">
+                <a href="#clearminds" class="nav-btn">← Clear Minds</a>
+                <a href="#goodbody" class="nav-btn">Goodbody →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Goodbody Diagnostics -->
+    <div class="page service-page" id="goodbody">
+        <div class="page-navigation">
+            <div class="breadcrumb">
+                <a href="#cover">🏠 Home</a>
+                <span class="breadcrumb-separator">›</span>
+                <span>Body Domain</span>
+                <span class="breadcrumb-separator">›</span>
+                <span>Goodbody Health</span>
+            </div>
+            <div class="nav-buttons">
+                <a href="#specialists" class="nav-btn">← Previous</a>
+                <a href="#cover" class="nav-btn primary">Overview</a>
+                <a href="#insurance" class="nav-btn">Next →</a>
+            </div>
+        </div>
+
+        <div class="service-header body-header">
+            <h1 class="service-title-main">Goodbody Executive Health</h1>
+            <p class="service-subtitle-main">Corporate Programs - Advanced Health Assessments</p>
+        </div>
+
+        <div class="service-content">
+            <p>Comprehensive executive health assessments and corporate wellness screenings using cutting-edge diagnostic technology. Designed specifically for corporate health programs and executive teams.</p>
+
+            <h3>Corporate Health Services</h3>
+            <ul>
+                <li>Executive health MOTs for leadership teams</li>
+                <li>Corporate wellness screening programs</li>
+                <li>Advanced cardiac assessment and imaging</li>
+                <li>Full-body diagnostic scanning</li>
+                <li>Cancer screening and early detection programs</li>
+                <li>Metabolic and nutritional optimization assessments</li>
+                <li>Occupational health and fitness evaluations</li>
+                <li>Annual health tracking and trend analysis</li>
+            </ul>
+
+            <div class="service-tags">
+                <div class="tag body-tag">Executive MOTs</div>
+                <div class="tag body-tag">Advanced Diagnostics</div>
+                <div class="tag body-tag">Preventative Care</div>
+                <div class="tag body-tag">Health Optimization</div>
+            </div>
+
+            <div class="contact-card">
+                <h4>Corporate Executive Health</h4>
+                <p>Comprehensive health assessments for your leadership team.</p>
+                <button class="cta-button">Schedule Corporate Assessment</button>
+            </div>
+        </div>
+
+        <div class="page-footer-nav">
+            <div class="page-info">Page 8 of 9</div>
+            <div class="footer-nav-buttons">
+                <a href="#specialists" class="nav-btn">← Specialists</a>
+                <a href="#insurance" class="nav-btn">Insurance →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Insurance & Benefits -->
+    <div class="page service-page" id="insurance">
+        <div class="page-navigation">
+            <div class="breadcrumb">
+                <a href="#cover">🏠 Home</a>
+                <span class="breadcrumb-separator">›</span>
+                <span>Financial Domain</span>
+                <span class="breadcrumb-separator">›</span>
+                <span>Insurance & Benefits</span>
+            </div>
+            <div class="nav-buttons">
+                <a href="#goodbody" class="nav-btn">← Previous</a>
+                <a href="#cover" class="nav-btn primary">Overview</a>
+                <a href="#concierge" class="nav-btn">Start Over →</a>
+            </div>
+        </div>
+
+        <div class="service-header financial-header">
+            <h1 class="service-title-main">Insurance & Benefits</h1>
+            <p class="service-subtitle-main">Corporate Solutions - Optimization & Management</p>
+        </div>
+
+        <div class="service-content">
+            <p>Corporate insurance and employee benefits optimization services. Expert guidance on health insurance strategies, claims management, and benefits package design for organizations of all sizes.</p>
+
+            <h3>Corporate Insurance Services</h3>
+            <ul>
+                <li>Corporate health insurance strategy and negotiation</li>
+                <li>Employee benefits package design and optimization</li>
+                <li>Group insurance claims management and advocacy</li>
+                <li>Benefits communication and employee education</li>
+                <li>Compliance and regulatory guidance</li>
+                <li>Annual renewal strategy and cost management</li>
+                <li>Wellness program integration with insurance benefits</li>
+                <li>Self-insurance feasibility analysis</li>
+            </ul>
+
+            <div class="service-tags">
+                <div class="tag financial-tag">Insurance Strategy</div>
+                <div class="tag financial-tag">Benefits Design</div>
+                <div class="tag financial-tag">Claims Management</div>
+                <div class="tag financial-tag">Cost Optimization</div>
+            </div>
+
+            <div class="contact-card">
+                <h4>Corporate Insurance Solutions</h4>
+                <p>Optimize your organization's insurance and benefits strategy.</p>
+                <button class="cta-button">Request Benefits Analysis</button>
+            </div>
+        </div>
+
+        <div class="page-footer-nav">
+            <div class="page-info">Page 9 of 9</div>
+            <div class="footer-nav-buttons">
+                <a href="#goodbody" class="nav-btn">← Goodbody Health</a>
+                <a href="#cover" class="nav-btn primary">🏠 Return to Overview</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

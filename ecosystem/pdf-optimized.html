@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrive Health Ecosystem - Hub & Spoke Model</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @media print {
+            body {
+                background: white !important;
+                color: #000 !important;
+            }
+            .container {
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 20px !important;
+            }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #334155;
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        /* Hub and Spoke Layout */
+        .hub-spoke-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, rgba(16, 185, 129, 0.05) 0%, transparent 60%);
+        }
+
+        /* Central Hub */
+        .thrive-hub {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(5, 150, 105, 0.3);
+            z-index: 10;
+        }
+
+        .hub-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .hub-subtitle {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        /* Spoke Services */
+        .spoke-service {
+            position: absolute;
+            width: 140px;
+            height: 90px;
+            background: white;
+            border-radius: 10px;
+            padding: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            z-index: 5;
+            border: 2px solid #e5e7eb;
+        }
+
+        /* Domain-specific colors */
+        .spoke-service.mind {
+            border-color: #8b5cf6;
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+        }
+        .spoke-service.body {
+            border-color: #ef4444;
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        }
+        .spoke-service.financial {
+            border-color: #f97316;
+            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+        }
+
+        .spoke-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .spoke-description {
+            font-size: 0.7rem;
+            color: #64748b;
+            line-height: 1.3;
+        }
+
+        /* Circular positioning - 8 spokes around the hub */
+        .spoke-1 { /* Top */
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .spoke-2 { /* Top Right */
+            top: 100px;
+            right: 100px;
+        }
+        .spoke-3 { /* Right */
+            top: 50%;
+            right: 60px;
+            transform: translateY(-50%);
+        }
+        .spoke-4 { /* Bottom Right */
+            bottom: 100px;
+            right: 100px;
+        }
+        .spoke-5 { /* Bottom */
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .spoke-6 { /* Bottom Left */
+            bottom: 100px;
+            left: 100px;
+        }
+        .spoke-7 { /* Left */
+            top: 50%;
+            left: 60px;
+            transform: translateY(-50%);
+        }
+        .spoke-8 { /* Top Left */
+            top: 100px;
+            left: 100px;
+        }
+
+        /* Connection lines */
+        .connection-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent 0%, #10b981 50%, transparent 100%);
+            z-index: 2;
+        }
+
+        /* Radial lines from center to each spoke */
+        .line-1 { /* To top */
+            top: 80px;
+            left: 50%;
+            width: 2px;
+            height: 120px;
+            transform: translateX(-50%);
+        }
+        .line-2 { /* To top-right */
+            top: 180px;
+            right: 170px;
+            width: 100px;
+            height: 2px;
+            transform: rotate(-45deg);
+            transform-origin: left center;
+        }
+        .line-3 { /* To right */
+            top: 50%;
+            right: 140px;
+            width: 80px;
+            height: 2px;
+            transform: translateY(-50%);
+        }
+        .line-4 { /* To bottom-right */
+            bottom: 180px;
+            right: 170px;
+            width: 100px;
+            height: 2px;
+            transform: rotate(45deg);
+            transform-origin: left center;
+        }
+        .line-5 { /* To bottom */
+            bottom: 80px;
+            left: 50%;
+            width: 2px;
+            height: 120px;
+            transform: translateX(-50%);
+        }
+        .line-6 { /* To bottom-left */
+            bottom: 180px;
+            left: 170px;
+            width: 100px;
+            height: 2px;
+            transform: rotate(-45deg);
+            transform-origin: right center;
+        }
+        .line-7 { /* To left */
+            top: 50%;
+            left: 140px;
+            width: 80px;
+            height: 2px;
+            transform: translateY(-50%);
+        }
+        .line-8 { /* To top-left */
+            top: 180px;
+            left: 170px;
+            width: 100px;
+            height: 2px;
+            transform: rotate(45deg);
+            transform-origin: right center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Thrive Health Ecosystem</h1>
+            <p class="subtitle">Comprehensive Corporate Wellness Solutions</p>
+        </div>
+
+        <div class="hub-spoke-container">
+            <!-- Connection Lines -->
+            <div class="connection-line line-1"></div>
+            <div class="connection-line line-2"></div>
+            <div class="connection-line line-3"></div>
+            <div class="connection-line line-4"></div>
+            <div class="connection-line line-5"></div>
+            <div class="connection-line line-6"></div>
+            <div class="connection-line line-7"></div>
+            <div class="connection-line line-8"></div>
+
+            <!-- Central Hub -->
+            <div class="thrive-hub">
+                <div class="hub-title">Thrive</div>
+                <div class="hub-subtitle">Central Hub</div>
+            </div>
+
+            <!-- Spoke Services -->
+            <div class="spoke-service mind spoke-1">
+                <div class="spoke-title">Concierge Health Advisors</div>
+                <div class="spoke-description">Personal health navigation</div>
+            </div>
+
+            <div class="spoke-service financial spoke-2">
+                <div class="spoke-title">MYN / Concept Financial</div>
+                <div class="spoke-description">Health-integrated planning</div>
+            </div>
+
+            <div class="spoke-service mind spoke-3">
+                <div class="spoke-title">Edward Orman Psychology</div>
+                <div class="spoke-description">Digital wellness programs</div>
+            </div>
+
+            <div class="spoke-service body spoke-4">
+                <div class="spoke-title">Dr Thomas Dannhauser</div>
+                <div class="spoke-description">Precision psychiatry</div>
+            </div>
+
+            <div class="spoke-service mind spoke-5">
+                <div class="spoke-title">Clear Minds B2B</div>
+                <div class="spoke-description">Corporate mental health</div>
+            </div>
+
+            <div class="spoke-service body spoke-6">
+                <div class="spoke-title">Specialist Services</div>
+                <div class="spoke-description">Gut health & liver care</div>
+            </div>
+
+            <div class="spoke-service body spoke-7">
+                <div class="spoke-title">Goodbody Diagnostics</div>
+                <div class="spoke-description">Physical health assessment</div>
+            </div>
+
+            <div class="spoke-service financial spoke-8">
+                <div class="spoke-title">Insurance & Benefits</div>
+                <div class="spoke-description">Coverage optimization</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
