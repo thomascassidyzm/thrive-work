@@ -12,12 +12,12 @@
         }
 
         @media print {
-            /* Enhanced print layout */
+            /* Enhanced print layout - optimized for 100% scale */
             .page {
                 page-break-after: always;
                 height: 100vh;
                 max-height: 100vh;
-                padding: 30px !important;
+                padding: 20px !important;
                 display: flex !important;
                 flex-direction: column !important;
                 box-sizing: border-box !important;
@@ -25,17 +25,93 @@
             .page:last-child {
                 page-break-after: avoid;
             }
+
+            /* Cover page print optimization */
+            .cover-title {
+                font-size: 2.2rem !important;
+                margin-bottom: 12px !important;
+            }
+            .cover-subtitle {
+                font-size: 1rem !important;
+                margin-bottom: 30px !important;
+            }
+
+            /* Hub-spoke print scaling */
+            .hub-spoke-container {
+                width: 600px !important;
+                height: 400px !important;
+                margin: 15px auto !important;
+            }
+            .thrive-hub {
+                width: 100px !important;
+                height: 100px !important;
+            }
+            .hub-title {
+                font-size: 1rem !important;
+            }
+            .hub-subtitle {
+                font-size: 0.6rem !important;
+            }
+            .spoke-service {
+                width: 90px !important;
+                height: 60px !important;
+                padding: 6px !important;
+            }
+            .spoke-title {
+                font-size: 0.6rem !important;
+                line-height: 1.1 !important;
+                margin-bottom: 2px !important;
+            }
+            .spoke-description {
+                font-size: 0.5rem !important;
+                line-height: 1.0 !important;
+            }
+
+            /* Service content print optimization */
             .service-content {
                 flex: 1 !important;
                 overflow: hidden !important;
+                padding: 0 !important;
+            }
+            .service-title-main {
+                font-size: 1.8rem !important;
+                margin-bottom: 8px !important;
+            }
+            .service-subtitle-main {
+                font-size: 0.9rem !important;
             }
             .service-content p, .service-content li {
-                font-size: 0.9rem !important;
-                line-height: 1.4 !important;
+                font-size: 0.8rem !important;
+                line-height: 1.3 !important;
+                margin-bottom: 8px !important;
             }
             .service-content h3 {
-                font-size: 1.2rem !important;
-                margin: 20px 0 10px 0 !important;
+                font-size: 1rem !important;
+                margin: 12px 0 6px 0 !important;
+            }
+            .service-content ul {
+                margin: 8px 0 !important;
+                padding-left: 16px !important;
+            }
+            .service-content li {
+                margin-bottom: 3px !important;
+            }
+
+            /* Navigation print optimization */
+            .page-navigation {
+                padding: 8px 0 !important;
+                margin-bottom: 12px !important;
+            }
+            .breadcrumb {
+                font-size: 0.7rem !important;
+            }
+            .nav-btn {
+                padding: 4px 8px !important;
+                font-size: 0.7rem !important;
+            }
+            .page-footer-nav {
+                padding-top: 12px !important;
+                font-size: 0.7rem !important;
             }
 
             /* Print-optimized domain spokes */
@@ -98,6 +174,43 @@
             .tag {
                 border: 1px solid currentColor !important;
                 font-weight: 500 !important;
+                font-size: 0.65rem !important;
+                padding: 2px 6px !important;
+            }
+
+            /* Journey flow print optimization */
+            #journey .service-content > div[style*="position: relative"] {
+                margin: 8px 0 12px 0 !important;
+                padding: 8px !important;
+            }
+            #journey .service-content h3[style*="font-size: 0.85rem"] {
+                font-size: 0.7rem !important;
+                margin-bottom: 4px !important;
+            }
+            #journey .service-content p[style*="font-size: 0.6rem"] {
+                font-size: 0.5rem !important;
+            }
+
+            /* Contact cards for print */
+            .contact-card {
+                margin-top: 10px !important;
+                padding: 12px !important;
+            }
+            .contact-card h4 {
+                font-size: 0.9rem !important;
+                margin-bottom: 6px !important;
+            }
+            .contact-card p {
+                font-size: 0.75rem !important;
+            }
+            .cta-button {
+                padding: 6px 12px !important;
+                font-size: 0.7rem !important;
+            }
+
+            /* Hide PDF download section in print */
+            .nav-footer div[style*="border-top"] {
+                display: none !important;
             }
         }
 
