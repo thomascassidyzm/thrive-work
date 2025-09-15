@@ -67,6 +67,16 @@
                 line-height: 1.0 !important;
             }
 
+            /* Adjust spoke positions for 600px container */
+            .spoke-1 { top: 30px !important; }
+            .spoke-2 { top: 70px !important; right: 70px !important; }
+            .spoke-3 { right: 30px !important; }
+            .spoke-4 { bottom: 70px !important; right: 70px !important; }
+            .spoke-5 { bottom: 30px !important; }
+            .spoke-6 { bottom: 70px !important; left: 70px !important; }
+            .spoke-7 { left: 30px !important; }
+            .spoke-8 { top: 70px !important; left: 70px !important; }
+
             /* Service content print optimization */
             .service-content {
                 flex: 1 !important;
@@ -150,10 +160,9 @@
                 font-weight: 500 !important;
             }
 
-            /* Connection lines for print - make them more visible */
+            /* Hide connection lines for cleaner print appearance */
             .connection-line {
-                background: #6b7280 !important;
-                opacity: 0.6;
+                display: none !important;
             }
 
             /* Hub enhancement for print */
