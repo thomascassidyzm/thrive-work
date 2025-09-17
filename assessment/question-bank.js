@@ -9,7 +9,7 @@ class QuestionBank {
 
     initializeQuestions() {
         return [
-            // Entry Questions - Weekly Preparedness & Organization
+            // Entry Questions - Comprehensive Diagnostic Screening
             {
                 id: 'wp001',
                 type: 'entry',
@@ -63,6 +63,146 @@ class QuestionBank {
                     structural: { autonomy_level: 'direct' },
                     organizational: { empowerment_culture: 'direct' },
                     roleClarity: { expectation_clarity: 'direct' }
+                }
+            },
+
+            // Entry Question 4 - Meeting Culture Initial Screen
+            {
+                id: 'wp004',
+                type: 'entry',
+                category: 'meetings_entry',
+                text: 'When you think about your meetings this week, what\'s your immediate reaction?',
+                options: [
+                    { value: 1, text: 'Dread - mostly pointless time wasters' },
+                    { value: 2, text: 'Frustration - some value but too many' },
+                    { value: 3, text: 'Neutral - part of the job' },
+                    { value: 4, text: 'Positive - generally productive' },
+                    { value: 5, text: 'Excited - great collaboration time' }
+                ],
+                signals: {
+                    meetingCulture: { meeting_satisfaction: 'direct', time_waste_perception: 'inverse' },
+                    organizational: { meeting_governance: 'direct' },
+                    psychologicalSafety: { participation_comfort: 'direct' }
+                }
+            },
+
+            // Entry Question 5 - Energy Pattern Recognition
+            {
+                id: 'wp005',
+                type: 'entry',
+                category: 'energy_entry',
+                text: 'How would you describe your energy levels throughout a typical work week?',
+                options: [
+                    { value: 1, text: 'Consistently low - always drained' },
+                    { value: 2, text: 'Start okay, decline quickly' },
+                    { value: 3, text: 'Up and down unpredictably' },
+                    { value: 4, text: 'Generally stable with minor dips' },
+                    { value: 5, text: 'Strong and sustained throughout' }
+                ],
+                signals: {
+                    individual: { energy_management: 'direct', burnout_risk: 'inverse' },
+                    workLifeIntegration: { sustainability: 'direct' },
+                    structural: { workload_balance: 'direct' }
+                }
+            },
+
+            // Entry Question 6 - Voice and Safety Initial Screen
+            {
+                id: 'wp006',
+                type: 'entry',
+                category: 'voice_entry',
+                text: 'When you have concerns or ideas at work, how comfortable do you feel expressing them?',
+                options: [
+                    { value: 1, text: 'Very uncomfortable - I keep quiet' },
+                    { value: 2, text: 'Somewhat uncomfortable - I hesitate' },
+                    { value: 3, text: 'Depends on the situation and people' },
+                    { value: 4, text: 'Generally comfortable speaking up' },
+                    { value: 5, text: 'Very comfortable - I speak freely' }
+                ],
+                signals: {
+                    psychologicalSafety: { voice_safety: 'direct', speak_up_comfort: 'direct' },
+                    organizational: { openness_culture: 'direct' },
+                    departmentalIssues: { team_communication: 'direct' }
+                }
+            },
+
+            // Entry Question 7 - Values-Choice Alignment
+            {
+                id: 'wp007',
+                type: 'entry',
+                category: 'values_entry',
+                text: 'How often do your daily work choices align with your personal values and priorities?',
+                options: [
+                    { value: 1, text: 'Rarely - constant conflict' },
+                    { value: 2, text: 'Sometimes - significant misalignment' },
+                    { value: 3, text: 'About half the time' },
+                    { value: 4, text: 'Usually - good alignment' },
+                    { value: 5, text: 'Almost always - strong alignment' }
+                ],
+                signals: {
+                    roleClarity: { values_alignment: 'direct', role_fit: 'direct' },
+                    individual: { authenticity_comfort: 'direct' },
+                    organizational: { culture_values_match: 'direct' }
+                }
+            },
+
+            // Entry Question 8 - Weekend Restoration Quality
+            {
+                id: 'wp008',
+                type: 'entry',
+                category: 'restoration_entry',
+                text: 'How do you typically feel on Sunday evening thinking about Monday morning?',
+                options: [
+                    { value: 1, text: 'Anxious dread - "Sunday scaries"' },
+                    { value: 2, text: 'Mild anxiety and reluctance' },
+                    { value: 3, text: 'Neutral - just another day' },
+                    { value: 4, text: 'Ready and reasonably positive' },
+                    { value: 5, text: 'Excited and energized for the week' }
+                ],
+                signals: {
+                    workLifeIntegration: { weekend_restoration: 'direct', work_dread: 'inverse' },
+                    individual: { job_satisfaction: 'direct' },
+                    organizational: { workplace_toxicity: 'inverse' }
+                }
+            },
+
+            // Entry Question 9 - Decision-Making Autonomy
+            {
+                id: 'wp009',
+                type: 'entry',
+                category: 'autonomy_entry',
+                text: 'How much influence do you have over how you do your work?',
+                options: [
+                    { value: 1, text: 'None - everything is prescribed' },
+                    { value: 2, text: 'Very little - minimal flexibility' },
+                    { value: 3, text: 'Some - within narrow boundaries' },
+                    { value: 4, text: 'Quite a bit - good flexibility' },
+                    { value: 5, text: 'Complete - full creative control' }
+                ],
+                signals: {
+                    structural: { autonomy_level: 'direct', micromanagement: 'inverse' },
+                    roleClarity: { role_boundaries: 'direct' },
+                    organizational: { trust_culture: 'direct' }
+                }
+            },
+
+            // Entry Question 10 - Team Communication Satisfaction
+            {
+                id: 'wp010',
+                type: 'entry',
+                category: 'team_entry',
+                text: 'How would you rate the communication within your immediate work team?',
+                options: [
+                    { value: 1, text: 'Poor - lots of confusion and conflict' },
+                    { value: 2, text: 'Below average - some significant issues' },
+                    { value: 3, text: 'Average - gets the job done' },
+                    { value: 4, text: 'Good - clear and mostly effective' },
+                    { value: 5, text: 'Excellent - transparent and seamless' }
+                ],
+                signals: {
+                    departmentalIssues: { team_communication: 'direct', collaboration_quality: 'direct' },
+                    psychologicalSafety: { communication_safety: 'direct' },
+                    organizational: { communication_effectiveness: 'direct' }
                 }
             },
 
@@ -416,7 +556,7 @@ class QuestionBank {
 
         let candidateQuestions;
 
-        if (questionType === 'entry' && state.evidence.length < 3) {
+        if (questionType === 'entry' && state.evidence.length < 6) {
             candidateQuestions = this.questions.filter(q =>
                 q.type === 'entry' && !this.usedQuestions.has(q.id)
             );
@@ -452,7 +592,7 @@ class QuestionBank {
     determineQuestionType(diagnosticEngine) {
         const state = diagnosticEngine.getState();
 
-        if (state.evidence.length < 3) {
+        if (state.evidence.length < 6) {
             return 'entry';
         }
 

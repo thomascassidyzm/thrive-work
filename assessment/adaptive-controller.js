@@ -5,6 +5,7 @@ class AdaptiveAssessmentController {
     constructor() {
         this.diagnosticEngine = new DiagnosticEngine();
         this.questionBank = new QuestionBank();
+        this.processMap = null;
         this.currentQuestion = null;
         this.assessmentStartTime = null;
         this.minQuestions = 8;  // Minimum questions before intervention routing
@@ -25,6 +26,9 @@ class AdaptiveAssessmentController {
 
         // Initialize progress tracking
         this.updateProgressDisplay();
+
+        // Initialize process map visualization
+        this.initializeProcessMap();
 
         // Expose reset method globally for debugging
         window.resetAssessment = () => {
@@ -200,6 +204,7 @@ class AdaptiveAssessmentController {
 
         // Update displays
         this.updateProgressDisplay(result);
+        this.updateProcessMap();
         this.showDiagnosticInsight(result);
 
         // Continue after brief delay
@@ -485,7 +490,26 @@ class AdaptiveAssessmentController {
         });
     }
 
+    initializeProcessMap() {
+        if (typeof ProcessMapVisualization !== 'undefined') {
+            this.processMap = new ProcessMapVisualization('process-map-container');
+            this.updateProcessMap();
+        }
+    }
+
+    updateProcessMap() {
+        if (this.processMap) {
+            const state = this.diagnosticEngine.getState();
+            this.processMap.updateProgress(state, this.currentQuestion);
+        }
+    }
+
     trackAssessmentCompletion(result) {
+        // Update process map with final result
+        if (this.processMap && result.status === 'ready_for_intervention') {
+            this.processMap.showInterventionResult(result);
+        }
+
         // TODO: Implement analytics tracking
         console.log('Assessment completed:', result);
     }
