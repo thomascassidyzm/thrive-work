@@ -105,11 +105,12 @@ class AdaptiveAssessmentController {
                     <h2 class="question-text">${question.text}</h2>
 
                     <div class="options-container">
-                        ${question.options.map(option => `
+                        ${question.options.map((option, index) => `
                             <button
                                 class="option-button"
                                 data-value="${option.value}"
-                                onclick="assessmentController.selectOption(${JSON.stringify(option).replace(/"/g, '&quot;')})"
+                                data-option-index="${index}"
+                                onclick="assessmentController.selectOptionByIndex(${index})"
                             >
                                 ${option.text}
                             </button>
@@ -134,6 +135,15 @@ class AdaptiveAssessmentController {
         }, 100);
     }
 
+    selectOptionByIndex(index) {
+        if (!this.currentQuestion) return;
+
+        const option = this.currentQuestion.options[index];
+        if (!option) return;
+
+        this.selectOption(option);
+    }
+
     selectOption(option) {
         if (!this.currentQuestion) return;
 
@@ -142,7 +152,10 @@ class AdaptiveAssessmentController {
         buttons.forEach(btn => btn.disabled = true);
 
         // Highlight selected option
-        event.target.classList.add('selected');
+        const selectedButton = document.querySelector(`[data-value="${option.value}"]`);
+        if (selectedButton) {
+            selectedButton.classList.add('selected');
+        }
 
         // Process the response
         const result = this.questionBank.processResponse(
