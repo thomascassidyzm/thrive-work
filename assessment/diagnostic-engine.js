@@ -4,9 +4,9 @@
 class DiagnosticEngine {
     constructor() {
         this.confidenceThresholds = {
-            high: 0.75,    // Strong signal - ready for intervention routing
-            medium: 0.40,  // Emerging pattern - ask targeted follow-ups
-            low: 0.15      // Weak signal - continue general exploration
+            high: 0.85,    // Strong signal - ready for intervention routing (after 25+ questions)
+            medium: 0.65,  // Emerging pattern - ask targeted follow-ups (after 20+ questions)
+            low: 0.30      // Weak signal - continue general exploration
         };
 
         this.diagnosticVector = {
@@ -271,6 +271,19 @@ class DiagnosticEngine {
     determineNextStep() {
         const maxConfidence = Math.max(...Object.values(this.diagnosticVector));
         const entropy = this.calculateEntropy();
+        const questionCount = this.evidence.length;
+
+        // Require minimum 20 questions before any diagnostic conclusions
+        if (questionCount < 20) {
+            return {
+                status: 'continue_exploration',
+                diagnosis: this.diagnosticVector,
+                nextQuestionType: 'broad',
+                confidence: maxConfidence,
+                totalQuestions: questionCount,
+                minimumRequired: 20
+            };
+        }
 
         if (maxConfidence > this.confidenceThresholds.high && entropy < 0.5) {
             return {

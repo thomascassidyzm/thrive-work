@@ -8,8 +8,8 @@ class AdaptiveAssessmentController {
         this.processMap = null;
         this.currentQuestion = null;
         this.assessmentStartTime = null;
-        this.minQuestions = 8;  // Minimum questions before intervention routing
-        this.maxQuestions = 25; // Maximum questions to prevent fatigue
+        this.minQuestions = 20; // Minimum questions before any diagnostic conclusion
+        this.maxQuestions = 35; // Maximum questions for comprehensive analysis
 
         this.bindEvents();
         this.initializeAssessment();
@@ -239,6 +239,22 @@ class AdaptiveAssessmentController {
         return displays[type] || 'Assessment';
     }
 
+    getProgressMessage(questionCount, result) {
+        if (result?.status === 'ready_for_intervention') {
+            return ' • Comprehensive analysis complete!';
+        } else if (questionCount < 10) {
+            return ' • Building foundation for analysis...';
+        } else if (questionCount < 15) {
+            return ' • Gathering comprehensive data patterns...';
+        } else if (questionCount < 20) {
+            return ' • Approaching diagnostic threshold...';
+        } else if (questionCount < 25) {
+            return ' • Refining diagnostic confidence...';
+        } else {
+            return ' • Deep analysis in progress...';
+        }
+    }
+
     updateProgressDisplay(result = null) {
         const state = this.diagnosticEngine.getState();
         const questionCount = state.evidence.length;
@@ -251,8 +267,7 @@ class AdaptiveAssessmentController {
                     <div class="progress-fill" style="width: ${progress}%"></div>
                 </div>
                 <div class="progress-text">
-                    ${questionCount} questions answered
-                    ${result?.status === 'ready_for_intervention' ? ' • Analysis complete!' : ''}
+                    ${questionCount} questions answered${this.getProgressMessage(questionCount, result)}
                 </div>
             `;
         }
@@ -419,13 +434,16 @@ class AdaptiveAssessmentController {
 
                 <div class="completion-actions">
                     <button class="action-button primary" onclick="assessmentController.proceedToCoaching()">
-                        Get Personalized Coaching
+                        Start Personalized Coaching
+                    </button>
+                    <button class="action-button secondary" onclick="assessmentController.continueAssessment()">
+                        Continue for Deeper Analysis (10+ more questions)
                     </button>
                     <button class="action-button secondary" onclick="assessmentController.viewFullReport()">
-                        View Detailed Report
+                        Get Comprehensive Report (Coming Soon)
                     </button>
                     <button class="action-button tertiary" onclick="assessmentController.shareResults()">
-                        Share with Manager
+                        Share with Team/Manager
                     </button>
                 </div>
             </div>
@@ -529,6 +547,25 @@ class AdaptiveAssessmentController {
     viewFullReport() {
         // TODO: Implement detailed report view
         alert('Full report feature coming soon!');
+    }
+
+    continueAssessment() {
+        // Hide completion screen and continue with deeper questions
+        const container = document.getElementById('question-container');
+        container.innerHTML = '';
+
+        // Set flag for deeper analysis mode
+        this.deepAnalysisMode = true;
+        this.maxQuestions = 50; // Allow up to 50 questions for deep analysis
+
+        // Show next question to continue
+        this.showNextQuestion();
+
+        // Update progress display to show extended analysis
+        this.updateProgressDisplay();
+
+        // Save the continued session
+        this.saveSession();
     }
 
     shareResults() {
