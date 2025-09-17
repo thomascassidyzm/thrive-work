@@ -354,8 +354,26 @@ class AdaptiveAssessmentController {
         const container = document.getElementById('question-container');
         if (!container) return;
 
-        const primary = result.primaryDysfunction || result.diagnosis;
-        const intervention = result.recommendedIntervention;
+        // Get primary dysfunction from either the result or calculate it from diagnosis
+        let primary;
+        if (result.primaryDysfunction) {
+            primary = result.primaryDysfunction;
+        } else if (result.diagnosis) {
+            // Calculate primary dysfunction from diagnosis
+            const sorted = Object.entries(result.diagnosis)
+                .sort(([,a], [,b]) => b - a);
+            primary = {
+                primary: sorted[0][0],
+                confidence: sorted[0][1],
+                secondary: sorted[1] ? sorted[1][0] : null,
+                secondaryConfidence: sorted[1] ? sorted[1][1] : 0
+            };
+        } else {
+            // Fallback
+            primary = { primary: 'unknown', confidence: 0 };
+        }
+
+        const intervention = result.recommendedIntervention || this.getDefaultIntervention(primary.primary);
         const totalTime = Math.round((Date.now() - this.assessmentStartTime) / 1000 / 60);
 
         const html = `
@@ -445,6 +463,57 @@ class AdaptiveAssessmentController {
             roleClarity: 'Unclear expectations, mismatched skills, or ambiguous responsibilities in your role.'
         };
         return descriptions[dimension] || 'Pattern identified in your work experience.';
+    }
+
+    getDefaultIntervention(primaryDysfunction) {
+        const interventions = {
+            structuralBarriers: {
+                type: 'organizational_consultation',
+                description: 'Organizational structure and process analysis',
+                provider: 'management_consultant'
+            },
+            individualStress: {
+                type: 'personal_coaching',
+                description: 'Individual stress management and coping strategies',
+                provider: 'dr_thomas_neuroevaluator'
+            },
+            organizationalDysfunction: {
+                type: 'culture_transformation',
+                description: 'Company-wide culture and leadership development',
+                provider: 'organizational_psychologist'
+            },
+            workLifeIntegration: {
+                type: 'boundary_coaching',
+                description: 'Work-life integration and boundary setting',
+                provider: 'life_coach'
+            },
+            meetingCulture: {
+                type: 'meeting_optimization',
+                description: 'Meeting culture analysis and optimization',
+                provider: 'productivity_consultant'
+            },
+            psychologicalSafety: {
+                type: 'team_development',
+                description: 'Psychological safety and team dynamics improvement',
+                provider: 'team_coach'
+            },
+            departmentalIssues: {
+                type: 'department_analysis',
+                description: 'Department-specific dynamics and leadership',
+                provider: 'department_consultant'
+            },
+            roleClarity: {
+                type: 'role_optimization',
+                description: 'Role clarity and expectation alignment',
+                provider: 'hr_consultant'
+            }
+        };
+
+        return interventions[primaryDysfunction] || {
+            type: 'comprehensive_assessment',
+            description: 'Comprehensive workplace assessment and coaching',
+            provider: 'workplace_consultant'
+        };
     }
 
     // Action handlers
