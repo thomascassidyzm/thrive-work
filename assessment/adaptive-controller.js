@@ -61,7 +61,17 @@ class AdaptiveAssessmentController {
     showNextQuestion() {
         const nextQuestion = this.questionBank.getNextQuestion(this.diagnosticEngine);
 
-        if (!nextQuestion || this.shouldCompleteAssessment()) {
+        console.log('Getting next question:', nextQuestion);
+        console.log('Should complete assessment:', this.shouldCompleteAssessment());
+
+        if (!nextQuestion) {
+            console.log('No more questions available');
+            this.completeAssessment();
+            return;
+        }
+
+        if (this.shouldCompleteAssessment()) {
+            console.log('Assessment should be completed');
             this.completeAssessment();
             return;
         }
@@ -74,7 +84,14 @@ class AdaptiveAssessmentController {
     shouldCompleteAssessment() {
         const state = this.diagnosticEngine.getState();
         const questionCount = state.evidence.length;
-        const maxConfidence = Math.max(...Object.values(state.diagnosticVector));
+
+        // Don't complete if we have no evidence yet
+        if (questionCount === 0) {
+            return false;
+        }
+
+        const diagnosticValues = Object.values(state.diagnosticVector);
+        const maxConfidence = diagnosticValues.length > 0 ? Math.max(...diagnosticValues) : 0;
 
         // Complete if we have enough questions and high confidence
         if (questionCount >= this.minQuestions && maxConfidence > 0.75) {

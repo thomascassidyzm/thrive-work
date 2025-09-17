@@ -410,6 +410,10 @@ class QuestionBank {
             questionType = this.determineQuestionType(diagnosticEngine);
         }
 
+        console.log('Question type determined:', questionType);
+        console.log('Evidence length:', state.evidence.length);
+        console.log('Used questions:', Array.from(this.usedQuestions));
+
         let candidateQuestions;
 
         if (questionType === 'entry' && state.evidence.length < 3) {
@@ -430,7 +434,10 @@ class QuestionBank {
             );
         }
 
+        console.log('Candidate questions found:', candidateQuestions.length);
+
         if (candidateQuestions.length === 0) {
+            console.log('No candidate questions available');
             return null; // No more questions
         }
 
@@ -438,16 +445,21 @@ class QuestionBank {
         const selectedQuestion = this.selectOptimalQuestion(candidateQuestions, diagnosticEngine);
         this.usedQuestions.add(selectedQuestion.id);
 
+        console.log('Selected question:', selectedQuestion);
         return selectedQuestion;
     }
 
     determineQuestionType(diagnosticEngine) {
         const state = diagnosticEngine.getState();
-        const maxConfidence = Math.max(...Object.values(state.diagnosticVector));
 
         if (state.evidence.length < 3) {
             return 'entry';
-        } else if (maxConfidence > 0.4) {
+        }
+
+        const diagnosticValues = Object.values(state.diagnosticVector);
+        const maxConfidence = diagnosticValues.length > 0 ? Math.max(...diagnosticValues) : 0;
+
+        if (maxConfidence > 0.4) {
             return 'targeted';
         } else {
             return 'broad';
