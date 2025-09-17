@@ -25,6 +25,12 @@ class AdaptiveAssessmentController {
 
         // Initialize progress tracking
         this.updateProgressDisplay();
+
+        // Expose reset method globally for debugging
+        window.resetAssessment = () => {
+            localStorage.removeItem('thrive_diagnostic_state');
+            location.reload();
+        };
     }
 
     restoreSession() {
@@ -32,16 +38,27 @@ class AdaptiveAssessmentController {
             const savedState = localStorage.getItem('thrive_diagnostic_state');
             if (savedState) {
                 const state = JSON.parse(savedState);
-                this.diagnosticEngine.setState(state.diagnosticEngine);
 
-                if (state.usedQuestions) {
-                    state.usedQuestions.forEach(qId => {
-                        this.questionBank.usedQuestions.add(qId);
-                    });
+                // Only restore if there's actual evidence (questions answered)
+                if (state.diagnosticEngine && state.diagnosticEngine.evidence && state.diagnosticEngine.evidence.length > 0) {
+                    this.diagnosticEngine.setState(state.diagnosticEngine);
+
+                    if (state.usedQuestions) {
+                        state.usedQuestions.forEach(qId => {
+                            this.questionBank.usedQuestions.add(qId);
+                        });
+                    }
+                    console.log('Restored session with', state.diagnosticEngine.evidence.length, 'previous responses');
+                } else {
+                    // Clear any stale session data
+                    localStorage.removeItem('thrive_diagnostic_state');
+                    console.log('Cleared stale session data');
                 }
             }
         } catch (error) {
             console.warn('Could not restore previous session:', error);
+            // Clear corrupted session data
+            localStorage.removeItem('thrive_diagnostic_state');
         }
     }
 
