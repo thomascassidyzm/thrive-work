@@ -526,11 +526,13 @@ if (typeof module !== 'undefined' && module.exports) {
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof DiagnosticEngine !== 'undefined' && typeof QuestionBank !== 'undefined') {
                 assessmentController = new AdaptiveAssessmentController();
+                window.assessmentController = assessmentController; // Expose globally
             }
         });
     } else {
         if (typeof DiagnosticEngine !== 'undefined' && typeof QuestionBank !== 'undefined') {
             assessmentController = new AdaptiveAssessmentController();
+            window.assessmentController = assessmentController; // Expose globally
         }
     }
 }
