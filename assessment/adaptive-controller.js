@@ -111,20 +111,14 @@ class AdaptiveAssessmentController {
             return false;
         }
 
-        const diagnosticValues = Object.values(state.diagnosticVector);
-        const maxConfidence = diagnosticValues.length > 0 ? Math.max(...diagnosticValues) : 0;
-
-        // Complete if we have enough questions and high confidence
-        if (questionCount >= this.minQuestions && maxConfidence > 0.75) {
-            return true;
-        }
-
-        // Complete if we've reached maximum questions
+        // Always complete if we've reached maximum questions
         if (questionCount >= this.maxQuestions) {
             return true;
         }
 
-        return false;
+        // Use diagnostic engine's logic for completion decision
+        const result = this.diagnosticEngine.determineNextStep();
+        return result.status === 'ready_for_intervention';
     }
 
     renderQuestion(question) {
