@@ -373,7 +373,7 @@ document.addEventListener('DOMContentLoaded', function() {
             initializeThoughtTransformation();
         }
     }, 1000);
-}
+});
 
 // Thought word transformation cycle - negative to positive and back
 function initializeThoughtTransformation() {
