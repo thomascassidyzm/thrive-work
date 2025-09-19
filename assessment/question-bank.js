@@ -1548,6 +1548,313 @@ class QuestionBank {
                     individual: { meaning_in_work: 'direct' },
                     organizationalAlignment: { goal_connection: 'direct' }
                 }
+            },
+
+            // More Validation Questions - Social Desirability & Consistency
+            {
+                id: 'val008',
+                type: 'validation',
+                category: 'social_desirability',
+                text: 'How often do you arrive exactly on time (not early, not late) for meetings?',
+                options: [
+                    { value: 1, text: 'Never - I\'m usually early or running late' },
+                    { value: 2, text: 'Rarely - timing varies quite a bit' },
+                    { value: 3, text: 'Sometimes - occasionally hit it exactly' },
+                    { value: 4, text: 'Always - I\'m perfectly punctual every time' }
+                ],
+                signals: {
+                    individual: { punctuality_honesty: 'mixed', self_awareness: 'direct' },
+                    validation: { perfectionism_bias: 'direct', social_desirability: 'mixed' }
+                },
+                validationPair: 'time_management'
+            },
+
+            {
+                id: 'val009',
+                type: 'validation',
+                category: 'consistency_check',
+                text: 'I am completely satisfied with every aspect of my current role',
+                options: [
+                    { value: 1, text: 'Completely false - several areas need improvement' },
+                    { value: 2, text: 'Mostly false - some significant dissatisfactions' },
+                    { value: 3, text: 'Mostly true - generally satisfied with minor issues' },
+                    { value: 4, text: 'Completely true - everything is perfect' }
+                ],
+                signals: {
+                    individual: { job_satisfaction_honesty: 'mixed', self_awareness: 'direct' },
+                    validation: { satisfaction_exaggeration: 'direct', honesty_check: 'inverse' }
+                },
+                validationPair: 'job_satisfaction'
+            },
+
+            {
+                id: 'val010',
+                type: 'validation',
+                category: 'response_pattern',
+                text: 'How often do you feel energized by challenging work tasks?',
+                options: [
+                    { value: 1, text: 'Never - I prefer routine, predictable work' },
+                    { value: 2, text: 'Rarely - challenges usually stress me out' },
+                    { value: 3, text: 'Often - I enjoy most challenging situations' },
+                    { value: 4, text: 'Always - I thrive on any type of challenge' }
+                ],
+                signals: {
+                    individual: { challenge_preference: 'direct', growth_mindset: 'direct' },
+                    validation: { response_consistency: 'mixed', engagement_honesty: 'direct' }
+                },
+                validationPair: 'challenge_response'
+            },
+
+            // Additional Departmental Dynamics Questions
+            {
+                id: 'dd002',
+                type: 'targeted',
+                category: 'departmental',
+                text: 'How would you describe your manager\'s leadership style?',
+                options: [
+                    { value: 1, text: 'Micromanaging - closely controls most decisions' },
+                    { value: 2, text: 'Directive - gives clear instructions and expectations' },
+                    { value: 3, text: 'Collaborative - involves team in decision-making' },
+                    { value: 4, text: 'Hands-off - trusts team to work independently' }
+                ],
+                signals: {
+                    departmentalDynamics: { management_style: 'mixed', autonomy_level: 'mixed' },
+                    psychologicalSafety: { management_trust: 'mixed' },
+                    individual: { autonomy_preference: 'mixed' }
+                }
+            },
+
+            {
+                id: 'dd003',
+                type: 'targeted',
+                category: 'departmental',
+                text: 'When your team faces a problem, what typically happens?',
+                options: [
+                    { value: 1, text: 'People blame each other or avoid responsibility' },
+                    { value: 2, text: 'One person usually takes charge and fixes it' },
+                    { value: 3, text: 'We discuss it but solutions take time to emerge' },
+                    { value: 4, text: 'We collaborate effectively to solve it quickly' }
+                ],
+                signals: {
+                    departmentalDynamics: { problem_solving_culture: 'direct', blame_culture: 'inverse' },
+                    psychologicalSafety: { collective_responsibility: 'direct' },
+                    organizationalAlignment: { team_effectiveness: 'direct' }
+                }
+            },
+
+            {
+                id: 'dd004',
+                type: 'targeted',
+                category: 'departmental',
+                text: 'How fairly is workload distributed among your team members?',
+                options: [
+                    { value: 1, text: 'Very unfairly - some people carry much more than others' },
+                    { value: 2, text: 'Somewhat unfairly - noticeable imbalances' },
+                    { value: 3, text: 'Generally fairly - minor variations in workload' },
+                    { value: 4, text: 'Very fairly - everyone contributes equally' }
+                ],
+                signals: {
+                    departmentalDynamics: { workload_equity: 'direct', team_fairness: 'direct' },
+                    psychologicalSafety: { fairness_perception: 'direct' },
+                    structural: { resource_allocation: 'direct' }
+                }
+            },
+
+            // More OCEAN Behavioral Scenarios
+            {
+                id: 'oc011',
+                type: 'targeted',
+                category: 'ocean_conscientiousness',
+                text: 'You discover a small error in a report you submitted last week. You:',
+                options: [
+                    { value: 1, text: 'Hope nobody notices and don\'t mention it' },
+                    { value: 2, text: 'Fix it quietly in future versions' },
+                    { value: 3, text: 'Send a correction to everyone who received it' },
+                    { value: 4, text: 'Immediately alert everyone and apologize for the mistake' }
+                ],
+                signals: {
+                    individual: { conscientiousness: 'direct', integrity: 'direct', perfectionism: 'mixed' },
+                    psychologicalSafety: { mistake_handling: 'direct' }
+                }
+            },
+
+            {
+                id: 'oc012',
+                type: 'targeted',
+                category: 'ocean_openness',
+                text: 'Your industry is facing major technological disruption. Your reaction is:',
+                options: [
+                    { value: 1, text: 'Anxious - prefer things to stay as they are' },
+                    { value: 2, text: 'Cautious - wait to see which changes stick' },
+                    { value: 3, text: 'Interested - curious about new possibilities' },
+                    { value: 4, text: 'Excited - love being at the forefront of change' }
+                ],
+                signals: {
+                    individual: { openness: 'direct', change_tolerance: 'direct', innovation_comfort: 'direct' },
+                    organizationalAlignment: { change_readiness: 'direct' }
+                }
+            },
+
+            {
+                id: 'oc013',
+                type: 'targeted',
+                category: 'ocean_extraversion',
+                text: 'In team brainstorming sessions, you typically:',
+                options: [
+                    { value: 1, text: 'Listen quietly and contribute ideas in writing later' },
+                    { value: 2, text: 'Share a few ideas when directly asked' },
+                    { value: 3, text: 'Actively participate and build on others\' ideas' },
+                    { value: 4, text: 'Generate lots of ideas and encourage others to contribute' }
+                ],
+                signals: {
+                    individual: { extraversion: 'direct', idea_generation: 'direct', group_facilitation: 'direct' },
+                    meetingCultureOptimization: { participation_style: 'direct' }
+                }
+            },
+
+            {
+                id: 'oc014',
+                type: 'targeted',
+                category: 'ocean_agreeableness',
+                text: 'A team member consistently misses deadlines affecting your work. You:',
+                options: [
+                    { value: 1, text: 'Work around it without saying anything to avoid conflict' },
+                    { value: 2, text: 'Mention it casually in a group setting' },
+                    { value: 3, text: 'Have a direct but friendly conversation with them' },
+                    { value: 4, text: 'Escalate to management immediately' }
+                ],
+                signals: {
+                    individual: { agreeableness: 'mixed', conflict_avoidance: 'mixed', assertiveness: 'mixed' },
+                    psychologicalSafety: { feedback_comfort: 'mixed' }
+                }
+            },
+
+            // More Entry-Level Questions
+            {
+                id: 'wp011',
+                type: 'entry',
+                category: 'feedback_culture',
+                text: 'How comfortable do you feel giving honest feedback to your colleagues?',
+                options: [
+                    { value: 1, text: 'Very uncomfortable - I avoid giving feedback' },
+                    { value: 2, text: 'Somewhat uncomfortable - only when absolutely necessary' },
+                    { value: 3, text: 'Generally comfortable - depends on the person and situation' },
+                    { value: 4, text: 'Very comfortable - I regularly give constructive feedback' }
+                ],
+                signals: {
+                    psychologicalSafety: { feedback_comfort: 'direct', peer_feedback_safety: 'direct' },
+                    individual: { assertiveness: 'direct', conflict_tolerance: 'direct' },
+                    organizationalAlignment: { feedback_culture: 'direct' }
+                }
+            },
+
+            {
+                id: 'wp012',
+                type: 'entry',
+                category: 'decision_making',
+                text: 'How often are you involved in decisions that affect your daily work?',
+                options: [
+                    { value: 1, text: 'Never - decisions are made without my input' },
+                    { value: 2, text: 'Rarely - occasionally asked for input' },
+                    { value: 3, text: 'Often - regularly consulted on relevant decisions' },
+                    { value: 4, text: 'Always - actively involved in all decisions affecting me' }
+                ],
+                signals: {
+                    structural: { decision_participation: 'direct', autonomy_level: 'direct' },
+                    psychologicalSafety: { voice_in_decisions: 'direct' },
+                    organizationalAlignment: { inclusive_culture: 'direct' }
+                }
+            },
+
+            // Additional Work-Life Integration Questions
+            {
+                id: 'wl012',
+                type: 'targeted',
+                category: 'worklife',
+                text: 'How often do you feel guilty about not working when you\'re not at work?',
+                options: [
+                    { value: 1, text: 'Very often - I feel guilty during most personal time' },
+                    { value: 2, text: 'Often - guilt intrudes regularly during off-hours' },
+                    { value: 3, text: 'Sometimes - occasional guilt about work' },
+                    { value: 4, text: 'Rarely - I don\'t feel guilty about personal time' }
+                ],
+                signals: {
+                    workLifeIntegration: { work_guilt: 'direct', mental_separation: 'inverse' },
+                    individual: { perfectionism: 'direct', anxiety: 'direct' },
+                    organizational: { work_pressure_culture: 'direct' }
+                }
+            },
+
+            {
+                id: 'wl013',
+                type: 'targeted',
+                category: 'worklife',
+                text: 'How easy is it for you to take time off when you need it?',
+                options: [
+                    { value: 1, text: 'Very difficult - feel pressured not to take time off' },
+                    { value: 2, text: 'Somewhat difficult - some barriers or guilt' },
+                    { value: 3, text: 'Generally easy - minor logistical challenges' },
+                    { value: 4, text: 'Very easy - no barriers to taking needed time off' }
+                ],
+                signals: {
+                    workLifeIntegration: { time_off_accessibility: 'direct', vacation_pressure: 'inverse' },
+                    organizational: { time_off_culture: 'direct', workload_sustainability: 'direct' },
+                    structural: { coverage_systems: 'direct' }
+                }
+            },
+
+            // More Validation - Speed Traps
+            {
+                id: 'val011',
+                type: 'validation',
+                category: 'speed_check',
+                text: 'Please read this carefully: For quality assurance, select "Often - regular disagreements on some issues" for this question about workplace disagreements.',
+                options: [
+                    { value: 1, text: 'Never - I always agree with everyone' },
+                    { value: 2, text: 'Rarely - occasional minor disagreements' },
+                    { value: 3, text: 'Often - regular disagreements on some issues' },
+                    { value: 4, text: 'Constantly - I disagree with most decisions' }
+                ],
+                signals: {
+                    validation: { reading_attention: 'direct', instruction_following: 'direct' }
+                },
+                validationPair: 'attention_validation_2'
+            },
+
+            // Additional Psychological Safety Questions
+            {
+                id: 'ps005',
+                type: 'targeted',
+                category: 'psychological_safety',
+                text: 'How comfortable would you feel admitting you don\'t understand something in a team meeting?',
+                options: [
+                    { value: 1, text: 'Very uncomfortable - would pretend to understand' },
+                    { value: 2, text: 'Somewhat uncomfortable - might ask privately later' },
+                    { value: 3, text: 'Generally comfortable - would ask for clarification' },
+                    { value: 4, text: 'Very comfortable - regularly ask questions when unclear' }
+                ],
+                signals: {
+                    psychologicalSafety: { learning_safety: 'direct', vulnerability_comfort: 'direct' },
+                    individual: { intellectual_humility: 'direct', status_anxiety: 'inverse' }
+                }
+            },
+
+            {
+                id: 'ps006',
+                type: 'targeted',
+                category: 'psychological_safety',
+                text: 'If you saw a colleague struggling with their workload, you would:',
+                options: [
+                    { value: 1, text: 'Do nothing - not my place to get involved' },
+                    { value: 2, text: 'Mention it privately to them' },
+                    { value: 3, text: 'Offer specific help if you can provide it' },
+                    { value: 4, text: 'Proactively suggest team solutions or raise with manager' }
+                ],
+                signals: {
+                    psychologicalSafety: { helping_behavior: 'direct', collective_care: 'direct' },
+                    individual: { empathy: 'direct', prosocial_behavior: 'direct' },
+                    organizationalAlignment: { supportive_culture: 'direct' }
+                }
             }
 
         ];
