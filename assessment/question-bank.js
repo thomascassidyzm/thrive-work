@@ -91,9 +91,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Consistently low - always drained' },
                     { value: 2, text: 'Start okay, decline quickly' },
-                    { value: 3, text: 'Up and down unpredictably' },
-                    { value: 4, text: 'Generally stable with minor dips' },
-                    { value: 5, text: 'Strong and sustained throughout' }
+                    { value: 3, text: 'Generally stable with minor dips' },
+                    { value: 4, text: 'Strong and sustained throughout' }
                 ],
                 signals: {
                     individual: { energy_management: 'direct', burnout_risk: 'inverse' },
@@ -111,9 +110,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Very uncomfortable - I keep quiet' },
                     { value: 2, text: 'Somewhat uncomfortable - I hesitate' },
-                    { value: 3, text: 'Depends on the situation and people' },
-                    { value: 4, text: 'Generally comfortable speaking up' },
-                    { value: 5, text: 'Very comfortable - I speak freely' }
+                    { value: 3, text: 'Generally comfortable speaking up' },
+                    { value: 4, text: 'Very comfortable - I speak freely' }
                 ],
                 signals: {
                     psychologicalSafety: { voice_safety: 'direct', speak_up_comfort: 'direct' },
@@ -131,9 +129,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Rarely - constant conflict' },
                     { value: 2, text: 'Sometimes - significant misalignment' },
-                    { value: 3, text: 'About half the time' },
-                    { value: 4, text: 'Usually - good alignment' },
-                    { value: 5, text: 'Almost always - strong alignment' }
+                    { value: 3, text: 'Usually - good alignment' },
+                    { value: 4, text: 'Almost always - strong alignment' }
                 ],
                 signals: {
                     roleClarity: { values_alignment: 'direct', role_fit: 'direct' },
@@ -151,9 +148,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Anxious dread - "Sunday scaries"' },
                     { value: 2, text: 'Mild anxiety and reluctance' },
-                    { value: 3, text: 'Neutral - just another day' },
-                    { value: 4, text: 'Ready and reasonably positive' },
-                    { value: 5, text: 'Excited and energized for the week' }
+                    { value: 3, text: 'Ready and reasonably positive' },
+                    { value: 4, text: 'Excited and energized for the week' }
                 ],
                 signals: {
                     workLifeIntegration: { weekend_restoration: 'direct', work_dread: 'inverse' },
@@ -171,9 +167,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'None - everything is prescribed' },
                     { value: 2, text: 'Very little - minimal flexibility' },
-                    { value: 3, text: 'Some - within narrow boundaries' },
-                    { value: 4, text: 'Quite a bit - good flexibility' },
-                    { value: 5, text: 'Complete - full creative control' }
+                    { value: 3, text: 'Quite a bit - good flexibility' },
+                    { value: 4, text: 'Complete - full creative control' }
                 ],
                 signals: {
                     structural: { autonomy_level: 'direct', micromanagement: 'inverse' },
@@ -191,9 +186,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Poor - lots of confusion and conflict' },
                     { value: 2, text: 'Below average - some significant issues' },
-                    { value: 3, text: 'Average - gets the job done' },
-                    { value: 4, text: 'Good - clear and mostly effective' },
-                    { value: 5, text: 'Excellent - transparent and seamless' }
+                    { value: 3, text: 'Good - clear and mostly effective' },
+                    { value: 4, text: 'Excellent - transparent and seamless' }
                 ],
                 signals: {
                     departmentalIssues: { team_communication: 'direct', collaboration_quality: 'direct' },
@@ -236,9 +230,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Stay silent, even if I have another commitment' },
                     { value: 2, text: 'Feel frustrated but rarely speak up' },
-                    { value: 3, text: 'Occasionally mention the time constraint' },
-                    { value: 4, text: 'Politely ask about wrapping up' },
-                    { value: 5, text: 'Confidently suggest rescheduling or ending' }
+                    { value: 3, text: 'Politely ask about wrapping up' },
+                    { value: 4, text: 'Confidently suggest rescheduling or ending' }
                 ],
                 signals: {
                     psychologicalSafety: { speak_up_comfort: 'direct', boundary_assertion: 'direct' },
@@ -255,9 +248,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Listen but rarely contribute ideas' },
                     { value: 2, text: 'Share safe, conventional suggestions' },
-                    { value: 3, text: 'Contribute when directly asked' },
-                    { value: 4, text: 'Actively participate with creative ideas' },
-                    { value: 5, text: 'Often lead the creative direction' }
+                    { value: 3, text: 'Actively participate with creative ideas' },
+                    { value: 4, text: 'Often lead the creative direction' }
                 ],
                 signals: {
                     individual: { creativity_expression: 'direct', introversion: 'inverse' },
@@ -274,9 +266,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Keep quiet to avoid conflict' },
                     { value: 2, text: 'Express concerns privately after the meeting' },
-                    { value: 3, text: 'Ask clarifying questions indirectly' },
-                    { value: 4, text: 'Respectfully present alternative viewpoints' },
-                    { value: 5, text: 'Challenge ideas directly and constructively' }
+                    { value: 3, text: 'Respectfully present alternative viewpoints' },
+                    { value: 4, text: 'Challenge ideas directly and constructively' }
                 ],
                 signals: {
                     individual: { conflict_tolerance: 'direct', agreeableness: 'inverse' },
@@ -293,9 +284,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Depletes rapidly, feeling drained' },
                     { value: 2, text: 'Gradually decreases throughout the day' },
-                    { value: 3, text: 'Varies depending on meeting type' },
-                    { value: 4, text: 'Remains relatively stable' },
-                    { value: 5, text: 'Actually energizes me through interaction' }
+                    { value: 3, text: 'Remains relatively stable' },
+                    { value: 4, text: 'Actually energizes me through interaction' }
                 ],
                 signals: {
                     individual: { introversion: 'inverse', energy_management: 'direct' },
@@ -312,9 +302,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Attend anyway, hope for the best' },
                     { value: 2, text: 'Feel frustrated but don\'t address it' },
-                    { value: 3, text: 'Sometimes ask for clarification' },
-                    { value: 4, text: 'Request agenda before attending' },
-                    { value: 5, text: 'Decline meetings without clear purpose' }
+                    { value: 3, text: 'Request agenda before attending' },
+                    { value: 4, text: 'Decline meetings without clear purpose' }
                 ],
                 signals: {
                     individual: { conscientiousness: 'direct', boundary_setting: 'direct' },
@@ -331,9 +320,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Intimidated and rarely speak' },
                     { value: 2, text: 'Cautious about what to say' },
-                    { value: 3, text: 'Respectful but able to contribute' },
-                    { value: 4, text: 'Confident sharing your perspective' },
-                    { value: 5, text: 'Completely comfortable challenging ideas' }
+                    { value: 3, text: 'Confident sharing your perspective' },
+                    { value: 4, text: 'Completely comfortable challenging ideas' }
                 ],
                 signals: {
                     psychologicalSafety: { hierarchy_comfort: 'direct' },
@@ -350,9 +338,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Pretend to understand to avoid embarrassment' },
                     { value: 2, text: 'Stay quiet and research later' },
-                    { value: 3, text: 'Ask for clarification on key points' },
-                    { value: 4, text: 'Request a brief explanation openly' },
-                    { value: 5, text: 'Confidently ask others to explain concepts' }
+                    { value: 3, text: 'Request a brief explanation openly' },
+                    { value: 4, text: 'Confidently ask others to explain concepts' }
                 ],
                 signals: {
                     psychologicalSafety: { learning_safety: 'direct', vulnerability_comfort: 'direct' },
@@ -369,9 +356,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Never - I stay silent' },
                     { value: 2, text: 'Rarely - only when directly asked' },
-                    { value: 3, text: 'Sometimes - depends on the topic' },
-                    { value: 4, text: 'Often - I contribute regularly' },
-                    { value: 5, text: 'Always - I\'m very vocal' }
+                    { value: 3, text: 'Often - I contribute regularly' },
+                    { value: 4, text: 'Always - I\'m very vocal' }
                 ],
                 signals: {
                     meetingCulture: {
@@ -394,9 +380,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Leave confused but don\'t follow up' },
                     { value: 2, text: 'Hope someone else will clarify later' },
-                    { value: 3, text: 'Ask for clarification if it affects me' },
-                    { value: 4, text: 'Proactively seek clarity from the organizer' },
-                    { value: 5, text: 'Send a follow-up email summarizing action items' }
+                    { value: 3, text: 'Proactively seek clarity from the organizer' },
+                    { value: 4, text: 'Send a follow-up email summarizing action items' }
                 ],
                 signals: {
                     individual: { conscientiousness: 'direct', initiative: 'direct' },
@@ -413,9 +398,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Multitasking frequently, half-listening' },
                     { value: 2, text: 'Occasionally distracted by other tasks' },
-                    { value: 3, text: 'Focused but sometimes zone out' },
-                    { value: 4, text: 'Fully engaged most of the time' },
-                    { value: 5, text: 'More focused than in-person meetings' }
+                    { value: 3, text: 'Fully engaged most of the time' },
+                    { value: 4, text: 'More focused than in-person meetings' }
                 ],
                 signals: {
                     individual: { attention_regulation: 'direct', conscientiousness: 'direct' },
@@ -432,9 +416,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Stay quiet and let them continue' },
                     { value: 2, text: 'Feel frustrated but don\'t intervene' },
-                    { value: 3, text: 'Try to get a word in when possible' },
-                    { value: 4, text: 'Politely redirect to include others' },
-                    { value: 5, text: 'Directly address the imbalance' }
+                    { value: 3, text: 'Politely redirect to include others' },
+                    { value: 4, text: 'Directly address the imbalance' }
                 ],
                 signals: {
                     individual: { assertiveness: 'direct', leadership: 'direct' },
@@ -452,9 +435,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Very difficult - work thoughts dominate' },
                     { value: 2, text: 'Somewhat difficult - takes hours to switch' },
-                    { value: 3, text: 'Moderately easy - takes some time' },
-                    { value: 4, text: 'Pretty easy - switch within 30 minutes' },
-                    { value: 5, text: 'Very easy - immediate transition' }
+                    { value: 3, text: 'Pretty easy - switch within 30 minutes' },
+                    { value: 4, text: 'Very easy - immediate transition' }
                 ],
                 signals: {
                     workLifeIntegration: {
@@ -477,9 +459,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Every day - constant exhaustion' },
                     { value: 2, text: 'Most days - rarely feel energized' },
-                    { value: 3, text: 'Mid-week - Wednesday/Thursday crash' },
-                    { value: 4, text: 'End of week - Friday burnout' },
-                    { value: 5, text: 'No pattern - energy levels vary' }
+                    { value: 3, text: 'End of week - Friday burnout' },
+                    { value: 4, text: 'No pattern - energy levels vary' }
                 ],
                 signals: {
                     individual: {
@@ -501,9 +482,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Not at all - dread Monday' },
                     { value: 2, text: 'Slightly - still feel drained' },
-                    { value: 3, text: 'Somewhat - partial recovery' },
-                    { value: 4, text: 'Very - feel recharged' },
-                    { value: 5, text: 'Completely - excited for the week' }
+                    { value: 3, text: 'Very - feel recharged' },
+                    { value: 4, text: 'Completely - excited for the week' }
                 ],
                 signals: {
                     workLifeIntegration: {
@@ -525,9 +505,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Always drop everything to respond immediately' },
                     { value: 2, text: 'Usually respond quickly, feeling guilty if I don\'t' },
-                    { value: 3, text: 'Assess urgency before deciding' },
-                    { value: 4, text: 'Respond only if truly critical' },
-                    { value: 5, text: 'Maintain boundaries unless life-threatening' }
+                    { value: 3, text: 'Respond only if truly critical' },
+                    { value: 4, text: 'Maintain boundaries unless life-threatening' }
                 ],
                 signals: {
                     workLifeIntegration: { boundary_setting: 'direct', work_urgency_addiction: 'inverse' },
@@ -544,9 +523,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Are always thinking about work' },
                     { value: 2, text: 'Check work messages during personal time' },
-                    { value: 3, text: 'Sometimes seem distracted by work stress' },
-                    { value: 4, text: 'Occasionally bring work topics into conversations' },
-                    { value: 5, text: 'Keep work and personal life completely separate' }
+                    { value: 3, text: 'Occasionally bring work topics into conversations' },
+                    { value: 4, text: 'Keep work and personal life completely separate' }
                 ],
                 signals: {
                     workLifeIntegration: { work_intrusion: 'direct', relationship_impact: 'direct' },
@@ -563,9 +541,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Check email constantly and respond to urgent items' },
                     { value: 2, text: 'Check in once daily to stay informed' },
-                    { value: 3, text: 'Check periodically but try to limit responses' },
-                    { value: 4, text: 'Check only for true emergencies' },
-                    { value: 5, text: 'Completely disconnect from work communications' }
+                    { value: 3, text: 'Check only for true emergencies' },
+                    { value: 4, text: 'Completely disconnect from work communications' }
                 ],
                 signals: {
                     workLifeIntegration: { vacation_boundaries: 'direct', disconnection_ability: 'direct' },
@@ -582,9 +559,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Traditional 9-5, clear boundaries' },
                     { value: 2, text: 'Flexible hours but consistent daily routine' },
-                    { value: 3, text: 'Project-based with deadline flexibility' },
-                    { value: 4, text: 'Compressed work week (4x10 hours)' },
-                    { value: 5, text: 'Completely flexible, work when most productive' }
+                    { value: 3, text: 'Compressed work week (4x10 hours)' },
+                    { value: 4, text: 'Completely flexible, work when most productive' }
                 ],
                 signals: {
                     individual: { chronotype_preference: 'direct', autonomy_needs: 'direct', conscientiousness: 'mixed' },
@@ -601,9 +577,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Work full hours to avoid falling behind' },
                     { value: 2, text: 'Work reduced hours but stay connected' },
-                    { value: 3, text: 'Handle only urgent matters' },
-                    { value: 4, text: 'Take sick leave but check in occasionally' },
-                    { value: 5, text: 'Take full sick leave without working' }
+                    { value: 3, text: 'Take sick leave but check in occasionally' },
+                    { value: 4, text: 'Take full sick leave without working' }
                 ],
                 signals: {
                     individual: { self_care: 'direct', conscientiousness: 'inverse', boundary_setting: 'direct' },
@@ -621,9 +596,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Very uncomfortable - I hide mistakes' },
                     { value: 2, text: 'Uncomfortable - I minimize mistakes' },
-                    { value: 3, text: 'Somewhat comfortable - depends on the situation' },
-                    { value: 4, text: 'Comfortable - I usually admit mistakes' },
-                    { value: 5, text: 'Very comfortable - I openly discuss mistakes' }
+                    { value: 3, text: 'Comfortable - I usually admit mistakes' },
+                    { value: 4, text: 'Very comfortable - I openly discuss mistakes' }
                 ],
                 signals: {
                     psychologicalSafety: {
@@ -646,9 +620,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Very uncomfortable - I struggle alone' },
                     { value: 2, text: 'Uncomfortable - I rarely ask for help' },
-                    { value: 3, text: 'Somewhat comfortable - depends on the person' },
-                    { value: 4, text: 'Comfortable - I ask for help when needed' },
-                    { value: 5, text: 'Very comfortable - I actively seek support' }
+                    { value: 3, text: 'Comfortable - I ask for help when needed' },
+                    { value: 4, text: 'Very comfortable - I actively seek support' }
                 ],
                 signals: {
                     psychologicalSafety: {
@@ -670,9 +643,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Stay silent to avoid being seen as difficult' },
                     { value: 2, text: 'Voice mild concerns but don\'t push back' },
-                    { value: 3, text: 'Express disagreement if directly asked' },
-                    { value: 4, text: 'Share your perspective respectfully' },
-                    { value: 5, text: 'Advocate strongly for your viewpoint' }
+                    { value: 3, text: 'Share your perspective respectfully' },
+                    { value: 4, text: 'Advocate strongly for your viewpoint' }
                 ],
                 signals: {
                     psychologicalSafety: { dissent_safety: 'direct', groupthink_resistance: 'direct' },
@@ -689,9 +661,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Stay quiet to avoid conflict' },
                     { value: 2, text: 'Discuss concerns privately with trusted colleagues' },
-                    { value: 3, text: 'Document everything but wait to see if it continues' },
-                    { value: 4, text: 'Address it directly with the colleague first' },
-                    { value: 5, text: 'Report it through proper channels immediately' }
+                    { value: 3, text: 'Address it directly with the colleague first' },
+                    { value: 4, text: 'Report it through proper channels immediately' }
                 ],
                 signals: {
                     psychologicalSafety: { whistleblowing_safety: 'direct' },
@@ -712,9 +683,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Sports bar - familiar environment with friends' },
                     { value: 2, text: 'Staying home organizing - productive and satisfying' },
-                    { value: 3, text: 'Either sports bar or home, depending on mood' },
-                    { value: 4, text: 'Art gallery - drawn to new cultural experiences' },
-                    { value: 5, text: 'Cooking class - love learning creative skills' }
+                    { value: 3, text: 'Art gallery - drawn to new cultural experiences' },
+                    { value: 4, text: 'Cooking class - love learning creative skills' }
                 ],
                 signals: {
                     individual: {
@@ -735,9 +705,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Binge-watch several episodes despite tomorrow\'s schedule' },
                     { value: 2, text: 'Watch one episode, then get sucked into two more' },
-                    { value: 3, text: 'Watch one episode, then reluctantly go to bed' },
-                    { value: 4, text: 'Save it for the weekend when you have more time' },
-                    { value: 5, text: 'Add it to your list but stick to your bedtime routine' }
+                    { value: 3, text: 'Save it for the weekend when you have more time' },
+                    { value: 4, text: 'Add it to your list but stick to your bedtime routine' }
                 ],
                 signals: {
                     individual: {
@@ -757,9 +726,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Quiet evening alone with a book or hobby' },
                     { value: 2, text: 'Small dinner with one or two close friends' },
-                    { value: 3, text: 'Mix of alone time and social activities' },
-                    { value: 4, text: 'Going out with a group of friends' },
-                    { value: 5, text: 'Big social event or party with lots of people' }
+                    { value: 3, text: 'Going out with a group of friends' },
+                    { value: 4, text: 'Big social event or party with lots of people' }
                 ],
                 signals: {
                     individual: {
@@ -779,9 +747,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Decline politely - too risky regardless of relationship' },
                     { value: 2, text: 'Ask detailed questions about repayment timeline' },
-                    { value: 3, text: 'Offer a smaller amount you can afford to lose' },
-                    { value: 4, text: 'Lend it if you trust them, with clear terms' },
-                    { value: 5, text: 'Give it without expecting it back if they\'re struggling' }
+                    { value: 3, text: 'Lend it if you trust them, with clear terms' },
+                    { value: 4, text: 'Give it without expecting it back if they\'re struggling' }
                 ],
                 signals: {
                     individual: {
@@ -802,9 +769,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Panic, call everyone, catastrophize about consequences' },
                     { value: 2, text: 'Feel very stressed, worried about how this looks' },
-                    { value: 3, text: 'Frustrated but quickly problem-solve alternatives' },
-                    { value: 4, text: 'Annoyed but call ahead and stay calm' },
-                    { value: 5, text: 'Accept it calmly, use time to prepare mentally' }
+                    { value: 3, text: 'Annoyed but call ahead and stay calm' },
+                    { value: 4, text: 'Accept it calmly, use time to prepare mentally' }
                 ],
                 signals: {
                     individual: {
@@ -829,9 +795,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Personal life stress affects my work focus' },
                     { value: 2, text: 'I struggle with time management and organization' },
-                    { value: 3, text: 'Unclear priorities make it hard to focus' },
-                    { value: 4, text: 'Workload exceeds what\'s reasonable for one person' },
-                    { value: 5, text: 'Constant interruptions and poor meeting culture' }
+                    { value: 3, text: 'Workload exceeds what\'s reasonable for one person' },
+                    { value: 4, text: 'Constant interruptions and poor meeting culture' }
                 ],
                 signals: {
                     individual: { personal_effectiveness: 'mixed', stress_source: 'mixed' },
@@ -848,9 +813,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'My own skill gaps or knowledge limitations' },
                     { value: 2, text: 'Lack of clear feedback on what\'s expected' },
-                    { value: 3, text: 'Insufficient tools or resources to do the job' },
-                    { value: 4, text: 'Too many conflicting priorities and deadlines' },
-                    { value: 5, text: 'Bureaucracy and inefficient approval processes' }
+                    { value: 3, text: 'Too many conflicting priorities and deadlines' },
+                    { value: 4, text: 'Bureaucracy and inefficient approval processes' }
                 ],
                 signals: {
                     individual: { skill_adequacy: 'mixed', development_needs: 'mixed' },
@@ -872,9 +836,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Better work-life balance and personal boundaries' },
                     { value: 2, text: 'Clearer communication and expectations from leadership' },
-                    { value: 3, text: 'More efficient processes and fewer bureaucratic obstacles' },
-                    { value: 4, text: 'Better team dynamics and psychological safety' },
-                    { value: 5, text: 'Personal skill development and career growth opportunities' }
+                    { value: 3, text: 'Better team dynamics and psychological safety' },
+                    { value: 4, text: 'Personal skill development and career growth opportunities' }
                 ],
                 signals: {
                     workLifeIntegration: { primary_concern: 'mixed' },
@@ -892,9 +855,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Personal coaching on stress management and resilience' },
                     { value: 2, text: 'Skills training to improve my effectiveness' },
-                    { value: 3, text: 'Team workshop to improve communication and collaboration' },
-                    { value: 4, text: 'Leadership intervention to address systemic issues' },
-                    { value: 5, text: 'Organizational assessment to identify culture problems' }
+                    { value: 3, text: 'Leadership intervention to address systemic issues' },
+                    { value: 4, text: 'Organizational assessment to identify culture problems' }
                 ],
                 signals: {
                     individual: { support_preference: 'direct', intervention_readiness: 'direct' },
@@ -912,9 +874,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'No plan and no permission to create one' },
                     { value: 2, text: 'Vague plan, limited execution authority' },
-                    { value: 3, text: 'Clear plan, some execution barriers' },
-                    { value: 4, text: 'Clear plan, mostly free to execute' },
-                    { value: 5, text: 'Clear plan, complete execution freedom' }
+                    { value: 3, text: 'Clear plan, mostly free to execute' },
+                    { value: 4, text: 'Clear plan, complete execution freedom' }
                 ],
                 signals: {
                     structural: {
@@ -936,9 +897,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Constantly changing priorities' },
                     { value: 2, text: 'Lack of information or resources' },
-                    { value: 3, text: 'Unclear expectations from leadership' },
-                    { value: 4, text: 'Personal time management issues' },
-                    { value: 5, text: 'External factors beyond work control' }
+                    { value: 3, text: 'Personal time management issues' },
+                    { value: 4, text: 'External factors beyond work control' }
                 ],
                 signals: {
                     structural: {
@@ -962,9 +922,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Work pressure - I feel I must attend' },
                     { value: 2, text: 'Career concerns - attendance affects advancement' },
-                    { value: 3, text: 'Mixed consideration - depends on the event' },
-                    { value: 4, text: 'Family priority - I choose family unless critical' },
-                    { value: 5, text: 'Personal values - I follow my priorities' }
+                    { value: 3, text: 'Family priority - I choose family unless critical' },
+                    { value: 4, text: 'Personal values - I follow my priorities' }
                 ],
                 signals: {
                     worklife: {
@@ -987,9 +946,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Poor - lots of misunderstandings' },
                     { value: 2, text: 'Below average - some communication issues' },
-                    { value: 3, text: 'Average - generally functional' },
-                    { value: 4, text: 'Good - clear and effective most of the time' },
-                    { value: 5, text: 'Excellent - transparent and open' }
+                    { value: 3, text: 'Good - clear and effective most of the time' },
+                    { value: 4, text: 'Excellent - transparent and open' }
                 ],
                 signals: {
                     departmental: {
@@ -1011,9 +969,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Start low, stay low throughout' },
                     { value: 2, text: 'Start okay, decline rapidly' },
-                    { value: 3, text: 'Fluctuate unpredictably' },
-                    { value: 4, text: 'Generally stable with minor dips' },
-                    { value: 5, text: 'Start high, maintain or improve' }
+                    { value: 3, text: 'Generally stable with minor dips' },
+                    { value: 4, text: 'Start high, maintain or improve' }
                 ],
                 signals: {
                     individual: {
@@ -1034,9 +991,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Never - constantly struggling' },
                     { value: 2, text: 'Rarely - often feel inadequate' },
-                    { value: 3, text: 'Sometimes - depends on the task' },
-                    { value: 4, text: 'Usually - generally well-matched' },
-                    { value: 5, text: 'Always - perfect fit for my role' }
+                    { value: 3, text: 'Usually - generally well-matched' },
+                    { value: 4, text: 'Always - perfect fit for my role' }
                 ],
                 signals: {
                     roleClarity: {
@@ -1161,13 +1117,19 @@ class QuestionBank {
                 Object.entries(categorySignals).forEach(([signal, direction]) => {
                     let value = selectedOption.value;
 
+                    // Determine the scale based on question options
+                    const maxValue = Math.max(...question.options.map(opt => opt.value));
+                    const minValue = Math.min(...question.options.map(opt => opt.value));
+                    const scaleMidpoint = (maxValue + minValue) / 2;
+
                     // Apply signal direction transformation
                     if (direction === 'inverse') {
-                        value = 5 - value; // Invert 1-4 scale
+                        value = maxValue + minValue - value; // Invert based on actual scale
                     }
 
                     // Normalize to -1.2 to +1.2 range for sigmoid function
-                    signals[category][signal] = (value - 2.5) * 0.8;
+                    // Adjust for 4-option scale (1-4) vs 5-option scale (1-5) vs other scales
+                    signals[category][signal] = (value - scaleMidpoint) * (2.4 / (maxValue - minValue));
                 });
             });
         }
