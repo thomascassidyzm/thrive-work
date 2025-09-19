@@ -118,7 +118,7 @@ class AdaptiveAssessmentController {
 
         // Use diagnostic engine's logic for completion decision
         const result = this.diagnosticEngine.determineNextStep();
-        return result.status === 'ready_for_intervention';
+        return result.status === 'ready_for_optimization';
     }
 
     renderQuestion(question) {
@@ -208,7 +208,7 @@ class AdaptiveAssessmentController {
     }
 
     renderConfidenceIndicators() {
-        const vector = this.diagnosticEngine.diagnosticVector;
+        const vector = this.diagnosticEngine.optimizationVector;
         const maxConfidence = Math.max(...Object.values(vector));
 
         return `
@@ -234,8 +234,8 @@ class AdaptiveAssessmentController {
     }
 
     getProgressMessage(questionCount, result) {
-        if (result?.status === 'ready_for_intervention') {
-            return ' • Comprehensive analysis complete!';
+        if (result?.status === 'ready_for_optimization') {
+            return ' • Optimization insights ready!';
         } else if (questionCount < 10) {
             return ' • Building foundation for analysis...';
         } else if (questionCount < 15) {
@@ -266,15 +266,15 @@ class AdaptiveAssessmentController {
             `;
         }
 
-        // Update diagnostic insights
-        this.updateDiagnosticDisplay(state.diagnosticVector);
+        // Update optimization insights
+        this.updateOptimizationDisplay(state.optimizationVector);
     }
 
-    updateDiagnosticDisplay(diagnosticVector) {
+    updateOptimizationDisplay(optimizationVector) {
         const insightsElement = document.getElementById('diagnostic-insights');
         if (!insightsElement) return;
 
-        const topDimensions = Object.entries(diagnosticVector)
+        const topDimensions = Object.entries(optimizationVector)
             .sort(([,a], [,b]) => b - a)
             .slice(0, 3)
             .filter(([,confidence]) => confidence > 0.1);
@@ -305,8 +305,8 @@ class AdaptiveAssessmentController {
     }
 
     showDiagnosticInsight(result) {
-        if (result.status === 'ready_for_intervention') {
-            this.showInterventionInsight(result);
+        if (result.status === 'ready_for_optimization') {
+            this.showOptimizationInsight(result);
             return;
         }
 
@@ -314,21 +314,21 @@ class AdaptiveAssessmentController {
         if (!insightElement) return;
 
         let insightText = '';
-        const maxConfidence = Math.max(...Object.values(result.diagnosis));
+        const maxConfidence = Math.max(...Object.values(result.optimizationOpportunities));
 
         if (maxConfidence > 0.6) {
-            insightText = 'Strong patterns emerging - almost ready for recommendations';
+            insightText = 'Strong optimization patterns emerging - insights developing';
         } else if (maxConfidence > 0.3) {
-            insightText = 'Patterns developing - continuing targeted assessment';
+            insightText = 'Growth opportunities emerging - continuing targeted assessment';
         } else {
-            insightText = 'Building your unique profile...';
+            insightText = 'Exploring your unique workplace optimization potential';
         }
 
         insightElement.innerHTML = `<div class="insight-text">${insightText}</div>`;
     }
 
-    showInterventionInsight(result) {
-        const primary = result.primaryDysfunction;
+    showOptimizationInsight(result) {
+        const primary = result.primaryOpportunity;
         const intervention = result.recommendedIntervention;
 
         const insightElement = document.getElementById('question-insight');
@@ -363,13 +363,13 @@ class AdaptiveAssessmentController {
         const container = document.getElementById('question-container');
         if (!container) return;
 
-        // Get primary dysfunction from either the result or calculate it from diagnosis
+        // Get primary opportunity from either the result or calculate it from optimization vector
         let primary;
-        if (result.primaryDysfunction) {
-            primary = result.primaryDysfunction;
-        } else if (result.diagnosis) {
-            // Calculate primary dysfunction from diagnosis
-            const sorted = Object.entries(result.diagnosis)
+        if (result.primaryOpportunity) {
+            primary = result.primaryOpportunity;
+        } else if (result.optimizationOpportunities) {
+            // Calculate primary opportunity from optimization vector
+            const sorted = Object.entries(result.optimizationOpportunities)
                 .sort(([,a], [,b]) => b - a);
             primary = {
                 primary: sorted[0][0],

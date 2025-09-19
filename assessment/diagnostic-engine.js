@@ -9,14 +9,14 @@ class DiagnosticEngine {
             low: 0.30      // Weak signal - continue general exploration
         };
 
-        this.diagnosticVector = {
-            structuralBarriers: 0,
-            individualStress: 0,
-            organizationalDysfunction: 0,
+        this.optimizationVector = {
+            structuralEfficiency: 0,
+            individualResilience: 0,
+            organizationalAlignment: 0,
             workLifeIntegration: 0,
-            meetingCulture: 0,
-            psychologicalSafety: 0,
-            departmentalIssues: 0,
+            meetingCultureOptimization: 0,
+            teamPsychologicalSafety: 0,
+            departmentalDynamics: 0,
             roleClarity: 0
         };
 
@@ -33,40 +33,40 @@ class DiagnosticEngine {
             questionIndex: this.currentQuestionIndex
         });
 
-        // Recalculate all diagnostic probabilities
-        this.updateDiagnosticVector();
+        // Recalculate all optimization opportunities
+        this.updateOptimizationVector();
 
         // Determine next action
         return this.determineNextStep();
     }
 
-    updateDiagnosticVector() {
-        // Structural Barriers Analysis
-        this.diagnosticVector.structuralBarriers = this.calculateStructuralBarriers();
+    updateOptimizationVector() {
+        // Structural Efficiency Opportunities
+        this.optimizationVector.structuralEfficiency = this.calculateStructuralOptimization();
 
-        // Individual Stress Analysis
-        this.diagnosticVector.individualStress = this.calculateIndividualStress();
+        // Individual Resilience Enhancement
+        this.optimizationVector.individualResilience = this.calculateResilienceOpportunities();
 
-        // Organizational Dysfunction
-        this.diagnosticVector.organizationalDysfunction = this.calculateOrganizationalDysfunction();
+        // Organizational Alignment Potential
+        this.optimizationVector.organizationalAlignment = this.calculateAlignmentOpportunities();
 
-        // Work-Life Integration
-        this.diagnosticVector.workLifeIntegration = this.calculateWorkLifeIntegration();
+        // Work-Life Integration Enhancement
+        this.optimizationVector.workLifeIntegration = this.calculateWorkLifeOptimization();
 
-        // Meeting Culture
-        this.diagnosticVector.meetingCulture = this.calculateMeetingCulture();
+        // Meeting Culture Enhancement
+        this.optimizationVector.meetingCultureOptimization = this.calculateMeetingOptimization();
 
-        // Psychological Safety
-        this.diagnosticVector.psychologicalSafety = this.calculatePsychologicalSafety();
+        // Team Psychological Safety Growth
+        this.optimizationVector.teamPsychologicalSafety = this.calculateSafetyOptimization();
 
-        // Departmental Issues
-        this.diagnosticVector.departmentalIssues = this.calculateDepartmentalIssues();
+        // Departmental Dynamics Enhancement
+        this.optimizationVector.departmentalDynamics = this.calculateDepartmentalOptimization();
 
-        // Role Clarity
-        this.diagnosticVector.roleClarity = this.calculateRoleClarity();
+        // Role Clarity Enhancement
+        this.optimizationVector.roleClarity = this.calculateRoleOptimization();
     }
 
-    calculateStructuralBarriers() {
+    calculateStructuralOptimization() {
         const relevantResponses = this.evidence.filter(r =>
             r.signals && r.signals.structural
         );
@@ -88,7 +88,7 @@ class DiagnosticEngine {
         return weightSum > 0 ? confidence / weightSum : 0;
     }
 
-    calculateIndividualStress() {
+    calculateResilienceOpportunities() {
         const relevantResponses = this.evidence.filter(r =>
             r.signals && r.signals.individual
         );
@@ -110,7 +110,7 @@ class DiagnosticEngine {
         return weightSum > 0 ? confidence / weightSum : 0;
     }
 
-    calculateOrganizationalDysfunction() {
+    calculateAlignmentOpportunities() {
         const relevantResponses = this.evidence.filter(r =>
             r.signals && r.signals.organizational
         );
@@ -132,7 +132,7 @@ class DiagnosticEngine {
         return weightSum > 0 ? confidence / weightSum : 0;
     }
 
-    calculateWorkLifeIntegration() {
+    calculateWorkLifeOptimization() {
         const workLifeResponses = this.evidence.filter(r =>
             r.category === 'worklife' || (r.signals && r.signals.worklife)
         );
@@ -154,7 +154,7 @@ class DiagnosticEngine {
         );
     }
 
-    calculateMeetingCulture() {
+    calculateMeetingOptimization() {
         const meetingResponses = this.evidence.filter(r =>
             r.category === 'meetings' || (r.signals && r.signals.meetings)
         );
@@ -176,7 +176,7 @@ class DiagnosticEngine {
         );
     }
 
-    calculatePsychologicalSafety() {
+    calculateSafetyOptimization() {
         const safetySignals = {
             speakUp: this.extractSignal('speak_up_comfort'),
             admitMistakes: this.extractSignal('admit_mistakes'),
@@ -192,7 +192,7 @@ class DiagnosticEngine {
         ) * -1 + 1; // Invert - low safety = high dysfunction
     }
 
-    calculateDepartmentalIssues() {
+    calculateDepartmentalOptimization() {
         const deptSignals = {
             teamDynamics: this.extractSignal('team_dynamics'),
             leadershipStyle: this.extractSignal('leadership_style'),
@@ -208,7 +208,7 @@ class DiagnosticEngine {
         );
     }
 
-    calculateRoleClarity() {
+    calculateRoleOptimization() {
         const roleSignals = {
             expectationClarity: this.extractSignal('expectations_clear'),
             goalAlignment: this.extractSignal('goal_alignment'),
@@ -269,7 +269,7 @@ class DiagnosticEngine {
     }
 
     determineNextStep() {
-        const maxConfidence = Math.max(...Object.values(this.diagnosticVector));
+        const maxConfidence = Math.max(...Object.values(this.optimizationVector));
         const entropy = this.calculateEntropy();
         const questionCount = this.evidence.length;
 
@@ -277,7 +277,7 @@ class DiagnosticEngine {
         if (questionCount < 20) {
             return {
                 status: 'continue_exploration',
-                diagnosis: this.diagnosticVector,
+                optimizationOpportunities: this.optimizationVector,
                 nextQuestionType: 'broad',
                 confidence: maxConfidence,
                 totalQuestions: questionCount,
@@ -287,17 +287,17 @@ class DiagnosticEngine {
 
         if (maxConfidence > this.confidenceThresholds.high && entropy < 0.5) {
             return {
-                status: 'ready_for_intervention',
-                diagnosis: this.diagnosticVector,
-                primaryDysfunction: this.getPrimaryDysfunction(),
-                recommendedIntervention: this.getInterventionRecommendation(),
+                status: 'ready_for_optimization',
+                optimizationOpportunities: this.optimizationVector,
+                primaryOpportunity: this.getPrimaryOpportunity(),
+                recommendedIntervention: this.getOptimizationRecommendation(),
                 confidence: maxConfidence,
                 totalQuestions: this.evidence.length
             };
         } else if (maxConfidence > this.confidenceThresholds.medium) {
             return {
                 status: 'need_targeted_followup',
-                diagnosis: this.diagnosticVector,
+                optimizationOpportunities: this.optimizationVector,
                 focusArea: this.getHighestUncertaintyDimension(),
                 nextQuestionType: 'targeted',
                 confidence: maxConfidence
@@ -305,7 +305,7 @@ class DiagnosticEngine {
         } else {
             return {
                 status: 'continue_exploration',
-                diagnosis: this.diagnosticVector,
+                optimizationOpportunities: this.optimizationVector,
                 nextQuestionType: 'broad',
                 confidence: maxConfidence
             };
@@ -313,7 +313,7 @@ class DiagnosticEngine {
     }
 
     calculateEntropy() {
-        const values = Object.values(this.diagnosticVector);
+        const values = Object.values(this.optimizationVector);
         const sum = values.reduce((a, b) => a + b, 0);
 
         if (sum === 0) return 1; // Maximum uncertainty
@@ -324,8 +324,8 @@ class DiagnosticEngine {
         }, 0) / Math.log2(values.length);
     }
 
-    getPrimaryDysfunction() {
-        const sorted = Object.entries(this.diagnosticVector)
+    getPrimaryOpportunity() {
+        const sorted = Object.entries(this.optimizationVector)
             .sort(([,a], [,b]) => b - a);
         return {
             primary: sorted[0][0],
@@ -337,33 +337,33 @@ class DiagnosticEngine {
 
     getHighestUncertaintyDimension() {
         // Find dimension closest to 0.5 (maximum uncertainty)
-        const uncertainties = Object.entries(this.diagnosticVector)
+        const uncertainties = Object.entries(this.optimizationVector)
             .map(([key, prob]) => [key, Math.abs(prob - 0.5)])
             .sort((a, b) => a[1] - b[1]);
 
         return uncertainties[0][0];
     }
 
-    getInterventionRecommendation() {
-        const primary = this.getPrimaryDysfunction();
+    getOptimizationRecommendation() {
+        const primary = this.getPrimaryOpportunity();
 
         const interventions = {
-            structuralBarriers: {
-                type: 'organizational_consultation',
-                description: 'Organizational structure and process analysis',
+            structuralEfficiency: {
+                type: 'organizational_optimization',
+                description: 'Structural efficiency and process enhancement analysis',
                 provider: 'management_consultant',
                 urgency: 'high'
             },
-            individualStress: {
-                type: 'personal_coaching',
-                description: 'Individual stress management and coping strategies',
-                provider: 'dr_thomas_neuroevaluator',
+            individualResilience: {
+                type: 'resilience_coaching',
+                description: 'Individual resilience building and performance optimization',
+                provider: 'performance_coach',
                 urgency: 'medium'
             },
-            organizationalDysfunction: {
-                type: 'culture_transformation',
-                description: 'Company-wide culture and leadership development',
-                provider: 'organizational_psychologist',
+            organizationalAlignment: {
+                type: 'culture_enhancement',
+                description: 'Organizational alignment and leadership effectiveness',
+                provider: 'organizational_development_specialist',
                 urgency: 'high'
             },
             workLifeIntegration: {
@@ -372,22 +372,22 @@ class DiagnosticEngine {
                 provider: 'life_coach',
                 urgency: 'medium'
             },
-            meetingCulture: {
-                type: 'meeting_optimization',
-                description: 'Meeting culture analysis and optimization',
+            meetingCultureOptimization: {
+                type: 'meeting_effectiveness',
+                description: 'Meeting culture enhancement and productivity optimization',
                 provider: 'productivity_consultant',
                 urgency: 'medium'
             },
-            psychologicalSafety: {
-                type: 'team_development',
-                description: 'Psychological safety and team dynamics improvement',
-                provider: 'team_coach',
+            teamPsychologicalSafety: {
+                type: 'team_enhancement',
+                description: 'Team psychological safety and collaboration optimization',
+                provider: 'team_development_coach',
                 urgency: 'high'
             },
-            departmentalIssues: {
-                type: 'department_analysis',
-                description: 'Department-specific dynamics and leadership',
-                provider: 'department_consultant',
+            departmentalDynamics: {
+                type: 'team_optimization',
+                description: 'Departmental dynamics enhancement and leadership development',
+                provider: 'team_effectiveness_consultant',
                 urgency: 'medium'
             },
             roleClarity: {
@@ -398,13 +398,13 @@ class DiagnosticEngine {
             }
         };
 
-        return interventions[primary.primary] || interventions.individualStress;
+        return interventions[primary.primary] || interventions.individualResilience;
     }
 
     // Save state for persistence
     getState() {
         return {
-            diagnosticVector: this.diagnosticVector,
+            optimizationVector: this.optimizationVector,
             evidence: this.evidence,
             questionHistory: this.questionHistory,
             currentQuestionIndex: this.currentQuestionIndex
@@ -413,7 +413,7 @@ class DiagnosticEngine {
 
     // Restore state from storage
     setState(state) {
-        this.diagnosticVector = state.diagnosticVector || this.diagnosticVector;
+        this.optimizationVector = state.optimizationVector || state.diagnosticVector || this.optimizationVector;
         this.evidence = state.evidence || [];
         this.questionHistory = state.questionHistory || [];
         this.currentQuestionIndex = state.currentQuestionIndex || 0;
