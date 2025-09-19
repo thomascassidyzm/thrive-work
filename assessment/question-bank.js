@@ -18,9 +18,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Completely unprepared, dreading it' },
                     { value: 2, text: 'Somewhat unprepared, feeling anxious' },
-                    { value: 3, text: 'Moderately prepared, some uncertainty' },
-                    { value: 4, text: 'Well prepared, feeling confident' },
-                    { value: 5, text: 'Completely prepared, excited to start' }
+                    { value: 3, text: 'Well prepared, feeling confident' },
+                    { value: 4, text: 'Completely prepared, excited to start' }
                 ],
                 signals: {
                     structural: { planning_barriers: 'inverse' },
@@ -37,9 +36,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Not at all - complete chaos' },
                     { value: 2, text: 'Barely organized, struggling' },
-                    { value: 3, text: 'Somewhat organized, manageable' },
-                    { value: 4, text: 'Well organized, clear structure' },
-                    { value: 5, text: 'Extremely organized, everything planned' }
+                    { value: 3, text: 'Well organized, clear structure' },
+                    { value: 4, text: 'Extremely organized, everything planned' }
                 ],
                 signals: {
                     structural: { resource_constraints: 'inverse', process_clarity: 'direct' },
@@ -55,9 +53,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Not at all - everything happens to me' },
                     { value: 2, text: 'Limited control over outcomes' },
-                    { value: 3, text: 'Some influence on my week' },
-                    { value: 4, text: 'Good control over most outcomes' },
-                    { value: 5, text: 'Complete agency over my week' }
+                    { value: 3, text: 'Good control over most outcomes' },
+                    { value: 4, text: 'Complete agency over my week' }
                 ],
                 signals: {
                     structural: { autonomy_level: 'direct' },
@@ -75,9 +72,8 @@ class QuestionBank {
                 options: [
                     { value: 1, text: 'Dread - mostly pointless time wasters' },
                     { value: 2, text: 'Frustration - some value but too many' },
-                    { value: 3, text: 'Neutral - part of the job' },
-                    { value: 4, text: 'Positive - generally productive' },
-                    { value: 5, text: 'Excited - great collaboration time' }
+                    { value: 3, text: 'Positive - generally productive' },
+                    { value: 4, text: 'Excited - great collaboration time' }
                 ],
                 signals: {
                     meetingCulture: { meeting_satisfaction: 'direct', time_waste_perception: 'inverse' },
@@ -1167,11 +1163,11 @@ class QuestionBank {
 
                     // Apply signal direction transformation
                     if (direction === 'inverse') {
-                        value = 6 - value; // Invert 1-5 scale
+                        value = 5 - value; // Invert 1-4 scale
                     }
 
-                    // Normalize to -2 to +2 range for sigmoid function
-                    signals[category][signal] = (value - 3) * 0.8;
+                    // Normalize to -1.2 to +1.2 range for sigmoid function
+                    signals[category][signal] = (value - 2.5) * 0.8;
                 });
             });
         }
