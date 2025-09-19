@@ -1004,6 +1004,269 @@ class QuestionBank {
                     }
                 }
             }
+            // Additional Structural Barriers Questions
+            {
+                id: 'st003',
+                type: 'targeted',
+                category: 'structural',
+                text: 'How often do you have the tools and systems you need to do your job well?',
+                options: [
+                    { value: 1, text: 'Rarely - constantly working around limitations' },
+                    { value: 2, text: 'Sometimes - missing key tools regularly' },
+                    { value: 3, text: 'Usually - have most of what I need' },
+                    { value: 4, text: 'Always - well-equipped for my role' }
+                ],
+                signals: {
+                    structural: { resource_adequacy: 'direct', tool_availability: 'direct' },
+                    organizational: { investment_in_staff: 'direct' }
+                }
+            },
+
+            {
+                id: 'st004',
+                type: 'targeted',
+                category: 'structural',
+                text: 'When you need approval for something, how straightforward is the process?',
+                options: [
+                    { value: 1, text: 'Very complex - involves many people and steps' },
+                    { value: 2, text: 'Somewhat complex - takes longer than it should' },
+                    { value: 3, text: 'Reasonable - clear process that works' },
+                    { value: 4, text: 'Simple - quick and straightforward' }
+                ],
+                signals: {
+                    structural: { bureaucracy: 'inverse', process_efficiency: 'direct' },
+                    organizational: { decision_speed: 'direct' }
+                }
+            },
+
+            {
+                id: 'st005',
+                type: 'targeted',
+                category: 'structural',
+                text: 'How often do conflicting priorities make your work difficult?',
+                options: [
+                    { value: 1, text: 'Constantly - always juggling competing demands' },
+                    { value: 2, text: 'Frequently - often pulled in different directions' },
+                    { value: 3, text: 'Occasionally - sometimes conflicting priorities' },
+                    { value: 4, text: 'Rarely - priorities are usually clear and aligned' }
+                ],
+                signals: {
+                    structural: { priority_alignment: 'inverse', competing_demands: 'direct' },
+                    roleClarity: { expectation_clarity: 'inverse' }
+                }
+            },
+
+            {
+                id: 'st006',
+                type: 'targeted',
+                category: 'structural',
+                text: 'How well does information flow between different parts of your organization?',
+                options: [
+                    { value: 1, text: 'Poorly - departments work in silos' },
+                    { value: 2, text: 'Inconsistently - some areas communicate well, others don\'t' },
+                    { value: 3, text: 'Generally well - most information gets shared' },
+                    { value: 4, text: 'Excellently - seamless information flow' }
+                ],
+                signals: {
+                    structural: { information_flow: 'direct', organizational_silos: 'inverse' },
+                    organizational: { collaboration_systems: 'direct' }
+                }
+            },
+
+            // Additional Role Clarity Questions
+            {
+                id: 'rc003',
+                type: 'targeted',
+                category: 'role_clarity',
+                text: 'How often do you wonder if you\'re focusing on the right things?',
+                options: [
+                    { value: 1, text: 'Constantly - unsure what matters most' },
+                    { value: 2, text: 'Often - second-guessing my priorities' },
+                    { value: 3, text: 'Occasionally - mostly clear on priorities' },
+                    { value: 4, text: 'Rarely - very clear on what\'s important' }
+                ],
+                signals: {
+                    roleClarity: { priority_clarity: 'inverse', role_confidence: 'inverse' },
+                    individual: { decision_confidence: 'inverse' }
+                }
+            },
+
+            {
+                id: 'rc004',
+                type: 'targeted',
+                category: 'role_clarity',
+                text: 'How clear are you about what success looks like in your role?',
+                options: [
+                    { value: 1, text: 'Very unclear - unsure how I\'m being evaluated' },
+                    { value: 2, text: 'Somewhat unclear - general idea but not specific' },
+                    { value: 3, text: 'Mostly clear - understand most expectations' },
+                    { value: 4, text: 'Very clear - know exactly what success means' }
+                ],
+                signals: {
+                    roleClarity: { success_metrics: 'direct', performance_clarity: 'direct' },
+                    organizational: { feedback_systems: 'direct' }
+                }
+            },
+
+            {
+                id: 'rc005',
+                type: 'targeted',
+                category: 'role_clarity',
+                text: 'How often do you take on tasks that probably aren\'t your responsibility?',
+                options: [
+                    { value: 1, text: 'Very often - constantly doing others\' work' },
+                    { value: 2, text: 'Fairly often - hard to say no to requests' },
+                    { value: 3, text: 'Occasionally - sometimes help out' },
+                    { value: 4, text: 'Rarely - clear boundaries on my role' }
+                ],
+                signals: {
+                    roleClarity: { boundary_clarity: 'inverse', role_definition: 'inverse' },
+                    individual: { boundary_setting: 'inverse', agreeableness: 'direct' }
+                }
+            },
+
+            // Additional Work-Life Integration Questions
+            {
+                id: 'wl009',
+                type: 'targeted',
+                category: 'worklife',
+                text: 'How often do you think about work when you\'re trying to relax?',
+                options: [
+                    { value: 1, text: 'Constantly - can\'t switch off' },
+                    { value: 2, text: 'Often - work thoughts intrude regularly' },
+                    { value: 3, text: 'Sometimes - occasional work thoughts' },
+                    { value: 4, text: 'Rarely - able to fully disconnect' }
+                ],
+                signals: {
+                    workLifeIntegration: { mental_separation: 'inverse', work_intrusion: 'direct' },
+                    individual: { rumination: 'direct', stress_regulation: 'inverse' }
+                }
+            },
+
+            {
+                id: 'wl010',
+                type: 'targeted',
+                category: 'worklife',
+                text: 'How do you feel about your current work schedule flexibility?',
+                options: [
+                    { value: 1, text: 'Very frustrated - no flexibility at all' },
+                    { value: 2, text: 'Somewhat frustrated - limited flexibility' },
+                    { value: 3, text: 'Generally satisfied - reasonable flexibility' },
+                    { value: 4, text: 'Very satisfied - excellent flexibility' }
+                ],
+                signals: {
+                    workLifeIntegration: { schedule_flexibility: 'direct', autonomy: 'direct' },
+                    structural: { flexibility_policies: 'direct' }
+                }
+            },
+
+            {
+                id: 'wl011',
+                type: 'targeted',
+                category: 'worklife',
+                text: 'How often does work prevent you from doing things that matter to you personally?',
+                options: [
+                    { value: 1, text: 'Very often - work always comes first' },
+                    { value: 2, text: 'Often - frequently miss personal activities' },
+                    { value: 3, text: 'Sometimes - occasional conflicts' },
+                    { value: 4, text: 'Rarely - good balance between work and personal' }
+                ],
+                signals: {
+                    workLifeIntegration: { personal_sacrifice: 'direct', life_balance: 'inverse' },
+                    structural: { workload_sustainability: 'inverse' }
+                }
+            },
+
+            // Reverse-Coded Validation Questions
+            {
+                id: 'val001',
+                type: 'validation',
+                category: 'consistency_check',
+                text: 'How often do you feel completely stress-free at work?',
+                options: [
+                    { value: 1, text: 'Never - always feel some stress' },
+                    { value: 2, text: 'Rarely - occasional stress-free moments' },
+                    { value: 3, text: 'Sometimes - regularly feel relaxed' },
+                    { value: 4, text: 'Very often - usually stress-free' }
+                ],
+                signals: {
+                    individual: { stress_level: 'inverse', self_awareness: 'mixed' },
+                    validation: { stress_consistency: 'reverse_coded' }
+                },
+                validationPair: 'stress_related_questions'
+            },
+
+            {
+                id: 'val002',
+                type: 'validation',
+                category: 'consistency_check',
+                text: 'I never have any conflicts with colleagues',
+                options: [
+                    { value: 1, text: 'Completely false - I have regular conflicts' },
+                    { value: 2, text: 'Mostly false - I have occasional conflicts' },
+                    { value: 3, text: 'Mostly true - very few conflicts' },
+                    { value: 4, text: 'Completely true - never any conflicts' }
+                ],
+                signals: {
+                    psychologicalSafety: { conflict_admission: 'inverse' },
+                    validation: { social_desirability: 'direct', honesty_check: 'inverse' }
+                },
+                validationPair: 'team_dynamics'
+            },
+
+            {
+                id: 'val003',
+                type: 'validation',
+                category: 'social_desirability',
+                text: 'How often do you check personal messages during work hours?',
+                options: [
+                    { value: 1, text: 'Never - completely focused on work' },
+                    { value: 2, text: 'Rarely - only for urgent matters' },
+                    { value: 3, text: 'Sometimes - brief checks throughout the day' },
+                    { value: 4, text: 'Often - regularly check personal messages' }
+                ],
+                signals: {
+                    individual: { honesty_indicator: 'direct', self_awareness: 'direct' },
+                    validation: { social_desirability_bias: 'inverse' }
+                },
+                validationPair: 'honesty_baseline'
+            },
+
+            // Additional OCEAN Behavioral Scenarios
+            {
+                id: 'oc006',
+                type: 'targeted',
+                category: 'ocean_conscientiousness',
+                text: 'You\'re running late for a meeting because the previous one overran. You:',
+                options: [
+                    { value: 1, text: 'Slip in quietly and hope nobody notices' },
+                    { value: 2, text: 'Send a quick message explaining the delay' },
+                    { value: 3, text: 'Apologize briefly to the group when you arrive' },
+                    { value: 4, text: 'Stay late to make up for the lost time later' }
+                ],
+                signals: {
+                    individual: { conscientiousness: 'mixed', accountability: 'direct' },
+                    psychologicalSafety: { mistake_handling: 'direct' }
+                }
+            },
+
+            {
+                id: 'oc007',
+                type: 'targeted',
+                category: 'ocean_openness',
+                text: 'Your company is implementing a new software system. Your first reaction is:',
+                options: [
+                    { value: 1, text: 'Worry about learning curve and potential problems' },
+                    { value: 2, text: 'Wait to see how others adapt before trying it' },
+                    { value: 3, text: 'Feel curious about new features and possibilities' },
+                    { value: 4, text: 'Get excited and volunteer to be an early adopter' }
+                ],
+                signals: {
+                    individual: { openness: 'direct', change_tolerance: 'direct', neophobia: 'inverse' },
+                    organizational: { change_adaptation: 'direct' }
+                }
+            }
+
         ];
     }
 
