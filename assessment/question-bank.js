@@ -1265,6 +1265,289 @@ class QuestionBank {
                     individual: { openness: 'direct', change_tolerance: 'direct', neophobia: 'inverse' },
                     organizational: { change_adaptation: 'direct' }
                 }
+            },
+
+            // Organizational Alignment Questions
+            {
+                id: 'org001',
+                type: 'targeted',
+                category: 'organizational',
+                text: 'How well do your company\'s stated values match what actually happens day-to-day?',
+                options: [
+                    { value: 1, text: 'Very poorly - values are just words on the wall' },
+                    { value: 2, text: 'Somewhat poorly - significant gaps between values and reality' },
+                    { value: 3, text: 'Reasonably well - values are mostly reflected in practice' },
+                    { value: 4, text: 'Very well - values genuinely guide daily decisions' }
+                ],
+                signals: {
+                    organizationalAlignment: { values_authenticity: 'direct', culture_integrity: 'direct' },
+                    individual: { cynicism: 'inverse', values_alignment: 'direct' }
+                }
+            },
+
+            {
+                id: 'org002',
+                type: 'targeted',
+                category: 'organizational',
+                text: 'When senior leadership makes decisions, how well do they explain the reasoning?',
+                options: [
+                    { value: 1, text: 'Very poorly - decisions seem arbitrary and unexplained' },
+                    { value: 2, text: 'Somewhat poorly - limited explanation, unclear reasoning' },
+                    { value: 3, text: 'Reasonably well - usually understand the rationale' },
+                    { value: 4, text: 'Very well - transparent reasoning and clear communication' }
+                ],
+                signals: {
+                    organizationalAlignment: { leadership_transparency: 'direct', trust_in_leadership: 'direct' },
+                    psychologicalSafety: { information_safety: 'direct' }
+                }
+            },
+
+            {
+                id: 'org003',
+                type: 'targeted',
+                category: 'organizational',
+                text: 'How confident are you that your company will still be thriving in 5 years?',
+                options: [
+                    { value: 1, text: 'Not confident - worried about the future' },
+                    { value: 2, text: 'Somewhat uncertain - mixed feelings about prospects' },
+                    { value: 3, text: 'Reasonably confident - generally optimistic' },
+                    { value: 4, text: 'Very confident - excited about the future' }
+                ],
+                signals: {
+                    organizationalAlignment: { future_confidence: 'direct', organizational_stability: 'direct' },
+                    individual: { job_security: 'direct', optimism: 'direct' }
+                }
+            },
+
+            {
+                id: 'org004',
+                type: 'targeted',
+                category: 'organizational',
+                text: 'How fairly do you think promotions and opportunities are distributed?',
+                options: [
+                    { value: 1, text: 'Very unfairly - based on politics not merit' },
+                    { value: 2, text: 'Somewhat unfairly - some bias in decision-making' },
+                    { value: 3, text: 'Fairly well - generally merit-based with some exceptions' },
+                    { value: 4, text: 'Very fairly - consistently merit-based and transparent' }
+                ],
+                signals: {
+                    organizationalAlignment: { fairness_perception: 'direct', meritocracy: 'direct' },
+                    psychologicalSafety: { advancement_safety: 'direct' }
+                }
+            },
+
+            {
+                id: 'org005',
+                type: 'targeted',
+                category: 'organizational',
+                text: 'When your company faces challenges, how honest is leadership about the situation?',
+                options: [
+                    { value: 1, text: 'Very dishonest - information is hidden or sugar-coated' },
+                    { value: 2, text: 'Somewhat dishonest - partial truth, some spin' },
+                    { value: 3, text: 'Generally honest - truthful with minor omissions' },
+                    { value: 4, text: 'Very honest - transparent about challenges and plans' }
+                ],
+                signals: {
+                    organizationalAlignment: { crisis_transparency: 'direct', leadership_honesty: 'direct' },
+                    psychologicalSafety: { truth_telling_safety: 'direct' }
+                }
+            },
+
+            // More Validation Questions (Reverse-Coded)
+            {
+                id: 'val004',
+                type: 'validation',
+                category: 'consistency_check',
+                text: 'I always feel perfectly organized and on top of everything at work',
+                options: [
+                    { value: 1, text: 'Completely false - I often feel overwhelmed' },
+                    { value: 2, text: 'Mostly false - I sometimes struggle with organization' },
+                    { value: 3, text: 'Mostly true - I\'m usually well-organized' },
+                    { value: 4, text: 'Completely true - I\'m always perfectly organized' }
+                ],
+                signals: {
+                    individual: { organization_honesty: 'mixed', self_awareness: 'direct' },
+                    validation: { perfectionism_check: 'direct', honesty_indicator: 'inverse' }
+                },
+                validationPair: 'organization_questions'
+            },
+
+            {
+                id: 'val005',
+                type: 'validation',
+                category: 'social_desirability',
+                text: 'How often do you privately disagree with decisions your manager makes?',
+                options: [
+                    { value: 1, text: 'Never - I always agree with my manager' },
+                    { value: 2, text: 'Rarely - occasional minor disagreements' },
+                    { value: 3, text: 'Sometimes - regular disagreements on some issues' },
+                    { value: 4, text: 'Often - frequently disagree with their approach' }
+                ],
+                signals: {
+                    individual: { honesty_about_authority: 'direct', independence: 'direct' },
+                    validation: { authority_deference_bias: 'inverse' },
+                    psychologicalSafety: { dissent_comfort: 'mixed' }
+                },
+                validationPair: 'authority_relationship'
+            },
+
+            {
+                id: 'val006',
+                type: 'validation',
+                category: 'consistency_check',
+                text: 'I never make any mistakes in my work',
+                options: [
+                    { value: 1, text: 'Completely false - I make mistakes like everyone' },
+                    { value: 2, text: 'Mostly false - I make occasional mistakes' },
+                    { value: 3, text: 'Mostly true - I very rarely make mistakes' },
+                    { value: 4, text: 'Completely true - I never make mistakes' }
+                ],
+                signals: {
+                    individual: { mistake_honesty: 'inverse', self_awareness: 'inverse' },
+                    validation: { perfectionism_bias: 'direct', social_desirability: 'direct' }
+                },
+                validationPair: 'mistake_admission'
+            },
+
+            // More OCEAN Behavioral Scenarios
+            {
+                id: 'oc008',
+                type: 'targeted',
+                category: 'ocean_extraversion',
+                text: 'You\'ve been asked to present to the board of directors. Your immediate feeling is:',
+                options: [
+                    { value: 1, text: 'Dread - worried about being the center of attention' },
+                    { value: 2, text: 'Nervous - anxious but will manage' },
+                    { value: 3, text: 'Excited - looking forward to the opportunity' },
+                    { value: 4, text: 'Thrilled - love high-stakes presentations' }
+                ],
+                signals: {
+                    individual: { extraversion: 'direct', status_comfort: 'direct', presentation_anxiety: 'inverse' },
+                    psychologicalSafety: { hierarchy_comfort: 'direct' }
+                }
+            },
+
+            {
+                id: 'oc009',
+                type: 'targeted',
+                category: 'ocean_agreeableness',
+                text: 'A colleague takes credit for your idea in a meeting. You:',
+                options: [
+                    { value: 1, text: 'Let it slide to avoid making them look bad' },
+                    { value: 2, text: 'Mention it privately to them afterward' },
+                    { value: 3, text: 'Politely clarify the origin in the meeting' },
+                    { value: 4, text: 'Call it out directly and assertively' }
+                ],
+                signals: {
+                    individual: { agreeableness: 'inverse', assertiveness: 'direct', conflict_tolerance: 'direct' },
+                    psychologicalSafety: { self_advocacy: 'direct' }
+                }
+            },
+
+            {
+                id: 'oc010',
+                type: 'targeted',
+                category: 'ocean_neuroticism',
+                text: 'You receive an email marked "urgent" from your boss at 6pm on Friday. You:',
+                options: [
+                    { value: 1, text: 'Drop everything and respond immediately, feeling stressed' },
+                    { value: 2, text: 'Read it but wait until Monday unless truly critical' },
+                    { value: 3, text: 'Quickly check if it needs immediate attention' },
+                    { value: 4, text: 'Ignore it completely until Monday morning' }
+                ],
+                signals: {
+                    individual: { neuroticism: 'mixed', anxiety_response: 'mixed', boundary_setting: 'mixed' },
+                    workLifeIntegration: { weekend_boundaries: 'mixed' }
+                }
+            },
+
+            // Speed/Attention Validation Questions
+            {
+                id: 'val007',
+                type: 'validation',
+                category: 'attention_check',
+                text: 'For this question, please select "Sometimes - brief checks throughout the day" to show you\'re reading carefully',
+                options: [
+                    { value: 1, text: 'Never - completely focused' },
+                    { value: 2, text: 'Rarely - only urgent matters' },
+                    { value: 3, text: 'Sometimes - brief checks throughout the day' },
+                    { value: 4, text: 'Often - regularly check messages' }
+                ],
+                signals: {
+                    validation: { attention_check: 'direct', response_quality: 'direct' }
+                },
+                validationPair: 'attention_validation'
+            },
+
+            // Additional Structural Questions
+            {
+                id: 'st007',
+                type: 'targeted',
+                category: 'structural',
+                text: 'How often do you feel like you\'re working harder, not smarter, due to poor systems?',
+                options: [
+                    { value: 1, text: 'Constantly - systems create unnecessary work' },
+                    { value: 2, text: 'Often - inefficient processes slow me down' },
+                    { value: 3, text: 'Sometimes - occasional system frustrations' },
+                    { value: 4, text: 'Rarely - systems generally support efficiency' }
+                ],
+                signals: {
+                    structural: { system_efficiency: 'inverse', process_frustration: 'direct' },
+                    individual: { work_smart_ability: 'inverse' }
+                }
+            },
+
+            {
+                id: 'st008',
+                type: 'targeted',
+                category: 'structural',
+                text: 'When you need to collaborate across departments, how smooth is the process?',
+                options: [
+                    { value: 1, text: 'Very difficult - departments don\'t work well together' },
+                    { value: 2, text: 'Somewhat difficult - some friction and delays' },
+                    { value: 3, text: 'Generally smooth - minor occasional issues' },
+                    { value: 4, text: 'Very smooth - seamless cross-department work' }
+                ],
+                signals: {
+                    structural: { cross_department_collaboration: 'direct', organizational_silos: 'inverse' },
+                    organizationalAlignment: { department_integration: 'direct' }
+                }
+            },
+
+            // Additional Role Clarity Questions
+            {
+                id: 'rc006',
+                type: 'targeted',
+                category: 'role_clarity',
+                text: 'How often do you get conflicting instructions from different people?',
+                options: [
+                    { value: 1, text: 'Very often - constantly managing competing demands' },
+                    { value: 2, text: 'Often - regular conflicts in direction' },
+                    { value: 3, text: 'Sometimes - occasional mixed messages' },
+                    { value: 4, text: 'Rarely - clear, consistent direction' }
+                ],
+                signals: {
+                    roleClarity: { instruction_consistency: 'inverse', authority_clarity: 'inverse' },
+                    structural: { command_structure: 'inverse' }
+                }
+            },
+
+            {
+                id: 'rc007',
+                type: 'targeted',
+                category: 'role_clarity',
+                text: 'How well do you understand how your work contributes to company goals?',
+                options: [
+                    { value: 1, text: 'Very poorly - unclear how my work matters' },
+                    { value: 2, text: 'Somewhat poorly - vague sense of contribution' },
+                    { value: 3, text: 'Generally well - understand most connections' },
+                    { value: 4, text: 'Very well - clear line from my work to company success' }
+                ],
+                signals: {
+                    roleClarity: { purpose_clarity: 'direct', impact_understanding: 'direct' },
+                    individual: { meaning_in_work: 'direct' },
+                    organizationalAlignment: { goal_connection: 'direct' }
+                }
             }
 
         ];
