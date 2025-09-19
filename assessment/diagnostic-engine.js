@@ -349,21 +349,21 @@ class DiagnosticEngine {
 
         const interventions = {
             structuralEfficiency: {
-                type: 'organizational_optimization',
-                description: 'Structural efficiency and process enhancement analysis',
+                type: 'organizational_review',
+                description: 'Look at how work gets organized and structured',
                 provider: 'management_consultant',
                 urgency: 'high'
             },
             individualResilience: {
-                type: 'resilience_coaching',
-                description: 'Individual resilience building and performance optimization',
-                provider: 'performance_coach',
+                type: 'personal_coaching',
+                description: 'Individual support for managing workplace challenges',
+                provider: 'workplace_coach',
                 urgency: 'medium'
             },
             organizationalAlignment: {
-                type: 'culture_enhancement',
-                description: 'Organizational alignment and leadership effectiveness',
-                provider: 'organizational_development_specialist',
+                type: 'company_culture_review',
+                description: 'Look at company culture and how things work together',
+                provider: 'organizational_specialist',
                 urgency: 'high'
             },
             workLifeIntegration: {
@@ -373,26 +373,26 @@ class DiagnosticEngine {
                 urgency: 'medium'
             },
             meetingCultureOptimization: {
-                type: 'meeting_effectiveness',
-                description: 'Meeting culture enhancement and productivity optimization',
+                type: 'meeting_review',
+                description: 'Look at how meetings work and how to make them better',
                 provider: 'productivity_consultant',
                 urgency: 'medium'
             },
             teamPsychologicalSafety: {
-                type: 'team_enhancement',
-                description: 'Team psychological safety and collaboration optimization',
-                provider: 'team_development_coach',
+                type: 'team_dynamics',
+                description: 'Help with how the team works together and communicates',
+                provider: 'team_coach',
                 urgency: 'high'
             },
             departmentalDynamics: {
-                type: 'team_optimization',
-                description: 'Departmental dynamics enhancement and leadership development',
-                provider: 'team_effectiveness_consultant',
+                type: 'department_review',
+                description: 'Look at how your department works and what might help',
+                provider: 'team_consultant',
                 urgency: 'medium'
             },
             roleClarity: {
-                type: 'role_optimization',
-                description: 'Role clarity and expectation alignment',
+                type: 'role_discussion',
+                description: 'Clarify what\'s expected in your role and how it fits',
                 provider: 'hr_consultant',
                 urgency: 'medium'
             }

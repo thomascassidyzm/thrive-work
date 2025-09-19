@@ -235,7 +235,7 @@ class AdaptiveAssessmentController {
 
     getProgressMessage(questionCount, result) {
         if (result?.status === 'ready_for_optimization') {
-            return ' • Optimization insights ready!';
+            return ' • Insights ready!';
         } else if (questionCount < 10) {
             return ' • Building foundation for analysis...';
         } else if (questionCount < 15) {
@@ -317,11 +317,11 @@ class AdaptiveAssessmentController {
         const maxConfidence = Math.max(...Object.values(result.optimizationOpportunities));
 
         if (maxConfidence > 0.6) {
-            insightText = 'Strong optimization patterns emerging - insights developing';
+            insightText = 'Some clear patterns emerging - almost ready for insights';
         } else if (maxConfidence > 0.3) {
-            insightText = 'Growth opportunities emerging - continuing targeted assessment';
+            insightText = 'A few things worth exploring - continuing assessment';
         } else {
-            insightText = 'Exploring your unique workplace optimization potential';
+            insightText = 'Getting a sense of your workplace experience';
         }
 
         insightElement.innerHTML = `<div class="insight-text">${insightText}</div>`;
