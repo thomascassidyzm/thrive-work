@@ -1855,6 +1855,454 @@ class QuestionBank {
                     individual: { empathy: 'direct', prosocial_behavior: 'direct' },
                     organizationalAlignment: { supportive_culture: 'direct' }
                 }
+            },
+
+            // Final Validation Questions - Complete the Suite
+            {
+                id: 'val012',
+                type: 'validation',
+                category: 'consistency_check',
+                text: 'I never experience any stress or pressure at work',
+                options: [
+                    { value: 1, text: 'Completely false - I experience regular stress' },
+                    { value: 2, text: 'Mostly false - I have some stressful periods' },
+                    { value: 3, text: 'Mostly true - very little stress in my role' },
+                    { value: 4, text: 'Completely true - absolutely no stress ever' }
+                ],
+                signals: {
+                    individual: { stress_honesty: 'inverse', self_awareness: 'inverse' },
+                    validation: { stress_denial: 'direct', perfectionism_bias: 'direct' }
+                },
+                validationPair: 'stress_consistency'
+            },
+
+            {
+                id: 'val013',
+                type: 'validation',
+                category: 'social_desirability',
+                text: 'How often do you daydream or lose focus during meetings?',
+                options: [
+                    { value: 1, text: 'Never - I\'m always completely focused' },
+                    { value: 2, text: 'Rarely - only when meetings are very long' },
+                    { value: 3, text: 'Sometimes - depends on the topic and format' },
+                    { value: 4, text: 'Often - I struggle to stay engaged in most meetings' }
+                ],
+                signals: {
+                    individual: { attention_honesty: 'direct', meeting_engagement: 'mixed' },
+                    validation: { focus_perfectionism: 'inverse', honesty_indicator: 'direct' }
+                },
+                validationPair: 'attention_honesty'
+            },
+
+            {
+                id: 'val014',
+                type: 'validation',
+                category: 'response_speed',
+                text: 'How often do you procrastinate on tasks you find boring or difficult?',
+                options: [
+                    { value: 1, text: 'Never - I always tackle tasks immediately' },
+                    { value: 2, text: 'Rarely - only on particularly unpleasant tasks' },
+                    { value: 3, text: 'Sometimes - depends on my mood and workload' },
+                    { value: 4, text: 'Often - I regularly put off challenging work' }
+                ],
+                signals: {
+                    individual: { procrastination_honesty: 'direct', conscientiousness: 'mixed' },
+                    validation: { behavioral_honesty: 'direct', social_desirability: 'inverse' }
+                },
+                validationPair: 'work_behavior_honesty'
+            },
+
+            {
+                id: 'val015',
+                type: 'validation',
+                category: 'attention_check',
+                text: 'This is an attention check. Please select "Generally comfortable - would ask for clarification" to continue.',
+                options: [
+                    { value: 1, text: 'Very uncomfortable - would avoid asking' },
+                    { value: 2, text: 'Somewhat uncomfortable - might ask privately' },
+                    { value: 3, text: 'Generally comfortable - would ask for clarification' },
+                    { value: 4, text: 'Very comfortable - always ask questions' }
+                ],
+                signals: {
+                    validation: { attention_check_2: 'direct', instruction_following: 'direct' }
+                },
+                validationPair: 'attention_validation_3'
+            },
+
+            // Additional OCEAN Scenarios - Complete the Suite
+            {
+                id: 'oc015',
+                type: 'targeted',
+                category: 'ocean_neuroticism',
+                text: 'Your team\'s project deadline has been moved up by two weeks. Your immediate reaction is:',
+                options: [
+                    { value: 1, text: 'Panic - feel overwhelmed and stressed about impossible timeline' },
+                    { value: 2, text: 'Worry - concerned about quality with rushed schedule' },
+                    { value: 3, text: 'Focus - immediately start planning how to adapt' },
+                    { value: 4, text: 'Energize - thrive on the challenge and urgency' }
+                ],
+                signals: {
+                    individual: { neuroticism: 'inverse', stress_response: 'inverse', challenge_response: 'direct' },
+                    structural: { deadline_pressure: 'mixed' }
+                }
+            },
+
+            {
+                id: 'oc016',
+                type: 'targeted',
+                category: 'ocean_openness',
+                text: 'You\'re invited to join a cross-functional project in an area you know nothing about. You:',
+                options: [
+                    { value: 1, text: 'Decline - prefer to stick to what I know well' },
+                    { value: 2, text: 'Hesitate - worried about being out of my depth' },
+                    { value: 3, text: 'Accept cautiously - willing to learn but nervous' },
+                    { value: 4, text: 'Jump at the chance - love learning new domains' }
+                ],
+                signals: {
+                    individual: { openness: 'direct', learning_orientation: 'direct', comfort_zone_expansion: 'direct' },
+                    organizational: { cross_functional_collaboration: 'direct' }
+                }
+            },
+
+            {
+                id: 'oc017',
+                type: 'targeted',
+                category: 'ocean_extraversion',
+                text: 'At a company social event, you typically:',
+                options: [
+                    { value: 1, text: 'Stay briefly then leave early - these events drain me' },
+                    { value: 2, text: 'Find one person I know and stick with them' },
+                    { value: 3, text: 'Mingle with several people throughout the event' },
+                    { value: 4, text: 'Work the room, meeting as many people as possible' }
+                ],
+                signals: {
+                    individual: { extraversion: 'direct', social_energy: 'direct', networking_comfort: 'direct' },
+                    organizationalAlignment: { social_integration: 'direct' }
+                }
+            },
+
+            // Additional Entry Questions
+            {
+                id: 'wp013',
+                type: 'entry',
+                category: 'learning_culture',
+                text: 'How supported do you feel when you need to learn new skills for your role?',
+                options: [
+                    { value: 1, text: 'Not supported - expected to figure it out alone' },
+                    { value: 2, text: 'Minimally supported - limited resources available' },
+                    { value: 3, text: 'Well supported - good resources and guidance' },
+                    { value: 4, text: 'Excellently supported - comprehensive learning opportunities' }
+                ],
+                signals: {
+                    organizationalAlignment: { learning_support: 'direct', development_investment: 'direct' },
+                    structural: { training_resources: 'direct' },
+                    individual: { growth_opportunity: 'direct' }
+                }
+            },
+
+            {
+                id: 'wp014',
+                type: 'entry',
+                category: 'recognition_culture',
+                text: 'How often do you receive recognition for good work?',
+                options: [
+                    { value: 1, text: 'Never - good work goes unnoticed' },
+                    { value: 2, text: 'Rarely - occasional acknowledgment' },
+                    { value: 3, text: 'Regularly - consistent recognition for contributions' },
+                    { value: 4, text: 'Frequently - strong culture of appreciation' }
+                ],
+                signals: {
+                    organizationalAlignment: { recognition_culture: 'direct', appreciation_frequency: 'direct' },
+                    individual: { motivation: 'direct', job_satisfaction: 'direct' },
+                    psychologicalSafety: { contribution_visibility: 'direct' }
+                }
+            },
+
+            {
+                id: 'wp015',
+                type: 'entry',
+                category: 'innovation_culture',
+                text: 'How comfortable do you feel suggesting new ways of doing things?',
+                options: [
+                    { value: 1, text: 'Very uncomfortable - stick to established methods' },
+                    { value: 2, text: 'Somewhat uncomfortable - only suggest safe improvements' },
+                    { value: 3, text: 'Generally comfortable - share ideas when appropriate' },
+                    { value: 4, text: 'Very comfortable - regularly propose innovations' }
+                ],
+                signals: {
+                    psychologicalSafety: { innovation_safety: 'direct', idea_sharing_comfort: 'direct' },
+                    organizationalAlignment: { innovation_culture: 'direct' },
+                    individual: { creativity_expression: 'direct' }
+                }
+            },
+
+            // Additional Meeting Culture Questions
+            {
+                id: 'mt013',
+                type: 'targeted',
+                category: 'meetings',
+                text: 'How often do meetings you attend actually accomplish their stated purpose?',
+                options: [
+                    { value: 1, text: 'Rarely - most meetings feel pointless' },
+                    { value: 2, text: 'Sometimes - about half are effective' },
+                    { value: 3, text: 'Usually - most meetings achieve their goals' },
+                    { value: 4, text: 'Almost always - meetings are consistently productive' }
+                ],
+                signals: {
+                    meetingCultureOptimization: { meeting_effectiveness: 'direct', purpose_achievement: 'direct' },
+                    structural: { meeting_governance: 'direct' },
+                    organizationalAlignment: { process_efficiency: 'direct' }
+                }
+            },
+
+            {
+                id: 'mt014',
+                type: 'targeted',
+                category: 'meetings',
+                text: 'When someone joins a meeting late, what typically happens?',
+                options: [
+                    { value: 1, text: 'We stop everything to catch them up' },
+                    { value: 2, text: 'Someone briefly summarizes what they missed' },
+                    { value: 3, text: 'They quietly catch up on their own' },
+                    { value: 4, text: 'We continue without disruption' }
+                ],
+                signals: {
+                    meetingCultureOptimization: { meeting_discipline: 'mixed', interruption_tolerance: 'mixed' },
+                    organizationalAlignment: { time_respect: 'mixed' }
+                }
+            },
+
+            // Additional Structural Questions
+            {
+                id: 'st009',
+                type: 'targeted',
+                category: 'structural',
+                text: 'How clear are the processes for getting things done in your organization?',
+                options: [
+                    { value: 1, text: 'Very unclear - I often don\'t know how to proceed' },
+                    { value: 2, text: 'Somewhat unclear - requires asking around for guidance' },
+                    { value: 3, text: 'Generally clear - most processes are documented' },
+                    { value: 4, text: 'Very clear - comprehensive and accessible process guides' }
+                ],
+                signals: {
+                    structural: { process_clarity: 'direct', documentation_quality: 'direct' },
+                    organizationalAlignment: { operational_efficiency: 'direct' },
+                    individual: { navigation_ease: 'direct' }
+                }
+            },
+
+            {
+                id: 'st010',
+                type: 'targeted',
+                category: 'structural',
+                text: 'How often do you encounter technical problems that slow down your work?',
+                options: [
+                    { value: 1, text: 'Daily - constant technical frustrations' },
+                    { value: 2, text: 'Weekly - regular technical barriers' },
+                    { value: 3, text: 'Monthly - occasional technical issues' },
+                    { value: 4, text: 'Rarely - technology supports my work well' }
+                ],
+                signals: {
+                    structural: { technical_infrastructure: 'inverse', system_reliability: 'inverse' },
+                    individual: { technical_frustration: 'direct' },
+                    organizationalAlignment: { technology_investment: 'inverse' }
+                }
+            },
+
+            // More Complex Psychological Safety Questions
+            {
+                id: 'ps007',
+                type: 'targeted',
+                category: 'psychological_safety',
+                text: 'If you had a personal emergency during work hours, how comfortable would you feel telling your manager?',
+                options: [
+                    { value: 1, text: 'Very uncomfortable - would try to handle it secretly' },
+                    { value: 2, text: 'Somewhat uncomfortable - only if absolutely necessary' },
+                    { value: 3, text: 'Generally comfortable - would explain the situation' },
+                    { value: 4, text: 'Very comfortable - confident in understanding and support' }
+                ],
+                signals: {
+                    psychologicalSafety: { personal_safety: 'direct', vulnerability_comfort: 'direct' },
+                    organizationalAlignment: { human_understanding: 'direct' },
+                    workLifeIntegration: { personal_priority_acceptance: 'direct' }
+                }
+            },
+
+            {
+                id: 'ps008',
+                type: 'targeted',
+                category: 'psychological_safety',
+                text: 'How comfortable would you feel disagreeing with a decision your team has already committed to?',
+                options: [
+                    { value: 1, text: 'Very uncomfortable - wouldn\'t want to rock the boat' },
+                    { value: 2, text: 'Somewhat uncomfortable - might express concerns privately' },
+                    { value: 3, text: 'Generally comfortable - would voice thoughtful objections' },
+                    { value: 4, text: 'Very comfortable - important to speak up about concerns' }
+                ],
+                signals: {
+                    psychologicalSafety: { post_decision_dissent: 'direct', commitment_vs_safety: 'mixed' },
+                    individual: { conviction_strength: 'direct' },
+                    organizationalAlignment: { dissent_tolerance: 'direct' }
+                }
+            },
+
+            // Additional Role Clarity Questions
+            {
+                id: 'rc008',
+                type: 'targeted',
+                category: 'role_clarity',
+                text: 'How well does your actual daily work match your official job description?',
+                options: [
+                    { value: 1, text: 'Very poorly - completely different from job description' },
+                    { value: 2, text: 'Somewhat poorly - significant differences' },
+                    { value: 3, text: 'Generally well - mostly aligned with some variations' },
+                    { value: 4, text: 'Very well - job description accurately reflects my work' }
+                ],
+                signals: {
+                    roleClarity: { role_accuracy: 'direct', job_description_relevance: 'direct' },
+                    structural: { role_definition_quality: 'direct' },
+                    organizationalAlignment: { role_management: 'direct' }
+                }
+            },
+
+            // Final Validation Questions
+            {
+                id: 'val016',
+                type: 'validation',
+                category: 'consistency_check',
+                text: 'My workload is always perfectly manageable and never overwhelming',
+                options: [
+                    { value: 1, text: 'Completely false - often feel overwhelmed' },
+                    { value: 2, text: 'Mostly false - sometimes struggle with workload' },
+                    { value: 3, text: 'Mostly true - generally manageable with busy periods' },
+                    { value: 4, text: 'Completely true - never feel overwhelmed ever' }
+                ],
+                signals: {
+                    individual: { workload_honesty: 'mixed', self_awareness: 'direct' },
+                    validation: { workload_perfectionism: 'direct', stress_denial: 'mixed' }
+                },
+                validationPair: 'workload_consistency'
+            },
+
+            {
+                id: 'val017',
+                type: 'validation',
+                category: 'social_desirability',
+                text: 'How often do you check social media or news websites during work hours?',
+                options: [
+                    { value: 1, text: 'Never - I never visit non-work websites during work' },
+                    { value: 2, text: 'Rarely - only during breaks or lunch' },
+                    { value: 3, text: 'Occasionally - brief checks when work is slow' },
+                    { value: 4, text: 'Regularly - several times throughout the day' }
+                ],
+                signals: {
+                    individual: { digital_behavior_honesty: 'direct', self_control: 'mixed' },
+                    validation: { social_desirability_extreme: 'inverse', behavioral_honesty: 'direct' }
+                },
+                validationPair: 'digital_behavior_honesty'
+            },
+
+            // Final Comprehensive Questions - Bringing us to 122+
+            {
+                id: 'struct003',
+                type: 'targeted',
+                category: 'structural',
+                text: 'When you need approval for something, how clear is the process?',
+                options: [
+                    { value: 1, text: 'Very unclear - have to guess who to ask' },
+                    { value: 2, text: 'Somewhat unclear - unclear chain of command' },
+                    { value: 3, text: 'Mostly clear - generally know the right path' },
+                    { value: 4, text: 'Very clear - straightforward approval process' }
+                ],
+                signals: {
+                    structuralEfficiency: { approval_clarity: 'direct', process_transparency: 'direct' },
+                    organizational: { hierarchy_clarity: 'direct' }
+                }
+            },
+
+            {
+                id: 'team006',
+                type: 'targeted',
+                category: 'team_dynamics',
+                text: 'How comfortable are you sharing personal challenges that might affect your work?',
+                options: [
+                    { value: 1, text: 'Very uncomfortable - keep personal life completely separate' },
+                    { value: 2, text: 'Somewhat uncomfortable - only share when absolutely necessary' },
+                    { value: 3, text: 'Mostly comfortable - share relevant challenges' },
+                    { value: 4, text: 'Very comfortable - open about personal circumstances' }
+                ],
+                signals: {
+                    psychologicalSafety: { personal_disclosure: 'direct', vulnerability_comfort: 'direct' },
+                    individual: { boundary_permeability: 'direct', openness: 'direct' }
+                }
+            },
+
+            {
+                id: 'dept004',
+                type: 'targeted',
+                category: 'departmental',
+                text: 'How often does your department celebrate successes, even small ones?',
+                options: [
+                    { value: 1, text: 'Never - successes go unnoticed' },
+                    { value: 2, text: 'Rarely - only major achievements get recognition' },
+                    { value: 3, text: 'Sometimes - occasional recognition for good work' },
+                    { value: 4, text: 'Often - regular celebration of wins big and small' }
+                ],
+                signals: {
+                    departmentalDynamics: { celebration_culture: 'direct', recognition_frequency: 'direct' },
+                    individual: { motivation_external: 'direct' }
+                }
+            },
+
+            {
+                id: 'wl011',
+                type: 'targeted',
+                category: 'worklife',
+                text: 'How easy is it to take time off when you need it?',
+                options: [
+                    { value: 1, text: 'Very difficult - guilt or pressure prevents taking time off' },
+                    { value: 2, text: 'Somewhat difficult - hesitate due to workload concerns' },
+                    { value: 3, text: 'Mostly easy - can usually arrange time off' },
+                    { value: 4, text: 'Very easy - no barriers to taking needed time off' }
+                ],
+                signals: {
+                    workLifeIntegration: { time_off_accessibility: 'direct', recovery_support: 'direct' },
+                    organizational: { time_off_culture: 'direct' }
+                }
+            },
+
+            {
+                id: 'val017',
+                type: 'validation',
+                category: 'attention_check',
+                text: 'To ensure you\'re reading carefully, please select "Sometimes - depends on the situation"',
+                options: [
+                    { value: 1, text: 'Never - completely disagree' },
+                    { value: 2, text: 'Sometimes - depends on the situation' },
+                    { value: 3, text: 'Often - mostly agree' },
+                    { value: 4, text: 'Always - completely agree' }
+                ],
+                signals: {
+                    validation: { attention_check: 'attention', reading_compliance: 'attention' }
+                },
+                validationPair: 'attention_check_final'
+            },
+
+            {
+                id: 'oc011',
+                type: 'targeted',
+                category: 'ocean_neuroticism',
+                text: 'When facing a tight deadline with unclear requirements, you typically:',
+                options: [
+                    { value: 1, text: 'Feel overwhelmed and struggle to start' },
+                    { value: 2, text: 'Feel stressed but push through methodically' },
+                    { value: 3, text: 'Feel energized by the challenge' },
+                    { value: 4, text: 'Thrive under pressure and work best this way' }
+                ],
+                signals: {
+                    individual: { neuroticism: 'inverse', stress_tolerance: 'direct', pressure_performance: 'direct' },
+                    structuralEfficiency: { ambiguity_tolerance: 'direct' }
+                }
             }
 
         ];
