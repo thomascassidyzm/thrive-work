@@ -1003,7 +1003,8 @@ class QuestionBank {
                         imposter_syndrome: 'inverse'
                     }
                 }
-            }
+            },
+
             // Additional Structural Barriers Questions
             {
                 id: 'st003',
