@@ -2362,7 +2362,7 @@ class QuestionBank {
             return 'entry';
         }
 
-        const diagnosticValues = Object.values(state.diagnosticVector);
+        const diagnosticValues = Object.values(state.optimizationVector || {});
         const maxConfidence = diagnosticValues.length > 0 ? Math.max(...diagnosticValues) : 0;
 
         if (maxConfidence > 0.4) {
