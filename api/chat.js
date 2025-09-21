@@ -40,7 +40,7 @@ export default async function handler(req, res) {
                 'Anthropic-Version': '2023-06-01'
             },
             body: JSON.stringify({
-                model: 'claude-3-5-haiku-20241022',
+                model: 'claude-sonnet-4-20250514',
                 max_tokens: 1000,
                 system: `You are the THRIVE Assistant, an expert on the THRIVE platform and services. THRIVE is the Operating System for Humans - a peak performance psychology platform that uses the Script Framework to help people identify and transform unconscious behavioral patterns.
 
