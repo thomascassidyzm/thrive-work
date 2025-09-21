@@ -209,7 +209,8 @@ class AdaptiveAssessmentController {
 
     renderConfidenceIndicators() {
         const vector = this.diagnosticEngine.optimizationVector;
-        const maxConfidence = Math.max(...Object.values(vector));
+        const values = Object.values(vector);
+        const maxConfidence = values.length > 0 ? Math.max(...values) : 0;
 
         return `
             <div class="confidence-summary">
@@ -451,27 +452,27 @@ class AdaptiveAssessmentController {
 
     getDimensionName(dimension) {
         const names = {
-            structuralBarriers: 'Structural Barriers',
-            individualStress: 'Individual Stress Patterns',
-            organizationalDysfunction: 'Organizational Dysfunction',
+            structuralEfficiency: 'Structural Barriers',
+            individualResilience: 'Individual Stress',
+            organizationalAlignment: 'Organizational Issues',
             workLifeIntegration: 'Work-Life Integration',
-            meetingCulture: 'Meeting Culture Issues',
-            psychologicalSafety: 'Psychological Safety Concerns',
-            departmentalIssues: 'Department Dynamics',
-            roleClarity: 'Role Clarity Issues'
+            meetingCultureOptimization: 'Meeting Culture',
+            teamPsychologicalSafety: 'Psychological Safety',
+            departmentalDynamics: 'Team Dynamics',
+            roleClarity: 'Role Clarity'
         };
         return names[dimension] || dimension;
     }
 
     getDimensionDescription(dimension) {
         const descriptions = {
-            structuralBarriers: 'Your challenges stem from organizational structure and process limitations that prevent effective work execution.',
-            individualStress: 'Your patterns suggest individual-level stress management and coping strategy needs.',
-            organizationalDysfunction: 'Company-wide cultural or systemic issues are impacting your work experience.',
+            structuralEfficiency: 'Your challenges stem from organizational structure and process limitations that prevent effective work execution.',
+            individualResilience: 'Your patterns suggest individual-level stress management and coping strategy needs.',
+            organizationalAlignment: 'Company-wide cultural or systemic issues are impacting your work experience.',
             workLifeIntegration: 'Difficulties with boundaries and transitions between work and personal life.',
-            meetingCulture: 'Meeting inefficiencies and cultural issues are affecting your productivity and engagement.',
-            psychologicalSafety: 'Concerns about speaking up, making mistakes, or being authentic at work.',
-            departmentalIssues: 'Team-specific dynamics and leadership issues within your immediate work group.',
+            meetingCultureOptimization: 'Meeting inefficiencies and cultural issues are affecting your productivity and engagement.',
+            teamPsychologicalSafety: 'Concerns about speaking up, making mistakes, or being authentic at work.',
+            departmentalDynamics: 'Team-specific dynamics and leadership issues within your immediate work group.',
             roleClarity: 'Unclear expectations, mismatched skills, or ambiguous responsibilities in your role.'
         };
         return descriptions[dimension] || 'Pattern identified in your work experience.';
@@ -479,17 +480,17 @@ class AdaptiveAssessmentController {
 
     getDefaultIntervention(primaryDysfunction) {
         const interventions = {
-            structuralBarriers: {
+            structuralEfficiency: {
                 type: 'organizational_consultation',
                 description: 'Organizational structure and process analysis',
                 provider: 'management_consultant'
             },
-            individualStress: {
+            individualResilience: {
                 type: 'personal_coaching',
                 description: 'Individual stress management and coping strategies',
                 provider: 'dr_thomas_neuroevaluator'
             },
-            organizationalDysfunction: {
+            organizationalAlignment: {
                 type: 'culture_transformation',
                 description: 'Company-wide culture and leadership development',
                 provider: 'organizational_psychologist'
@@ -499,17 +500,17 @@ class AdaptiveAssessmentController {
                 description: 'Work-life integration and boundary setting',
                 provider: 'life_coach'
             },
-            meetingCulture: {
+            meetingCultureOptimization: {
                 type: 'meeting_optimization',
                 description: 'Meeting culture analysis and optimization',
                 provider: 'productivity_consultant'
             },
-            psychologicalSafety: {
+            teamPsychologicalSafety: {
                 type: 'team_development',
                 description: 'Psychological safety and team dynamics improvement',
                 provider: 'team_coach'
             },
-            departmentalIssues: {
+            departmentalDynamics: {
                 type: 'department_analysis',
                 description: 'Department-specific dynamics and leadership',
                 provider: 'department_consultant'

@@ -289,12 +289,14 @@ function initializePreciseBrainPositioning() {
 function positionBrainPrecisely() {
     // DISABLED: Let CSS handle positioning instead
     return;
+
+    /* DISABLED CODE - positioning now handled by CSS
     const brainElement = document.querySelector('.brain-center');
     const textElement = document.querySelector('.brain-brand-name');
     const brainContainer = document.querySelector('.brain-logo-container');
-    
+
     if (!brainElement || !textElement || !brainContainer) return;
-    
+
     // MORE PRECISE METHOD: Create invisible measuring elements for each character
     const text = "THRiVE";
     const computedStyle = getComputedStyle(textElement);
@@ -358,9 +360,10 @@ function positionBrainPrecisely() {
     console.log(`PRECISE: Brain positioned at left=${brainLeft}px, top=${brainTop}px`);
     console.log(`PRECISE: 'i' center measured at ${iRelativeX}px from container left`);
     console.log(`PRECISE: 'i' width=${iWidth}px, offset from text start=${iCenterOffset}px`);
-    
+
     // Initialize thought word transformation after positioning is done
     setTimeout(initializeThoughtTransformation, 500);
+    */
 }
 
 // Also initialize on regular page load (not just after brain positioning)
