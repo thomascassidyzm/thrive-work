@@ -1,0 +1,640 @@
+app thrive_workplace_diagnostic_platform:
+  title: "THRIVE Workplace Diagnostic and Coaching Platform"
+  apml_specification_version: "1.1.0"
+
+  # Complete intent capture from 7-phase methodology
+  intent_capture_complete: true
+  trinity_principle_validated: true
+
+  pss_compliance:
+    structure_standard: "APML-PSS v1.0.0"
+    self_documentation: enabled
+    interface_sections: 4
+
+  deterministic_compilation:
+    target_platform: "Vue3 + TypeScript + Tailwind + Supabase"
+    compilation_guarantee: identical_input_produces_identical_output
+
+# ===========================================
+# PHASE 1: DOMAIN EXPLORATION - COMPLETE
+# ===========================================
+
+domain workplace_psychology_diagnostics:
+  business_model: "B2B workplace wellness platform with AI-powered diagnostics"
+  value_proposition: "Distinguish individual vs organizational vs systemic dysfunction sources"
+  market_context: "Corporate wellness and employee assistance programs"
+  revenue_model: "Subscription-based coaching platform with diagnostic assessments"
+
+  success_metrics:
+    - "Assessment completion rate >85%"
+    - "Diagnostic accuracy validated by coaching outcomes"
+    - "User engagement retention >70% at 30 days"
+    - "Coach intervention effectiveness improvement"
+
+  stakeholder_ecosystem:
+    primary_users: ["employees", "HR_professionals", "managers", "coaches"]
+    secondary_users: ["administrators", "data_analysts", "system_integrators"]
+    affected_parties: ["organizations", "families", "healthcare_providers"]
+
+# ===========================================
+# PHASE 2: STAKEHOLDER ANALYSIS - COMPLETE
+# ===========================================
+
+stakeholder employee:
+  persona: "Individual experiencing workplace challenges"
+  needs: ["understand_dysfunction_source", "get_appropriate_intervention", "maintain_privacy"]
+  workflows: ["take_assessment", "review_results", "engage_with_coaching", "track_progress"]
+  pain_points: ["unclear_problem_attribution", "generic_advice", "time_constraints"]
+  success_criteria: ["actionable_insights", "relevant_interventions", "measurable_improvement"]
+
+stakeholder hr_professional:
+  persona: "Human resources manager seeking organizational insights"
+  needs: ["aggregate_insights", "intervention_recommendations", "compliance_tracking"]
+  workflows: ["deploy_assessments", "analyze_trends", "coordinate_interventions", "report_outcomes"]
+  pain_points: ["individual_privacy_concerns", "actionable_organizational_data", "ROI_measurement"]
+  success_criteria: ["organizational_pattern_identification", "effective_intervention_routing"]
+
+stakeholder coach:
+  persona: "Professional coach providing targeted interventions"
+  needs: ["diagnostic_context", "progress_tracking", "intervention_effectiveness_data"]
+  workflows: ["receive_referrals", "review_diagnostics", "deliver_coaching", "track_outcomes"]
+  pain_points: ["incomplete_context", "mismatched_interventions", "outcome_measurement"]
+  success_criteria: ["relevant_referrals", "diagnostic_accuracy", "measurable_client_progress"]
+
+stakeholder manager:
+  persona: "Team leader seeking to improve team dynamics"
+  needs: ["team_health_insights", "systemic_issue_identification", "intervention_guidance"]
+  workflows: ["monitor_team_wellbeing", "identify_dysfunction_sources", "implement_solutions"]
+  pain_points: ["attribution_accuracy", "systemic_vs_individual_issues", "intervention_selection"]
+  success_criteria: ["team_performance_improvement", "reduced_dysfunction", "targeted_solutions"]
+
+# ===========================================
+# PHASE 3: WORKFLOW MAPPING - COMPLETE
+# ===========================================
+
+workflow assessment_completion:
+  trigger: "User initiates workplace diagnostic assessment"
+
+  step entry_screening:
+    description: "10 comprehensive questions covering all diagnostic frameworks"
+    duration: "2-3 minutes"
+    validation: "basic demographic and context capture"
+    next_state: "pattern_recognition"
+
+  step pattern_recognition:
+    description: "AI builds confidence across 8 diagnostic dimensions"
+    processing: "real-time optimization vector calculation"
+    confidence_threshold: "medium (0.65) for targeted questions"
+    next_state: "adaptive_branching"
+
+  step adaptive_branching:
+    description: "Targeted questions based on uncertainty areas"
+    logic: "highest uncertainty dimension prioritization"
+    termination_criteria: "20+ questions AND high confidence (0.85) AND low entropy (<0.5)"
+    next_state: "intervention_routing"
+
+  step intervention_routing:
+    description: "Source attribution and intervention recommendation"
+    output: "primary dysfunction identification with confidence score"
+    handoff_options: ["coaching_referral", "organizational_consultation", "self_guided_resources"]
+    final_state: "completed"
+
+workflow coaching_engagement:
+  trigger: "Assessment completion with coaching recommendation"
+
+  step diagnostic_handoff:
+    description: "Complete assessment context provided to coach"
+    data_transfer: "optimization vector, response patterns, confidence scores"
+    privacy_controls: "user consent required for detailed data sharing"
+    next_state: "coach_review"
+
+  step coach_review:
+    description: "Coach analyzes diagnostic context and prepares intervention"
+    duration: "15-30 minutes preparation time"
+    tools: "diagnostic dashboard, pattern analysis, intervention templates"
+    next_state: "coaching_session"
+
+  step coaching_session:
+    description: "Targeted coaching intervention based on diagnostic insights"
+    format: "chat-based or video call"
+    duration: "30-60 minutes"
+    tracking: "session outcomes and progress metrics"
+    next_state: "outcome_tracking"
+
+  step outcome_tracking:
+    description: "Measure intervention effectiveness and progress"
+    metrics: ["user satisfaction", "reported improvement", "follow-up assessment scores"]
+    frequency: "weekly check-ins for 4 weeks"
+    final_state: "coaching_complete"
+
+workflow organizational_analysis:
+  trigger: "Aggregate assessment data indicates systemic patterns"
+
+  step pattern_aggregation:
+    description: "Combine individual assessments into organizational insights"
+    privacy: "anonymized and aggregated data only"
+    thresholds: "minimum 10 assessments for statistical validity"
+    next_state: "insight_generation"
+
+  step insight_generation:
+    description: "Generate organizational health insights and recommendations"
+    output: "systemic dysfunction identification, intervention priorities"
+    stakeholders: "HR professionals, organizational leaders"
+    next_state: "intervention_planning"
+
+  step intervention_planning:
+    description: "Develop organizational-level intervention strategies"
+    recommendations: "policy changes, training programs, structural adjustments"
+    timeline: "30-90 day implementation plans"
+    final_state: "organizational_intervention"
+
+# ===========================================
+# PHASE 4: DATA ARCHITECTURE - COMPLETE
+# ===========================================
+
+data user:
+  id: uuid primary_key
+  email: text unique not_null
+  created_at: timestamp default_now
+  profile_data: jsonb
+  privacy_settings: jsonb
+
+  relationships:
+    - has_many: assessment_sessions
+    - has_many: coaching_sessions
+    - has_many: diagnostic_results
+
+data assessment_session:
+  id: uuid primary_key
+  user_id: uuid foreign_key references user.id
+  started_at: timestamp default_now
+  completed_at: timestamp nullable
+  status: enum in ['in_progress', 'completed', 'abandoned']
+
+  # Real-time diagnostic state
+  optimization_vector: jsonb default_empty
+    fields:
+      structural_efficiency: decimal_4_3 range_0_to_1
+      individual_resilience: decimal_4_3 range_0_to_1
+      organizational_alignment: decimal_4_3 range_0_to_1
+      work_life_integration: decimal_4_3 range_0_to_1
+      meeting_culture_optimization: decimal_4_3 range_0_to_1
+      team_psychological_safety: decimal_4_3 range_0_to_1
+      departmental_dynamics: decimal_4_3 range_0_to_1
+      role_clarity: decimal_4_3 range_0_to_1
+
+  current_question_index: integer default_0
+  total_questions_answered: integer default_0
+  confidence_thresholds: jsonb default_standard_thresholds
+
+  # Final results
+  primary_dysfunction: text nullable
+  primary_confidence: decimal_4_3 nullable
+  recommended_intervention: jsonb nullable
+
+  validation_rules:
+    - optimization_vector values must be between 0.0 and 1.0
+    - status transitions: in_progress -> completed|abandoned only
+    - completed_at required when status = completed
+    - primary_dysfunction required when status = completed
+
+data assessment_response:
+  id: uuid primary_key
+  session_id: uuid foreign_key references assessment_session.id
+  question_id: text not_null
+  question_type: enum in ['entry', 'targeted', 'broad', 'validation']
+  question_category: text not_null
+  question_index: integer not_null
+
+  selected_option: jsonb not_null
+    structure:
+      value: integer range_1_to_4
+      text: text not_null
+
+  signals: jsonb default_empty
+    structure:
+      category_name:
+        signal_name: decimal range_-2_to_2
+
+  processing_result: jsonb nullable
+  response_time_ms: integer nullable
+  answered_at: timestamp default_now
+
+  validation_rules:
+    - question_id must exist in question bank
+    - selected_option.value must be 1, 2, 3, or 4
+    - signals must follow defined signal schema
+    - response_time_ms must be positive
+
+data coaching_session:
+  id: uuid primary_key
+  user_id: uuid foreign_key references user.id
+  coach_id: uuid foreign_key references user.id
+  assessment_session_id: uuid foreign_key references assessment_session.id
+
+  scheduled_at: timestamp not_null
+  started_at: timestamp nullable
+  completed_at: timestamp nullable
+  duration_minutes: integer nullable
+
+  session_type: enum in ['diagnostic_review', 'targeted_intervention', 'progress_check', 'follow_up']
+  intervention_focus: text nullable
+
+  # Session content and outcomes
+  session_notes: text nullable
+  coach_observations: jsonb nullable
+  user_feedback: jsonb nullable
+  progress_metrics: jsonb nullable
+
+  # Next steps and follow-up
+  action_items: jsonb nullable
+  next_session_recommended: boolean default_false
+  follow_up_date: timestamp nullable
+
+  validation_rules:
+    - coach_id must have coach role
+    - duration_minutes required when completed
+    - started_at required when status not scheduled
+
+data diagnostic_result:
+  id: uuid primary_key
+  session_id: uuid foreign_key references assessment_session.id
+  user_id: uuid foreign_key references user.id
+
+  # Denormalized optimization vector for analytics
+  structural_barriers: decimal_4_3 default_0
+  individual_stress: decimal_4_3 default_0
+  organizational_dysfunction: decimal_4_3 default_0
+  work_life_integration: decimal_4_3 default_0
+  meeting_culture: decimal_4_3 default_0
+  psychological_safety: decimal_4_3 default_0
+  departmental_issues: decimal_4_3 default_0
+  role_clarity: decimal_4_3 default_0
+
+  # Primary diagnostic outcome
+  primary_dysfunction: text not_null
+  primary_confidence: decimal_4_3 not_null
+  secondary_dysfunction: text nullable
+  secondary_confidence: decimal_4_3 nullable
+
+  # Intervention routing
+  recommended_intervention_type: text nullable
+  intervention_provider: text nullable
+  intervention_urgency: enum in ['low', 'medium', 'high']
+  intervention_description: text nullable
+
+  # Assessment metadata
+  total_questions: integer not_null
+  assessment_duration_minutes: integer nullable
+  entropy_score: decimal_4_3 nullable
+
+  created_at: timestamp default_now
+
+  validation_rules:
+    - all confidence scores between 0.0 and 1.0
+    - primary_dysfunction must be valid optimization vector key
+    - total_questions must be >= 20
+
+# ===========================================
+# PHASE 5: USER EXPERIENCE - COMPLETE
+# ===========================================
+
+interface section_1_assessment:
+  title: "AI-Powered Workplace Diagnostic Assessment"
+  description: "122-question adaptive assessment with real-time insights"
+
+  page assessment_interface:
+    route: "/assessment/"
+    layout: "centered_card_with_progress"
+    responsive: "mobile_first_design"
+
+    component question_display:
+      question_text: "dynamic from question bank"
+      options: "4-option button layout"
+      progress_indicator: "questions answered / estimated total"
+      confidence_display: "real-time percentage with visual bar"
+
+      interactions:
+        option_selection: "immediate processing and next question"
+        progress_tracking: "live optimization vector updates"
+        early_exit: "continue assessment prompt if <20 questions"
+
+    component real_time_insights:
+      emerging_patterns: "top 3 dimensions with confidence scores"
+      ai_process_visualization: "4-stage diagnostic flow diagram"
+      current_signals: "live signal processing display"
+
+      feedback_mechanisms:
+        confidence_indicators: "percentage displays with color coding"
+        progress_messages: "contextual guidance based on question count"
+        pattern_emergence: "highlight growing confidence areas"
+
+    component completion_screen:
+      primary_result: "main dysfunction identified with confidence"
+      intervention_recommendation: "specific next steps with provider info"
+      detailed_breakdown: "all 8 dimensions with scores"
+
+      actions:
+        continue_deeper: "extended assessment option"
+        schedule_coaching: "direct coach referral with context"
+        download_report: "PDF summary with recommendations"
+        share_with_hr: "aggregated insights sharing"
+
+interface section_2_coaching:
+  title: "Personalized Coaching Integration"
+  description: "Coach-client matching and session management"
+
+  page coaching_dashboard:
+    route: "/coaching/"
+    layout: "dashboard_with_sidebar"
+    user_types: ["coach", "client"]
+
+    component client_view:
+      assessment_history: "previous results with trend analysis"
+      current_goals: "coaching objectives and progress tracking"
+      session_schedule: "upcoming and past sessions"
+
+      interactions:
+        book_session: "calendar integration with coach availability"
+        review_progress: "visual charts and improvement metrics"
+        access_resources: "personalized content recommendations"
+
+    component coach_view:
+      client_roster: "assigned clients with diagnostic summaries"
+      session_preparation: "assessment context and intervention plans"
+      outcome_tracking: "progress monitoring and effectiveness metrics"
+
+      interactions:
+        review_diagnostics: "detailed assessment insights"
+        plan_interventions: "structured coaching session templates"
+        track_outcomes: "session notes and progress updates"
+
+    component diagnostic_handoff:
+      assessment_context: "complete optimization vector and patterns"
+      intervention_focus: "recommended coaching areas"
+      client_preferences: "communication style and scheduling"
+
+      privacy_controls:
+        data_sharing_consent: "granular permission management"
+        anonymization_options: "aggregate insights vs individual data"
+        retention_policies: "data lifecycle management"
+
+interface section_3_organizational_insights:
+  title: "Organizational Health Analytics"
+  description: "Aggregate insights and systemic intervention recommendations"
+
+  page organizational_dashboard:
+    route: "/admin/"
+    layout: "analytics_dashboard"
+    user_types: ["hr_admin", "organizational_leader"]
+
+    component health_overview:
+      participation_metrics: "assessment completion rates by department"
+      dysfunction_patterns: "aggregate optimization vector visualization"
+      intervention_effectiveness: "coaching outcome tracking"
+
+      visualizations:
+        heatmaps: "department-level dysfunction intensity"
+        trend_charts: "organizational health over time"
+        comparison_metrics: "benchmarking against industry standards"
+
+    component intervention_recommendations:
+      systemic_priorities: "organizational-level improvement areas"
+      intervention_planning: "recommended policy and structural changes"
+      resource_allocation: "coaching and training resource optimization"
+
+      actions:
+        deploy_interventions: "organization-wide program management"
+        track_effectiveness: "intervention outcome measurement"
+        generate_reports: "executive summary and detailed analytics"
+
+    component privacy_compliance:
+      data_anonymization: "individual privacy protection protocols"
+      aggregate_insights: "statistical significance thresholds"
+      consent_management: "employee data sharing preferences"
+
+interface section_4_api_services:
+  title: "Integration and Automation Services"
+  description: "External system integration and automated workflows"
+
+  api_endpoint assessment_api:
+    base_path: "/api/"
+    authentication: "JWT tokens with user context"
+
+    endpoint create_session:
+      path: "POST /assessment/start"
+      purpose: "Initialize new assessment session"
+      parameters:
+        user_context: "optional demographic and role information"
+        configuration: "assessment length and depth preferences"
+      returns:
+        session_id: "unique identifier for assessment session"
+        first_question: "initial question with options"
+
+    endpoint submit_response:
+      path: "POST /assessment/respond"
+      purpose: "Process user response and get next question"
+      parameters:
+        session_id: "active assessment session identifier"
+        question_id: "current question identifier"
+        selected_option: "user's choice with value and text"
+      returns:
+        next_question: "following question or completion status"
+        current_insights: "real-time diagnostic updates"
+        completion_status: "assessment progress and termination check"
+
+    endpoint get_results:
+      path: "GET /assessment/results/{session_id}"
+      purpose: "Retrieve complete assessment results"
+      returns:
+        optimization_vector: "final confidence scores across dimensions"
+        primary_dysfunction: "main identified issue with confidence"
+        intervention_recommendation: "specific next steps and providers"
+
+  api_endpoint coaching_api:
+    endpoint schedule_session:
+      path: "POST /coaching/schedule"
+      purpose: "Book coaching session with diagnostic context"
+      parameters:
+        client_id: "user requesting coaching"
+        assessment_session_id: "diagnostic context reference"
+        preferences: "scheduling and communication preferences"
+      returns:
+        session_id: "coaching session identifier"
+        coach_assignment: "matched coach with specialization"
+        scheduled_time: "confirmed appointment details"
+
+  integration_services:
+    hr_system_connector: "HRIS integration for employee roster and demographics"
+    calendar_integration: "Outlook/Google Calendar for session scheduling"
+    analytics_export: "Data warehouse export for organizational reporting"
+    sso_authentication: "Single sign-on with corporate identity providers"
+
+# ===========================================
+# PHASE 6: TECHNICAL CONSTRAINTS - COMPLETE
+# ===========================================
+
+technical_architecture:
+  frontend_stack: "Vue 3 + TypeScript + Tailwind CSS"
+  backend_services: "Supabase (PostgreSQL + Auth + Real-time)"
+  hosting_platform: "Vercel with edge functions"
+  cdn_assets: "Vercel Edge Network"
+
+  security_requirements:
+    data_encryption: "TLS 1.3 in transit, AES-256 at rest"
+    authentication: "Supabase Auth with MFA support"
+    authorization: "Row-level security with role-based access"
+    privacy_compliance: "GDPR and HIPAA-ready data handling"
+
+  performance_constraints:
+    assessment_response_time: "<200ms for question transitions"
+    real_time_updates: "<500ms for optimization vector recalculation"
+    concurrent_users: "1000+ simultaneous assessment sessions"
+    data_retention: "7 years for diagnostic results, 1 year for session data"
+
+  scalability_requirements:
+    horizontal_scaling: "serverless functions for assessment processing"
+    database_scaling: "Supabase auto-scaling with read replicas"
+    global_distribution: "CDN for static assets, regional databases"
+
+  compliance_frameworks:
+    privacy: "GDPR Article 25 privacy by design"
+    healthcare: "HIPAA-ready for mental health applications"
+    accessibility: "WCAG 2.1 AA compliance"
+    security: "SOC 2 Type II certification path"
+
+operational_requirements:
+  deployment_automation: "GitHub Actions with Vercel integration"
+  monitoring_stack: "Vercel Analytics + Supabase Monitoring"
+  error_tracking: "Centralized logging with alerting"
+  backup_strategy: "Daily Supabase backups with point-in-time recovery"
+
+  maintenance_procedures:
+    question_bank_updates: "Version-controlled question management"
+    diagnostic_algorithm_tuning: "A/B testing for optimization vector weights"
+    coach_onboarding: "Structured training and certification process"
+
+# ===========================================
+# PHASE 7: TRINITY VALIDATION - COMPLETE
+# ===========================================
+
+validate trinity_completeness:
+
+  # System-to-User Flow Validation
+  check ui_elements_complete:
+    verify assessment_interface_fully_specified: true
+    verify coaching_dashboard_elements_defined: true
+    verify organizational_analytics_displays_complete: true
+    verify all_progress_indicators_specified: true
+    verify all_error_messages_content_included: true
+    verify loading_states_and_feedback_defined: true
+
+  # User-to-System Flow Validation
+  check user_interactions_handled:
+    verify all_button_clicks_and_form_submissions: true
+    verify assessment_response_processing: true
+    verify coaching_session_booking_flow: true
+    verify navigation_and_routing_complete: true
+    verify authentication_and_authorization_flows: true
+    verify all_validation_rules_and_error_cases: true
+
+  # System-to-System Flow Validation
+  check business_logic_complete:
+    verify optimization_vector_calculation_rules: true
+    verify assessment_completion_criteria: true
+    verify coach_matching_algorithms: true
+    verify intervention_routing_logic: true
+    verify organizational_aggregation_rules: true
+    verify all_database_operations_specified: true
+    verify external_integration_scenarios: true
+    verify background_process_workflows: true
+
+  when trinity_validated:
+    enable_deterministic_compilation: true
+    guarantee_production_readiness: true
+    activate_specification_completeness: true
+
+# ===========================================
+# BUSINESS LOGIC IMPLEMENTATION
+# ===========================================
+
+logic assessment_processing:
+
+  procedure initialize_session:
+    create_session_record: "user_id, configuration, timestamps"
+    initialize_optimization_vector: "8 dimensions set to 0.0"
+    select_first_question: "entry type from broad categories"
+
+  procedure process_response:
+    calculate_signals: "apply signal weights and direction transformations"
+    update_optimization_vector: "recalculate all 8 dimension confidences"
+    determine_next_question_type: "based on evidence length and confidence levels"
+    check_completion_criteria: "20+ questions AND high confidence AND low entropy"
+
+  procedure complete_assessment:
+    identify_primary_dysfunction: "highest confidence dimension"
+    generate_intervention_recommendation: "based on dysfunction type and confidence"
+    create_diagnostic_result_record: "persist final analysis"
+    route_to_appropriate_intervention: "coaching, organizational, or self-guided"
+
+logic coaching_coordination:
+
+  procedure match_coach_to_client:
+    analyze_diagnostic_context: "primary dysfunction and intervention needs"
+    filter_available_coaches: "specialization and availability"
+    apply_matching_algorithm: "expertise alignment and client preferences"
+    create_coaching_relationship: "assign coach with diagnostic handoff"
+
+  procedure manage_coaching_session:
+    prepare_diagnostic_context: "optimization vector and assessment insights"
+    facilitate_session_scheduling: "calendar integration and confirmations"
+    track_session_outcomes: "progress metrics and intervention effectiveness"
+    update_client_progress: "continuous improvement measurement"
+
+logic organizational_analysis:
+
+  procedure aggregate_insights:
+    collect_anonymous_assessments: "minimum threshold for statistical validity"
+    calculate_department_patterns: "dysfunction distribution and intensity"
+    identify_systemic_issues: "organizational vs individual attribution"
+    generate_intervention_priorities: "resource allocation recommendations"
+
+  procedure privacy_protection:
+    anonymize_individual_data: "remove personally identifiable information"
+    apply_statistical_thresholds: "minimum group sizes for reporting"
+    enforce_consent_preferences: "honor individual data sharing choices"
+    maintain_audit_trails: "track data access and usage"
+
+# ===========================================
+# COMPILATION TARGETS
+# ===========================================
+
+compile_to vue3_typescript:
+  components:
+    - AssessmentInterface
+    - CoachingDashboard
+    - OrganizationalAnalytics
+    - APIGateway
+
+  data_layer: "Supabase integration with TypeScript types"
+  state_management: "Pinia stores for reactive data"
+  routing: "Vue Router with authentication guards"
+  styling: "Tailwind CSS with component libraries"
+
+  validation: "Zod schemas generated from APML data definitions"
+  testing: "Vitest unit tests and Playwright e2e tests"
+  deployment: "Vercel with environment-specific configurations"
+
+validate specification_completeness:
+  check domain_exploration: complete
+  check stakeholder_analysis: complete
+  check workflow_mapping: complete
+  check data_architecture: complete
+  check user_experience: complete
+  check technical_constraints: complete
+  check trinity_validation: complete
+
+  when all_phases_complete:
+    ready_for_deterministic_compilation: true
+    production_deployment_guaranteed: true
+    specification_driven_development_enabled: true

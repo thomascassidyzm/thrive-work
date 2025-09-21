@@ -1,11 +1,14 @@
 {
   "project": {
     "name": "thrive-work",
-    "title": "THRIVE Workplace Diagnostic Assessment System",
+    "title": "THRIVE Workplace Diagnostic and Coaching Platform",
     "version": "1.0.0",
     "apml_specification_version": "1.1.0",
     "created": "2025-01-21T00:00:00Z",
-    "last_updated": "2025-01-21T00:00:00Z"
+    "last_updated": "2025-01-21T00:00:00Z",
+    "specification_file": "project-specification.apml",
+    "intent_capture_complete": true,
+    "trinity_principle_validated": true
   },
 
   "pss_compliance": {
@@ -22,6 +25,16 @@
     "pattern_library_version": "1.0.0"
   },
 
+  "project_scope": {
+    "interface_sections": 4,
+    "total_pages": 15,
+    "api_endpoints": 12,
+    "database_tables": 6,
+    "workflows": 3,
+    "stakeholder_types": 4,
+    "business_logic_procedures": 8
+  },
+
   "variable_registry": {
     "version": "1.1.0",
     "total_identifiers": 147,
@@ -31,7 +44,8 @@
     "configuration_constants": 8,
     "validation_rules": 12,
     "last_validation": "2025-01-21T00:00:00Z",
-    "compliance_status": "fully_compliant"
+    "compliance_status": "fully_compliant",
+    "scope": "assessment_subsystem_only"
   },
 
   "components": {
