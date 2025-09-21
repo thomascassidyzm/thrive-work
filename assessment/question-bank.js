@@ -848,7 +848,7 @@ class QuestionBank {
             },
 
             {
-                id: 'rc002',
+                id: 'ir001',
                 type: 'targeted',
                 category: 'intervention_routing',
                 text: 'What type of support would be most valuable to you right now?',
