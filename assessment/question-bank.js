@@ -915,7 +915,7 @@ class QuestionBank {
 
             // Role Clarity & Values Alignment
             {
-                id: 'rc001',
+                id: 'rc002',
                 type: 'targeted',
                 category: 'role_clarity',
                 text: 'When work social events conflict with family time, what influences your choice?',
@@ -2256,7 +2256,7 @@ class QuestionBank {
             },
 
             {
-                id: 'wl011',
+                id: 'wl014',
                 type: 'targeted',
                 category: 'worklife',
                 text: 'How easy is it to take time off when you need it?',
@@ -2273,7 +2273,7 @@ class QuestionBank {
             },
 
             {
-                id: 'val017',
+                id: 'val018',
                 type: 'validation',
                 category: 'attention_check',
                 text: 'To ensure you\'re reading carefully, please select "Sometimes - depends on the situation"',
@@ -2290,7 +2290,7 @@ class QuestionBank {
             },
 
             {
-                id: 'oc011',
+                id: 'oc018',
                 type: 'targeted',
                 category: 'ocean_neuroticism',
                 text: 'When facing a tight deadline with unclear requirements, you typically:',
