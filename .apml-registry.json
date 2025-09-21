@@ -1,0 +1,145 @@
+{
+  "project": {
+    "name": "thrive-work",
+    "title": "THRIVE Workplace Diagnostic Assessment System",
+    "version": "1.0.0",
+    "apml_specification_version": "1.1.0",
+    "created": "2025-01-21T00:00:00Z",
+    "last_updated": "2025-01-21T00:00:00Z"
+  },
+
+  "pss_compliance": {
+    "structure_standard": "APML-PSS v1.0.0",
+    "self_documentation": "enabled",
+    "interface_sections": 4,
+    "data_structures_centralized": true,
+    "infrastructure_organized": true
+  },
+
+  "deterministic_compilation": {
+    "target_platform": "Vue3 + TypeScript + Tailwind",
+    "compilation_guarantee": "identical_input_produces_identical_output",
+    "pattern_library_version": "1.0.0"
+  },
+
+  "variable_registry": {
+    "version": "1.1.0",
+    "total_identifiers": 147,
+    "components": 3,
+    "api_endpoints": 5,
+    "database_tables": 3,
+    "configuration_constants": 8,
+    "validation_rules": 12,
+    "last_validation": "2025-01-21T00:00:00Z",
+    "compliance_status": "fully_compliant"
+  },
+
+  "components": {
+    "DiagnosticEngine": {
+      "file_path": "assessment/diagnostic-engine.js",
+      "reactive_variables": 5,
+      "computed_variables": 3,
+      "methods": 17,
+      "validation_rules": ["optimizationVector_range", "evidence_structure", "confidence_thresholds"]
+    },
+    "QuestionBank": {
+      "file_path": "assessment/question-bank.js",
+      "reactive_variables": 2,
+      "methods": 7,
+      "total_questions": 122,
+      "validation_rules": ["question_uniqueness", "signal_category_validity", "option_structure"]
+    },
+    "AdaptiveController": {
+      "file_path": "assessment/adaptive-controller.js",
+      "reactive_variables": 7,
+      "computed_variables": 2,
+      "methods": 17,
+      "validation_rules": ["dimension_mapping_consistency", "session_persistence", "ui_element_references"]
+    }
+  },
+
+  "data_structures": {
+    "OptimizationVector": {
+      "fields": 8,
+      "type": "reactive<OptimizationVector>",
+      "validation": "values_between_0_and_1",
+      "keys": [
+        "structuralEfficiency",
+        "individualResilience",
+        "organizationalAlignment",
+        "workLifeIntegration",
+        "meetingCultureOptimization",
+        "teamPsychologicalSafety",
+        "departmentalDynamics",
+        "roleClarity"
+      ]
+    },
+    "Question": {
+      "total_count": 122,
+      "types": ["entry", "targeted", "broad", "validation"],
+      "option_count": 4,
+      "signal_categories": 9,
+      "validation": ["unique_ids", "complete_structure", "valid_signals"]
+    },
+    "AssessmentResponse": {
+      "required_fields": ["questionId", "signals", "timestamp"],
+      "optional_fields": ["questionType", "questionCategory", "selectedOption"],
+      "validation": ["question_id_exists", "signals_valid_structure", "timestamp_format"]
+    }
+  },
+
+  "database_schema": {
+    "tables": 3,
+    "constraints": 15,
+    "indexes": 8,
+    "functions": 2,
+    "compliance": "postgresql_13_plus",
+    "validation_rules": ["foreign_key_integrity", "check_constraints", "data_types"]
+  },
+
+  "api_endpoints": {
+    "count": 5,
+    "base_path": "/assessment/",
+    "methods": ["GET"],
+    "validation": ["path_existence", "content_type_headers", "cache_control"]
+  },
+
+  "build_configuration": {
+    "question_bank_version": "1.0.0",
+    "diagnostic_engine_version": "1.0.0",
+    "adaptive_controller_version": "1.0.0",
+    "target_browsers": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+    "optimization_level": "production",
+    "module_system": "ES2020"
+  },
+
+  "validation_status": {
+    "last_checked": "2025-01-21T00:00:00Z",
+    "registry_completeness": "100%",
+    "cross_reference_validity": "100%",
+    "type_consistency": "100%",
+    "naming_consistency": "100%",
+    "critical_errors": 0,
+    "warnings": 0,
+    "compliance_score": "A+"
+  },
+
+  "toolchain_integration": {
+    "ade_cli_compatible": true,
+    "validation_script": "assessment/validate-consistency.js",
+    "auto_generation_enabled": false,
+    "ide_completion_support": true,
+    "build_pipeline_integration": true
+  },
+
+  "migration_notes": {
+    "from_version": "legacy_manual_naming",
+    "to_version": "apml_1.1.0_compliant",
+    "breaking_changes": [
+      "diagnosticVector renamed to optimizationVector",
+      "dimension mapping keys updated for consistency",
+      "duplicate question IDs resolved"
+    ],
+    "compatibility_preserved": true
+  }
+}

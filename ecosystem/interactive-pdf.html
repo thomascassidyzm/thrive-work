@@ -11,7 +11,16 @@
             box-sizing: border-box;
         }
 
-        @media print {
+        /* Print-specific CSS overrides */
+        @media print, (prefers-color-scheme: print) {
+            * {
+                background: white !important;
+                background-color: white !important;
+                background-image: none !important;
+                background-gradient: none !important;
+                box-shadow: none !important;
+                color: #000 !important;
+            }
             body {
                 background: white !important;
                 color: #000 !important;
@@ -20,10 +29,11 @@
                 page-break-after: always;
                 height: 100vh;
                 max-height: 100vh;
-                padding: 30px !important;
+                padding: 20px !important;
                 display: flex !important;
                 flex-direction: column !important;
                 box-sizing: border-box !important;
+                background: white !important;
             }
             .page:last-child {
                 page-break-after: avoid;
@@ -33,32 +43,66 @@
                 overflow: hidden !important;
             }
             .service-content p, .service-content li {
-                font-size: 0.9rem !important;
-                line-height: 1.4 !important;
+                font-size: 0.8rem !important;
+                line-height: 1.3 !important;
+                color: #333 !important;
             }
             .service-content h3 {
-                font-size: 1.2rem !important;
-                margin: 20px 0 10px 0 !important;
+                font-size: 1rem !important;
+                margin: 15px 0 8px 0 !important;
+                color: #000 !important;
             }
-            /* Remove domain borders in print */
-            .spoke-service {
-                border: 1px solid #e5e7eb !important;
-                background: white !important;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-            }
+            /* Complete background removal */
+            .spoke-service,
             .spoke-service.mind,
             .spoke-service.body,
             .spoke-service.financial {
-                border: 1px solid #e5e7eb !important;
+                border: 1px solid #ccc !important;
                 background: white !important;
+                background-color: white !important;
+                background-image: none !important;
+                box-shadow: none !important;
             }
-            /* Hide connection lines in print for cleaner look */
+            .hub-spoke-container {
+                background: white !important;
+                background-color: white !important;
+                background-image: none !important;
+            }
             .connection-line {
                 display: none !important;
             }
-            /* Ensure clean hub-spoke container */
+            .thrive-hub {
+                background: #059669 !important;
+                background-color: #059669 !important;
+                color: white !important;
+            }
+            /* Journey flow page fixes */
+            .service-content > div[style*="background: linear-gradient"] {
+                background: white !important;
+                background-color: white !important;
+                background-image: none !important;
+                padding: 15px 10px !important;
+                margin: 10px 0 20px 0 !important;
+            }
+        }
+
+        /* PDF generation specific - targets html-pdf-node */
+        @media screen and (max-width: 0px) {
+            * {
+                background: white !important;
+                background-color: white !important;
+                background-image: none !important;
+                box-shadow: none !important;
+            }
+            .spoke-service {
+                border: 1px solid #ccc !important;
+                background: white !important;
+            }
             .hub-spoke-container {
                 background: white !important;
+            }
+            .connection-line {
+                display: none !important;
             }
         }
 
@@ -516,84 +560,74 @@
         </div>
 
         <div class="service-content">
-            <!-- Compact Journey Flow -->
-            <div style="position: relative; margin: 15px 0 30px 0; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); border-radius: 12px; padding: 25px 20px; overflow: hidden;">
+            <!-- Micro Journey Flow -->
+            <div style="position: relative; margin: 8px 0 15px 0; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); border-radius: 6px; padding: 12px 10px; overflow: hidden;">
 
-                <!-- Flow Direction Indicator -->
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <h3 style="font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 6px;">Your Transformation Journey</h3>
-                    <p style="color: #64748b; font-size: 0.8rem;">From assessment to optimization - a seamless flow toward optimal health</p>
-                </div>
-
-                <!-- Compact Flow Container -->
-                <div style="position: relative; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap: 10px; align-items: center; max-width: 100%;">
+                <!-- Micro Flow Container -->
+                <div style="position: relative; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap: 6px; align-items: center; max-width: 100%;">
 
                     <!-- Step 1: Assessment -->
-                    <div style="text-align: center; background: white; border-radius: 8px; padding: 12px 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);">
-                        <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px auto; font-size: 0.9rem; font-weight: 700; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); position: relative;">
+                    <div style="text-align: center; background: white; border-radius: 4px; padding: 6px 4px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);">
+                        <div style="width: 20px; height: 20px; background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 4px auto; font-size: 0.7rem; font-weight: 700; position: relative;">
                             1
-                            <div style="position: absolute; top: -2px; right: -2px; width: 14px; height: 14px; background: #f59e0b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px;">📋</div>
                         </div>
-                        <h4 style="font-size: 0.75rem; font-weight: 600; color: #0f172a; margin-bottom: 2px;">Assessment</h4>
-                        <p style="font-size: 0.6rem; color: #64748b; line-height: 1.1;">Comprehensive evaluation</p>
+                        <h4 style="font-size: 0.6rem; font-weight: 600; color: #0f172a; margin-bottom: 1px;">Assessment</h4>
+                        <p style="font-size: 0.5rem; color: #64748b; line-height: 1;">Evaluation</p>
                     </div>
 
                     <!-- Arrow 1 -->
                     <div style="display: flex; align-items: center; justify-content: center;">
-                        <div style="width: 20px; height: 1px; background: linear-gradient(90deg, #10b981, #34d399); position: relative;">
-                            <div style="position: absolute; right: -4px; top: -3px; width: 0; height: 0; border-left: 6px solid #34d399; border-top: 3px solid transparent; border-bottom: 3px solid transparent;"></div>
+                        <div style="width: 12px; height: 1px; background: #10b981; position: relative;">
+                            <div style="position: absolute; right: -3px; top: -2px; width: 0; height: 0; border-left: 4px solid #10b981; border-top: 2px solid transparent; border-bottom: 2px solid transparent;"></div>
                         </div>
                     </div>
 
                     <!-- Step 2: Coordination -->
-                    <div style="text-align: center; background: white; border-radius: 8px; padding: 12px 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);">
-                        <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #0369a1 0%, #0ea5e9 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px auto; font-size: 0.9rem; font-weight: 700; box-shadow: 0 4px 12px rgba(3, 105, 161, 0.3); position: relative;">
+                    <div style="text-align: center; background: white; border-radius: 4px; padding: 6px 4px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);">
+                        <div style="width: 20px; height: 20px; background: linear-gradient(135deg, #0369a1 0%, #0ea5e9 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 4px auto; font-size: 0.7rem; font-weight: 700;">
                             2
-                            <div style="position: absolute; top: -2px; right: -2px; width: 14px; height: 14px; background: #8b5cf6; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px;">🤝</div>
                         </div>
-                        <h4 style="font-size: 0.75rem; font-weight: 600; color: #0f172a; margin-bottom: 2px;">Coordination</h4>
-                        <p style="font-size: 0.6rem; color: #64748b; line-height: 1.1;">Seamless integration</p>
+                        <h4 style="font-size: 0.6rem; font-weight: 600; color: #0f172a; margin-bottom: 1px;">Coordination</h4>
+                        <p style="font-size: 0.5rem; color: #64748b; line-height: 1;">Integration</p>
                     </div>
 
                     <!-- Arrow 2 -->
                     <div style="display: flex; align-items: center; justify-content: center;">
-                        <div style="width: 20px; height: 1px; background: linear-gradient(90deg, #0ea5e9, #06b6d4); position: relative;">
-                            <div style="position: absolute; right: -4px; top: -3px; width: 0; height: 0; border-left: 6px solid #06b6d4; border-top: 3px solid transparent; border-bottom: 3px solid transparent;"></div>
+                        <div style="width: 12px; height: 1px; background: #0ea5e9; position: relative;">
+                            <div style="position: absolute; right: -3px; top: -2px; width: 0; height: 0; border-left: 4px solid #0ea5e9; border-top: 2px solid transparent; border-bottom: 2px solid transparent;"></div>
                         </div>
                     </div>
 
                     <!-- Step 3: Implementation -->
-                    <div style="text-align: center; background: white; border-radius: 8px; padding: 12px 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);">
-                        <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px auto; font-size: 0.9rem; font-weight: 700; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3); position: relative;">
+                    <div style="text-align: center; background: white; border-radius: 4px; padding: 6px 4px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);">
+                        <div style="width: 20px; height: 20px; background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 4px auto; font-size: 0.7rem; font-weight: 700;">
                             3
-                            <div style="position: absolute; top: -2px; right: -2px; width: 14px; height: 14px; background: #10b981; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px;">⚡</div>
                         </div>
-                        <h4 style="font-size: 0.75rem; font-weight: 600; color: #0f172a; margin-bottom: 2px;">Implementation</h4>
-                        <p style="font-size: 0.6rem; color: #64748b; line-height: 1.1;">Active participation</p>
+                        <h4 style="font-size: 0.6rem; font-weight: 600; color: #0f172a; margin-bottom: 1px;">Implementation</h4>
+                        <p style="font-size: 0.5rem; color: #64748b; line-height: 1;">Participation</p>
                     </div>
 
                     <!-- Arrow 3 -->
                     <div style="display: flex; align-items: center; justify-content: center;">
-                        <div style="width: 20px; height: 1px; background: linear-gradient(90deg, #ef4444, #f97316); position: relative;">
-                            <div style="position: absolute; right: -4px; top: -3px; width: 0; height: 0; border-left: 6px solid #f97316; border-top: 3px solid transparent; border-bottom: 3px solid transparent;"></div>
+                        <div style="width: 12px; height: 1px; background: #ef4444; position: relative;">
+                            <div style="position: absolute; right: -3px; top: -2px; width: 0; height: 0; border-left: 4px solid #ef4444; border-top: 2px solid transparent; border-bottom: 2px solid transparent;"></div>
                         </div>
                     </div>
 
                     <!-- Step 4: Optimization -->
-                    <div style="text-align: center; background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border-radius: 8px; padding: 12px 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); border: 1px solid #fbbf24;">
-                        <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px auto; font-size: 0.9rem; font-weight: 700; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); position: relative;">
+                    <div style="text-align: center; background: white; border-radius: 4px; padding: 6px 4px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06); border: 1px solid #fbbf24;">
+                        <div style="width: 20px; height: 20px; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 4px auto; font-size: 0.7rem; font-weight: 700;">
                             4
-                            <div style="position: absolute; top: -2px; right: -2px; width: 14px; height: 14px; background: #059669; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px;">🎯</div>
                         </div>
-                        <h4 style="font-size: 0.75rem; font-weight: 600; color: #0f172a; margin-bottom: 2px;">Optimization</h4>
-                        <p style="font-size: 0.6rem; color: #64748b; line-height: 1.1;">Continuous monitoring</p>
+                        <h4 style="font-size: 0.6rem; font-weight: 600; color: #0f172a; margin-bottom: 1px;">Optimization</h4>
+                        <p style="font-size: 0.5rem; color: #64748b; line-height: 1;">Monitoring</p>
                     </div>
                 </div>
 
                 <!-- Success Indicator -->
-                <div style="text-align: center; margin-top: 15px;">
-                    <div style="display: inline-flex; align-items: center; background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: white; padding: 6px 16px; border-radius: 16px; font-size: 0.7rem; font-weight: 600; box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);">
-                        ✨ Optimal Health & Wellness Achieved
+                <div style="text-align: center; margin-top: 8px;">
+                    <div style="display: inline-flex; align-items: center; background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: white; padding: 3px 8px; border-radius: 8px; font-size: 0.55rem; font-weight: 600;">
+                        ✨ Optimal Health Achieved
                     </div>
                 </div>
             </div>

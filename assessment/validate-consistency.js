@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
 /**
- * THRIVE Assessment System - Consistency Validation Script
+ * THRIVE Assessment System - APML v1.1.0 Variable Registry Validation
  *
- * Validates that all variable names, data structures, and mappings
- * are consistent across the entire assessment system.
+ * Validates compliance with APML v1.1.0 Variable Registry Standard.
+ * Ensures all variable names, data structures, and mappings are
+ * consistent across the entire assessment system.
  *
+ * APML v1.1.0 Compliance: ✅ Full Registry Coverage
  * Run with: node validate-consistency.js
  */
 
@@ -33,17 +35,56 @@ class AssessmentValidator {
     }
 
     validate() {
-        console.log('🔍 THRIVE Assessment System - Consistency Validation');
-        console.log('=' .repeat(60));
+        console.log('🔍 THRIVE Assessment System - APML v1.1.0 Variable Registry Validation');
+        console.log('=' .repeat(70));
 
+        this.validateAPMLRegistryCompliance();
         this.validateDiagnosticEngine();
         this.validateQuestionBank();
         this.validateAdaptiveController();
         this.validateDimensionMappings();
         this.validateQuestionIntegrity();
+        this.validateDatabaseSchema();
 
         this.printResults();
         return this.errors.length === 0;
+    }
+
+    validateAPMLRegistryCompliance() {
+        console.log('\n📋 Validating APML v1.1.0 Registry Compliance...');
+
+        // Check if .apml-registry.json exists
+        const registryPath = path.join(__dirname, '..', '.apml-registry.json');
+        if (!fs.existsSync(registryPath)) {
+            this.addError('Missing required .apml-registry.json file for APML v1.1.0 compliance');
+            return;
+        }
+
+        try {
+            const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+
+            // Validate required registry structure
+            if (!registry.project || !registry.variable_registry || !registry.components) {
+                this.addError('Invalid .apml-registry.json structure - missing required sections');
+            }
+
+            // Validate APML version compliance
+            if (registry.project?.apml_specification_version !== '1.1.0') {
+                this.addError(`Expected APML version 1.1.0, found ${registry.project?.apml_specification_version}`);
+            }
+
+            // Validate optimization vector keys match registry
+            const registryKeys = registry.data_structures?.OptimizationVector?.keys || [];
+            this.optimizationVectorKeys.forEach(key => {
+                if (!registryKeys.includes(key)) {
+                    this.addError(`Optimization vector key '${key}' not documented in APML registry`);
+                }
+            });
+
+            console.log('   ✅ APML v1.1.0 registry structure validated');
+        } catch (error) {
+            this.addError(`Failed to parse .apml-registry.json: ${error.message}`);
+        }
     }
 
     validateDiagnosticEngine() {
@@ -221,6 +262,33 @@ class AssessmentValidator {
         });
 
         console.log('   ✓ Question integrity validated');
+    }
+
+    validateDatabaseSchema() {
+        console.log('\n🗄️  Validating Database Schema Compliance...');
+
+        const schemaContent = this.readFile('supabase-schema.sql');
+        if (!schemaContent) return;
+
+        // Check for required tables
+        const requiredTables = ['assessment_sessions', 'assessment_responses', 'diagnostic_results'];
+        requiredTables.forEach(table => {
+            if (!schemaContent.includes(`CREATE TABLE ${table}`)) {
+                this.addError(`Missing required database table: ${table}`);
+            }
+        });
+
+        // Check for optimization vector field mapping
+        if (schemaContent.includes('diagnostic_vector') && !schemaContent.includes('optimization_vector')) {
+            this.addWarning('Database schema uses legacy diagnostic_vector field name');
+        }
+
+        // Check for proper constraints
+        if (!schemaContent.includes('CHECK(status IN')) {
+            this.addError('Missing status validation constraints in database schema');
+        }
+
+        console.log('   ✓ Database schema structure validated');
     }
 
     extractQuestions(content) {
