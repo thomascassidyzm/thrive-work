@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Compliance Statement - Thrive EAP Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .breadcrumb {
+            background-color: #ecf0f1;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #bdc3c7;
+        }
+
+        .breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: white;
+        }
+
+        .sidebar {
+            width: 280px;
+            background-color: #34495e;
+            color: white;
+            padding: 2rem 1.5rem;
+            min-height: calc(100vh - 120px);
+            position: sticky;
+            top: 0;
+            height: fit-content;
+        }
+
+        .sidebar h2 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #ecf0f1;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .sidebar ul li a:hover {
+            color: #3498db;
+        }
+
+        .sidebar ul ul {
+            margin-left: 1rem;
+            margin-top: 0.3rem;
+        }
+
+        .sidebar ul ul li {
+            margin-bottom: 0.3rem;
+        }
+
+        .sidebar ul ul li a {
+            font-size: 0.85rem;
+            color: #95a5a6;
+        }
+
+        .content {
+            flex: 1;
+            padding: 3rem;
+        }
+
+        .content h1 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #3498db;
+        }
+
+        .content h2 {
+            color: #2c3e50;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        .content h3 {
+            color: #34495e;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .content ul, .content ol {
+            margin-bottom: 1rem;
+            margin-left: 2rem;
+        }
+
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .highlight-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .info-box {
+            background-color: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .success-box {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .signature-block {
+            border: 2px solid #2c3e50;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .signature-block p {
+            margin-bottom: 1rem;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid #333;
+            display: inline-block;
+            min-width: 250px;
+            margin: 0 0.5rem;
+        }
+
+        .checkbox-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checkbox-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .checkbox-list li:before {
+            content: "☐ ";
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ecf0f1;
+        }
+
+        .nav-button {
+            padding: 0.8rem 1.5rem;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-button:hover {
+            background-color: #2980b9;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .placeholder {
+            background-color: #fff3cd;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        @media print {
+            .sidebar {
+                display: none;
+            }
+            .navigation {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Thrive EAP Documentation</h1>
+        <p>Medical Compliance Statement</p>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; Medical Compliance Statement
+    </div>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#section1">1. Executive Summary</a></li>
+                <li><a href="#section2">2. Regulatory Classification</a>
+                    <ul>
+                        <li><a href="#section2-1">2.1 NOT a Medical Device</a></li>
+                        <li><a href="#section2-2">2.2 Positioning as Wellness Service</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section3">3. Claims & Advertising Compliance</a>
+                    <ul>
+                        <li><a href="#section3-1">3.1 ASA Compliance</a></li>
+                        <li><a href="#section3-2">3.2 Approved Language & Claims</a></li>
+                        <li><a href="#section3-3">3.3 Marketing Materials Review</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section4">4. Disclaimer Framework</a>
+                    <ul>
+                        <li><a href="#section4-1">4.1 Standard User Disclaimer</a></li>
+                        <li><a href="#section4-2">4.2 Disclaimer Placement</a></li>
+                        <li><a href="#section4-3">4.3 Session-Specific Warnings</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section5">5. Evidence Base</a>
+                    <ul>
+                        <li><a href="#section5-1">5.1 Research Foundation</a></li>
+                        <li><a href="#section5-2">5.2 Limitations Acknowledged</a></li>
+                        <li><a href="#section5-3">5.3 Outcome Data</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section6">6. Clinical Pathway Integration</a>
+                    <ul>
+                        <li><a href="#section6-1">6.1 Smart Start Minds Partnership</a></li>
+                        <li><a href="#section6-2">6.2 Clear Boundaries</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section7">7. User Safety & Informed Consent</a></li>
+                <li><a href="#section8">8. Data Protection & Confidentiality</a></li>
+                <li><a href="#section9">9. Professional Standards & Ethics</a></li>
+                <li><a href="#section10">10. Complaints & Concerns</a></li>
+                <li><a href="#section11">11. Quality Assurance & Compliance Monitoring</a></li>
+                <li><a href="#section12">12. Declarations</a></li>
+                <li><a href="#section13">13. Supporting Documentation</a></li>
+                <li><a href="#section14">14. Document Control</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h1>Medical Compliance Statement</h1>
+
+            <section id="section1">
+                <h2>1. Executive Summary</h2>
+
+                <div class="info-box">
+                    <strong>Document Purpose:</strong> This Medical Compliance Statement clarifies Thrive's regulatory position, advertising compliance standards, and evidence base to ensure transparency, user safety, and adherence to UK regulatory requirements.
+                </div>
+
+                <p>Thrive is committed to operating with the highest standards of integrity, transparency, and user safety. This document establishes our position regarding medical device classification, advertising standards, evidence-based practice, and regulatory compliance.</p>
+
+                <h3>Key Points</h3>
+                <ul>
+                    <li><strong>Regulatory Position:</strong> Thrive is NOT a medical device as defined under UK Medical Device Regulations (MDR 2002) and MHRA guidance</li>
+                    <li><strong>Service Classification:</strong> Thrive is a wellness and personal development platform offering evidence-based educational content and self-help resources</li>
+                    <li><strong>Evidence-Based:</strong> All content and methodologies are grounded in established psychological research and best practices</li>
+                    <li><strong>Clear Disclaimers:</strong> Comprehensive disclaimer framework ensures users understand what Thrive is and is not</li>
+                    <li><strong>Clinical Integration:</strong> Clear referral pathways to CQC-regulated clinical services through Smart Start Minds partnership when needed</li>
+                    <li><strong>Advertising Compliance:</strong> All marketing claims substantiated and compliant with ASA CAP Code</li>
+                </ul>
+
+                <h3>Compliance Commitments</h3>
+                <ul class="checkbox-list">
+                    <li>Maintain accurate positioning as wellness service, not medical device</li>
+                    <li>Ensure all advertising claims are truthful, substantiated, and non-misleading</li>
+                    <li>Provide clear, accessible disclaimers to all users</li>
+                    <li>Base all content on recognized evidence-based approaches</li>
+                    <li>Monitor regulatory developments and update practices accordingly</li>
+                    <li>Prioritize user safety and wellbeing in all decisions</li>
+                    <li>Maintain transparent communication with users, partners, and regulators</li>
+                    <li>Conduct regular compliance audits and reviews</li>
+                </ul>
+            </section>
+
+            <section id="section2">
+                <h2>2. Regulatory Classification</h2>
+
+                <section id="section2-1">
+                    <h3>2.1 NOT a Medical Device</h3>
+
+                    <div class="highlight-box">
+                        <h4>Why Thrive Does NOT Meet Medical Device Definition</h4>
+                        <p><strong>Under UK Medical Device Regulations 2002 (as amended) and MHRA guidance, a medical device must have a medical purpose including diagnosis, prevention, monitoring, treatment, or alleviation of disease.</strong></p>
+
+                        <p><strong>Thrive does NOT meet this definition because:</strong></p>
+                        <ul class="checkbox-list">
+                            <li><strong>Does not diagnose medical conditions:</strong> Thrive does not assess, identify, or diagnose mental health disorders or any medical conditions</li>
+                            <li><strong>Does not treat medical conditions:</strong> Thrive does not provide treatment for diagnosed mental health conditions or medical diseases</li>
+                            <li><strong>Does not prevent disease:</strong> Thrive does not claim to prevent the onset of mental health disorders or medical conditions</li>
+                            <li><strong>Does not monitor physiological processes:</strong> Thrive does not measure, monitor, or track physiological parameters for medical purposes</li>
+                        </ul>
+
+                        <p><strong>Regulatory Position:</strong> Wellness and personal development tool supporting general mental wellbeing, not a medical device.</p>
+                    </div>
+
+                    <p><strong>Legal Basis:</strong> Our position is based on:</p>
+                    <ul>
+                        <li>Medical Device Regulations 2002 (SI 2002/618, as amended)</li>
+                        <li>MHRA Guidance on medical device stand-alone software (including apps)</li>
+                        <li>EU Medical Device Regulation (MDR) 2017/745 (applicable during transition period)</li>
+                        <li><span class="placeholder">[INSERT LEGAL OPINION REFERENCE if obtained]</span></li>
+                    </ul>
+
+                    <p><strong>Key Differentiators:</strong></p>
+                    <ul>
+                        <li>Thrive provides educational content, not medical advice</li>
+                        <li>Users self-direct their use; no clinical assessment or diagnosis occurs</li>
+                        <li>Content supports general wellness, not treatment of pathology</li>
+                        <li>No medical claims made in marketing or user communications</li>
+                        <li>Clear disclaimers inform users Thrive is not a substitute for medical care</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <strong>Note:</strong> While Thrive is not a medical device, we maintain high standards of user safety, data protection, and ethical practice consistent with our commitment to user wellbeing. We monitor regulatory developments and will adjust our classification if guidance changes.
+                    </div>
+                </section>
+
+                <section id="section2-2">
+                    <h3>2.2 Positioning as Wellness Service</h3>
+
+                    <h4>What Thrive IS:</h4>
+                    <ul>
+                        <li><strong>Wellness and resilience-building platform:</strong> Tools and techniques to support mental wellbeing, stress management, and personal growth</li>
+                        <li><strong>Educational content on mental wellbeing:</strong> Evidence-based information about psychological wellbeing, resilience, mindfulness, and positive psychology</li>
+                        <li><strong>Self-help resources based on evidence-based principles:</strong> Interactive exercises, guided practices, and psycho-educational materials grounded in CBT, positive psychology, and mindfulness research</li>
+                        <li><strong>Signposting to clinical services when needed:</strong> Clear pathways to CQC-regulated clinical services through Smart Start Minds partnership for users who need professional mental health support</li>
+                        <li><strong>Employee Assistance Programme (EAP) enhancement:</strong> Supporting workplace wellbeing initiatives with accessible, scalable resources</li>
+                    </ul>
+
+                    <h4>Clear Distinction from Medical/Therapeutic Services:</h4>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Thrive (Wellness Service)</th>
+                                <th>Medical/Therapeutic Services</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>General wellbeing and resilience</td>
+                                <td>Diagnosis and treatment of mental health disorders</td>
+                            </tr>
+                            <tr>
+                                <td>Self-directed learning and practice</td>
+                                <td>Professional clinical assessment and intervention</td>
+                            </tr>
+                            <tr>
+                                <td>Educational content and techniques</td>
+                                <td>Individualized treatment plans</td>
+                            </tr>
+                            <tr>
+                                <td>Supporting mild-moderate stress</td>
+                                <td>Managing clinical conditions requiring professional care</td>
+                            </tr>
+                            <tr>
+                                <td>Preventive and wellness focus</td>
+                                <td>Treatment and management of pathology</td>
+                            </tr>
+                            <tr>
+                                <td>No regulated health professionals required</td>
+                                <td>Delivered by regulated health professionals (e.g., clinical psychologists, psychiatrists)</td>
+                            </tr>
+                            <tr>
+                                <td>Complement to professional care, not replacement</td>
+                                <td>Primary treatment intervention</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p><strong>User Journey Clarity:</strong> From onboarding onwards, users are clearly informed that Thrive is a wellness tool, not a medical service. Users who require clinical support are directed to appropriate professional services.</p>
+                </section>
+            </section>
+
+            <section id="section3">
+                <h2>3. Claims & Advertising Compliance</h2>
+
+                <section id="section3-1">
+                    <h3>3.1 ASA Compliance</h3>
+
+                    <p>Thrive is committed to full compliance with the Advertising Standards Authority (ASA) Code of Advertising Practice (CAP Code), particularly regarding health and wellbeing claims.</p>
+
+                    <h4>Compliance Commitments:</h4>
+                    <ul class="checkbox-list">
+                        <li><strong>All claims substantiated:</strong> Every claim made in marketing materials is supported by evidence</li>
+                        <li><strong>Evidence-based only:</strong> Claims based on recognized research or outcome data</li>
+                        <li><strong>No misleading health claims:</strong> Avoid any suggestion of medical diagnosis, treatment, or cure</li>
+                        <li><strong>Clear and accurate:</strong> Language is precise and does not exaggerate benefits</li>
+                        <li><strong>Appropriate disclaimers:</strong> Limitations and boundaries clearly communicated</li>
+                        <li><strong>Regular review:</strong> Marketing materials reviewed systematically for compliance</li>
+                    </ul>
+
+                    <h4>ASA CAP Code Relevant Sections:</h4>
+                    <ul>
+                        <li><strong>Section 3:</strong> Misleading advertising (ensuring claims are truthful and substantiated)</li>
+                        <li><strong>Section 12:</strong> Medicines, medical devices, health-related products and beauty products</li>
+                        <li><strong>Section 50:</strong> Health, beauty and slimming (online and digital marketing)</li>
+                    </ul>
+
+                    <p><strong>Review Process:</strong> <span class="placeholder">[INSERT DETAILED REVIEW PROCESS - e.g., all marketing materials reviewed by [COMPLIANCE OFFICER/LEGAL TEAM] before publication, quarterly audit of live materials, ASA rulings monitored and incorporated into review process]</span></p>
+
+                    <div class="info-box">
+                        <strong>Proactive Compliance:</strong> We monitor ASA rulings in the mental health and wellbeing sector to ensure our practices reflect current regulatory expectations. Any concerns raised by ASA or users are addressed promptly with appropriate remedial action.
+                    </div>
+                </section>
+
+                <section id="section3-2">
+                    <h3>3.2 Approved Language & Claims</h3>
+
+                    <p>To ensure consistency and compliance, Thrive maintains approved language for marketing and user communications.</p>
+
+                    <h4>What We DO Say (Approved Claims)</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Claim</th>
+                                <th>Evidence Basis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>"Build mental resilience"</td>
+                                <td><span class="placeholder">[CITE RESEARCH - e.g., resilience training studies, meta-analyses on resilience interventions]</span></td>
+                            </tr>
+                            <tr>
+                                <td>"Evidence-based techniques"</td>
+                                <td><span class="placeholder">[CITE RESEARCH - references to CBT, positive psychology, mindfulness research base]</span></td>
+                            </tr>
+                            <tr>
+                                <td>"Support wellbeing"</td>
+                                <td><span class="placeholder">[CITE RESEARCH - wellbeing intervention studies, digital mental health research]</span></td>
+                            </tr>
+                            <tr>
+                                <td>"Manage stress effectively"</td>
+                                <td><span class="placeholder">[CITE RESEARCH - stress management intervention studies]</span></td>
+                            </tr>
+                            <tr>
+                                <td>"Develop coping strategies"</td>
+                                <td><span class="placeholder">[CITE RESEARCH - coping skills training literature]</span></td>
+                            </tr>
+                            <tr>
+                                <td>"Improve emotional awareness"</td>
+                                <td><span class="placeholder">[CITE RESEARCH - emotional intelligence and awareness studies]</span></td>
+                            </tr>
+                            <tr>
+                                <td>"Enhance workplace wellbeing"</td>
+                                <td><span class="placeholder">[CITE RESEARCH - workplace wellbeing intervention studies]</span></td>
+                            </tr>
+                            <tr>
+                                <td>"Accessible mental health support"</td>
+                                <td><span class="placeholder">[EVIDENCE - accessibility of digital platforms, user feedback]</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="placeholder">[ADD MORE APPROVED CLAIMS]</span></td>
+                                <td><span class="placeholder">[CITE RESEARCH]</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>What We DON'T Say (Prohibited Claims)</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Avoid These Claims</th>
+                                <th>Why</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>"Treat depression"</td>
+                                <td>Medical claim requiring clinical diagnosis and intervention</td>
+                            </tr>
+                            <tr>
+                                <td>"Cure anxiety"</td>
+                                <td>Unsubstantiated and implies medical treatment</td>
+                            </tr>
+                            <tr>
+                                <td>"Diagnose mental health conditions"</td>
+                                <td>Medical device function; requires clinical expertise</td>
+                            </tr>
+                            <tr>
+                                <td>"Prevent mental illness"</td>
+                                <td>Medical claim; unsubstantiated</td>
+                            </tr>
+                            <tr>
+                                <td>"Replace therapy"</td>
+                                <td>Misleading; Thrive is complement, not replacement</td>
+                            </tr>
+                            <tr>
+                                <td>"Guaranteed results"</td>
+                                <td>Unsubstantiated; individual outcomes vary</td>
+                            </tr>
+                            <tr>
+                                <td>"Clinically proven to..."</td>
+                                <td>Requires robust clinical trial evidence specific to Thrive</td>
+                            </tr>
+                            <tr>
+                                <td>"FDA/MHRA approved"</td>
+                                <td>False; not a medical device requiring such approval</td>
+                            </tr>
+                            <tr>
+                                <td><span class="placeholder">[ADD MORE PROHIBITED CLAIMS]</span></td>
+                                <td><span class="placeholder">[REASON]</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="warning-box">
+                        <strong>Important:</strong> All staff and partners involved in marketing, content creation, or user communications must adhere to approved language guidelines. Any proposed new claims must be reviewed and approved through the compliance process before use.
+                    </div>
+                </section>
+
+                <section id="section3-3">
+                    <h3>3.3 Marketing Materials Review</h3>
+
+                    <p><strong>Review Responsibility:</strong> All marketing materials reviewed by: <span class="placeholder">[ROLE/TEAM - e.g., Compliance Officer, Marketing Director, Legal Counsel]</span></p>
+
+                    <p><strong>Review Frequency:</strong></p>
+                    <ul>
+                        <li><strong>Pre-publication:</strong> All new materials reviewed before release</li>
+                        <li><strong>Quarterly audit:</strong> <span class="placeholder">[FREQUENCY - e.g., all live marketing materials audited quarterly]</span></li>
+                        <li><strong>Ad-hoc review:</strong> Immediate review if ASA ruling or regulatory guidance changes</li>
+                        <li><strong>Annual comprehensive review:</strong> Full marketing compliance audit annually</li>
+                    </ul>
+
+                    <h4>Approval Process:</h4>
+                    <ol>
+                        <li><strong>Draft creation:</strong> Marketing team creates initial draft with reference to approved language guidelines</li>
+                        <li><strong>Compliance check:</strong> <span class="placeholder">[DESCRIBE - e.g., Compliance Officer reviews for regulatory compliance, evidence substantiation, disclaimer requirements]</span></li>
+                        <li><strong>Legal review (if required):</strong> <span class="placeholder">[DESCRIBE - e.g., materials making health claims or using new language reviewed by legal counsel]</span></li>
+                        <li><strong>Clinical review (if required):</strong> <span class="placeholder">[DESCRIBE - e.g., Clinical Director reviews materials referencing clinical pathways or mental health content]</span></li>
+                        <li><strong>Approval sign-off:</strong> Documented approval obtained before publication</li>
+                        <li><strong>Version control:</strong> Approved version archived with date and approver details</li>
+                    </ol>
+
+                    <h4>Version Control System:</h4>
+                    <p><span class="placeholder">[DESCRIBE - e.g., all marketing materials stored in central repository with version history, approval dates, and review logs. System tracks: material name, version number, creation date, author, reviewer(s), approval date, publication date, retirement date]</span></p>
+
+                    <h4>Materials Subject to Review:</h4>
+                    <ul class="checkbox-list">
+                        <li>Website content (landing pages, product descriptions, blog posts)</li>
+                        <li>Social media posts and campaigns</li>
+                        <li>Email marketing campaigns</li>
+                        <li>Print materials (brochures, flyers, posters)</li>
+                        <li>Sales presentations and pitch decks</li>
+                        <li>Partner communications and co-branded materials</li>
+                        <li>Press releases and media communications</li>
+                        <li>Video and multimedia content</li>
+                        <li>App store descriptions and screenshots</li>
+                        <li><span class="placeholder">[OTHER MATERIALS]</span></li>
+                    </ul>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Material Type</th>
+                                <th>Review Required</th>
+                                <th>Approval Authority</th>
+                                <th>Review Frequency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Website content</td>
+                                <td>Yes - Pre-publication</td>
+                                <td><span class="placeholder">[ROLE]</span></td>
+                                <td>Quarterly + on update</td>
+                            </tr>
+                            <tr>
+                                <td>Social media</td>
+                                <td>Yes - Pre-publication</td>
+                                <td><span class="placeholder">[ROLE]</span></td>
+                                <td>Per post</td>
+                            </tr>
+                            <tr>
+                                <td>Email campaigns</td>
+                                <td>Yes - Pre-publication</td>
+                                <td><span class="placeholder">[ROLE]</span></td>
+                                <td>Per campaign</td>
+                            </tr>
+                            <tr>
+                                <td>Print materials</td>
+                                <td>Yes - Pre-publication + Legal</td>
+                                <td><span class="placeholder">[ROLE]</span></td>
+                                <td>Pre-print + annual review</td>
+                            </tr>
+                            <tr>
+                                <td><span class="placeholder">[OTHER]</span></td>
+                                <td><span class="placeholder">[REQUIREMENT]</span></td>
+                                <td><span class="placeholder">[ROLE]</span></td>
+                                <td><span class="placeholder">[FREQUENCY]</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+
+            <section id="section4">
+                <h2>4. Disclaimer Framework</h2>
+
+                <section id="section4-1">
+                    <h3>4.1 Standard User Disclaimer</h3>
+
+                    <div class="highlight-box">
+                        <h4>STANDARD DISCLAIMER TEMPLATE:</h4>
+
+                        <p>Thrive is a wellness platform designed to support mental wellbeing through evidence-based techniques and educational content. <strong>Thrive is NOT a medical device and does not provide medical advice, diagnosis, or treatment.</strong></p>
+
+                        <p><strong>If you are experiencing a mental health crisis or emergency, please contact:</strong></p>
+                        <ul>
+                            <li><strong>Emergency services: 999 (UK)</strong></li>
+                            <li><strong>NHS Crisis Line: 111 (option 2)</strong></li>
+                            <li><strong>Samaritans: 116 123 (24/7)</strong></li>
+                            <li><strong>Shout Crisis Text Line: Text "SHOUT" to 85258</strong></li>
+                        </ul>
+
+                        <p><strong>Thrive is not suitable for individuals with:</strong></p>
+                        <ul>
+                            <li><span class="placeholder">[INSERT CONTRAINDICATIONS - e.g., active suicidal ideation, severe mental health conditions requiring clinical intervention, acute psychosis, severe self-harm behaviors]</span></li>
+                            <li><span class="placeholder">[INSERT CONTRAINDICATIONS - e.g., conditions requiring immediate medical attention]</span></li>
+                            <li><span class="placeholder">[INSERT CONTRAINDICATIONS - e.g., circumstances where professional clinical assessment is necessary]</span></li>
+                        </ul>
+
+                        <p><strong>For ongoing mental health concerns, please consult your GP or healthcare provider.</strong> Thrive offers referral pathways to CQC-regulated clinical services through our partner Smart Start Minds where appropriate.</p>
+
+                        <p>Thrive is designed to support general wellbeing and resilience. It is a complement to, not a replacement for, professional mental health care. The content provided is for educational purposes and should not be considered individualized medical or therapeutic advice.</p>
+
+                        <p><strong>By using Thrive, you acknowledge that you have read and understood this disclaimer.</strong></p>
+
+                        <p><span class="placeholder">[CUSTOMIZE AS NEEDED for specific contexts, always maintaining core elements: not medical device, crisis contacts, contraindications, GP consultation recommendation, acknowledgment of understanding]</span></p>
+                    </div>
+                </section>
+
+                <section id="section4-2">
+                    <h3>4.2 Disclaimer Placement</h3>
+
+                    <p>To ensure users are fully informed, disclaimers are prominently placed throughout the user journey.</p>
+
+                    <h4>Required Disclaimer Locations:</h4>
+                    <ul class="checkbox-list">
+                        <li><strong>First-time user onboarding:</strong> Full disclaimer presented during registration/first login with mandatory acknowledgment</li>
+                        <li><strong>Terms & Conditions:</strong> Comprehensive disclaimer incorporated into T&Cs (legally binding)</li>
+                        <li><strong>Privacy Policy:</strong> Data protection disclaimer regarding health-related information</li>
+                        <li><strong>Before accessing certain content:</strong> Additional warnings before stress/anxiety modules or sensitive content</li>
+                        <li><strong>In marketing materials:</strong> Abbreviated disclaimer in footer/fine print of promotional materials</li>
+                        <li><strong>Website homepage:</strong> Visible disclaimer or link to full disclaimer</li>
+                        <li><strong>App store listings:</strong> Disclaimer in app description</li>
+                        <li><strong>Help/Support section:</strong> Prominent disclaimer with crisis contact information</li>
+                        <li><strong>Email communications:</strong> Footer disclaimer in user emails</li>
+                        <li><strong><span class="placeholder">[OTHER LOCATIONS as identified]</span></strong></li>
+                    </ul>
+
+                    <h4>Visibility and Accessibility Standards:</h4>
+                    <ul>
+                        <li><strong>Prominent placement:</strong> Disclaimers positioned where users will see them, not buried in small print</li>
+                        <li><strong>Clear language:</strong> Plain English, avoiding jargon</li>
+                        <li><strong>Readable formatting:</strong> Adequate font size, contrast, and spacing</li>
+                        <li><strong>Mandatory acknowledgment:</strong> Users must affirmatively acknowledge key disclaimers (e.g., checkbox during onboarding)</li>
+                        <li><strong>Accessible format:</strong> Compatible with screen readers and accessibility tools</li>
+                        <li><strong>Multiple touchpoints:</strong> Users encounter disclaimer information at several points to reinforce understanding</li>
+                    </ul>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Location</th>
+                                <th>Disclaimer Type</th>
+                                <th>User Action Required</th>
+                                <th>Frequency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Onboarding</td>
+                                <td>Full standard disclaimer</td>
+                                <td>Read and acknowledge (checkbox)</td>
+                                <td>Once (first use)</td>
+                            </tr>
+                            <tr>
+                                <td>Terms & Conditions</td>
+                                <td>Legal disclaimer</td>
+                                <td>Accept T&Cs</td>
+                                <td>Once (acceptance) + on updates</td>
+                            </tr>
+                            <tr>
+                                <td>Sensitive content modules</td>
+                                <td>Content-specific warning</td>
+                                <td>Acknowledge or skip content</td>
+                                <td>Per module access</td>
+                            </tr>
+                            <tr>
+                                <td>Marketing materials</td>
+                                <td>Abbreviated disclaimer</td>
+                                <td>None (informational)</td>
+                                <td>All materials</td>
+                            </tr>
+                            <tr>
+                                <td>Help/Support section</td>
+                                <td>Crisis contact + service limitations</td>
+                                <td>None (informational)</td>
+                                <td>Always visible</td>
+                            </tr>
+                            <tr>
+                                <td><span class="placeholder">[OTHER]</span></td>
+                                <td><span class="placeholder">[TYPE]</span></td>
+                                <td><span class="placeholder">[ACTION]</span></td>
+                                <td><span class="placeholder">[FREQUENCY]</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="section4-3">
+                    <h3>4.3 Session-Specific Warnings</h3>
+
+                    <p>Beyond the standard disclaimer, certain content requires additional warnings to ensure user safety and informed choice.</p>
+
+                    <h4>Content Requiring Additional Warnings:</h4>
+                    <ul>
+                        <li>Modules addressing anxiety, depression, or other mental health challenges</li>
+                        <li>Trauma-related content or exercises</li>
+                        <li>Grief and loss content</li>
+                        <li>Content addressing self-esteem, body image, or eating concerns</li>
+                        <li>Stress management during crisis situations</li>
+                        <li><span class="placeholder">[OTHER SENSITIVE TOPICS]</span></li>
+                    </ul>
+
+                    <h4>Example Session-Specific Warning:</h4>
+                    <div class="warning-box">
+                        <strong>Content Warning:</strong> This session covers <span class="placeholder">[TOPIC - e.g., techniques for managing anxiety]</span>. While these evidence-based approaches can be helpful for general wellbeing, they are not a substitute for professional mental health care.
+
+                        <p>If you feel distressed during this session, please pause and seek support. You can:</p>
+                        <ul>
+                            <li>Contact your GP or mental health provider</li>
+                            <li>Call NHS 111 (option 2) or Samaritans (116 123)</li>
+                            <li>Access immediate clinical support through Smart Start Minds [LINK]</li>
+                        </ul>
+
+                        <p>You can proceed with this session, return to it later, or choose a different module.</p>
+                    </div>
+
+                    <h4>Trigger Warnings for Trauma-Related Content:</h4>
+                    <p>Content that may be triggering includes specific warnings, for example:</p>
+
+                    <div class="warning-box">
+                        <strong>Trigger Warning:</strong> This content addresses themes related to <span class="placeholder">[SPECIFIC TRIGGER - e.g., trauma, loss, violence]</span>. Please proceed with care and prioritize your wellbeing. If this content feels overwhelming, please:
+                        <ul>
+                            <li>Pause and practice grounding techniques</li>
+                            <li>Reach out to a trusted support person</li>
+                            <li>Contact professional support services</li>
+                            <li>Skip this content and choose an alternative module</li>
+                        </ul>
+                    </div>
+
+                    <h4>Content Flagging System:</h4>
+                    <p><span class="placeholder">[INSERT CONTENT FLAGGING SYSTEM - e.g., internal classification system tagging content by sensitivity level (general, moderate sensitivity, high sensitivity), corresponding warning templates automatically applied, review process for flagging new content]</span></p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Content Sensitivity Level</th>
+                                <th>Warning Type</th>
+                                <th>Additional Safeguards</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>General</td>
+                                <td>Standard disclaimer (onboarding)</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>Moderate sensitivity</td>
+                                <td>Session-specific warning</td>
+                                <td>Option to skip, crisis contact info</td>
+                            </tr>
+                            <tr>
+                                <td>High sensitivity (trauma, crisis)</td>
+                                <td>Trigger warning + session-specific warning</td>
+                                <td>Grounding techniques offered, skip option prominent, clinical referral link</td>
+                            </tr>
+                            <tr>
+                                <td><span class="placeholder">[OTHER LEVEL]</span></td>
+                                <td><span class="placeholder">[WARNING TYPE]</span></td>
+                                <td><span class="placeholder">[SAFEGUARDS]</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+
+            <section id="section5">
+                <h2>5. Evidence Base</h2>
+
+                <section id="section5-1">
+                    <h3>5.1 Research Foundation</h3>
+
+                    <p>Thrive's content and methodology are grounded in established psychological research and evidence-based practices. Our approach integrates multiple research-supported frameworks:</p>
+
+                    <h4>Core Evidence-Based Frameworks:</h4>
+
+                    <ul>
+                        <li><strong>Cognitive Behavioral Therapy (CBT) Principles</strong> <span class="placeholder">[CITE - e.g., Beck, A.T. (1976). Cognitive Therapy and the Emotional Disorders; Butler et al. (2006). The empirical status of cognitive-behavioral therapy: a review of meta-analyses. Clinical Psychology Review.]</span>
+                            <ul>
+                                <li>Thought-feeling-behavior connections</li>
+                                <li>Cognitive restructuring techniques</li>
+                                <li>Behavioral activation</li>
+                                <li>Digital CBT adaptations</li>
+                            </ul>
+                        </li>
+
+                        <li><strong>Positive Psychology</strong> <span class="placeholder">[CITE - e.g., Seligman, M.E.P. & Csikszentmihalyi, M. (2000). Positive Psychology: An Introduction. American Psychologist; Seligman et al. (2005). Positive psychology progress: empirical validation of interventions.]</span>
+                            <ul>
+                                <li>Strengths-based approaches</li>
+                                <li>Wellbeing and flourishing</li>
+                                <li>Gratitude and positive emotions</li>
+                                <li>Character strengths</li>
+                            </ul>
+                        </li>
+
+                        <li><strong>Mindfulness-Based Approaches</strong> <span class="placeholder">[CITE - e.g., Kabat-Zinn, J. (1990). Full Catastrophe Living; Khoury et al. (2013). Mindfulness-based therapy: a comprehensive meta-analysis. Clinical Psychology Review.]</span>
+                            <ul>
+                                <li>Present-moment awareness</li>
+                                <li>Non-judgmental observation</li>
+                                <li>Stress reduction through mindfulness</li>
+                                <li>Acceptance-based strategies</li>
+                            </ul>
+                        </li>
+
+                        <li><strong>Resilience Research</strong> <span class="placeholder">[CITE - e.g., Masten, A.S. (2001). Ordinary magic: Resilience processes in development. American Psychologist; Fletcher & Sarkar (2013). Psychological resilience: A review and critique of definitions, concepts, and theory.]</span>
+                            <ul>
+                                <li>Protective factors and coping mechanisms</li>
+                                <li>Adversity and growth</li>
+                                <li>Resilience-building interventions</li>
+                                <li>Workplace resilience</li>
+                            </ul>
+                        </li>
+
+                        <li><strong><span class="placeholder">[OTHER FRAMEWORKS - e.g., Acceptance and Commitment Therapy (ACT), Motivational Interviewing principles, Psychoeducation models]</span></strong> <span class="placeholder">[CITE RESEARCH]</span></li>
+                    </ul>
+
+                    <h4>Key Research Citations by Application Area:</h4>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Research Area</th>
+                                <th>Key Studies</th>
+                                <th>Application in Thrive</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Digital Mental Health Interventions</td>
+                                <td><span class="placeholder">[e.g., Andersson et al. (2014). Internet-based and other computerized psychological treatments for adult depression: a meta-analysis. Cognitive Behaviour Therapy.]</span></td>
+                                <td>Platform design, digital delivery of evidence-based content, self-guided intervention structure</td>
+                            </tr>
+                            <tr>
+                                <td>Workplace Wellbeing</td>
+                                <td><span class="placeholder">[e.g., Joyce et al. (2016). Workplace interventions for common mental disorders: a systematic meta-review. Psychological Medicine.]</span></td>
+                                <td>EAP content design, workplace-specific modules, organizational wellbeing support</td>
+                            </tr>
+                            <tr>
+                                <td>Stress Management</td>
+                                <td><span class="placeholder">[e.g., Richardson & Rothstein (2008). Effects of occupational stress management intervention programs: a meta-analysis. Journal of Occupational Health Psychology.]</span></td>
+                                <td>Stress reduction techniques, coping skills modules, relaxation exercises</td>
+                            </tr>
+                            <tr>
+                                <td>Psychoeducation</td>
+                                <td><span class="placeholder">[e.g., Donker et al. (2009). Psychoeducation for depression, anxiety and psychological distress: a meta-analysis. BMC Medicine.]</span></td>
+                                <td>Educational content delivery, information resources, self-help guidance</td>
+                            </tr>
+                            <tr>
+                                <td>Self-Help Interventions</td>
+                                <td><span class="placeholder">[e.g., Cuijpers et al. (2010). Self-guided psychological treatment for depressive symptoms: a meta-analysis. PLoS One.]</span></td>
+                                <td>Self-directed user journey, unguided exercises, scalable delivery model</td>
+                            </tr>
+                            <tr>
+                                <td><span class="placeholder">[OTHER AREA]</span></td>
+                                <td><span class="placeholder">[KEY STUDIES]</span></td>
+                                <td><span class="placeholder">[APPLICATION]</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="info-box">
+                        <strong>Evidence Base Documentation:</strong> Full bibliography of research citations is maintained in Supporting Documentation (Section 13) and available upon request. Research base is reviewed annually and updated to reflect latest evidence.
+                    </div>
+                </section>
+
+                <section id="section5-2">
+                    <h3>5.2 Limitations Acknowledged</h3>
+
+                    <p>Thrive is committed to transparency about the limitations of our evidence base and service. We openly acknowledge:</p>
+
+                    <h4>Research Limitations:</h4>
+                    <ul>
+                        <li><strong>Translation from in-person to digital:</strong> Most foundational research (e.g., CBT, positive psychology) was conducted on in-person interventions. While digital adaptations show promise, outcomes may differ from face-to-face delivery.</li>
+
+                        <li><strong>Self-guided nature and variable engagement:</strong> Digital self-help tools depend on user engagement and self-direction. Research shows variable completion rates and outcomes based on individual motivation and circumstances.</li>
+
+                        <li><strong>Population differences:</strong> Research conducted on specific populations (e.g., clinical samples, students) may not generalize to all Thrive users (workplace employees with varied backgrounds and needs).</li>
+
+                        <li><strong>Limited Thrive-specific outcome data:</strong> <span class="placeholder">[As a [new/growing] service, Thrive's own outcome data is [limited/emerging]. While based on evidence-based principles, specific efficacy data for the Thrive platform is [in development/being collected].]</span></li>
+
+                        <li><strong>Absence of randomized controlled trials (RCTs) for Thrive:</strong> <span class="placeholder">[INSERT STATUS - e.g., Thrive has not yet been evaluated in RCTs. While content is based on RCT-supported approaches, the specific platform has not undergone gold-standard experimental evaluation.]</span></li>
+
+                        <li><strong>Scope limitations:</strong> Thrive is designed for general wellbeing and mild-to-moderate stress, not clinical treatment. Research on clinical interventions may not directly apply to our wellness focus.</li>
+
+                        <li><strong><span class="placeholder">[OTHER LIMITATIONS - e.g., outcome measurement challenges, attribution difficulties in complex interventions, long-term follow-up data]</span></strong></li>
+                    </ul>
+
+                    <h4>Transparency in Communications:</h4>
+                    <p>We communicate these limitations clearly:</p>
+                    <ul class="checkbox-list">
+                        <li><strong>No over-claiming:</strong> Marketing and user communications accurately represent what evidence does and doesn't show</li>
+                        <li><strong>Honest about unknowns:</strong> Where evidence is limited or uncertain, we acknowledge this rather than making unsupported claims</li>
+                        <li><strong>Context provided:</strong> When citing research, we explain how it applies (and doesn't apply) to Thrive's specific approach</li>
+                        <li><strong>Ongoing evaluation communicated:</strong> Users and partners informed about our commitment to outcome measurement and continuous improvement</li>
+                        <li><strong>Individual variation acknowledged:</strong> Communications emphasize that outcomes vary based on individual circumstances, engagement, and needs</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <strong>Commitment to Evidence:</strong> Despite limitations, Thrive remains committed to evidence-based practice. We continuously review emerging research, collect outcome data, and refine our approach based on best available evidence and user feedback.
+                    </div>
+                </section>
+
+                <section id="section5-3">
+                    <h3>5.3 Outcome Data</h3>
+
+                    <p>Thrive is committed to measuring and evaluating user outcomes to demonstrate effectiveness and drive continuous improvement.</p>
+
+                    <h4>User Outcome Metrics Tracked:</h4>
+                    <p><span class="placeholder">[DESCRIBE METRICS - e.g., user engagement (session completion, frequency of use, time spent), self-reported wellbeing (pre/post questionnaires, validated scales such as WEMWBS, GAD-7, PHQ-9 for wellness monitoring not diagnosis), user satisfaction (NPS, feedback surveys), workplace outcomes (absenteeism, presenteeism if tracked by employer partners), behavioral change (skill application, coping strategy use)]</span></p>
+
+                    <ul>
+                        <li><strong>Engagement metrics:</strong> <span class="placeholder">[e.g., session completion rates, active users, retention rates]</span></li>
+                        <li><strong>Wellbeing measures:</strong> <span class="placeholder">[e.g., standardized wellbeing scales administered at baseline and follow-up]</span></li>
+                        <li><strong>User satisfaction:</strong> <span class="placeholder">[e.g., Net Promoter Score (NPS), user feedback ratings]</span></li>
+                        <li><strong>Behavioral outcomes:</strong> <span class="placeholder">[e.g., self-reported use of coping strategies, behavior change questionnaires]</span></li>
+                        <li><strong>Workplace outcomes (where available):</strong> <span class="placeholder">[e.g., employer-reported absenteeism trends, EAP utilization data]</span></li>
+                        <li><strong><span class="placeholder">[OTHER METRICS]</span></strong></li>
+                    </ul>
+
+                    <h4>Results to Date:</h4>
+                    <p><span class="placeholder">[INSERT DATA if available - e.g., "As of [DATE], Thrive has [NUMBER] active users across [NUMBER] organizations. Preliminary outcome data shows: [SUMMARIZE KEY FINDINGS - engagement rates, wellbeing score changes, user satisfaction scores]. Full analysis is ongoing and will be reported in [TIMEFRAME]." OR "Outcome data collection is in progress. Initial results expected [DATE]." OR "To date, [X]% of users report [OUTCOME], [Y]% complete at least [NUMBER] sessions, average wellbeing scores improved by [AMOUNT] points on [SCALE]."]</span></p>
+
+                    <h4>Independent Validation:</h4>
+                    <p><span class="placeholder">[DESCRIBE if any - e.g., "Thrive is currently undergoing independent evaluation by [ORGANIZATION/UNIVERSITY]. Results expected [TIMEFRAME]." OR "No independent validation has been conducted to date. Thrive is exploring partnerships with academic institutions for rigorous evaluation." OR "Thrive has been reviewed by [EXTERNAL BODY] with [OUTCOME/ACCREDITATION]."]</span></p>
+
+                    <h4>Ongoing Evaluation:</h4>
+                    <p><span class="placeholder">[DESCRIBE PROCESS - e.g., continuous data collection from consenting users, quarterly analysis of aggregated outcome data, annual comprehensive outcome report, ongoing refinement of content based on user feedback and outcome trends, collaboration with research partners for long-term evaluation studies]</span></p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Outcome Measure</th>
+                                <th>Measurement Tool</th>
+                                <th>Frequency</th>
+                                <th>Current Results (if available)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Wellbeing</td>
+                                <td><span class="placeholder">[e.g., WEMWBS - Warwick-Edinburgh Mental Wellbeing Scale]</span></td>
+                                <td>Baseline + 4 weeks + 12 weeks</td>
+                                <td><span class="placeholder">[INSERT DATA or "Data collection ongoing"]</span></td>
+                            </tr>
+                            <tr>
+                                <td>Anxiety (wellness monitoring)</td>
+                                <td><span class="placeholder">[e.g., GAD-7 (for wellness tracking, not diagnosis)]</span></td>
+                                <td>Baseline + 4 weeks + 12 weeks</td>
+                                <td><span class="placeholder">[INSERT DATA or "Data collection ongoing"]</span></td>
+                            </tr>
+                            <tr>
+                                <td>User Satisfaction</td>
+                                <td>NPS + Satisfaction Survey</td>
+                                <td>Post-session + quarterly</td>
+                                <td><span class="placeholder">[INSERT DATA - e.g., "NPS: +45" or "Data collection ongoing"]</span></td>
+                            </tr>
+                            <tr>
+                                <td>Engagement</td>
+                                <td>Platform analytics</td>
+                                <td>Continuous</td>
+                                <td><span class="placeholder">[INSERT DATA - e.g., "Average 3.5 sessions per user" or "Data collection ongoing"]</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="placeholder">[OTHER MEASURE]</span></td>
+                                <td><span class="placeholder">[TOOL]</span></td>
+                                <td><span class="placeholder">[FREQUENCY]</span></td>
+                                <td><span class="placeholder">[RESULTS]</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="info-box">
+                        <strong>Data Use and Privacy:</strong> All outcome data is collected with user consent, anonymized for analysis, and handled in accordance with GDPR and data protection standards (see Section 8). Individual data is never shared; only aggregated, de-identified data is used for evaluation and reporting.
+                    </div>
+                </section>
+            </section>
+
+            <section id="section6">
+                <h2>6. Clinical Pathway Integration</h2>
+
+                <section id="section6-1">
+                    <h3>6.1 Smart Start Minds Partnership</h3>
+
+                    <p>Thrive's integration with Smart Start Minds (SSM), a CQC-regulated clinical service, ensures users who require professional mental health support can access it seamlessly.</p>
+
+                    <h4>Partnership Overview:</h4>
+                    <ul>
+                        <li><strong>CQC-regulated service:</strong> Smart Start Minds is regulated by the Care Quality Commission, ensuring clinical quality and safety standards</li>
+                        <li><strong>Clear referral pathway:</strong> Thrive users can be referred to SSM for clinical assessment and treatment when wellness support is insufficient</li>
+                        <li><strong>Integrated user journey:</strong> <span class="placeholder">[DESCRIBE - e.g., seamless referral process via Thrive platform, shared care protocols, communication between Thrive and SSM teams where appropriate and with user consent]</span></li>
+                        <li><strong>Comprehensive clinical services:</strong> SSM provides clinical assessment, evidence-based therapy (CBT, counseling, etc.), psychiatric consultation if needed, and crisis support</li>
+                    </ul>
+
+                    <h4>Referral Criteria:</h4>
+                    <p>Users are directed to Smart Start Minds when:</p>
+                    <ul class="checkbox-list">
+                        <li>Self-assessment or user concern indicates need for professional support</li>
+                        <li>Symptoms suggest clinical-level anxiety, depression, or other mental health conditions</li>
+                        <li>User requests access to professional therapy or counseling</li>
+                        <li>User discloses crisis situation or safety concerns (urgent referral)</li>
+                        <li>Thrive content insufficient for user's needs</li>
+                        <li><span class="placeholder">[OTHER CRITERIA]</span></li>
+                    </ul>
+
+                    <h4>Referral Process:</h4>
+                    <ol>
+                        <li><strong>Identification:</strong> User identifies need for clinical support (self-referral) or flagged through Thrive content responses <span class="placeholder">[DESCRIBE FLAGGING SYSTEM if applicable]</span></li>
+                        <li><strong>Information provided:</strong> User receives information about SSM services, what to expect, and how to access</li>
+                        <li><strong>Consent obtained:</strong> User consents to referral and data sharing (see Data Sharing Agreement)</li>
+                        <li><strong>Referral made:</strong> <span class="placeholder">[DESCRIBE - e.g., automated referral via platform, dedicated referral coordinator, direct contact details provided to user]</span></li>
+                        <li><strong>SSM engagement:</strong> SSM contacts user within <span class="placeholder">[TIMEFRAME - e.g., 48 hours]</span> for initial clinical assessment</li>
+                        <li><strong>Ongoing care:</strong> User receives clinical services from SSM; may continue using Thrive wellness content as complement if appropriate</li>
+                    </ol>
+
+                    <p><strong>For full details of the Smart Start Minds partnership, see Document C: Smart Start Minds Partnership Agreement.</strong></p>
+
+                    <div class="info-box">
+                        <strong>User Choice:</strong> Referral to Smart Start Minds is always user-initiated or consented to. Users are never automatically transferred without their knowledge and agreement. Users retain the right to decline clinical services and continue using Thrive wellness content, though they are fully informed of recommendations.
+                    </div>
+                </section>
+
+                <section id="section6-2">
+                    <h3>6.2 Clear Boundaries</h3>
+
+                    <p>To ensure user clarity and safety, Thrive and Smart Start Minds maintain clear, distinct roles with no overlap or confusion.</p>
+
+                    <div class="highlight-box">
+                        <h4>Service Boundary Framework</h4>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Thrive Handles</th>
+                                    <th>Smart Start Minds Handles</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Wellness and resilience-building</strong><br>General mental wellbeing, stress management, personal growth</td>
+                                    <td><strong>Clinical assessment and diagnosis</strong><br>Professional evaluation of mental health conditions</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mild-moderate stress and daily challenges</strong><br>Everyday stress, work pressures, relationship concerns at wellness level</td>
+                                    <td><strong>Clinical-level mental health conditions</strong><br>Diagnosed anxiety disorders, depression, trauma, etc.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Self-guided educational content</strong><br>Psychoeducation, evidence-based techniques, skill-building exercises</td>
+                                    <td><strong>Individualized therapy and treatment</strong><br>Tailored therapeutic interventions by qualified clinicians</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Prevention and early support</strong><br>Building resilience before problems escalate</td>
+                                    <td><strong>Treatment and crisis intervention</strong><br>Managing acute symptoms, safety planning, medication if needed</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>No clinical professionals required</strong><br>Wellness coaches or content curators (non-clinical)</td>
+                                    <td><strong>Regulated health professionals</strong><br>Clinical psychologists, counselors, psychiatrists (HCPC/BACP/GMC registered)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p><strong>No Overlap:</strong> These boundaries are maintained consistently. Users are never left uncertain about which service is providing what support.</p>
+                    </div>
+
+                    <h4>Clear Communication at Handoff Points:</h4>
+                    <p>When a user transitions from Thrive to Smart Start Minds (or uses both concurrently), communication is clear:</p>
+                    <ul class="checkbox-list">
+                        <li><strong>Handoff messaging:</strong> User receives clear explanation of transition, e.g., "You're now being connected with Smart Start Minds for professional clinical support. Smart Start Minds is a separate CQC-regulated service providing therapy and mental health treatment."</li>
+                        <li><strong>Distinct branding:</strong> SSM has separate branding, identity, and communications to avoid confusion with Thrive wellness service</li>
+                        <li><strong>Separate consent and data processes:</strong> User consents separately to SSM services and data sharing (see Data Sharing Agreement)</li>
+                        <li><strong>Role clarity in communications:</strong> Any joint communications (e.g., integrated reports to employers) clearly distinguish Thrive wellness data from SSM clinical data</li>
+                        <li><strong>User control:</strong> User can choose to use Thrive only, SSM only, or both services, with clear understanding of each</li>
+                    </ul>
+
+                    <h4>Example User Journey with Clear Boundaries:</h4>
+                    <ol>
+                        <li><strong>User accesses Thrive:</strong> Engages with wellness content for stress management</li>
+                        <li><strong>User recognizes need for more support:</strong> Completes self-assessment indicating symptoms of anxiety</li>
+                        <li><strong>Thrive recommends clinical referral:</strong> "Your responses suggest you may benefit from professional support. We can connect you with Smart Start Minds, a CQC-regulated mental health service, for a clinical assessment."</li>
+                        <li><strong>User consents to referral:</strong> Agrees to be contacted by SSM and data sharing for clinical purposes</li>
+                        <li><strong>Clear handoff message:</strong> "You'll be contacted by Smart Start Minds within 48 hours. SSM is a separate clinical service providing professional therapy. You can continue using Thrive's wellness resources alongside SSM therapy if you wish."</li>
+                        <li><strong>SSM provides clinical care:</strong> User receives clinical assessment and therapy from qualified mental health professionals</li>
+                        <li><strong>Optional continued Thrive use:</strong> User may continue using Thrive for general wellness (e.g., sleep hygiene, gratitude practices) while receiving SSM therapy for clinical anxiety</li>
+                    </ol>
+
+                    <div class="success-box">
+                        <strong>Result:</strong> User understands Thrive provides wellness support, SSM provides clinical treatment. No confusion about roles, services, or who to contact for what need.
+                    </div>
+                </section>
+            </section>
+
+            <section id="section7">
+                <h2>7. User Safety & Informed Consent</h2>
+
+                <p>User safety is Thrive's top priority. We ensure all users are fully informed and provide meaningful consent before using our services.</p>
+
+                <h4>Users Are Informed Of:</h4>
+                <ul class="checkbox-list">
+                    <li><strong>What Thrive is and isn't:</strong> Clear explanation that Thrive is a wellness platform, NOT a medical device, and does not provide medical advice, diagnosis, or treatment</li>
+
+                    <li><strong>Limitations and contraindications:</strong> Who Thrive is not suitable for (e.g., individuals in crisis, with severe mental health conditions requiring immediate professional care)</li>
+
+                    <li><strong>When to seek medical help:</strong> Clear guidance on when to contact GP, NHS services, or emergency services; crisis contact information prominently available</li>
+
+                    <li><strong>How data is used:</strong> Transparent explanation of data collection, storage, sharing (including with SSM if relevant), and user rights under GDPR (see Section 8 and Privacy Policy)</li>
+
+                    <li><strong>How to escalate concerns:</strong> How to raise complaints, safety concerns, or feedback (see Section 10)</li>
+
+                    <li><strong>Evidence base and limitations:</strong> Information about the research foundation of Thrive and acknowledged limitations (see Section 5)</li>
+
+                    <li><strong>Integration with clinical services:</strong> How and when Smart Start Minds referral pathways are available (see Section 6)</li>
+
+                    <li><strong>User responsibilities:</strong> User's role in self-directing their use, recognizing when they need additional support, engaging honestly and safely</li>
+                </ul>
+
+                <h4>Consent Obtained:</h4>
+                <p><span class="placeholder">[DESCRIBE PROCESS - e.g., multi-stage consent during onboarding: (1) acceptance of Terms & Conditions including disclaimer, (2) acknowledgment of data privacy notice, (3) consent to data collection for service delivery and improvement, (4) optional consent to marketing communications, (5) separate consent for Smart Start Minds referral and data sharing if applicable]</span></p>
+
+                <ul>
+                    <li><strong>Informed consent:</strong> Information presented in clear, accessible language before consent is requested</li>
+                    <li><strong>Affirmative action required:</strong> Users must actively check boxes, click "I agree," or similar affirmative action (not pre-ticked boxes or passive consent)</li>
+                    <li><strong>Granular consent options:</strong> Users can consent to essential services separately from optional features (e.g., marketing, outcome data research)</li>
+                    <li><strong>Documented consent:</strong> User consent actions logged with timestamp for accountability</li>
+                    <li><strong>Ongoing consent:</strong> Users can review and update consent preferences at any time via account settings</li>
+                </ul>
+
+                <h4>Right to Withdraw:</h4>
+                <p><span class="placeholder">[DESCRIBE - e.g., users can withdraw consent and discontinue use at any time via account settings or by contacting support@thrive.com. Upon withdrawal, user account is deactivated, data is retained only as required by law (e.g., financial records), and remaining data deleted in accordance with retention policy. Users informed of withdrawal process during onboarding and in Privacy Policy.]</span></p>
+
+                <ul>
+                    <li><strong>Easy withdrawal process:</strong> Clear instructions and simple process for discontinuing use</li>
+                    <li><strong>No penalty:</strong> No negative consequences for withdrawing consent or discontinuing service</li>
+                    <li><strong>Data deletion rights:</strong> Users can request deletion of personal data in accordance with GDPR (right to erasure), subject to legal retention requirements</li>
+                    <li><strong>Partial withdrawal:</strong> Users can withdraw consent from specific data uses (e.g., marketing) while continuing to use core service</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>Accessible Information:</strong> All safety information, disclaimers, and consent forms are written in plain English, accessible to users with disabilities (screen reader compatible, sufficient contrast, adjustable text size), and available in <span class="placeholder">[OTHER LANGUAGES if applicable]</span>.
+                </div>
+            </section>
+
+            <section id="section8">
+                <h2>8. Data Protection & Confidentiality</h2>
+
+                <p>Thrive is fully committed to protecting user data and privacy in accordance with UK GDPR and Data Protection Act 2018.</p>
+
+                <h4>GDPR Compliance:</h4>
+                <p><strong>Compliance Status:</strong> <span class="placeholder">[CONFIRM - e.g., Thrive is fully compliant with UK GDPR and Data Protection Act 2018. Data Protection Officer appointed: [NAME/CONTACT]. ICO registration number: [NUMBER]. Last data protection audit: [DATE].]</span></p>
+
+                <ul class="checkbox-list">
+                    <li>Lawful basis for processing established for all data collection (typically: consent, legitimate interests, contract performance)</li>
+                    <li>Data Protection Impact Assessment (DPIA) completed for high-risk processing activities</li>
+                    <li>Privacy Policy published and accessible, detailing all data practices</li>
+                    <li>User rights under GDPR respected and facilitated (access, rectification, erasure, portability, restriction, objection)</li>
+                    <li>Data breach notification procedures in place (72-hour reporting to ICO, user notification where required)</li>
+                    <li>Records of processing activities maintained</li>
+                    <li>Data processors (e.g., cloud hosting providers) contracted with appropriate GDPR-compliant agreements</li>
+                </ul>
+
+                <h4>Data Minimization:</h4>
+                <p>Thrive collects only data necessary for service delivery and improvement. We do not collect excessive or irrelevant information.</p>
+
+                <p><strong>Data Collected:</strong></p>
+                <ul>
+                    <li><strong>Account data:</strong> <span class="placeholder">[e.g., name, email, employer organization (if EAP access)]</span></li>
+                    <li><strong>Usage data:</strong> <span class="placeholder">[e.g., sessions accessed, duration, completion, user interactions with content]</span></li>
+                    <li><strong>Outcome data (with consent):</strong> <span class="placeholder">[e.g., wellbeing questionnaire responses, self-reported outcomes]</span></li>
+                    <li><strong>Technical data:</strong> <span class="placeholder">[e.g., IP address, device type, browser - for security and functionality only]</span></li>
+                    <li><strong>NOT collected:</strong> <span class="placeholder">[e.g., We do NOT collect: sensitive health data beyond self-reported wellbeing metrics, detailed personal health records, financial information (unless required for payment processing), location tracking, etc.]</span></li>
+                </ul>
+
+                <h4>User Data Controls:</h4>
+                <p>Users have full control over their data:</p>
+
+                <ul class="checkbox-list">
+                    <li><strong>Access:</strong> Users can request a copy of all personal data held (Subject Access Request)</li>
+                    <li><strong>Rectification:</strong> Users can correct inaccurate or incomplete data via account settings or by contacting support</li>
+                    <li><strong>Erasure (Right to be Forgotten):</strong> Users can request deletion of personal data, subject to legal retention requirements</li>
+                    <li><strong>Portability:</strong> Users can request their data in machine-readable format for transfer to another service</li>
+                    <li><strong>Restriction/Objection:</strong> Users can restrict processing or object to certain data uses (e.g., marketing)</li>
+                    <li><strong>Response timeframe:</strong> <span class="placeholder">[e.g., All data rights requests responded to within 30 days as required by GDPR]</span></li>
+                </ul>
+
+                <p><strong>How to exercise data rights:</strong> <span class="placeholder">[DESCRIBE - e.g., contact dpo@thrive.com or use data request form in account settings. Identity verification required for security.]</span></p>
+
+                <h4>Data Sharing with Smart Start Minds:</h4>
+                <p><span class="placeholder">[DESCRIBE - e.g., When a user is referred to Smart Start Minds, specific data is shared to facilitate clinical care. This includes: [LIST DATA SHARED - e.g., name, contact information, employer organization if relevant, referral reason/concern, Thrive usage summary if clinically relevant]. Data sharing occurs ONLY with explicit user consent. See Data Sharing Agreement (Document [X]) for full details of data sharing protocols, security measures, and responsibilities.]</span></p>
+
+                <ul>
+                    <li><strong>Consent-based:</strong> Data shared with SSM only with user's explicit, informed consent</li>
+                    <li><strong>Minimum necessary:</strong> Only data required for clinical care is shared</li>
+                    <li><strong>Secure transfer:</strong> Data transferred via encrypted, secure channels</li>
+                    <li><strong>Defined purposes:</strong> Data sharing limited to purposes specified in consent (clinical assessment and treatment)</li>
+                    <li><strong>Accountability:</strong> Data sharing logged and auditable; both Thrive and SSM responsible for data protection</li>
+                </ul>
+
+                <h4>Security Measures:</h4>
+                <p><span class="placeholder">[DESCRIBE ENCRYPTION, ACCESS CONTROLS - e.g., All data encrypted in transit (TLS 1.3) and at rest (AES-256). Access to user data restricted to authorized personnel only, with role-based access controls (RBAC). Multi-factor authentication required for staff access. Regular security audits and penetration testing. Cloud hosting with ISO 27001-certified providers (e.g., AWS/Azure). Data backups encrypted and stored securely. Incident response plan in place. Staff trained in data protection and security best practices.]</span></p>
+
+                <ul class="checkbox-list">
+                    <li>Encryption: Data encrypted in transit and at rest</li>
+                    <li>Access controls: Role-based access, least privilege principle</li>
+                    <li>Authentication: Multi-factor authentication for staff and users</li>
+                    <li>Monitoring: Security monitoring and intrusion detection</li>
+                    <li>Auditing: Regular security audits and vulnerability assessments</li>
+                    <li>Incident response: Data breach response plan and procedures</li>
+                    <li>Staff training: Regular data protection and security training for all personnel</li>
+                </ul>
+
+                <h4>Privacy Policy:</h4>
+                <p><strong>Link/Reference:</strong> <span class="placeholder">[LINK to Privacy Policy - e.g., Full Privacy Policy available at www.thrive.com/privacy or provided during onboarding. Privacy Policy details all data practices, user rights, and contact information for data protection queries.]</span></p>
+
+                <div class="info-box">
+                    <strong>Transparency Commitment:</strong> Thrive is committed to complete transparency about data practices. Any questions or concerns about data protection can be directed to our Data Protection Officer at <span class="placeholder">[DPO EMAIL/CONTACT]</span>.
+                </div>
+            </section>
+
+            <section id="section9">
+                <h2>9. Professional Standards & Ethics</h2>
+
+                <p>While Thrive is not a clinical service, we are committed to the highest professional and ethical standards in supporting user wellbeing.</p>
+
+                <h4>Commitment To:</h4>
+                <ul>
+                    <li><strong>Honesty and Transparency:</strong>
+                        <ul>
+                            <li>Accurate representation of what Thrive is and what it can offer</li>
+                            <li>No misleading claims or exaggeration of benefits</li>
+                            <li>Clear communication about evidence base and limitations</li>
+                            <li>Transparent about commercial relationships and partnerships</li>
+                        </ul>
+                    </li>
+
+                    <li><strong>User Wellbeing as Priority:</strong>
+                        <ul>
+                            <li>User safety and benefit guide all decisions</li>
+                            <li>"Do no harm" principle applied to content and service design</li>
+                            <li>Proactive identification and mitigation of potential risks</li>
+                            <li>Prioritizing clinical referral when user needs exceed wellness support</li>
+                        </ul>
+                    </li>
+
+                    <li><strong>Evidence-Based Practice:</strong>
+                        <ul>
+                            <li>All content grounded in recognized psychological research</li>
+                            <li>Continuous review of emerging evidence</li>
+                            <li>Willingness to adapt practices based on new evidence or outcome data</li>
+                            <li>Collaboration with clinical and academic experts</li>
+                        </ul>
+                    </li>
+
+                    <li><strong>Continuous Improvement:</strong>
+                        <ul>
+                            <li>Regular evaluation of user outcomes and satisfaction</li>
+                            <li>Acting on user feedback to enhance service</li>
+                            <li>Quality assurance processes (see Section 11)</li>
+                            <li>Ongoing professional development for staff</li>
+                        </ul>
+                    </li>
+
+                    <li><strong>Respect for User Autonomy:</strong>
+                        <ul>
+                            <li>Users empowered to make informed choices about their use of Thrive</li>
+                            <li>No pressure or coercion to use services or share data</li>
+                            <li>User control over personal data and consent</li>
+                            <li>Recognition of individual differences and needs</li>
+                        </ul>
+                    </li>
+
+                    <li><strong><span class="placeholder">[OTHER ETHICAL COMMITMENTS - e.g., equity and inclusion, accessibility, non-discrimination]</span></strong></li>
+                </ul>
+
+                <h4>Ethical Review Process:</h4>
+                <p><span class="placeholder">[DESCRIBE if applicable - e.g., "New content, features, or research activities undergo ethical review by [ETHICS COMMITTEE/CLINICAL ADVISORY BOARD] to ensure alignment with ethical standards and user wellbeing. Review considers: potential risks and benefits, informed consent processes, data protection, equity and accessibility, evidence base." OR "Thrive does not currently have a formal ethics committee but consults with clinical advisors on ethical considerations. Establishing a formal ethical review process is planned for [TIMEFRAME]."]</span></p>
+
+                <h4>Professional Codes Followed:</h4>
+                <p>While Thrive staff are not required to be regulated health professionals, we align with recognized professional standards where applicable:</p>
+
+                <ul>
+                    <li><strong>British Psychological Society (BPS) Code of Ethics and Conduct:</strong> <span class="placeholder">[if applicable - e.g., clinical advisors or content developers who are BPS members adhere to BPS Code]</span></li>
+                    <li><strong>British Association for Counselling and Psychotherapy (BACP) Ethical Framework:</strong> <span class="placeholder">[if applicable]</span></li>
+                    <li><strong>Health and Care Professions Council (HCPC) Standards:</strong> <span class="placeholder">[if staff are HCPC-registered professionals]</span></li>
+                    <li><strong>General Data Protection Regulation (GDPR):</strong> Comprehensive compliance (see Section 8)</li>
+                    <li><strong>Advertising Standards Authority (ASA) CAP Code:</strong> Full compliance (see Section 3)</li>
+                    <li><strong><span class="placeholder">[OTHER CODES - e.g., industry-specific standards, corporate ethics policies]</span></strong></li>
+                </ul>
+
+                <div class="success-box">
+                    <strong>Ethical Culture:</strong> Thrive fosters an ethical culture where all staff are empowered and expected to raise concerns, question practices that may compromise user wellbeing, and contribute to maintaining high ethical standards.
+                </div>
+            </section>
+
+            <section id="section10">
+                <h2>10. Complaints & Concerns</h2>
+
+                <p>Thrive is committed to addressing user concerns, complaints, and compliance issues promptly and transparently.</p>
+
+                <h4>How Users Can Raise Compliance Concerns:</h4>
+                <p>Users can raise any concerns, including complaints about:</p>
+                <ul>
+                    <li>Service quality or content accuracy</li>
+                    <li>Misleading advertising or claims</li>
+                    <li>Data protection or privacy issues</li>
+                    <li>Safety concerns</li>
+                    <li>Ethical or professional standards</li>
+                    <li>Any other compliance-related matter</li>
+                </ul>
+
+                <h4>Dedicated Contact:</h4>
+                <p><strong>Email:</strong> <span class="placeholder">[EMAIL - e.g., complaints@thrive.com or compliance@thrive.com]</span></p>
+                <p><strong>Phone:</strong> <span class="placeholder">[PHONE NUMBER if available - e.g., 0800 XXX XXXX (Mon-Fri 9am-5pm)]</span></p>
+                <p><strong>Postal Address:</strong> <span class="placeholder">[POSTAL ADDRESS - e.g., Complaints Department, Thrive, [ADDRESS]]</span></p>
+                <p><strong>Online Form:</strong> <span class="placeholder">[if available - e.g., Complaint submission form at www.thrive.com/complaints]</span></p>
+
+                <h4>Response Timeline:</h4>
+                <p><span class="placeholder">[DESCRIBE - e.g.,
+                - Acknowledgment of complaint within 48 hours (2 working days)
+                - Initial response with assessment and proposed resolution timeline within 5 working days
+                - Full investigation and resolution within 20 working days
+                - If more time needed, user informed of reason and revised timeline
+                - Complex or serious complaints escalated to senior management/Clinical Director]</span></p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Complaint Severity</th>
+                            <th>Acknowledgment</th>
+                            <th>Investigation & Resolution</th>
+                            <th>Escalation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Minor (e.g., service query, minor content issue)</td>
+                            <td>48 hours</td>
+                            <td>5 working days</td>
+                            <td>Customer support team</td>
+                        </tr>
+                        <tr>
+                            <td>Moderate (e.g., data concern, advertising complaint)</td>
+                            <td>48 hours</td>
+                            <td>10 working days</td>
+                            <td>Compliance Officer</td>
+                        </tr>
+                        <tr>
+                            <td>Serious (e.g., safety issue, significant data breach)</td>
+                            <td>24 hours</td>
+                            <td>20 working days</td>
+                            <td>Senior Management / Clinical Director</td>
+                        </tr>
+                        <tr>
+                            <td>Critical (e.g., immediate risk, regulatory breach)</td>
+                            <td>Immediate</td>
+                            <td>Immediate action + full investigation within 10 days</td>
+                            <td>Managing Director / Board</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Investigation Process:</h4>
+                <ol>
+                    <li><strong>Receipt and acknowledgment:</strong> Complaint logged, user receives acknowledgment with reference number</li>
+                    <li><strong>Assessment:</strong> Complaint assessed for severity, assigned to appropriate investigator</li>
+                    <li><strong>Investigation:</strong> Facts gathered, relevant staff/records reviewed, root cause identified</li>
+                    <li><strong>Resolution:</strong> Corrective action determined, implemented if required</li>
+                    <li><strong>Response:</strong> User informed of findings, actions taken, and any remediation offered</li>
+                    <li><strong>Closure:</strong> Complaint closed with user satisfaction check; learning points incorporated into practice</li>
+                    <li><strong>Escalation (if unresolved):</strong> If user dissatisfied, complaint escalated to senior management or external review options provided</li>
+                </ol>
+
+                <h4>External Reporting:</h4>
+                <p>Users can also report concerns to external bodies:</p>
+
+                <ul>
+                    <li><strong>Advertising Standards Authority (ASA):</strong>
+                        <ul>
+                            <li>For advertising or marketing complaints</li>
+                            <li>Website: www.asa.org.uk</li>
+                            <li>Online complaint form available</li>
+                        </ul>
+                    </li>
+
+                    <li><strong>Information Commissioner's Office (ICO):</strong>
+                        <ul>
+                            <li>For data protection and privacy complaints</li>
+                            <li>Website: www.ico.org.uk</li>
+                            <li>Helpline: 0303 123 1113</li>
+                        </ul>
+                    </li>
+
+                    <li><strong>Care Quality Commission (CQC):</strong>
+                        <ul>
+                            <li>For complaints about Smart Start Minds clinical services (not Thrive wellness services)</li>
+                            <li>Website: www.cqc.org.uk</li>
+                        </ul>
+                    </li>
+
+                    <li><strong><span class="placeholder">[OTHER RELEVANT BODIES - e.g., Trading Standards, Ombudsman services if applicable]</span></strong></li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>Learning from Complaints:</strong> All complaints are reviewed for systemic issues or improvement opportunities. Complaint trends are analyzed quarterly, and insights inform service improvements, staff training, and policy updates.
+                </div>
+            </section>
+
+            <section id="section11">
+                <h2>11. Quality Assurance & Compliance Monitoring</h2>
+
+                <p>Thrive maintains ongoing quality assurance and compliance monitoring to ensure high standards and regulatory adherence.</p>
+
+                <h4>Regular Compliance Audits:</h4>
+                <p><strong>Frequency:</strong> <span class="placeholder">[e.g., Comprehensive compliance audit conducted annually, with quarterly reviews of key compliance areas (advertising, data protection, disclaimers). Ad-hoc audits triggered by regulatory changes or significant complaints.]</span></p>
+
+                <p><strong>Audit Scope:</strong></p>
+                <ul class="checkbox-list">
+                    <li>Medical device classification (review regulatory position, monitor guidance changes)</li>
+                    <li>Advertising and marketing compliance (ASA CAP Code adherence)</li>
+                    <li>Disclaimer accuracy and placement</li>
+                    <li>Data protection and GDPR compliance</li>
+                    <li>User consent processes</li>
+                    <li>Safety protocols and crisis response</li>
+                    <li>Evidence base currency (research updates)</li>
+                    <li>Clinical pathway integration (SSM partnership effectiveness)</li>
+                    <li>Complaint handling and resolution</li>
+                    <li><span class="placeholder">[OTHER AREAS]</span></li>
+                </ul>
+
+                <p><strong>Auditor:</strong> <span class="placeholder">[DESCRIBE - e.g., Internal audits conducted by Compliance Officer with oversight from Clinical Director and Legal Counsel. External audits conducted by [INDEPENDENT AUDITOR/FIRM] every [FREQUENCY] for objectivity and assurance.]</span></p>
+
+                <h4>Marketing Materials Review:</h4>
+                <p><strong>Frequency:</strong> <span class="placeholder">[e.g., Pre-publication review of all new materials (see Section 3.3), quarterly audit of live marketing materials, annual comprehensive review of all published content]</span></p>
+
+                <p><strong>Review Checklist:</strong></p>
+                <ul class="checkbox-list">
+                    <li>All claims substantiated with evidence</li>
+                    <li>No medical device claims or implications</li>
+                    <li>Appropriate disclaimers included</li>
+                    <li>Language aligns with approved claims (Section 3.2)</li>
+                    <li>No prohibited claims used</li>
+                    <li>ASA CAP Code compliance</li>
+                    <li>Accessibility standards met</li>
+                    <li>Version control and approval documentation complete</li>
+                </ul>
+
+                <h4>Disclaimer Effectiveness Checks:</h4>
+                <p><span class="placeholder">[DESCRIBE - e.g., User comprehension testing: periodic surveys or interviews with sample users to assess understanding of disclaimers and what Thrive is/isn't. Analytics review: tracking acknowledgment rates, time spent reading disclaimers, drop-off points. Content review: ensuring disclaimers remain clear, accurate, and comprehensive as service evolves. Frequency: annually or upon significant service changes.]</span></p>
+
+                <h4>User Feedback on Clarity:</h4>
+                <p><span class="placeholder">[DESCRIBE - e.g., Ongoing collection of user feedback via: in-app surveys asking about clarity of disclaimers and service description, post-onboarding questionnaire on understanding of Thrive's role, complaint/concern analysis for patterns indicating confusion, user testing of new disclaimers or consent forms before implementation. Feedback analyzed quarterly and used to refine communications.]</span></p>
+
+                <h4>Regulatory Updates Monitoring:</h4>
+                <p><strong>Responsibility:</strong> <span class="placeholder">[WHO RESPONSIBLE - e.g., Compliance Officer monitors regulatory developments with support from Legal Counsel. Clinical Director monitors clinical and mental health sector guidance.]</span></p>
+
+                <p><strong>Monitoring Activities:</strong></p>
+                <ul>
+                    <li>Regular review of MHRA guidance on medical devices and software</li>
+                    <li>Monitoring ASA rulings in health and wellbeing sector</li>
+                    <li>Tracking changes to GDPR, Data Protection Act, and ICO guidance</li>
+                    <li>Awareness of CQC developments (relevant to SSM partnership)</li>
+                    <li>Engagement with industry bodies and professional associations</li>
+                    <li>Subscription to regulatory news and updates</li>
+                    <li><span class="placeholder">[OTHER MONITORING ACTIVITIES]</span></li>
+                </ul>
+
+                <p><strong>Response to Regulatory Changes:</strong> When new guidance or regulations emerge, Thrive assesses impact within <span class="placeholder">[TIMEFRAME - e.g., 30 days]</span>, implements necessary changes within <span class="placeholder">[TIMEFRAME - e.g., 90 days or as required by regulation]</span>, and communicates updates to users if material.</p>
+
+                <h4>Compliance Monitoring Schedule:</h4>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Area</th>
+                            <th>Frequency</th>
+                            <th>Responsible</th>
+                            <th>Last Review</th>
+                            <th>Next Review</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Comprehensive Compliance Audit</td>
+                            <td>Annual</td>
+                            <td><span class="placeholder">[NAME/ROLE]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                        </tr>
+                        <tr>
+                            <td>Advertising Compliance Review</td>
+                            <td>Quarterly</td>
+                            <td><span class="placeholder">[NAME/ROLE]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                        </tr>
+                        <tr>
+                            <td>Data Protection Audit</td>
+                            <td>Annual + ad-hoc</td>
+                            <td><span class="placeholder">[DPO NAME]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                        </tr>
+                        <tr>
+                            <td>Disclaimer Effectiveness</td>
+                            <td>Annual</td>
+                            <td><span class="placeholder">[NAME/ROLE]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                        </tr>
+                        <tr>
+                            <td>Evidence Base Review</td>
+                            <td>Annual</td>
+                            <td><span class="placeholder">[Clinical Director]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                        </tr>
+                        <tr>
+                            <td>User Outcome Analysis</td>
+                            <td>Quarterly</td>
+                            <td><span class="placeholder">[NAME/ROLE]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                        </tr>
+                        <tr>
+                            <td>Regulatory Monitoring</td>
+                            <td>Ongoing (monthly review)</td>
+                            <td><span class="placeholder">[Compliance Officer]</span></td>
+                            <td>Ongoing</td>
+                            <td>Ongoing</td>
+                        </tr>
+                        <tr>
+                            <td>Complaint Trend Analysis</td>
+                            <td>Quarterly</td>
+                            <td><span class="placeholder">[NAME/ROLE]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="placeholder">[OTHER AREA]</span></td>
+                            <td><span class="placeholder">[FREQUENCY]</span></td>
+                            <td><span class="placeholder">[RESPONSIBLE]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="success-box">
+                    <strong>Continuous Improvement:</strong> Compliance monitoring is not a box-ticking exercise. Findings from audits, reviews, and monitoring inform tangible improvements to policies, processes, content, and user communications, ensuring Thrive continuously enhances compliance and user safety.
+                </div>
+            </section>
+
+            <section id="section12">
+                <h2>12. Declarations</h2>
+
+                <p>This Medical Compliance Statement is formally adopted and endorsed by Thrive leadership and clinical oversight.</p>
+
+                <div class="signature-block">
+                    <h4>Managing Director / Chief Executive Declaration</h4>
+
+                    <p>I declare that this Medical Compliance Statement accurately reflects Thrive's regulatory positioning, advertising practices, and evidence base as of <span class="placeholder">[DATE]</span>.</p>
+
+                    <p><strong>I confirm that:</strong></p>
+                    <ul class="checkbox-list">
+                        <li>Thrive is NOT positioned as a medical device and does not meet the definition under UK Medical Device Regulations</li>
+                        <li>All marketing claims are substantiated by evidence and compliant with ASA CAP Code</li>
+                        <li>Appropriate disclaimers are in place and prominently communicated to users</li>
+                        <li>User safety is prioritized in all service design and operational decisions</li>
+                        <li>Compliance monitoring is ongoing and findings are acted upon</li>
+                        <li>This statement will be reviewed and updated at least annually or upon significant regulatory or service changes</li>
+                    </ul>
+
+                    <p><strong>Signed:</strong> <span class="signature-line"></span></p>
+                    <p><strong>Name:</strong> <span class="placeholder">[NAME]</span></p>
+                    <p><strong>Title:</strong> <span class="placeholder">[TITLE - e.g., Managing Director / Chief Executive Officer]</span></p>
+                    <p><strong>Date:</strong> <span class="placeholder">[DATE]</span></p>
+                </div>
+
+                <div class="signature-block">
+                    <h4>Clinical Director Sign-off</h4>
+
+                    <p>As Clinical Director, I confirm that:</p>
+                    <ul class="checkbox-list">
+                        <li>Thrive's content and methodology are grounded in evidence-based psychological principles</li>
+                        <li>The service appropriately distinguishes between wellness support and clinical intervention</li>
+                        <li>Clear pathways to CQC-regulated clinical services (Smart Start Minds) are in place for users requiring professional mental health care</li>
+                        <li>User safety measures and disclaimers are adequate and appropriate</li>
+                        <li>Ongoing clinical oversight and evidence base review processes are in place</li>
+                    </ul>
+
+                    <p><strong>Signed:</strong> <span class="signature-line"></span></p>
+                    <p><strong>Name:</strong> <span class="placeholder">[NAME]</span></p>
+                    <p><strong>Title:</strong> Clinical Director</p>
+                    <p><strong>Professional Registration:</strong> <span class="placeholder">[e.g., HCPC Registered Clinical Psychologist, Registration Number: XXXXXXX]</span></p>
+                    <p><strong>Date:</strong> <span class="placeholder">[DATE]</span></p>
+                </div>
+
+                <div class="signature-block">
+                    <h4>Legal Review (if applicable)</h4>
+
+                    <p>I confirm that I have reviewed this Medical Compliance Statement and supporting documentation for legal and regulatory compliance.</p>
+
+                    <p><strong>Areas Reviewed:</strong></p>
+                    <ul class="checkbox-list">
+                        <li>Medical device classification position (UK MDR 2002, MHRA guidance)</li>
+                        <li>Advertising compliance (ASA CAP Code)</li>
+                        <li>Data protection (UK GDPR, Data Protection Act 2018)</li>
+                        <li>Disclaimer legal adequacy</li>
+                        <li>Consent and user rights processes</li>
+                        <li><span class="placeholder">[OTHER AREAS]</span></li>
+                    </ul>
+
+                    <p><strong>Legal Opinion:</strong> <span class="placeholder">[BRIEF SUMMARY - e.g., "In my opinion, Thrive's positioning as a wellness service (not medical device) is legally sound based on current UK regulations. Advertising practices comply with ASA standards. Data protection measures are GDPR-compliant. Recommendation: [ANY RECOMMENDATIONS]."]</span></p>
+
+                    <p><strong>Signed:</strong> <span class="signature-line"></span></p>
+                    <p><strong>Name:</strong> <span class="placeholder">[NAME]</span></p>
+                    <p><strong>Title:</strong> <span class="placeholder">[TITLE - e.g., Legal Counsel / Solicitor]</span></p>
+                    <p><strong>Firm (if external):</strong> <span class="placeholder">[FIRM NAME if external legal review]</span></p>
+                    <p><strong>Date:</strong> <span class="placeholder">[DATE]</span></p>
+                </div>
+
+                <div class="info-box">
+                    <strong>Document Authority:</strong> This Medical Compliance Statement is an official company document. All staff, contractors, and partners must adhere to the standards and commitments set out herein. Non-compliance may result in disciplinary action and/or contract termination.
+                </div>
+            </section>
+
+            <section id="section13">
+                <h2>13. Supporting Documentation</h2>
+
+                <p>This Medical Compliance Statement is supported by the following documents, which provide detailed evidence and procedures:</p>
+
+                <h4>Supporting Documents:</h4>
+                <ul class="checkbox-list">
+                    <li><strong>Terms & Conditions (current version):</strong> <span class="placeholder">[VERSION/DATE - Legal agreement between Thrive and users, incorporating disclaimers and service limitations]</span></li>
+
+                    <li><strong>Privacy Policy (current version):</strong> <span class="placeholder">[VERSION/DATE - Comprehensive data protection notice detailing all data practices, user rights, and GDPR compliance]</span></li>
+
+                    <li><strong>User Disclaimers (all versions):</strong> <span class="placeholder">[Standard disclaimer, session-specific warnings, trigger warnings - all current templates and placement guidelines]</span></li>
+
+                    <li><strong>Marketing Materials (samples):</strong> <span class="placeholder">[Representative samples of website content, brochures, social media posts, email campaigns - demonstrating compliant advertising practices]</span></li>
+
+                    <li><strong>Research Citations (full bibliography):</strong> <span class="placeholder">[Complete reference list for all research cited in Section 5, organized by framework/topic area]</span></li>
+
+                    <li><strong>Legal Opinion on Medical Device Classification (if obtained):</strong> <span class="placeholder">[Formal legal opinion from qualified solicitor/counsel confirming Thrive does not meet medical device definition - DATE, AUTHOR]</span></li>
+
+                    <li><strong>ASA Compliance Review (if conducted):</strong> <span class="placeholder">[Internal or external review of marketing materials against ASA CAP Code - DATE, REVIEWER, FINDINGS]</span></li>
+
+                    <li><strong>User Outcome Data (if available):</strong> <span class="placeholder">[Anonymized, aggregated outcome data reports - DATE, METRICS, RESULTS]</span></li>
+
+                    <li><strong>Data Protection Impact Assessment (DPIA):</strong> <span class="placeholder">[GDPR-required DPIA for high-risk processing activities - DATE, FINDINGS, MITIGATION MEASURES]</span></li>
+
+                    <li><strong>Data Sharing Agreement with Smart Start Minds:</strong> <span class="placeholder">[Full agreement detailing data sharing protocols, security, responsibilities - see Document [X]]</span></li>
+
+                    <li><strong>Complaint Logs and Analysis:</strong> <span class="placeholder">[Anonymized complaint records, trend analysis, corrective actions - PERIOD COVERED]</span></li>
+
+                    <li><strong>Compliance Audit Reports:</strong> <span class="placeholder">[Internal and external audit reports - DATES, FINDINGS, ACTIONS TAKEN]</span></li>
+
+                    <li><strong><span class="placeholder">[OTHER SUPPORTING DOCUMENTS - e.g., staff training records, ethical review reports, clinical advisory board meeting minutes]</span></strong></li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>Document Availability:</strong> These supporting documents are available upon request from authorized parties (regulators, auditors, clinical partners) or as specified in agreements. User-facing documents (T&Cs, Privacy Policy, disclaimers) are publicly accessible via Thrive platform and website.
+
+                    <p><strong>To request supporting documentation, contact:</strong> <span class="placeholder">[CONTACT - e.g., compliance@thrive.com or legal@thrive.com]</span></p>
+                </div>
+
+                <h4>Document Repository:</h4>
+                <p><span class="placeholder">[DESCRIBE - e.g., All supporting documents stored in centralized, version-controlled repository. Access restricted to authorized personnel. Document retention in accordance with legal requirements: [RETENTION PERIODS]. Repository location: [SYSTEM/LOCATION]. Document custodian: [NAME/ROLE].]</span></p>
+            </section>
+
+            <section id="section14">
+                <h2>14. Document Control</h2>
+
+                <h4>Version History</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Version</th>
+                            <th>Date</th>
+                            <th>Author</th>
+                            <th>Changes</th>
+                            <th>Approved By</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.0</td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                            <td><span class="placeholder">[NAME/ROLE]</span></td>
+                            <td>Initial version - comprehensive Medical Compliance Statement established</td>
+                            <td><span class="placeholder">[APPROVER NAME/ROLE]</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="placeholder">[FUTURE VERSION]</span></td>
+                            <td><span class="placeholder">[DATE]</span></td>
+                            <td><span class="placeholder">[NAME]</span></td>
+                            <td><span class="placeholder">[CHANGES MADE]</span></td>
+                            <td><span class="placeholder">[APPROVER]</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Document Information</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Document Title</strong></td>
+                            <td>Medical Compliance Statement</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Document Owner</strong></td>
+                            <td><span class="placeholder">[NAME/ROLE - e.g., Compliance Officer / Managing Director]</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Next Scheduled Review</strong></td>
+                            <td><span class="placeholder">[DATE - typically one year from approval date]</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Review Frequency</strong></td>
+                            <td>Annual, or upon significant regulatory changes, service changes, or compliance issues</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Distribution</strong></td>
+                            <td>Internal: All staff, Board of Directors<br>External: Available to regulators, clinical partners, and upon reasonable request</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Related Documents</strong></td>
+                            <td>Clinical Governance Framework, Smart Start Minds Partnership Agreement, Data Sharing Agreement, Privacy Policy, Terms & Conditions</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Superseded Documents</strong></td>
+                            <td><span class="placeholder">[if applicable - e.g., "Replaces: [PREVIOUS DOCUMENT TITLE/VERSION]" OR "None - initial version"]</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Review Triggers</h4>
+                <p>This document will be reviewed and updated when:</p>
+                <ul class="checkbox-list">
+                    <li>Annual review date is reached</li>
+                    <li>Regulatory guidance changes (MHRA, ASA, ICO, etc.)</li>
+                    <li>Significant service changes (new features, partnerships, business model changes)</li>
+                    <li>Material compliance issues or complaints arise</li>
+                    <li>Legal opinion or audit recommendations require updates</li>
+                    <li>Evidence base significantly evolves</li>
+                    <li>Outcome data indicates need for practice changes</li>
+                    <li><span class="placeholder">[OTHER TRIGGERS]</span></li>
+                </ul>
+
+                <h4>Amendment Process</h4>
+                <ol>
+                    <li><strong>Proposed changes:</strong> Document owner or designated reviewer proposes amendments based on review triggers</li>
+                    <li><strong>Stakeholder consultation:</strong> Relevant stakeholders consulted (Clinical Director, Legal Counsel, Compliance Officer, etc.)</li>
+                    <li><strong>Draft updated version:</strong> Revised document drafted with version number incremented</li>
+                    <li><strong>Review and approval:</strong> Updated version reviewed and approved by Managing Director and Clinical Director (minimum)</li>
+                    <li><strong>Communication:</strong> Changes communicated to all staff and relevant external parties</li>
+                    <li><strong>Implementation:</strong> Updated practices implemented as specified in revised document</li>
+                    <li><strong>Archival:</strong> Previous version archived with superseded status; new version becomes active</li>
+                </ol>
+
+                <div class="info-box">
+                    <strong>Living Document:</strong> This Medical Compliance Statement is a living document, subject to continuous improvement. Feedback, suggestions, and concerns regarding this statement are welcomed and should be directed to the document owner: <span class="placeholder">[CONTACT]</span>.
+                </div>
+            </section>
+
+            <div class="navigation">
+                <a href="clinical-governance-framework.html" class="nav-button">&larr; Previous: Clinical Governance Framework</a>
+                <a href="smart-start-minds-partnership.html" class="nav-button">Next: Smart Start Minds Partnership &rarr;</a>
+            </div>
+        </main>
+    </div>
+
+    <div class="footer">
+        <p><strong>Document Version:</strong> 1.0 | <strong>Last Updated:</strong> <span class="placeholder">[DATE]</span> | <strong>Next Review:</strong> <span class="placeholder">[DATE]</span> | <strong>Owner:</strong> <span class="placeholder">[NAME/ROLE]</span></p>
+        <p>Thrive EAP Documentation - Medical Compliance Statement</p>
+    </div>
+</body>
+</html>

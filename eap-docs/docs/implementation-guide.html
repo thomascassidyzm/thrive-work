@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-Week Implementation Guide & Checklist - Thrive EAP Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h2 {
+            color: #3498db;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-size: 0.95em;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #34495e;
+        }
+
+        .sidebar ul ul {
+            margin-left: 15px;
+            margin-top: 5px;
+        }
+
+        .sidebar ul ul li a {
+            font-size: 0.9em;
+            color: #bdc3c7;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 40px;
+            background-color: #fff;
+        }
+
+        .breadcrumb {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        /* Highlight Boxes */
+        .highlight-box {
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 5px solid;
+        }
+
+        .highlight-box.blue {
+            background-color: #ebf5fb;
+            border-color: #3498db;
+        }
+
+        .highlight-box.green {
+            background-color: #eafaf1;
+            border-color: #27ae60;
+        }
+
+        .highlight-box.yellow {
+            background-color: #fef9e7;
+            border-color: #f39c12;
+        }
+
+        .highlight-box.red {
+            background-color: #fadbd8;
+            border-color: #e74c3c;
+        }
+
+        .highlight-box h4 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .highlight-box ul {
+            margin-left: 20px;
+        }
+
+        .highlight-box ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Checkbox Styles */
+        input[type="checkbox"] {
+            margin-right: 8px;
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+
+        /* List Styles */
+        ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Document Status Section */
+        .doc-status {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #dee2e6;
+        }
+
+        .doc-status p {
+            margin-bottom: 8px;
+        }
+
+        .doc-status strong {
+            color: #2c3e50;
+            display: inline-block;
+            min-width: 100px;
+        }
+
+        /* Navigation Links */
+        .doc-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #ecf0f1;
+        }
+
+        .doc-navigation a {
+            color: #3498db;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .doc-navigation a:hover {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .doc-navigation .prev::before {
+            content: "← ";
+        }
+
+        .doc-navigation .next::after {
+            content: " →";
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .container {
+                flex-direction: column;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .doc-navigation {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#executive-summary">1. Executive Summary</a></li>
+                <li><a href="#priority-1">2. Priority 1: Essential Documents</a>
+                    <ul>
+                        <li><a href="#doc-a">2.1 Document A: Clinical Governance</a></li>
+                        <li><a href="#doc-b">2.2 Document B: Medical Compliance</a></li>
+                        <li><a href="#doc-c">2.3 Document C: SSM Partnership</a></li>
+                    </ul>
+                </li>
+                <li><a href="#priority-2">3. Priority 2: Standard Due Diligence</a>
+                    <ul>
+                        <li><a href="#doc-d">3.1 Document D: Data Protection</a></li>
+                        <li><a href="#doc-e">3.2 Document E: Professional Indemnity</a></li>
+                        <li><a href="#doc-f">3.3 Document F: Business Continuity</a></li>
+                    </ul>
+                </li>
+                <li><a href="#priority-3">4. Priority 3: Enhanced Positioning</a>
+                    <ul>
+                        <li><a href="#doc-g">4.1 Document G: Service Level Agreement</a></li>
+                        <li><a href="#doc-h">4.2 Document H: User Outcomes</a></li>
+                        <li><a href="#doc-i">4.3 Document I: Implementation Guide</a></li>
+                    </ul>
+                </li>
+                <li><a href="#information-gathering">5. Key Information to Gather</a>
+                    <ul>
+                        <li><a href="#info-thrive">5.1 About ClearMinds/Thrive</a></li>
+                        <li><a href="#info-ssm">5.2 About Smart Start Minds</a></li>
+                        <li><a href="#info-org">5.3 About Your Organization</a></li>
+                    </ul>
+                </li>
+                <li><a href="#meeting-prep">6. Meeting Preparation Checklist</a></li>
+                <li><a href="#success-factors">7. Critical Success Factors</a></li>
+                <li><a href="#timeline">8. Timeline Overview (4-Week Plan)</a></li>
+                <li><a href="#next-steps">9. Next Steps</a></li>
+                <li><a href="#notes">10. Notes & Questions</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> &gt; Implementation Guide
+            </div>
+
+            <h1>4-Week Implementation Guide & Checklist</h1>
+
+            <!-- Section 1: Executive Summary -->
+            <section id="executive-summary">
+                <h2>1. Executive Summary</h2>
+                <p>This guide provides a comprehensive 4-week implementation plan to prepare your organization for the partner meeting with AXA, Towergate, and other insurance partners. The plan is designed to be systematic, actionable, and trackable, ensuring all critical documents and information are ready on time.</p>
+
+                <div class="highlight-box blue">
+                    <h4>PARTNER REQUIREMENTS (Priority 1)</h4>
+                    <p>Insurance partners (AXA, Towergate) have specifically requested:</p>
+                    <ol>
+                        <li><strong>Clinical Governance Framework</strong> - How we ensure content quality and user safety</li>
+                        <li><strong>Medical Compliance Statement</strong> - Our regulatory positioning and evidence base</li>
+                        <li><strong>Smart Start Minds Partnership</strong> - CQC-regulated clinical pathway integration</li>
+                    </ol>
+                    <p><strong>These three documents are ESSENTIAL for the partner meeting.</strong></p>
+                </div>
+
+                <p>This implementation guide provides:</p>
+                <ul>
+                    <li><strong>Phased Approach:</strong> Documents are prioritized into three tiers (Priority 1, 2, 3) based on urgency and importance</li>
+                    <li><strong>Clear Ownership:</strong> Each document has assigned owners, due dates, and status tracking</li>
+                    <li><strong>Progress Tracking:</strong> Comprehensive checklists and status indicators throughout</li>
+                    <li><strong>Information Gathering:</strong> Detailed tables identifying what information is needed, from whom, and why</li>
+                    <li><strong>Meeting Preparation:</strong> Step-by-step guidance for preparing for the partner meeting</li>
+                    <li><strong>Timeline Management:</strong> Week-by-week breakdown of activities and deliverables</li>
+                </ul>
+
+                <p>The guide is designed to be used as a living document - update it daily as you make progress, gather information, and complete tasks. By following this plan systematically, you will be fully prepared for a successful partner meeting.</p>
+            </section>
+
+            <!-- Section 2: Priority 1 Documents -->
+            <section id="priority-1">
+                <h2>2. Priority 1: Essential Documents (Weeks 1-2)</h2>
+                <p>These three documents are absolutely critical for the partner meeting. They must be completed, reviewed, and finalized by the end of Week 2 to allow time for polish and preparation in Weeks 3-4.</p>
+
+                <!-- Document A -->
+                <section id="doc-a">
+                    <h3>2.1 Document A: Clinical Governance Framework</h3>
+
+                    <div class="doc-status">
+                        <p><strong>Status:</strong>
+                            <input type="checkbox"> Not Started
+                            <input type="checkbox"> In Progress
+                            <input type="checkbox"> Complete
+                        </p>
+                        <p><strong>Owner:</strong> [NAME]</p>
+                        <p><strong>Due Date:</strong> [DATE]</p>
+                        <p><strong>Target:</strong> Week 2</p>
+                    </div>
+
+                    <p><strong>Purpose:</strong> Demonstrates content quality assurance, user safety protocols, escalation pathways, and incident management processes. This document assures partners that Thrive operates with robust clinical governance despite not being a medical device.</p>
+
+                    <h4>KEY COMPONENTS (Checklist):</h4>
+                    <ul>
+                        <li><input type="checkbox"> Content creation & quality assurance process</li>
+                        <li><input type="checkbox"> Clinical oversight team structure and qualifications</li>
+                        <li><input type="checkbox"> User safety protocols (scope, limitations, contraindications)</li>
+                        <li><input type="checkbox"> Crisis identification & response procedures</li>
+                        <li><input type="checkbox"> Escalation & referral pathways (SSM, emergency, crisis, GP)</li>
+                        <li><input type="checkbox"> Live chat support protocols and team qualifications</li>
+                        <li><input type="checkbox"> Incident reporting & management system</li>
+                        <li><input type="checkbox"> Complaints handling procedures</li>
+                        <li><input type="checkbox"> Continuous quality improvement processes</li>
+                        <li><input type="checkbox"> Regulatory compliance monitoring</li>
+                        <li><input type="checkbox"> Governance structure and accountability</li>
+                    </ul>
+
+                    <h4>INFORMATION NEEDED:</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Information</th>
+                                <th>Source</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Clinical oversight team details (names, roles, qualifications)</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Content development process documentation</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Safety disclaimers & warnings currently in use</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Escalation protocols and referral pathways</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Live chat team qualifications and SOPs</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Incident tracking system details and data</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Complaints handling procedures</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Quality improvement processes and examples</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>ACTION STEPS:</h4>
+                    <ol>
+                        <li><input type="checkbox"> Assign document owner</li>
+                        <li><input type="checkbox"> Gather information (see table above)</li>
+                        <li><input type="checkbox"> Draft document using template (see Document A in this package)</li>
+                        <li><input type="checkbox"> Internal review with clinical and operations teams</li>
+                        <li><input type="checkbox"> Revise based on feedback</li>
+                        <li><input type="checkbox"> Clinical director sign-off</li>
+                        <li><input type="checkbox"> Finalize and format</li>
+                    </ol>
+                </section>
+
+                <!-- Document B -->
+                <section id="doc-b">
+                    <h3>2.2 Document B: Medical Compliance Statement</h3>
+
+                    <div class="doc-status">
+                        <p><strong>Status:</strong>
+                            <input type="checkbox"> Not Started
+                            <input type="checkbox"> In Progress
+                            <input type="checkbox"> Complete
+                        </p>
+                        <p><strong>Owner:</strong> [NAME]</p>
+                        <p><strong>Due Date:</strong> [DATE]</p>
+                        <p><strong>Target:</strong> Week 2</p>
+                    </div>
+
+                    <p><strong>Purpose:</strong> Clarifies regulatory position, advertising compliance, and evidence base. This document protects both Thrive and partners by clearly defining what Thrive is (and isn't), what claims can be made, and what evidence supports those claims.</p>
+
+                    <h4>KEY COMPONENTS (Checklist):</h4>
+                    <ul>
+                        <li><input type="checkbox"> Regulatory classification (NOT a medical device)</li>
+                        <li><input type="checkbox"> Positioning as wellness service</li>
+                        <li><input type="checkbox"> ASA advertising compliance framework</li>
+                        <li><input type="checkbox"> Approved marketing language & claims</li>
+                        <li><input type="checkbox"> Disclaimer framework and requirements</li>
+                        <li><input type="checkbox"> Evidence base (research, outcome data, citations)</li>
+                        <li><input type="checkbox"> Clinical pathway integration boundaries</li>
+                        <li><input type="checkbox"> Data protection & confidentiality standards</li>
+                        <li><input type="checkbox"> Professional standards & ethics</li>
+                        <li><input type="checkbox"> Compliance monitoring and review processes</li>
+                    </ul>
+
+                    <h4>INFORMATION NEEDED:</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Information</th>
+                                <th>Source</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Existing disclaimers & Terms and Conditions</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Research evidence and citations</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>User outcome data and statistics</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Marketing materials samples (for review)</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Legal opinion on device classification</td>
+                                <td>[LEGAL CONTACT]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Data protection policies and procedures</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Professional standards adhered to</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box yellow">
+                        <h4>CRITICAL</h4>
+                        <p>Legal review is strongly recommended for this document, especially the regulatory classification and approved claims sections. This document may be scrutinized by partner legal teams and regulatory bodies.</p>
+                    </div>
+
+                    <h4>ACTION STEPS:</h4>
+                    <ol>
+                        <li><input type="checkbox"> Assign document owner</li>
+                        <li><input type="checkbox"> Gather all information (see table above)</li>
+                        <li><input type="checkbox"> Draft document using template (see Document B)</li>
+                        <li><input type="checkbox"> Legal review (if available)</li>
+                        <li><input type="checkbox"> Revise based on legal feedback</li>
+                        <li><input type="checkbox"> Stakeholder sign-off (clinical, legal, marketing)</li>
+                        <li><input type="checkbox"> Finalize and format</li>
+                    </ol>
+                </section>
+
+                <!-- Document C -->
+                <section id="doc-c">
+                    <h3>2.3 Document C: Smart Start Minds Partnership</h3>
+
+                    <div class="doc-status">
+                        <p><strong>Status:</strong>
+                            <input type="checkbox"> Not Started
+                            <input type="checkbox"> In Progress
+                            <input type="checkbox"> Complete
+                        </p>
+                        <p><strong>Owner:</strong> [NAME]</p>
+                        <p><strong>Due Date:</strong> [DATE]</p>
+                        <p><strong>Target:</strong> Week 2</p>
+                    </div>
+
+                    <p><strong>Purpose:</strong> Describes the partnership structure, clinical referral pathway, and CQC credentials. This document demonstrates that Thrive has a clear escalation pathway to CQC-regulated clinical services when users need more intensive support.</p>
+
+                    <div class="highlight-box green">
+                        <h4>✅ GOOD NEWS: CQC Information is COMPLETE!</h4>
+                        <ul>
+                            <li><strong>CQC Provider ID:</strong> 1-2950268195</li>
+                            <li><strong>CQC Location ID:</strong> 1-3947887340</li>
+                            <li><strong>Rating:</strong> GOOD (inspected July 2019, reviewed July 2023)</li>
+                            <li><strong>Medical Director:</strong> Dr. Thomas Dannhauser (Consultant Psychiatrist)</li>
+                        </ul>
+                        <p>This section is ready to use - just verify the partnership details with Smart Start Minds.</p>
+                    </div>
+
+                    <h4>KEY COMPONENTS (Checklist):</h4>
+                    <ul>
+                        <li><input type="checkbox" checked> CQC registration details (COMPLETE)</li>
+                        <li><input type="checkbox"> Partnership structure & relationship model</li>
+                        <li><input type="checkbox"> Clinical referral pathway (step-by-step)</li>
+                        <li><input type="checkbox"> Referral criteria and triggers</li>
+                        <li><input type="checkbox"> Emergency escalation procedures</li>
+                        <li><input type="checkbox"> Data protection & information governance</li>
+                        <li><input type="checkbox"> Quality assurance measures</li>
+                        <li><input type="checkbox"> User experience & support continuity</li>
+                    </ul>
+
+                    <h4>INFORMATION NEEDED:</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Information</th>
+                                <th>Source</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SSM partnership agreement or contract</td>
+                                <td>[SSM CONTACT]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Referral pathway documentation</td>
+                                <td>[SSM CONTACT]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Data sharing agreements (GDPR compliance)</td>
+                                <td>[SSM CONTACT]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>SSM service descriptions and capabilities</td>
+                                <td>[SSM CONTACT]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Quality metrics tracked jointly</td>
+                                <td>[BOTH ORGS]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Partnership outcomes and user feedback</td>
+                                <td>[BOTH ORGS]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>ACTION STEPS:</h4>
+                    <ol>
+                        <li><input type="checkbox"> Assign document owner</li>
+                        <li><input type="checkbox"> Contact SSM for partnership details and verification</li>
+                        <li><input type="checkbox"> Gather information (see table above)</li>
+                        <li><input type="checkbox"> Draft document using template (see Document C)</li>
+                        <li><input type="checkbox"> Share draft with SSM for verification and feedback</li>
+                        <li><input type="checkbox"> Incorporate SSM feedback and revise</li>
+                        <li><input type="checkbox"> Both organizations sign off on final version</li>
+                        <li><input type="checkbox"> Finalize and format</li>
+                    </ol>
+                </section>
+            </section>
+
+            <!-- Section 3: Priority 2 Documents -->
+            <section id="priority-2">
+                <h2>3. Priority 2: Standard Due Diligence (Weeks 2-3)</h2>
+                <p>These documents are standard due diligence items that insurance partners typically request. While not immediately urgent, completing these strengthens your partnership proposal and demonstrates organizational maturity. Focus on these after Priority 1 documents are complete or in parallel if resources allow.</p>
+
+                <!-- Document D -->
+                <section id="doc-d">
+                    <h3>3.1 Document D: Data Protection & Privacy Policy</h3>
+
+                    <div class="doc-status">
+                        <p><strong>Status:</strong>
+                            <input type="checkbox"> Not Started
+                            <input type="checkbox"> In Progress
+                            <input type="checkbox"> Complete
+                        </p>
+                        <p><strong>Owner:</strong> [NAME]</p>
+                        <p><strong>Due Date:</strong> [DATE]</p>
+                        <p><strong>Target:</strong> Week 3</p>
+                    </div>
+
+                    <p><strong>Purpose:</strong> Demonstrates GDPR compliance, data security measures, and user privacy protections. Essential for insurance partners who need assurance that sensitive user data is properly protected.</p>
+
+                    <h4>KEY COMPONENTS:</h4>
+                    <ul>
+                        <li><input type="checkbox"> GDPR compliance framework</li>
+                        <li><input type="checkbox"> User consent processes and documentation</li>
+                        <li><input type="checkbox"> Data retention policies and schedules</li>
+                        <li><input type="checkbox"> Third-party processors (including SSM) and data sharing agreements</li>
+                        <li><input type="checkbox"> Security measures (encryption, access controls, authentication)</li>
+                        <li><input type="checkbox"> User rights (access, deletion, portability, rectification)</li>
+                        <li><input type="checkbox"> Privacy policy review and update schedule</li>
+                        <li><input type="checkbox"> Data breach response procedures</li>
+                        <li><input type="checkbox"> Data Protection Officer (DPO) details</li>
+                    </ul>
+                </section>
+
+                <!-- Document E -->
+                <section id="doc-e">
+                    <h3>3.2 Document E: Professional Indemnity & Insurance</h3>
+
+                    <div class="doc-status">
+                        <p><strong>Status:</strong>
+                            <input type="checkbox"> Not Started
+                            <input type="checkbox"> In Progress
+                            <input type="checkbox"> Complete
+                        </p>
+                        <p><strong>Owner:</strong> [NAME]</p>
+                        <p><strong>Due Date:</strong> [DATE]</p>
+                        <p><strong>Target:</strong> Week 3</p>
+                    </div>
+
+                    <p><strong>Purpose:</strong> Provides assurance that Thrive carries appropriate insurance coverage for professional services. Partners need to know they're working with a properly insured organization.</p>
+
+                    <h4>KEY COMPONENTS:</h4>
+                    <ul>
+                        <li><input type="checkbox"> Professional indemnity insurance details and certificate</li>
+                        <li><input type="checkbox"> Coverage levels and limits</li>
+                        <li><input type="checkbox"> Policy terms and any exclusions</li>
+                        <li><input type="checkbox"> Claims history (if any, or statement of no claims)</li>
+                        <li><input type="checkbox"> Renewal dates and continuity of coverage</li>
+                        <li><input type="checkbox"> Insurance provider contact information</li>
+                        <li><input type="checkbox"> Other relevant insurance (public liability, cyber, etc.)</li>
+                    </ul>
+                </section>
+
+                <!-- Document F -->
+                <section id="doc-f">
+                    <h3>3.3 Document F: Business Continuity & Disaster Recovery</h3>
+
+                    <div class="doc-status">
+                        <p><strong>Status:</strong>
+                            <input type="checkbox"> Not Started
+                            <input type="checkbox"> In Progress
+                            <input type="checkbox"> Complete
+                        </p>
+                        <p><strong>Owner:</strong> [NAME]</p>
+                        <p><strong>Due Date:</strong> [DATE]</p>
+                        <p><strong>Target:</strong> Week 3</p>
+                    </div>
+
+                    <p><strong>Purpose:</strong> Demonstrates that Thrive has plans in place to maintain service availability and recover from disruptions. Critical for partners who will be relying on Thrive for their employees' wellbeing support.</p>
+
+                    <h4>KEY COMPONENTS:</h4>
+                    <ul>
+                        <li><input type="checkbox"> Service availability commitments and historical uptime</li>
+                        <li><input type="checkbox"> Backup systems and redundancy measures</li>
+                        <li><input type="checkbox"> Disaster recovery procedures and RTO/RPO targets</li>
+                        <li><input type="checkbox"> Incident response plans and escalation procedures</li>
+                        <li><input type="checkbox"> Communication protocols during outages</li>
+                        <li><input type="checkbox"> Testing and review schedule for BC/DR plans</li>
+                        <li><input type="checkbox"> Key personnel and contact details for emergencies</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- Section 4: Priority 3 Documents -->
+            <section id="priority-3">
+                <h2>4. Priority 3: Enhanced Positioning (Weeks 3-4)</h2>
+                <p>These documents further strengthen your proposal and demonstrate organizational maturity and professionalism. Complete these if time permits - they will differentiate your proposal from competitors and provide additional confidence to partners.</p>
+
+                <!-- Document G -->
+                <section id="doc-g">
+                    <h3>4.1 Document G: Service Level Agreement (SLA) Template</h3>
+
+                    <div class="doc-status">
+                        <p><strong>Status:</strong>
+                            <input type="checkbox"> Not Started
+                            <input type="checkbox"> In Progress
+                            <input type="checkbox"> Complete
+                        </p>
+                        <p><strong>Owner:</strong> [NAME]</p>
+                        <p><strong>Due Date:</strong> [DATE]</p>
+                        <p><strong>Target:</strong> Week 4</p>
+                    </div>
+
+                    <p><strong>Purpose:</strong> Provides clear service commitments and accountability measures. Shows partners exactly what they can expect in terms of service quality and responsiveness.</p>
+
+                    <h4>KEY COMPONENTS:</h4>
+                    <ul>
+                        <li><input type="checkbox"> Uptime commitments (e.g., 99.5% availability)</li>
+                        <li><input type="checkbox"> Response times for support requests (by channel and priority)</li>
+                        <li><input type="checkbox"> Support availability (hours, channels: email, chat, phone)</li>
+                        <li><input type="checkbox"> Performance metrics and monitoring</li>
+                        <li><input type="checkbox"> Reporting and transparency (monthly reports, dashboards)</li>
+                        <li><input type="checkbox"> Service credits or remedies for downtime/SLA breaches</li>
+                        <li><input type="checkbox"> Escalation procedures for service issues</li>
+                    </ul>
+                </section>
+
+                <!-- Document H -->
+                <section id="doc-h">
+                    <h3>4.2 Document H: User Outcomes & Evidence Base</h3>
+
+                    <div class="doc-status">
+                        <p><strong>Status:</strong>
+                            <input type="checkbox"> Not Started
+                            <input type="checkbox"> In Progress
+                            <input type="checkbox"> Complete
+                        </p>
+                        <p><strong>Owner:</strong> [NAME]</p>
+                        <p><strong>Due Date:</strong> [DATE]</p>
+                        <p><strong>Target:</strong> Week 4</p>
+                    </div>
+
+                    <p><strong>Purpose:</strong> Demonstrates the effectiveness of Thrive through evidence, data, and testimonials. This builds confidence that Thrive delivers real value to users.</p>
+
+                    <h4>KEY COMPONENTS:</h4>
+                    <ul>
+                        <li><input type="checkbox"> Research evidence summary (published studies, trials)</li>
+                        <li><input type="checkbox"> User testimonials (anonymized, with consent)</li>
+                        <li><input type="checkbox"> Outcome data (engagement rates, satisfaction scores, wellbeing improvements)</li>
+                        <li><input type="checkbox"> Case studies (anonymized success stories)</li>
+                        <li><input type="checkbox"> Independent validation or third-party reviews (if any)</li>
+                        <li><input type="checkbox"> Limitations and ongoing research areas</li>
+                        <li><input type="checkbox"> Benchmarking against industry standards</li>
+                    </ul>
+                </section>
+
+                <!-- Document I -->
+                <section id="doc-i">
+                    <h3>4.3 Document I: Implementation & Onboarding Guide</h3>
+
+                    <div class="doc-status">
+                        <p><strong>Status:</strong>
+                            <input type="checkbox"> Not Started
+                            <input type="checkbox"> In Progress
+                            <input type="checkbox"> Complete
+                        </p>
+                        <p><strong>Owner:</strong> [NAME]</p>
+                        <p><strong>Due Date:</strong> [DATE]</p>
+                        <p><strong>Target:</strong> Week 4</p>
+                    </div>
+
+                    <p><strong>Purpose:</strong> Describes how partners will be onboarded and supported. Shows that Thrive has a structured, professional approach to partner integration.</p>
+
+                    <h4>KEY COMPONENTS:</h4>
+                    <ul>
+                        <li><input type="checkbox"> Partner onboarding process (phases, timeline)</li>
+                        <li><input type="checkbox"> Technical integration requirements (SSO, APIs, branding)</li>
+                        <li><input type="checkbox"> User communication templates (launch announcements, reminders)</li>
+                        <li><input type="checkbox"> Launch timeline and milestones</li>
+                        <li><input type="checkbox"> Training for partner staff (HR, benefits teams)</li>
+                        <li><input type="checkbox"> Ongoing support and account management structure</li>
+                        <li><input type="checkbox"> Success metrics and review cadence</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- Section 5: Key Information to Gather -->
+            <section id="information-gathering">
+                <h2>5. Key Information to Gather</h2>
+                <p>This section provides comprehensive tables identifying all information needed to complete the documentation package. Use these tables to track information gathering progress and ensure nothing is missed.</p>
+
+                <!-- About Thrive -->
+                <section id="info-thrive">
+                    <h3>5.1 About ClearMinds/Thrive</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Information Needed</th>
+                                <th>Why Needed</th>
+                                <th>Source/Contact</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Clinical oversight team structure, names, qualifications</td>
+                                <td>Document A (Clinical Governance)</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Content development process and quality assurance</td>
+                                <td>Document A (Clinical Governance)</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Live chat team qualifications and SOPs</td>
+                                <td>Document A (Clinical Governance)</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Safety protocols, disclaimers, contraindications</td>
+                                <td>Documents A & B</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Incident tracking system details and data</td>
+                                <td>Document A (Clinical Governance)</td>
+                                <td>[DEPT/NAME]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Existing terms & conditions, privacy policy</td>
+                                <td>Document B (Medical Compliance)</td>
+                                <td>[LEGAL/PRODUCT]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Marketing materials for compliance review</td>
+                                <td>Document B (Medical Compliance)</td>
+                                <td>[MARKETING]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Research evidence & citations</td>
+                                <td>Documents B & H</td>
+                                <td>[CLINICAL/RESEARCH]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>User outcome data (engagement, satisfaction, wellbeing)</td>
+                                <td>Documents B & H</td>
+                                <td>[ANALYTICS/RESEARCH]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Legal opinion on medical device classification</td>
+                                <td>Document B (Medical Compliance)</td>
+                                <td>[LEGAL]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Data protection policies (GDPR compliance)</td>
+                                <td>Documents B & D</td>
+                                <td>[LEGAL/IT]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Professional indemnity insurance details & certificate</td>
+                                <td>Document E</td>
+                                <td>[FINANCE/LEGAL]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Business continuity & disaster recovery plans</td>
+                                <td>Document F</td>
+                                <td>[IT/OPS]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>SLA commitments (uptime, response times, support)</td>
+                                <td>Document G</td>
+                                <td>[OPS/TECH]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>User testimonials (anonymized, with consent)</td>
+                                <td>Document H</td>
+                                <td>[CUSTOMER SUCCESS]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Implementation & onboarding process documentation</td>
+                                <td>Document I</td>
+                                <td>[CUSTOMER SUCCESS/OPS]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- About SSM -->
+                <section id="info-ssm">
+                    <h3>5.2 About Smart Start Minds</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Information Needed</th>
+                                <th>Why Needed</th>
+                                <th>Source/Contact</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Partnership agreement or contract</td>
+                                <td>Document C (SSM Partnership)</td>
+                                <td>[SSM CONTACT]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Referral pathway documentation (step-by-step process)</td>
+                                <td>Document C (SSM Partnership)</td>
+                                <td>[SSM CONTACT]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Data sharing agreements (GDPR compliance)</td>
+                                <td>Documents C & D</td>
+                                <td>[SSM CONTACT]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>SSM service descriptions and capabilities</td>
+                                <td>Document C (SSM Partnership)</td>
+                                <td>[SSM CONTACT]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Quality metrics & outcomes tracked jointly</td>
+                                <td>Document C (SSM Partnership)</td>
+                                <td>[SSM CONTACT]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>SSM team credentials (beyond public CQC info)</td>
+                                <td>Document C (SSM Partnership)</td>
+                                <td>[SSM CONTACT]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Partnership outcomes and user feedback</td>
+                                <td>Document C (SSM Partnership)</td>
+                                <td>[BOTH ORGS]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- About Your Organization -->
+                <section id="info-org">
+                    <h3>5.3 About Your Organization</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Information Needed</th>
+                                <th>Why Needed</th>
+                                <th>Who to Ask</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Company registration details (Companies House number, etc.)</td>
+                                <td>Various documents (background)</td>
+                                <td>[LEGAL/FINANCE]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Key personnel & roles (org chart)</td>
+                                <td>Various documents (governance)</td>
+                                <td>[HR/LEADERSHIP]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Organizational structure and reporting lines</td>
+                                <td>Governance documents</td>
+                                <td>[HR/LEADERSHIP]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                            <tr>
+                                <td>Financial stability information (if relevant to share)</td>
+                                <td>Partner confidence building</td>
+                                <td>[FINANCE]</td>
+                                <td><input type="checkbox"> Received</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+
+            <!-- Section 6: Meeting Preparation Checklist -->
+            <section id="meeting-prep">
+                <h2>6. Meeting Preparation Checklist</h2>
+
+                <h3>1 WEEK BEFORE MEETING:</h3>
+                <ul>
+                    <li><input type="checkbox"> All Priority 1 documents complete (A, B, C)</li>
+                    <li><input type="checkbox"> Internal review completed by relevant stakeholders</li>
+                    <li><input type="checkbox"> Sign-offs obtained (clinical director, legal, leadership)</li>
+                    <li><input type="checkbox"> Documents formatted and polished professionally</li>
+                    <li><input type="checkbox"> PDF versions created for distribution</li>
+                    <li><input type="checkbox"> Executive summary or cover letter prepared</li>
+                </ul>
+
+                <h3>3-5 DAYS BEFORE MEETING:</h3>
+                <ul>
+                    <li><input type="checkbox"> Documents sent to partners for pre-read (if appropriate)</li>
+                    <li><input type="checkbox"> Presentation deck prepared (if needed for meeting)</li>
+                    <li><input type="checkbox"> Q&A preparation session held with internal team</li>
+                    <li><input type="checkbox"> Key stakeholders briefed on meeting objectives and content</li>
+                    <li><input type="checkbox"> SSM contact alerted (in case partners have questions about pathway)</li>
+                    <li><input type="checkbox"> Meeting agenda confirmed with partners</li>
+                </ul>
+
+                <h3>1-2 DAYS BEFORE MEETING:</h3>
+                <ul>
+                    <li><input type="checkbox"> Final document review (check for any errors or placeholders)</li>
+                    <li><input type="checkbox"> Print copies prepared (if in-person meeting)</li>
+                    <li><input type="checkbox"> Digital copies accessible (if virtual meeting - Google Drive, Dropbox, etc.)</li>
+                    <li><input type="checkbox"> Meeting logistics confirmed (location, Zoom link, dial-in, etc.)</li>
+                    <li><input type="checkbox"> Note-taker assigned for meeting</li>
+                    <li><input type="checkbox"> Follow-up action tracker template ready</li>
+                    <li><input type="checkbox"> Demo environment ready and tested (if applicable)</li>
+                </ul>
+
+                <h3>MEETING DAY:</h3>
+                <ul>
+                    <li><input type="checkbox"> All documents accessible and organized</li>
+                    <li><input type="checkbox"> Key team members present/available (clinical, operations, tech)</li>
+                    <li><input type="checkbox"> Demo environment ready (if showing the platform)</li>
+                    <li><input type="checkbox"> Questions and concerns log ready to capture partner feedback</li>
+                    <li><input type="checkbox"> Follow-up plan ready to discuss at end of meeting</li>
+                    <li><input type="checkbox"> Business cards / contact info ready to share</li>
+                </ul>
+            </section>
+
+            <!-- Section 7: Critical Success Factors -->
+            <section id="success-factors">
+                <h2>7. Critical Success Factors</h2>
+
+                <div class="highlight-box red">
+                    <h4>MUST-HAVES FOR PARTNER MEETING</h4>
+                    <ol>
+                        <li>✅ <strong>Clinical Governance Framework</strong> - Complete and signed off by clinical director</li>
+                        <li>✅ <strong>Medical Compliance Statement</strong> - Legally reviewed and approved</li>
+                        <li>✅ <strong>SSM Partnership Document</strong> - With verified CQC details and SSM approval</li>
+                        <li>✅ <strong>Evidence Base</strong> - Research citations and outcome data ready to share</li>
+                        <li>✅ <strong>Q&A Preparation</strong> - Team briefed on likely questions and answers aligned</li>
+                    </ol>
+                    <p><strong>Without these 5 elements, strongly recommend postponing the meeting.</strong></p>
+                </div>
+
+                <h3>QUALITY STANDARDS:</h3>
+                <p>Before the meeting, ensure all documents meet these quality standards:</p>
+                <ul>
+                    <li><input type="checkbox"> All documents professionally formatted with consistent styling</li>
+                    <li><input type="checkbox"> No [PLACEHOLDER] text remaining - all sections filled in with actual information</li>
+                    <li><input type="checkbox"> All cross-references verified and working (e.g., "see Section 3.2")</li>
+                    <li><input type="checkbox"> Legal review completed on compliance-sensitive documents (especially Document B)</li>
+                    <li><input type="checkbox"> SSM partnership details verified directly with Smart Start Minds</li>
+                    <li><input type="checkbox"> Internal stakeholder sign-off obtained from all relevant parties</li>
+                    <li><input type="checkbox"> Documents accessible in multiple formats (PDF for distribution, print for in-person)</li>
+                    <li><input type="checkbox"> All contact information and credentials up-to-date and accurate</li>
+                    <li><input type="checkbox"> Grammar, spelling, and formatting checked thoroughly</li>
+                    <li><input type="checkbox"> Version control in place (document version numbers, dates, owners)</li>
+                </ul>
+
+                <h3>TEAM ALIGNMENT:</h3>
+                <ul>
+                    <li><input type="checkbox"> All team members understand Thrive's positioning (wellness, not medical device)</li>
+                    <li><input type="checkbox"> Messaging consistent across all documents and team members</li>
+                    <li><input type="checkbox"> Roles clear for meeting (who presents what, who handles Q&A on specific topics)</li>
+                    <li><input type="checkbox"> Escalation plan in place if difficult questions arise</li>
+                    <li><input type="checkbox"> Follow-up process agreed upon (who sends what, by when)</li>
+                </ul>
+            </section>
+
+            <!-- Section 8: Timeline Overview -->
+            <section id="timeline">
+                <h2>8. Timeline Overview (4-Week Plan)</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Week</th>
+                            <th>Days</th>
+                            <th>Focus</th>
+                            <th>Deliverables</th>
+                            <th>Key Actions</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1</strong></td>
+                            <td>1-7</td>
+                            <td>Information Gathering & Planning</td>
+                            <td>
+                                • Project kickoff<br>
+                                • Information requests sent<br>
+                                • Document owners assigned<br>
+                                • Initial drafts started
+                            </td>
+                            <td>
+                                • Assign document owners<br>
+                                • Send all information requests<br>
+                                • Set up shared workspace<br>
+                                • Begin drafting Priority 1 docs<br>
+                                • Daily stand-ups established
+                            </td>
+                            <td><input type="checkbox"> Complete</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2</strong></td>
+                            <td>8-14</td>
+                            <td>Priority 1 Completion</td>
+                            <td>
+                                • Document A (draft & final)<br>
+                                • Document B (draft & final)<br>
+                                • Document C (draft & final)<br>
+                                • All Priority 1 signed off
+                            </td>
+                            <td>
+                                • Complete all Priority 1 drafts<br>
+                                • Internal review rounds<br>
+                                • Legal review (Document B)<br>
+                                • SSM verification (Document C)<br>
+                                • Revise based on feedback<br>
+                                • Obtain final sign-offs
+                            </td>
+                            <td><input type="checkbox"> Complete</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3</strong></td>
+                            <td>15-21</td>
+                            <td>Priority 2 & Refinement</td>
+                            <td>
+                                • Documents D, E, F (if time permits)<br>
+                                • Priority 1 documents polished<br>
+                                • Meeting preparation begun
+                            </td>
+                            <td>
+                                • Start Priority 2 documents<br>
+                                • Polish Priority 1 documents<br>
+                                • Begin meeting preparation<br>
+                                • Identify likely partner questions<br>
+                                • Weekly review and planning
+                            </td>
+                            <td><input type="checkbox"> Complete</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4</strong></td>
+                            <td>22-28</td>
+                            <td>Meeting Preparation & Priority 3</td>
+                            <td>
+                                • Priority 3 documents (if time)<br>
+                                • Meeting materials finalized<br>
+                                • Team briefing completed<br>
+                                • PARTNER MEETING
+                            </td>
+                            <td>
+                                • Final review of all documents<br>
+                                • Create presentation materials<br>
+                                • Q&A preparation and rehearsal<br>
+                                • Send documents to partners<br>
+                                • Final team briefing<br>
+                                • MEETING DAY
+                            </td>
+                            <td><input type="checkbox"> Complete</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>DAILY/WEEKLY RHYTHMS:</h3>
+                <ul>
+                    <li><strong>Daily Stand-up (15 minutes):</strong> Quick check-in on progress, blockers, and priorities for the day. Keep it short and focused.</li>
+                    <li><strong>Weekly Review (1 hour):</strong> Comprehensive document review, feedback incorporation, planning for next week. Include all stakeholders.</li>
+                    <li><strong>Regular SSM Check-ins:</strong> Maintain communication with Smart Start Minds throughout the process, especially for Document C verification.</li>
+                    <li><strong>Friday Wrap-up:</strong> End each week with a summary of what's complete, what's pending, and what needs attention next week.</li>
+                </ul>
+            </section>
+
+            <!-- Section 9: Next Steps -->
+            <section id="next-steps">
+                <h2>9. Next Steps</h2>
+
+                <h3>TODAY (Day 1):</h3>
+                <ol>
+                    <li><input type="checkbox"> Assign document owners for Priority 1 documents (A, B, C)</li>
+                    <li><input type="checkbox"> Schedule project kickoff meeting with all stakeholders</li>
+                    <li><input type="checkbox"> Set up shared document workspace (Google Docs, SharePoint, etc.)</li>
+                    <li><input type="checkbox"> Send information request emails (use templates from Section 5)</li>
+                    <li><input type="checkbox"> Create project timeline/Gantt chart (if using project management tool)</li>
+                    <li><input type="checkbox"> Identify any immediate blockers or risks that need addressing</li>
+                </ol>
+
+                <h3>WEEK 1 (Days 2-7):</h3>
+                <ol>
+                    <li><input type="checkbox"> Gather all required information (chase non-responses actively)</li>
+                    <li><input type="checkbox"> Begin drafting Document A (Clinical Governance Framework)</li>
+                    <li><input type="checkbox"> Begin drafting Document B (Medical Compliance Statement)</li>
+                    <li><input type="checkbox"> Begin drafting Document C (Smart Start Minds Partnership)</li>
+                    <li><input type="checkbox"> Hold daily progress check-ins (15 min stand-ups)</li>
+                    <li><input type="checkbox"> Conduct Week 1 review meeting (Friday)</li>
+                    <li><input type="checkbox"> Adjust plan as needed based on progress and learnings</li>
+                </ol>
+
+                <h3>WEEK 2 (Days 8-14):</h3>
+                <ol>
+                    <li><input type="checkbox"> Complete first drafts of all Priority 1 documents</li>
+                    <li><input type="checkbox"> Conduct internal review round 1 (circulate to stakeholders)</li>
+                    <li><input type="checkbox"> Arrange legal review of Document B (if legal team available)</li>
+                    <li><input type="checkbox"> Share Document C draft with SSM for verification</li>
+                    <li><input type="checkbox"> Incorporate feedback and revise all three documents</li>
+                    <li><input type="checkbox"> Obtain final sign-offs from clinical director, legal, leadership</li>
+                    <li><input type="checkbox"> Conduct Week 2 review meeting and celebrate Priority 1 completion</li>
+                </ol>
+
+                <h3>WEEK 3 (Days 15-21):</h3>
+                <ol>
+                    <li><input type="checkbox"> Finalize and polish Priority 1 documents (formatting, consistency)</li>
+                    <li><input type="checkbox"> Begin Priority 2 documents (D, E, F) if time and resources allow</li>
+                    <li><input type="checkbox"> Start meeting preparation (outline presentation, key talking points)</li>
+                    <li><input type="checkbox"> Identify likely partner questions and prepare answers</li>
+                    <li><input type="checkbox"> Brief key stakeholders on meeting objectives and their roles</li>
+                    <li><input type="checkbox"> Create PDF versions of Priority 1 documents</li>
+                    <li><input type="checkbox"> Conduct Week 3 review meeting</li>
+                </ol>
+
+                <h3>WEEK 4 (Days 22-28):</h3>
+                <ol>
+                    <li><input type="checkbox"> Complete any Priority 2/3 documents that were started</li>
+                    <li><input type="checkbox"> Conduct final review of all documents (check for errors, placeholders)</li>
+                    <li><input type="checkbox"> Create final PDF versions for distribution</li>
+                    <li><input type="checkbox"> Send documents to partners for pre-read (if appropriate, 3-5 days before)</li>
+                    <li><input type="checkbox"> Final meeting preparation (presentation, demo, logistics)</li>
+                    <li><input type="checkbox"> Team Q&A rehearsal session</li>
+                    <li><input type="checkbox"> PARTNER MEETING DAY - execute with confidence!</li>
+                </ol>
+            </section>
+
+            <!-- Section 10: Notes & Questions -->
+            <section id="notes">
+                <h2>10. Notes & Questions</h2>
+                <p>Use this space to track notes, decisions, and questions as you progress through the implementation. Keep this section updated regularly to maintain a clear record of your journey.</p>
+
+                <h3>KEY DECISIONS LOG:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Decision</th>
+                            <th>Rationale</th>
+                            <th>Impact</th>
+                            <th>Made By</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[DATE]</td>
+                            <td>[DECISION]</td>
+                            <td>[WHY]</td>
+                            <td>[IMPACT]</td>
+                            <td>[NAME]</td>
+                        </tr>
+                        <tr>
+                            <td>[DATE]</td>
+                            <td>[DECISION]</td>
+                            <td>[WHY]</td>
+                            <td>[IMPACT]</td>
+                            <td>[NAME]</td>
+                        </tr>
+                        <tr>
+                            <td>[DATE]</td>
+                            <td>[DECISION]</td>
+                            <td>[WHY]</td>
+                            <td>[IMPACT]</td>
+                            <td>[NAME]</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>OUTSTANDING QUESTIONS:</h3>
+                <ul>
+                    <li><input type="checkbox"> [QUESTION] - Owner: [NAME] - Due: [DATE] - Status: [STATUS]</li>
+                    <li><input type="checkbox"> [QUESTION] - Owner: [NAME] - Due: [DATE] - Status: [STATUS]</li>
+                    <li><input type="checkbox"> [QUESTION] - Owner: [NAME] - Due: [DATE] - Status: [STATUS]</li>
+                    <li><input type="checkbox"> [QUESTION] - Owner: [NAME] - Due: [DATE] - Status: [STATUS]</li>
+                    <li><input type="checkbox"> [QUESTION] - Owner: [NAME] - Due: [DATE] - Status: [STATUS]</li>
+                </ul>
+
+                <h3>RISKS & MITIGATIONS:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Risk</th>
+                            <th>Likelihood</th>
+                            <th>Impact</th>
+                            <th>Mitigation</th>
+                            <th>Owner</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[RISK]</td>
+                            <td>High/Med/Low</td>
+                            <td>High/Med/Low</td>
+                            <td>[MITIGATION]</td>
+                            <td>[NAME]</td>
+                            <td>[STATUS]</td>
+                        </tr>
+                        <tr>
+                            <td>[RISK]</td>
+                            <td>High/Med/Low</td>
+                            <td>High/Med/Low</td>
+                            <td>[MITIGATION]</td>
+                            <td>[NAME]</td>
+                            <td>[STATUS]</td>
+                        </tr>
+                        <tr>
+                            <td>[RISK]</td>
+                            <td>High/Med/Low</td>
+                            <td>High/Med/Low</td>
+                            <td>[MITIGATION]</td>
+                            <td>[NAME]</td>
+                            <td>[STATUS]</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>LESSONS LEARNED (Post-Implementation):</h3>
+                <p>Complete this section after the partner meeting to capture insights for future partnerships:</p>
+                <ul>
+                    <li>[LESSON 1]</li>
+                    <li>[LESSON 2]</li>
+                    <li>[LESSON 3]</li>
+                    <li>[LESSON 4]</li>
+                    <li>[LESSON 5]</li>
+                </ul>
+            </section>
+
+            <!-- Document Navigation -->
+            <div class="doc-navigation">
+                <a href="document-c-ssm-partnership.html" class="prev">Smart Start Minds Partnership</a>
+                <a href="sprint-plan.html" class="next">2-Week Sprint Plan</a>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p><strong>Document Version:</strong> 1.0 | <strong>Last Updated:</strong> [DATE] | <strong>Owner:</strong> [NAME]</p>
+                <p>Thrive EAP Documentation - 4-Week Implementation Guide & Checklist</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

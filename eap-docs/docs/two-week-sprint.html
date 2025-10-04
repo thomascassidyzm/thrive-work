@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-Week Sprint Plan - Thrive EAP Governance Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h2 {
+            color: #3498db;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s, padding-left 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #34495e;
+            padding-left: 16px;
+        }
+
+        .sidebar ul ul {
+            margin-left: 15px;
+            margin-top: 5px;
+        }
+
+        .sidebar ul ul li a {
+            font-size: 0.9em;
+            color: #bdc3c7;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 40px;
+            max-width: 1200px;
+        }
+
+        .breadcrumb {
+            background-color: #ecf0f1;
+            padding: 12px 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 4px solid #3498db;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .alert-box {
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 5px solid;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .alert-red {
+            background-color: #ffebee;
+            border-color: #c62828;
+            color: #b71c1c;
+        }
+
+        .alert-red strong {
+            color: #c62828;
+        }
+
+        .alert-yellow {
+            background-color: #fff9e6;
+            border-color: #f39c12;
+            color: #7d6608;
+        }
+
+        .alert-green {
+            background-color: #e8f5e9;
+            border-color: #27ae60;
+            color: #1b5e20;
+        }
+
+        .alert-blue {
+            background-color: #e3f2fd;
+            border-color: #1976d2;
+            color: #0d47a1;
+        }
+
+        .day-header {
+            color: #c62828;
+            font-size: 1.8em;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #ffebee;
+            border-radius: 8px;
+            border-left: 6px solid #c62828;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .checkbox-item {
+            margin: 10px 0;
+            padding: 8px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #ecf0f1;
+        }
+
+        .nav-button {
+            padding: 12px 24px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-weight: 600;
+        }
+
+        .nav-button:hover {
+            background-color: #2980b9;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        .time-block {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+        }
+
+        .deliverable-box {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid #27ae60;
+        }
+
+        .deliverable-box h4 {
+            color: #27ae60;
+            margin-top: 0;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .email-template {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap;
+            margin: 20px 0;
+        }
+
+        @media print {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .navigation {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#criteria">1. Critical Success Criteria</a></li>
+                <li><a href="#action-plan">2. Day-by-Day Action Plan</a>
+                    <ul>
+                        <li><a href="#week1-days1-5">2.1 Week 1: Days 1-5</a></li>
+                        <li><a href="#week1-weekend">2.2 Week 1: Weekend</a></li>
+                        <li><a href="#week2-days6-10">2.3 Week 2: Days 6-10</a></li>
+                        <li><a href="#week2-weekend">2.4 Week 2: Weekend</a></li>
+                        <li><a href="#week2-days11-14">2.5 Week 2: Days 11-14</a></li>
+                    </ul>
+                </li>
+                <li><a href="#critical-path">3. Critical Path Items</a></li>
+                <li><a href="#quick-wins">4. Quick Wins</a></li>
+                <li><a href="#emergency">5. Emergency Protocols</a></li>
+                <li><a href="#standup">6. Daily Stand-up Template</a></li>
+                <li><a href="#checklist">7. Quick Checklist (Print-Friendly)</a></li>
+                <li><a href="#survival">8. Survival Tips</a></li>
+                <li><a href="#meeting-day">9. Meeting Day Checklist</a></li>
+                <li><a href="#email-template">10. Follow-up Email Template</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> &gt; 2-Week Sprint Plan
+            </div>
+
+            <h1>2-Week Sprint Plan</h1>
+
+            <div class="alert-box alert-red">
+                <h3>⏰ DEADLINE: 14 DAYS TO PARTNER MEETING</h3>
+                <p><strong>YOU MUST DELIVER:</strong></p>
+                <ol>
+                    <li>✅ Clinical Governance Framework (complete, signed)</li>
+                    <li>✅ Medical Compliance Statement (complete, legally reviewed if possible)</li>
+                    <li>✅ Smart Start Minds Partnership (complete, SSM-verified)</li>
+                    <li>✅ Evidence base ready (research citations, outcome data)</li>
+                    <li>✅ Team prepared (Q&A rehearsed)</li>
+                </ol>
+                <p><strong>Without these 5 items, the meeting will likely fail. Everything else is secondary.</strong></p>
+            </div>
+
+            <p>This is the accelerated plan for teams with only 2 weeks until their partner meeting. It's intense but doable with focus and commitment. This sprint plan breaks down exactly what needs to happen each day, who should do it, and how to stay on track under extreme time pressure.</p>
+
+            <!-- Section 1: Critical Success Criteria -->
+            <h2 id="criteria">1. Critical Success Criteria</h2>
+
+            <p>Success in this 14-day sprint is binary: either you deliver all five critical items and have a successful meeting, or you don't and the meeting fails. There's no middle ground with insurance partners who expect professional governance documentation.</p>
+
+            <p><strong>The Five Non-Negotiables:</strong></p>
+
+            <ol>
+                <li><strong>Clinical Governance Framework (Document A):</strong> Complete documentation of how Thrive ensures user safety, content quality, and clinical oversight. Must be signed by Clinical Director or equivalent.</li>
+
+                <li><strong>Medical Compliance Statement (Document B):</strong> Clear positioning on regulatory status, medical device classification, disclaimers, and legal compliance. Legal review highly recommended but not mandatory if unavailable.</li>
+
+                <li><strong>Smart Start Minds Partnership (Document C):</strong> Verified partnership documentation showing CQC-regulated clinical pathway for escalation. Must be verified by SSM before presenting to partners.</li>
+
+                <li><strong>Evidence Base:</strong> Research citations, outcome data, and evidence supporting Thrive's effectiveness. This doesn't need to be a separate document but must be readily available to answer partner questions.</li>
+
+                <li><strong>Team Preparedness:</strong> Your team must know the documents inside and out, be able to answer tough questions, and present with confidence. No amount of documentation helps if your team fumbles the presentation.</li>
+            </ol>
+
+            <div class="alert-box alert-blue">
+                <p><strong>Reality Check:</strong> This sprint assumes you work efficiently, hit deadlines, and don't encounter major blockers. If you're already behind, or if your team can't commit full-time to this sprint, you may need to request a meeting postponement. It's better to delay than to show up unprepared.</p>
+            </div>
+
+            <!-- Section 2: Day-by-Day Action Plan -->
+            <h2 id="action-plan">2. Day-by-Day Action Plan</h2>
+
+            <!-- Section 2.1: Week 1 Days 1-5 -->
+            <h3 id="week1-days1-5">2.1 Week 1: Days 1-5</h3>
+
+            <!-- DAY 1 -->
+            <div class="day-header">DAY 1 - MOBILIZE (Time Budget: 6-8 hours)</div>
+
+            <div class="deliverable-box">
+                <h4>DELIVERABLES:</h4>
+                <div class="checkbox-item"><input type="checkbox"> Document owners assigned (A, B, C)</div>
+                <div class="checkbox-item"><input type="checkbox"> Information requests sent</div>
+                <div class="checkbox-item"><input type="checkbox"> Workspace set up</div>
+                <div class="checkbox-item"><input type="checkbox"> Kickoff meeting completed</div>
+            </div>
+
+            <h4>DETAILED TASKS:</h4>
+
+            <div class="time-block">
+                <h4>MORNING (9am-12pm):</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:00am:</strong> Emergency project kickoff meeting (1 hour)
+                    <ul>
+                        <li>Explain urgency and timeline</li>
+                        <li>Assign owners: Doc A [NAME], Doc B [NAME], Doc C [NAME]</li>
+                        <li>Identify any immediate blockers</li>
+                        <li>Agree on daily check-in time</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>10:00am:</strong> Set up shared workspace (Google Docs, Notion, etc.)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>10:30am:</strong> Create information request emails using templates</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>11:00am:</strong> Send ALL information requests (see Day 1 table below)</div>
+            </div>
+
+            <h4>Day 1 Information Requests</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>To</th>
+                        <th>Request</th>
+                        <th>Why</th>
+                        <th>Urgency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ClearMinds Clinical Team</td>
+                        <td>Clinical oversight structure, content process, live chat team</td>
+                        <td>Doc A</td>
+                        <td>URGENT - need by Day 3</td>
+                    </tr>
+                    <tr>
+                        <td>ClearMinds Product/Legal</td>
+                        <td>Safety disclaimers, T&Cs, marketing materials</td>
+                        <td>Doc A, B</td>
+                        <td>URGENT - need by Day 3</td>
+                    </tr>
+                    <tr>
+                        <td>ClearMinds Research/Analytics</td>
+                        <td>Research evidence, outcome data</td>
+                        <td>Doc B</td>
+                        <td>URGENT - need by Day 3</td>
+                    </tr>
+                    <tr>
+                        <td>Legal Advisor</td>
+                        <td>Opinion on medical device classification</td>
+                        <td>Doc B</td>
+                        <td>URGENT - need by Day 3</td>
+                    </tr>
+                    <tr>
+                        <td>Smart Start Minds Contact</td>
+                        <td>Partnership agreement, referral process, data sharing</td>
+                        <td>Doc C</td>
+                        <td>URGENT - need by Day 2</td>
+                    </tr>
+                    <tr>
+                        <td>IT/Security</td>
+                        <td>Data protection policies, security measures</td>
+                        <td>Doc B</td>
+                        <td>URGENT - need by Day 3</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="time-block">
+                <h4>AFTERNOON (1pm-5pm):</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>1:00pm:</strong> Review document templates (A, B, C) - familiarize yourself</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>2:00pm:</strong> Start drafting sections you can complete without info (e.g., SSM CQC details in Doc C)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>3:00pm:</strong> Chase any non-responses to information requests</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>4:00pm:</strong> Day 1 progress check-in (15 min team meeting)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>4:15pm:</strong> Plan Day 2 tasks</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>5:00pm:</strong> End of Day 1</div>
+            </div>
+
+            <div class="time-block">
+                <h4>EVENING (Optional but recommended):</h4>
+                <div class="checkbox-item"><input type="checkbox"> Review document templates again</div>
+                <div class="checkbox-item"><input type="checkbox"> Prepare questions for tomorrow's information gathering</div>
+            </div>
+
+            <!-- DAY 2 -->
+            <div class="day-header">DAY 2 - GATHER & DRAFT (Time Budget: 8-10 hours)</div>
+
+            <div class="deliverable-box">
+                <h4>DELIVERABLES:</h4>
+                <div class="checkbox-item"><input type="checkbox"> All critical information received or chased</div>
+                <div class="checkbox-item"><input type="checkbox"> Document A first draft 30% complete</div>
+                <div class="checkbox-item"><input type="checkbox"> Document B first draft 30% complete</div>
+                <div class="checkbox-item"><input type="checkbox"> Document C first draft 50% complete (CQC info already done)</div>
+            </div>
+
+            <div class="time-block">
+                <h4>MORNING (9am-12pm):</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:00am:</strong> Daily stand-up (15 min) - blockers, priorities</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:15am:</strong> CHASE all information requests sent yesterday</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>10:00am:</strong> SSM call/email check-in (verify partnership details for Doc C)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>11:00am:</strong> Begin drafting Document C (SSM Partnership)
+                    <ul>
+                        <li>CQC section is already complete (use pre-filled data)</li>
+                        <li>Fill in partnership structure with SSM input</li>
+                        <li>Draft referral pathway (get SSM verification)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="time-block">
+                <h4>AFTERNOON (1pm-5pm):</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>1:00pm:</strong> Process any information received</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>2:00pm:</strong> Begin Document A (Clinical Governance)
+                    <ul>
+                        <li>Content creation section</li>
+                        <li>User safety protocols</li>
+                        <li>As much as possible with available info</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>3:30pm:</strong> Begin Document B (Medical Compliance)
+                    <ul>
+                        <li>Regulatory classification section</li>
+                        <li>Disclaimer framework</li>
+                        <li>As much as possible with available info</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>4:30pm:</strong> Day 2 check-in (15 min)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>5:00pm:</strong> Plan Day 3</div>
+            </div>
+
+            <!-- DAY 3 -->
+            <div class="day-header">DAY 3 - DRAFT HARD (Time Budget: 10-12 hours)</div>
+
+            <div class="deliverable-box">
+                <h4>DELIVERABLES:</h4>
+                <div class="checkbox-item"><input type="checkbox"> Document A first draft 70% complete</div>
+                <div class="checkbox-item"><input type="checkbox"> Document B first draft 70% complete</div>
+                <div class="checkbox-item"><input type="checkbox"> Document C first draft 90% complete</div>
+            </div>
+
+            <div class="alert-box alert-yellow">
+                <p><strong>Today is the hardest day.</strong> You need to make massive progress on all three documents. Block your calendar. Cancel non-essential meetings. This is your sprint's most critical day.</p>
+            </div>
+
+            <div class="time-block">
+                <h4>ALL DAY (9am-6pm+):</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:00am:</strong> Stand-up (15 min)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:15am-12:00pm:</strong> FOCUSED DRAFTING SESSION
+                    <ul>
+                        <li>Doc A owner: Complete sections 1-5</li>
+                        <li>Doc B owner: Complete sections 1-4</li>
+                        <li>Doc C owner: Finalize draft for SSM review</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>12:00pm:</strong> Lunch (30 min) - take a break!</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>12:30pm-3:00pm:</strong> CONTINUED DRAFTING
+                    <ul>
+                        <li>Doc A: Sections 6-9</li>
+                        <li>Doc B: Sections 5-8</li>
+                        <li>Doc C: Final polish, prepare for SSM review</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>3:00pm:</strong> Quick check-in (15 min) - help anyone stuck</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>3:15pm-6:00pm:</strong> FINAL PUSH
+                    <ul>
+                        <li>Complete all remaining sections with [PLACEHOLDER] where info is missing</li>
+                        <li>Cross-reference between documents (e.g., SSM info consistent)</li>
+                        <li>Spell check, formatting</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>6:00pm:</strong> Day 3 review (30 min)
+                    <ul>
+                        <li>Assess completeness</li>
+                        <li>Identify critical gaps</li>
+                        <li>Plan Day 4 review process</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- DAY 4 -->
+            <div class="day-header">DAY 4 - REVIEW & REFINE (Time Budget: 8-10 hours)</div>
+
+            <div class="deliverable-box">
+                <h4>DELIVERABLES:</h4>
+                <div class="checkbox-item"><input type="checkbox"> All three documents 100% first draft complete</div>
+                <div class="checkbox-item"><input type="checkbox"> Internal review round 1 complete</div>
+                <div class="checkbox-item"><input type="checkbox"> Document C sent to SSM for verification</div>
+                <div class="checkbox-item"><input type="checkbox"> Revision list created</div>
+            </div>
+
+            <div class="time-block">
+                <h4>MORNING (9am-12pm):</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:00am:</strong> Stand-up (15 min)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:15am:</strong> Finalize any remaining sections</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>10:00am:</strong> SEND Document C to SSM for review (urgent - need feedback by Day 6)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>10:30am:</strong> Cross-review (Doc A owner reviews B, Doc B owner reviews C, etc.)
+                    <ul>
+                        <li>Check consistency</li>
+                        <li>Identify gaps or confusing sections</li>
+                        <li>Note questions/concerns</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="time-block">
+                <h4>AFTERNOON (1pm-5pm):</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>1:00pm:</strong> Consolidate review feedback</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>1:30pm:</strong> Prioritize revisions (critical vs. nice-to-have)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>2:00pm-5:00pm:</strong> REVISE based on feedback
+                    <ul>
+                        <li>Each owner works on their document</li>
+                        <li>Fill in any [PLACEHOLDER] text with real info (or best available)</li>
+                        <li>Improve clarity and professionalism</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="time-block">
+                <h4>EVENING:</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>5:00pm:</strong> Day 4 review</div>
+                <div class="checkbox-item"><input type="checkbox"> Send updated drafts to broader team for overnight review (if available)</div>
+            </div>
+
+            <!-- DAY 5 -->
+            <div class="day-header">DAY 5 - POLISH & LEGAL (Time Budget: 8 hours)</div>
+
+            <div class="deliverable-box">
+                <h4>DELIVERABLES:</h4>
+                <div class="checkbox-item"><input type="checkbox"> All documents polished and professional</div>
+                <div class="checkbox-item"><input type="checkbox"> Document B legal review initiated (if available)</div>
+                <div class="checkbox-item"><input type="checkbox"> SSM feedback on Document C incorporated</div>
+                <div class="checkbox-item"><input type="checkbox"> Week 1 complete</div>
+            </div>
+
+            <div class="time-block">
+                <h4>MORNING (9am-12pm):</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:00am:</strong> Stand-up (15 min)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:15am:</strong> Incorporate any overnight feedback</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>10:00am:</strong> Send Document B to legal advisor for review (if available) - URGENT</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>10:30am:</strong> Check for SSM feedback on Document C</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>11:00am:</strong> Polish and formatting
+                    <ul>
+                        <li>Consistent fonts, headings, spacing</li>
+                        <li>Professional appearance</li>
+                        <li>No spelling/grammar errors</li>
+                        <li>All tables formatted properly</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="time-block">
+                <h4>AFTERNOON (1pm-5pm):</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>1:00pm:</strong> Create PDF versions of all three docs</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>2:00pm:</strong> Read-through test (have someone unfamiliar read and provide feedback)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>3:00pm:</strong> Address any final issues</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>4:00pm:</strong> WEEK 1 REVIEW (1 hour)
+                    <ul>
+                        <li>Assess completeness (should be 90%+ complete)</li>
+                        <li>Identify any critical gaps for Week 2</li>
+                        <li>Celebrate progress!</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>5:00pm:</strong> Plan Week 2</div>
+            </div>
+
+            <!-- Section 2.2: Week 1 Weekend -->
+            <h3 id="week1-weekend">2.2 Week 1: Weekend</h3>
+
+            <div class="alert-box alert-yellow">
+                <h4>WEEKEND WORK (Optional but Recommended):</h4>
+
+                <p><strong>Saturday:</strong></p>
+                <div class="checkbox-item"><input type="checkbox"> Review all three documents with fresh eyes</div>
+                <div class="checkbox-item"><input type="checkbox"> Make any improvements that jump out</div>
+                <div class="checkbox-item"><input type="checkbox"> Prepare questions for Week 2</div>
+                <div class="checkbox-item"><input type="checkbox"> Rest and recharge (seriously - you need energy for Week 2)</div>
+
+                <p><strong>Sunday:</strong></p>
+                <div class="checkbox-item"><input type="checkbox"> Chase any outstanding information requests</div>
+                <div class="checkbox-item"><input type="checkbox"> Prepare for Monday's final push</div>
+                <div class="checkbox-item"><input type="checkbox"> Mental preparation for meeting week</div>
+            </div>
+
+            <!-- Section 2.3: Week 2 Days 6-10 -->
+            <h3 id="week2-days6-10">2.3 Week 2: Days 6-10</h3>
+
+            <!-- DAY 6 -->
+            <div class="day-header">DAY 6 (Monday) - FINALIZE (Time Budget: 8 hours)</div>
+
+            <div class="deliverable-box">
+                <h4>DELIVERABLES:</h4>
+                <div class="checkbox-item"><input type="checkbox"> Document A finalized</div>
+                <div class="checkbox-item"><input type="checkbox"> Document B finalized (incorporate legal feedback if received)</div>
+                <div class="checkbox-item"><input type="checkbox"> Document C finalized (SSM-verified)</div>
+            </div>
+
+            <div class="time-block">
+                <h4>MORNING (9am-12pm):</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:00am:</strong> Stand-up - Week 2 kickoff</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:15am:</strong> Chase SSM for Document C feedback (if not received)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:30am:</strong> Chase legal for Document B feedback (if not received)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>10:00am:</strong> Incorporate any feedback received</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>11:00am:</strong> Final content review of all docs
+                    <ul>
+                        <li>Remove any remaining [PLACEHOLDER] (replace with best available info or "TBD")</li>
+                        <li>Verify all cross-references</li>
+                        <li>Check all data/statistics</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="time-block">
+                <h4>AFTERNOON (1pm-5pm):</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>1:00pm:</strong> Final formatting and polish</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>2:00pm:</strong> Create final PDF versions</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>3:00pm:</strong> Internal stakeholder review (if not done earlier)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>4:00pm:</strong> Obtain sign-offs
+                    <ul>
+                        <li>Clinical Director signs Doc A</li>
+                        <li>Legal/MD signs Doc B</li>
+                        <li>Both orgs sign Doc C</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>5:00pm:</strong> Documents LOCKED (version 1.0 complete)</div>
+            </div>
+
+            <!-- DAY 7 -->
+            <div class="day-header">DAY 7 (Tuesday) - MEETING PREP (Time Budget: 6-8 hours)</div>
+
+            <div class="deliverable-box">
+                <h4>DELIVERABLES:</h4>
+                <div class="checkbox-item"><input type="checkbox"> Presentation deck created (if needed)</div>
+                <div class="checkbox-item"><input type="checkbox"> Q&A preparation complete</div>
+                <div class="checkbox-item"><input type="checkbox"> Team briefing complete</div>
+            </div>
+
+            <div class="time-block">
+                <h4>MORNING (9am-12pm):</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:00am:</strong> Stand-up</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:15am:</strong> Decide presentation format
+                    <ul>
+                        <li>Walk through documents?</li>
+                        <li>Separate presentation deck?</li>
+                        <li>Demo of platform?</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>10:00am:</strong> Create presentation materials (if needed)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>11:00am:</strong> Identify likely partner questions</div>
+            </div>
+
+            <h4>Anticipated Partner Questions</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Document</th>
+                        <th>Answer</th>
+                        <th>Who Responds</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>How do you ensure user safety?</td>
+                        <td>Doc A</td>
+                        <td>[SUMMARIZE]</td>
+                        <td>[NAME]</td>
+                    </tr>
+                    <tr>
+                        <td>Are you a medical device?</td>
+                        <td>Doc B</td>
+                        <td>No - [EXPLAIN]</td>
+                        <td>[NAME]</td>
+                    </tr>
+                    <tr>
+                        <td>What if a user is in crisis?</td>
+                        <td>Doc A, C</td>
+                        <td>[EXPLAIN ESCALATION]</td>
+                        <td>[NAME]</td>
+                    </tr>
+                    <tr>
+                        <td>What's SSM's CQC rating?</td>
+                        <td>Doc C</td>
+                        <td>GOOD</td>
+                        <td>[NAME]</td>
+                    </tr>
+                    <tr>
+                        <td>[ADD MORE]</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="time-block">
+                <h4>AFTERNOON (1pm-5pm):</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>1:00pm:</strong> Q&A preparation session (1-2 hours)
+                    <ul>
+                        <li>Practice answering questions</li>
+                        <li>Role-play difficult scenarios</li>
+                        <li>Ensure team is aligned on messaging</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>3:00pm:</strong> Team briefing
+                    <ul>
+                        <li>Who will attend meeting</li>
+                        <li>Roles (presenter, note-taker, subject matter experts)</li>
+                        <li>Logistics (location, tech setup, etc.)</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>4:00pm:</strong> Final checks</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>5:00pm:</strong> Day 7 complete</div>
+            </div>
+
+            <!-- DAY 8 -->
+            <div class="day-header">DAY 8 (Wednesday) - DISTRIBUTE & REHEARSE (Time Budget: 6 hours)</div>
+
+            <div class="deliverable-box">
+                <h4>DELIVERABLES:</h4>
+                <div class="checkbox-item"><input type="checkbox"> Documents sent to partners (if pre-read)</div>
+                <div class="checkbox-item"><input type="checkbox"> Full meeting rehearsal complete</div>
+            </div>
+
+            <div class="time-block">
+                <h4>MORNING (9am-12pm):</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:00am:</strong> Stand-up</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:15am:</strong> SEND documents to insurance partners (if pre-read desired)
+                    <ul>
+                        <li>Professional cover email (see Section 10 for template)</li>
+                        <li>All three docs as PDFs</li>
+                        <li>Offer to answer questions before meeting</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>10:00am:</strong> Prepare demo environment (if showing platform)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>11:00am:</strong> Print copies (if in-person meeting)</div>
+            </div>
+
+            <div class="time-block">
+                <h4>AFTERNOON (1pm-5pm):</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>1:00pm:</strong> FULL MEETING REHEARSAL (2-3 hours)
+                    <ul>
+                        <li>Run through presentation</li>
+                        <li>Practice Q&A</li>
+                        <li>Test tech (screen sharing, demo, etc.)</li>
+                        <li>Time yourself (stay within meeting time)</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>4:00pm:</strong> Debrief and final adjustments</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>5:00pm:</strong> Relax - you're almost ready</div>
+            </div>
+
+            <!-- DAY 9 -->
+            <div class="day-header">DAY 9 (Thursday) - FINAL PREP (Time Budget: 4 hours)</div>
+
+            <div class="deliverable-box">
+                <h4>DELIVERABLES:</h4>
+                <div class="checkbox-item"><input type="checkbox"> All materials ready</div>
+                <div class="checkbox-item"><input type="checkbox"> Team ready</div>
+                <div class="checkbox-item"><input type="checkbox"> Logistics confirmed</div>
+            </div>
+
+            <div class="time-block">
+                <h4>TASKS:</h4>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:00am:</strong> Stand-up</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>9:15am:</strong> Final document review (any last-minute updates)</div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>10:00am:</strong> Confirm meeting logistics
+                    <ul>
+                        <li>Time, location (or video link)</li>
+                        <li>Attendees (both sides)</li>
+                        <li>Tech setup</li>
+                        <li>Duration</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>11:00am:</strong> Prepare materials
+                    <ul>
+                        <li>Digital copies accessible</li>
+                        <li>Print copies ready</li>
+                        <li>Presentation loaded</li>
+                        <li>Demo ready</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>12:00pm:</strong> Team final briefing (30 min)
+                    <ul>
+                        <li>Final pep talk</li>
+                        <li>Confirm roles</li>
+                        <li>Settle nerves</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> <strong>Afternoon:</strong> Rest, relax, prepare mentally</div>
+            </div>
+
+            <!-- DAY 10 -->
+            <div class="day-header">DAY 10 (Friday) - BUFFER (Time Budget: Flexible)</div>
+
+            <div class="alert-box alert-green">
+                <p><strong>This is your buffer day.</strong> Use it for:</p>
+                <ul>
+                    <li>Any last-minute issues that arise</li>
+                    <li>Additional practice if needed</li>
+                    <li>Catching up on anything delayed</li>
+                    <li>Relaxing if everything is done (you deserve it!)</li>
+                    <li>Preparing for early next week meeting</li>
+                </ul>
+                <p><strong>If meeting is Friday, this becomes your meeting day (see Day 14).</strong></p>
+            </div>
+
+            <!-- Section 2.4: Week 2 Weekend -->
+            <h3 id="week2-weekend">2.4 Week 2: Weekend</h3>
+
+            <h4>WEEKEND BEFORE MEETING:</h4>
+            <div class="checkbox-item"><input type="checkbox"> Rest and recharge</div>
+            <div class="checkbox-item"><input type="checkbox"> Light review of documents (don't over-prepare)</div>
+            <div class="checkbox-item"><input type="checkbox"> Visualize success</div>
+            <div class="checkbox-item"><input type="checkbox"> Prepare clothes/logistics for meeting day</div>
+
+            <!-- Section 2.5: Week 2 Days 11-14 -->
+            <h3 id="week2-days11-14">2.5 Week 2: Days 11-14</h3>
+
+            <!-- DAY 11-13 -->
+            <div class="day-header">DAYS 11-13 (Mon-Wed) - FINAL COUNTDOWN</div>
+
+            <div class="time-block">
+                <h4>TASKS:</h4>
+                <div class="checkbox-item"><input type="checkbox"> Daily team check-ins (15 min)</div>
+                <div class="checkbox-item"><input type="checkbox"> Monitor for any partner questions on pre-read docs</div>
+                <div class="checkbox-item"><input type="checkbox"> Respond quickly and professionally to any queries</div>
+                <div class="checkbox-item"><input type="checkbox"> Keep team energized and confident</div>
+                <div class="checkbox-item"><input type="checkbox"> Final tech checks</div>
+                <div class="checkbox-item"><input type="checkbox"> Relaxation and mental preparation</div>
+            </div>
+
+            <div class="alert-box alert-yellow">
+                <p><strong>Don't over-prepare at this stage.</strong> You know the material. Trust your team. Stay calm and confident.</p>
+            </div>
+
+            <!-- DAY 14 -->
+            <div class="day-header">DAY 14 - MEETING DAY 🎯</div>
+
+            <div class="alert-box alert-green" style="border-color: #c62828; background: linear-gradient(to right, #ffebee, #e8f5e9);">
+                <h3>🎯 MEETING DAY - YOU'VE GOT THIS!</h3>
+                <p><strong>You've worked incredibly hard for 14 days. You have:</strong></p>
+                <ul>
+                    <li>✅ Three comprehensive governance documents</li>
+                    <li>✅ Verified CQC-regulated clinical pathway</li>
+                    <li>✅ Strong evidence base</li>
+                    <li>✅ Prepared and confident team</li>
+                </ul>
+                <p><strong>Now go show the partners why Thrive is the right EAP choice.</strong></p>
+            </div>
+
+            <p>See <a href="#meeting-day">Section 9</a> for detailed Meeting Day Checklist.</p>
+
+            <!-- Section 3: Critical Path Items -->
+            <h2 id="critical-path">3. Critical Path Items</h2>
+
+            <p>These are the tasks that CANNOT slip without jeopardizing the entire timeline. If any of these miss their deadline, the whole sprint is at risk.</p>
+
+            <h3>CRITICAL PATH:</h3>
+            <ol>
+                <li><strong>⚠️ Day 1: Information requests sent</strong> - If delayed, whole timeline slips</li>
+                <li><strong>⚠️ Day 2-3: SSM communication</strong> - Need their input for Doc C</li>
+                <li><strong>⚠️ Day 3: First drafts substantially complete</strong> - If not, won't have time to revise</li>
+                <li><strong>⚠️ Day 5: Document C to SSM for verification</strong> - Need feedback by Day 6</li>
+                <li><strong>⚠️ Day 5: Document B to legal (if available)</strong> - Need feedback by Day 6</li>
+                <li><strong>⚠️ Day 6: All documents finalized</strong> - Meeting prep depends on this</li>
+                <li><strong>⚠️ Day 7-8: Meeting preparation</strong> - Can't wing it</li>
+            </ol>
+
+            <h3>Critical Path Tracking</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Due</th>
+                        <th>Owner</th>
+                        <th>Status</th>
+                        <th>Blocker?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Info requests sent</td>
+                        <td>Day 1</td>
+                        <td>[NAME]</td>
+                        <td><input type="checkbox"> Done</td>
+                        <td>[ ]</td>
+                    </tr>
+                    <tr>
+                        <td>SSM communication</td>
+                        <td>Day 2</td>
+                        <td>[NAME]</td>
+                        <td><input type="checkbox"> Done</td>
+                        <td>[ ]</td>
+                    </tr>
+                    <tr>
+                        <td>First drafts done</td>
+                        <td>Day 3</td>
+                        <td>ALL</td>
+                        <td><input type="checkbox"> Done</td>
+                        <td>[ ]</td>
+                    </tr>
+                    <tr>
+                        <td>Doc C to SSM</td>
+                        <td>Day 5</td>
+                        <td>[NAME]</td>
+                        <td><input type="checkbox"> Done</td>
+                        <td>[ ]</td>
+                    </tr>
+                    <tr>
+                        <td>Doc B to legal</td>
+                        <td>Day 5</td>
+                        <td>[NAME]</td>
+                        <td><input type="checkbox"> Done</td>
+                        <td>[ ]</td>
+                    </tr>
+                    <tr>
+                        <td>Docs finalized</td>
+                        <td>Day 6</td>
+                        <td>ALL</td>
+                        <td><input type="checkbox"> Done</td>
+                        <td>[ ]</td>
+                    </tr>
+                    <tr>
+                        <td>Meeting prep</td>
+                        <td>Day 7-8</td>
+                        <td>ALL</td>
+                        <td><input type="checkbox"> Done</td>
+                        <td>[ ]</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Section 4: Quick Wins -->
+            <h2 id="quick-wins">4. Quick Wins</h2>
+
+            <p>These are easy wins that build momentum and confidence. Celebrate these as you achieve them!</p>
+
+            <h3>QUICK WINS LIST:</h3>
+            <ul>
+                <li><strong>[x] CQC information for SSM</strong> - Already complete!</li>
+                <li><strong>[ ] Set up workspace</strong> - Day 1, takes 30 min</li>
+                <li><strong>[ ] Document templates exist</strong> - Just fill in, don't start from scratch</li>
+                <li><strong>[ ] SSM website has public info</strong> - You can use immediately</li>
+                <li><strong>[ ] Some disclaimers/T&Cs already exist</strong> - Reuse language</li>
+                <li><strong>[ ] Team is motivated and committed</strong> - Attitude is half the battle</li>
+            </ul>
+
+            <h3>MORALE BOOSTERS:</h3>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 1:</strong> "We've launched! We're doing this!"</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 3:</strong> "First drafts are taking shape!"</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 5:</strong> "Week 1 complete - we're 50% there!"</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 6:</strong> "Documents finalized - the hard part is done!"</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 8:</strong> "Sent to partners - we're ready!"</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 14:</strong> "Meeting day - let's do this!"</div>
+
+            <!-- Section 5: Emergency Protocols -->
+            <h2 id="emergency">5. Emergency Protocols</h2>
+
+            <div class="alert-box alert-red">
+                <h3>IF THINGS GO WRONG:</h3>
+
+                <h4>Problem: Key information not received</h4>
+                <p><strong>Solution:</strong></p>
+                <ul>
+                    <li>Use [PLACEHOLDER] and note "To be confirmed"</li>
+                    <li>Acknowledge in meeting: "We're finalizing these details"</li>
+                    <li>Commit to follow-up timeline</li>
+                </ul>
+
+                <h4>Problem: Legal review not available</h4>
+                <p><strong>Solution:</strong></p>
+                <ul>
+                    <li>Proceed with best efforts on Document B</li>
+                    <li>Note in document: "Legal review in progress"</li>
+                    <li>Emphasize other strong elements (CQC pathway, governance)</li>
+                </ul>
+
+                <h4>Problem: SSM unresponsive</h4>
+                <p><strong>Solution:</strong></p>
+                <ul>
+                    <li>Use publicly available CQC info (already have)</li>
+                    <li>Document what you know, note what's being verified</li>
+                    <li>Escalate contact attempts</li>
+                </ul>
+
+                <h4>Problem: Team member unavailable</h4>
+                <p><strong>Solution:</strong></p>
+                <ul>
+                    <li>Redistribute work immediately (don't wait)</li>
+                    <li>Consider bringing in backup resource</li>
+                    <li>Work longer hours (unfortunate but necessary)</li>
+                </ul>
+
+                <h4>Problem: Meeting moved up</h4>
+                <p><strong>Solution:</strong></p>
+                <ul>
+                    <li>Immediately assess readiness</li>
+                    <li>Prioritize absolutely essential items</li>
+                    <li>Request postponement if truly not ready (but avoid if possible)</li>
+                </ul>
+
+                <h4>ESCALATION:</h4>
+                <p>If critical blocker arises:</p>
+                <ol>
+                    <li>Flag immediately to project lead</li>
+                    <li>Assess impact on timeline</li>
+                    <li>Brainstorm solutions (team meeting)</li>
+                    <li>Escalate to senior leadership if needed</li>
+                    <li>Consider meeting postponement only as last resort</li>
+                </ol>
+            </div>
+
+            <!-- Section 6: Daily Stand-up Template -->
+            <h2 id="standup">6. Daily Stand-up Template</h2>
+
+            <p>Use this template for your 15-minute daily check-ins. Consistency and discipline in these stand-ups will keep the sprint on track.</p>
+
+            <h3>DAILY STAND-UP AGENDA (15 minutes):</h3>
+
+            <div class="time-block">
+                <h4>1. ROUND-ROBIN (2 min per person):</h4>
+                <ul>
+                    <li>What I completed yesterday</li>
+                    <li>What I'm doing today</li>
+                    <li>Any blockers</li>
+                </ul>
+
+                <h4>2. BLOCKER DISCUSSION (5 min):</h4>
+                <ul>
+                    <li>Address any blockers raised</li>
+                    <li>Assign owners to resolve</li>
+                </ul>
+
+                <h4>3. PRIORITIES FOR TODAY (3 min):</h4>
+                <ul>
+                    <li>Confirm top priorities</li>
+                    <li>Ensure alignment</li>
+                </ul>
+
+                <h4>4. QUICK WINS / MORALE (2 min):</h4>
+                <ul>
+                    <li>Celebrate progress</li>
+                    <li>Stay positive</li>
+                </ul>
+            </div>
+
+            <h3>STAND-UP RULES:</h3>
+            <ul>
+                <li>✅ Start on time (even if someone is missing)</li>
+                <li>✅ Stay standing (keeps it short)</li>
+                <li>✅ Stay focused (deep dives happen after)</li>
+                <li>✅ Be honest about blockers (no hiding problems)</li>
+                <li>✅ End on time (15 min max)</li>
+            </ul>
+
+            <!-- Section 7: Quick Checklist -->
+            <h2 id="checklist">7. Quick Checklist (Print-Friendly)</h2>
+
+            <p><strong>Print this page and check off as you go!</strong></p>
+
+            <h3>WEEK 1:</h3>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 1:</strong> Kickoff, owners assigned, info requests sent</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 2:</strong> Info gathering, drafting starts</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 3:</strong> Heavy drafting, 70% complete</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 4:</strong> First drafts done, internal review</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 5:</strong> Polish, legal review, SSM verification</div>
+
+            <h3>WEEK 2:</h3>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 6:</strong> Finalize all docs, obtain sign-offs</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 7:</strong> Q&A prep, team briefing</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 8:</strong> Send to partners, rehearsal</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 9:</strong> Final prep, logistics confirmed</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 10:</strong> Buffer day</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 11-13:</strong> Respond to questions, stay ready</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Day 14:</strong> MEETING DAY</div>
+
+            <h3>DOCUMENTS STATUS:</h3>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Document A (Clinical Governance)</strong> - COMPLETE</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Document B (Medical Compliance)</strong> - COMPLETE</div>
+            <div class="checkbox-item"><input type="checkbox"> <strong>Document C (SSM Partnership)</strong> - COMPLETE</div>
+
+            <h3>MEETING READY:</h3>
+            <div class="checkbox-item"><input type="checkbox"> Presentation prepared</div>
+            <div class="checkbox-item"><input type="checkbox"> Q&A rehearsed</div>
+            <div class="checkbox-item"><input type="checkbox"> Materials ready (digital + print)</div>
+            <div class="checkbox-item"><input type="checkbox"> Team briefed</div>
+            <div class="checkbox-item"><input type="checkbox"> Logistics confirmed</div>
+            <div class="checkbox-item"><input type="checkbox"> CONFIDENCE HIGH</div>
+
+            <!-- Section 8: Survival Tips -->
+            <h2 id="survival">8. Survival Tips</h2>
+
+            <p>How to survive 14 intense days without burning out. Remember: you can't deliver quality work if you're exhausted.</p>
+
+            <h3>SURVIVAL GUIDE:</h3>
+
+            <div class="time-block">
+                <h4>PHYSICAL:</h4>
+                <ul>
+                    <li>☕ Stay hydrated (water, not just coffee)</li>
+                    <li>🍎 Eat properly (not just snacks at desk)</li>
+                    <li>😴 Sleep 6-7 hours minimum (you need brain function)</li>
+                    <li>🚶 Take short walks (blood flow = better thinking)</li>
+                    <li>💪 Exercise if possible (stress relief)</li>
+                </ul>
+            </div>
+
+            <div class="time-block">
+                <h4>MENTAL:</h4>
+                <ul>
+                    <li>🧘 Take breaks (Pomodoro: 25 min work, 5 min break)</li>
+                    <li>📵 Disconnect when not working (prevent burnout)</li>
+                    <li>🎯 Focus on one task at a time (no multitasking)</li>
+                    <li>✅ Celebrate small wins (momentum matters)</li>
+                    <li>🤝 Support team members (you're in this together)</li>
+                </ul>
+            </div>
+
+            <div class="time-block">
+                <h4>EMOTIONAL:</h4>
+                <ul>
+                    <li>😤 Expect frustration (it's normal in sprints)</li>
+                    <li>🙏 Ask for help (no heroes needed)</li>
+                    <li>🎉 Visualize success (you WILL get there)</li>
+                    <li>🗣️ Communicate openly (no surprises)</li>
+                    <li>💚 Be kind to yourself and others (stress affects everyone)</li>
+                </ul>
+            </div>
+
+            <div class="time-block">
+                <h4>TIME MANAGEMENT:</h4>
+                <ul>
+                    <li>📅 Block calendar (protect focus time)</li>
+                    <li>📧 Batch email checks (don't interrupt drafting)</li>
+                    <li>📞 Limit meetings (only essential)</li>
+                    <li>⏰ Use timers (stay on track)</li>
+                    <li>🎯 Prioritize ruthlessly (not everything is urgent)</li>
+                </ul>
+            </div>
+
+            <!-- Section 9: Meeting Day Checklist -->
+            <h2 id="meeting-day">9. Meeting Day Checklist</h2>
+
+            <div class="alert-box alert-red">
+                <h3>🎯 MEETING DAY CHECKLIST</h3>
+            </div>
+
+            <div class="time-block">
+                <h4>2 HOURS BEFORE:</h4>
+                <div class="checkbox-item"><input type="checkbox"> All materials accessible (digital files open, print copies organized)</div>
+                <div class="checkbox-item"><input type="checkbox"> Tech tested (video link works, screen share tested, demo loaded)</div>
+                <div class="checkbox-item"><input type="checkbox"> Team assembled (everyone knows their role)</div>
+                <div class="checkbox-item"><input type="checkbox"> Final bathroom/coffee break</div>
+                <div class="checkbox-item"><input type="checkbox"> Phones on silent</div>
+                <div class="checkbox-item"><input type="checkbox"> Notebook for notes ready</div>
+            </div>
+
+            <div class="time-block">
+                <h4>30 MIN BEFORE:</h4>
+                <div class="checkbox-item"><input type="checkbox"> Join video call early (or arrive at location early)</div>
+                <div class="checkbox-item"><input type="checkbox"> Test audio/video again</div>
+                <div class="checkbox-item"><input type="checkbox"> Small talk with team (settle nerves)</div>
+                <div class="checkbox-item"><input type="checkbox"> Review key messages</div>
+                <div class="checkbox-item"><input type="checkbox"> Breathe deeply</div>
+            </div>
+
+            <div class="time-block">
+                <h4>DURING MEETING:</h4>
+                <div class="checkbox-item"><input type="checkbox"> Introductions (warm, professional)</div>
+                <div class="checkbox-item"><input type="checkbox"> Set agenda and timing</div>
+                <div class="checkbox-item"><input type="checkbox"> Walk through documents (or present)</div>
+                <div class="checkbox-item"><input type="checkbox"> Answer questions honestly</div>
+                <div class="checkbox-item"><input type="checkbox"> Take notes on partner concerns</div>
+                <div class="checkbox-item"><input type="checkbox"> Note any action items</div>
+                <div class="checkbox-item"><input type="checkbox"> Confirm next steps before ending</div>
+                <div class="checkbox-item"><input type="checkbox"> Thank partners for their time</div>
+            </div>
+
+            <div class="time-block">
+                <h4>IMMEDIATELY AFTER:</h4>
+                <div class="checkbox-item"><input type="checkbox"> Team debrief (15 min)
+                    <ul>
+                        <li>What went well?</li>
+                        <li>What could improve?</li>
+                        <li>Any concerns raised?</li>
+                        <li>Action items captured?</li>
+                    </ul>
+                </div>
+                <div class="checkbox-item"><input type="checkbox"> Send thank-you email (see Section 10 template)</div>
+                <div class="checkbox-item"><input type="checkbox"> Assign follow-up actions</div>
+                <div class="checkbox-item"><input type="checkbox"> CELEBRATE 🎉</div>
+            </div>
+
+            <!-- Section 10: Follow-up Email Template -->
+            <h2 id="email-template">10. Follow-up Email Template</h2>
+
+            <p>Send this within 24 hours of the meeting. Professionalism in follow-up is as important as the meeting itself.</p>
+
+            <div class="alert-box alert-green">
+                <h4>EMAIL TEMPLATE:</h4>
+                <div class="email-template">Subject: Thank You - Thrive EAP Partnership Discussion
+
+Dear [PARTNER NAMES],
+
+Thank you for taking the time to meet with us [yesterday/today] to discuss Thrive's EAP offering. We appreciated the opportunity to present our clinical governance framework, medical compliance positioning, and CQC-regulated clinical partnership with Smart Start Minds.
+
+KEY DISCUSSION POINTS:
+• [SUMMARIZE 2-3 key topics discussed]
+• [Any specific concerns addressed]
+• [Areas of strong partner interest]
+
+DOCUMENTATION PROVIDED:
+We have shared (or enclosed) the following documents:
+1. Clinical Governance Framework
+2. Medical Compliance Statement
+3. Smart Start Minds Partnership Overview
+
+NEXT STEPS:
+Based on our discussion, we propose the following next steps:
+
+1. [ACTION ITEM 1] - Owner: [WHO] - Timeline: [WHEN]
+2. [ACTION ITEM 2] - Owner: [WHO] - Timeline: [WHEN]
+3. [ACTION ITEM 3] - Owner: [WHO] - Timeline: [WHEN]
+
+OUTSTANDING QUESTIONS:
+[If any questions couldn't be answered in the meeting]
+• [QUESTION] - We will provide a response by [DATE]
+
+We remain excited about the potential partnership and are committed to addressing any additional questions or concerns you may have.
+
+Please don't hesitate to reach out if you need any clarification or additional information.
+
+Best regards,
+
+[YOUR NAME]
+[TITLE]
+[CONTACT INFORMATION]
+
+Attachments: [List documents if attaching]</div>
+            </div>
+
+            <!-- Closing Section -->
+            <div class="alert-box alert-green" style="border-color: #1976d2; background: linear-gradient(to bottom, #e3f2fd, #e8f5e9);">
+                <h3>💪 YOU DID IT!</h3>
+                <p>If you're reading this after the meeting, congratulations! You executed an incredibly ambitious 14-day sprint and delivered professional partnership documentation under extreme time pressure.</p>
+
+                <p><strong>Whether the partnership moves forward or not, you should be proud of what you accomplished. You demonstrated:</strong></p>
+                <ul>
+                    <li>✅ Commitment to excellence</li>
+                    <li>✅ Ability to execute under pressure</li>
+                    <li>✅ Strong teamwork and collaboration</li>
+                    <li>✅ Professionalism and attention to detail</li>
+                </ul>
+
+                <p><strong>Take a well-deserved break, then tackle those follow-up actions with the same energy you brought to this sprint.</strong></p>
+
+                <p><strong>Well done! 🎉</strong></p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="navigation">
+                <a href="implementation-guide.html" class="nav-button">← Previous: Implementation Guide</a>
+                <a href="index.html" class="nav-button">Next: Back to Home →</a>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p>Document Version: 1.0 | Last Updated: October 2025 | Owner: Thrive Project Team</p>
+                <p>Part of Thrive EAP Governance Documentation Suite</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
