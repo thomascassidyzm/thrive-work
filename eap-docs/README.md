@@ -1,8 +1,8 @@
-# Thrive EAP Documentation Microsite
+# ClearMinds B2B Partnership Documentation Microsite
 
 ## What This Is
 
-A comprehensive documentation package for insurance partners evaluating Thrive's EAP offering. Contains 6 key documents covering governance, compliance, and partnership details.
+A comprehensive documentation package for insurance partners evaluating ClearMinds B2B offering. Contains 6 key documents covering governance, compliance, and partnership details.
 
 This microsite is designed to be:
 - **Offline-capable** - No internet connection required
@@ -16,7 +16,7 @@ This microsite is designed to be:
 
 ### Viewing Locally
 
-1. Navigate to the `thrive-eap-docs` folder
+1. Navigate to the `eap-docs` folder
 2. Open `index.html` in any web browser (Chrome, Firefox, Safari, Edge)
 3. Click on any document card to view that document
 4. Use breadcrumb navigation and prev/next links to navigate between documents
@@ -39,12 +39,12 @@ This microsite is designed to be:
 ### Sharing
 
 **As Files:**
-- Zip the entire `thrive-eap-docs` folder
+- Zip the entire `eap-docs` folder
 - Email or share via file transfer
 - Recipient unzips and opens `index.html`
 
 **As Website:**
-- Upload the entire `thrive-eap-docs` folder to any web hosting service
+- Upload the entire `eap-docs` folder to any web hosting service
 - Share the URL to `index.html`
 - Works on any standard web server (no special configuration needed)
 
@@ -104,7 +104,7 @@ Tables are formatted in standard HTML. Find the table and edit the cell contents
 ## File Structure
 
 ```
-thrive-eap-docs/
+eap-docs/
 ├── index.html                          # Homepage with navigation cards
 ├── docs/                               # All document pages
 │   ├── master-action-plan.html         # Strategic overview

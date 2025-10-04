@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entity Structure Analysis - ClearMinds B2B</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/print.css" media="print">
+</head>
+<body>
+    <div class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> <span>›</span> <span>Entity Structure Analysis</span>
+            </div>
+            <h1>Entity Structure Analysis</h1>
+            <p class="subtitle">ClearMinds B2B Special Purpose Vehicle: Options, Rationale & Implementation</p>
+            <div class="page-actions no-print">
+                <a href="../index.html" class="btn btn-secondary">← Back to Home</a>
+                <button onclick="window.print()" class="btn">Print this page</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="doc-layout">
+        <aside class="sidebar">
+            <nav class="toc">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#executive-summary">1. Executive Summary</a></li>
+                    <li><a href="#context">2. Strategic Context</a></li>
+                    <li><a href="#requirements">3. Requirements for B2B Entity</a></li>
+                    <li><a href="#options">4. Entity Structure Options</a></li>
+                    <li><a href="#recommendation">5. Recommendation</a></li>
+                    <li><a href="#implementation">6. Implementation Plan</a></li>
+                    <li><a href="#governance">7. Governance Implications</a></li>
+                    <li><a href="#thrive-relationship">8. Future Thrive Integration</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <article>
+                <section id="executive-summary">
+                    <h2>1. Executive Summary</h2>
+
+                    <div class="highlight-important">
+                        <p><strong>Decision Context:</strong></p>
+                        <p>We need to establish the optimal legal and operational structure for delivering workplace wellbeing services to B2B partners (insurance companies, corporate clients). This decision affects governance, partnerships, liability, and future flexibility.</p>
+                    </div>
+
+                    <p><strong>Key Findings:</strong></p>
+                    <ul>
+                        <li>✅ <strong>Separate legal entity (SPV) is recommended</strong> for ClearMinds B2B</li>
+                        <li>B2B requires higher governance standards than B2C justifying structural separation</li>
+                        <li>Formal SSM partnership requires dedicated governance and medical oversight</li>
+                        <li>Insurance partners prefer contracting with entities that have clear, dedicated governance</li>
+                        <li>Structure allows future flexibility for Thrive brand evolution</li>
+                    </ul>
+
+                    <p><strong>Recommended Structure:</strong></p>
+                    <p><strong>ClearMinds B2B Ltd</strong> - Private limited company (wholly-owned subsidiary or independent entity) with dedicated Governance Board, using ClearMinds platform technology under license/internal arrangement.</p>
+                </section>
+
+                <section id="context">
+                    <h2>2. Strategic Context</h2>
+
+                    <h3>2.1 Current Ecosystem</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Entity/Brand</th>
+                                <th>Current Status</th>
+                                <th>Target Market</th>
+                                <th>Governance Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>ClearMinds (B2C)</strong></td>
+                                <td>Live consumer wellness platform</td>
+                                <td>Individual consumers</td>
+                                <td>Standard consumer product governance</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ClearMinds B2B</strong></td>
+                                <td><em>Being established</em></td>
+                                <td>Insurance partners, corporate clients</td>
+                                <td><strong>Institutional-grade governance required</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thrive</strong></td>
+                                <td><em>Future brand (not yet live)</em></td>
+                                <td>Consumer wellness (ambitious vision)</td>
+                                <td>To be determined</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Smart Start Minds</strong></td>
+                                <td>Live CQC-regulated clinical service</td>
+                                <td>Clinical mental health patients</td>
+                                <td>CQC-regulated (GOOD rating)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>2.2 Strategic Drivers</h3>
+
+                    <p><strong>Why B2B Matters Now:</strong></p>
+                    <ul>
+                        <li><strong>AXA Partnership Opportunity:</strong> Immediate B2B opportunity with major insurance partner</li>
+                        <li><strong>Towergate Interest:</strong> Additional partnership discussions underway</li>
+                        <li><strong>Revenue Potential:</strong> B2B partnerships offer more predictable, higher-value contracts than B2C</li>
+                        <li><strong>Market Positioning:</strong> Workplace wellbeing is growing market segment</li>
+                        <li><strong>Clinical Credibility:</strong> SSM partnership strengthens offering for institutional buyers</li>
+                    </ul>
+
+                    <p><strong>Why Not Wait for Thrive:</strong></p>
+                    <ul>
+                        <li>Thrive brand/product not ready for market (still in development)</li>
+                        <li>AXA opportunity is NOW - can't delay for future brand launch</li>
+                        <li>B2B partnerships have different requirements than consumer product</li>
+                        <li>ClearMinds platform exists and works - use what we have</li>
+                        <li>Can migrate to Thrive umbrella later if strategic</li>
+                    </ul>
+
+                    <h3>2.3 Key Tension</h3>
+
+                    <div class="highlight-critical">
+                        <p><strong>The Core Challenge:</strong></p>
+                        <p>ClearMinds B2C doesn't need intensive clinical governance or medical oversight - it's a consumer wellness app. But ClearMinds B2B partners (insurance, corporate) REQUIRE institutional-grade governance, clinical pathways to CQC-regulated services, and dedicated oversight. This fundamental difference drives the need for separate entity structure.</p>
+                    </div>
+                </section>
+
+                <section id="requirements">
+                    <h2>3. Requirements for B2B Entity</h2>
+
+                    <h3>3.1 Governance Requirements</h3>
+                    <p>B2B entity must provide:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Requirement</th>
+                                <th>Why Essential</th>
+                                <th>B2C Comparison</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Dedicated Governance Board</td>
+                                <td>Insurance partners require clear accountability and oversight</td>
+                                <td>B2C: Product governance sufficient</td>
+                            </tr>
+                            <tr>
+                                <td>Clinical Director Oversight</td>
+                                <td>Professional clinical governance for workplace health offering</td>
+                                <td>B2C: Content quality checks sufficient</td>
+                            </tr>
+                            <tr>
+                                <td>Formal SSM Partnership</td>
+                                <td>CQC-regulated escalation pathway required for occupational health</td>
+                                <td>B2C: Optional signposting to resources</td>
+                            </tr>
+                            <tr>
+                                <td>Regular Board Meetings</td>
+                                <td>Quarterly governance review, partnership oversight</td>
+                                <td>B2C: As-needed product reviews</td>
+                            </tr>
+                            <tr>
+                                <td>Quality Metrics & SLAs</td>
+                                <td>Contractual commitments to partners</td>
+                                <td>B2C: User satisfaction tracking</td>
+                            </tr>
+                            <tr>
+                                <td>Incident Reporting to Board</td>
+                                <td>Serious incidents affecting partner employees escalated formally</td>
+                                <td>B2C: Standard customer service</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>3.2 Partnership Requirements</h3>
+                    <p>B2B partnerships require entity to:</p>
+                    <ul>
+                        <li><strong>Contract as Principal:</strong> Clear legal entity for partnership agreements</li>
+                        <li><strong>Professional Indemnity Insurance:</strong> Appropriate coverage for B2B services</li>
+                        <li><strong>Formal Governance Documentation:</strong> Clinical Governance Framework, Medical Compliance Statement, etc.</li>
+                        <li><strong>SLA Commitments:</strong> Uptime, response times, quality metrics</li>
+                        <li><strong>Regulatory Compliance:</strong> GDPR, data protection, advertising standards, professional standards</li>
+                        <li><strong>Quality Assurance:</strong> Regular audits, metrics, continuous improvement</li>
+                        <li><strong>Transparent Governance:</strong> Board minutes, governance reports available to partners</li>
+                    </ul>
+
+                    <h3>3.3 Clinical Pathway Requirements</h3>
+                    <p>Integration with Smart Start Minds requires:</p>
+                    <ul>
+                        <li><strong>Formal Partnership Agreement:</strong> With Dr. Thomas Dannhauser and SSM</li>
+                        <li><strong>Clinical Oversight:</strong> Medical Director or Clinical Director on Board</li>
+                        <li><strong>Escalation Protocols:</strong> Clear pathways for users needing clinical support</li>
+                        <li><strong>Data Sharing Agreements:</strong> GDPR-compliant sharing with SSM</li>
+                        <li><strong>Quality Monitoring:</strong> Regular review of referral appropriateness and outcomes</li>
+                        <li><strong>Joint Governance:</strong> SSM representation on Board or regular partnership meetings</li>
+                    </ul>
+                </section>
+
+                <section id="options">
+                    <h2>4. Entity Structure Options</h2>
+
+                    <h3>Option A: Trading Name (No Separate Entity)</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Structure</strong></td>
+                                <td>"ClearMinds B2B" is just a brand/trading name; contracts signed by existing ClearMinds Ltd</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Governance</strong></td>
+                                <td>B2B governance subcommittee within existing structure</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cost</strong></td>
+                                <td>Low (no company formation, minimal admin)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Speed</strong></td>
+                                <td>Fast (immediate)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p><strong>Pros:</strong></p>
+                    <ul class="status-complete">
+                        <li>✅ Simple and fast to implement</li>
+                        <li>✅ Lower administrative burden</li>
+                        <li>✅ Shared resources with B2C</li>
+                        <li>✅ No company formation costs</li>
+                    </ul>
+
+                    <p><strong>Cons:</strong></p>
+                    <ul class="status-not-started">
+                        <li>❌ Insufficient governance separation for insurance partners</li>
+                        <li>❌ B2C and B2B governance mixed (different requirements)</li>
+                        <li>❌ Liability not isolated (B2C issues affect B2B contracts)</li>
+                        <li>❌ Less attractive to institutional buyers who prefer dedicated entities</li>
+                        <li>❌ SSM partnership lacks clear governance home</li>
+                        <li>❌ Harder to justify dedicated Clinical Director role</li>
+                    </ul>
+
+                    <p><strong>Verdict:</strong> <span class="badge" style="background-color: #ef4444; color: white;">NOT RECOMMENDED</span> - Insufficient for institutional B2B requirements</p>
+
+                    <hr>
+
+                    <h3>Option B: Division/Business Unit (Internal Separation)</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Structure</strong></td>
+                                <td>ClearMinds Ltd has "B2B Division" with separate P&L, management, governance structure</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Governance</strong></td>
+                                <td>Dedicated B2B Board (division board) reporting to main company board</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cost</strong></td>
+                                <td>Low-Medium (internal restructure, governance setup)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Speed</strong></td>
+                                <td>Medium (2-4 weeks to establish)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p><strong>Pros:</strong></p>
+                    <ul class="status-complete">
+                        <li>✅ Clear governance separation without legal entity cost</li>
+                        <li>✅ Can have dedicated B2B Board with Clinical Director</li>
+                        <li>✅ Shared platform and infrastructure (efficiency)</li>
+                        <li>✅ Simpler tax and accounting than separate entity</li>
+                        <li>✅ Easier resource sharing between B2C and B2B</li>
+                    </ul>
+
+                    <p><strong>Cons:</strong></p>
+                    <ul class="status-not-started">
+                        <li>⚠️ Partners may prefer separate legal entity</li>
+                        <li>⚠️ Liability still shared with B2C operations</li>
+                        <li>⚠️ Less flexibility for future sale or spin-off</li>
+                        <li>⚠️ SSM partnership bound to main entity</li>
+                        <li>⚠️ Professional indemnity insurance complexity</li>
+                    </ul>
+
+                    <p><strong>Verdict:</strong> <span class="badge" style="background-color: #f59e0b; color: white;">ACCEPTABLE</span> - Workable but not optimal for long-term growth</p>
+
+                    <hr>
+
+                    <h3>Option C: Wholly-Owned Subsidiary (Recommended)</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Structure</strong></td>
+                                <td><strong>ClearMinds B2B Ltd</strong> - separate private limited company, 100% owned by ClearMinds Ltd</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Governance</strong></td>
+                                <td>Independent Governance Board with Clinical Director, reports to parent board strategically</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cost</strong></td>
+                                <td>Medium (company formation ~£100, annual accounts filing, board costs)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Speed</strong></td>
+                                <td>Medium (1-2 weeks company formation, 4-6 weeks governance setup)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p><strong>Pros:</strong></p>
+                    <ul class="status-complete">
+                        <li>✅ <strong>Clear legal entity</strong> for partnership contracts</li>
+                        <li>✅ <strong>Dedicated governance</strong> appropriate for institutional buyers</li>
+                        <li>✅ <strong>Liability isolation</strong> between B2C and B2B</li>
+                        <li>✅ <strong>SSM partnership clarity</strong> - clear entity for formal agreement</li>
+                        <li>✅ <strong>Professional credibility</strong> with insurance partners</li>
+                        <li>✅ <strong>Clean financial tracking</strong> for B2B performance</li>
+                        <li>✅ <strong>Future flexibility</strong> - can merge into Thrive or remain independent</li>
+                        <li>✅ <strong>Clinical governance home</strong> - natural entity for Clinical Director role</li>
+                        <li>✅ <strong>Insurance clarity</strong> - separate professional indemnity policy</li>
+                        <li>✅ <strong>Dr. Thomas Dannhauser relationship</strong> - formal partnership with dedicated entity</li>
+                    </ul>
+
+                    <p><strong>Cons:</strong></p>
+                    <ul class="status-not-started">
+                        <li>⚠️ Higher administrative burden (separate accounts, filings)</li>
+                        <li>⚠️ Company formation time and cost</li>
+                        <li>⚠️ More complex governance structure</li>
+                        <li>⚠️ Potential tax considerations (transfer pricing if significant)</li>
+                        <li>⚠️ Resource allocation between entities</li>
+                    </ul>
+
+                    <p><strong>Verdict:</strong> <span class="badge badge-start">RECOMMENDED</span> - Optimal for B2B requirements and future flexibility</p>
+
+                    <hr>
+
+                    <h3>Option D: Independent Entity (Not Parent-Owned)</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Structure</strong></td>
+                                <td>ClearMinds B2B Ltd - completely independent company (not owned by ClearMinds Ltd)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Governance</strong></td>
+                                <td>Fully independent Board, shareholders</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cost</strong></td>
+                                <td>High (full company setup, separate operations)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Speed</strong></td>
+                                <td>Slow (6-12 weeks full setup)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p><strong>Pros:</strong></p>
+                    <ul class="status-complete">
+                        <li>✅ Complete independence and flexibility</li>
+                        <li>✅ Could raise independent investment</li>
+                        <li>✅ No parent company constraints</li>
+                    </ul>
+
+                    <p><strong>Cons:</strong></p>
+                    <ul class="status-not-started">
+                        <li>❌ Platform license complexity (license from ClearMinds Ltd)</li>
+                        <li>❌ Loss of shared resources and efficiencies</li>
+                        <li>❌ Higher operational costs</li>
+                        <li>❌ Slower to market</li>
+                        <li>❌ Strategic misalignment risk</li>
+                    </ul>
+
+                    <p><strong>Verdict:</strong> <span class="badge" style="background-color: #ef4444; color: white;">NOT RECOMMENDED</span> - Unnecessary complexity and cost</p>
+                </section>
+
+                <section id="recommendation">
+                    <h2>5. Recommendation: Wholly-Owned Subsidiary (Option C)</h2>
+
+                    <div class="highlight-info">
+                        <h3>Recommended Structure</h3>
+                        <p><strong>Entity:</strong> ClearMinds B2B Ltd</p>
+                        <p><strong>Type:</strong> Private Limited Company</p>
+                        <p><strong>Ownership:</strong> 100% owned by ClearMinds Ltd (or existing parent entity)</p>
+                        <p><strong>Governance:</strong> Independent Governance Board with strategic oversight from parent board</p>
+                        <p><strong>Platform:</strong> Uses ClearMinds platform under license/internal service agreement</p>
+                    </div>
+
+                    <h3>Why This Structure Wins</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Requirement</th>
+                                <th>How Subsidiary Meets It</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Insurance Partner Confidence</td>
+                                <td>Clear legal entity with dedicated governance inspires institutional confidence</td>
+                            </tr>
+                            <tr>
+                                <td>Clinical Governance</td>
+                                <td>Natural home for Clinical Director role and medical oversight</td>
+                            </tr>
+                            <tr>
+                                <td>SSM Partnership</td>
+                                <td>Formal partnership between two legal entities (ClearMinds B2B Ltd ↔ Smart Start Minds)</td>
+                            </tr>
+                            <tr>
+                                <td>Liability Management</td>
+                                <td>B2C and B2B risks separated</td>
+                            </tr>
+                            <tr>
+                                <td>Future Flexibility</td>
+                                <td>Can merge into Thrive, sell independently, or maintain as standalone</td>
+                            </tr>
+                            <tr>
+                                <td>Speed to Market</td>
+                                <td>Reasonably fast (4-6 weeks), faster than building Thrive</td>
+                            </tr>
+                            <tr>
+                                <td>Cost Efficiency</td>
+                                <td>Shares platform infrastructure while maintaining governance separation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Key Success Factors</h3>
+                    <ul>
+                        <li><strong>Clear Service Agreement:</strong> Platform license from ClearMinds Ltd to ClearMinds B2B Ltd (or internal transfer pricing)</li>
+                        <li><strong>Governance Board Established:</strong> Recruit Clinical Director, Chair, Commercial Director (see Governance Board Charter)</li>
+                        <li><strong>SSM Partnership Formalized:</strong> Partnership agreement between ClearMinds B2B Ltd and Smart Start Minds</li>
+                        <li><strong>Professional Indemnity Insurance:</strong> Separate policy for ClearMinds B2B Ltd</li>
+                        <li><strong>Compliance Framework:</strong> Clinical Governance, Medical Compliance documentation in place</li>
+                    </ul>
+                </section>
+
+                <section id="implementation">
+                    <h2>6. Implementation Plan</h2>
+
+                    <h3>Phase 1: Company Formation (Weeks 1-2)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Owner</th>
+                                <th>Timeline</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Choose company name and check availability</td>
+                                <td>[FOUNDER/DIRECTOR]</td>
+                                <td>Day 1</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Register ClearMinds B2B Ltd with Companies House</td>
+                                <td>[LEGAL/ACCOUNTANT]</td>
+                                <td>Week 1</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Appoint initial directors (minimum 1)</td>
+                                <td>[FOUNDER]</td>
+                                <td>Week 1</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Issue shares (100% to ClearMinds Ltd)</td>
+                                <td>[LEGAL]</td>
+                                <td>Week 1-2</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Register for corporation tax</td>
+                                <td>[ACCOUNTANT]</td>
+                                <td>Week 2</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Open bank account</td>
+                                <td>[FINANCE]</td>
+                                <td>Week 2</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Phase 2: Governance Setup (Weeks 2-6)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Owner</th>
+                                <th>Timeline</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Recruit/appoint Clinical Director</td>
+                                <td>[CHAIR/FOUNDER]</td>
+                                <td>Week 2-4</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Recruit Board members (Commercial, Legal, SSM Liaison)</td>
+                                <td>[CHAIR]</td>
+                                <td>Week 2-6</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Adopt Governance Board Charter</td>
+                                <td>[BOARD]</td>
+                                <td>Week 4</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>First Board meeting - approve governance framework</td>
+                                <td>[BOARD]</td>
+                                <td>Week 4-5</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Approve Clinical Governance Framework</td>
+                                <td>[BOARD]</td>
+                                <td>Week 5</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Approve Medical Compliance Statement</td>
+                                <td>[BOARD]</td>
+                                <td>Week 5</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Phase 3: Partnership Formalization (Weeks 4-8)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Owner</th>
+                                <th>Timeline</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Formalize platform license from ClearMinds Ltd</td>
+                                <td>[LEGAL]</td>
+                                <td>Week 4-6</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Negotiate SSM partnership agreement</td>
+                                <td>[COMMERCIAL + SSM]</td>
+                                <td>Week 4-8</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Execute SSM partnership agreement</td>
+                                <td>[BOARD + SSM]</td>
+                                <td>Week 7-8</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Secure professional indemnity insurance</td>
+                                <td>[FINANCE/LEGAL]</td>
+                                <td>Week 5-6</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Finalize AXA partnership proposal</td>
+                                <td>[COMMERCIAL]</td>
+                                <td>Week 6-8</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Phase 4: Operational Launch (Weeks 6-10)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Owner</th>
+                                <th>Timeline</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Launch ClearMinds B2B brand/website</td>
+                                <td>[MARKETING]</td>
+                                <td>Week 8</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Finalize partnership documentation package</td>
+                                <td>[ALL]</td>
+                                <td>Week 8</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>AXA partnership meeting/presentation</td>
+                                <td>[COMMERCIAL + BOARD]</td>
+                                <td>Week 10</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Operational readiness (platform, support team, escalation)</td>
+                                <td>[OPERATIONS]</td>
+                                <td>Week 8-10</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="governance">
+                    <h2>7. Governance Implications</h2>
+
+                    <h3>7.1 Board Structure</h3>
+                    <p><strong>ClearMinds B2B Ltd Board:</strong></p>
+                    <ul>
+                        <li>Chair</li>
+                        <li>Clinical Director (HCPC/GMC registered professional)</li>
+                        <li>Commercial Director / Managing Director</li>
+                        <li>Legal/Compliance Representative</li>
+                        <li>Smart Start Minds Liaison (Dr. Thomas Dannhauser)</li>
+                    </ul>
+
+                    <p><strong>Relationship to Parent Board:</strong></p>
+                    <ul>
+                        <li>ClearMinds B2B Board has operational autonomy</li>
+                        <li>Quarterly reporting to ClearMinds Ltd Board</li>
+                        <li>Major decisions (budget >£X, new partnerships >£Y) require parent board approval</li>
+                        <li>Strategic alignment with parent company strategy</li>
+                    </ul>
+
+                    <h3>7.2 Clinical Governance</h3>
+                    <p><strong>Clinical Director Role:</strong></p>
+                    <ul>
+                        <li>Accountable for clinical governance framework</li>
+                        <li>Oversees content quality and clinical appropriateness</li>
+                        <li>Reviews incidents involving user safety</li>
+                        <li>Approves escalation protocols and SSM partnership arrangements</li>
+                        <li>Reports to Board quarterly on clinical governance performance</li>
+                    </ul>
+
+                    <p><strong>Dr. Thomas Dannhauser / SSM Role:</strong></p>
+                    <ul>
+                        <li>SSM Liaison to Board (formal role)</li>
+                        <li>Provides clinical pathway oversight and quality assurance</li>
+                        <li>Reviews referral appropriateness and outcomes</li>
+                        <li>Ensures CQC standards reflected in partnership</li>
+                        <li>Participates in clinical governance discussions</li>
+                    </ul>
+
+                    <h3>7.3 Decision Rights</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Decision Type</th>
+                                <th>ClearMinds B2B Board</th>
+                                <th>Parent Board Approval Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Clinical Governance Framework</td>
+                                <td>✅ Approve</td>
+                                <td>❌ No</td>
+                            </tr>
+                            <tr>
+                                <td>New B2B Partnership <£100k</td>
+                                <td>✅ Approve</td>
+                                <td>❌ No (inform parent)</td>
+                            </tr>
+                            <tr>
+                                <td>New B2B Partnership >£100k</td>
+                                <td>✅ Recommend</td>
+                                <td>✅ Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Annual Operating Budget</td>
+                                <td>✅ Propose</td>
+                                <td>✅ Yes</td>
+                            </tr>
+                            <tr>
+                                <td>SSM Partnership Terms</td>
+                                <td>✅ Approve</td>
+                                <td>⚠️ Inform parent</td>
+                            </tr>
+                            <tr>
+                                <td>Serious Incident Response</td>
+                                <td>✅ Manage</td>
+                                <td>⚠️ Report to parent</td>
+                            </tr>
+                            <tr>
+                                <td>Staff Appointments (clinical team)</td>
+                                <td>✅ Approve</td>
+                                <td>❌ No</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="thrive-relationship">
+                    <h2>8. Future Thrive Integration</h2>
+
+                    <h3>8.1 Thrive Roadmap Context</h3>
+                    <p><strong>Thrive Vision:</strong></p>
+                    <p>Thrive is envisioned as an ambitious consumer wellness platform that will integrate:</p>
+                    <ul>
+                        <li>Wellness assessments</li>
+                        <li>OCEAN behavioral analysis</li>
+                        <li>Personalized content and coaching</li>
+                        <li>Community and social features</li>
+                        <li>Potentially broader health and lifestyle integration</li>
+                    </ul>
+
+                    <p><strong>Current Status:</strong> <em>Not yet launched, still in development/planning</em></p>
+
+                    <h3>8.2 Relationship Between ClearMinds B2B and Thrive</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Scenario</th>
+                                <th>Implication for ClearMinds B2B Ltd</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Thrive Launches as Consumer Brand</strong></td>
+                                <td>ClearMinds B2B continues independently; may license Thrive features if beneficial</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thrive Becomes Umbrella Brand</strong></td>
+                                <td>ClearMinds B2B could rebrand as "Thrive for Business" or "Thrive B2B" under umbrella</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thrive Acquires/Merges B2B</strong></td>
+                                <td>ClearMinds B2B Ltd merges into Thrive Ltd; governance transitions to Thrive Board</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Separate Paths</strong></td>
+                                <td>ClearMinds B2B and Thrive remain independent entities serving different markets</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>8.3 Integration Flexibility</h3>
+                    <div class="highlight-info">
+                        <p><strong>Key Advantage of Subsidiary Structure:</strong></p>
+                        <p>Because ClearMinds B2B Ltd is a separate legal entity, it can easily:</p>
+                        <ul>
+                            <li>Merge into Thrive Ltd when/if Thrive launches</li>
+                            <li>Become "Thrive B2B Ltd" through name change</li>
+                            <li>Transfer ownership to Thrive Ltd</li>
+                            <li>Remain independent if strategic</li>
+                            <li>Be sold to third party if opportunity arises</li>
+                        </ul>
+                        <p>This flexibility is NOT available with trading name or division structure.</p>
+                    </div>
+
+                    <h3>8.4 Decision Criteria for Future Integration</h3>
+                    <p>Integration with Thrive should occur when:</p>
+                    <ul>
+                        <li><input type="checkbox"> Thrive brand is established and trusted in market</li>
+                        <li><input type="checkbox"> Thrive platform offers features beneficial for B2B (OCEAN, advanced assessments)</li>
+                        <li><input type="checkbox"> B2B partners comfortable with Thrive brand (not just ClearMinds)</li>
+                        <li><input type="checkbox"> Governance structures can be harmonized without losing B2B institutional rigor</li>
+                        <li><input type="checkbox"> Financial and operational integration makes strategic sense</li>
+                        <li><input type="checkbox"> SSM partnership can transfer cleanly to Thrive entity</li>
+                    </ul>
+
+                    <p><strong>Until then:</strong> ClearMinds B2B operates independently, maintains governance standards, builds partnerships, and keeps options open.</p>
+                </section>
+
+                <div class="footer">
+                    <p><strong>Document Version:</strong> 1.0 | <strong>Date:</strong> [DATE] | <strong>Status:</strong> Strategic Analysis</p>
+                    <p><strong>Author:</strong> [NAME] | <strong>Reviewed By:</strong> [BOARD/STAKEHOLDERS]</p>
+                </div>
+            </article>
+
+            <nav class="doc-navigation no-print">
+                <a href="../index.html" class="doc-nav-link">
+                    <span class="label">← Previous</span>
+                    <span class="title">Back to Home</span>
+                </a>
+                <a href="governance-board-charter.html" class="doc-nav-link">
+                    <span class="label">Next →</span>
+                    <span class="title">Governance Board Charter</span>
+                </a>
+            </nav>
+        </main>
+    </div>
+</body>
+</html>
