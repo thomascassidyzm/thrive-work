@@ -1,8 +1,8 @@
-# ClearMinds B2B Partnership Documentation Microsite
+# ClearMinds Corporate Partnership Documentation Microsite
 
 ## What This Is
 
-A comprehensive documentation package for insurance partners evaluating ClearMinds B2B offering. Contains 6 key documents covering governance, compliance, and partnership details.
+A comprehensive documentation package for insurance partners evaluating ClearMinds Corporate offering. Contains 6 key documents covering governance, compliance, and partnership details.
 
 This microsite is designed to be:
 - **Offline-capable** - No internet connection required
