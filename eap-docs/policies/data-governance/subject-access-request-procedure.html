@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Access Request (SAR) Procedure | ClearMinds</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #fffbf5;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            border-bottom: 4px solid #007a87;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            color: #007a87;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .document-title {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .meta-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            background: #dff4da;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #007a87;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .meta-value {
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        .timeline-box {
+            background: #dff4da;
+            border: 2px solid #007a87;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .alert-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #007a87;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        h2 {
+            color: #007a87;
+            font-size: 22px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        h4 {
+            color: #007a87;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+        }
+
+        th {
+            background: #007a87;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .checklist {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .checklist h4 {
+            margin-bottom: 15px;
+        }
+
+        .flowchart {
+            background: #f8f9fa;
+            border: 2px solid #007a87;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            font-size: 13px;
+            color: #6c757d;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            .document-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">ClearMinds</div>
+            <h1 class="document-title">Subject Access Request (SAR) Procedure</h1>
+        </div>
+
+        <div class="meta-info">
+            <div class="meta-item">
+                <span class="meta-label">Policy Owner</span>
+                <span class="meta-value">Data Protection Officer</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Version</span>
+                <span class="meta-value">1.0</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Effective Date</span>
+                <span class="meta-value">[INSERT DATE]</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Review Date</span>
+                <span class="meta-value">[ANNUAL REVIEW]</span>
+            </div>
+        </div>
+
+        <div class="timeline-box">
+            <h4>⏱️ Critical Timeline</h4>
+            <p><strong>Response Deadline: 1 MONTH</strong> from receipt of valid SAR (extendable to 3 months for complex requests)</p>
+            <p><strong>No Fee:</strong> SARs are FREE unless manifestly unfounded, excessive, or repetitive</p>
+        </div>
+
+        <h2>1. Introduction and Purpose</h2>
+        
+        <p>This procedure sets out how ClearMinds handles Subject Access Requests (SARs) in compliance with Articles 15 and 12 of the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.</p>
+
+        <p>A Subject Access Request (SAR) is a formal request from an individual (data subject) for access to their personal data held by ClearMinds. This is a fundamental right under data protection law that allows individuals to:</p>
+
+        <ul>
+            <li>Access their personal data</li>
+            <li>Understand how their data is being processed</li>
+            <li>Verify the lawfulness of processing</li>
+            <li>Check the accuracy of their data</li>
+            <li>Exercise other data protection rights</li>
+        </ul>
+
+        <h2>2. Right of Access - What Individuals Are Entitled To</h2>
+
+        <p>Under Article 15 UK GDPR, data subjects have the right to obtain:</p>
+
+        <h3>2.1 Confirmation and Access</h3>
+        <ul>
+            <li>Confirmation of whether we process their personal data</li>
+            <li>A copy of that personal data</li>
+            <li>A copy free of charge (first copy)</li>
+        </ul>
+
+        <h3>2.2 Supplementary Information</h3>
+        <ul>
+            <li><strong>Purposes of processing:</strong> Why we process the data</li>
+            <li><strong>Categories of data:</strong> Types of personal data we hold</li>
+            <li><strong>Recipients:</strong> Who we share or have shared the data with</li>
+            <li><strong>Retention periods:</strong> How long we keep the data</li>
+            <li><strong>Data sources:</strong> Where we obtained the data (if not from the individual)</li>
+            <li><strong>Automated decision-making:</strong> Information about any automated decisions or profiling</li>
+            <li><strong>Rights information:</strong> Their right to rectification, erasure, restriction, objection</li>
+            <li><strong>Complaint rights:</strong> Right to complain to the ICO</li>
+            <li><strong>International transfers:</strong> Information about any transfers outside the UK</li>
+        </ul>
+
+        <h2>3. What Constitutes a Valid SAR?</h2>
+
+        <h3>3.1 Recognition of SARs</h3>
+
+        <p>A SAR can be made:</p>
+        <ul>
+            <li>In writing (letter, email, form)</li>
+            <li>Verbally (phone call, in-person)</li>
+            <li>Via any communication channel (social media, website contact form)</li>
+            <li>Without using specific language or referencing "SAR" or "GDPR"</li>
+        </ul>
+
+        <div class="info-box">
+            <h4>Recognising an Informal SAR</h4>
+            <p>Any request that asks "What information do you have about me?" or "Can I see my records?" should be treated as a potential SAR, even if the requester doesn't use formal legal language.</p>
+        </div>
+
+        <h3>3.2 Information Required from Requester</h3>
+
+        <p>To process a SAR, we need:</p>
+        <ul>
+            <li><strong>Name and contact details</strong></li>
+            <li><strong>Sufficient information to identify them</strong> in our systems</li>
+            <li><strong>Proof of identity</strong> (to prevent unauthorised disclosure)</li>
+            <li><strong>Clarification of the request</strong> (if unclear or overly broad)</li>
+        </ul>
+
+        <h2>4. SAR Workflow - Step-by-Step Process</h2>
+
+        <div class="flowchart">
+            <h4>SAR Processing Stages</h4>
+            <ol>
+                <li><strong>Receipt:</strong> SAR received and logged (Day 0)</li>
+                <li><strong>Acknowledgement:</strong> Acknowledge within 3 business days</li>
+                <li><strong>Verification:</strong> Verify identity and clarify request if needed</li>
+                <li><strong>Search:</strong> Locate all relevant personal data</li>
+                <li><strong>Review:</strong> Review data for exemptions and third-party rights</li>
+                <li><strong>Redaction:</strong> Redact any exempt information</li>
+                <li><strong>Preparation:</strong> Prepare response package</li>
+                <li><strong>Approval:</strong> DPO approval before release</li>
+                <li><strong>Response:</strong> Deliver response by deadline (Day 30 maximum)</li>
+                <li><strong>Record:</strong> Log completion and retain records</li>
+            </ol>
+        </div>
+
+        <h3>4.1 Stage 1: Receipt and Acknowledgement (Days 0-3)</h3>
+
+        <h4>When a SAR is Received</h4>
+
+        <div class="checklist">
+            <h4>✅ Immediate Actions</h4>
+            <ol>
+                <li><strong>Forward to DPO IMMEDIATELY:</strong> All SARs must go to dpo@clearmindseap.com</li>
+                <li><strong>Do not delete or alter any data:</strong> Preserve all records from the moment SAR received</li>
+                <li><strong>Do not discuss:</strong> Maintain confidentiality - only discuss with DPO and response team</li>
+                <li><strong>Mark as urgent:</strong> Flag as priority in systems</li>
+            </ol>
+        </div>
+
+        <h4>DPO Actions</h4>
+        <ul>
+            <li><strong>Log the request:</strong> Record in SAR tracking system with unique reference number</li>
+            <li><strong>Start the clock:</strong> Note receipt date (1-month deadline begins)</li>
+            <li><strong>Send acknowledgement:</strong> Acknowledge within 3 business days</li>
+            <li><strong>Assign case handler:</strong> Allocate appropriate staff member</li>
+        </ul>
+
+        <h4>Acknowledgement Letter Content</h4>
+        <ul>
+            <li>Thank them for their request</li>
+            <li>Provide SAR reference number</li>
+            <li>Confirm we'll respond within 1 month</li>
+            <li>Request any additional information needed for identity verification or clarification</li>
+            <li>Provide DPO contact details for queries</li>
+        </ul>
+
+        <h3>4.2 Stage 2: Identity Verification (Days 3-7)</h3>
+
+        <p>Before disclosing personal data, we must verify the requester's identity to prevent unauthorised disclosure.</p>
+
+        <h4>Identity Verification Requirements</h4>
+
+        <p><strong>For current service users:</strong></p>
+        <ul>
+            <li>Name, date of birth, and email address on account</li>
+            <li>Security questions or account details</li>
+            <li>OR copy of photo ID (passport, driving licence)</li>
+        </ul>
+
+        <p><strong>For former service users or more sensitive requests:</strong></p>
+        <ul>
+            <li>Copy of photo ID (passport, driving licence, national ID card)</li>
+            <li>Proof of address (utility bill, bank statement) less than 3 months old</li>
+            <li>Additional verification questions if needed</li>
+        </ul>
+
+        <p><strong>For third-party representatives:</strong></p>
+        <ul>
+            <li>Proof of identity for both the data subject and representative</li>
+            <li>Authorisation document (signed authority, lasting power of attorney, court order)</li>
+            <li>For children: evidence of parental responsibility</li>
+        </ul>
+
+        <div class="alert-box">
+            <strong>⚠️ Important:</strong> The 1-month deadline can be paused while awaiting identity verification, but only if the request for verification is reasonable. Document all communications clearly.
+        </div>
+
+        <h3>4.3 Stage 3: Request Clarification (if needed) (Days 3-10)</h3>
+
+        <p>If the request is unclear, overly broad, or would require disproportionate effort, we can ask for clarification:</p>
+
+        <h4>When Clarification May Be Needed</h4>
+        <ul>
+            <li>Request is very broad and would cover extensive time periods</li>
+            <li>Unclear which personal data is being requested</li>
+            <li>Multiple individuals with similar details in our systems</li>
+            <li>Requesting data that we're unlikely to hold</li>
+        </ul>
+
+        <h4>Clarification Approach</h4>
+        <ul>
+            <li>Be helpful and constructive</li>
+            <li>Suggest ways to narrow the request (e.g., specific time periods, types of data)</li>
+            <li>Explain what data we hold to help them specify</li>
+            <li>Offer a phone call to discuss</li>
+            <li>Document all clarification attempts</li>
+        </ul>
+
+        <div class="info-box">
+            <strong>Best Practice:</strong> Don't use clarification as a delaying tactic. Only request clarification when genuinely needed, and assist the requester in refining their request.
+        </div>
+
+        <h3>4.4 Stage 4: Data Search and Retrieval (Days 7-20)</h3>
+
+        <p>Conduct comprehensive search for all personal data about the individual.</p>
+
+        <h4>Systems and Locations to Search</h4>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>System/Location</th>
+                        <th>Data to Search</th>
+                        <th>Responsible</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Clinical Records System</strong></td>
+                        <td>Clinical notes, assessments, treatment plans, progress notes</td>
+                        <td>Clinical team</td>
+                    </tr>
+                    <tr>
+                        <td><strong>User Account Database</strong></td>
+                        <td>Account details, contact information, login history</td>
+                        <td>IT team</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email Systems</strong></td>
+                        <td>Emails to/from the individual, internal emails about them</td>
+                        <td>All relevant staff</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Communication Records</strong></td>
+                        <td>Call recordings, chat transcripts, SMS messages</td>
+                        <td>Customer service team</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HR Systems (if staff member)</strong></td>
+                        <td>Personnel files, payroll, performance reviews</td>
+                        <td>HR team</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Financial Systems</strong></td>
+                        <td>Invoices, payment records, billing information</td>
+                        <td>Finance team</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Backup Systems</strong></td>
+                        <td>Any data in backups not in live systems</td>
+                        <td>IT team</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Paper Files</strong></td>
+                        <td>Any physical records or documents</td>
+                        <td>Administration team</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CCTV/Security</strong></td>
+                        <td>Security footage if specifically requested and available</td>
+                        <td>Security/Facilities</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>Search Tips</h4>
+        <ul>
+            <li>Search by name, email, employee ID, reference numbers</li>
+            <li>Check for name variations, nicknames, maiden names</li>
+            <li>Search date ranges relevant to the request</li>
+            <li>Include data held by third-party processors on our behalf</li>
+            <li>Don't forget archived or offline data</li>
+            <li>Document search process and locations searched</li>
+        </ul>
+
+        <div class="alert-box">
+            <strong>Scope Reminder:</strong> A SAR covers personal data about the individual, not just information they provided. Include data about them from third parties, system-generated data, and metadata.
+        </div>
+
+        <h3>4.5 Stage 5: Review for Exemptions (Days 20-25)</h3>
+
+        <p>Review all identified data for exemptions and third-party information requiring redaction.</p>
+
+        <h4>Common Exemptions Under UK GDPR and DPA 2018</h4>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Exemption</th>
+                        <th>When It Applies</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Third-Party Information</strong></td>
+                        <td>Information identifying other individuals who have not consented to disclosure</td>
+                        <td>Another patient mentioned in clinical notes; colleague's personal info in emails</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Legal Professional Privilege</strong></td>
+                        <td>Communications with lawyers for legal advice or litigation</td>
+                        <td>Email to solicitor seeking advice about the individual</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Management Forecasting</strong></td>
+                        <td>Management planning or forecasting for the business</td>
+                        <td>Internal discussion about employee's future within company</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Negotiations</strong></td>
+                        <td>Prejudice to ongoing negotiations with the individual</td>
+                        <td>Settlement offers or negotiation strategies</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Serious Harm</strong></td>
+                        <td>Disclosure would cause serious harm to physical or mental health</td>
+                        <td>Clinical opinion that disclosure would significantly harm mental health (rare, requires clinical judgment)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Crime Prevention</strong></td>
+                        <td>Disclosure would prejudice prevention/detection of crime</td>
+                        <td>Information related to ongoing police investigation</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>Applying Exemptions</h4>
+
+        <div class="info-box">
+            <p><strong>General Principle:</strong> Exemptions should be applied narrowly and as a last resort. The presumption is always towards disclosure. We must be able to justify each exemption applied.</p>
+            
+            <p><strong>Redaction Not Deletion:</strong> Redact exempt information, don't withhold entire documents. Provide as much information as possible.</p>
+            
+            <p><strong>Documentation:</strong> Document every exemption applied with clear legal reasoning.</p>
+        </div>
+
+        <h4>Third-Party Information Handling</h4>
+
+        <p>For information identifying other individuals:</p>
+        <ol>
+            <li><strong>Assess Reasonableness:</strong> Would disclosure be reasonable in the circumstances?</li>
+            <li><strong>Consider Consent:</strong> Can you obtain consent from the third party?</li>
+            <li><strong>Redaction:</strong> If no consent and not reasonable to disclose, redact names and identifying details</li>
+            <li><strong>Preserve Context:</strong> Try to maintain meaning while protecting third parties</li>
+        </ol>
+
+        <h4>Clinical Records - Special Considerations</h4>
+
+        <p>For mental health records:</p>
+        <ul>
+            <li><strong>Clinical Review:</strong> Clinical director should review for serious harm exemption</li>
+            <li><strong>High Bar:</strong> Serious harm exemption has a high threshold - not just "may cause distress"</li>
+            <li><strong>Alternatives:</strong> Consider whether information could be provided with support or explanation</li>
+            <li><strong>Professional Judgment:</strong> Document clinical rationale if withholding any information</li>
+        </ul>
+
+        <h3>4.6 Stage 6: Prepare Response Package (Days 25-28)</h3>
+
+        <h4>Response Package Should Include:</h4>
+
+        <ol>
+            <li><strong>Cover Letter</strong>
+                <ul>
+                    <li>Explanation of what's enclosed</li>
+                    <li>Summary of categories of data provided</li>
+                    <li>Explanation of any exemptions applied</li>
+                    <li>Information about their rights (rectification, erasure, etc.)</li>
+                    <li>Right to complain to ICO</li>
+                </ul>
+            </li>
+            <li><strong>Supplementary Information Sheet</strong>
+                <ul>
+                    <li>Purposes of processing</li>
+                    <li>Categories of data held</li>
+                    <li>Recipients of data</li>
+                    <li>Retention periods</li>
+                    <li>Data sources</li>
+                    <li>Rights information</li>
+                </ul>
+            </li>
+            <li><strong>Personal Data</strong>
+                <ul>
+                    <li>Intelligible format (permanent, easy to read)</li>
+                    <li>Securely redacted documents (if applicable)</li>
+                    <li>Key or glossary for any codes or abbreviations</li>
+                    <li>Explanation of context where helpful</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h4>Format and Delivery</h4>
+
+        <ul>
+            <li><strong>Preferred Method:</strong> Secure electronic delivery (encrypted email, secure portal)</li>
+            <li><strong>Physical Copy:</strong> Registered post if requested or if electronic not appropriate</li>
+            <li><strong>Format:</strong> PDF for most documents; explain any technical data</li>
+            <li><strong>Size:</strong> If very large, consider secure portal or encrypted USB drive</li>
+        </ul>
+
+        <h3>4.7 Stage 7: Quality Check and Approval (Days 28-29)</h3>
+
+        <div class="checklist">
+            <h4>✅ Final Quality Checks</h4>
+            <ol>
+                <li>All data provided is about the requester (no wrong person's data)</li>
+                <li>All relevant systems have been searched</li>
+                <li>Exemptions properly applied and documented</li>
+                <li>Third-party information appropriately redacted</li>
+                <li>Cover letter accurate and complete</li>
+                <li>Supplementary information provided</li>
+                <li>Data is in intelligible format</li>
+                <li>All documents properly labelled</li>
+            </ol>
+        </div>
+
+        <p><strong>DPO Approval:</strong> DPO must approve all SAR responses before release.</p>
+
+        <h3>4.8 Stage 8: Delivery of Response (Day 30)</h3>
+
+        <ul>
+            <li>Send response by secure method</li>
+            <li>Obtain delivery confirmation</li>
+            <li>Follow up to confirm receipt</li>
+            <li>Offer to discuss or clarify any questions</li>
+        </ul>
+
+        <h2>5. Extensions and Delays</h2>
+
+        <h3>5.1 When Extensions Are Permitted</h3>
+
+        <p>We may extend the response deadline by an additional 2 months (to 3 months total) if the request is complex or we receive multiple requests from the same individual.</p>
+
+        <p><strong>Requirements for Extension:</strong></p>
+        <ul>
+            <li>Notify the requester within 1 month of receipt</li>
+            <li>Explain reasons for the extension</li>
+            <li>Provide new deadline (cannot exceed 3 months from original receipt)</li>
+        </ul>
+
+        <h3>5.2 Manifestly Unfounded or Excessive Requests</h3>
+
+        <p>We may refuse or charge a reasonable fee for requests that are:</p>
+        <ul>
+            <li>Manifestly unfounded</li>
+            <li>Excessive (e.g., repetitive requests)</li>
+        </ul>
+
+        <p><strong>High Bar for Refusal:</strong> This is rare and requires clear evidence. We must demonstrate that the request is manifestly unfounded or excessive, not just inconvenient or burdensome.</p>
+
+        <p><strong>If Refusing:</strong></p>
+        <ul>
+            <li>Inform requester without undue delay (within 1 month)</li>
+            <li>Explain reasons for refusal</li>
+            <li>Inform of right to complain to ICO and right to judicial remedy</li>
+        </ul>
+
+        <h2>6. Special Scenarios</h2>
+
+        <h3>6.1 SARs from Children</h3>
+
+        <ul>
+            <li>Children can make SARs if they have sufficient understanding (Gillick competence)</li>
+            <li>Generally, children aged 13+ are considered competent for standard SARs</li>
+            <li>For younger children, assess competence on case-by-case basis</li>
+            <li>Parents can make SARs on behalf of children, but consider child's rights to confidentiality</li>
+            <li>Particularly sensitive for mental health data - seek clinical advice</li>
+        </ul>
+
+        <h3>6.2 SARs from Representatives</h3>
+
+        <p>Verify authority carefully:</p>
+        <ul>
+            <li><strong>Lasting Power of Attorney (LPA):</strong> Check it covers health and welfare decisions</li>
+            <li><strong>Deputyship Order:</strong> Verify scope with court order</li>
+            <li><strong>Next of Kin:</strong> No automatic right - requires data subject consent or lack of capacity</li>
+            <li><strong>Solicitors:</strong> Require written authorisation from the data subject</li>
+            <li><strong>Parents:</strong> Verify parental responsibility (especially if separated/divorced)</li>
+        </ul>
+
+        <h3>6.3 Deceased Persons</h3>
+
+        <p>GDPR does not apply to deceased individuals, but:</p>
+        <ul>
+            <li>Consider Data Protection Act 2018 provisions for deceased persons' data</li>
+            <li>Review any instructions left by the deceased about their data</li>
+            <li>Consider common law duty of confidentiality</li>
+            <li>Seek legal advice for complex cases</li>
+            <li>Be particularly careful with clinical records</li>
+        </ul>
+
+        <h3>6.4 SARs During Employment Tribunal Claims</h3>
+
+        <ul>
+            <li>Employee tribunal SARs are common</li>
+            <li>Cannot refuse due to ongoing tribunal - same rules apply</li>
+            <li>Legal professional privilege may apply to some legal advice</li>
+            <li>Seek legal advice before responding</li>
+            <li>Respond within normal timescales</li>
+        </ul>
+
+        <h2>7. Tracking and Record-Keeping</h2>
+
+        <h3>7.1 SAR Log</h3>
+
+        <p>Maintain a comprehensive log of all SARs including:</p>
+        <ul>
+            <li>Date received and reference number</li>
+            <li>Requester details</li>
+            <li>Date acknowledged</li>
+            <li>Response deadline</li>
+            <li>Whether identity verified</li>
+            <li>Extensions applied</li>
+            <li>Summary of data provided</li>
+            <li>Exemptions applied and reasoning</li>
+            <li>Date responded</li>
+            <li>Any complaints or follow-up actions</li>
+        </ul>
+
+        <h3>7.2 Retention of SAR Records</h3>
+
+        <p>Retain SAR records for 3 years:</p>
+        <ul>
+            <li>Original request</li>
+            <li>All correspondence with requester</li>
+            <li>Copy of data provided</li>
+            <li>Documentation of exemptions and decision-making</li>
+            <li>Proof of delivery</li>
+        </ul>
+
+        <h2>8. Fees</h2>
+
+        <p><strong>General Rule:</strong> SARs are FREE. No fee can be charged for:</p>
+        <ul>
+            <li>The first copy of personal data</li>
+            <li>Standard supplementary information</li>
+            <li>Processing the request</li>
+        </ul>
+
+        <p><strong>When Fees May Be Charged:</strong></p>
+        <ul>
+            <li>Additional copies (reasonable fee based on administrative cost)</li>
+            <li>Manifestly unfounded or excessive requests (reasonable fee or refusal)</li>
+        </ul>
+
+        <h2>9. Training and Responsibilities</h2>
+
+        <h3>9.1 Data Protection Officer</h3>
+        <ul>
+            <li>Overall oversight of SAR process</li>
+            <li>Approving all SAR responses</li>
+            <li>Making decisions on exemptions and extensions</li>
+            <li>Handling complaints about SARs</li>
+        </ul>
+
+        <h3>9.2 All Staff</h3>
+        <ul>
+            <li>Recognising SARs and forwarding to DPO immediately</li>
+            <li>Completing SAR training</li>
+            <li>Cooperating with SAR searches</li>
+            <li>Not altering or deleting data once SAR received</li>
+        </ul>
+
+        <h3>9.3 Clinical Staff</h3>
+        <ul>
+            <li>Advising on clinical exemptions (serious harm)</li>
+            <li>Providing clinical context where helpful</li>
+            <li>Ensuring clinical records are comprehensive and accurate</li>
+        </ul>
+
+        <h2>10. Monitoring and Review</h2>
+
+        <ul>
+            <li><strong>Quarterly Reports:</strong> SAR statistics and compliance rates</li>
+            <li><strong>Annual Review:</strong> Review of this procedure</li>
+            <li><strong>Quality Audits:</strong> Sample reviews of SAR responses</li>
+            <li><strong>Learning:</strong> Post-SAR debriefs for complex cases</li>
+        </ul>
+
+        <h2>11. Complaints and Escalation</h2>
+
+        <h3>11.1 If Requester Unhappy with Response</h3>
+        <ul>
+            <li>DPO to review and discuss concerns</li>
+            <li>Consider if additional information can be provided</li>
+            <li>Explain reasoning for any exemptions</li>
+            <li>Provide clear explanation of review process</li>
+        </ul>
+
+        <h3>11.2 ICO Complaints</h3>
+        <p>Inform requester of right to complain to ICO if not satisfied:</p>
+        <p><strong>Information Commissioner's Office</strong><br>
+        Wycliffe House, Water Lane, Wilmslow, Cheshire, SK9 5AF<br>
+        Tel: 0303 123 1113<br>
+        Website: www.ico.org.uk</p>
+
+        <h2>12. Related Documents</h2>
+
+        <ul>
+            <li>Data Protection Policy</li>
+            <li>Privacy Policy</li>
+            <li>Data Retention Policy</li>
+            <li>Information Security Policy</li>
+            <li>Complaints Policy</li>
+        </ul>
+
+        <div class="footer">
+            <p><strong>ClearMinds Subject Access Request (SAR) Procedure</strong> | Version 1.0 | Effective [DATE]</p>
+            <p>This procedure is reviewed annually and updated as required to reflect ICO guidance and legal changes.</p>
+            <p><strong>SAR Contact:</strong> dpo@clearmindseap.com | [PHONE NUMBER]</p>
+            <p>&copy; 2024 ClearMinds. All rights reserved. This document is confidential and proprietary.</p>
+        </div>
+    </div>
+</body>
+</html>

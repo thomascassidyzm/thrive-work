@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Breach Report Form | ClearMinds</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: #2c3e50; background: #fffbf5; padding: 40px 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 50px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .header { background: #dc3545; color: white; padding: 30px; border-radius: 8px 8px 0 0; margin: -50px -50px 30px -50px; text-align: center; }
+        .logo { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+        .document-title { font-size: 26px; margin-bottom: 8px; font-weight: 600; }
+        .urgent-box { background: #fff3cd; border: 3px solid #ffc107; padding: 20px; margin: 0 0 30px 0; border-radius: 6px; font-weight: 600; }
+        .form-section { background: #f8f9fa; padding: 25px; margin: 25px 0; border-radius: 6px; border-left: 4px solid #007a87; }
+        .form-section h2 { color: #007a87; font-size: 18px; margin-bottom: 15px; font-weight: 600; }
+        .form-field { margin-bottom: 20px; }
+        .field-label { display: block; font-weight: 600; color: #2c3e50; margin-bottom: 8px; font-size: 14px; }
+        .required { color: #dc3545; }
+        .field-input { width: 100%; min-height: 40px; border: 2px solid #e0e0e0; border-radius: 4px; padding: 10px; background: white; font-family: inherit; font-size: 14px; }
+        textarea.field-input { min-height: 100px; resize: vertical; }
+        .contact-box { background: #dc3545; color: white; padding: 20px; border-radius: 6px; margin: 30px 0; text-align: center; }
+        .contact-box a { color: white; font-weight: bold; text-decoration: underline; }
+        .footer { margin-top: 30px; padding-top: 20px; border-top: 2px solid #e0e0e0; font-size: 12px; color: #6c757d; text-align: center; }
+        @media print { body { background: white; padding: 0; } .container { box-shadow: none; padding: 20px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">ClearMinds</div>
+            <div class="document-title">🚨 DATA BREACH REPORT FORM 🚨</div>
+            <div style="font-size: 14px; margin-top: 10px;">Complete IMMEDIATELY upon discovering a suspected breach</div>
+        </div>
+
+        <div class="urgent-box">
+            ⏰ <strong>URGENT:</strong> We have 72 hours to report serious breaches to the ICO. Report ALL suspected breaches immediately, even if unsure.
+        </div>
+
+        <div class="contact-box">
+            <h3>📞 REPORT TO DPO IMMEDIATELY:</h3>
+            <p><strong>Email:</strong> <a href="mailto:dpo@clearmindseap.com">dpo@clearmindseap.com</a></p>
+            <p><strong>Phone:</strong> [DPO PHONE] | <strong>Emergency:</strong> [EMERGENCY NUMBER 24/7]</p>
+        </div>
+
+        <form>
+            <div class="form-section">
+                <h2>1. Reporter Information</h2>
+                <div class="form-field">
+                    <label class="field-label">Your Name: <span class="required">*</span></label>
+                    <input type="text" class="field-input" required>
+                </div>
+                <div class="form-field">
+                    <label class="field-label">Job Title/Department: <span class="required">*</span></label>
+                    <input type="text" class="field-input" required>
+                </div>
+                <div class="form-field">
+                    <label class="field-label">Contact Number: <span class="required">*</span></label>
+                    <input type="tel" class="field-input" required>
+                </div>
+                <div class="form-field">
+                    <label class="field-label">Email: <span class="required">*</span></label>
+                    <input type="email" class="field-input" required>
+                </div>
+                <div class="form-field">
+                    <label class="field-label">Date & Time Reported: <span class="required">*</span></label>
+                    <input type="datetime-local" class="field-input" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>2. Incident Details</h2>
+                <div class="form-field">
+                    <label class="field-label">When did breach occur? <span class="required">*</span></label>
+                    <input type="datetime-local" class="field-input" required>
+                </div>
+                <div class="form-field">
+                    <label class="field-label">When discovered? <span class="required">*</span></label>
+                    <input type="datetime-local" class="field-input" required>
+                </div>
+                <div class="form-field">
+                    <label class="field-label">Where did it occur? <span class="required">*</span></label>
+                    <input type="text" class="field-input" placeholder="e.g., Office, home, online system" required>
+                </div>
+                <div class="form-field">
+                    <label class="field-label">What happened? <span class="required">*</span></label>
+                    <textarea class="field-input" required placeholder="Describe incident in detail"></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>3. Data Affected</h2>
+                <div class="form-field">
+                    <label class="field-label">Type of data: <span class="required">*</span></label>
+                    <textarea class="field-input" placeholder="e.g., Clinical records, contact details, health data" required></textarea>
+                </div>
+                <div class="form-field">
+                    <label class="field-label">Number of people affected: <span class="required">*</span></label>
+                    <input type="text" class="field-input" placeholder="Best estimate" required>
+                </div>
+                <div class="form-field">
+                    <label class="field-label">Was data encrypted?</label>
+                    <input type="text" class="field-input" placeholder="Yes/No/Unknown">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>4. Actions Taken</h2>
+                <div class="form-field">
+                    <label class="field-label">What steps have you taken?</label>
+                    <textarea class="field-input" placeholder="e.g., Recovered device, disabled account, changed passwords, notified IT"></textarea>
+                </div>
+                <div class="form-field">
+                    <label class="field-label">Is breach contained?</label>
+                    <input type="text" class="field-input" placeholder="Yes/No/Partially/Unknown">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>5. Potential Impact</h2>
+                <div class="form-field">
+                    <label class="field-label">What could affect individuals?</label>
+                    <textarea class="field-input" placeholder="e.g., Identity theft risk, embarrassment, psychological harm, financial loss"></textarea>
+                </div>
+            </div>
+
+            <div style="background: #007a87; color: white; padding: 25px; border-radius: 6px; margin: 30px 0;">
+                <h3 style="margin-bottom: 15px;">📤 Submission</h3>
+                <ol style="margin-left: 20px; font-size: 14px;">
+                    <li>Save this completed form</li>
+                    <li>Email to: dpo@clearmindseap.com</li>
+                    <li>If urgent, also call: [DPO PHONE]</li>
+                    <li>Keep a copy for records</li>
+                    <li>Do NOT delete evidence</li>
+                </ol>
+            </div>
+        </form>
+
+        <div class="footer">
+            <p><strong>ClearMinds Data Breach Report Form</strong> | Version 1.0</p>
+            <p>&copy; 2024 ClearMinds. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

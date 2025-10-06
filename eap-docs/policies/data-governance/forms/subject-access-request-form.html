@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Access Request Form | ClearMinds</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: #2c3e50; background: #fffbf5; padding: 40px 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 50px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .header { background: #007a87; color: white; padding: 30px; border-radius: 8px 8px 0 0; margin: -50px -50px 30px -50px; }
+        .logo { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+        .document-title { font-size: 26px; margin-bottom: 8px; font-weight: 600; }
+        .info-box { background: #dff4da; border-left: 4px solid #007a87; padding: 20px; margin: 20px 0; border-radius: 4px; }
+        .form-section { background: #f8f9fa; padding: 25px; margin: 25px 0; border-radius: 6px; border-left: 4px solid #007a87; }
+        .form-section h2 { color: #007a87; font-size: 18px; margin-bottom: 15px; font-weight: 600; }
+        .form-field { margin-bottom: 20px; }
+        .field-label { display: block; font-weight: 600; color: #2c3e50; margin-bottom: 8px; font-size: 14px; }
+        .required { color: #dc3545; }
+        .field-input { width: 100%; min-height: 40px; border: 2px solid #e0e0e0; border-radius: 4px; padding: 10px; background: white; font-family: inherit; font-size: 14px; }
+        textarea.field-input { min-height: 80px; resize: vertical; }
+        .help-text { font-size: 12px; color: #6c757d; font-style: italic; margin-top: 5px; }
+        .checkbox-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .checkbox-item input[type="checkbox"] { width: 20px; height: 20px; }
+        .footer { margin-top: 30px; padding-top: 20px; border-top: 2px solid #e0e0e0; font-size: 12px; color: #6c757d; text-align: center; }
+        @media print { body { background: white; padding: 0; } .container { box-shadow: none; padding: 20px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">ClearMinds</div>
+            <div class="document-title">Subject Access Request Form</div>
+            <div style="font-size: 14px; margin-top: 10px; opacity: 0.95;">Request a copy of your personal data</div>
+        </div>
+
+        <div class="info-box">
+            <strong>Your Right to Access Your Data</strong><br>
+            Under UK GDPR, you have the right to request a copy of the personal data we hold about you. This is called a Subject Access Request (SAR). We will respond within <strong>one month</strong> and provide this service <strong>free of charge</strong>.
+        </div>
+
+        <form>
+            <div class="form-section">
+                <h2>1. Your Details</h2>
+                
+                <div class="form-field">
+                    <label class="field-label">Full Name: <span class="required">*</span></label>
+                    <input type="text" class="field-input" required>
+                </div>
+
+                <div class="form-field">
+                    <label class="field-label">Previous Name(s) (if applicable):</label>
+                    <input type="text" class="field-input" placeholder="If you've used other names with us">
+                </div>
+
+                <div class="form-field">
+                    <label class="field-label">Date of Birth: <span class="required">*</span></label>
+                    <input type="date" class="field-input" required>
+                </div>
+
+                <div class="form-field">
+                    <label class="field-label">Current Address: <span class="required">*</span></label>
+                    <textarea class="field-input" required></textarea>
+                </div>
+
+                <div class="form-field">
+                    <label class="field-label">Email Address: <span class="required">*</span></label>
+                    <input type="email" class="field-input" required>
+                </div>
+
+                <div class="form-field">
+                    <label class="field-label">Phone Number: <span class="required">*</span></label>
+                    <input type="tel" class="field-input" required>
+                </div>
+
+                <div class="form-field">
+                    <label class="field-label">Employer/Organisation (if accessing via EAP):</label>
+                    <input type="text" class="field-input">
+                </div>
+
+                <div class="form-field">
+                    <label class="field-label">Employee ID or Reference Number (if known):</label>
+                    <input type="text" class="field-input">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>2. What Information Do You Want?</h2>
+                
+                <div class="form-field">
+                    <label class="field-label">Are you requesting: <span class="required">*</span></label>
+                    <div style="margin-left: 10px;">
+                        <div class="checkbox-item">
+                            <input type="radio" name="request_type" id="all_data" value="all" checked>
+                            <label for="all_data"><strong>All personal data</strong> we hold about you</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" name="request_type" id="specific_data" value="specific">
+                            <label for="specific_data"><strong>Specific information only</strong> (please specify below)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label class="field-label">If requesting specific information, please describe:</label>
+                    <textarea class="field-input" placeholder="e.g., 'My clinical notes from January to March 2024' or 'All emails I sent to your service'"></textarea>
+                    <div class="help-text">Being specific helps us respond faster. Leave blank if requesting all data.</div>
+                </div>
+
+                <div class="form-field">
+                    <label class="field-label">Dates/Time Period (if relevant):</label>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div>
+                            <label style="font-size: 12px; display: block; margin-bottom: 5px;">From:</label>
+                            <input type="date" class="field-input">
+                        </div>
+                        <div>
+                            <label style="font-size: 12px; display: block; margin-bottom: 5px;">To:</label>
+                            <input type="date" class="field-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>3. Proof of Identity</h2>
+                
+                <p style="margin-bottom: 15px; font-size: 14px;">To protect your personal data, we need to verify your identity. Please provide copies of:</p>
+                
+                <div style="background: white; padding: 15px; border-radius: 4px; margin-bottom: 15px;">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="id1">
+                        <label for="id1"><strong>Photo ID</strong> (passport, driving licence, or national ID card)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="id2">
+                        <label for="id2"><strong>Proof of address</strong> (utility bill, bank statement, council tax bill - dated within last 3 months)</label>
+                    </div>
+                </div>
+
+                <div style="background: #fff3cd; padding: 15px; border-radius: 4px; font-size: 13px;">
+                    <strong>⚠️ Important:</strong> Please do NOT send original documents. Send clear photocopies or scanned images only. We cannot return originals if sent by mistake.
+                </div>
+
+                <div class="form-field" style="margin-top: 15px;">
+                    <label class="field-label">How will you provide proof of identity?</label>
+                    <div style="margin-left: 10px;">
+                        <div class="checkbox-item">
+                            <input type="radio" name="id_method" id="email_attach" value="email">
+                            <label for="email_attach">Scanned copies attached to email</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" name="id_method" id="post" value="post">
+                            <label for="post">Photocopies sent by post</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" name="id_method" id="person" value="person">
+                            <label for="person">In person (bring originals to show, not send)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>4. How Would You Like to Receive Your Information?</h2>
+                
+                <div class="form-field">
+                    <label class="field-label">Preferred delivery method: <span class="required">*</span></label>
+                    <div style="margin-left: 10px;">
+                        <div class="checkbox-item">
+                            <input type="radio" name="delivery" id="email_pdf" value="email" checked>
+                            <label for="email_pdf">Email (secure encrypted PDF)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" name="delivery" id="post_copy" value="post">
+                            <label for="post_copy">Post (paper copy sent by registered mail)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" name="delivery" id="portal" value="portal">
+                            <label for="portal">Secure online portal</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label class="field-label">If postal, confirm delivery address:</label>
+                    <textarea class="field-input" placeholder="Leave blank if same as address in Section 1"></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>5. Making a Request on Behalf of Someone Else</h2>
+                
+                <div class="form-field">
+                    <label class="field-label">Are you making this request on behalf of someone else?</label>
+                    <div style="margin-left: 10px;">
+                        <div class="checkbox-item">
+                            <input type="radio" name="on_behalf" id="myself" value="no" checked>
+                            <label for="myself">No - this is my own request</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" name="on_behalf" id="someone_else" value="yes">
+                            <label for="someone_else">Yes - I'm requesting on behalf of another person</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 4px; margin-top: 15px;">
+                    <p style="font-size: 13px; margin-bottom: 10px;"><strong>If acting on behalf of someone else, you MUST provide:</strong></p>
+                    <ul style="margin-left: 20px; font-size: 13px;">
+                        <li>Proof of your identity</li>
+                        <li>Proof of the data subject's identity</li>
+                        <li>Written authorisation signed by the data subject, OR</li>
+                        <li>Lasting Power of Attorney (LPA) document, OR</li>
+                        <li>Court order appointing you as deputy</li>
+                    </ul>
+                </div>
+
+                <div class="form-field" style="margin-top: 15px;">
+                    <label class="field-label">If acting on behalf of someone else, provide details:</label>
+                    <textarea class="field-input" placeholder="Name of data subject, your relationship to them, and type of authorisation"></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>6. Additional Information</h2>
+                
+                <div class="form-field">
+                    <label class="field-label">Is there anything else you'd like us to know about your request?</label>
+                    <textarea class="field-input" placeholder="Any additional information that might help us process your request"></textarea>
+                </div>
+            </div>
+
+            <div style="background: #007a87; color: white; padding: 25px; border-radius: 6px; margin: 30px 0;">
+                <h3 style="margin-bottom: 15px;">📤 How to Submit This Request</h3>
+                <p style="margin-bottom: 15px;"><strong>Step 1:</strong> Complete all required fields (*) in this form</p>
+                <p style="margin-bottom: 15px;"><strong>Step 2:</strong> Gather your proof of identity documents</p>
+                <p style="margin-bottom: 15px;"><strong>Step 3:</strong> Send to us via one of these methods:</p>
+                
+                <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 4px;">
+                    <p style="margin-bottom: 10px;"><strong>📧 Email:</strong> dpo@clearmindseap.com</p>
+                    <p style="margin-bottom: 10px;"><strong>📮 Post:</strong> Data Protection Officer, ClearMinds, [YOUR ADDRESS]</p>
+                    <p><strong>🏢 In Person:</strong> Visit our office at [YOUR ADDRESS]</p>
+                </div>
+            </div>
+
+            <div style="background: #dff4da; padding: 20px; border-radius: 6px; margin: 20px 0;">
+                <h3 style="color: #007a87; margin-bottom: 10px;">⏱️ What Happens Next?</h3>
+                <ol style="margin-left: 20px; font-size: 14px;">
+                    <li>We'll acknowledge your request within 3 business days</li>
+                    <li>We may contact you if we need clarification or additional proof of identity</li>
+                    <li>We'll provide your information within <strong>one month</strong></li>
+                    <li>If your request is complex, we may extend to 3 months (we'll tell you why)</li>
+                    <li>This service is <strong>free of charge</strong></li>
+                </ol>
+            </div>
+
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 6px;">
+                <h3 style="color: #2c3e50; margin-bottom: 10px;">ℹ️ Your Rights</h3>
+                <p style="font-size: 13px; margin-bottom: 10px;">In addition to accessing your data, you also have the right to:</p>
+                <ul style="margin-left: 20px; font-size: 13px;">
+                    <li>Request correction of inaccurate data</li>
+                    <li>Request deletion of your data (in certain circumstances)</li>
+                    <li>Object to processing of your data</li>
+                    <li>Request restriction of processing</li>
+                    <li>Request data portability</li>
+                    <li>Complain to the ICO if unhappy with our response</li>
+                </ul>
+                <p style="font-size: 13px; margin-top: 10px;">Contact our DPO if you'd like to exercise any of these rights.</p>
+            </div>
+        </form>
+
+        <div class="footer">
+            <p><strong>ClearMinds Subject Access Request Form</strong> | Version 1.0</p>
+            <p><strong>Data Protection Officer:</strong> dpo@clearmindseap.com | [PHONE NUMBER]</p>
+            <p>&copy; 2024 ClearMinds. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

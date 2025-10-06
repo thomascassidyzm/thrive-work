@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record of Processing Activities (ROPA) | ClearMinds</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #fffbf5;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            border-bottom: 4px solid #007a87;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            color: #007a87;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .document-title {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .meta-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            background: #dff4da;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #007a87;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .meta-value {
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        .alert-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #007a87;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        h2 {
+            color: #007a87;
+            font-size: 22px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+
+        th {
+            background: #007a87;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .processing-activity {
+            background: #f8f9fa;
+            border-left: 4px solid #007a87;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .processing-activity h4 {
+            color: #007a87;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .detail-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 15px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #007a87;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            font-size: 13px;
+            color: #6c757d;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            .document-title {
+                font-size: 24px;
+            }
+            .detail-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">ClearMinds</div>
+            <h1 class="document-title">Record of Processing Activities (ROPA)</h1>
+            <p style="color: #6c757d; margin-top: 10px;">UK GDPR Article 30 Compliance Document</p>
+        </div>
+
+        <div class="meta-info">
+            <div class="meta-item">
+                <span class="meta-label">Document Owner</span>
+                <span class="meta-value">Data Protection Officer</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Version</span>
+                <span class="meta-value">1.0</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Last Updated</span>
+                <span class="meta-value">[INSERT DATE]</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Review Frequency</span>
+                <span class="meta-value">Quarterly</span>
+            </div>
+        </div>
+
+        <div class="alert-box">
+            <strong>⚠️ LEGAL REQUIREMENT:</strong> Under UK GDPR Article 30, all organisations must maintain a Record of Processing Activities (ROPA). This document must be available to the ICO upon request. Failure to maintain a ROPA can result in regulatory action.
+        </div>
+
+        <h2>1. Introduction</h2>
+        
+        <p>This Record of Processing Activities (ROPA) documents all processing activities carried out by ClearMinds Ltd as a data controller, as required by Article 30 of the UK General Data Protection Regulation.</p>
+
+        <p>This record includes:</p>
+        <ul>
+            <li>The purposes of each processing activity</li>
+            <li>Categories of personal data processed</li>
+            <li>Categories of data subjects</li>
+            <li>Categories of recipients of personal data</li>
+            <li>International data transfers (if any)</li>
+            <li>Retention periods</li>
+            <li>Security measures</li>
+        </ul>
+
+        <h2>2. Controller Information</h2>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th style="width: 250px;">Field</th>
+                    <th>Details</th>
+                </tr>
+                <tr>
+                    <td><strong>Organisation Name</strong></td>
+                    <td>ClearMinds Ltd</td>
+                </tr>
+                <tr>
+                    <td><strong>Registered Address</strong></td>
+                    <td>[INSERT REGISTERED ADDRESS]</td>
+                </tr>
+                <tr>
+                    <td><strong>Company Number</strong></td>
+                    <td>[INSERT COMPANY NUMBER]</td>
+                </tr>
+                <tr>
+                    <td><strong>ICO Registration Number</strong></td>
+                    <td>[INSERT ICO REGISTRATION NUMBER]</td>
+                </tr>
+                <tr>
+                    <td><strong>Data Protection Officer</strong></td>
+                    <td>[DPO NAME]<br>Email: dpo@clearmindseap.com<br>Phone: [DPO PHONE]</td>
+                </tr>
+                <tr>
+                    <td><strong>Contact for Data Protection Matters</strong></td>
+                    <td>Data Protection Officer (details above)</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>3. Processing Activities</h2>
+
+        <div class="info-box">
+            <strong>Note:</strong> Each processing activity is documented separately below. Processing activities are reviewed quarterly and updated when changes occur.
+        </div>
+
+        <!-- Processing Activity 1: EAP Service Delivery -->
+        <div class="processing-activity">
+            <h4>Processing Activity 1: EAP Service Delivery and Clinical Care</h4>
+            
+            <div class="detail-row">
+                <div class="detail-label">Activity Reference:</div>
+                <div>PA-001</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Purpose of Processing:</div>
+                <div>
+                    • Providing Employee Assistance Programme services<br>
+                    • Mental health assessment and support<br>
+                    • Delivering counselling and therapeutic interventions<br>
+                    • Managing appointments and service access<br>
+                    • Maintaining clinical records<br>
+                    • Ensuring continuity of care
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Lawful Basis:</div>
+                <div>
+                    <strong>Standard Personal Data:</strong> Contract (Article 6(1)(b))<br>
+                    <strong>Special Category Data (Health):</strong> Explicit consent (Article 9(2)(a)) and Health/social care purposes (Article 9(2)(h))
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Data Subjects:</div>
+                <div>
+                    • Employees of corporate clients<br>
+                    • Contractors and temporary workers (where applicable)<br>
+                    • Immediate family members of employees<br>
+                    • Former employees (where applicable)
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Personal Data:</div>
+                <div>
+                    <strong>Standard Personal Data:</strong><br>
+                    • Name, contact details (email, phone, address)<br>
+                    • Date of birth<br>
+                    • Employment reference/employee ID<br>
+                    • Communication records (emails, call logs, chat transcripts)<br>
+                    <br>
+                    <strong>Special Category Data (Health Data):</strong><br>
+                    • Mental health concerns and symptoms<br>
+                    • Clinical assessments and diagnoses<br>
+                    • Treatment plans and therapy notes<br>
+                    • Progress notes and outcomes<br>
+                    • Related health information affecting mental health
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Recipients:</div>
+                <div>
+                    • Clinical staff providing care (counsellors, therapists, clinical directors)<br>
+                    • Clinical supervisors (for quality assurance - anonymised where possible)<br>
+                    • IT support staff (limited access for technical support only)<br>
+                    • Corporate clients (aggregated, anonymised statistics only - NOT individual session details)<br>
+                    • Healthcare providers (with explicit consent only - e.g., GP referrals)<br>
+                    • Emergency services (in crisis situations only)<br>
+                    • Legal/regulatory authorities (where legally required)
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">International Transfers:</div>
+                <div>None - all data processed and stored within the United Kingdom</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Retention Period:</div>
+                <div>
+                    • Clinical records (adults): 8 years from last contact<br>
+                    • Clinical records (children/young people): Until 25th birthday OR 8 years from last contact (whichever is longer)<br>
+                    • Account information: Duration of service + 2 years
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Security Measures:</div>
+                <div>
+                    • Encryption in transit (TLS 1.3) and at rest (AES-256)<br>
+                    • Multi-factor authentication for all user accounts<br>
+                    • Role-based access controls<br>
+                    • Regular security audits and penetration testing<br>
+                    • Staff confidentiality training<br>
+                    • Secure backup procedures<br>
+                    • Incident response procedures
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Data Processors:</div>
+                <div>
+                    [Cloud hosting provider - name and location]<br>
+                    [Video platform provider - name and location]<br>
+                    [Backup service provider - name and location]<br>
+                    See DPA Schedule 1 for complete list
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Last Reviewed:</div>
+                <div>[INSERT DATE]</div>
+            </div>
+        </div>
+
+        <!-- Processing Activity 2: B2B Client Management -->
+        <div class="processing-activity">
+            <h4>Processing Activity 2: B2B Client Management and Reporting</h4>
+            
+            <div class="detail-row">
+                <div class="detail-label">Activity Reference:</div>
+                <div>PA-002</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Purpose of Processing:</div>
+                <div>
+                    • Managing corporate client relationships<br>
+                    • Eligibility verification for EAP services<br>
+                    • Providing anonymised usage statistics to corporate clients<br>
+                    • Billing and invoicing<br>
+                    • Service improvement and quality reporting
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Lawful Basis:</div>
+                <div>
+                    Contract (Article 6(1)(b)) - necessary for performance of contract with corporate client<br>
+                    Legitimate interests (Article 6(1)(f)) - business administration and service improvement
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Data Subjects:</div>
+                <div>
+                    • Employees accessing EAP services<br>
+                    • Corporate client HR contacts<br>
+                    • Corporate client billing contacts
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Personal Data:</div>
+                <div>
+                    <strong>Service Users:</strong><br>
+                    • Name and employee reference (for eligibility verification only)<br>
+                    • Dates services accessed (for billing, NOT linked to session details)<br>
+                    <br>
+                    <strong>Corporate Contacts:</strong><br>
+                    • Name, job title, email, phone number<br>
+                    • Organisation name and address
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Recipients:</div>
+                <div>
+                    • Corporate client HR and wellbeing teams (anonymised statistics only)<br>
+                    • Finance team (for billing)<br>
+                    • Account management team<br>
+                    • Senior management (aggregated reporting)
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">International Transfers:</div>
+                <div>None - all data processed and stored within the United Kingdom</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Retention Period:</div>
+                <div>
+                    • Contract and service agreements: Duration of contract + 7 years<br>
+                    • Invoices and financial records: 7 years from end of financial year<br>
+                    • Usage statistics: 7 years<br>
+                    • Contact details: Duration of relationship + 2 years
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Security Measures:</div>
+                <div>
+                    • Encryption in transit and at rest<br>
+                    • Access controls limited to authorised staff<br>
+                    • Regular backup procedures<br>
+                    • Contractual confidentiality obligations
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Data Processors:</div>
+                <div>
+                    [CRM system provider - if applicable]<br>
+                    [Accounting software provider - if applicable]<br>
+                    [Email provider for business communications]
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Last Reviewed:</div>
+                <div>[INSERT DATE]</div>
+            </div>
+        </div>
+
+        <!-- Processing Activity 3: HR and Employment -->
+        <div class="processing-activity">
+            <h4>Processing Activity 3: Human Resources and Employment Management</h4>
+            
+            <div class="detail-row">
+                <div class="detail-label">Activity Reference:</div>
+                <div>PA-003</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Purpose of Processing:</div>
+                <div>
+                    • Recruitment and selection<br>
+                    • Employment contract management<br>
+                    • Payroll and benefits administration<br>
+                    • Performance management<br>
+                    • Training and professional development<br>
+                    • Occupational health and safety<br>
+                    • Disciplinary and grievance procedures<br>
+                    • Compliance with employment law
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Lawful Basis:</div>
+                <div>
+                    Contract (Article 6(1)(b)) - employment contract performance<br>
+                    Legal obligation (Article 6(1)(c)) - compliance with employment law, tax obligations<br>
+                    Legitimate interests (Article 6(1)(f)) - business administration<br>
+                    <br>
+                    <strong>Special Category Data:</strong><br>
+                    Employment law obligations (Article 9(2)(b)) - for occupational health data<br>
+                    Explicit consent (Article 9(2)(a)) - for equal opportunities monitoring
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Data Subjects:</div>
+                <div>
+                    • Job applicants<br>
+                    • Current employees<br>
+                    • Former employees<br>
+                    • Contractors and consultants
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Personal Data:</div>
+                <div>
+                    <strong>Standard Personal Data:</strong><br>
+                    • Name, address, contact details<br>
+                    • Date of birth, NI number<br>
+                    • Employment history, qualifications, references<br>
+                    • Job title, salary, benefits<br>
+                    • Bank details (for payroll)<br>
+                    • Performance reviews, training records<br>
+                    • Disciplinary and grievance records<br>
+                    • CCTV footage, building access logs<br>
+                    <br>
+                    <strong>Special Category Data:</strong><br>
+                    • DBS checks (criminal convictions)<br>
+                    • Occupational health assessments<br>
+                    • Equality and diversity monitoring (voluntary)<br>
+                    • Trade union membership (if applicable)<br>
+                    • Sickness absence records
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Recipients:</div>
+                <div>
+                    • HR team<br>
+                    • Line managers<br>
+                    • Payroll provider<br>
+                    • Pension provider<br>
+                    • HMRC (tax and NI)<br>
+                    • Occupational health providers<br>
+                    • DBS checking service<br>
+                    • Professional indemnity insurers<br>
+                    • Legal advisers (if employment disputes)<br>
+                    • Employment tribunals (if legal proceedings)
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">International Transfers:</div>
+                <div>None - all data processed and stored within the United Kingdom</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Retention Period:</div>
+                <div>
+                    • Recruitment records (unsuccessful): 6 months after recruitment<br>
+                    • Personnel files: Duration of employment + 7 years<br>
+                    • Payroll records: 7 years from end of tax year<br>
+                    • Occupational health records: 40 years from last entry<br>
+                    • Training records: Duration of employment + 7 years<br>
+                    • DBS checks: Duration of employment + 7 years
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Security Measures:</div>
+                <div>
+                    • Locked filing cabinets for physical records<br>
+                    • Encrypted digital storage<br>
+                    • Access limited to authorised HR personnel<br>
+                    • Confidential waste disposal<br>
+                    • Staff confidentiality training
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Data Processors:</div>
+                <div>
+                    [Payroll provider - name]<br>
+                    [Pension provider - name]<br>
+                    [Occupational health provider - name]<br>
+                    [HR software provider - if applicable]
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Last Reviewed:</div>
+                <div>[INSERT DATE]</div>
+            </div>
+        </div>
+
+        <!-- Processing Activity 4: Marketing and Communications -->
+        <div class="processing-activity">
+            <h4>Processing Activity 4: Marketing and Communications</h4>
+            
+            <div class="detail-row">
+                <div class="detail-label">Activity Reference:</div>
+                <div>PA-004</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Purpose of Processing:</div>
+                <div>
+                    • Sending service updates and newsletters<br>
+                    • Marketing EAP services to potential corporate clients<br>
+                    • Responding to enquiries<br>
+                    • Managing subscriptions and preferences<br>
+                    • Website analytics and improvement
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Lawful Basis:</div>
+                <div>
+                    Consent (Article 6(1)(a)) - for marketing communications<br>
+                    Legitimate interests (Article 6(1)(f)) - for B2B marketing and website analytics
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Data Subjects:</div>
+                <div>
+                    • Newsletter subscribers<br>
+                    • Website visitors<br>
+                    • Corporate enquirers and prospects<br>
+                    • Current clients (service communications)
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Personal Data:</div>
+                <div>
+                    • Name, email address, phone number<br>
+                    • Job title, organisation name<br>
+                    • Communication preferences<br>
+                    • Website usage data (IP address, pages visited, cookies)<br>
+                    • Enquiry content
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Recipients:</div>
+                <div>
+                    • Marketing team<br>
+                    • Sales team<br>
+                    • Email service provider<br>
+                    • Website analytics providers (Google Analytics with IP anonymization)<br>
+                    • CRM system (if applicable)
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">International Transfers:</div>
+                <div>
+                    Google Analytics (USA) - with IP anonymization enabled and appropriate safeguards (Google EU-UK Data Transfer Agreement)
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Retention Period:</div>
+                <div>
+                    • Marketing consent: Until consent withdrawn + 6 months<br>
+                    • Enquiries: 2 years from last contact<br>
+                    • Website analytics: 26 months (Google Analytics default)<br>
+                    • Cookies: As per Cookie Policy
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Security Measures:</div>
+                <div>
+                    • Email encryption for sensitive communications<br>
+                    • Secure email service provider<br>
+                    • Unsubscribe mechanism in all marketing emails<br>
+                    • Regular list cleaning<br>
+                    • Cookie consent mechanism on website
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Data Processors:</div>
+                <div>
+                    [Email marketing platform - if applicable, e.g., Mailchimp]<br>
+                    Google Analytics<br>
+                    [CRM provider - if applicable]<br>
+                    [Website hosting provider]
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Last Reviewed:</div>
+                <div>[INSERT DATE]</div>
+            </div>
+        </div>
+
+        <!-- Processing Activity 5: IT Systems and Security -->
+        <div class="processing-activity">
+            <h4>Processing Activity 5: IT Systems Management and Security</h4>
+            
+            <div class="detail-row">
+                <div class="detail-label">Activity Reference:</div>
+                <div>PA-005</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Purpose of Processing:</div>
+                <div>
+                    • Managing IT infrastructure and systems<br>
+                    • Network and information security<br>
+                    • Access control and authentication<br>
+                    • Security monitoring and incident response<br>
+                    • System backups and disaster recovery<br>
+                    • IT support and troubleshooting
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Lawful Basis:</div>
+                <div>
+                    Legitimate interests (Article 6(1)(f)) - network and information security, system administration<br>
+                    Contract (Article 6(1)(b)) - providing secure services to users
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Data Subjects:</div>
+                <div>
+                    • Staff members<br>
+                    • Service users<br>
+                    • Website visitors
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Personal Data:</div>
+                <div>
+                    • User IDs and credentials (hashed passwords)<br>
+                    • IP addresses<br>
+                    • System logs (access logs, security logs, error logs)<br>
+                    • Device information (browser, operating system)<br>
+                    • Login times and session data<br>
+                    • CCTV footage (building security)<br>
+                    • Building access logs
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Recipients:</div>
+                <div>
+                    • IT support team<br>
+                    • System administrators<br>
+                    • Information security team<br>
+                    • Cloud hosting providers<br>
+                    • Security software providers<br>
+                    • IT service providers and contractors
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">International Transfers:</div>
+                <div>None - infrastructure hosted in UK</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Retention Period:</div>
+                <div>
+                    • System logs: 2 years<br>
+                    • Access logs: 2 years<br>
+                    • Security incident logs: 7 years<br>
+                    • CCTV footage: 30 days (unless incident-related)<br>
+                    • Building access logs: 1 year
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Security Measures:</div>
+                <div>
+                    • Multi-factor authentication<br>
+                    • Encryption in transit and at rest<br>
+                    • Intrusion detection systems<br>
+                    • Regular security updates and patching<br>
+                    • Access controls and privileged access management<br>
+                    • 24/7 security monitoring<br>
+                    • Regular security audits and penetration testing
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Data Processors:</div>
+                <div>
+                    [Cloud hosting provider]<br>
+                    [Backup service provider]<br>
+                    [Security software providers]<br>
+                    [IT support contractors]
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Last Reviewed:</div>
+                <div>[INSERT DATE]</div>
+            </div>
+        </div>
+
+        <!-- Processing Activity 6: Legal and Compliance -->
+        <div class="processing-activity">
+            <h4>Processing Activity 6: Legal Compliance and Regulatory Requirements</h4>
+            
+            <div class="detail-row">
+                <div class="detail-label">Activity Reference:</div>
+                <div>PA-006</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Purpose of Processing:</div>
+                <div>
+                    • Compliance with legal and regulatory obligations<br>
+                    • Responding to Subject Access Requests (SARs)<br>
+                    • Managing complaints and disputes<br>
+                    • Defending legal claims<br>
+                    • Regulatory inspections and audits<br>
+                    • Professional indemnity requirements
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Lawful Basis:</div>
+                <div>
+                    Legal obligation (Article 6(1)(c)) - compliance with legal requirements<br>
+                    Legitimate interests (Article 6(1)(f)) - defence of legal claims<br>
+                    <br>
+                    <strong>Special Category Data:</strong><br>
+                    Legal claims (Article 9(2)(f)) - for defence of legal claims involving health data
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Data Subjects:</div>
+                <div>
+                    • Individuals making data subject rights requests<br>
+                    • Complainants<br>
+                    • Parties to legal disputes<br>
+                    • Individuals subject to regulatory enquiries
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Personal Data:</div>
+                <div>
+                    • All personal data held about the individual (for SARs)<br>
+                    • Complaint details and correspondence<br>
+                    • Legal correspondence and documentation<br>
+                    • Evidence and witness statements<br>
+                    • Clinical records (where relevant to complaint/legal matter)
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categories of Recipients:</div>
+                <div>
+                    • Data Protection Officer<br>
+                    • Legal advisers and solicitors<br>
+                    • Courts and tribunals<br>
+                    • Information Commissioner's Office (ICO)<br>
+                    • Professional regulatory bodies<br>
+                    • Professional indemnity insurers<br>
+                    • Mediators and arbitrators
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">International Transfers:</div>
+                <div>None</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Retention Period:</div>
+                <div>
+                    • SAR records: 3 years from fulfilment<br>
+                    • Complaints: 7 years from resolution<br>
+                    • Legal claims: 7 years from case conclusion<br>
+                    • Regulatory correspondence: 7 years
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Security Measures:</div>
+                <div>
+                    • Encrypted storage of legal files<br>
+                    • Restricted access to legal team and DPO<br>
+                    • Secure communication with legal advisers (encrypted email)<br>
+                    • Physical security for paper files<br>
+                    • Confidential waste disposal
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Data Processors:</div>
+                <div>
+                    External legal advisers (as data processors when handling data on our behalf)
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Last Reviewed:</div>
+                <div>[INSERT DATE]</div>
+            </div>
+        </div>
+
+        <h2>4. Data Processors and Third Parties</h2>
+
+        <div class="info-box">
+            <strong>Note:</strong> A complete list of data processors (sub-processors) is maintained in Schedule 1 of our Data Processing Agreements. Key categories include:
+            <ul>
+                <li>Cloud hosting and infrastructure providers</li>
+                <li>Email and communication service providers</li>
+                <li>Video conferencing/telehealth platforms</li>
+                <li>Backup and disaster recovery services</li>
+                <li>Payment processing (if applicable)</li>
+                <li>IT support and managed service providers</li>
+            </ul>
+            All processors are bound by Data Processing Agreements meeting UK GDPR Article 28 requirements.
+        </div>
+
+        <h2>5. International Data Transfers</h2>
+
+        <p><strong>General Approach:</strong> ClearMinds prioritizes UK-based data processing and storage. Where international transfers occur, appropriate safeguards are in place:</p>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Transfer</th>
+                        <th>Destination</th>
+                        <th>Safeguard</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Google Analytics</td>
+                        <td>USA</td>
+                        <td>Google EU-UK Data Transfer Agreement, IP anonymization</td>
+                        <td>Website analytics</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: center; font-style: italic; color: #6c757d;">
+                            [Add any other international transfers - ideally there should be none for clinical data]
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>6. Review and Maintenance</h2>
+
+        <p>This Record of Processing Activities is:</p>
+        <ul>
+            <li><strong>Reviewed Quarterly:</strong> By the Data Protection Officer</li>
+            <li><strong>Updated Immediately:</strong> When new processing activities commence or existing activities change significantly</li>
+            <li><strong>Available to ICO:</strong> Upon request as required by Article 30</li>
+            <li><strong>Version Controlled:</strong> Previous versions retained for audit trail</li>
+        </ul>
+
+        <h2>7. Version History</h2>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Version</th>
+                        <th>Date</th>
+                        <th>Changes</th>
+                        <th>Reviewed By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.0</td>
+                        <td>[INSERT DATE]</td>
+                        <td>Initial ROPA created</td>
+                        <td>[DPO NAME]</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: center; font-style: italic; color: #6c757d;">
+                            Future versions will be documented here
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>8. Approval</h2>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <td style="width: 200px;"><strong>Prepared By:</strong></td>
+                    <td>[DPO NAME]</td>
+                </tr>
+                <tr>
+                    <td><strong>Date:</strong></td>
+                    <td>[INSERT DATE]</td>
+                </tr>
+                <tr>
+                    <td><strong>Approved By:</strong></td>
+                    <td>[MANAGING DIRECTOR/CEO]</td>
+                </tr>
+                <tr>
+                    <td><strong>Date:</strong></td>
+                    <td>[INSERT DATE]</td>
+                </tr>
+                <tr>
+                    <td><strong>Next Review Date:</strong></td>
+                    <td>[DATE + 3 MONTHS]</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p><strong>ClearMinds Record of Processing Activities (ROPA)</strong> | Version 1.0 | Last Updated: [DATE]</p>
+            <p>This document is reviewed quarterly and must be made available to the ICO upon request.</p>
+            <p><strong>UK GDPR Article 30 Compliance Document</strong></p>
+            <p>&copy; 2024 ClearMinds. All rights reserved. This document is confidential and proprietary.</p>
+        </div>
+    </div>
+</body>
+</html>

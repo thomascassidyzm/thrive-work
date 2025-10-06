@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Retention Policy | ClearMinds</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #fffbf5;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            border-bottom: 4px solid #007a87;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            color: #007a87;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .document-title {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .meta-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            background: #dff4da;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #007a87;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .meta-value {
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        h2 {
+            color: #007a87;
+            font-size: 22px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+        }
+
+        th {
+            background: #007a87;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #007a87;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            font-size: 13px;
+            color: #6c757d;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            .document-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">ClearMinds</div>
+            <h1 class="document-title">Data Retention Policy</h1>
+        </div>
+
+        <div class="meta-info">
+            <div class="meta-item">
+                <span class="meta-label">Policy Owner</span>
+                <span class="meta-value">Data Protection Officer</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Version</span>
+                <span class="meta-value">1.0</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Effective Date</span>
+                <span class="meta-value">[INSERT DATE]</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Review Date</span>
+                <span class="meta-value">[ANNUAL REVIEW]</span>
+            </div>
+        </div>
+
+        <h2>1. Purpose and Scope</h2>
+        
+        <p>This Data Retention Policy sets out how long ClearMinds retains personal data and the processes for reviewing and securely disposing of data when retention periods expire.</p>
+
+        <p>This policy is designed to ensure compliance with:</p>
+        <ul>
+            <li>UK General Data Protection Regulation (UK GDPR)</li>
+            <li>Data Protection Act 2018</li>
+            <li>Professional clinical record-keeping standards</li>
+            <li>Financial and tax record requirements</li>
+            <li>Employment law obligations</li>
+        </ul>
+
+        <p>The policy applies to all personal data processed by ClearMinds, whether in electronic or physical format.</p>
+
+        <h2>2. Legal and Regulatory Framework</h2>
+
+        <h3>2.1 GDPR Storage Limitation Principle</h3>
+        <p>Under UK GDPR Article 5(1)(e), personal data must be "kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed."</p>
+
+        <h3>2.2 Balancing Factors</h3>
+        <p>We balance several considerations when determining retention periods:</p>
+        <ul>
+            <li><strong>Purpose:</strong> Why the data was collected and how long it's needed for that purpose</li>
+            <li><strong>Legal Requirements:</strong> Minimum retention periods required by law or regulation</li>
+            <li><strong>Clinical Best Practice:</strong> Professional standards for healthcare records</li>
+            <li><strong>Legitimate Interests:</strong> Defence of legal claims, continuity of care</li>
+            <li><strong>Data Subject Rights:</strong> Rights to erasure and other individual rights</li>
+        </ul>
+
+        <h2>3. Retention Schedule</h2>
+
+        <h3>3.1 Clinical and Health Records</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Retention Period</th>
+                        <th>Legal/Professional Basis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Adult clinical records</strong></td>
+                        <td>8 years from last contact</td>
+                        <td>NHS Digital guidance, professional standards, limitation period for legal claims</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Children's clinical records (under 18)</strong></td>
+                        <td>Until 25th birthday OR 8 years after last contact (whichever is longer)</td>
+                        <td>NHS guidance, safeguarding considerations, clinical best practice</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Young persons clinical records (16-17 with capacity)</strong></td>
+                        <td>Until 25th birthday OR 8 years after last contact (whichever is longer)</td>
+                        <td>NHS guidance, capacity considerations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Assessment questionnaires and screening tools</strong></td>
+                        <td>As part of clinical record</td>
+                        <td>Clinical continuity, treatment evaluation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Treatment plans and progress notes</strong></td>
+                        <td>As part of clinical record</td>
+                        <td>Clinical record-keeping standards</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Safeguarding records</strong></td>
+                        <td>75 years from date of birth OR 15 years from last entry (whichever is longer)</td>
+                        <td>Safeguarding best practice, historical abuse enquiries</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Records involving serious harm or death</strong></td>
+                        <td>30 years from incident date</td>
+                        <td>Professional indemnity, coroner's investigations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Research data (anonymised)</strong></td>
+                        <td>Per research protocol (typically 10+ years)</td>
+                        <td>Research governance requirements</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>3.2 User Account and Service Access</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Retention Period</th>
+                        <th>Basis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Active user accounts</strong></td>
+                        <td>Duration of service relationship</td>
+                        <td>Contract, service delivery</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inactive accounts (no clinical engagement)</strong></td>
+                        <td>2 years of inactivity, then deletion</td>
+                        <td>Data minimisation, legitimate interests</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contact details</strong></td>
+                        <td>As part of clinical record OR 2 years after service end</td>
+                        <td>Clinical continuity, service administration</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Login and access logs</strong></td>
+                        <td>2 years</td>
+                        <td>Security monitoring, incident investigation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Session recordings (if used)</strong></td>
+                        <td>30 days OR as part of clinical record if clinically relevant</td>
+                        <td>Quality assurance, safeguarding</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>3.3 Communication Records</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Retention Period</th>
+                        <th>Basis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Clinical emails (part of treatment)</strong></td>
+                        <td>As part of clinical record</td>
+                        <td>Clinical record-keeping</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Service enquiries and support emails</strong></td>
+                        <td>2 years from closure</td>
+                        <td>Service improvement, complaints handling</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Call recordings (if used)</strong></td>
+                        <td>6 months</td>
+                        <td>Quality assurance, training</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chat transcripts (clinical)</strong></td>
+                        <td>As part of clinical record</td>
+                        <td>Clinical record-keeping</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Marketing communications</strong></td>
+                        <td>Until consent withdrawn + 6 months</td>
+                        <td>Evidence of consent, audit trail</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>3.4 Business and Administrative Records</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Retention Period</th>
+                        <th>Basis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Financial records (invoices, payments)</strong></td>
+                        <td>7 years from end of financial year</td>
+                        <td>Tax and accounting regulations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contracts and agreements</strong></td>
+                        <td>7 years after expiry</td>
+                        <td>Limitation period for contract claims</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Insurance policies and claims</strong></td>
+                        <td>7 years after expiry/settlement</td>
+                        <td>Insurance requirements, claims defence</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EAP partner agreements</strong></td>
+                        <td>Duration of agreement + 7 years</td>
+                        <td>Commercial and legal requirements</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Aggregated usage statistics</strong></td>
+                        <td>7 years</td>
+                        <td>Business analysis, partner reporting</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>3.5 Employment Records</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Retention Period</th>
+                        <th>Basis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Personnel files</strong></td>
+                        <td>7 years after employment ends</td>
+                        <td>Employment law, tribunal limitation periods</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Recruitment records (unsuccessful)</strong></td>
+                        <td>6 months after recruitment process</td>
+                        <td>Discrimination claims, audit trail</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Payroll records</strong></td>
+                        <td>7 years from end of tax year</td>
+                        <td>HMRC requirements</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DBS checks and professional registration</strong></td>
+                        <td>Duration of employment + 7 years</td>
+                        <td>Safeguarding, professional accountability</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Training records</strong></td>
+                        <td>Duration of employment + 7 years</td>
+                        <td>Professional development, competency evidence</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disciplinary records</strong></td>
+                        <td>Duration of employment + 7 years</td>
+                        <td>Employment law, legal claims</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Occupational health records</strong></td>
+                        <td>40 years from last entry</td>
+                        <td>Health and safety regulations</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>3.6 Security and Monitoring</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Retention Period</th>
+                        <th>Basis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>CCTV footage</strong></td>
+                        <td>30 days (unless incident-related)</td>
+                        <td>Security purposes, ICO guidance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Building access logs</strong></td>
+                        <td>1 year</td>
+                        <td>Security monitoring</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IT system logs</strong></td>
+                        <td>2 years</td>
+                        <td>Security incident investigation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data breach records</strong></td>
+                        <td>7 years from breach date</td>
+                        <td>ICO accountability, legal claims</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>3.7 Complaints and Legal</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Retention Period</th>
+                        <th>Basis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Complaints records</strong></td>
+                        <td>7 years from resolution</td>
+                        <td>Accountability, service improvement</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Legal claims and litigation</strong></td>
+                        <td>7 years after case conclusion</td>
+                        <td>Legal requirements, appeals</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Subject Access Requests (SARs)</strong></td>
+                        <td>3 years from fulfilment</td>
+                        <td>ICO accountability, audit trail</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Consent records</strong></td>
+                        <td>Duration of processing + 3 years</td>
+                        <td>Evidence of lawful processing</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>4. Secure Disposal Procedures</h2>
+
+        <p>When retention periods expire, ClearMinds ensures secure disposal of personal data:</p>
+
+        <h3>4.1 Electronic Data</h3>
+        <ul>
+            <li><strong>Secure Deletion:</strong> Multi-pass overwriting using approved deletion software</li>
+            <li><strong>Backups:</strong> Deletion from all backup systems and archives</li>
+            <li><strong>Cloud Storage:</strong> Deletion verified with service providers</li>
+            <li><strong>Verification:</strong> Deletion confirmed and logged by IT team</li>
+            <li><strong>Disposal Log:</strong> Record of what was deleted, when, and by whom</li>
+        </ul>
+
+        <h3>4.2 Physical Records</h3>
+        <ul>
+            <li><strong>Confidential Shredding:</strong> Cross-cut shredding to DIN P-4 standard minimum</li>
+            <li><strong>Secure Bins:</strong> Locked confidential waste bins</li>
+            <li><strong>Certified Disposal:</strong> Use of DBS-checked disposal contractors</li>
+            <li><strong>Destruction Certificates:</strong> Certificates of destruction obtained and retained</li>
+            <li><strong>No Landfill:</strong> Shredded materials incinerated or recycled securely</li>
+        </ul>
+
+        <h3>4.3 Hardware and Devices</h3>
+        <ul>
+            <li><strong>Degaussing:</strong> Magnetic media degaussed before disposal</li>
+            <li><strong>Physical Destruction:</strong> Hard drives physically destroyed</li>
+            <li><strong>WEEE Compliance:</strong> Electronic waste disposed of via certified WEEE contractors</li>
+            <li><strong>Certificate of Destruction:</strong> Obtained for all hardware disposal</li>
+        </ul>
+
+        <h2>5. Exemptions and Extended Retention</h2>
+
+        <p>Retention periods may be extended in the following circumstances:</p>
+
+        <h3>5.1 Legal Hold</h3>
+        <p>Data subject to legal proceedings, regulatory investigations, or formal complaints must be retained until the matter is resolved, regardless of normal retention periods.</p>
+
+        <h3>5.2 Historical or Research Value</h3>
+        <p>With appropriate safeguards and anonymisation, data may be retained longer for:</p>
+        <ul>
+            <li>Legitimate research purposes (with ethical approval)</li>
+            <li>Statistical analysis and public health research</li>
+            <li>Audit and quality improvement</li>
+        </ul>
+
+        <h3>5.3 Safeguarding Concerns</h3>
+        <p>Records involving serious safeguarding issues may be retained longer than standard periods to support historical abuse enquiries or ongoing risk management.</p>
+
+        <h2>6. Review and Deletion Process</h2>
+
+        <h3>6.1 Automated Review</h3>
+        <ul>
+            <li>Automated systems flag records approaching retention period expiry</li>
+            <li>Quarterly reports generated for manual review</li>
+            <li>Notifications sent to relevant data owners</li>
+        </ul>
+
+        <h3>6.2 Manual Review</h3>
+        <ul>
+            <li>Data Protection Officer reviews flagged records</li>
+            <li>Assessment of any exemptions or extensions needed</li>
+            <li>Approval required before deletion of clinical records</li>
+        </ul>
+
+        <h3>6.3 Deletion Execution</h3>
+        <ul>
+            <li>Approved deletions executed by authorised IT personnel</li>
+            <li>Deletion logged with date, time, and responsible person</li>
+            <li>Verification of complete removal from all systems</li>
+        </ul>
+
+        <h2>7. Individual Rights and Retention</h2>
+
+        <h3>7.1 Right to Erasure Requests</h3>
+        <p>Data subjects can request early deletion of their personal data. We will comply unless we have a legitimate reason to continue retention, such as:</p>
+        <ul>
+            <li>Legal obligation to retain the data</li>
+            <li>Necessary for defence of legal claims</li>
+            <li>Necessary for public interest or research purposes (with safeguards)</li>
+        </ul>
+
+        <h3>7.2 Clinical Record Requests</h3>
+        <p>Requests for early deletion of clinical records require careful assessment:</p>
+        <ul>
+            <li>Clinical director must approve deletion of clinical records</li>
+            <li>Consideration of continuity of care implications</li>
+            <li>Consideration of safeguarding responsibilities</li>
+            <li>Assessment of legal and professional obligations</li>
+            <li>Documentation of decision-making process</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>Important:</strong> We cannot delete clinical records if there are ongoing safeguarding concerns, active legal proceedings, or regulatory investigations. Refusal to delete will be explained with reference to the specific legal basis.
+        </div>
+
+        <h2>8. Responsibilities</h2>
+
+        <h3>8.1 Data Protection Officer</h3>
+        <ul>
+            <li>Overall oversight of data retention compliance</li>
+            <li>Maintaining and updating retention schedules</li>
+            <li>Quarterly retention compliance reports</li>
+            <li>Reviewing and approving deletion requests</li>
+        </ul>
+
+        <h3>8.2 Clinical Director</h3>
+        <ul>
+            <li>Approving deletion of clinical records</li>
+            <li>Ensuring clinical record retention compliance</li>
+            <li>Advising on clinical retention considerations</li>
+        </ul>
+
+        <h3>8.3 IT Department</h3>
+        <ul>
+            <li>Implementing automated retention management systems</li>
+            <li>Executing approved deletions securely</li>
+            <li>Maintaining deletion logs</li>
+            <li>Managing secure disposal of hardware</li>
+        </ul>
+
+        <h3>8.4 All Staff</h3>
+        <ul>
+            <li>Complying with retention requirements</li>
+            <li>Not retaining data beyond approved periods</li>
+            <li>Using secure disposal procedures</li>
+            <li>Reporting retention issues to the DPO</li>
+        </ul>
+
+        <h2>9. Monitoring and Auditing</h2>
+
+        <ul>
+            <li><strong>Quarterly Reviews:</strong> Compliance with retention schedules</li>
+            <li><strong>Annual Audits:</strong> Full audit of retention practices</li>
+            <li><strong>Deletion Logs:</strong> Review of deletion records for completeness</li>
+            <li><strong>Spot Checks:</strong> Random sampling of records to verify compliance</li>
+            <li><strong>External Audits:</strong> Periodic independent assessment</li>
+        </ul>
+
+        <h2>10. Training and Awareness</h2>
+
+        <p>All staff receive training on data retention:</p>
+        <ul>
+            <li>Induction training covering retention policies</li>
+            <li>Annual refresher training</li>
+            <li>Role-specific training for records management</li>
+            <li>Updates on policy changes</li>
+        </ul>
+
+        <h2>11. Policy Review</h2>
+
+        <p>This policy is reviewed annually and updated to reflect:</p>
+        <ul>
+            <li>Changes in legal or regulatory requirements</li>
+            <li>Changes in professional guidance</li>
+            <li>Learning from audits and incidents</li>
+            <li>Changes in business practices</li>
+            <li>ICO guidance updates</li>
+        </ul>
+
+        <h2>12. Related Documents</h2>
+
+        <ul>
+            <li>Data Protection Policy</li>
+            <li>Privacy Policy</li>
+            <li>Information Security Policy</li>
+            <li>Data Breach Response Plan</li>
+            <li>Subject Access Request (SAR) Procedure</li>
+            <li>Records Management Policy</li>
+        </ul>
+
+        <div class="footer">
+            <p><strong>ClearMinds Data Retention Policy</strong> | Version 1.0 | Effective [DATE]</p>
+            <p>This policy is reviewed annually and updated as required.</p>
+            <p>&copy; 2024 ClearMinds. All rights reserved. This document is confidential and proprietary.</p>
+        </div>
+    </div>
+</body>
+</html>
