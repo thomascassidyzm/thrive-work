@@ -5,53 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Protection Quick Reference Guide | ClearMinds</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; line-height: 1.5; color: #333; background: #fffbf5; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        
+        .policy-header {
+            background: linear-gradient(135deg, #007a87 0%, #0d3b3e 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
         }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.5;
-            color: #2c3e50;
-            background: #fffbf5;
-            padding: 20px;
+        .policy-header a {
+            color: #dff4da;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
         }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
+        .policy-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .policy-header .subtitle {
+            color: #bedee1;
+            font-size: 1.1rem;
+        }
+        
+        .policy-content {
             background: white;
             padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
         }
-
-        .header {
-            background: linear-gradient(135deg, #007a87 0%, #005a63 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 8px 8px 0 0;
-            margin: -40px -40px 30px -40px;
+        .policy-content h2 {
+            color: #007a87;
+            font-size: 1.8rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #dff4da;
         }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
+        .policy-content h3 {
+            color: #0d3b3e;
+            font-size: 1.3rem;
+            margin: 20px 0 10px 0;
         }
-
-        .document-title {
-            font-size: 22px;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
+        
         .quick-tip {
             background: #dff4da;
             border-left: 4px solid #007a87;
@@ -59,7 +57,7 @@
             margin: 20px 0;
             border-radius: 4px;
         }
-
+        
         .emergency-box {
             background: #dc3545;
             color: white;
@@ -69,97 +67,55 @@
             font-weight: 600;
             text-align: center;
         }
-
         .emergency-box a {
             color: white;
             text-decoration: underline;
         }
-
+        
         .dos-donts {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
             margin: 20px 0;
         }
-
+        
         .do-box, .dont-box {
             padding: 20px;
             border-radius: 6px;
         }
-
+        
         .do-box {
             background: #d4edda;
             border-left: 4px solid #28a745;
         }
-
+        
         .dont-box {
             background: #f8d7da;
             border-left: 4px solid #dc3545;
         }
-
+        
         .do-box h3, .dont-box h3 {
             font-size: 18px;
             margin-bottom: 12px;
         }
-
+        
         .do-box h3 {
             color: #28a745;
         }
-
+        
         .dont-box h3 {
             color: #dc3545;
         }
-
-        h2 {
-            color: #007a87;
-            font-size: 20px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-weight: 600;
-            border-bottom: 2px solid #007a87;
-            padding-bottom: 5px;
-        }
-
-        h3 {
-            color: #2c3e50;
-            font-size: 16px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
+        
         ul {
-            margin-bottom: 12px;
+            margin: 12px 0;
             padding-left: 25px;
         }
-
+        
         li {
             margin-bottom: 6px;
         }
-
-        .icon-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .icon-list li {
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .icon-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #007a87;
-            font-weight: bold;
-        }
-
-        .dont-list li::before {
-            content: "✗";
-            color: #dc3545;
-        }
-
+        
         .contact-box {
             background: #f8f9fa;
             padding: 20px;
@@ -167,312 +123,272 @@
             border: 2px solid #007a87;
             margin: 20px 0;
         }
-
+        
         .contact-box h3 {
             color: #007a87;
             margin-top: 0;
         }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .info-card {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 6px;
-            border-left: 4px solid #007a87;
-        }
-
-        .info-card h4 {
-            color: #007a87;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
+        
         .footer {
             margin-top: 30px;
             padding-top: 20px;
             border-top: 2px solid #e0e0e0;
             font-size: 12px;
-            color: #6c757d;
+            color: #666;
             text-align: center;
         }
-
+        
         @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            .container {
-                box-shadow: none;
-                padding: 20px;
-            }
-            .header {
-                background: #007a87 !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
+            body { background: white; }
+            .policy-header { background: #007a87 !important; -webkit-print-color-adjust: exact; }
         }
-
+        
         @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-            .dos-donts, .grid-2 {
-                grid-template-columns: 1fr;
-            }
+            .policy-header h1 { font-size: 2rem; }
+            .dos-donts { grid-template-columns: 1fr; }
+            .policy-content { padding: 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">ClearMinds</div>
-            <div class="document-title">Data Protection Quick Reference Guide</div>
-            <div class="subtitle">Essential tips for protecting personal data every day</div>
+    <div class="policy-header">
+        <div class="container">
+            <a href="../index.html">← Back to Policies</a>
+            <h1>Data Protection Quick Reference Guide</h1>
+            <p class="subtitle">Essential tips for protecting personal data every day</p>
         </div>
+    </div>
 
+    <div class="container">
         <div class="emergency-box">
             🚨 DATA BREACH EMERGENCY?<br>
             Contact DPO IMMEDIATELY: <a href="mailto:dpo@clearmindseap.com">dpo@clearmindseap.com</a> | [EMERGENCY NUMBER]
         </div>
 
-        <h2>🎯 The Golden Rules</h2>
+        <div class="policy-content">
+            <h2>🎯 The Golden Rules</h2>
 
-        <div class="dos-donts">
-            <div class="do-box">
-                <h3>✓ DO</h3>
-                <ul class="icon-list">
-                    <li>Only access data you need for your role</li>
-                    <li>Lock your screen when leaving your desk</li>
-                    <li>Use strong, unique passwords</li>
-                    <li>Enable multi-factor authentication</li>
-                    <li>Encrypt sensitive emails</li>
-                    <li>Report suspicious activity immediately</li>
-                    <li>Keep personal data confidential</li>
-                    <li>Follow the clear desk policy</li>
+            <div class="dos-donts">
+                <div class="do-box">
+                    <h3>✓ DO</h3>
+                    <ul>
+                        <li>Only access data you need for your role</li>
+                        <li>Lock your screen when leaving your desk</li>
+                        <li>Use strong, unique passwords</li>
+                        <li>Enable multi-factor authentication</li>
+                        <li>Encrypt sensitive emails</li>
+                        <li>Report suspicious activity immediately</li>
+                        <li>Keep personal data confidential</li>
+                        <li>Follow the clear desk policy</li>
+                    </ul>
+                </div>
+
+                <div class="dont-box">
+                    <h3>✗ DON'T</h3>
+                    <ul>
+                        <li>Share your password with anyone</li>
+                        <li>Leave documents on your desk</li>
+                        <li>Email personal data without encryption</li>
+                        <li>Use public Wi-Fi without VPN</li>
+                        <li>Take client files home without permission</li>
+                        <li>Discuss clients in public places</li>
+                        <li>Post about work on social media</li>
+                        <li>Use personal devices for work data</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>📧 Sending Sensitive Information by Email</h2>
+
+            <div class="quick-tip">
+                <strong>STOP! Is this email secure?</strong> Before sending personal data:
+                <ol style="margin: 10px 0 0 20px;">
+                    <li><strong>Check the recipient:</strong> Is the email address correct?</li>
+                    <li><strong>Encrypt if sensitive:</strong> Use encryption for health data</li>
+                    <li><strong>Use BCC for bulk emails:</strong> Don't expose everyone's email address</li>
+                    <li><strong>Consider alternatives:</strong> Could you use secure portal instead?</li>
+                </ol>
+            </div>
+
+            <h3>Common Email Mistakes to Avoid:</h3>
+            <ul>
+                <li>❌ Using "Reply All" when you should "Reply"</li>
+                <li>❌ Auto-complete selecting the wrong recipient</li>
+                <li>❌ Forgetting to remove previous recipients from a forward</li>
+                <li>❌ Including personal data in the subject line</li>
+                <li>❌ Sending unencrypted clinical notes</li>
+            </ul>
+
+            <h2>🔐 Password Security</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; border-left: 4px solid #007a87;">
+                    <h4 style="color: #007a87; margin-bottom: 10px;">Strong Password Requirements:</h4>
+                    <ul style="font-size: 14px;">
+                        <li>Minimum 12 characters</li>
+                        <li>Mix of upper & lowercase</li>
+                        <li>Include numbers & symbols</li>
+                        <li>Never reuse passwords</li>
+                        <li>Use a password manager</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; border-left: 4px solid #dc3545;">
+                    <h4 style="color: #dc3545; margin-bottom: 10px;">Password DON'Ts:</h4>
+                    <ul style="font-size: 14px;">
+                        <li>Don't use personal info</li>
+                        <li>Don't write them down</li>
+                        <li>Don't share with colleagues</li>
+                        <li>Don't use same password twice</li>
+                        <li>Don't save in browser</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>🚨 Recognizing a Data Breach</h2>
+
+            <div class="quick-tip">
+                <strong>A data breach is ANY incident where personal data is:</strong>
+                <ul style="margin: 10px 0 0 20px;">
+                    <li>Lost or stolen (laptop, USB, papers)</li>
+                    <li>Accessed by unauthorized person</li>
+                    <li>Sent to wrong person</li>
+                    <li>Disclosed accidentally</li>
+                    <li>Altered or corrupted</li>
+                    <li>Made unavailable</li>
                 </ul>
             </div>
 
-            <div class="dont-box">
-                <h3>✗ DON'T</h3>
-                <ul class="icon-list dont-list">
-                    <li>Share your password with anyone</li>
-                    <li>Leave documents on your desk</li>
-                    <li>Email personal data without encryption</li>
-                    <li>Use public Wi-Fi without VPN</li>
-                    <li>Take client files home without permission</li>
-                    <li>Discuss clients in public places</li>
-                    <li>Post about work on social media</li>
-                    <li>Use personal devices for work data</li>
-                </ul>
-            </div>
-        </div>
-
-        <h2>📧 Sending Sensitive Information by Email</h2>
-
-        <div class="quick-tip">
-            <strong>STOP! Is this email secure?</strong> Before sending personal data:
-            <ol style="margin: 10px 0 0 20px;">
-                <li><strong>Check the recipient:</strong> Is the email address correct?</li>
-                <li><strong>Encrypt if sensitive:</strong> Use encryption for health data</li>
-                <li><strong>Use BCC for bulk emails:</strong> Don't expose everyone's email address</li>
-                <li><strong>Consider alternatives:</strong> Could you use secure portal instead?</li>
+            <h3>If You Suspect a Data Breach:</h3>
+            <ol>
+                <li><strong>STOP</strong> - Don't make it worse</li>
+                <li><strong>CONTAIN</strong> - Prevent further access if possible</li>
+                <li><strong>REPORT IMMEDIATELY</strong> - Contact DPO at dpo@clearmindseap.com or [EMERGENCY NUMBER]</li>
+                <li><strong>PRESERVE EVIDENCE</strong> - Don't delete anything</li>
+                <li><strong>DOCUMENT</strong> - Write down exactly what happened</li>
             </ol>
-        </div>
 
-        <h3>Common Email Mistakes to Avoid:</h3>
-        <ul>
-            <li>❌ Using "Reply All" when you should "Reply"</li>
-            <li>❌ Auto-complete selecting the wrong recipient</li>
-            <li>❌ Forgetting to remove previous recipients from a forward</li>
-            <li>❌ Including personal data in the subject line</li>
-            <li>❌ Sending unencrypted clinical notes</li>
-        </ul>
+            <p style="color: #dc3545; font-weight: 600; margin-top: 10px;">⚠️ We have 72 hours to report serious breaches to the ICO - REPORT IMMEDIATELY!</p>
 
-        <h2>🔐 Password Security</h2>
+            <h2>📱 Mobile Device & Remote Working</h2>
 
-        <div class="grid-2">
-            <div class="info-card">
-                <h4>Strong Password Requirements:</h4>
-                <ul style="font-size: 13px;">
-                    <li>Minimum 12 characters</li>
-                    <li>Mix of upper & lowercase</li>
-                    <li>Include numbers & symbols</li>
-                    <li>Never reuse passwords</li>
-                    <li>Use a password manager</li>
+            <ul>
+                <li>✓ Enable device encryption and passcode</li>
+                <li>✓ Use VPN when working remotely</li>
+                <li>✓ Never leave devices unattended in public</li>
+                <li>✓ Don't use public Wi-Fi without VPN</li>
+                <li>✓ Report lost/stolen devices immediately</li>
+                <li>✓ Keep work and personal data separate</li>
+                <li>✓ Be aware of shoulder surfing in public</li>
+                <li>✓ Don't discuss sensitive information on public transport</li>
+            </ul>
+
+            <h2>🗑️ Disposing of Data Securely</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 6px;">
+                    <h4 style="color: #007a87; margin-bottom: 10px;">Physical Records:</h4>
+                    <ul style="font-size: 13px;">
+                        <li>Use confidential waste bins</li>
+                        <li>Cross-cut shred all documents</li>
+                        <li>Never put in regular bin</li>
+                        <li>Lock confidential waste bins</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 6px;">
+                    <h4 style="color: #007a87; margin-bottom: 10px;">Electronic Records:</h4>
+                    <ul style="font-size: 13px;">
+                        <li>Delete files properly (not just recycle bin)</li>
+                        <li>Contact IT for hard drive disposal</li>
+                        <li>Wipe devices before disposal</li>
+                        <li>Never throw away USB/hard drives</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>👥 Client Confidentiality (Clinical Staff)</h2>
+
+            <div class="quick-tip">
+                <strong>Remember:</strong> Client confidentiality is ABSOLUTE unless:
+                <ul style="margin: 10px 0 0 20px;">
+                    <li>Client gives explicit consent to share</li>
+                    <li>There's a safeguarding concern</li>
+                    <li>There's a serious risk of harm to client or others</li>
+                    <li>You're legally required to disclose (court order)</li>
                 </ul>
             </div>
 
-            <div class="info-card">
-                <h4>Password DON'Ts:</h4>
-                <ul style="font-size: 13px;">
-                    <li>Don't use personal info</li>
-                    <li>Don't write them down</li>
-                    <li>Don't share with colleagues</li>
-                    <li>Don't use same password twice</li>
-                    <li>Don't save in browser</li>
-                </ul>
-            </div>
-        </div>
-
-        <h2>🚨 Recognizing a Data Breach</h2>
-
-        <div class="quick-tip">
-            <strong>A data breach is ANY incident where personal data is:</strong>
-            <ul style="margin: 10px 0 0 20px;">
-                <li>Lost or stolen (laptop, USB, papers)</li>
-                <li>Accessed by unauthorized person</li>
-                <li>Sent to wrong person</li>
-                <li>Disclosed accidentally</li>
-                <li>Altered or corrupted</li>
-                <li>Made unavailable</li>
+            <h3>Clinical Best Practices:</h3>
+            <ul>
+                <li>✓ Never discuss clients in public areas</li>
+                <li>✓ Use client reference numbers, not names, in non-clinical systems</li>
+                <li>✓ Lock clinical records when not in use</li>
+                <li>✓ Ensure video session backgrounds are neutral</li>
+                <li>✓ Close door/window when speaking with clients</li>
+                <li>✓ Don't leave voicemails with clinical details</li>
             </ul>
-        </div>
 
-        <h3>If You Suspect a Data Breach:</h3>
-        <ol>
-            <li><strong>STOP</strong> - Don't make it worse</li>
-            <li><strong>CONTAIN</strong> - Prevent further access if possible</li>
-            <li><strong>REPORT IMMEDIATELY</strong> - Contact DPO at dpo@clearmindseap.com or [EMERGENCY NUMBER]</li>
-            <li><strong>PRESERVE EVIDENCE</strong> - Don't delete anything</li>
-            <li><strong>DOCUMENT</strong> - Write down exactly what happened</li>
-        </ol>
+            <h2>❓ Common Questions</h2>
 
-        <p style="color: #dc3545; font-weight: 600; margin-top: 10px;">⚠️ We have 72 hours to report serious breaches to the ICO - REPORT IMMEDIATELY!</p>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                <h4 style="color: #007a87; margin-bottom: 8px;">Q: Can I take work home?</h4>
+                <p style="margin: 0; font-size: 13px;"><strong>A:</strong> Only with manager approval, on encrypted devices, and following remote working policy.</p>
+            </div>
 
-        <h2>📱 Mobile Device & Remote Working</h2>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                <h4 style="color: #007a87; margin-bottom: 8px;">Q: Can I use my personal email for work?</h4>
+                <p style="margin: 0; font-size: 13px;"><strong>A:</strong> No. Always use your ClearMinds email for work communications.</p>
+            </div>
 
-        <ul class="icon-list">
-            <li>Enable device encryption and passcode</li>
-            <li>Use VPN when working remotely</li>
-            <li>Never leave devices unattended in public</li>
-            <li>Don't use public Wi-Fi without VPN</li>
-            <li>Report lost/stolen devices immediately</li>
-            <li>Keep work and personal data separate</li>
-            <li>Be aware of shoulder surfing in public</li>
-            <li>Don't discuss sensitive information on public transport</li>
-        </ul>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                <h4 style="color: #007a87; margin-bottom: 8px;">Q: Can I use WhatsApp to message colleagues about work?</h4>
+                <p style="margin: 0; font-size: 13px;"><strong>A:</strong> Only for general coordination. NEVER share personal data or clinical information via WhatsApp.</p>
+            </div>
 
-        <h2>🗑️ Disposing of Data Securely</h2>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                <h4 style="color: #007a87; margin-bottom: 8px;">Q: What if a client asks me to email their records?</h4>
+                <p style="margin: 0; font-size: 13px;"><strong>A:</strong> Direct them to make a Subject Access Request (SAR) via the DPO. Don't email clinical records directly.</p>
+            </div>
 
-        <div class="grid-2">
-            <div class="info-card">
-                <h4>Physical Records:</h4>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                <h4 style="color: #007a87; margin-bottom: 8px;">Q: Can I share anonymised case studies in training?</h4>
+                <p style="margin: 0; font-size: 13px;"><strong>A:</strong> Only if truly anonymised (no way to identify individual) or with explicit written consent. Check with DPO if unsure.</p>
+            </div>
+
+            <h2>📞 Who to Contact</h2>
+
+            <div class="contact-box">
+                <h3>Data Protection Officer (DPO)</h3>
+                <p><strong>Email:</strong> dpo@clearmindseap.com<br>
+                <strong>Phone:</strong> [DPO PHONE NUMBER]<br>
+                <strong>Emergency (24/7):</strong> [EMERGENCY NUMBER]</p>
+                
+                <p style="margin-top: 15px;"><strong>Contact for:</strong></p>
                 <ul style="font-size: 13px;">
-                    <li>Use confidential waste bins</li>
-                    <li>Cross-cut shred all documents</li>
-                    <li>Never put in regular bin</li>
-                    <li>Lock confidential waste bins</li>
+                    <li>Data breaches (URGENT)</li>
+                    <li>Subject Access Requests</li>
+                    <li>Data protection questions</li>
+                    <li>Concerns about data handling</li>
+                    <li>Third-party data sharing queries</li>
                 </ul>
             </div>
 
-            <div class="info-card">
-                <h4>Electronic Records:</h4>
+            <div class="contact-box">
+                <h3>IT Support</h3>
+                <p><strong>Email:</strong> it-support@clearmindseap.com<br>
+                <strong>Phone:</strong> [IT SUPPORT NUMBER]</p>
+                
+                <p style="margin-top: 15px;"><strong>Contact for:</strong></p>
                 <ul style="font-size: 13px;">
-                    <li>Delete files properly (not just recycle bin)</li>
-                    <li>Contact IT for hard drive disposal</li>
-                    <li>Wipe devices before disposal</li>
-                    <li>Never throw away USB/hard drives</li>
+                    <li>Password resets</li>
+                    <li>Access issues</li>
+                    <li>Suspected malware/viruses</li>
+                    <li>Lost/stolen devices</li>
+                    <li>Technical security issues</li>
                 </ul>
             </div>
         </div>
-
-        <h2>👥 Client Confidentiality (Clinical Staff)</h2>
-
-        <div class="quick-tip">
-            <strong>Remember:</strong> Client confidentiality is ABSOLUTE unless:
-            <ul style="margin: 10px 0 0 20px;">
-                <li>Client gives explicit consent to share</li>
-                <li>There's a safeguarding concern</li>
-                <li>There's a serious risk of harm to client or others</li>
-                <li>You're legally required to disclose (court order)</li>
-            </ul>
-        </div>
-
-        <h3>Clinical Best Practices:</h3>
-        <ul>
-            <li>✓ Never discuss clients in public areas</li>
-            <li>✓ Use client reference numbers, not names, in non-clinical systems</li>
-            <li>✓ Lock clinical records when not in use</li>
-            <li>✓ Ensure video session backgrounds are neutral</li>
-            <li>✓ Close door/window when speaking with clients</li>
-            <li>✓ Don't leave voicemails with clinical details</li>
-        </ul>
-
-        <h2>❓ Common Questions</h2>
-
-        <div class="info-card" style="margin-bottom: 15px;">
-            <h4>Q: Can I take work home?</h4>
-            <p style="margin: 0; font-size: 13px;"><strong>A:</strong> Only with manager approval, on encrypted devices, and following remote working policy.</p>
-        </div>
-
-        <div class="info-card" style="margin-bottom: 15px;">
-            <h4>Q: Can I use my personal email for work?</h4>
-            <p style="margin: 0; font-size: 13px;"><strong>A:</strong> No. Always use your ClearMinds email for work communications.</p>
-        </div>
-
-        <div class="info-card" style="margin-bottom: 15px;">
-            <h4>Q: Can I use WhatsApp to message colleagues about work?</h4>
-            <p style="margin: 0; font-size: 13px;"><strong>A:</strong> Only for general coordination. NEVER share personal data or clinical information via WhatsApp.</p>
-        </div>
-
-        <div class="info-card" style="margin-bottom: 15px;">
-            <h4>Q: What if a client asks me to email their records?</h4>
-            <p style="margin: 0; font-size: 13px;"><strong>A:</strong> Direct them to make a Subject Access Request (SAR) via the DPO. Don't email clinical records directly.</p>
-        </div>
-
-        <div class="info-card" style="margin-bottom: 15px;">
-            <h4>Q: Can I share anonymised case studies in training?</h4>
-            <p style="margin: 0; font-size: 13px;"><strong>A:</strong> Only if truly anonymised (no way to identify individual) or with explicit written consent. Check with DPO if unsure.</p>
-        </div>
-
-        <h2>📞 Who to Contact</h2>
-
-        <div class="contact-box">
-            <h3>Data Protection Officer (DPO)</h3>
-            <p><strong>Email:</strong> dpo@clearmindseap.com<br>
-            <strong>Phone:</strong> [DPO PHONE NUMBER]<br>
-            <strong>Emergency (24/7):</strong> [EMERGENCY NUMBER]</p>
-            
-            <p style="margin-top: 15px;"><strong>Contact for:</strong></p>
-            <ul style="font-size: 13px;">
-                <li>Data breaches (URGENT)</li>
-                <li>Subject Access Requests</li>
-                <li>Data protection questions</li>
-                <li>Concerns about data handling</li>
-                <li>Third-party data sharing queries</li>
-            </ul>
-        </div>
-
-        <div class="contact-box">
-            <h3>IT Support</h3>
-            <p><strong>Email:</strong> it-support@clearmindseap.com<br>
-            <strong>Phone:</strong> [IT SUPPORT NUMBER]</p>
-            
-            <p style="margin-top: 15px;"><strong>Contact for:</strong></p>
-            <ul style="font-size: 13px;">
-                <li>Password resets</li>
-                <li>Access issues</li>
-                <li>Suspected malware/viruses</li>
-                <li>Lost/stolen devices</li>
-                <li>Technical security issues</li>
-            </ul>
-        </div>
-
-        <h2>📚 Further Resources</h2>
-
-        <ul style="font-size: 13px;">
-            <li><strong>Full Data Protection Policy:</strong> [Link to policy]</li>
-            <li><strong>Information Security Policy:</strong> [Link to policy]</li>
-            <li><strong>Data Breach Response Plan:</strong> [Link to policy]</li>
-            <li><strong>Online Training:</strong> [Link to training platform]</li>
-            <li><strong>ICO Website:</strong> www.ico.org.uk</li>
-        </ul>
 
         <div class="footer">
             <p><strong>ClearMinds Data Protection Quick Reference Guide</strong> | Version 1.0 | [DATE]</p>

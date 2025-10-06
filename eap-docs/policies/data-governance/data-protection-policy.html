@@ -3,620 +3,588 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Protection Policy | ClearMinds</title>
+    <title>Data Protection Policy - ClearMinds</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #2c3e50;
-            background: #fffbf5;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            padding: 60px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .header {
-            border-bottom: 4px solid #007a87;
-            padding-bottom: 30px;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: #fffbf5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        .policy-header {
+            background: linear-gradient(135deg, #007a87 0%, #0d3b3e 100%);
+            color: white;
+            padding: 60px 0;
             margin-bottom: 40px;
         }
-
-        .logo {
-            color: #007a87;
-            font-size: 32px;
-            font-weight: 700;
+        .policy-header a {
+            color: #dff4da;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .policy-header h1 {
+            font-size: 3rem;
             margin-bottom: 10px;
         }
-
-        .document-title {
-            font-size: 28px;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-weight: 600;
+        .policy-header .subtitle {
+            color: #bedee1;
+            font-size: 1.2rem;
         }
-
-        .meta-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+        
+        .policy-meta {
             background: #dff4da;
             padding: 20px;
-            border-radius: 6px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid #007a87;
+        }
+        .policy-meta h4 {
+            color: #007a87;
+            margin: 0 0 15px 0;
+            font-size: 1.2rem;
+        }
+        .policy-meta p {
+            margin: 5px 0;
+            color: #333;
+        }
+        
+        .policy-content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             margin-bottom: 30px;
         }
-
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .meta-label {
-            font-size: 12px;
-            text-transform: uppercase;
+        .policy-content h2 {
             color: #007a87;
-            font-weight: 600;
-            margin-bottom: 4px;
+            font-size: 2rem;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dff4da;
         }
-
-        .meta-value {
-            font-size: 14px;
-            color: #2c3e50;
+        .policy-content h3 {
+            color: #0d3b3e;
+            font-size: 1.5rem;
+            margin: 30px 0 15px 0;
         }
-
-        h2 {
+        .policy-content h4 {
             color: #007a87;
-            font-size: 22px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 20px 0 10px 0;
         }
-
-        h3 {
-            color: #2c3e50;
-            font-size: 18px;
-            margin-top: 30px;
+        .policy-content p {
+            line-height: 1.8;
+            color: #333;
             margin-bottom: 15px;
-            font-weight: 600;
         }
-
-        p {
-            margin-bottom: 15px;
-            text-align: justify;
+        .policy-content ul, .policy-content ol {
+            margin: 15px 0 15px 30px;
+            line-height: 1.8;
         }
-
-        ul, ol {
-            margin-bottom: 15px;
-            padding-left: 30px;
+        .policy-content li {
+            margin-bottom: 10px;
         }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        .principle-box {
-            background: #f8f9fa;
-            border-left: 4px solid #007a87;
+        
+        .highlight-box {
+            background: #fffbf5;
+            border-left: 4px solid #81b7a8;
             padding: 20px;
             margin: 20px 0;
             border-radius: 4px;
         }
-
-        .principle-box h4 {
+        .highlight-box h4 {
             color: #007a87;
-            margin-bottom: 10px;
-            font-size: 16px;
+            margin-top: 0;
         }
-
-        .warning-box {
+        
+        .alert-box {
             background: #fff3cd;
             border-left: 4px solid #ffc107;
             padding: 20px;
             margin: 20px 0;
             border-radius: 4px;
         }
-
-        .table-container {
-            overflow-x: auto;
-            margin: 20px 0;
-        }
-
+        
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
-
         th, td {
             padding: 12px;
             text-align: left;
             border: 1px solid #e0e0e0;
         }
-
         th {
             background: #007a87;
             color: white;
             font-weight: 600;
         }
-
         tr:nth-child(even) {
             background: #f8f9fa;
         }
-
+        
         .footer {
-            margin-top: 50px;
-            padding-top: 30px;
+            margin-top: 40px;
+            padding: 20px 0;
             border-top: 2px solid #e0e0e0;
-            font-size: 13px;
-            color: #6c757d;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
         }
-
+        
         @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            .container {
-                box-shadow: none;
-                padding: 20px;
-            }
+            body { background: white; }
+            .policy-header { background: #007a87 !important; -webkit-print-color-adjust: exact; }
         }
-
         @media (max-width: 768px) {
-            .container {
-                padding: 30px 20px;
-            }
-            .document-title {
-                font-size: 24px;
-            }
+            .policy-header h1 { font-size: 2rem; }
+            .policy-content { padding: 20px; }
         }
     </style>
 </head>
 <body>
+    <div class="policy-header">
+        <div class="container">
+            <a href="../index.html">← Back to Policies</a>
+            <h1>Data Protection Policy</h1>
+            <p class="subtitle">UK GDPR & Data Protection Act 2018 Compliance Framework</p>
+        </div>
+    </div>
+
     <div class="container">
-        <div class="header">
-            <div class="logo">ClearMinds</div>
-            <h1 class="document-title">Data Protection Policy</h1>
+        <div class="policy-meta">
+            <h4>Policy Information</h4>
+            <p><strong>Policy Owner:</strong> Data Protection Officer</p>
+            <p><strong>Effective Date:</strong> [INSERT DATE]</p>
+            <p><strong>Review Date:</strong> [ANNUAL REVIEW]</p>
+            <p><strong>Version:</strong> 1.0</p>
+            <p><strong>Applies To:</strong> All Staff, Contractors & Partners</p>
         </div>
 
-        <div class="meta-info">
-            <div class="meta-item">
-                <span class="meta-label">Policy Owner</span>
-                <span class="meta-value">Data Protection Officer</span>
+        <div class="policy-content">
+            <h2>1. Introduction and Purpose</h2>
+            
+            <p>ClearMinds is committed to protecting the privacy and security of personal data in accordance with the UK General Data Protection Regulation (UK GDPR), the Data Protection Act 2018, and all applicable data protection legislation.</p>
+
+            <p>As a provider of Employee Assistance Programme (EAP) and mental health support services, we process sensitive personal data, including special category data relating to health. We recognise the critical importance of maintaining the highest standards of data protection and privacy.</p>
+
+            <p>This policy sets out our approach to data protection and the responsibilities of all staff, contractors, and partners who process personal data on behalf of ClearMinds.</p>
+
+            <div class="highlight-box">
+                <h4>Our Commitment</h4>
+                <p>We are committed to processing personal data in accordance with our responsibilities under data protection legislation, maintaining the confidentiality, integrity, and availability of personal data, and respecting the rights of individuals whose data we process.</p>
             </div>
-            <div class="meta-item">
-                <span class="meta-label">Version</span>
-                <span class="meta-value">1.0</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Effective Date</span>
-                <span class="meta-value">[INSERT DATE]</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Review Date</span>
-                <span class="meta-value">[ANNUAL REVIEW]</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Applies To</span>
-                <span class="meta-value">All Staff, Contractors & Partners</span>
-            </div>
-        </div>
 
-        <h2>1. Introduction and Purpose</h2>
-        
-        <p>ClearMinds is committed to protecting the privacy and security of personal data in accordance with the UK General Data Protection Regulation (UK GDPR), the Data Protection Act 2018, and all applicable data protection legislation.</p>
+            <h2>2. Scope and Application</h2>
+            
+            <p>This policy applies to:</p>
+            <ul>
+                <li>All personal data processed by ClearMinds</li>
+                <li>All staff members, contractors, consultants, and temporary workers</li>
+                <li>All data processing activities, whether manual or automated</li>
+                <li>All systems, platforms, and technologies that process personal data</li>
+                <li>All third parties who process personal data on our behalf</li>
+            </ul>
 
-        <p>As a provider of Employee Assistance Programme (EAP) and mental health support services, we process sensitive personal data, including special category data relating to health. We recognise the critical importance of maintaining the highest standards of data protection and privacy.</p>
-
-        <p>This policy sets out our approach to data protection and the responsibilities of all staff, contractors, and partners who process personal data on behalf of ClearMinds.</p>
-
-        <h2>2. Scope and Application</h2>
-
-        <p>This policy applies to:</p>
-        <ul>
-            <li>All personal data processed by ClearMinds</li>
-            <li>All staff members, contractors, consultants, and temporary workers</li>
-            <li>All data processing activities, whether manual or automated</li>
-            <li>All locations where ClearMinds operates</li>
-            <li>All third-party processors acting on behalf of ClearMinds</li>
-        </ul>
-
-        <h2>3. Key Definitions</h2>
-
-        <div class="table-container">
+            <h2>3. Definitions</h2>
+            
             <table>
-                <thead>
-                    <tr>
-                        <th>Term</th>
-                        <th>Definition</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Personal Data</strong></td>
-                        <td>Any information relating to an identified or identifiable individual</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Special Category Data</strong></td>
-                        <td>Sensitive data including health data, racial/ethnic origin, religious beliefs, sexual orientation, trade union membership, genetic/biometric data</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Data Subject</strong></td>
-                        <td>The individual to whom personal data relates</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Data Controller</strong></td>
-                        <td>The organisation that determines the purposes and means of processing personal data (ClearMinds)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Data Processor</strong></td>
-                        <td>An organisation that processes personal data on behalf of the data controller</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Processing</strong></td>
-                        <td>Any operation performed on personal data, including collection, storage, use, disclosure, or deletion</td>
-                    </tr>
-                    <tr>
-                        <td><strong>ICO</strong></td>
-                        <td>Information Commissioner's Office - the UK's independent data protection authority</td>
-                    </tr>
-                </tbody>
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td><strong>Personal Data</strong></td>
+                    <td>Any information relating to an identified or identifiable living individual</td>
+                </tr>
+                <tr>
+                    <td><strong>Special Category Data</strong></td>
+                    <td>Sensitive data including health information, racial/ethnic origin, religious beliefs, etc.</td>
+                </tr>
+                <tr>
+                    <td><strong>Processing</strong></td>
+                    <td>Any operation performed on personal data (collection, storage, use, disclosure, deletion, etc.)</td>
+                </tr>
+                <tr>
+                    <td><strong>Data Controller</strong></td>
+                    <td>The organisation that determines the purposes and means of processing (ClearMinds)</td>
+                </tr>
+                <tr>
+                    <td><strong>Data Processor</strong></td>
+                    <td>A third party that processes personal data on behalf of the controller</td>
+                </tr>
+                <tr>
+                    <td><strong>Data Subject</strong></td>
+                    <td>The individual to whom the personal data relates</td>
+                </tr>
             </table>
-        </div>
 
-        <h2>4. Data Protection Principles</h2>
+            <h2>4. Data Protection Principles</h2>
+            
+            <p>We adhere to the seven key principles of data protection:</p>
 
-        <p>ClearMinds adheres to the seven key principles of data protection as set out in the UK GDPR:</p>
+            <h3>4.1 Lawfulness, Fairness, and Transparency</h3>
+            <p>We process personal data lawfully, fairly, and in a transparent manner. We provide clear information about how we use personal data through privacy notices and ensure individuals understand what data we collect and why.</p>
 
-        <div class="principle-box">
-            <h4>1. Lawfulness, Fairness, and Transparency</h4>
-            <p>We process personal data lawfully, fairly, and in a transparent manner. We clearly inform data subjects about how we use their data.</p>
-        </div>
+            <h3>4.2 Purpose Limitation</h3>
+            <p>We collect personal data for specified, explicit, and legitimate purposes only. We do not process data in ways incompatible with those purposes without obtaining fresh consent or having another lawful basis.</p>
 
-        <div class="principle-box">
-            <h4>2. Purpose Limitation</h4>
-            <p>We collect personal data for specified, explicit, and legitimate purposes. We do not process data in a manner incompatible with those purposes.</p>
-        </div>
+            <h3>4.3 Data Minimisation</h3>
+            <p>We only collect and process personal data that is adequate, relevant, and limited to what is necessary for the purposes for which it is processed.</p>
 
-        <div class="principle-box">
-            <h4>3. Data Minimisation</h4>
-            <p>We only collect personal data that is adequate, relevant, and limited to what is necessary for the purposes for which it is processed.</p>
-        </div>
+            <h3>4.4 Accuracy</h3>
+            <p>We take reasonable steps to ensure personal data is accurate and, where necessary, kept up to date. Inaccurate data is rectified or deleted without delay.</p>
 
-        <div class="principle-box">
-            <h4>4. Accuracy</h4>
-            <p>We take reasonable steps to ensure personal data is accurate and kept up to date. Inaccurate data is erased or rectified without delay.</p>
-        </div>
+            <h3>4.5 Storage Limitation</h3>
+            <p>We retain personal data only for as long as necessary for the purposes for which it was collected, in line with our Data Retention Policy.</p>
 
-        <div class="principle-box">
-            <h4>5. Storage Limitation</h4>
-            <p>We keep personal data only for as long as necessary for the purposes for which it was collected, in accordance with our Data Retention Policy.</p>
-        </div>
-
-        <div class="principle-box">
-            <h4>6. Integrity and Confidentiality (Security)</h4>
+            <h3>4.6 Integrity and Confidentiality (Security)</h3>
             <p>We implement appropriate technical and organisational measures to protect personal data against unauthorised or unlawful processing, accidental loss, destruction, or damage.</p>
-        </div>
 
-        <div class="principle-box">
-            <h4>7. Accountability</h4>
-            <p>We take responsibility for complying with data protection legislation and can demonstrate our compliance through policies, procedures, training, and documentation.</p>
-        </div>
+            <h3>4.7 Accountability</h3>
+            <p>We demonstrate compliance with these principles through documentation, policies, procedures, training, and regular audits.</p>
 
-        <h2>5. Lawful Basis for Processing</h2>
+            <h2>5. Lawful Basis for Processing</h2>
+            
+            <p>We only process personal data where we have a lawful basis under Article 6 of UK GDPR:</p>
 
-        <p>ClearMinds processes personal data under the following lawful bases:</p>
+            <h3>5.1 Standard Personal Data</h3>
+            <ul>
+                <li><strong>Consent:</strong> The individual has given clear consent for us to process their data</li>
+                <li><strong>Contract:</strong> Processing is necessary for performance of a contract with the individual</li>
+                <li><strong>Legal obligation:</strong> Processing is necessary to comply with the law</li>
+                <li><strong>Vital interests:</strong> Processing is necessary to protect someone's life</li>
+                <li><strong>Public task:</strong> Processing is necessary to perform a task in the public interest</li>
+                <li><strong>Legitimate interests:</strong> Processing is necessary for our legitimate interests (unless overridden by individual's rights)</li>
+            </ul>
 
-        <h3>5.1 Standard Personal Data</h3>
-        <ul>
-            <li><strong>Consent:</strong> For processing with explicit, informed consent from the data subject</li>
-            <li><strong>Contract:</strong> For processing necessary to fulfil contractual obligations with service users</li>
-            <li><strong>Legal Obligation:</strong> For processing required to comply with legal requirements</li>
-            <li><strong>Legitimate Interests:</strong> For processing necessary for legitimate business interests, balanced against data subject rights</li>
-        </ul>
+            <h3>5.2 Special Category Data (Health Data)</h3>
+            <p>For health data, we also require a condition under Article 9 UK GDPR:</p>
+            <ul>
+                <li><strong>Explicit consent:</strong> The individual has given explicit consent (e.g., accepting terms when booking counselling)</li>
+                <li><strong>Health/social care purposes:</strong> Processing is necessary for health or social care purposes (Article 9(2)(h))</li>
+                <li><strong>Public health:</strong> Processing in the public interest in public health</li>
+            </ul>
 
-        <h3>5.2 Special Category Data (Health Data)</h3>
-        <p>For health-related data, we rely on:</p>
-        <ul>
-            <li><strong>Explicit Consent:</strong> Clear, informed consent for processing health data to provide mental health services</li>
-            <li><strong>Health and Social Care:</strong> Processing necessary for health or social care purposes under Article 9(2)(h) UK GDPR</li>
-            <li><strong>Substantial Public Interest:</strong> Where applicable under Schedule 1 of the Data Protection Act 2018</li>
-        </ul>
+            <div class="alert-box">
+                <strong>⚠️ Special Category Data Handling:</strong> Health data requires additional safeguards. All staff must complete specialist training on handling health data and follow strict confidentiality procedures.
+            </div>
 
-        <div class="warning-box">
-            <strong>Important:</strong> All processing of special category data must be documented with clear justification and appropriate safeguards in place. Staff must not process health data without proper authorisation and training.
-        </div>
+            <h2>6. Data Subject Rights</h2>
+            
+            <p>Individuals have the following rights under UK GDPR:</p>
 
-        <h2>6. Data Subject Rights</h2>
+            <h3>6.1 Right to be Informed</h3>
+            <p>Individuals have the right to know how their personal data is being used. We provide this information through our Privacy Policy and privacy notices.</p>
 
-        <p>ClearMinds respects and facilitates the following rights of data subjects under UK GDPR:</p>
+            <h3>6.2 Right of Access (Subject Access Request)</h3>
+            <p>Individuals have the right to obtain a copy of their personal data and information about how it is processed. We respond to Subject Access Requests (SARs) within one month. See our SAR Procedure for details.</p>
 
-        <h3>6.1 Right to Be Informed</h3>
-        <p>Data subjects have the right to clear information about what personal data we collect and how we use it. We provide this through our Privacy Policy and privacy notices.</p>
+            <h3>6.3 Right to Rectification</h3>
+            <p>Individuals can request correction of inaccurate or incomplete personal data. We update records promptly upon receiving such requests.</p>
 
-        <h3>6.2 Right of Access (Subject Access Request)</h3>
-        <p>Data subjects can request a copy of their personal data. We respond to Subject Access Requests (SARs) within one month. See our SAR Procedure for details.</p>
+            <h3>6.4 Right to Erasure ('Right to be Forgotten')</h3>
+            <p>In certain circumstances, individuals can request deletion of their personal data. This right is not absolute - we may need to retain data for legal or regulatory reasons.</p>
 
-        <h3>6.3 Right to Rectification</h3>
-        <p>Data subjects can request correction of inaccurate or incomplete personal data. We action such requests within one month.</p>
+            <h3>6.5 Right to Restrict Processing</h3>
+            <p>Individuals can request that we limit how we use their data in certain circumstances (e.g., while accuracy is verified).</p>
 
-        <h3>6.4 Right to Erasure ("Right to Be Forgotten")</h3>
-        <p>Data subjects can request deletion of their personal data in certain circumstances, subject to legal retention requirements and legitimate interests.</p>
+            <h3>6.6 Right to Data Portability</h3>
+            <p>Individuals can request their data in a structured, commonly used format to transfer to another service provider.</p>
 
-        <h3>6.5 Right to Restrict Processing</h3>
-        <p>Data subjects can request restriction of processing in specific situations, such as when accuracy is contested or processing is unlawful.</p>
+            <h3>6.7 Right to Object</h3>
+            <p>Individuals can object to processing based on legitimate interests or for direct marketing purposes.</p>
 
-        <h3>6.6 Right to Data Portability</h3>
-        <p>Data subjects can request their personal data in a structured, commonly used format and have it transferred to another controller where technically feasible.</p>
+            <h3>6.8 Rights Related to Automated Decision-Making</h3>
+            <p>Individuals have rights regarding automated decisions (including profiling) that have legal or significant effects. We do not currently use fully automated decision-making.</p>
 
-        <h3>6.7 Right to Object</h3>
-        <p>Data subjects can object to processing based on legitimate interests or for direct marketing purposes.</p>
+            <div class="highlight-box">
+                <h4>Exercising Rights</h4>
+                <p>Individuals can exercise their rights by contacting our Data Protection Officer at: <strong>dpo@clearmindseap.com</strong></p>
+            </div>
 
-        <h3>6.8 Rights Related to Automated Decision-Making</h3>
-        <p>Data subjects have rights regarding automated decision-making and profiling. ClearMinds does not currently use fully automated decision-making processes.</p>
+            <h2>7. Consent</h2>
+            
+            <p>Where we rely on consent as our lawful basis, we ensure consent is:</p>
+            <ul>
+                <li><strong>Freely given:</strong> Not coerced or conditional</li>
+                <li><strong>Specific:</strong> Separate consent for different purposes</li>
+                <li><strong>Informed:</strong> Clear information provided about what data is used and why</li>
+                <li><strong>Unambiguous:</strong> Clear affirmative action required (not pre-ticked boxes)</li>
+                <li><strong>Withdrawable:</strong> Easy to withdraw consent at any time</li>
+            </ul>
 
-        <h2>7. Data Security Measures</h2>
+            <p>We maintain records of when and how consent was obtained and keep this information for the duration of the relationship plus 2 years.</p>
 
-        <p>ClearMinds implements robust security measures to protect personal data:</p>
+            <h2>8. Data Security</h2>
+            
+            <p>We implement appropriate technical and organisational measures to protect personal data:</p>
 
-        <h3>7.1 Technical Security</h3>
-        <ul>
-            <li>Encryption of data in transit (TLS 1.3) and at rest (AES-256)</li>
-            <li>Secure authentication and access controls (MFA required)</li>
-            <li>Regular security updates and patch management</li>
-            <li>Firewall protection and intrusion detection systems</li>
-            <li>Regular security audits and penetration testing</li>
-            <li>Secure backup procedures with encrypted storage</li>
-            <li>Anti-virus and anti-malware protection</li>
-        </ul>
+            <h3>8.1 Technical Measures</h3>
+            <ul>
+                <li>Encryption in transit (TLS 1.3) and at rest (AES-256)</li>
+                <li>Multi-factor authentication for all systems</li>
+                <li>Regular security updates and patching</li>
+                <li>Firewalls and intrusion detection systems</li>
+                <li>Secure backup procedures</li>
+                <li>Anti-virus and anti-malware protection</li>
+            </ul>
 
-        <h3>7.2 Organisational Security</h3>
-        <ul>
-            <li>Role-based access controls (principle of least privilege)</li>
-            <li>Mandatory data protection training for all staff</li>
-            <li>Clear desk and clear screen policies</li>
-            <li>Secure disposal of physical records (confidential shredding)</li>
-            <li>Visitor management and physical access controls</li>
-            <li>Confidentiality agreements for all staff and contractors</li>
-            <li>Regular review of security policies and procedures</li>
-        </ul>
+            <h3>8.2 Organisational Measures</h3>
+            <ul>
+                <li>Role-based access controls</li>
+                <li>Staff confidentiality training</li>
+                <li>Clear desk and clear screen policies</li>
+                <li>Secure disposal procedures</li>
+                <li>Regular security audits and penetration testing</li>
+                <li>Incident response procedures</li>
+            </ul>
 
-        <h3>7.3 Data Access Controls</h3>
-        <ul>
-            <li>Access to personal data restricted to authorised personnel only</li>
-            <li>Individual user accounts with unique credentials</li>
-            <li>Logging and monitoring of data access</li>
-            <li>Regular access rights reviews</li>
-            <li>Immediate revocation of access upon termination of employment</li>
-        </ul>
+            <p>For full details, see our Information Security Policy.</p>
 
-        <h2>8. Data Protection Roles and Responsibilities</h2>
+            <h2>9. Data Sharing and Third Parties</h2>
+            
+            <h3>9.1 When We Share Data</h3>
+            <p>We only share personal data when:</p>
+            <ul>
+                <li>We have a lawful basis to do so</li>
+                <li>It's necessary for service provision</li>
+                <li>We have appropriate safeguards in place</li>
+                <li>We have Data Processing Agreements (DPAs) with processors</li>
+            </ul>
 
-        <h3>8.1 Data Protection Officer (DPO)</h3>
-        <p><strong>Contact:</strong> [DPO NAME]<br>
-        <strong>Email:</strong> dpo@clearmindseap.com<br>
-        <strong>Responsibilities:</strong></p>
-        <ul>
-            <li>Monitoring compliance with data protection legislation</li>
-            <li>Providing advice on data protection impact assessments</li>
-            <li>Acting as point of contact for the ICO and data subjects</li>
-            <li>Conducting data protection training and awareness programmes</li>
-            <li>Investigating data breaches and overseeing breach responses</li>
-        </ul>
+            <h3>9.2 Categories of Recipients</h3>
+            <ul>
+                <li><strong>IT service providers:</strong> Cloud hosting, email services, backup services</li>
+                <li><strong>Professional advisers:</strong> Lawyers, accountants (where necessary)</li>
+                <li><strong>Regulatory authorities:</strong> ICO, professional bodies (where legally required)</li>
+                <li><strong>Corporate clients:</strong> Aggregated, anonymised statistics only (NOT individual session details)</li>
+            </ul>
 
-        <h3>8.2 Senior Management</h3>
-        <ul>
-            <li>Ensure adequate resources for data protection compliance</li>
-            <li>Approve data protection policies and procedures</li>
-            <li>Foster a culture of data protection awareness</li>
-            <li>Oversee risk management and incident response</li>
-        </ul>
+            <h3>9.3 Data Processing Agreements</h3>
+            <p>All third-party processors must sign a Data Processing Agreement (DPA) that includes:</p>
+            <ul>
+                <li>Scope and purpose of processing</li>
+                <li>Security obligations</li>
+                <li>Sub-processor requirements</li>
+                <li>Data breach notification (within 24 hours)</li>
+                <li>Assistance with DPIAs and data subject rights</li>
+                <li>Audit rights</li>
+                <li>Data return or deletion on termination</li>
+            </ul>
 
-        <h3>8.3 All Staff Members</h3>
-        <ul>
-            <li>Comply with data protection policies and procedures</li>
-            <li>Complete mandatory data protection training</li>
-            <li>Report data breaches or concerns immediately</li>
-            <li>Handle personal data securely and confidentially</li>
-            <li>Only access personal data necessary for their role</li>
-        </ul>
+            <h2>10. International Data Transfers</h2>
+            
+            <p>We prioritise UK-based data processing and storage. Where international transfers occur, we ensure:</p>
+            <ul>
+                <li>Adequacy decisions exist, OR</li>
+                <li>Appropriate safeguards are in place (e.g., Standard Contractual Clauses), AND</li>
+                <li>Data subjects' rights remain enforceable</li>
+            </ul>
 
-        <h3>8.4 IT Department</h3>
-        <ul>
-            <li>Implement and maintain technical security measures</li>
-            <li>Manage access controls and user permissions</li>
-            <li>Conduct regular security audits and updates</li>
-            <li>Support data breach investigations</li>
-        </ul>
+            <p>All international transfers are documented in our Record of Processing Activities (ROPA).</p>
 
-        <h2>9. Data Protection by Design and Default</h2>
-
-        <p>ClearMinds embeds data protection into all business processes and systems from the outset:</p>
-
-        <ul>
-            <li><strong>Privacy by Design:</strong> Data protection considerations integrated into the design of new systems, services, and processes</li>
-            <li><strong>Privacy by Default:</strong> Default settings provide the highest level of privacy protection</li>
-            <li><strong>Data Protection Impact Assessments (DPIAs):</strong> Conducted for high-risk processing activities</li>
-            <li><strong>Vendor Assessment:</strong> Due diligence on third-party processors before engagement</li>
-            <li><strong>Regular Reviews:</strong> Ongoing assessment of data processing activities and risks</li>
-        </ul>
-
-        <h2>10. Data Sharing and Third-Party Processing</h2>
-
-        <h3>10.1 Third-Party Processors</h3>
-        <p>When engaging third-party processors, ClearMinds ensures:</p>
-        <ul>
-            <li>A written Data Processing Agreement (DPA) is in place</li>
-            <li>The processor provides sufficient guarantees of data security</li>
-            <li>The processor only processes data on our documented instructions</li>
-            <li>Regular audits or assessments of processor compliance</li>
-            <li>Clear procedures for sub-processor engagement</li>
-        </ul>
-
-        <h3>10.2 International Data Transfers</h3>
-        <p>ClearMinds processes data primarily within the UK. Any international transfers are:</p>
-        <ul>
-            <li>Subject to appropriate safeguards (adequacy decisions, Standard Contractual Clauses, or other approved mechanisms)</li>
-            <li>Documented and risk-assessed</li>
-            <li>Compliant with UK GDPR Chapter V requirements</li>
-        </ul>
-
-        <h3>10.3 Data Sharing with B2B Partners</h3>
-        <p>For corporate partners (insurance companies, employers), data sharing is governed by:</p>
-        <ul>
-            <li>Written agreements specifying data sharing scope and limitations</li>
-            <li>Clear legal basis for sharing (typically contract or legitimate interests)</li>
-            <li>Minimum necessary data shared (data minimisation)</li>
-            <li>Secure transfer methods (encrypted channels)</li>
-            <li>Regular review of data sharing arrangements</li>
-        </ul>
-
-        <h2>11. Data Breach Management</h2>
-
-        <p>ClearMinds has established procedures for identifying, reporting, and responding to data breaches. See our Data Breach Response Plan for full details.</p>
-
-        <h3>11.1 Breach Identification</h3>
-        <ul>
-            <li>All staff trained to recognise potential data breaches</li>
-            <li>Multiple reporting channels available</li>
-            <li>24/7 incident reporting capability</li>
-        </ul>
-
-        <h3>11.2 Breach Response</h3>
-        <ul>
-            <li>Immediate containment and mitigation measures</li>
-            <li>Investigation and risk assessment</li>
-            <li>ICO notification within 72 hours (if required)</li>
-            <li>Data subject notification (if high risk to rights and freedoms)</li>
-            <li>Post-incident review and corrective actions</li>
-        </ul>
-
-        <h2>12. Training and Awareness</h2>
-
-        <p>ClearMinds provides comprehensive data protection training:</p>
-
-        <ul>
-            <li><strong>Induction Training:</strong> All new staff receive data protection training before accessing personal data</li>
-            <li><strong>Annual Refresher Training:</strong> Mandatory for all staff</li>
-            <li><strong>Role-Specific Training:</strong> Additional training for staff handling sensitive data</li>
-            <li><strong>Awareness Campaigns:</strong> Regular communications on data protection topics</li>
-            <li><strong>Testing and Evaluation:</strong> Training effectiveness monitored through assessments</li>
-        </ul>
-
-        <h2>13. Records and Documentation</h2>
-
-        <p>ClearMinds maintains comprehensive records of data processing activities, including:</p>
-
-        <ul>
-            <li><strong>Record of Processing Activities (ROPA):</strong> Detailed inventory of all processing activities</li>
-            <li><strong>Data Protection Impact Assessments:</strong> For high-risk processing</li>
-            <li><strong>Legitimate Interest Assessments:</strong> Where applicable</li>
-            <li><strong>Data Processing Agreements:</strong> With all processors</li>
-            <li><strong>Privacy Notices:</strong> Current and archived versions</li>
-            <li><strong>Consent Records:</strong> Where consent is the lawful basis</li>
-            <li><strong>Data Breach Log:</strong> All breaches, including those not reported to the ICO</li>
-            <li><strong>Training Records:</strong> Staff training completion and dates</li>
-        </ul>
-
-        <h2>14. Monitoring and Review</h2>
-
-        <p>This policy and our data protection practices are subject to regular review:</p>
-
-        <ul>
-            <li><strong>Annual Policy Review:</strong> Full review of all data protection policies</li>
-            <li><strong>Quarterly Audits:</strong> Internal audits of data protection compliance</li>
-            <li><strong>Continuous Monitoring:</strong> Ongoing monitoring of data processing activities</li>
-            <li><strong>Incident Analysis:</strong> Review of data breaches and near misses</li>
-            <li><strong>Regulatory Updates:</strong> Monitoring of legal and regulatory changes</li>
-            <li><strong>External Audits:</strong> Periodic independent assessment of compliance</li>
-        </ul>
-
-        <h2>15. Complaints and Enforcement</h2>
-
-        <h3>15.1 Internal Complaints</h3>
-        <p>Data subjects can raise concerns or complaints about our data processing by contacting our DPO at dpo@clearmindseap.com. We aim to resolve complaints within 30 days.</p>
-
-        <h3>15.2 ICO Complaints</h3>
-        <p>Data subjects have the right to lodge a complaint with the ICO:</p>
-        <p><strong>Information Commissioner's Office</strong><br>
-        Wycliffe House, Water Lane<br>
-        Wilmslow, Cheshire, SK9 5AF<br>
-        Tel: 0303 123 1113<br>
-        Website: www.ico.org.uk</p>
-
-        <h3>15.3 Non-Compliance</h3>
-        <p>Breaches of this policy by staff may result in disciplinary action, up to and including dismissal. Serious breaches may be reported to the ICO and could result in regulatory action.</p>
-
-        <h2>16. Related Policies and Documents</h2>
-
-        <ul>
-            <li>Privacy Policy (external)</li>
-            <li>Data Retention Policy</li>
-            <li>Data Breach Response Plan</li>
-            <li>Subject Access Request (SAR) Procedure</li>
-            <li>Information Security Policy</li>
-            <li>Data Processing Agreement (DPA) Template</li>
-            <li>Cookie Policy</li>
-            <li>Employee Handbook (data protection section)</li>
-            <li>Record of Processing Activities (ROPA)</li>
-        </ul>
-
-        <h2>17. Policy Approval and Review</h2>
-
-        <div class="table-container">
+            <h2>11. Data Retention</h2>
+            
+            <p>We retain personal data only for as long as necessary:</p>
+            
             <table>
-                <thead>
-                    <tr>
-                        <th>Version</th>
-                        <th>Date</th>
-                        <th>Changes</th>
-                        <th>Approved By</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1.0</td>
-                        <td>[INSERT DATE]</td>
-                        <td>Initial policy creation</td>
-                        <td>[MANAGING DIRECTOR]</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" style="text-align: center; color: #6c757d; font-style: italic;">Next Review: [DATE + 12 MONTHS]</td>
-                    </tr>
-                </tbody>
+                <tr>
+                    <th>Data Type</th>
+                    <th>Retention Period</th>
+                </tr>
+                <tr>
+                    <td>Clinical records (adults)</td>
+                    <td>8 years from last contact</td>
+                </tr>
+                <tr>
+                    <td>Clinical records (children)</td>
+                    <td>Until 25th birthday OR 8 years (whichever longer)</td>
+                </tr>
+                <tr>
+                    <td>Employee records</td>
+                    <td>Duration of employment + 7 years</td>
+                </tr>
+                <tr>
+                    <td>Financial records</td>
+                    <td>7 years from end of financial year</td>
+                </tr>
+                <tr>
+                    <td>Contracts</td>
+                    <td>Duration of contract + 7 years</td>
+                </tr>
             </table>
+
+            <p>For complete retention schedules, see our Data Retention Policy.</p>
+
+            <h2>12. Data Breaches</h2>
+            
+            <p>A personal data breach is any incident that results in unauthorised access, loss, destruction, or disclosure of personal data.</p>
+
+            <h3>12.1 Reporting Breaches</h3>
+            <p>All staff must report suspected breaches immediately to the Data Protection Officer:</p>
+            <ul>
+                <li><strong>Email:</strong> dpo@clearmindseap.com</li>
+                <li><strong>Phone:</strong> [DPO PHONE NUMBER]</li>
+                <li><strong>Emergency:</strong> [24/7 EMERGENCY NUMBER]</li>
+            </ul>
+
+            <h3>12.2 Breach Response</h3>
+            <p>We have 72 hours to report serious breaches to the ICO. Our Data Breach Response Plan includes:</p>
+            <ul>
+                <li>Immediate containment procedures</li>
+                <li>Risk assessment</li>
+                <li>ICO notification (if required)</li>
+                <li>Data subject notification (if high risk)</li>
+                <li>Post-incident review</li>
+            </ul>
+
+            <div class="alert-box">
+                <strong>⚠️ CRITICAL:</strong> Never delay breach reporting. Even if unsure whether it qualifies as a breach, report it immediately. The DPO will assess severity.
+            </div>
+
+            <h2>13. Privacy by Design and Default</h2>
+            
+            <p>We implement data protection from the outset of any new project, system, or process:</p>
+            <ul>
+                <li><strong>Data Protection Impact Assessments (DPIAs)</strong> for high-risk processing</li>
+                <li><strong>Privacy considerations</strong> in system design</li>
+                <li><strong>Default privacy settings</strong> (not opt-out)</li>
+                <li><strong>Data minimisation</strong> from the start</li>
+                <li><strong>Security measures</strong> built in, not bolted on</li>
+            </ul>
+
+            <h2>14. Roles and Responsibilities</h2>
+            
+            <h3>14.1 Board of Directors</h3>
+            <ul>
+                <li>Ultimate accountability for data protection</li>
+                <li>Approve data protection policies</li>
+                <li>Ensure adequate resources for compliance</li>
+                <li>Receive regular compliance reports</li>
+            </ul>
+
+            <h3>14.2 Data Protection Officer (DPO)</h3>
+            <ul>
+                <li>Monitor compliance with UK GDPR</li>
+                <li>Advise on data protection obligations</li>
+                <li>Act as contact point for ICO</li>
+                <li>Conduct DPIAs and audits</li>
+                <li>Manage data breach response</li>
+                <li>Handle data subject rights requests</li>
+            </ul>
+
+            <h3>14.3 All Staff</h3>
+            <ul>
+                <li>Comply with this policy and related procedures</li>
+                <li>Complete mandatory data protection training</li>
+                <li>Report suspected breaches immediately</li>
+                <li>Follow security procedures</li>
+                <li>Only access data needed for their role</li>
+                <li>Respect confidentiality</li>
+            </ul>
+
+            <h3>14.4 Managers</h3>
+            <ul>
+                <li>Ensure team compliance</li>
+                <li>Facilitate staff training</li>
+                <li>Manage access rights</li>
+                <li>Report and escalate issues</li>
+            </ul>
+
+            <h2>15. Training and Awareness</h2>
+            
+            <p>All staff must complete:</p>
+            <ul>
+                <li><strong>Induction training:</strong> Before accessing personal data</li>
+                <li><strong>Annual refresher training:</strong> Every 12 months</li>
+                <li><strong>Role-specific training:</strong> For clinical staff, IT staff, managers</li>
+                <li><strong>Training on updates:</strong> When policies or procedures change</li>
+            </ul>
+
+            <p>Training completion is monitored and recorded. Non-completion may result in access restrictions.</p>
+
+            <h2>16. Monitoring and Audit</h2>
+            
+            <p>We monitor compliance through:</p>
+            <ul>
+                <li><strong>Quarterly reviews</strong> of processing activities</li>
+                <li><strong>Annual internal audits</strong></li>
+                <li><strong>Regular access rights reviews</strong></li>
+                <li><strong>Breach log analysis</strong></li>
+                <li><strong>Training completion tracking</strong></li>
+                <li><strong>Third-party processor reviews</strong></li>
+            </ul>
+
+            <h2>17. Records and Documentation</h2>
+            
+            <p>We maintain comprehensive records including:</p>
+            <ul>
+                <li>Record of Processing Activities (ROPA) - updated quarterly</li>
+                <li>Data breach log</li>
+                <li>Subject Access Request log</li>
+                <li>Training records</li>
+                <li>DPIAs for high-risk processing</li>
+                <li>Data Processing Agreements with processors</li>
+                <li>Consent records</li>
+                <li>Policy approval and review documentation</li>
+            </ul>
+
+            <h2>18. Related Policies and Procedures</h2>
+            
+            <ul>
+                <li>Privacy Policy (public-facing)</li>
+                <li>Data Retention Policy</li>
+                <li>Data Breach Response Plan</li>
+                <li>Subject Access Request Procedure</li>
+                <li>Information Security Policy</li>
+                <li>Cookie Policy</li>
+                <li>Staff Handbook</li>
+                <li>Confidentiality Policy</li>
+            </ul>
+
+            <h2>19. Policy Review and Updates</h2>
+            
+            <p>This policy is reviewed:</p>
+            <ul>
+                <li>Annually as a minimum</li>
+                <li>When legislation changes</li>
+                <li>Following significant data breaches</li>
+                <li>When processing activities change significantly</li>
+                <li>Following ICO guidance updates</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h4>Questions or Concerns?</h4>
+                <p>If you have questions about this policy or data protection at ClearMinds:</p>
+                <p><strong>Data Protection Officer:</strong> dpo@clearmindseap.com | [PHONE]</p>
+                <p><strong>Emergency (24/7):</strong> [EMERGENCY NUMBER]</p>
+            </div>
+
+            <h2>20. Compliance and Enforcement</h2>
+            
+            <p>Failure to comply with this policy may result in:</p>
+            <ul>
+                <li>Retraining requirements</li>
+                <li>Restriction or removal of data access</li>
+                <li>Disciplinary action up to and including dismissal</li>
+                <li>Legal action in serious cases</li>
+            </ul>
+
+            <p>ClearMinds may also face:</p>
+            <ul>
+                <li>ICO fines up to £17.5 million or 4% of global turnover</li>
+                <li>Criminal sanctions for certain offences</li>
+                <li>Reputational damage</li>
+                <li>Loss of corporate partnerships</li>
+            </ul>
         </div>
-
-        <h2>18. Contact Information</h2>
-
-        <p><strong>Data Protection Officer:</strong><br>
-        [DPO NAME]<br>
-        ClearMinds<br>
-        [ADDRESS]<br>
-        Email: dpo@clearmindseap.com<br>
-        Phone: [PHONE NUMBER]</p>
-
-        <p><strong>General Data Protection Enquiries:</strong><br>
-        Email: privacy@clearmindseap.com<br>
-        Phone: [PHONE NUMBER]</p>
 
         <div class="footer">
-            <p><strong>ClearMinds Data Protection Policy</strong> | Version 1.0 | Effective [DATE]</p>
-            <p>This policy is reviewed annually and updated as required to reflect changes in legislation, regulation, or business practices.</p>
-            <p><strong>ICO Registration Number:</strong> [INSERT ICO REGISTRATION NUMBER]</p>
-            <p>&copy; 2024 ClearMinds. All rights reserved. This document is confidential and proprietary.</p>
+            <p><strong>Document Control</strong></p>
+            <p>Policy Reference: CM-DP-001 | Version: 1.0 | Approved by: Board of Directors</p>
+            <p>Next Review: [INSERT DATE] | Contact: dpo@clearmindseap.com</p>
+            <p>&copy; 2024 ClearMinds. All rights reserved.</p>
         </div>
     </div>
 </body>

@@ -3,77 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Retention Policy | ClearMinds</title>
+    <title>Data Retention Policy - ClearMinds</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #2c3e50;
-            background: #fffbf5;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            padding: 60px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .header {
-            border-bottom: 4px solid #007a87;
-            padding-bottom: 30px;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: #fffbf5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        .policy-header {
+            background: linear-gradient(135deg, #007a87 0%, #0d3b3e 100%);
+            color: white;
+            padding: 60px 0;
             margin-bottom: 40px;
         }
-
-        .logo {
-            color: #007a87;
-            font-size: 32px;
-            font-weight: 700;
+        .policy-header a {
+            color: #dff4da;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .policy-header h1 {
+            color: white;
+            font-size: 3rem;
             margin-bottom: 10px;
         }
-
-        .document-title {
-            font-size: 28px;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-weight: 600;
+        .policy-header .subtitle {
+            color: #bedee1;
+            font-size: 1.2rem;
         }
-
-        .meta-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+        
+        .policy-meta {
             background: #dff4da;
             padding: 20px;
-            border-radius: 6px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid #007a87;
+        }
+        .policy-meta h4 {
+            color: #007a87;
+            margin: 0 0 15px 0;
+            font-size: 1.2rem;
+        }
+        .policy-meta p {
+            margin: 5px 0;
+            color: #333;
+        }
+        
+        .policy-content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             margin-bottom: 30px;
         }
-
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .meta-label {
-            font-size: 12px;
-            text-transform: uppercase;
+        .policy-content h2 {
             color: #007a87;
-            font-weight: 600;
-            margin-bottom: 4px;
+            font-size: 2rem;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dff4da;
         }
-
-        .meta-value {
-            font-size: 14px;
-            color: #2c3e50;
+        .policy-content h3 {
+            color: #0d3b3e;
+            font-size: 1.5rem;
+            margin: 30px 0 15px 0;
+        }
+        .policy-content p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .policy-content ul, .policy-content ol {
+            margin: 15px 0 15px 30px;
+            line-height: 1.8;
+        }
+        .policy-content li {
+            margin-bottom: 10px;
+        }
+        
+        .policy-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .policy-content th, .policy-content td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+        }
+        .policy-content th {
+            background: #007a87;
+            color: white;
+            font-weight: 600;
+        }
+        .policy-content tr:nth-child(even) {
+            background: #f8f9fa;
         }
 
         h2 {
@@ -179,30 +202,25 @@
     </style>
 </head>
 <body>
+    <div class="policy-header">
+        <div class="container">
+            <a href="../index.html">← Back to Policies</a>
+            <h1>Data Retention Policy</h1>
+            <p class="subtitle">How Long We Keep Personal Data</p>
+        </div>
+    </div>
+
     <div class="container">
-        <div class="header">
-            <div class="logo">ClearMinds</div>
-            <h1 class="document-title">Data Retention Policy</h1>
+        <div class="policy-meta">
+            <h4>Policy Information</h4>
+            <p><strong>Policy Owner:</strong> Data Protection Officer</p>
+            <p><strong>Effective Date:</strong> [INSERT DATE]</p>
+            <p><strong>Review Date:</strong> [ANNUAL REVIEW]</p>
+            <p><strong>Version:</strong> 1.0</p>
+            <p><strong>Applies To:</strong> All Personal Data</p>
         </div>
 
-        <div class="meta-info">
-            <div class="meta-item">
-                <span class="meta-label">Policy Owner</span>
-                <span class="meta-value">Data Protection Officer</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Version</span>
-                <span class="meta-value">1.0</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Effective Date</span>
-                <span class="meta-value">[INSERT DATE]</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Review Date</span>
-                <span class="meta-value">[ANNUAL REVIEW]</span>
-            </div>
-        </div>
+        <div class="policy-content">
 
         <h2>1. Purpose and Scope</h2>
         
@@ -708,10 +726,13 @@
             <li>Records Management Policy</li>
         </ul>
 
+        </div>
+
         <div class="footer">
-            <p><strong>ClearMinds Data Retention Policy</strong> | Version 1.0 | Effective [DATE]</p>
-            <p>This policy is reviewed annually and updated as required.</p>
-            <p>&copy; 2024 ClearMinds. All rights reserved. This document is confidential and proprietary.</p>
+            <p><strong>Document Control</strong></p>
+            <p>Policy Reference: CM-RET-001 | Version: 1.0 | Approved by: Data Protection Officer</p>
+            <p>Next Review: [ANNUAL REVIEW]</p>
+            <p>&copy; 2024 ClearMinds. All rights reserved.</p>
         </div>
     </div>
 </body>
