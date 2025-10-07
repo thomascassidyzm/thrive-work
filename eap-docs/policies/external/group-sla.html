@@ -285,7 +285,7 @@
                 <li>Multilingual content support (10+ languages available)</li>
             </ul>
 
-            <h2>5. User Management</h2>
+            <h2>5. User Management & Employee Lifecycle</h2>
             <h3>5.1 Provisioning Methods</h3>
             <p>Flexible user onboarding options:</p>
             <ul>
@@ -328,6 +328,238 @@
                     </tr>
                 </tbody>
             </table>
+
+            <h3>5.3 Employee Lifecycle Management</h3>
+            <p>For large-scale partnerships managing thousands of employees (e.g., Towergate's 260,000+ employee base across client companies), we provide streamlined processes for managing natural employee flux:</p>
+
+            <div class="highlight-box">
+                <h4>High-Volume Employee Management</h4>
+                <p>Designed for insurance brokers, EAP providers, and benefits platforms serving multiple employer clients with continuous employee turnover.</p>
+            </div>
+
+            <h4>5.3.1 New Joiners Process</h4>
+            <p><strong>For partner HR teams to onboard new employees:</strong></p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Onboarding Method</th>
+                        <th>Process</th>
+                        <th>Timeframe</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Automated (Recommended)</strong></td>
+                        <td>New hire added to HR system → Automatically provisioned in ClearMinds via SCIM/API</td>
+                        <td>Real-time (within 15 minutes)</td>
+                        <td>Large volumes (50+ joiners/month)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bulk Upload</strong></td>
+                        <td>HR uploads CSV with new employee details via admin portal (weekly/monthly)</td>
+                        <td>Processed within 4 hours</td>
+                        <td>Medium volumes (10-50 joiners/month)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Self-Service</strong></td>
+                        <td>New employees receive company access code in welcome pack, register themselves</td>
+                        <td>Immediate</td>
+                        <td>Low volumes or decentralized HR</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SSO Sync</strong></td>
+                        <td>New hire added to Azure AD/Okta → First login creates ClearMinds account automatically</td>
+                        <td>Immediate on first login</td>
+                        <td>SSO-enabled organizations</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>What HR teams need to provide:</strong></p>
+            <ul>
+                <li>Work email address (required for account creation)</li>
+                <li>First name and last name</li>
+                <li>Employee ID (optional but recommended for tracking)</li>
+                <li>Department/location (optional, for reporting segmentation)</li>
+                <li>Start date (to align access with employment commencement)</li>
+            </ul>
+
+            <p><strong>Automated welcome process:</strong></p>
+            <ul>
+                <li>Welcome email sent automatically on account creation</li>
+                <li>Personalized onboarding journey begins</li>
+                <li>Mobile app download links included</li>
+                <li>First session recommendations based on common new starter needs (stress management, sleep, confidence)</li>
+            </ul>
+
+            <h4>5.3.2 Leavers Process</h4>
+            <p><strong>For partner HR teams to offboard departing employees:</strong></p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Offboarding Method</th>
+                        <th>Process</th>
+                        <th>Access Termination</th>
+                        <th>Data Handling</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Automated (Recommended)</strong></td>
+                        <td>Employee removed from HR system → Auto-deprovisioned via SCIM/API</td>
+                        <td>Real-time (within 15 minutes)</td>
+                        <td>Account suspended immediately, data retained per DPA</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bulk Removal</strong></td>
+                        <td>HR uploads CSV of leavers via admin portal (weekly/monthly)</td>
+                        <td>Within 4 hours</td>
+                        <td>Accounts suspended in batch, confirmation report sent</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Manual Request</strong></td>
+                        <td>HR emails account manager with leaver details</td>
+                        <td>Within 24 hours</td>
+                        <td>Individual suspension, confirmation provided</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SSO Sync</strong></td>
+                        <td>Employee removed from Azure AD/Okta → ClearMinds access revoked automatically</td>
+                        <td>Immediate on next login attempt</td>
+                        <td>No action required, SSO denies access</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Leaver data retention (UK GDPR compliance):</strong></p>
+            <ul>
+                <li><strong>Account status:</strong> Suspended immediately (login disabled)</li>
+                <li><strong>Personal data:</strong> Retained for 90 days to allow for payroll reconciliation and contractual obligations</li>
+                <li><strong>Clinical records:</strong> Retained for 7 years (CQC requirement) in secure, anonymized format</li>
+                <li><strong>Aggregated data:</strong> Continues to be included in historical reporting (non-identifiable)</li>
+                <li><strong>Full deletion:</strong> After 90-day grace period, personal identifiers removed (email, name, employee ID)</li>
+            </ul>
+
+            <div class="alert-box">
+                <h4>⚠️ Important: Leaver Grace Period</h4>
+                <p><strong>90-Day Access Extension Option:</strong> Some partners choose to provide continued access for departing employees for up to 90 days post-employment as a goodwill gesture. This can be configured per partner preference.</p>
+                <p><strong>Billing:</strong> Extended access is billed at standard PEPM rate unless otherwise agreed in contract.</p>
+            </div>
+
+            <h4>5.3.3 Employee Changes & Transfers</h4>
+            <p><strong>Managing employee data updates:</strong></p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Change Type</th>
+                        <th>How to Update</th>
+                        <th>Impact on Service</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Email address change</td>
+                        <td>Automated via SCIM/API or bulk upload</td>
+                        <td>Login credentials updated, no loss of history</td>
+                    </tr>
+                    <tr>
+                        <td>Name change</td>
+                        <td>Automated or manual update via admin portal</td>
+                        <td>Profile updated, no impact on service</td>
+                    </tr>
+                    <tr>
+                        <td>Department/location move</td>
+                        <td>Updated via CSV upload or API</td>
+                        <td>Reporting segmentation updated, no service impact</td>
+                    </tr>
+                    <tr>
+                        <td>Inter-company transfer</td>
+                        <td>Coordinate with account manager</td>
+                        <td>Access maintained, billing transferred to new entity</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>5.3.4 Bulk Employee Management Tools</h4>
+            <p><strong>For high-volume partners managing 10,000+ employees:</strong></p>
+            <ul>
+                <li><strong>Admin Portal:</strong> Self-service dashboard for HR teams to:
+                    <ul>
+                        <li>Upload bulk joiner/leaver lists (CSV format, up to 50,000 rows)</li>
+                        <li>View processing status in real-time</li>
+                        <li>Download confirmation reports</li>
+                        <li>Schedule recurring uploads (e.g., monthly payroll sync)</li>
+                    </ul>
+                </li>
+                <li><strong>API Access (Enterprise tier):</strong> Direct integration with HRIS systems:
+                    <ul>
+                        <li>Real-time provisioning/deprovisioning</li>
+                        <li>Bi-directional data sync</li>
+                        <li>Automated reconciliation reports</li>
+                        <li>Webhook notifications for critical events</li>
+                    </ul>
+                </li>
+                <li><strong>SCIM Protocol Support:</strong> Industry-standard user lifecycle management:
+                    <ul>
+                        <li>Compatible with Workday, BambooHR, Azure AD, Okta</li>
+                        <li>Automated create/update/delete operations</li>
+                        <li>Group-based access control</li>
+                    </ul>
+                </li>
+                <li><strong>Reconciliation Service:</strong> Monthly automated comparison:
+                    <ul>
+                        <li>Partner's active employee list vs ClearMinds active users</li>
+                        <li>Identifies discrepancies (orphaned accounts, missing users)</li>
+                        <li>Billing accuracy verification</li>
+                        <li>Sent to partner finance/HR teams for review</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>5.3.5 HR Team Support & Training</h4>
+            <p><strong>Enabling partner HR teams to manage employee lifecycle efficiently:</strong></p>
+            <ul>
+                <li><strong>Initial HR Training:</strong> 1-hour admin portal training covering joiner/leaver processes</li>
+                <li><strong>Documentation:</strong> Step-by-step guides for all user management tasks</li>
+                <li><strong>Video Tutorials:</strong> Short how-to videos for common processes</li>
+                <li><strong>HR Helpdesk:</strong> Dedicated support line for partner HR teams (response within 2 hours)</li>
+                <li><strong>Quarterly Check-ins:</strong> Review of user management processes and optimization opportunities</li>
+            </ul>
+
+            <h4>5.3.6 Billing Accuracy for Employee Flux</h4>
+            <p><strong>Transparent billing aligned with actual employee numbers:</strong></p>
+            <ul>
+                <li><strong>Monthly True-Up:</strong> Billing calculated based on active users during billing period</li>
+                <li><strong>Pro-rata Adjustments:</strong> New joiners charged from activation date, leavers credited from termination date</li>
+                <li><strong>Minimum Commitment:</strong> Contractual minimum user count (e.g., 80% of original employee base) protects against large-scale reductions</li>
+                <li><strong>Growth Allowance:</strong> No billing for users added up to 10% above contract baseline (encourages adoption)</li>
+                <li><strong>Reconciliation Reports:</strong> Detailed monthly reports showing:
+                    <ul>
+                        <li>Opening active user count</li>
+                        <li>New joiners added</li>
+                        <li>Leavers removed</li>
+                        <li>Closing active user count</li>
+                        <li>Billing calculation breakdown</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="highlight-box">
+                <h4>Case Study: Managing High-Volume Employee Flux</h4>
+                <p><strong>Example: Towergate Insurance Brokers</strong></p>
+                <p>With 260,000+ employees across multiple client companies, Towergate's HR teams benefit from:</p>
+                <ul>
+                    <li><strong>Automated SCIM integration:</strong> Real-time sync with their HR platform processes ~5,000 joiners/leavers per month automatically</li>
+                    <li><strong>Monthly reconciliation:</strong> Automated reports ensure billing accuracy across hundreds of client companies</li>
+                    <li><strong>Dedicated integration team:</strong> ClearMinds technical team provides ongoing API support and optimization</li>
+                    <li><strong>Bulk upload fallback:</strong> For clients without API access, CSV bulk upload processes 10,000+ employees weekly</li>
+                    <li><strong>Zero manual intervention:</strong> 98% of user lifecycle events handled automatically, HR team only manages exceptions</li>
+                </ul>
+            </div>
 
             <h2>6. Reporting & Analytics</h2>
             <h3>6.1 Standard Reporting</h3>
