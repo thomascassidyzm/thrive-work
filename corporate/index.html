@@ -158,11 +158,15 @@
 
         .pathway-step {
             flex: 1;
+            min-width: 0;
             background: var(--clearminds-green);
             padding: 1.5rem;
             border-radius: 0.5rem;
             text-align: center;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .pathway-step::after {
@@ -373,30 +377,30 @@
         <div class="clearminds-application">
             <h2>ClearMinds Corporate Application</h2>
 
-            <h3 style="color: var(--clearminds-dark); margin-top: 2rem;">Three-Pathway Care Model</h3>
+            <h3 style="color: var(--clearminds-dark); margin-top: 2rem;">User Support Options</h3>
             <p style="line-height: 1.8; margin-bottom: 1.5rem;">
-                ClearMinds implements a stepped care approach that matches users with appropriate support levels while maintaining quality governance at each stage:
+                ClearMinds provides clear pathways matching user needs, from self-directed wellness to emergency support and clinical care:
             </p>
 
             <div class="pathway-diagram">
-                <h4 style="text-align: center; color: var(--clearminds-teal); margin-bottom: 2rem;">Stepped Care Pathways</h4>
+                <h4 style="text-align: center; color: var(--clearminds-teal); margin-bottom: 2rem;">Three Support Options</h4>
                 <div class="pathway-steps">
                     <div class="pathway-step" style="background: #c8e6c9;">
-                        <h4>Pathway 1: Wellness</h4>
+                        <h4>Self-Directed Wellness</h4>
                         <p><strong>ClearMinds Platform</strong></p>
-                        <p>Self-directed hypnotherapy, meditation, breathwork</p>
+                        <p>Non-medical, non-clinical content: hypnotherapy, meditation, breathwork</p>
                         <p style="margin-top: 0.5rem; font-size: 0.85rem; font-weight: 600;">Governance: Content quality, user safety, data protection</p>
                     </div>
-                    <div class="pathway-step" style="background: #b2dfdb;">
-                        <h4>Pathway 2: Diagnostic</h4>
-                        <p><strong>Neuro-Evaluator</strong></p>
-                        <p>AI psychometric assessment, OCEAN profiling</p>
-                        <p style="margin-top: 0.5rem; font-size: 0.85rem; font-weight: 600;">Governance: Assessment validity, data ethics, insight accuracy</p>
+                    <div class="pathway-step" style="background: #ffcdd2;">
+                        <h4>Crisis Support</h4>
+                        <p><strong>Emergency Services</strong></p>
+                        <p>Immediate signposting to Samaritans, emergency services, crisis helplines</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem; font-weight: 600;">Governance: Clear escalation protocols, safeguarding referrals</p>
                     </div>
                     <div class="pathway-step" style="background: #90caf9;">
-                        <h4>Pathway 3: Clinical</h4>
+                        <h4>Clinical Referral</h4>
                         <p><strong>Smart Start Minds</strong></p>
-                        <p>CQC-regulated therapy & diagnosis</p>
+                        <p>Access CQC-regulated diagnostics and therapy through ClearMinds platform</p>
                         <p style="margin-top: 0.5rem; font-size: 0.85rem; font-weight: 600;">Governance: Full CQC compliance, clinical supervision, safeguarding</p>
                     </div>
                 </div>
