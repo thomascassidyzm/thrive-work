@@ -33,8 +33,8 @@ This folder contains all governance documentation ready for standalone deploymen
 - **`/corporate/deck/portrait.html`** - Portrait presentation (A4 210x297mm)
 
 ### Additional Pages
-- **`/corporate/landing.html`** - Original corporate landing page
 - **`/corporate/css/style.css`** - Shared stylesheet
+- **Note:** The framework page links back to https://clearminds.business/ as the main homepage
 
 ---
 
@@ -60,16 +60,18 @@ All links use proper relative paths for standalone folder operation:
 
 ---
 
-## 🔗 Recommended Link from clearminds.business
+## 🔗 Navigation Flow
 
-**Primary Link:**
-```html
-<a href="https://thrive-work.vercel.app/corporate/">
-  View Our Care Quality Governance Framework
-</a>
-```
+**clearminds.business homepage** → links to → **clearminds.business/corporate/index.html**
 
-This links directly to the governance framework, which then provides navigation to all documentation.
+When deployed to clearminds.business, the structure will be:
+- Homepage: `https://clearminds.business/`
+- Framework: `https://clearminds.business/corporate/index.html`
+
+The framework page links back to clearminds.business homepage in breadcrumb and footer.
+
+**For testing/preview:**
+Currently live at: `https://thrive-work.vercel.app/corporate/`
 
 ---
 
@@ -80,7 +82,8 @@ This links directly to the governance framework, which then provides navigation 
 - **4** Policy Category Indexes
 - **21** Individual Policy Documents
 - **3** Presentation Deck Pages
-- **Total: 30 HTML files + shared CSS**
+- **Total: 29 HTML files + shared CSS**
+  (Note: landing.html removed as clearminds.business has its own homepage)
 
 ---
 
@@ -89,12 +92,13 @@ This links directly to the governance framework, which then provides navigation 
 To verify all links work:
 
 1. Start at `/corporate/index.html` (framework)
-2. Click "View Full Documentation Hub" → should reach `/corporate/documentation/index.html`
-3. Click any category button → should reach category index
-4. Click any policy → should reach individual policy
-5. Click "← Back to Policies" → should return to category index
-6. Click breadcrumb "Documentation" → should return to hub
-7. Click breadcrumb "Home" → should return to framework root
+2. Click breadcrumb "ClearMinds Home" → should reach clearminds.business homepage
+3. Click "View Full Documentation Hub" → should reach `/corporate/documentation/index.html`
+4. Click any category button → should reach category index
+5. Click any policy → should reach individual policy
+6. Click "← Back to Policies" → should return to category index
+7. Click breadcrumb "Documentation" → should return to hub
+8. Click breadcrumb "Home" → should return to framework root
 
 All paths verified ✅ (2025-10-08)
 
