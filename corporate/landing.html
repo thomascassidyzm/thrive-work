@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearMinds Corporate - Enterprise Mental Health at Scale</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --clearminds-teal: #007a87;
+            --clearminds-dark: #0d3b3e;
+            --clearminds-green: #dff4da;
+            --clearminds-cream: #fffbf5;
+        }
+
+        /* Override primary colors for ClearMinds brand */
+        body {
+            background-color: var(--clearminds-cream);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--clearminds-teal) 0%, var(--clearminds-dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero-section h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .stats-bar {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin: -3rem auto 3rem;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--clearminds-teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .value-prop {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .value-prop:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 122, 135, 0.15);
+        }
+
+        .value-prop-icon {
+            width: 64px;
+            height: 64px;
+            background-color: var(--clearminds-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--clearminds-teal);
+        }
+
+        .value-prop h3 {
+            color: var(--clearminds-dark);
+            margin-bottom: 1rem;
+        }
+
+        .how-it-works {
+            background-color: white;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            color: var(--clearminds-dark);
+            margin-bottom: 3rem;
+            border-bottom: none;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background-color: var(--clearminds-teal);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.125rem;
+            color: var(--clearminds-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .step p {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--clearminds-green) 0%, #c8e6c9 100%);
+            border-radius: 0.5rem;
+            margin: 3rem 0;
+        }
+
+        .cta-section h2 {
+            color: var(--clearminds-dark);
+            margin-bottom: 1.5rem;
+            border-bottom: none;
+        }
+
+        .btn-primary {
+            background-color: var(--clearminds-teal);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--clearminds-dark);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                margin: -2rem 1rem 2rem;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>ClearMinds Corporate</h1>
+        <p>Enterprise Mental Health at Scale</p>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-number">70,000+</div>
+                <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">Unlimited</div>
+                <div class="stat-label">Digital Scalability</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">CQC</div>
+                <div class="stat-label">Partnership</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Compliance Policies</div>
+            </div>
+        </div>
+
+        <!-- CRITICAL DISCLAIMER: NOT A MEDICAL SERVICE -->
+        <div style="background: #fff9e6; border-left: 6px solid #ff9800; padding: 2.5rem; margin: 3rem 0; border-radius: 0.5rem; box-shadow: 0 4px 12px rgba(255, 152, 0, 0.15);">
+            <h2 style="color: #5d4037; margin: 0 0 1.5rem 0; font-size: 2rem; border-bottom: none; font-weight: 700;">⚠️ IMPORTANT: ClearMinds Corporate is NOT a Medical Service</h2>
+
+            <div style="background: white; padding: 1.5rem; border-radius: 0.375rem; margin-bottom: 1.5rem;">
+                <p style="margin: 0 0 1rem 0; color: #333; font-size: 1.125rem; font-weight: 600;">What ClearMinds Corporate Provides:</p>
+                <ul style="margin: 0; padding-left: 1.5rem; color: #333; line-height: 1.8;">
+                    <li><strong>Digital wellness platform</strong> with hypnotherapy, guided meditation, and breathwork</li>
+                    <li><strong>Unlimited scalability</strong> – digital service with no client limits, serving 70,000+ users and scaling to enterprise partnerships of 260,000+ employees</li>
+                    <li><strong>Best practice compliance</strong> – following CQC guidelines as industry best practice for quality and safety</li>
+                    <li><strong>Complementary wellbeing support</strong> – designed to support mental wellness, not replace medical treatment</li>
+                </ul>
+            </div>
+
+            <div style="background: white; padding: 1.5rem; border-radius: 0.375rem; margin-bottom: 1.5rem;">
+                <p style="margin: 0 0 1rem 0; color: #333; font-size: 1.125rem; font-weight: 600;">What We Are NOT:</p>
+                <ul style="margin: 0; padding-left: 1.5rem; color: #333; line-height: 1.8;">
+                    <li><strong>NOT CQC registered</strong> – ClearMinds is not regulated by the Care Quality Commission. We follow CQC guidelines as best practice for governance and safety.</li>
+                    <li><strong>NOT a medical service</strong> – We do not provide medical diagnosis, treatment, psychiatric care, or psychological therapy</li>
+                    <li><strong>NOT a substitute for professional care</strong> – Do not use ClearMinds instead of your GP, mental health professional, or emergency services</li>
+                </ul>
+            </div>
+
+            <div style="background: #fff3cd; padding: 1.5rem; border-radius: 0.375rem; border-left: 4px solid #ffc107;">
+                <p style="margin: 0 0 1rem 0; color: #856404; font-size: 1.125rem; font-weight: 600;">Three-Pathway Support Model via Smart Start Minds:</p>
+                <p style="margin: 0 0 1rem 0; color: #856404; line-height: 1.8;">
+                    We partner with <strong>Smart Start Minds</strong> (CQC-registered: 1-2950268195) to provide a stepped care approach:
+                </p>
+                <ul style="margin: 0; color: #856404; line-height: 1.8;">
+                    <li><strong>Pathway 1:</strong> ClearMinds wellness platform (self-directed, NOT medical)</li>
+                    <li><strong>Pathway 2:</strong> Neuro-evaluator assessment (psychometric insight, NOT diagnosis)</li>
+                    <li><strong>Pathway 3:</strong> CQC-regulated clinical treatment (medical diagnosis & therapy)</li>
+                </ul>
+                <p style="margin: 1rem 0 0 0; color: #856404; line-height: 1.8; font-size: 0.95rem;">
+                    See our <a href="policies/external/health-sla.html" style="color: #007a87; text-decoration: underline; font-weight: 600;">Health Service Level Agreement</a> for full pathway details.
+                </p>
+            </div>
+
+            <p style="margin: 1.5rem 0 0 0; color: #721c24; font-size: 1rem; font-weight: 600; text-align: center;">
+                If you are experiencing a mental health crisis, call <strong>999</strong> (emergency), <strong>111</strong> (urgent care), or <strong>Samaritans 116 123</strong> (24/7 support). See our <a href="policies/legal/medical-disclaimer.html" style="color: #007a87; text-decoration: underline;">Medical Disclaimer</a> for full details.
+            </p>
+        </div>
+
+        <!-- Value Propositions -->
+        <div class="value-props">
+            <div class="value-prop">
+                <div class="value-prop-icon">📊</div>
+                <h3>Proven at Scale</h3>
+                <p>Supporting 70,000+ employees with enterprise-grade infrastructure and proven reliability across major organizations.</p>
+            </div>
+            <div class="value-prop">
+                <div class="value-prop-icon">🏥</div>
+                <h3>Clinical Safety</h3>
+                <p>CQC-aligned clinical governance with comprehensive safeguarding, consent protocols, and duty of candour compliance.</p>
+            </div>
+            <div class="value-prop">
+                <div class="value-prop-icon">🔒</div>
+                <h3>Enterprise Ready</h3>
+                <p>Full GDPR compliance, data protection frameworks, and transparent SLAs backed by comprehensive legal documentation.</p>
+            </div>
+        </div>
+
+        <!-- Three Pathways to Mental Health Support -->
+        <div class="how-it-works">
+            <h2>Three Pathways to Mental Health Support</h2>
+            <p style="text-align: center; color: #6b7280; max-width: 800px; margin: 0 auto 3rem; font-size: 1.05rem;">
+                ClearMinds Corporate offers a stepped care model, matching employees with the right level of support for their needs - from self-directed wellness to clinical treatment.
+            </p>
+            <div class="steps" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div class="step">
+                    <div class="step-number" style="background-color: #81b7a8;">1</div>
+                    <h3 style="color: #007a87;">Wellness & Prevention</h3>
+                    <p style="color: #0d3b3e; font-weight: 600; margin-bottom: 0.75rem;">Self-Directed ClearMinds Platform</p>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin: 0; color: #6b7280; font-size: 0.875rem; line-height: 1.6;">
+                        <li>✓ 500+ hypnotherapy sessions</li>
+                        <li>✓ Guided meditation & breathwork</li>
+                        <li>✓ Sleep support & stress management</li>
+                        <li>✓ Confidence & lifestyle goals</li>
+                        <li>✓ Unlimited digital access</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-size: 0.8rem; color: #6b7280; font-style: italic;">Perfect for general wellbeing and prevention</p>
+                </div>
+                <div class="step">
+                    <div class="step-number" style="background-color: #007a87;">2</div>
+                    <h3 style="color: #007a87;">Diagnostic Insight</h3>
+                    <p style="color: #0d3b3e; font-weight: 600; margin-bottom: 0.75rem;">Neuro-Evaluator Assessment</p>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin: 0; color: #6b7280; font-size: 0.875rem; line-height: 1.6;">
+                        <li>✓ AI-powered psychometric assessment</li>
+                        <li>✓ OCEAN personality profiling</li>
+                        <li>✓ Root cause analysis (stress patterns)</li>
+                        <li>✓ Behavioral tendency insights</li>
+                        <li>✓ Treatment pathway recommendations</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-size: 0.8rem; color: #6b7280; font-style: italic;">For deeper self-understanding and guidance</p>
+                </div>
+                <div class="step">
+                    <div class="step-number" style="background-color: #0d3b3e;">3</div>
+                    <h3 style="color: #007a87;">Clinical Treatment</h3>
+                    <p style="color: #0d3b3e; font-weight: 600; margin-bottom: 0.75rem;">Smart Start Minds (CQC-Regulated)</p>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin: 0; color: #6b7280; font-size: 0.875rem; line-height: 1.6;">
+                        <li>✓ Live therapy sessions</li>
+                        <li>✓ Clinical diagnosis & treatment</li>
+                        <li>✓ Psychiatric/psychological care</li>
+                        <li>✓ Ongoing clinical monitoring</li>
+                        <li>✓ Full CQC compliance (1-2950268195)</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-size: 0.8rem; color: #6b7280; font-style: italic;">For clinical mental health conditions</p>
+                </div>
+            </div>
+            <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 0.5rem; margin-top: 2rem; border-left: 4px solid #007a87;">
+                <p style="margin: 0; color: #333; line-height: 1.7; font-size: 0.95rem;">
+                    <strong>Seamless Escalation:</strong> Employees can move between pathways as their needs change. ClearMinds wellness users can access the neuro-evaluator for diagnostic insight, and those requiring clinical care are seamlessly referred to Smart Start Minds' CQC-regulated services.
+                </p>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to Explore?</h2>
+            <p style="color: #4b5563; margin-bottom: 2rem;">Access our complete documentation hub to review all policies, SLAs, and compliance frameworks.</p>
+            <a href="documentation/index.html" class="btn-primary">View Documentation</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container">
+        <div class="footer">
+            <p>&copy; 2025 ClearMinds Corporate. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
