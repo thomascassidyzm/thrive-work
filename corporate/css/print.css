@@ -1,0 +1,355 @@
+/* Thrive EAP Documentation - Print Styles */
+
+@media print {
+    /* ==================== PAGE SETUP ==================== */
+    @page {
+        margin: 2cm;
+        size: A4;
+
+        @top-center {
+            content: element(header);
+        }
+
+        @bottom-center {
+            content: "Page " counter(page) " of " counter(pages);
+        }
+    }
+
+    /* ==================== RESET FOR PRINT ==================== */
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    body {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+        background: #fff;
+    }
+
+    /* ==================== HIDE ELEMENTS ==================== */
+    .sidebar,
+    .page-actions,
+    .doc-navigation,
+    .breadcrumb,
+    .btn,
+    button,
+    nav,
+    .no-print {
+        display: none !important;
+    }
+
+    /* ==================== LAYOUT ==================== */
+    .doc-layout {
+        display: block;
+        grid-template-columns: none;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    /* ==================== PAGE BREAKS ==================== */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
+
+    h1 {
+        page-break-before: always;
+    }
+
+    h1:first-child {
+        page-break-before: avoid;
+    }
+
+    p, ul, ol, dl, blockquote, pre {
+        page-break-inside: avoid;
+    }
+
+    table, figure, img {
+        page-break-inside: avoid;
+    }
+
+    tr, td, th {
+        page-break-inside: avoid;
+    }
+
+    ul, ol {
+        page-break-before: avoid;
+    }
+
+    /* Keep sections together */
+    section {
+        page-break-inside: avoid;
+    }
+
+    /* ==================== TYPOGRAPHY ==================== */
+    h1 {
+        font-size: 24pt;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 12pt;
+        border-bottom: 2pt solid #000;
+        padding-bottom: 6pt;
+    }
+
+    h2 {
+        font-size: 18pt;
+        font-weight: bold;
+        margin-top: 18pt;
+        margin-bottom: 10pt;
+        border-bottom: 1pt solid #000;
+        padding-bottom: 4pt;
+    }
+
+    h3 {
+        font-size: 14pt;
+        font-weight: bold;
+        margin-top: 14pt;
+        margin-bottom: 8pt;
+    }
+
+    h4 {
+        font-size: 12pt;
+        font-weight: bold;
+        margin-top: 12pt;
+        margin-bottom: 6pt;
+    }
+
+    h5, h6 {
+        font-size: 12pt;
+        font-weight: bold;
+        margin-top: 10pt;
+        margin-bottom: 6pt;
+    }
+
+    p {
+        margin-bottom: 8pt;
+        orphans: 3;
+        widows: 3;
+    }
+
+    /* ==================== LINKS ==================== */
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+
+    /* Show URLs after links */
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        font-style: italic;
+    }
+
+    /* Don't show URLs for internal links */
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    /* ==================== LISTS ==================== */
+    ul, ol {
+        margin-left: 1.5em;
+        margin-bottom: 8pt;
+    }
+
+    li {
+        margin-bottom: 4pt;
+    }
+
+    /* ==================== TABLES ==================== */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12pt 0;
+        font-size: 10pt;
+    }
+
+    th {
+        background-color: #f0f0f0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        border: 1pt solid #000;
+        padding: 6pt;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    td {
+        border: 1pt solid #000;
+        padding: 6pt;
+    }
+
+    /* Alternate row colors for readability */
+    tbody tr:nth-child(even) td {
+        background-color: #f9f9f9 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* ==================== CHECKBOXES ==================== */
+    input[type="checkbox"] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 12pt;
+        height: 12pt;
+        border: 1pt solid #000;
+        margin-right: 6pt;
+        position: relative;
+        vertical-align: middle;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    input[type="checkbox"]:checked::before {
+        content: "✓";
+        position: absolute;
+        top: -2pt;
+        left: 1pt;
+        font-size: 10pt;
+        font-weight: bold;
+    }
+
+    /* ==================== BADGES ==================== */
+    .badge {
+        border: 1pt solid #000;
+        padding: 2pt 6pt;
+        font-size: 8pt;
+        font-weight: bold;
+        background-color: #f0f0f0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* ==================== HIGHLIGHTED SECTIONS ==================== */
+    .highlight-critical,
+    .highlight-important,
+    .highlight-info {
+        border: 2pt solid #000;
+        padding: 8pt;
+        margin: 12pt 0;
+        background-color: #f5f5f5 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* ==================== SIGNATURE BLOCKS ==================== */
+    .signature-block {
+        border: 1pt solid #000;
+        padding: 12pt;
+        margin: 12pt 0;
+        background-color: #f9f9f9 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .signature-line {
+        border-bottom: 1pt solid #000;
+        margin: 8pt 0 2pt 0;
+        min-width: 200pt;
+        display: inline-block;
+    }
+
+    /* ==================== CODE BLOCKS ==================== */
+    pre, code {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 9pt;
+        border: 1pt solid #000;
+        padding: 6pt;
+        background-color: #f5f5f5 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    /* ==================== HORIZONTAL RULE ==================== */
+    hr {
+        border: none;
+        border-top: 1pt solid #000;
+        margin: 12pt 0;
+    }
+
+    /* ==================== FOOTER ==================== */
+    .footer {
+        margin-top: 24pt;
+        padding-top: 12pt;
+        border-top: 1pt solid #000;
+        font-size: 9pt;
+    }
+
+    /* ==================== CARDS (should be simple in print) ==================== */
+    .card {
+        border: 1pt solid #000;
+        padding: 12pt;
+        margin-bottom: 12pt;
+    }
+
+    .card-grid {
+        display: block;
+    }
+
+    /* ==================== HEADER & HERO ==================== */
+    .hero {
+        border-bottom: 2pt solid #000;
+        padding-bottom: 12pt;
+        margin-bottom: 24pt;
+    }
+
+    .page-header {
+        border-bottom: 1pt solid #000;
+        padding-bottom: 8pt;
+        margin-bottom: 12pt;
+    }
+
+    /* ==================== ENSURE CONTENT VISIBILITY ==================== */
+    .main-content,
+    article,
+    section,
+    div {
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    /* ==================== ORPHANS AND WIDOWS ==================== */
+    p, li {
+        orphans: 3;
+        widows: 3;
+    }
+
+    /* ==================== TABLE OF CONTENTS (if printing) ==================== */
+    .toc {
+        display: block !important;
+        page-break-after: always;
+        border: 1pt solid #000;
+        padding: 12pt;
+        margin-bottom: 24pt;
+    }
+
+    .toc h3 {
+        margin-top: 0;
+    }
+
+    .toc ul {
+        list-style: none;
+    }
+
+    .toc a {
+        text-decoration: none;
+    }
+
+    .toc a::after {
+        content: "";
+    }
+}

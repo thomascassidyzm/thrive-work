@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Breach Response Plan - ClearMinds</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: #fffbf5; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        
+        .policy-header {
+            background: linear-gradient(135deg, #007a87 0%, #0d3b3e 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+        .policy-header a {
+            color: #dff4da;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .policy-header h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .policy-header .subtitle {
+            color: #bedee1;
+            font-size: 1.2rem;
+        }
+        
+        .policy-meta {
+            background: #dff4da;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid #007a87;
+        }
+        .policy-meta h4 {
+            color: #007a87;
+            margin: 0 0 15px 0;
+            font-size: 1.2rem;
+        }
+        .policy-meta p {
+            margin: 5px 0;
+            color: #333;
+        }
+        
+        .policy-content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .policy-content h2 {
+            color: #007a87;
+            font-size: 2rem;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dff4da;
+        }
+        .policy-content h3 {
+            color: #0d3b3e;
+            font-size: 1.5rem;
+            margin: 30px 0 15px 0;
+        }
+        .policy-content h4 {
+            color: #007a87;
+            font-size: 1.2rem;
+            margin: 20px 0 10px 0;
+        }
+        .policy-content p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .policy-content ul, .policy-content ol {
+            margin: 15px 0 15px 30px;
+            line-height: 1.8;
+        }
+        .policy-content li {
+            margin-bottom: 10px;
+        }
+        .policy-content blockquote {
+            border-left: 4px solid #007a87;
+            padding-left: 20px;
+            font-style: italic;
+            margin: 20px 0;
+        }
+        
+        .policy-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .policy-content th, .policy-content td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+        }
+        .policy-content th {
+            background: #007a87;
+            color: white;
+            font-weight: 600;
+        }
+        .policy-content tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .emergency-box {
+            background: #dc3545;
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        .emergency-box h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .alert-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #007a87;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .timeline-box {
+            background: #dff4da;
+            border: 2px solid #007a87;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        h2 {
+            color: #007a87;
+            font-size: 22px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        h4 {
+            color: #007a87;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+        }
+
+        th {
+            background: #007a87;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .checklist {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .checklist h4 {
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            font-size: 13px;
+            color: #6c757d;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            .document-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="policy-header">
+        <div class="container">
+            <a href="../index.html">← Back to Policies</a>
+            <h1>Data Breach Response Plan</h1>
+            <p class="subtitle">Emergency Response & Incident Management</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="policy-meta">
+            <h4>Plan Information</h4>
+            <p><strong>Plan Owner:</strong> Data Protection Officer</p>
+            <p><strong>Effective Date:</strong> [INSERT DATE]</p>
+            <p><strong>Review Date:</strong> [ANNUAL REVIEW]</p>
+            <p><strong>Version:</strong> 1.0</p>
+            <p><strong>24/7 Emergency Contact:</strong> [DPO EMERGENCY NUMBER]</p>
+        </div>
+
+        <div class="policy-content">
+
+        <div class="emergency-box">
+            <h3>🚨 EMERGENCY BREACH REPORTING</h3>
+            <p>If you discover or suspect a data breach:</p>
+            <p><strong>IMMEDIATELY contact the Data Protection Officer:</strong></p>
+            <p>📞 Emergency: [DPO EMERGENCY NUMBER] (24/7)<br>
+            📧 Email: dpo@clearmindseap.com<br>
+            📧 Backup: [BACKUP CONTACT EMAIL]</p>
+            <p><strong>Do NOT delay reporting</strong> - we have strict legal timeframes to report to the ICO (within 72 hours)</p>
+        </div>
+
+        <h2>1. Introduction and Purpose</h2>
+        
+        <p>This Data Breach Response Plan establishes ClearMinds' procedures for identifying, assessing, responding to, and recovering from personal data breaches in compliance with UK GDPR and the Data Protection Act 2018.</p>
+
+        <p>A personal data breach can have serious consequences for affected individuals and for ClearMinds. This plan ensures we respond quickly, effectively, and in compliance with legal requirements, particularly the 72-hour notification requirement to the ICO.</p>
+
+        <h3>1.1 What is a Data Breach?</h3>
+        <p>Under UK GDPR Article 4(12), a personal data breach means:</p>
+        <blockquote style="border-left: 4px solid #007a87; padding-left: 20px; font-style: italic; margin: 20px 0;">
+        "A breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted, stored or otherwise processed."
+        </blockquote>
+
+        <h3>1.2 Types of Data Breaches</h3>
+
+        <ul>
+            <li><strong>Confidentiality Breach:</strong> Unauthorised or accidental disclosure of or access to personal data</li>
+            <li><strong>Availability Breach:</strong> Accidental or unauthorised loss of access to or destruction of personal data</li>
+            <li><strong>Integrity Breach:</strong> Unauthorised or accidental alteration of personal data</li>
+        </ul>
+
+        <div class="info-box">
+            <h4>Examples of Data Breaches:</h4>
+            <ul>
+                <li>Email sent to wrong recipient containing personal data</li>
+                <li>Loss or theft of device containing personal data</li>
+                <li>Ransomware attack encrypting clinical records</li>
+                <li>Unauthorised access to systems by hacker</li>
+                <li>Staff member accessing records without authorisation</li>
+                <li>Accidental publication of personal data on website</li>
+                <li>Physical records left in insecure location</li>
+                <li>Backup tapes lost or stolen</li>
+            </ul>
+        </div>
+
+        <h2>2. Data Breach Response Team</h2>
+
+        <h3>2.1 Core Response Team</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Role</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Responsibilities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Data Protection Officer (Lead)</strong></td>
+                        <td>[DPO NAME]</td>
+                        <td>[DPO CONTACT]</td>
+                        <td>Overall incident management, ICO liaison, regulatory compliance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IT Security Lead</strong></td>
+                        <td>[IT LEAD NAME]</td>
+                        <td>[IT CONTACT]</td>
+                        <td>Technical investigation, containment, system security</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Clinical Director</strong></td>
+                        <td>[CLINICAL DIRECTOR NAME]</td>
+                        <td>[CLINICAL CONTACT]</td>
+                        <td>Clinical impact assessment, patient safety, clinical communications</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Legal Counsel</strong></td>
+                        <td>[LEGAL NAME / FIRM]</td>
+                        <td>[LEGAL CONTACT]</td>
+                        <td>Legal advice, liability assessment, regulatory response</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Communications Lead</strong></td>
+                        <td>[COMMS LEAD NAME]</td>
+                        <td>[COMMS CONTACT]</td>
+                        <td>Internal/external communications, media liaison</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Senior Management</strong></td>
+                        <td>[CEO/MD NAME]</td>
+                        <td>[MANAGEMENT CONTACT]</td>
+                        <td>Strategic decisions, board liaison, resource approval</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>2.2 Extended Team (as needed)</h3>
+        <ul>
+            <li><strong>HR Director:</strong> Staff-related breaches, disciplinary matters</li>
+            <li><strong>Insurance Broker:</strong> Professional indemnity and cyber insurance claims</li>
+            <li><strong>Forensic Investigators:</strong> For serious cyberattacks</li>
+            <li><strong>PR Agency:</strong> For major incidents requiring media management</li>
+        </ul>
+
+        <h2>3. Breach Response Timeline</h2>
+
+        <div class="timeline-box">
+            <h4>Critical Timeframes (UK GDPR Requirements)</h4>
+            <ul>
+                <li><strong>0-24 hours:</strong> Detection, containment, initial assessment, mobilise response team</li>
+                <li><strong>Within 72 hours:</strong> Report to ICO (if required) - Article 33 UK GDPR</li>
+                <li><strong>Without undue delay:</strong> Notify affected data subjects (if high risk) - Article 34 UK GDPR</li>
+                <li><strong>Within 30 days:</strong> Complete full investigation and implement remedial actions</li>
+            </ul>
+        </div>
+
+        <div class="alert-box">
+            <strong>⚠️ Critical Requirement:</strong> If we cannot report to the ICO within 72 hours, we must provide reasons for the delay and submit the report as soon as possible thereafter. Delays must be justified and documented.
+        </div>
+
+        <h2>4. Phase 1: Detection and Initial Response (0-2 hours)</h2>
+
+        <h3>4.1 Breach Detection</h3>
+        <p>Breaches may be detected through:</p>
+        <ul>
+            <li>Automated security alerts and monitoring systems</li>
+            <li>Staff reports or concerns</li>
+            <li>Data subjects reporting issues</li>
+            <li>Third-party notifications (e.g., processor breach)</li>
+            <li>Media reports or public disclosure</li>
+            <li>Regulatory notifications</li>
+            <li>Audit findings</li>
+        </ul>
+
+        <h3>4.2 Immediate Actions (First Person Discovering Breach)</h3>
+
+        <div class="checklist">
+            <h4>✅ Immediate Actions Checklist</h4>
+            <ol>
+                <li><strong>STOP and CONTAIN:</strong> Immediately stop any ongoing breach activity if safe to do so</li>
+                <li><strong>PRESERVE EVIDENCE:</strong> Do not delete, alter, or destroy any evidence. Take screenshots if appropriate</li>
+                <li><strong>REPORT IMMEDIATELY:</strong> Contact DPO via emergency number [NUMBER] or email dpo@clearmindseap.com</li>
+                <li><strong>DO NOT DISCUSS:</strong> Do not discuss the breach with anyone except the DPO or response team</li>
+                <li><strong>DOCUMENT:</strong> Write down exactly what happened, when, and what you observed</li>
+                <li><strong>SECURE AREA:</strong> If physical breach, secure the location and prevent access</li>
+            </ol>
+        </div>
+
+        <h3>4.3 DPO Initial Assessment (Within 1 hour)</h3>
+
+        <p>Upon notification, the DPO will:</p>
+        <ol>
+            <li>Confirm breach details and severity</li>
+            <li>Activate the Data Breach Response Team</li>
+            <li>Assign incident reference number</li>
+            <li>Open incident log and begin documentation</li>
+            <li>Initiate immediate containment measures</li>
+            <li>Determine if 72-hour clock has started (when organisation became aware)</li>
+            <li>Notify senior management</li>
+        </ol>
+
+        <h2>5. Phase 2: Containment and Assessment (2-24 hours)</h2>
+
+        <h3>5.1 Immediate Containment</h3>
+
+        <p><strong>IT Security Lead Actions:</strong></p>
+        <ul>
+            <li>Isolate affected systems to prevent further compromise</li>
+            <li>Change passwords and revoke compromised credentials</li>
+            <li>Disable compromised user accounts</li>
+            <li>Implement firewall rules to block malicious traffic</li>
+            <li>Preserve logs and forensic evidence</li>
+            <li>Secure physical perimeter if physical breach</li>
+        </ul>
+
+        <h3>5.2 Breach Assessment</h3>
+
+        <p>The response team must assess:</p>
+
+        <h4>Nature of the Breach</h4>
+        <ul>
+            <li>What type of breach occurred? (confidentiality, integrity, availability)</li>
+            <li>Was it accidental or malicious?</li>
+            <li>Is it a cyber incident, human error, or system failure?</li>
+        </ul>
+
+        <h4>Scope and Impact</h4>
+        <ul>
+            <li>What personal data was affected?</li>
+            <li>How many individuals are affected?</li>
+            <li>Does it include special category data (health data)?</li>
+            <li>Was the data encrypted or otherwise protected?</li>
+            <li>Was the breach internal or external?</li>
+            <li>Has the data been recovered or is it still at risk?</li>
+        </ul>
+
+        <h4>Risks to Individuals</h4>
+        <ul>
+            <li>What are the potential consequences for affected individuals?</li>
+            <li>Could it cause physical, material, or non-material damage?</li>
+            <li>Could it lead to discrimination, identity theft, or fraud?</li>
+            <li>Could it cause psychological distress or damage to reputation?</li>
+            <li>Could it affect vulnerable individuals (children, mental health patients)?</li>
+        </ul>
+
+        <h3>5.3 Risk Severity Assessment</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Risk Level</th>
+                        <th>Characteristics</th>
+                        <th>ICO Report?</th>
+                        <th>Data Subject Notification?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>LOW</strong></td>
+                        <td>Minimal or no risk to individuals. Quick containment. No sensitive data. Internal breach with recovery.</td>
+                        <td>NO (but log internally)</td>
+                        <td>NO</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MEDIUM</strong></td>
+                        <td>Some risk to individuals. Limited scope. Non-sensitive data or encrypted. Unlikely to cause significant harm.</td>
+                        <td>YES (within 72 hours)</td>
+                        <td>ASSESS (if risk mitigated, may not be required)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HIGH</strong></td>
+                        <td>Significant risk. Large-scale breach. Sensitive/special category data. Potential for serious harm (identity theft, discrimination, psychological harm).</td>
+                        <td>YES (within 72 hours)</td>
+                        <td>YES (without undue delay)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CRITICAL</strong></td>
+                        <td>Severe risk. Mass breach of health data. Children involved. High likelihood of serious harm. Media attention likely.</td>
+                        <td>YES (URGENT - within 72 hours)</td>
+                        <td>YES (URGENT - without undue delay)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>6. Phase 3: Notification and Communication (24-72 hours)</h2>
+
+        <h3>6.1 ICO Notification (Article 33 UK GDPR)</h3>
+
+        <p><strong>When to Notify:</strong> Within 72 hours of becoming aware of a breach likely to result in a risk to individuals' rights and freedoms.</p>
+
+        <p><strong>How to Notify:</strong> Via the ICO's online breach reporting tool at <a href="https://ico.org.uk/for-organisations/report-a-breach/">https://ico.org.uk/for-organisations/report-a-breach/</a></p>
+
+        <h4>Information to Include in ICO Report:</h4>
+        <ol>
+            <li><strong>Description of the breach:</strong> Nature of the breach, categories and approximate numbers of data subjects and records affected</li>
+            <li><strong>Contact details:</strong> Name and contact details of the DPO or other contact point</li>
+            <li><strong>Likely consequences:</strong> Description of the likely consequences of the breach</li>
+            <li><strong>Measures taken:</strong> Description of measures taken or proposed to address the breach, including mitigation of possible adverse effects</li>
+        </ol>
+
+        <div class="info-box">
+            <strong>Phased Reporting:</strong> If we cannot provide all information within 72 hours, we can submit an initial report and provide additional information in phases, explaining reasons for the delay.
+        </div>
+
+        <h3>6.2 Data Subject Notification (Article 34 UK GDPR)</h3>
+
+        <p><strong>When to Notify:</strong> Without undue delay if the breach is likely to result in a HIGH RISK to individuals' rights and freedoms.</p>
+
+        <p><strong>Exceptions (when notification NOT required):</strong></p>
+        <ul>
+            <li>Appropriate technical and organisational protection measures were applied (e.g., encryption)</li>
+            <li>Subsequent measures taken ensure high risk is no longer likely to materialise</li>
+            <li>Notification would involve disproportionate effort (can use public communication instead)</li>
+        </ul>
+
+        <h4>Content of Data Subject Notifications:</h4>
+
+        <ul>
+            <li><strong>Clear and Plain Language:</strong> Easy to understand, avoid technical jargon</li>
+            <li><strong>Nature of Breach:</strong> Describe what happened in simple terms</li>
+            <li><strong>Contact Point:</strong> DPO contact details for questions</li>
+            <li><strong>Likely Consequences:</strong> What could happen as a result of the breach</li>
+            <li><strong>Measures Taken:</strong> What we've done to address the breach</li>
+            <li><strong>Recommended Actions:</strong> What individuals should do to protect themselves</li>
+            <li><strong>Support Offered:</strong> Any support we're providing (e.g., credit monitoring)</li>
+        </ul>
+
+        <h4>Notification Methods:</h4>
+        <ul>
+            <li><strong>Preferred:</strong> Direct communication (email, letter, phone call)</li>
+            <li><strong>Alternative:</strong> Public announcement if direct communication impossible or disproportionate</li>
+            <li><strong>Multiple Channels:</strong> Use several methods to ensure affected individuals are reached</li>
+        </ul>
+
+        <h3>6.3 Internal Communication</h3>
+
+        <ul>
+            <li><strong>Staff:</strong> Brief affected staff; provide talking points; emphasise confidentiality</li>
+            <li><strong>Board/Senior Management:</strong> Regular updates on incident status</li>
+            <li><strong>Department Updates:</strong> Keep all relevant departments informed</li>
+        </ul>
+
+        <h3>6.4 External Communication</h3>
+
+        <ul>
+            <li><strong>B2B Partners:</strong> Notify affected corporate clients (employers, insurance companies)</li>
+            <li><strong>Processors:</strong> Notify any processors involved or affected</li>
+            <li><strong>Professional Bodies:</strong> Notify relevant professional regulators if required</li>
+            <li><strong>Insurance Provider:</strong> Notify cyber and professional indemnity insurers</li>
+            <li><strong>Media:</strong> Prepared statements if media attention likely</li>
+            <li><strong>Law Enforcement:</strong> Report to police if criminal activity involved</li>
+        </ul>
+
+        <h2>7. Phase 4: Investigation and Recovery (3-30 days)</h2>
+
+        <h3>7.1 Detailed Investigation</h3>
+
+        <p>Conduct thorough investigation to determine:</p>
+        <ul>
+            <li><strong>Root Cause:</strong> What caused the breach? Technical failure? Human error? Malicious attack?</li>
+            <li><strong>Timeline:</strong> Detailed chronology of events</li>
+            <li><strong>Entry Points:</strong> How did the breach occur? What vulnerabilities were exploited?</li>
+            <li><strong>Full Scope:</strong> Complete extent of data affected and individuals impacted</li>
+            <li><strong>Contributing Factors:</strong> What systemic issues or weaknesses contributed?</li>
+        </ul>
+
+        <h3>7.2 Forensic Analysis</h3>
+
+        <p>For serious incidents, consider engaging:</p>
+        <ul>
+            <li>Forensic IT investigators</li>
+            <li>Cybersecurity experts</li>
+            <li>Independent auditors</li>
+        </ul>
+
+        <h3>7.3 Recovery Actions</h3>
+
+        <ul>
+            <li><strong>Restore Systems:</strong> Recover affected systems from clean backups</li>
+            <li><strong>Patch Vulnerabilities:</strong> Fix security weaknesses that allowed the breach</li>
+            <li><strong>Enhance Security:</strong> Implement additional security measures</li>
+            <li><strong>Monitor:</strong> Enhanced monitoring for further incidents</li>
+            <li><strong>Support Affected Individuals:</strong> Provide ongoing support and information</li>
+        </ul>
+
+        <h3>7.4 Disciplinary Action</h3>
+
+        <p>If breach resulted from staff misconduct or negligence:</p>
+        <ul>
+            <li>Conduct disciplinary investigation per Disciplinary Policy</li>
+            <li>Consider sanctions from training to dismissal based on severity</li>
+            <li>Consider professional body reporting if required</li>
+            <li>Document all actions taken</li>
+        </ul>
+
+        <h2>8. Phase 5: Post-Incident Review and Improvement (30+ days)</h2>
+
+        <h3>8.1 Comprehensive Review</h3>
+
+        <p>Within 30 days of breach resolution, conduct full post-incident review:</p>
+        <ul>
+            <li><strong>What Happened:</strong> Complete factual account</li>
+            <li><strong>Response Effectiveness:</strong> What worked well? What didn't?</li>
+            <li><strong>Communication Assessment:</strong> Were notifications timely and effective?</li>
+            <li><strong>Lessons Learned:</strong> Key takeaways and insights</li>
+            <li><strong>Recommendations:</strong> Concrete actions to prevent recurrence</li>
+        </ul>
+
+        <h3>8.2 Corrective and Preventive Actions</h3>
+
+        <ul>
+            <li><strong>Policy Updates:</strong> Revise policies and procedures</li>
+            <li><strong>Technical Controls:</strong> Implement new security measures</li>
+            <li><strong>Staff Training:</strong> Additional training on identified weaknesses</li>
+            <li><strong>Process Changes:</strong> Improve business processes</li>
+            <li><strong>Third-Party Review:</strong> Review and update processor agreements</li>
+        </ul>
+
+        <h3>8.3 Action Plan</h3>
+
+        <p>Create action plan with:</p>
+        <ul>
+            <li>Specific actions required</li>
+            <li>Responsible person for each action</li>
+            <li>Deadlines for completion</li>
+            <li>Success criteria</li>
+            <li>Review dates to verify implementation</li>
+        </ul>
+
+        <h3>8.4 Documentation and Reporting</h3>
+
+        <ul>
+            <li>Complete incident report for breach log</li>
+            <li>Board report on incident and lessons learned</li>
+            <li>Update risk register</li>
+            <li>Share anonymised lessons with staff</li>
+        </ul>
+
+        <h2>9. Breach Documentation Requirements</h2>
+
+        <p>ClearMinds maintains a comprehensive breach log documenting all breaches, regardless of whether ICO notification was required.</p>
+
+        <h3>9.1 Breach Log Contents</h3>
+
+        <p>For each breach, document:</p>
+        <ul>
+            <li>Incident reference number and date discovered</li>
+            <li>Description of breach and data affected</li>
+            <li>Number of individuals affected</li>
+            <li>Risk assessment and severity rating</li>
+            <li>Timeline of key events</li>
+            <li>Actions taken to contain and mitigate</li>
+            <li>Whether ICO notification was made (and reasoning)</li>
+            <li>Whether data subjects were notified (and reasoning)</li>
+            <li>Lessons learned and corrective actions</li>
+        </ul>
+
+        <h3>9.2 Retention</h3>
+        <p>Breach records retained for 7 years from breach date for accountability and ICO audit purposes.</p>
+
+        <h2>10. Special Scenarios</h2>
+
+        <h3>10.1 Processor Breaches</h3>
+
+        <p>If a processor experiences a breach affecting ClearMinds data:</p>
+        <ul>
+            <li>Processor must notify ClearMinds without undue delay per Data Processing Agreement</li>
+            <li>ClearMinds (as controller) is responsible for ICO notification</li>
+            <li>Assess whether we have sufficient information to notify within 72 hours</li>
+            <li>Work collaboratively with processor on investigation and resolution</li>
+            <li>Review processor relationship and contract</li>
+        </ul>
+
+        <h3>10.2 Ransomware Attacks</h3>
+
+        <p>Ransomware is both an availability breach and often a confidentiality breach:</p>
+        <ul>
+            <li><strong>DO NOT PAY RANSOM</strong> without explicit authorisation from CEO and DPO</li>
+            <li>Assume data has been exfiltrated unless proven otherwise</li>
+            <li>Engage cybersecurity forensics immediately</li>
+            <li>Report to National Cyber Security Centre (NCSC) and Action Fraud</li>
+            <li>Notify ICO within 72 hours</li>
+            <li>Consider if data subjects need notification (usually yes for health data)</li>
+        </ul>
+
+        <h3>10.3 Insider Threats</h3>
+
+        <p>Breaches caused by malicious or negligent insiders:</p>
+        <ul>
+            <li>Immediately revoke all system access</li>
+            <li>Preserve evidence (do not alert the individual initially)</li>
+            <li>Engage HR and consider police involvement</li>
+            <li>Review access logs to determine full extent</li>
+            <li>Consider injunction to prevent further disclosure</li>
+            <li>Disciplinary and potentially legal action</li>
+        </ul>
+
+        <h3>10.4 Physical Breaches</h3>
+
+        <p>Loss or theft of devices or physical records:</p>
+        <ul>
+            <li>Report to police immediately (obtain crime reference number)</li>
+            <li>Remote wipe devices if possible</li>
+            <li>Assess encryption status of device</li>
+            <li>Change passwords for any accounts accessible from device</li>
+            <li>Notify ICO if not encrypted or high-risk data</li>
+        </ul>
+
+        <h2>11. Training and Awareness</h2>
+
+        <ul>
+            <li>All staff receive annual data breach awareness training</li>
+            <li>Response team receives specialist incident response training</li>
+            <li>Annual breach simulation exercises ("tabletop exercises")</li>
+            <li>Regular updates on lessons learned from incidents</li>
+        </ul>
+
+        <h2>12. Testing and Review</h2>
+
+        <ul>
+            <li><strong>Annual Testing:</strong> Simulated breach scenarios to test plan effectiveness</li>
+            <li><strong>Annual Review:</strong> Full review of this plan</li>
+            <li><strong>Post-Incident Review:</strong> Plan updated after every significant breach</li>
+            <li><strong>Regulatory Review:</strong> Updated to reflect ICO guidance and legal changes</li>
+        </ul>
+
+        <h2>13. Related Documents</h2>
+
+        <ul>
+            <li>Data Protection Policy</li>
+            <li>Information Security Policy</li>
+            <li>Incident Response Plan (IT Security)</li>
+            <li>Business Continuity Plan</li>
+            <li>Disciplinary Procedure</li>
+            <li>Media Communications Protocol</li>
+        </ul>
+
+        </div>
+
+        <div class="footer">
+            <p><strong>Document Control</strong></p>
+            <p>Plan Reference: CM-DBRP-001 | Version: 1.0 | Approved by: Data Protection Officer & Board</p>
+            <p>Next Review: [ANNUAL REVIEW] | Emergency Contact: [DPO NUMBER] (24/7)</p>
+            <p>&copy; 2024 ClearMinds. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

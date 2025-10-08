@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Protection Impact Assessment (DPIA) Template | ClearMinds</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: #fffbf5; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+        .policy-header {
+            background: linear-gradient(135deg, #007a87 0%, #0d3b3e 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+        .policy-header a {
+            color: #dff4da;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .policy-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .policy-header .subtitle {
+            color: #bedee1;
+            font-size: 1.2rem;
+        }
+
+        .policy-content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .policy-content h2 {
+            color: #007a87;
+            font-size: 2rem;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dff4da;
+        }
+        .policy-content h3 {
+            color: #0d3b3e;
+            font-size: 1.5rem;
+            margin: 30px 0 15px 0;
+        }
+        .policy-content p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .policy-content ul, .policy-content ol {
+            margin: 15px 0 15px 30px;
+            line-height: 1.8;
+        }
+        .policy-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #007a87;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .section {
+            background: #f8f9fa;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 6px;
+            border-left: 4px solid #007a87;
+        }
+
+        .section h3 {
+            color: #007a87;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .form-field {
+            margin-bottom: 20px;
+        }
+
+        .field-label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .field-input {
+            width: 100%;
+            min-height: 60px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 10px;
+            background: white;
+        }
+
+        .risk-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .risk-table th,
+        .risk-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+        }
+
+        .risk-table th {
+            background: #007a87;
+            color: white;
+            font-weight: 600;
+        }
+
+        .risk-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        h2 {
+            color: #007a87;
+            font-size: 22px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #007a87;
+            border-radius: 3px;
+            margin-right: 10px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding: 20px 0;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media print {
+            body { background: white; }
+            .policy-header { background: #007a87 !important; -webkit-print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .policy-header h1 { font-size: 2rem; }
+            .policy-content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="policy-header">
+        <div class="container">
+            <a href="../index.html">← Back to Policies</a>
+            <h1>Data Protection Impact Assessment (DPIA) Template</h1>
+            <p class="subtitle">UK GDPR Article 35 Compliance</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="policy-content">
+        <div class="alert-box">
+            <strong>⚠️ When to Use This Template:</strong> A DPIA is required for processing that is likely to result in a high risk to individuals' rights and freedoms. This includes:
+            <ul style="margin: 10px 0 0 20px;">
+                <li>New technologies or systems processing personal data</li>
+                <li>Large-scale processing of special category data (e.g., health data)</li>
+                <li>Systematic monitoring or profiling</li>
+                <li>Processing that could result in discrimination or exclusion</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Assessment Details</h3>
+            
+            <div class="form-field">
+                <label class="field-label">Project/System Name:</label>
+                <div class="field-input" contenteditable="true">[Enter project or system name]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">DPIA Reference Number:</label>
+                <div class="field-input" contenteditable="true">[E.g., DPIA-2024-001]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">Date Started:</label>
+                <div class="field-input" contenteditable="true">[Date]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">Prepared By:</label>
+                <div class="field-input" contenteditable="true">[Name and role]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">DPO Consulted:</label>
+                <div class="field-input" contenteditable="true">[Yes/No - Date of consultation]</div>
+            </div>
+        </div>
+
+        <h2>Step 1: Identify the Need for a DPIA</h2>
+
+        <div class="section">
+            <h3>Screening Questions</h3>
+            <p>Answer these questions to determine if a DPIA is required:</p>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Does the processing involve special category data (e.g., health data) or criminal conviction data on a large scale?</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Does the processing involve systematic monitoring of publicly accessible areas on a large scale?</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Does the processing use new technologies or innovative applications?</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Does the processing involve profiling or automated decision-making with significant effects?</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Does the processing involve processing children's data on a large scale?</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Does the processing prevent data subjects from exercising their rights or accessing services?</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Does the processing combine or match datasets from different sources?</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Does the processing involve data about vulnerable data subjects?</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">Outcome of Screening:</label>
+                <div class="field-input" contenteditable="true">[If YES to 2+ questions, a DPIA is likely required. Document reasoning here.]</div>
+            </div>
+        </div>
+
+        <h2>Step 2: Describe the Processing</h2>
+
+        <div class="section">
+            <h3>2.1 Nature of Processing</h3>
+            
+            <div class="form-field">
+                <label class="field-label">What is the purpose of the processing?</label>
+                <div class="field-input" contenteditable="true">[Describe what you're trying to achieve and why]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">What is the nature of the processing?</label>
+                <div class="field-input" contenteditable="true">[Describe how data will be collected, used, stored, deleted]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">What is the scope of the processing?</label>
+                <div class="field-input" contenteditable="true">[How much data? How many individuals? Geographic scope? Duration?]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">What is the context of the processing?</label>
+                <div class="field-input" contenteditable="true">[Relationship with data subjects, nature of data, expectations, prior collection, sensitivity]</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>2.2 Data Categories</h3>
+            
+            <div class="form-field">
+                <label class="field-label">What categories of personal data will be processed?</label>
+                <div class="field-input" contenteditable="true">
+[e.g.,
+• Contact details (name, email, phone)
+• Demographic data (age, gender, location)
+• Special category data (health information, etc.)]
+                </div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">Are you processing special category data? If yes, specify:</label>
+                <div class="field-input" contenteditable="true">[Health data, racial/ethnic origin, religious beliefs, etc.]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">What categories of data subjects are involved?</label>
+                <div class="field-input" contenteditable="true">[Employees, customers, service users, children, vulnerable individuals, etc.]</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>2.3 Legal Basis</h3>
+            
+            <div class="form-field">
+                <label class="field-label">What is the lawful basis for processing (Article 6)?</label>
+                <div class="field-input" contenteditable="true">[Consent / Contract / Legal obligation / Vital interests / Public task / Legitimate interests]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">If processing special category data, what is the Article 9 condition?</label>
+                <div class="field-input" contenteditable="true">[Explicit consent / Health/social care / etc.]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">If relying on legitimate interests, what is the legitimate interest and have you conducted a balancing test?</label>
+                <div class="field-input" contenteditable="true">[Document legitimate interest and balancing against data subject rights]</div>
+            </div>
+        </div>
+
+        <h2>Step 3: Consultation Process</h2>
+
+        <div class="section">
+            <h3>3.1 Internal Consultation</h3>
+            
+            <div class="form-field">
+                <label class="field-label">Who has been consulted internally?</label>
+                <div class="field-input" contenteditable="true">
+[e.g.,
+• Data Protection Officer - [Date]
+• IT Security Team - [Date]
+• Clinical Director - [Date]
+• Project stakeholders - [Date]]
+                </div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">Summary of feedback from internal consultation:</label>
+                <div class="field-input" contenteditable="true">[Key concerns, suggestions, recommendations]</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>3.2 Data Subject Consultation</h3>
+            
+            <div class="form-field">
+                <label class="field-label">Have data subjects been consulted? If yes, how?</label>
+                <div class="field-input" contenteditable="true">[Surveys, focus groups, user testing, feedback mechanisms]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">If not, why not?</label>
+                <div class="field-input" contenteditable="true">[Justification if data subjects not consulted]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">What were the data subjects' views?</label>
+                <div class="field-input" contenteditable="true">[Summary of feedback, concerns, suggestions]</div>
+            </div>
+        </div>
+
+        <h2>Step 4: Assess Necessity and Proportionality</h2>
+
+        <div class="section">
+            <h3>Necessity and Proportionality Assessment</h3>
+            
+            <div class="form-field">
+                <label class="field-label">Is the processing necessary to achieve the purpose? Could you achieve the same outcome without processing, or by processing less data?</label>
+                <div class="field-input" contenteditable="true">[Justify why processing is necessary and proportionate]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">Are you processing the minimum amount of personal data necessary?</label>
+                <div class="field-input" contenteditable="true">[Demonstrate data minimisation]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">How will you ensure data accuracy?</label>
+                <div class="field-input" contenteditable="true">[Processes for keeping data accurate and up to date]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">How long will you retain the data and why?</label>
+                <div class="field-input" contenteditable="true">[Retention periods and justification]</div>
+            </div>
+        </div>
+
+        <h2>Step 5: Identify and Assess Risks</h2>
+
+        <div class="info-box">
+            <strong>Assessing Risk:</strong> Consider risks to individuals' rights and freedoms, not just organisational risks. Think about:
+            <ul style="margin: 10px 0 0 20px;">
+                <li>Physical, material, or non-material damage</li>
+                <li>Loss of control over personal data</li>
+                <li>Discrimination or identity theft</li>
+                <li>Financial loss or damage to reputation</li>
+                <li>Loss of confidentiality</li>
+                <li>Unauthorised reversal of pseudonymisation</li>
+                <li>Economic or social disadvantage</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Risk Assessment Matrix</h3>
+            <p><strong>Likelihood:</strong> Low / Medium / High</p>
+            <p><strong>Severity:</strong> Minimal / Significant / Severe</p>
+            <p><strong>Overall Risk:</strong> Low / Medium / High</p>
+
+            <table class="risk-table">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Risk Description</th>
+                        <th style="width: 15%;">Likelihood</th>
+                        <th style="width: 15%;">Severity</th>
+                        <th style="width: 15%;">Overall Risk</th>
+                        <th style="width: 25%;">Affected Individuals</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td contenteditable="true">[e.g., Unauthorized access to sensitive health data]</td>
+                        <td contenteditable="true">[Low/Med/High]</td>
+                        <td contenteditable="true">[Min/Sig/Sev]</td>
+                        <td contenteditable="true">[Low/Med/High]</td>
+                        <td contenteditable="true">[Service users]</td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true">[Risk 2]</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true">[Risk 3]</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true">[Add more rows as needed]</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Step 6: Identify Measures to Mitigate Risks</h2>
+
+        <div class="section">
+            <h3>Risk Mitigation Measures</h3>
+            <p>For each risk identified above, document mitigation measures:</p>
+
+            <table class="risk-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Risk</th>
+                        <th style="width: 35%;">Mitigation Measures</th>
+                        <th style="width: 15%;">Responsible Person</th>
+                        <th style="width: 15%;">Residual Risk</th>
+                        <th style="width: 10%;">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td contenteditable="true">[Risk 1]</td>
+                        <td contenteditable="true">[e.g., Encryption, access controls, MFA, security monitoring]</td>
+                        <td contenteditable="true">[Name/Role]</td>
+                        <td contenteditable="true">[Low/Med/High]</td>
+                        <td contenteditable="true">[Planned/ In Progress/ Complete]</td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true">[Risk 2]</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true">[Risk 3]</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h3>Security Measures</h3>
+            <p>Specific technical and organisational measures to protect personal data:</p>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Encryption in transit (TLS 1.3)</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Encryption at rest (AES-256)</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Multi-factor authentication</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Role-based access controls</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Regular security audits/penetration testing</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Staff training on data protection and security</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Incident response procedures</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Regular backups with secure storage</div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checkbox"></div>
+                <div>Secure disposal procedures</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">Additional security measures:</label>
+                <div class="field-input" contenteditable="true">[Document any additional measures specific to this processing]</div>
+            </div>
+        </div>
+
+        <h2>Step 7: Sign Off and Record Outcomes</h2>
+
+        <div class="section">
+            <h3>Outcome of DPIA</h3>
+            
+            <div class="form-field">
+                <label class="field-label">Can the risks be mitigated to an acceptable level?</label>
+                <div class="field-input" contenteditable="true">[YES / NO - Explanation]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">Are any risks still high after mitigation?</label>
+                <div class="field-input" contenteditable="true">[If YES, you must consult the ICO before proceeding]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">Overall Conclusion:</label>
+                <div class="field-input" contenteditable="true">[APPROVED / APPROVED WITH CONDITIONS / REJECTED / REFER TO ICO]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">Conditions or recommendations (if applicable):</label>
+                <div class="field-input" contenteditable="true">[Any conditions that must be met before proceeding]</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Approvals</h3>
+            
+            <table class="risk-table">
+                <thead>
+                    <tr>
+                        <th>Role</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Signature/Approval</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Prepared By:</strong></td>
+                        <td contenteditable="true">[Name]</td>
+                        <td contenteditable="true">[Date]</td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Protection Officer:</strong></td>
+                        <td contenteditable="true">[DPO Name]</td>
+                        <td contenteditable="true">[Date]</td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Approved By (Senior Management):</strong></td>
+                        <td contenteditable="true">[Name & Title]</td>
+                        <td contenteditable="true">[Date]</td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Step 8: Integrate Outcomes into Project Plan</h2>
+
+        <div class="section">
+            <h3>Integration and Monitoring</h3>
+            
+            <div class="form-field">
+                <label class="field-label">How will the DPIA outcomes be integrated into the project?</label>
+                <div class="field-input" contenteditable="true">[Document how recommendations will be implemented]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">Who is responsible for implementation?</label>
+                <div class="field-input" contenteditable="true">[Names and roles]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">What is the implementation timeline?</label>
+                <div class="field-input" contenteditable="true">[Key milestones and dates]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">How will compliance be monitored?</label>
+                <div class="field-input" contenteditable="true">[Monitoring approach and frequency]</div>
+            </div>
+
+            <div class="form-field">
+                <label class="field-label">When will this DPIA be reviewed?</label>
+                <div class="field-input" contenteditable="true">[Review date - should be reviewed if major changes occur or at least annually]</div>
+            </div>
+        </div>
+
+        <h2>Appendices</h2>
+
+        <div class="section">
+            <h3>Supporting Documentation</h3>
+            <p>Attach or reference supporting documents:</p>
+            <ul>
+                <li>Data flow diagrams</li>
+                <li>System architecture diagrams</li>
+                <li>Consultation responses</li>
+                <li>Security assessment reports</li>
+                <li>Privacy notices</li>
+                <li>Data Processing Agreements</li>
+                <li>Other relevant documentation</li>
+            </ul>
+        </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>ClearMinds Data Protection Impact Assessment (DPIA) Template</strong></p>
+            <p>UK GDPR Article 35 Compliance | Document Reference: [DPIA Reference Number]</p>
+            <p>&copy; 2024 ClearMinds Ltd. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

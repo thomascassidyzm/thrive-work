@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Processing Agreement (DPA) Template | ClearMinds</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: #fffbf5; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+        .policy-header {
+            background: linear-gradient(135deg, #007a87 0%, #0d3b3e 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+        .policy-header a {
+            color: #dff4da;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .policy-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .policy-header .subtitle {
+            color: #bedee1;
+            font-size: 1.2rem;
+        }
+
+        .policy-content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .policy-content h2 {
+            color: #007a87;
+            font-size: 2rem;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dff4da;
+        }
+        .policy-content h3 {
+            color: #0d3b3e;
+            font-size: 1.5rem;
+            margin: 30px 0 15px 0;
+        }
+        .policy-content p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .policy-content ul, .policy-content ol {
+            margin: 15px 0 15px 30px;
+            line-height: 1.8;
+        }
+        .policy-content li {
+            margin-bottom: 10px;
+        }
+
+        .parties-box {
+            background: #dff4da;
+            border: 2px solid #007a87;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 6px;
+        }
+
+        .party {
+            margin-bottom: 20px;
+        }
+
+        .party:last-child {
+            margin-bottom: 0;
+        }
+
+        .party-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #007a87;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .alert-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #007a87;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        h2 {
+            color: #007a87;
+            font-size: 22px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+        }
+
+        th {
+            background: #007a87;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .signature-box {
+            background: #f8f9fa;
+            padding: 30px;
+            margin: 40px 0;
+            border: 2px solid #007a87;
+            border-radius: 6px;
+        }
+
+        .signature-line {
+            margin-top: 40px;
+            padding-top: 20px;
+        }
+
+        .sig-field {
+            margin-bottom: 30px;
+        }
+
+        .sig-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .sig-line {
+            border-top: 2px solid #2c3e50;
+            margin-top: 40px;
+            padding-top: 5px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding: 20px 0;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media print {
+            body { background: white; }
+            .policy-header { background: #007a87 !important; -webkit-print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .policy-header h1 { font-size: 2rem; }
+            .policy-content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="policy-header">
+        <div class="container">
+            <a href="../index.html">← Back to Policies</a>
+            <h1>Data Processing Agreement</h1>
+            <p class="subtitle">UK GDPR Compliant - Controller to Processor Agreement</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="policy-content">
+        <div class="parties-box">
+            <div class="party">
+                <div class="party-label">Data Controller ("Client")</div>
+                <p><strong>Organisation Name:</strong> [CLIENT ORGANISATION NAME]<br>
+                <strong>Registered Address:</strong> [CLIENT ADDRESS]<br>
+                <strong>Company Number:</strong> [CLIENT COMPANY NUMBER]<br>
+                <strong>Contact Person:</strong> [CLIENT CONTACT NAME & EMAIL]</p>
+            </div>
+
+            <div class="party">
+                <div class="party-label">Data Processor ("ClearMinds")</div>
+                <p><strong>Organisation Name:</strong> ClearMinds Ltd<br>
+                <strong>Registered Address:</strong> [CLEARMINDS ADDRESS]<br>
+                <strong>Company Number:</strong> [CLEARMINDS COMPANY NUMBER]<br>
+                <strong>ICO Registration:</strong> [ICO REGISTRATION NUMBER]<br>
+                <strong>Contact Person:</strong> Data Protection Officer, dpo@clearmindseap.com</p>
+            </div>
+        </div>
+
+        <div class="alert-box">
+            <strong>Important:</strong> This Data Processing Agreement (DPA) forms part of the main services agreement between the parties. In the event of any conflict between this DPA and the main agreement, this DPA shall take precedence in relation to data protection matters.
+        </div>
+
+        <h2>1. Definitions and Interpretation</h2>
+
+        <h3>1.1 Definitions</h3>
+        <p>In this Agreement, unless the context otherwise requires:</p>
+
+        <ul>
+            <li><strong>"Agreement"</strong> means this Data Processing Agreement together with all schedules and annexes</li>
+            <li><strong>"Applicable Data Protection Law"</strong> means the UK General Data Protection Regulation, the Data Protection Act 2018, and any other applicable data protection legislation</li>
+            <li><strong>"Controller"</strong> means the Client, who determines the purposes and means of processing Personal Data</li>
+            <li><strong>"Data Subject"</strong> means an identified or identifiable natural person</li>
+            <li><strong>"EAP Services"</strong> means the Employee Assistance Programme and mental health support services provided by ClearMinds</li>
+            <li><strong>"Personal Data"</strong> means any information relating to an identified or identifiable natural person as defined in UK GDPR</li>
+            <li><strong>"Personal Data Breach"</strong> means a breach of security leading to accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to Personal Data</li>
+            <li><strong>"Processing"</strong> has the meaning given in UK GDPR Article 4(2)</li>
+            <li><strong>"Processor"</strong> means ClearMinds, who processes Personal Data on behalf of the Controller</li>
+            <li><strong>"Services"</strong> means the EAP Services as described in the main services agreement</li>
+            <li><strong>"Special Category Data"</strong> means Personal Data revealing health data, as defined in UK GDPR Article 9</li>
+            <li><strong>"Sub-processor"</strong> means any third party appointed by ClearMinds to process Personal Data</li>
+            <li><strong>"Supervisory Authority"</strong> means the Information Commissioner's Office (ICO)</li>
+        </ul>
+
+        <h3>1.2 Interpretation</h3>
+        <ul>
+            <li>References to Articles or Chapters are to the UK GDPR unless otherwise stated</li>
+            <li>Headings are for convenience only and do not affect interpretation</li>
+            <li>Words in the singular include the plural and vice versa</li>
+        </ul>
+
+        <h2>2. Scope and Purpose of Processing</h2>
+
+        <h3>2.1 Processor Relationship</h3>
+        <p>Under this Agreement:</p>
+        <ul>
+            <li>The Client is the <strong>Data Controller</strong> who determines the purposes and means of processing</li>
+            <li>ClearMinds is the <strong>Data Processor</strong> who processes Personal Data on behalf of the Client</li>
+            <li>ClearMinds shall only process Personal Data on documented instructions from the Client</li>
+        </ul>
+
+        <h3>2.2 Nature and Purpose of Processing</h3>
+        <p><strong>Purpose:</strong> To provide Employee Assistance Programme (EAP) and mental health support services to the Client's employees, contractors, and their immediate family members as specified in the main services agreement.</p>
+
+        <p><strong>Nature of Processing:</strong> ClearMinds will process Personal Data to:</p>
+        <ul>
+            <li>Verify eligibility for EAP services</li>
+            <li>Provide mental health assessments and support</li>
+            <li>Deliver counselling and therapeutic interventions</li>
+            <li>Manage appointments and service access</li>
+            <li>Provide anonymised usage statistics to the Client</li>
+            <li>Maintain clinical records as required by professional standards</li>
+        </ul>
+
+        <h3>2.3 Types of Personal Data</h3>
+
+        <p><strong>Standard Personal Data:</strong></p>
+        <ul>
+            <li>Name and contact details (email, phone number, address)</li>
+            <li>Date of birth</li>
+            <li>Employment reference or employee ID (for verification only)</li>
+            <li>Communication records (emails, call logs, chat transcripts)</li>
+        </ul>
+
+        <p><strong>Special Category Data (Health Data):</strong></p>
+        <ul>
+            <li>Mental health concerns and symptoms</li>
+            <li>Clinical assessments and diagnoses</li>
+            <li>Treatment plans and therapy notes</li>
+            <li>Progress notes and outcomes</li>
+            <li>Related health information affecting mental health treatment</li>
+        </ul>
+
+        <h3>2.4 Categories of Data Subjects</h3>
+        <ul>
+            <li>Employees of the Client organisation</li>
+            <li>Contractors and temporary workers (if specified in services agreement)</li>
+            <li>Immediate family members of employees (typically spouse/partner and dependent children)</li>
+            <li>Former employees (if specified in services agreement)</li>
+        </ul>
+
+        <h3>2.5 Duration of Processing</h3>
+        <p>Processing shall continue for the duration of the main services agreement and for such additional period as necessary to fulfil legal obligations, including clinical record retention requirements as specified in ClearMinds' Data Retention Policy.</p>
+
+        <h2>3. Processor Obligations</h2>
+
+        <h3>3.1 Processing Instructions</h3>
+        <p>ClearMinds shall:</p>
+        <ul>
+            <li>Process Personal Data only on documented instructions from the Client, including with regard to transfers of Personal Data outside the UK (unless required by law to do otherwise)</li>
+            <li>Immediately inform the Client if, in its opinion, an instruction infringes Applicable Data Protection Law</li>
+            <li>Not process Personal Data for any purpose other than providing the Services</li>
+        </ul>
+
+        <h3>3.2 Confidentiality</h3>
+        <p>ClearMinds shall:</p>
+        <ul>
+            <li>Ensure that all personnel authorised to process Personal Data are subject to a duty of confidentiality (whether contractual or statutory)</li>
+            <li>Ensure all personnel have received appropriate data protection training</li>
+            <li>Limit access to Personal Data to personnel who need access to perform the Services</li>
+        </ul>
+
+        <h3>3.3 Security Measures</h3>
+        <p>ClearMinds shall implement appropriate technical and organisational measures to ensure a level of security appropriate to the risk, including:</p>
+
+        <h4>Technical Measures:</h4>
+        <ul>
+            <li>Encryption of Personal Data in transit (TLS 1.3 minimum) and at rest (AES-256)</li>
+            <li>Multi-factor authentication for all user accounts</li>
+            <li>Regular security updates and patch management</li>
+            <li>Intrusion detection and prevention systems</li>
+            <li>Regular penetration testing and vulnerability assessments</li>
+            <li>Secure backup and recovery procedures</li>
+            <li>Anti-virus and anti-malware protection</li>
+        </ul>
+
+        <h4>Organisational Measures:</h4>
+        <ul>
+            <li>Role-based access controls (principle of least privilege)</li>
+            <li>Regular staff training on data protection and security</li>
+            <li>Clear desk and clear screen policies</li>
+            <li>Secure disposal procedures for physical and electronic records</li>
+            <li>Incident response and business continuity plans</li>
+            <li>Regular audits of security measures</li>
+        </ul>
+
+        <p>ClearMinds maintains ISO 27001 certification for information security management [IF APPLICABLE - OTHERWISE REMOVE THIS LINE].</p>
+
+        <h3>3.4 Sub-processing</h3>
+
+        <h4>3.4.1 General Authorisation</h4>
+        <p>The Client provides general authorisation for ClearMinds to engage Sub-processors, subject to the conditions in this clause.</p>
+
+        <h4>3.4.2 Current Sub-processors</h4>
+        <p>The Client approves the Sub-processors listed in <strong>Schedule 1</strong> attached to this Agreement.</p>
+
+        <h4>3.4.3 New Sub-processors</h4>
+        <p>ClearMinds shall:</p>
+        <ul>
+            <li>Notify the Client at least 30 days before engaging any new Sub-processor</li>
+            <li>Provide details of the Sub-processor and the processing activities</li>
+            <li>Allow the Client to object on reasonable grounds within 14 days</li>
+            <li>Not proceed with the engagement if the Client objects on reasonable grounds</li>
+        </ul>
+
+        <h4>3.4.4 Sub-processor Requirements</h4>
+        <p>ClearMinds shall:</p>
+        <ul>
+            <li>Impose data protection obligations on Sub-processors that are equivalent to those in this Agreement</li>
+            <li>Ensure Sub-processors provide sufficient guarantees of appropriate security measures</li>
+            <li>Remain fully liable to the Client for the performance of Sub-processors</li>
+            <li>Conduct due diligence on Sub-processors before engagement</li>
+            <li>Monitor Sub-processor compliance</li>
+        </ul>
+
+        <h3>3.5 Data Subject Rights</h3>
+
+        <p>ClearMinds shall:</p>
+        <ul>
+            <li>Assist the Client in responding to requests from Data Subjects exercising their rights under UK GDPR (access, rectification, erasure, restriction, portability, objection)</li>
+            <li>Notify the Client immediately upon receiving a Data Subject request</li>
+            <li>Not respond to Data Subject requests directly without the Client's authorisation, except as required by law</li>
+            <li>Provide information and assistance within 14 days or such shorter period as required for the Client to meet statutory deadlines</li>
+            <li>Implement appropriate technical measures to facilitate Data Subject rights</li>
+        </ul>
+
+        <h3>3.6 Personal Data Breaches</h3>
+
+        <p>ClearMinds shall:</p>
+        <ul>
+            <li>Notify the Client without undue delay (and in any event within 24 hours) upon becoming aware of a Personal Data Breach</li>
+            <li>Provide the following information:
+                <ul>
+                    <li>Nature of the breach and categories/approximate numbers of affected Data Subjects and records</li>
+                    <li>Contact details of ClearMinds' Data Protection Officer</li>
+                    <li>Likely consequences of the breach</li>
+                    <li>Measures taken or proposed to address the breach and mitigate adverse effects</li>
+                </ul>
+            </li>
+            <li>Cooperate with the Client's investigation and provide all reasonable assistance</li>
+            <li>Implement immediate measures to contain and remediate the breach</li>
+            <li>Document all Personal Data Breaches including facts, effects, and remedial actions</li>
+        </ul>
+
+        <p>ClearMinds shall bear the costs of breach response unless the breach was caused by the Client's instructions or actions.</p>
+
+        <h3>3.7 Data Protection Impact Assessments</h3>
+
+        <p>ClearMinds shall provide reasonable assistance to the Client in conducting Data Protection Impact Assessments (DPIAs) where required, including providing:</p>
+        <ul>
+            <li>Information about processing operations</li>
+            <li>Details of security measures in place</li>
+            <li>Risk assessment information</li>
+            <li>Other information reasonably necessary for the DPIA</li>
+        </ul>
+
+        <h3>3.8 Audits and Inspections</h3>
+
+        <p>ClearMinds shall:</p>
+        <ul>
+            <li>Make available to the Client all information necessary to demonstrate compliance with this Agreement</li>
+            <li>Allow for and contribute to audits, including on-site inspections, by the Client or an independent auditor appointed by the Client</li>
+            <li>Provide reasonable cooperation and assistance during audits</li>
+        </ul>
+
+        <p><strong>Audit Terms:</strong></p>
+        <ul>
+            <li>Client may conduct audits once per year unless there is reasonable cause for additional audits</li>
+            <li>Client shall provide at least 30 days' notice for scheduled audits</li>
+            <li>Audits shall be conducted during business hours</li>
+            <li>Client shall minimise disruption to ClearMinds' operations</li>
+            <li>Auditor must execute a confidentiality agreement before access</li>
+            <li>Client shall bear costs of audits unless audit reveals material non-compliance</li>
+        </ul>
+
+        <h3>3.9 Record-Keeping</h3>
+
+        <p>ClearMinds shall maintain records of processing activities in accordance with Article 30 UK GDPR, including:</p>
+        <ul>
+            <li>Name and contact details of the Processor and each Controller</li>
+            <li>Categories of processing carried out on behalf of each Controller</li>
+            <li>Transfers of Personal Data outside the UK (if applicable)</li>
+            <li>General description of technical and organisational security measures</li>
+        </ul>
+
+        <h2>4. Controller Obligations</h2>
+
+        <h3>4.1 Lawful Processing</h3>
+        <p>The Client warrants that:</p>
+        <ul>
+            <li>It has a lawful basis for processing Personal Data and instructing ClearMinds to process on its behalf</li>
+            <li>It has obtained all necessary consents, provided appropriate privacy notices, and complied with transparency obligations</li>
+            <li>Its instructions to ClearMinds comply with Applicable Data Protection Law</li>
+        </ul>
+
+        <h3>4.2 Instructions</h3>
+        <p>The Client shall:</p>
+        <ul>
+            <li>Provide clear, lawful, and documented instructions to ClearMinds</li>
+            <li>Ensure instructions are consistent with Applicable Data Protection Law</li>
+            <li>Respond promptly to requests for clarification from ClearMinds</li>
+        </ul>
+
+        <h3>4.3 Data Accuracy</h3>
+        <p>The Client shall ensure that Personal Data provided to ClearMinds is accurate and kept up to date.</p>
+
+        <h2>5. International Data Transfers</h2>
+
+        <h3>5.1 General Principle</h3>
+        <p>ClearMinds shall process Personal Data within the United Kingdom. Any processing outside the UK requires prior written approval from the Client.</p>
+
+        <h3>5.2 Transfer Safeguards</h3>
+        <p>If international transfers are approved, ClearMinds shall ensure appropriate safeguards are in place:</p>
+        <ul>
+            <li>Transfers only to countries with a UK adequacy decision, OR</li>
+            <li>Use of UK-approved Standard Contractual Clauses (SCCs), OR</li>
+            <li>Other approved transfer mechanisms under UK GDPR Chapter V</li>
+        </ul>
+
+        <p>ClearMinds shall provide copies of transfer mechanisms to the Client upon request.</p>
+
+        <h2>6. Return and Deletion of Personal Data</h2>
+
+        <h3>6.1 Upon Termination</h3>
+        <p>Upon termination or expiry of the services agreement, ClearMinds shall, at the Client's election:</p>
+        <ul>
+            <li>Return all Personal Data to the Client in a structured, commonly used, machine-readable format, AND/OR</li>
+            <li>Securely delete all Personal Data</li>
+        </ul>
+
+        <p>Exception: ClearMinds may retain Personal Data to the extent required by law, including professional clinical record retention requirements, provided such Personal Data remains subject to confidentiality obligations and is not processed for any other purpose.</p>
+
+        <h3>6.2 Retention for Legal Obligations</h3>
+        <p>ClearMinds is subject to clinical record retention requirements under NHS guidance and professional standards. Clinical records must be retained for:</p>
+        <ul>
+            <li>8 years from last contact (adults)</li>
+            <li>Until 25th birthday or 8 years from last contact, whichever is longer (children/young people)</li>
+        </ul>
+
+        <p>The Client acknowledges these retention requirements and agrees that clinical records shall be retained by ClearMinds for these periods, subject to continued compliance with this Agreement.</p>
+
+        <h3>6.3 Deletion Method</h3>
+        <p>Deletion shall be performed using secure methods including:</p>
+        <ul>
+            <li>Multi-pass overwriting for electronic data</li>
+            <li>Destruction of physical records by cross-cut shredding to DIN P-4 standard</li>
+            <li>Physical destruction of hardware containing Personal Data</li>
+            <li>Certification of destruction provided upon request</li>
+        </ul>
+
+        <h2>7. Liability and Indemnity</h2>
+
+        <h3>7.1 Liability</h3>
+        <p>Each party's liability under this Agreement shall be subject to the limitation of liability provisions in the main services agreement, except that:</p>
+        <ul>
+            <li>Liability for breach of data protection obligations under this DPA is uncapped</li>
+            <li>Each party shall be liable for its own breaches of Applicable Data Protection Law</li>
+            <li>ClearMinds shall be liable for Sub-processors as if they were ClearMinds' own actions</li>
+        </ul>
+
+        <h3>7.2 Regulatory Fines</h3>
+        <ul>
+            <li>If ClearMinds is fined by the ICO due to its breach of this Agreement, ClearMinds shall bear the cost</li>
+            <li>If ClearMinds is fined by the ICO due to the Client's unlawful instructions, the Client shall indemnify ClearMinds</li>
+            <li>If a fine is imposed due to the actions of both parties, liability shall be apportioned based on respective fault</li>
+        </ul>
+
+        <h3>7.3 Claims by Data Subjects</h3>
+        <p>Each party shall cooperate in defending claims by Data Subjects and shall indemnify the other party for losses arising from its own breach of this Agreement.</p>
+
+        <h2>8. Duration and Termination</h2>
+
+        <h3>8.1 Duration</h3>
+        <p>This Agreement shall commence on the date of signature and continue for the duration of the main services agreement.</p>
+
+        <h3>8.2 Survival</h3>
+        <p>The following clauses shall survive termination:</p>
+        <ul>
+            <li>Confidentiality obligations</li>
+            <li>Return and deletion of Personal Data</li>
+            <li>Liability and indemnity</li>
+            <li>Retention for legal obligations</li>
+        </ul>
+
+        <h2>9. General Provisions</h2>
+
+        <h3>9.1 Amendments</h3>
+        <p>This Agreement may only be amended by written agreement signed by both parties. However, ClearMinds may update <strong>Schedule 1</strong> (Sub-processors) in accordance with clause 3.4.3.</p>
+
+        <h3>9.2 Severability</h3>
+        <p>If any provision of this Agreement is held invalid or unenforceable, that provision shall be enforced to the maximum extent possible, and the remaining provisions shall remain in full force and effect.</p>
+
+        <h3>9.3 Governing Law</h3>
+        <p>This Agreement shall be governed by and construed in accordance with the laws of England and Wales.</p>
+
+        <h3>9.4 Jurisdiction</h3>
+        <p>The parties submit to the exclusive jurisdiction of the courts of England and Wales.</p>
+
+        <h3>9.5 Notices</h3>
+        <p>Notices under this Agreement shall be in writing and sent to:</p>
+
+        <p><strong>For the Client:</strong><br>
+        [CLIENT CONTACT NAME]<br>
+        [CLIENT ADDRESS]<br>
+        [CLIENT EMAIL]</p>
+
+        <p><strong>For ClearMinds:</strong><br>
+        Data Protection Officer<br>
+        ClearMinds Ltd<br>
+        [CLEARMINDS ADDRESS]<br>
+        dpo@clearmindseap.com</p>
+
+        <h2>10. Schedules</h2>
+
+        <p>The following schedules form part of this Agreement:</p>
+        <ul>
+            <li><strong>Schedule 1:</strong> Sub-processors</li>
+            <li><strong>Schedule 2:</strong> Security Measures (optional detailed schedule)</li>
+            <li><strong>Schedule 3:</strong> Data Processing Details Summary</li>
+        </ul>
+
+        <div class="signature-box">
+            <h3 style="margin-top: 0;">Signatures</h3>
+            <p>The parties have executed this Data Processing Agreement as of the date set forth below.</p>
+
+            <div class="signature-line">
+                <h4>For the Client:</h4>
+                <div class="sig-field">
+                    <div class="sig-label">Signature:</div>
+                    <div class="sig-line">_________________________________________________</div>
+                </div>
+                <div class="sig-field">
+                    <div class="sig-label">Name:</div>
+                    <div class="sig-line">_________________________________________________</div>
+                </div>
+                <div class="sig-field">
+                    <div class="sig-label">Title:</div>
+                    <div class="sig-line">_________________________________________________</div>
+                </div>
+                <div class="sig-field">
+                    <div class="sig-label">Date:</div>
+                    <div class="sig-line">_________________________________________________</div>
+                </div>
+            </div>
+
+            <div class="signature-line" style="margin-top: 50px;">
+                <h4>For ClearMinds Ltd:</h4>
+                <div class="sig-field">
+                    <div class="sig-label">Signature:</div>
+                    <div class="sig-line">_________________________________________________</div>
+                </div>
+                <div class="sig-field">
+                    <div class="sig-label">Name:</div>
+                    <div class="sig-line">_________________________________________________</div>
+                </div>
+                <div class="sig-field">
+                    <div class="sig-label">Title:</div>
+                    <div class="sig-line">_________________________________________________</div>
+                </div>
+                <div class="sig-field">
+                    <div class="sig-label">Date:</div>
+                    <div class="sig-line">_________________________________________________</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="page-break-before: always;"></div>
+
+        <h2>Schedule 1: Sub-processors</h2>
+
+        <div class="info-box">
+            <strong>Important:</strong> This schedule lists all Sub-processors currently engaged by ClearMinds. Any changes will be notified to the Client 30 days in advance per clause 3.4.3.
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sub-processor Name</th>
+                        <th>Service Provided</th>
+                        <th>Location</th>
+                        <th>Data Processed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>[CLOUD PROVIDER]</strong><br>e.g., Amazon Web Services</td>
+                        <td>Cloud infrastructure hosting</td>
+                        <td>United Kingdom</td>
+                        <td>All Personal Data including Special Category Data</td>
+                    </tr>
+                    <tr>
+                        <td><strong>[EMAIL PROVIDER]</strong><br>e.g., Microsoft 365</td>
+                        <td>Email and communication services</td>
+                        <td>United Kingdom / EEA</td>
+                        <td>Name, email address, communication content</td>
+                    </tr>
+                    <tr>
+                        <td><strong>[VIDEO PLATFORM]</strong><br>e.g., Secure telehealth provider</td>
+                        <td>Video counselling platform</td>
+                        <td>United Kingdom</td>
+                        <td>Name, session recordings (if enabled), connection metadata</td>
+                    </tr>
+                    <tr>
+                        <td><strong>[BACKUP PROVIDER]</strong></td>
+                        <td>Encrypted backup services</td>
+                        <td>United Kingdom</td>
+                        <td>All Personal Data including Special Category Data (encrypted)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: center; font-style: italic; color: #6c757d;">
+                            [INSERT ADDITIONAL SUB-PROCESSORS AS APPLICABLE]
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><strong>Last Updated:</strong> [DATE]</p>
+
+        <div style="page-break-before: always;"></div>
+
+        <h2>Schedule 3: Data Processing Details Summary</h2>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Subject Matter</strong></td>
+                        <td>Provision of Employee Assistance Programme and mental health support services</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Duration</strong></td>
+                        <td>Duration of main services agreement plus clinical record retention period (up to 8 years post-service)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nature and Purpose</strong></td>
+                        <td>
+                            • Eligibility verification<br>
+                            • Mental health assessment and support<br>
+                            • Counselling and therapy delivery<br>
+                            • Appointment management<br>
+                            • Anonymised usage reporting
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Types of Personal Data</strong></td>
+                        <td>
+                            <strong>Standard:</strong> Name, contact details, DOB, employee reference<br>
+                            <strong>Special Category:</strong> Mental health data, clinical assessments, treatment records
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Categories of Data Subjects</strong></td>
+                        <td>Employees, contractors, family members (as per services agreement)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Processing Operations</strong></td>
+                        <td>Collection, recording, organisation, structuring, storage, consultation, use, disclosure, deletion</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        </div>
+
+        <div class="footer">
+            <p><strong>ClearMinds Data Processing Agreement</strong></p>
+            <p>Version 1.0 | Last Updated: [DATE]</p>
+            <p>This agreement complies with UK GDPR and Data Protection Act 2018 requirements.</p>
+            <p>&copy; 2024 ClearMinds Ltd. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
