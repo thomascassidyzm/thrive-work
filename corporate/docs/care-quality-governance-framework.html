@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Care Quality Governance Framework - ClearMinds Corporate</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        :root {
+            --clearminds-teal: #007a87;
+            --clearminds-dark: #0d3b3e;
+            --clearminds-green: #dff4da;
+            --clearminds-cream: #fffbf5;
+        }
+
+        body {
+            background-color: var(--clearminds-cream);
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--clearminds-teal) 0%, var(--clearminds-dark) 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .page-header .container {
+            padding: 1rem 2rem;
+        }
+
+        .breadcrumb a {
+            color: var(--clearminds-green);
+        }
+
+        .page-header h1 {
+            color: white;
+            margin: 1rem 0 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        .page-header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+        }
+
+        .framework-overview {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 6px solid var(--clearminds-teal);
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .component-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .component-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 122, 135, 0.15);
+            border-color: var(--clearminds-teal);
+        }
+
+        .component-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--clearminds-teal) 0%, var(--clearminds-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .component-card h3 {
+            color: var(--clearminds-dark);
+            margin: 0 0 1rem 0;
+            font-size: 1.5rem;
+        }
+
+        .component-card ul {
+            margin: 0;
+            padding-left: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .component-card li {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .standards-section {
+            background: var(--clearminds-green);
+            padding: 2.5rem;
+            border-radius: 0.5rem;
+            margin: 3rem 0;
+        }
+
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .standard-badge {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            color: var(--clearminds-dark);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .clearminds-application {
+            background: #fff9e6;
+            border-left: 6px solid #ff9800;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .clearminds-application h2 {
+            color: #5d4037;
+            margin-top: 0;
+        }
+
+        .pathway-diagram {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .pathway-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            gap: 1rem;
+        }
+
+        .pathway-step {
+            flex: 1;
+            background: var(--clearminds-green);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .pathway-step::after {
+            content: '→';
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--clearminds-teal);
+        }
+
+        .pathway-step:last-child::after {
+            content: '';
+        }
+
+        .pathway-step h4 {
+            margin: 0 0 0.5rem 0;
+            color: var(--clearminds-dark);
+        }
+
+        .pathway-step p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .implementation-checklist {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+            border: 2px solid var(--clearminds-teal);
+        }
+
+        .checklist-item {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checklist-icon {
+            color: var(--clearminds-teal);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .component-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pathway-steps {
+                flex-direction: column;
+            }
+
+            .pathway-step::after {
+                content: '↓';
+                right: auto;
+                top: auto;
+                bottom: -1.5rem;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .pathway-step:last-child::after {
+                content: '';
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span>/</span>
+                <a href="../documentation/index.html">Documentation</a>
+                <span>/</span>
+                <span>Framework</span>
+            </div>
+            <h1>Care Quality Governance Framework</h1>
+            <p>Systematic approach to quality, safety, and compliance in digital wellness services</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="framework-overview">
+            <h2 style="color: var(--clearminds-teal); margin-top: 0;">Executive Summary</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+                A <strong>Care Quality Governance Framework</strong> provides the systematic structure for maintaining and improving the quality, safety, and compliance of healthcare and wellness services. For digital wellness platforms like ClearMinds, it ensures accountability, manages risk, and drives continuous improvement while scaling to serve thousands of users.
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin: 0;">
+                This framework integrates clinical best practices with corporate governance, regulatory compliance, and operational excellence—enabling ClearMinds to deliver high-quality wellness services while preparing for B2B enterprise partnerships with organizations managing 260,000+ employees.
+            </p>
+        </div>
+
+        <h2 style="color: var(--clearminds-dark); font-size: 2rem; margin: 3rem 0 1.5rem;">Six Core Components</h2>
+
+        <div class="component-grid">
+            <!-- Component 1 -->
+            <div class="component-card">
+                <div class="component-icon">🏥</div>
+                <h3>1. Clinical Governance</h3>
+                <ul>
+                    <li><strong>Clinical effectiveness:</strong> Evidence-based hypnotherapy and meditation content</li>
+                    <li><strong>Clinical audit:</strong> Monitoring user outcomes and session effectiveness</li>
+                    <li><strong>Risk management:</strong> Contraindications screening (epilepsy, psychosis, etc.)</li>
+                    <li><strong>Professional standards:</strong> Qualified practitioners developing all content</li>
+                    <li><strong>Escalation pathways:</strong> Clinical referrals to Smart Start Minds (CQC-regulated)</li>
+                </ul>
+            </div>
+
+            <!-- Component 2 -->
+            <div class="component-card">
+                <div class="component-icon">🏢</div>
+                <h3>2. Corporate Governance</h3>
+                <ul>
+                    <li><strong>Board accountability:</strong> Governance Board with clinical and business expertise</li>
+                    <li><strong>Regulatory compliance:</strong> UK GDPR, ICO registration, CQC guideline adherence</li>
+                    <li><strong>Financial oversight:</strong> Resource allocation aligned with quality objectives</li>
+                    <li><strong>Strategic planning:</strong> 70k B2C → B2B enterprise expansion roadmap</li>
+                    <li><strong>Transparent reporting:</strong> Annual compliance reviews and policy updates</li>
+                </ul>
+            </div>
+
+            <!-- Component 3 -->
+            <div class="component-card">
+                <div class="component-icon">⚠️</div>
+                <h3>3. Risk Management</h3>
+                <ul>
+                    <li><strong>Risk identification:</strong> Clinical, operational, data security, reputational risks</li>
+                    <li><strong>Incident reporting:</strong> Safeguarding concerns, data breaches, safety incidents</li>
+                    <li><strong>Mitigation strategies:</strong> Safeguarding policy, duty of candour, breach response</li>
+                    <li><strong>Insurance coverage:</strong> Professional indemnity and cyber liability</li>
+                    <li><strong>Crisis protocols:</strong> Emergency signposting (999, 111, Samaritans)</li>
+                </ul>
+            </div>
+
+            <!-- Component 4 -->
+            <div class="component-card">
+                <div class="component-icon">📈</div>
+                <h3>4. Quality Improvement</h3>
+                <ul>
+                    <li><strong>Performance KPIs:</strong> Platform uptime (99.5%), support response times</li>
+                    <li><strong>User satisfaction:</strong> NPS scores, session completion rates, feedback loops</li>
+                    <li><strong>Clinical outcomes:</strong> Wellbeing metrics, stress reduction, sleep improvement</li>
+                    <li><strong>Benchmarking:</strong> Industry standards comparison (EAP providers, digital health)</li>
+                    <li><strong>Continuous improvement:</strong> Monthly content releases, feature updates</li>
+                </ul>
+            </div>
+
+            <!-- Component 5 -->
+            <div class="component-card">
+                <div class="component-icon">👥</div>
+                <h3>5. Staff Governance</h3>
+                <ul>
+                    <li><strong>Recruitment:</strong> Qualified hypnotherapists, clinical supervisors, support staff</li>
+                    <li><strong>Training:</strong> Safeguarding, GDPR, clinical supervision, platform operations</li>
+                    <li><strong>Competency assessment:</strong> Annual appraisals, clinical supervision records</li>
+                    <li><strong>Professional development:</strong> CPD requirements, conference attendance</li>
+                    <li><strong>Staff wellbeing:</strong> Hybrid working, mental health support, manageable caseloads</li>
+                </ul>
+            </div>
+
+            <!-- Component 6 -->
+            <div class="component-card">
+                <div class="component-icon">🔒</div>
+                <h3>6. Information Governance</h3>
+                <ul>
+                    <li><strong>Data protection:</strong> UK GDPR compliance, ICO registration, DPA 2018</li>
+                    <li><strong>Security protocols:</strong> Encryption (AES-256), secure authentication, penetration testing</li>
+                    <li><strong>Privacy by design:</strong> Minimal data collection, anonymization, retention policies</li>
+                    <li><strong>Breach response:</strong> 72-hour ICO notification, user communication, remediation</li>
+                    <li><strong>Transparency:</strong> Clear privacy policy, subject access request procedures</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Standards & Frameworks -->
+        <div class="standards-section">
+            <h2 style="margin-top: 0; color: var(--clearminds-dark);">Aligned Standards & Frameworks</h2>
+            <p style="margin-bottom: 1.5rem; line-height: 1.8;">
+                ClearMinds' governance framework aligns with established healthcare quality and information security standards:
+            </p>
+            <div class="standards-grid">
+                <div class="standard-badge">ISO 9001<br><small>Quality Management</small></div>
+                <div class="standard-badge">CQC Guidelines<br><small>Best Practice Adherence</small></div>
+                <div class="standard-badge">UK GDPR / DPA 2018<br><small>Data Protection</small></div>
+                <div class="standard-badge">ISO 27001*<br><small>Information Security (2026)</small></div>
+                <div class="standard-badge">Cyber Essentials Plus*<br><small>Baseline Security (Q2 2025)</small></div>
+                <div class="standard-badge">Care Act 2014<br><small>Safeguarding Principles</small></div>
+                <div class="standard-badge">Mental Capacity Act 2005<br><small>Consent Protocols</small></div>
+                <div class="standard-badge">Equality Act 2010<br><small>Dignity & Respect</small></div>
+            </div>
+            <p style="margin-top: 1.5rem; font-size: 0.9rem; font-style: italic; color: #5d4037;">
+                * Certifications in progress as part of B2B enterprise readiness roadmap
+            </p>
+        </div>
+
+        <!-- ClearMinds Application -->
+        <div class="clearminds-application">
+            <h2>ClearMinds Corporate Application</h2>
+
+            <h3 style="color: var(--clearminds-dark); margin-top: 2rem;">Three-Pathway Care Model</h3>
+            <p style="line-height: 1.8; margin-bottom: 1.5rem;">
+                ClearMinds implements a stepped care approach that matches users with appropriate support levels while maintaining quality governance at each stage:
+            </p>
+
+            <div class="pathway-diagram">
+                <h4 style="text-align: center; color: var(--clearminds-teal); margin-bottom: 2rem;">Stepped Care Pathways</h4>
+                <div class="pathway-steps">
+                    <div class="pathway-step" style="background: #c8e6c9;">
+                        <h4>Pathway 1: Wellness</h4>
+                        <p><strong>ClearMinds Platform</strong></p>
+                        <p>Self-directed hypnotherapy, meditation, breathwork</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem; font-weight: 600;">Governance: Content quality, user safety, data protection</p>
+                    </div>
+                    <div class="pathway-step" style="background: #b2dfdb;">
+                        <h4>Pathway 2: Diagnostic</h4>
+                        <p><strong>Neuro-Evaluator</strong></p>
+                        <p>AI psychometric assessment, OCEAN profiling</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem; font-weight: 600;">Governance: Assessment validity, data ethics, insight accuracy</p>
+                    </div>
+                    <div class="pathway-step" style="background: #90caf9;">
+                        <h4>Pathway 3: Clinical</h4>
+                        <p><strong>Smart Start Minds</strong></p>
+                        <p>CQC-regulated therapy & diagnosis</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem; font-weight: 600;">Governance: Full CQC compliance, clinical supervision, safeguarding</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color: var(--clearminds-dark); margin-top: 3rem;">Key Governance Applications</h3>
+
+            <div class="implementation-checklist">
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div>
+                        <strong>NOT a Medical Service Positioning:</strong> Clear disclaimers throughout user journey, medical disclaimer policy, emergency signposting to 999/111/Samaritans
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div>
+                        <strong>CQC Best Practice (Not Registered):</strong> Following CQC fundamental standards as governance best practice without being CQC-regulated (wellness, not healthcare)
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div>
+                        <strong>Safeguarding Protocols:</strong> 10 types of abuse recognition, Designated Safeguarding Lead, local authority reporting procedures
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div>
+                        <strong>Duty of Candour:</strong> Transparency when things go wrong, 10-day notification, apology requirements, corrective action
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div>
+                        <strong>Informed Consent:</strong> Mental Capacity Act compliance, voluntary consent, contraindications screening, right to withdraw
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div>
+                        <strong>Data Protection by Design:</strong> Encryption at rest/in transit, minimal data collection, 90-day personal data retention, 7-year clinical records
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div>
+                        <strong>Clinical Supervision:</strong> Monthly supervision for all therapists, competency assessment, reflective practice, CPD tracking
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div>
+                        <strong>Complaints Management:</strong> 5-stage escalation (informal → investigation → response → appeal), 20 working days, no detriment policy
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div>
+                        <strong>Unlimited Scalability:</strong> Digital service with no client limits, 70k B2C users proven, 260k+ enterprise capacity
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-icon">✓</div>
+                    <div>
+                        <strong>Transparent SLAs:</strong> 99.5% platform uptime, 24-hour support response, 14-30 day enterprise implementation, employee lifecycle management
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation Roadmap -->
+        <div style="background: white; padding: 2.5rem; border-radius: 0.5rem; margin: 3rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <h2 style="color: var(--clearminds-teal); margin-top: 0;">Implementation Roadmap</h2>
+
+            <h3 style="color: var(--clearminds-dark); margin-top: 2rem;">✅ Current State (Q4 2024)</h3>
+            <ul style="line-height: 1.8; margin-bottom: 2rem;">
+                <li>50+ comprehensive policies documented and published</li>
+                <li>70,000+ active B2C users demonstrating platform stability</li>
+                <li>Smart Start Minds partnership established (CQC: 1-2950268195)</li>
+                <li>Governance Board members identified with clinical and business expertise</li>
+                <li>Corporate compliance microsite launched</li>
+            </ul>
+
+            <h3 style="color: var(--clearminds-dark);">🎯 Q1 2025</h3>
+            <ul style="line-height: 1.8; margin-bottom: 2rem;">
+                <li>ICO registration completed (£40-60/year)</li>
+                <li>First B2B pilot partnership (Towergate or AXA)</li>
+                <li>Governance Board formally constituted with quarterly meetings</li>
+                <li>Clinical supervision framework operational</li>
+                <li>Employee lifecycle management tested at scale</li>
+            </ul>
+
+            <h3 style="color: var(--clearminds-dark);">🚀 Q2-Q4 2025</h3>
+            <ul style="line-height: 1.8; margin-bottom: 2rem;">
+                <li>Cyber Essentials Plus certification (Q2 2025)</li>
+                <li>Annual penetration testing completed (Q2 2025)</li>
+                <li>3-5 enterprise partnerships operational</li>
+                <li>Quarterly clinical governance audits</li>
+                <li>ISO 27001 ISMS implementation initiated</li>
+            </ul>
+
+            <h3 style="color: var(--clearminds-dark);">🏆 2026 & Beyond</h3>
+            <ul style="line-height: 1.8;">
+                <li>ISO 27001 certification achieved</li>
+                <li>SOC 2 Type II evaluation (US market expansion)</li>
+                <li>Annual CQC guideline compliance review</li>
+                <li>Continuous improvement based on user outcomes and industry benchmarks</li>
+                <li>Expansion to international markets with localized governance frameworks</li>
+            </ul>
+        </div>
+
+        <!-- Benefits Summary -->
+        <div style="background: var(--clearminds-green); padding: 2.5rem; border-radius: 0.5rem; margin: 3rem 0;">
+            <h2 style="margin-top: 0; color: var(--clearminds-dark);">Benefits of This Framework</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+                <div>
+                    <h4 style="color: var(--clearminds-teal); margin-bottom: 0.5rem;">🏢 For Enterprise Partners</h4>
+                    <ul style="line-height: 1.8;">
+                        <li>Transparent compliance evidence</li>
+                        <li>Risk mitigation assurance</li>
+                        <li>Scalable quality standards</li>
+                        <li>Clear accountability structures</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color: var(--clearminds-teal); margin-bottom: 0.5rem;">👤 For Users</h4>
+                    <ul style="line-height: 1.8;">
+                        <li>Safe, high-quality services</li>
+                        <li>Data protection assurance</li>
+                        <li>Clear escalation pathways</li>
+                        <li>Complaints mechanism</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color: var(--clearminds-teal); margin-bottom: 0.5rem;">🎯 For ClearMinds</h4>
+                    <ul style="line-height: 1.8;">
+                        <li>B2B market credibility</li>
+                        <li>Continuous improvement culture</li>
+                        <li>Regulatory preparedness</li>
+                        <li>Competitive differentiation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div style="background: white; padding: 2.5rem; border-radius: 0.5rem; margin: 3rem 0; text-align: center; border: 2px solid var(--clearminds-teal);">
+            <h2 style="color: var(--clearminds-teal); margin-top: 0;">Explore Our Governance Documentation</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Review our comprehensive policy library covering all aspects of this governance framework, from clinical safeguarding to data protection and service level agreements.
+            </p>
+            <a href="../documentation/index.html" style="display: inline-block; background: var(--clearminds-teal); color: white; padding: 1rem 2rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; transition: background 0.2s;">
+                View Full Documentation Hub
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div style="margin-top: 4rem; padding: 2rem 0; border-top: 2px solid #e0e0e0; text-align: center; color: #666; font-size: 0.9rem;">
+            <p><strong>ClearMinds Corporate Care Quality Governance Framework</strong></p>
+            <p>Version 1.0 | Last Updated: January 2025</p>
+            <p style="margin-top: 1rem;">
+                <a href="../index.html" style="color: var(--clearminds-teal); text-decoration: none; margin: 0 1rem;">Home</a>
+                <a href="../documentation/index.html" style="color: var(--clearminds-teal); text-decoration: none; margin: 0 1rem;">Documentation</a>
+                <a href="../policies/legal/medical-disclaimer.html" style="color: var(--clearminds-teal); text-decoration: none; margin: 0 1rem;">Medical Disclaimer</a>
+            </p>
+            <p style="margin-top: 1rem;">&copy; 2025 ClearMinds Corporate. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
