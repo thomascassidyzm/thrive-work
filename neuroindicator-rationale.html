@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearMinds Neuroindicator - Question Design Rationale</title>
+    <style>
+        :root {
+            --clearminds-teal: #007a87;
+            --clearminds-dark: #0d3b3e;
+            --clearminds-green: #dff4da;
+            --clearminds-cream: #fffbf5;
+            --text-dark: #333;
+            --text-light: #666;
+            --border-light: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--clearminds-cream) 0%, #fff 100%);
+            color: var(--text-dark);
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--clearminds-teal) 0%, var(--clearminds-dark) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .nav-links {
+            background: var(--clearminds-green);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--clearminds-dark);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: var(--clearminds-teal);
+            color: white;
+        }
+
+        h2 {
+            color: var(--clearminds-dark);
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--clearminds-teal);
+        }
+
+        h3 {
+            color: var(--clearminds-teal);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+
+        h4 {
+            color: var(--clearminds-dark);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .question-card {
+            background: var(--clearminds-cream);
+            border-left: 4px solid var(--clearminds-teal);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .question-card h3 {
+            margin-top: 0;
+        }
+
+        .section-box {
+            background: var(--clearminds-green);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box {
+            background: #fff9e6;
+            border-left: 4px solid #ff9800;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+        }
+
+        th {
+            background: var(--clearminds-teal);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        tr:hover {
+            background: var(--clearminds-cream);
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: var(--clearminds-dark);
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--clearminds-teal);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .badge.evidence {
+            background: var(--clearminds-green);
+            color: var(--clearminds-dark);
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid var(--border-light);
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 ClearMinds Neuroindicator</h1>
+            <p>Question Design Rationale & Clinical Framework</p>
+        </header>
+
+        <div class="nav-links">
+            <a href="neuroindicator.html">← Try the Tool</a>
+            <a href="#overview">Overview</a>
+            <a href="#principles">Design Principles</a>
+            <a href="#questions">Question Analysis</a>
+            <a href="#sequencing">Sequencing Strategy</a>
+            <a href="#validation">Clinical Validation</a>
+        </div>
+
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>The Neuroindicator uses <strong>15 carefully sequenced questions</strong> to screen across multiple mental health and wellbeing dimensions. This document explains the clinical and UX rationale behind question selection and ordering.</p>
+        </section>
+
+        <section id="principles">
+            <h2>Core Design Principles</h2>
+
+            <div class="section-box">
+                <h3>1. Evidence-Based Assessment</h3>
+                <p>Questions are adapted from validated screening tools:</p>
+                <ul>
+                    <li><strong>PHQ-9</strong> (Patient Health Questionnaire-9) - Depression screening</li>
+                    <li><strong>GAD-7</strong> (Generalized Anxiety Disorder-7) - Anxiety screening</li>
+                    <li><strong>ASRS</strong> (Adult ADHD Self-Report Scale) - Attention difficulties</li>
+                    <li><strong>Sleep quality scales</strong> - Insomnia/sleep disturbance</li>
+                    <li><strong>Functional impairment assessment</strong> - Real-world impact</li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h3>2. Safety-First Approach</h3>
+                <p>Crisis screening appears early (Q2) to enable immediate intervention if needed, rather than waiting until the end of assessment.</p>
+            </div>
+
+            <div class="section-box">
+                <h3>3. Funnel Sequencing: General → Specific</h3>
+                <p>Start broad (overall wellbeing) then narrow to specific symptom domains (sleep, mood, focus). This prevents priming bias and allows natural pattern emergence.</p>
+            </div>
+
+            <div class="section-box">
+                <h3>4. Multi-Dimensional Coverage</h3>
+                <p>Questions map to 8 diagnostic dimensions:</p>
+                <ul>
+                    <li>Crisis/safety</li>
+                    <li>Baseline wellness</li>
+                    <li>Stress/anxiety</li>
+                    <li>Sleep/energy</li>
+                    <li>Attention/focus</li>
+                    <li>Mood regulation</li>
+                    <li>Somatic symptoms</li>
+                    <li>Life stressors/context</li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h3>5. Contextual Information</h3>
+                <p>Later questions (duration, attempts, support) provide context for interpretation - distinguishing acute stress from chronic conditions, self-management capacity, and treatment history.</p>
+            </div>
+        </section>
+
+        <section id="questions">
+            <h2>Question-by-Question Rationale</h2>
+
+            <div class="question-card">
+                <h3>Q1: Overall Wellbeing (Baseline)</h3>
+                <p><strong>Text:</strong> "How would you describe your overall wellbeing right now?"</p>
+
+                <h4>Why First:</h4>
+                <ul>
+                    <li><strong>Sets baseline expectation</strong> - Establishes general wellness level before specific symptoms</li>
+                    <li><strong>Low threat level</strong> - Easy opening question, not intimidating</li>
+                    <li><strong>Calibration anchor</strong> - Helps interpret later responses in context</li>
+                    <li><strong>Broad capture</strong> - People in crisis will score very low, baseline wellness will score high</li>
+                </ul>
+
+                <h4>Clinical Basis:</h4>
+                <ul>
+                    <li>Global assessment of functioning (GAF) principle</li>
+                    <li>Subjective wellbeing scales (WHO-5, SWLS)</li>
+                </ul>
+
+                <h4>Signals Generated:</h4>
+                <ul>
+                    <li><code>baselineWellness</code> (direct correlation)</li>
+                    <li><code>crisis</code> (inverse - very low wellbeing flags crisis screening)</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <h3>Q2: Self-Harm/Suicide Screening (Crisis Detection)</h3>
+                <p><strong>Text:</strong> "In the past 2 weeks, have you had thoughts of self-harm or suicide?"</p>
+
+                <h4>Why Second (Early Crisis Detection):</h4>
+                <ul>
+                    <li><strong>Safety priority</strong> - Identifies crisis cases immediately</li>
+                    <li><strong>Prevents assessment fatigue</strong> - Don't make at-risk users complete 15 questions before help</li>
+                    <li><strong>Ethical obligation</strong> - Early intervention for highest-risk users</li>
+                    <li><strong>Critical flag</strong> - Auto-routes to crisis intervention (bypasses rest of assessment)</li>
+                </ul>
+
+                <h4>Clinical Basis:</h4>
+                <ul>
+                    <li>PHQ-9 Item 9 (suicidal ideation)</li>
+                    <li>Columbia Suicide Severity Rating Scale (C-SSRS) principles</li>
+                    <li>NICE guidelines recommend direct questioning about self-harm/suicide</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>Special Handling:</strong> Responses ≥5 trigger immediate crisis intervention. Assessment terminates, shows 999/Samaritans/A&E resources.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <h3>Q3: Sleep Quality</h3>
+                <p><strong>Text:</strong> "How well are you sleeping?"</p>
+
+                <h4>Why Third:</h4>
+                <ul>
+                    <li><strong>Universal relevance</strong> - Everyone can answer, non-threatening</li>
+                    <li><strong>High diagnostic value</strong> - Sleep disturbance correlates with anxiety, depression, stress, ADHD</li>
+                    <li><strong>Treatable symptom</strong> - Sleep hygiene interventions are accessible and evidence-based</li>
+                    <li><strong>Cross-cutting indicator</strong> - Poor sleep feeds into multiple pathways</li>
+                </ul>
+
+                <h4>Clinical Basis:</h4>
+                <ul>
+                    <li>Insomnia Severity Index (ISI)</li>
+                    <li>Sleep disturbance is transdiagnostic (appears across most mental health conditions)</li>
+                    <li>Pittsburgh Sleep Quality Index (PSQI)</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <h3>Q4: Stress/Anxiety Frequency</h3>
+                <p><strong>Text:</strong> "How often do you feel stressed or anxious?"</p>
+
+                <h4>Why Fourth:</h4>
+                <ul>
+                    <li><strong>High prevalence</strong> - Most common mental health concern</li>
+                    <li><strong>Builds on sleep</strong> - Natural progression from sleep disturbance</li>
+                    <li><strong>Differentiates acute vs chronic</strong> - Frequency language important</li>
+                    <li><strong>Gateway question</strong> - Opens up stress/anxiety pathway</li>
+                </ul>
+
+                <h4>Clinical Basis:</h4>
+                <ul>
+                    <li>GAD-7 frequency scale ("not at all" to "nearly every day")</li>
+                    <li>Perceived Stress Scale (PSS)</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <h3>Q5: Concentration/Focus</h3>
+                <p><strong>Text:</strong> "How is your ability to concentrate and focus?"</p>
+
+                <h4>Why Fifth:</h4>
+                <ul>
+                    <li><strong>ADHD screening</strong> - Primary indicator for attention difficulties</li>
+                    <li><strong>Secondary to sleep/anxiety</strong> - Concentration problems can stem from other causes</li>
+                    <li><strong>Functional impact</strong> - Focus difficulties affect work/study performance</li>
+                    <li><strong>Differential diagnosis</strong> - Helps distinguish ADHD from anxiety/depression</li>
+                </ul>
+
+                <h4>Clinical Basis:</h4>
+                <ul>
+                    <li>ASRS (Adult ADHD Self-Report Scale) - concentration/attention items</li>
+                    <li>DSM-5 ADHD criteria (inattention symptoms)</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <h3>Q6: Mood/Depression</h3>
+                <p><strong>Text:</strong> "Over the past month, how often have you felt down, depressed, or hopeless?"</p>
+
+                <h4>Why Sixth:</h4>
+                <ul>
+                    <li><strong>Core depression screening</strong> - PHQ-9 core items combined</li>
+                    <li><strong>Temporal framing</strong> - "Past month" gives bigger picture than "past 2 weeks"</li>
+                    <li><strong>Differentiates from anxiety</strong> - While stress/anxiety addressed earlier, this targets low mood specifically</li>
+                    <li><strong>Severity indicator</strong> - Frequency scale indicates severity</li>
+                </ul>
+
+                <h4>Clinical Basis:</h4>
+                <ul>
+                    <li>PHQ-9 Items 1-2 ("Little interest/pleasure" + "Feeling down/depressed/hopeless")</li>
+                    <li>Beck Depression Inventory (BDI) mood items</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <h3>Q7: Physical Symptoms (Somatic)</h3>
+                <p><strong>Text:</strong> "Do you experience physical symptoms like headaches, muscle tension, or stomach issues?"</p>
+
+                <h4>Why Seventh:</h4>
+                <ul>
+                    <li><strong>Somatic presentation</strong> - Many people present with physical symptoms rather than psychological</li>
+                    <li><strong>Anxiety indicator</strong> - Somatic symptoms strongly correlate with anxiety disorders</li>
+                    <li><strong>Medical exclusion flag</strong> - May need GP to rule out medical causes</li>
+                    <li><strong>Validation</strong> - Acknowledges physical manifestations of mental distress</li>
+                </ul>
+
+                <h4>Clinical Basis:</h4>
+                <ul>
+                    <li>Somatic Symptom Scale (SSS-8)</li>
+                    <li>GAD-7 somatic anxiety items</li>
+                    <li>PHQ-15 (somatic symptom severity)</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <h3>Q8: Life Stressors Impact</h3>
+                <p><strong>Text:</strong> "How much are work or life stressors impacting your wellbeing?"</p>
+
+                <h4>Why Eighth:</h4>
+                <ul>
+                    <li><strong>Contextual attribution</strong> - Are symptoms driven by external stressors?</li>
+                    <li><strong>Adjustment disorder screening</strong> - Differentiates adjustment reaction from primary mental health condition</li>
+                    <li><strong>Intervention targeting</strong> - High life stressors may indicate organizational/systemic issues</li>
+                    <li><strong>Workplace link</strong> - Can flag connection to THRIVE workplace assessment</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <h3>Q9: Duration</h3>
+                <p><strong>Text:</strong> "How long have you been experiencing these difficulties?"</p>
+
+                <h4>Why Ninth (After Symptoms, Before Impact):</h4>
+                <ul>
+                    <li><strong>Chronicity marker</strong> - Distinguishes acute stress from chronic conditions</li>
+                    <li><strong>Severity indicator</strong> - Longer duration often indicates greater severity/treatment resistance</li>
+                    <li><strong>Diagnostic criterion</strong> - Many conditions require minimum duration (e.g., GAD requires 6 months)</li>
+                    <li><strong>Intervention planning</strong> - Acute vs chronic guides different pathways</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <h3>Q10: Functional Impact</h3>
+                <p><strong>Text:</strong> "How much are these issues affecting your daily activities (work, relationships, self-care)?"</p>
+
+                <h4>Why Tenth:</h4>
+                <ul>
+                    <li><strong>Severity indicator</strong> - Functional impairment is key diagnostic criterion</li>
+                    <li><strong>Intervention threshold</strong> - High impairment indicates need for professional help</li>
+                    <li><strong>Clinical significance</strong> - Symptoms + impairment = clinical disorder</li>
+                    <li><strong>Outcome priority</strong> - Restoration of functioning is primary treatment goal</li>
+                </ul>
+
+                <h4>Clinical Basis:</h4>
+                <ul>
+                    <li>DSM-5 impairment criterion (required for all diagnoses)</li>
+                    <li>Work and Social Adjustment Scale (WSAS)</li>
+                    <li>Sheehan Disability Scale (SDS)</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <h3>Q11-15: Context & Resources</h3>
+                <p>The final questions assess:</p>
+                <ul>
+                    <li><strong>Q11:</strong> Goals/expectations (help-seeking motivation)</li>
+                    <li><strong>Q12:</strong> Self-help attempts (self-efficacy assessment)</li>
+                    <li><strong>Q13:</strong> Current support (treatment history)</li>
+                    <li><strong>Q14:</strong> Energy levels (depression/fatigue indicator)</li>
+                    <li><strong>Q15:</strong> Social support (protective factors)</li>
+                </ul>
+                <p>These contextual questions inform outcome recommendations and intervention matching.</p>
+            </div>
+        </section>
+
+        <section id="sequencing">
+            <h2>Sequencing Strategy Summary</h2>
+
+            <div class="section-box">
+                <h3>Phase 1: Opening & Safety (Q1-2)</h3>
+                <ul>
+                    <li>Establish baseline</li>
+                    <li>Screen for crisis</li>
+                    <li>Ethical priority: safety first</li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h3>Phase 2: Core Symptoms (Q3-7)</h3>
+                <ul>
+                    <li>Sleep → Anxiety → Focus → Mood → Physical</li>
+                    <li>Funnel from general to specific</li>
+                    <li>Build dimensional confidence scores</li>
+                    <li>Natural flow: sleep affects everything else</li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h3>Phase 3: Context & Attribution (Q8-10)</h3>
+                <ul>
+                    <li>Life stressors (external vs internal attribution)</li>
+                    <li>Duration (acute vs chronic)</li>
+                    <li>Functional impact (severity marker)</li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h3>Phase 4: Capacity & Resources (Q11-15)</h3>
+                <ul>
+                    <li>Goals (motivation/expectations)</li>
+                    <li>Self-help attempts (self-efficacy)</li>
+                    <li>Current support (treatment history)</li>
+                    <li>Energy (functional capacity)</li>
+                    <li>Social support (protective factors)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Why This Beats Traditional Boolean Logic</h2>
+
+            <div class="highlight-box">
+                <h4>Traditional Approach:</h4>
+                <pre><code>if (depressed === true) → recommend therapy
+if (anxious === true) → recommend CBT</code></pre>
+
+                <h4>Problems:</h4>
+                <ul>
+                    <li>Oversimplified (people rarely fit single categories)</li>
+                    <li>Misses comorbidity (anxiety + depression + sleep issues)</li>
+                    <li>Ignores severity gradients</li>
+                    <li>No nuance (mild vs severe treated same)</li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h4>Neuroindicator Approach:</h4>
+                <pre><code>Build confidence scores across all dimensions simultaneously:
+{
+  stressAnxiety: 3.8,
+  moodRegulation: 2.1,
+  sleepEnergy: 4.2,
+  attentionFocus: 1.5,
+  ...
+}
+
+Route to outcome based on highest confidence + context</code></pre>
+
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>✅ Captures comorbidity (multiple elevated dimensions)</li>
+                    <li>✅ Severity-sensitive (thresholds at 2.5, 3.5, 4.0)</li>
+                    <li>✅ Contextual (duration, attempts, support modifies recommendations)</li>
+                    <li>✅ Personalized outcomes (not one-size-fits-all)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Why 15 Questions?</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Question Count</th>
+                        <th>Pros</th>
+                        <th>Cons</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>&lt;10 questions</strong></td>
+                        <td>Quick completion</td>
+                        <td>❌ Insufficient coverage<br>❌ High false positive/negative<br>❌ Lacks context</td>
+                    </tr>
+                    <tr>
+                        <td><strong>&gt;25 questions</strong></td>
+                        <td>Comprehensive data</td>
+                        <td>❌ User fatigue<br>❌ Diminishing returns<br>❌ High drop-off rate</td>
+                    </tr>
+                    <tr>
+                        <td><strong>15 questions (Sweet Spot)</strong></td>
+                        <td>✅ Comprehensive coverage (8 dimensions)<br>✅ Contextual information<br>✅ Manageable length (5-10 minutes)<br>✅ Clinical validity</td>
+                        <td>Balanced approach</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Comparison to Validated Scales</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scale</th>
+                        <th>Questions</th>
+                        <th>Time</th>
+                        <th>Dimensions</th>
+                        <th>Our Coverage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PHQ-9</td>
+                        <td>9</td>
+                        <td>3 min</td>
+                        <td>Depression</td>
+                        <td>✅ Q6, Q14</td>
+                    </tr>
+                    <tr>
+                        <td>GAD-7</td>
+                        <td>7</td>
+                        <td>2 min</td>
+                        <td>Anxiety</td>
+                        <td>✅ Q4, Q7</td>
+                    </tr>
+                    <tr>
+                        <td>ASRS</td>
+                        <td>6</td>
+                        <td>2 min</td>
+                        <td>ADHD</td>
+                        <td>✅ Q5</td>
+                    </tr>
+                    <tr>
+                        <td>ISI</td>
+                        <td>7</td>
+                        <td>3 min</td>
+                        <td>Sleep</td>
+                        <td>✅ Q3, Q14</td>
+                    </tr>
+                    <tr>
+                        <td>PSS</td>
+                        <td>10</td>
+                        <td>5 min</td>
+                        <td>Stress</td>
+                        <td>✅ Q4, Q8</td>
+                    </tr>
+                    <tr style="background: var(--clearminds-green); font-weight: 600;">
+                        <td><strong>Neuroindicator</strong></td>
+                        <td><strong>15</strong></td>
+                        <td><strong>8 min</strong></td>
+                        <td><strong>8 dimensions + context</strong></td>
+                        <td>✅ <strong>Comprehensive</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="validation">
+            <h2>Clinical Validation Plan</h2>
+
+            <div class="section-box">
+                <h3>Next Steps:</h3>
+                <ol>
+                    <li><strong>Dr. Thomas Dannhauser review</strong> - Clinical accuracy, question phrasing, thresholds</li>
+                    <li><strong>Pilot testing</strong> - 20-30 users with known clinical status</li>
+                    <li><strong>Sensitivity/specificity analysis</strong> - How well does it detect conditions vs false positives?</li>
+                    <li><strong>Outcome validation</strong> - Do recommended pathways match clinical judgment?</li>
+                    <li><strong>User experience testing</strong> - Are questions clear? Any confusion or distress?</li>
+                </ol>
+            </div>
+
+            <div class="section-box">
+                <h3>Potential Refinements:</h3>
+                <ul>
+                    <li>Adjust scoring thresholds based on pilot data</li>
+                    <li>Add/remove questions based on diagnostic value</li>
+                    <li>Refine outcome templates based on user feedback</li>
+                    <li>Add branching logic (skip irrelevant questions)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Ethical Considerations</h2>
+
+            <div class="section-box">
+                <h3>Transparency</h3>
+                <ul>
+                    <li>Not a diagnostic tool (clearly stated)</li>
+                    <li>Outcome pathways include non-commercial options</li>
+                    <li>"You're fine" is valid outcome (not just funnel to sales)</li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h3>Safety</h3>
+                <ul>
+                    <li>Crisis screening early (Q2)</li>
+                    <li>Immediate intervention for high-risk responses</li>
+                    <li>Clear escalation pathways (999, Samaritans, GP)</li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h3>Balanced Recommendations</h3>
+                <ul>
+                    <li>Lifestyle strategies before professional support</li>
+                    <li>Multiple pathway options (not just ClearMinds)</li>
+                    <li>GP consultation prominent for medical concerns</li>
+                    <li>Commercial relationships flagged transparently</li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h3>Privacy</h3>
+                <ul>
+                    <li>Browser-only processing (no data stored)</li>
+                    <li>Optional email for results</li>
+                    <li>GDPR-compliant data handling</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--border-light); text-align: center; color: var(--text-light);">
+            <p><strong>ClearMinds Neuroindicator - Question Design Rationale</strong></p>
+            <p>Version 1.0 | October 2025</p>
+            <p style="margin-top: 1rem;">
+                <a href="neuroindicator.html" style="color: var(--clearminds-teal); text-decoration: none; margin: 0 1rem;">Try the Tool</a>
+                <a href="#" style="color: var(--clearminds-teal); text-decoration: none; margin: 0 1rem;" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Back to Top</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
