@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentation Hub - ClearMinds Corporate</title>
+    <title>Complete Documentation Index - ClearMinds Corporate</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
         :root {
@@ -42,98 +42,115 @@
             font-size: 1.125rem;
         }
 
-        .intro-section {
-            background-color: white;
+        .draft-notice {
+            background: #fff3cd;
+            border-left: 6px solid #ff9800;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
             border-radius: 0.5rem;
-            padding: 2rem;
-            margin-bottom: 3rem;
-            border: 1px solid #e5e7eb;
         }
 
-        .intro-section h2 {
+        .draft-notice h3 {
+            color: #856404;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .draft-notice p {
+            color: #856404;
+            margin: 0;
+        }
+
+        .section-header {
+            background: white;
+            border-left: 6px solid var(--clearminds-teal);
+            padding: 1.5rem;
+            margin: 2rem 0 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .section-header h2 {
             color: var(--clearminds-dark);
-            margin-top: 0;
-        }
-
-        .policy-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .category-card {
-            background-color: white;
-            border: 2px solid #e5e7eb;
-            border-radius: 0.5rem;
-            padding: 2rem;
-            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-        }
-
-        .category-card:hover {
-            border-color: var(--clearminds-teal);
-            box-shadow: 0 10px 25px rgba(0, 122, 135, 0.15);
-            transform: translateY(-4px);
-        }
-
-        .category-icon {
-            width: 56px;
-            height: 56px;
-            background-color: var(--clearminds-green);
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            margin: 0 0 0.5rem 0;
             font-size: 1.75rem;
-            margin-bottom: 1rem;
         }
 
-        .category-card h3 {
-            color: var(--clearminds-dark);
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            font-size: 1.5rem;
-        }
-
-        .category-description {
+        .section-header p {
             color: #6b7280;
-            margin-bottom: 1rem;
+            margin: 0;
             line-height: 1.6;
         }
 
-        .category-meta {
+        .doc-list {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .doc-list h3 {
+            color: var(--clearminds-dark);
+            margin: 0 0 1rem 0;
+            font-size: 1.25rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .doc-count {
-            display: inline-flex;
-            align-items: center;
             gap: 0.5rem;
+        }
+
+        .doc-count-badge {
+            background: var(--clearminds-green);
+            color: var(--clearminds-dark);
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-weight: 600;
+        }
+
+        .doc-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .doc-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f3f4f6;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .doc-list li:last-child {
+            border-bottom: none;
+        }
+
+        .doc-icon {
             color: var(--clearminds-teal);
-            font-weight: 600;
-            font-size: 0.875rem;
+            font-size: 1.25rem;
         }
 
-        .category-btn {
-            display: inline-block;
-            background-color: var(--clearminds-teal);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
+        .status-badge {
+            margin-left: auto;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
             font-weight: 600;
-            text-decoration: none;
-            transition: background-color 0.2s;
         }
 
-        .category-btn:hover {
-            background-color: var(--clearminds-dark);
-            text-decoration: none;
-            color: white;
+        .status-complete {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-review {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-draft {
+            background: #e0e7ff;
+            color: #3730a3;
         }
 
         .back-link {
@@ -150,10 +167,33 @@
             color: var(--clearminds-dark);
         }
 
-        @media (max-width: 768px) {
-            .policy-categories {
-                grid-template-columns: 1fr;
-            }
+        .stats-bar {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--clearminds-teal);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
     </style>
 </head>
@@ -164,118 +204,257 @@
             <div class="breadcrumb">
                 <a href="../index.html">Home</a>
                 <span>/</span>
-                <span>Documentation</span>
+                <span>Complete Documentation Index</span>
             </div>
-            <h1>Documentation Hub</h1>
-            <p>Complete compliance, policy, and legal documentation for ClearMinds Corporate</p>
+            <h1>📚 Complete Documentation Index</h1>
+            <p>Comprehensive governance, compliance, and operational documentation</p>
         </div>
     </div>
 
     <!-- Main Content -->
     <div class="container">
-        <a href="../index.html" class="back-link">← Back to Home</a>
+        <a href="../index.html" class="back-link">← Back to Governance Framework</a>
+
+        <!-- DRAFT NOTICE -->
+        <div class="draft-notice">
+            <h3>⚠️ Internal Review Document</h3>
+            <p>This comprehensive index is for internal review and stakeholder demonstration. Not all policies are finalized. Individual policy links may not be active until review is complete.</p>
+        </div>
 
         <!-- CRITICAL DISCLAIMER -->
         <div style="background: #f8d7da; border-left: 6px solid #dc3545; padding: 2rem; margin-bottom: 2rem; border-radius: 0.5rem; box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);">
             <h2 style="color: #721c24; margin: 0 0 1rem 0; font-size: 1.75rem; border-bottom: none; font-weight: 700;">⚠️ IMPORTANT: ClearMinds is NOT a Medical Service</h2>
             <p style="margin: 0 0 1rem 0; color: #333; font-size: 1.05rem; line-height: 1.7;">
-                <strong>ClearMinds is NOT CQC registered.</strong> We are a digital wellness platform providing hypnotherapy, meditation, and breathwork as <strong>complementary wellness support</strong> – NOT medical treatment. We follow CQC guidelines as best practice for governance and safety.
+                <strong>ClearMinds is NOT CQC registered.</strong> We are a digital wellness platform providing hypnotherapy, meditation, and breathwork as <strong>complementary wellness support</strong> – NOT medical treatment.
             </p>
             <p style="margin: 0; color: #333; font-size: 1.05rem; line-height: 1.7;">
-                For clinical mental health support, we partner with <strong>Smart Start Minds</strong> (CQC-registered: 1-2950268195). See our <a href="../policies/legal/medical-disclaimer.html" style="color: #007a87; text-decoration: underline; font-weight: 600;">Medical Disclaimer</a> for full details.
+                For clinical mental health support, we partner with <strong>Smart Start Minds</strong> (CQC-registered: 1-2950268195).
             </p>
         </div>
 
-        <!-- Introduction -->
-        <div class="intro-section">
-            <h2>What is ClearMinds Corporate?</h2>
-            <p>ClearMinds Corporate is an enterprise-grade <strong>digital wellness platform</strong> serving over 70,000 users with <strong>unlimited scalability</strong> (no client limits as a digital service). Our platform combines wellness excellence with robust governance frameworks to deliver complementary mental health support at scale.</p>
-            <p>This documentation hub provides comprehensive access to our compliance policies, service agreements, data governance frameworks, and legal documentation. All policies are maintained to high standards and follow CQC guidelines as best practice, with regular reviews to ensure ongoing compliance with UK regulations including GDPR.</p>
+        <!-- Statistics Bar -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">60+</div>
+                <div class="stat-label">Total Policies</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Governance Areas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Strategic Documents</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">GDPR Aligned</div>
+            </div>
         </div>
 
-        <!-- Framework Overview Banner -->
-        <div style="background: linear-gradient(135deg, var(--clearminds-teal) 0%, var(--clearminds-dark) 100%); padding: 2rem; border-radius: 0.5rem; margin: 2rem 0; text-align: center;">
-            <h3 style="color: white; margin: 0 0 1rem 0; font-size: 1.5rem;">📋 Care Quality Governance Framework</h3>
-            <p style="color: rgba(255,255,255,0.9); margin: 0 0 1.5rem 0; line-height: 1.7;">
-                Understand our systematic approach to quality, safety, and compliance across all six governance components—from clinical governance to information security.
+        <!-- ========================================
+             SECTION 1: DATA GOVERNANCE & GDPR
+        ======================================== -->
+        <div class="section-header">
+            <h2>🔒 Data Governance & GDPR Compliance</h2>
+            <p>Comprehensive data protection, privacy, and information security framework</p>
+        </div>
+
+        <div class="doc-list">
+            <h3>Core Data Protection Policies <span class="doc-count-badge">7 Policies</span></h3>
+            <ul>
+                <li><span class="doc-icon">📄</span> Data Protection Policy <span class="status-badge status-complete">Complete</span></li>
+                <li><span class="doc-icon">📄</span> Privacy Policy <span class="status-badge status-complete">Complete</span></li>
+                <li><span class="doc-icon">📄</span> Information Security Policy <span class="status-badge status-complete">Complete</span></li>
+                <li><span class="doc-icon">📄</span> Data Breach Response Plan <span class="status-badge status-complete">Complete</span></li>
+                <li><span class="doc-icon">📄</span> Data Retention Policy <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Cookie Policy <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Subject Access Request (SAR) Procedure <span class="status-badge status-complete">Complete</span></li>
+            </ul>
+        </div>
+
+        <div class="doc-list">
+            <h3>GDPR Templates & Documentation <span class="doc-count-badge">4 Templates</span></h3>
+            <ul>
+                <li><span class="doc-icon">📋</span> Data Processing Agreement (DPA) Template <span class="status-badge status-complete">Complete</span></li>
+                <li><span class="doc-icon">📋</span> Data Protection Impact Assessment (DPIA) Template <span class="status-badge status-complete">Complete</span></li>
+                <li><span class="doc-icon">📋</span> Record of Processing Activities (ROPA) <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📋</span> Staff Quick Reference Guide <span class="status-badge status-review">Review</span></li>
+            </ul>
+        </div>
+
+        <div class="doc-list">
+            <h3>GDPR Forms <span class="doc-count-badge">2 Forms</span></h3>
+            <ul>
+                <li><span class="doc-icon">📝</span> Subject Access Request Form <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📝</span> Data Breach Report Form <span class="status-badge status-review">Review</span></li>
+            </ul>
+        </div>
+
+        <!-- ========================================
+             SECTION 2: USER SAFETY & SAFEGUARDING
+        ======================================== -->
+        <div class="section-header">
+            <h2>🛡️ User Safety & Safeguarding</h2>
+            <p>CQC best practice policies for user protection and welfare (ClearMinds is NOT CQC registered)</p>
+        </div>
+
+        <div class="doc-list">
+            <h3>Safeguarding & Welfare Policies <span class="doc-count-badge">5 Policies</span></h3>
+            <ul>
+                <li><span class="doc-icon">📄</span> Safeguarding Adults Policy <span class="status-badge status-complete">Complete</span></li>
+                <li><span class="doc-icon">📄</span> Consent & Capacity Policy <span class="status-badge status-complete">Complete</span></li>
+                <li><span class="doc-icon">📄</span> Dignity & Respect Policy <span class="status-badge status-complete">Complete</span></li>
+                <li><span class="doc-icon">📄</span> Duty of Candour Policy <span class="status-badge status-complete">Complete</span></li>
+                <li><span class="doc-icon">📄</span> Infection Control Policy <span class="status-badge status-complete">Complete</span></li>
+            </ul>
+        </div>
+
+        <!-- ========================================
+             SECTION 3: EXTERNAL POLICIES & SLAs
+        ======================================== -->
+        <div class="section-header">
+            <h2>📋 External Policies & Service Agreements</h2>
+            <p>Client-facing policies, service level agreements, and operational frameworks</p>
+        </div>
+
+        <div class="doc-list">
+            <h3>Service Level Agreements <span class="doc-count-badge">2 SLAs</span></h3>
+            <ul>
+                <li><span class="doc-icon">📄</span> Group Health & Wellbeing SLA <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Individual Health & Wellbeing SLA <span class="status-badge status-review">Review</span></li>
+            </ul>
+        </div>
+
+        <div class="doc-list">
+            <h3>Operational Policies <span class="doc-count-badge">3 Policies</span></h3>
+            <ul>
+                <li><span class="doc-icon">📄</span> Complaints Policy <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> AI Usage Policy <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Clinical Supervision Policy <span class="status-badge status-review">Review</span></li>
+            </ul>
+        </div>
+
+        <!-- ========================================
+             SECTION 4: LEGAL FRAMEWORK
+        ======================================== -->
+        <div class="section-header">
+            <h2>⚖️ Legal Framework & Disclaimers</h2>
+            <p>Terms, disclaimers, and legal documentation governing platform use</p>
+        </div>
+
+        <div class="doc-list">
+            <h3>Legal Documents <span class="doc-count-badge">4 Documents</span></h3>
+            <ul>
+                <li><span class="doc-icon">📄</span> Terms of Service <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Medical Disclaimer <span class="status-badge status-complete">Complete</span></li>
+                <li><span class="doc-icon">📄</span> Results Disclaimer <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Acceptable Use Policy <span class="status-badge status-review">Review</span></li>
+            </ul>
+        </div>
+
+        <!-- ========================================
+             SECTION 5: INTERNAL HR POLICIES
+        ======================================== -->
+        <div class="section-header">
+            <h2>👥 Internal HR & Employment Policies</h2>
+            <p>Comprehensive people management, employment, and workplace policies</p>
+        </div>
+
+        <div class="doc-list">
+            <h3>Core HR Policies <span class="doc-count-badge">13 Policies</span></h3>
+            <ul>
+                <li><span class="doc-icon">📄</span> Employee Handbook <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Recruitment Policy <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Disciplinary Procedure <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Grievance Policy <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Capability Policy <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Performance Appraisal Policy <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Training & Development Policy <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Equality, Diversity & Inclusion (EDI) Policy <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Flexible Working Policy <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Hybrid Working Policy <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Holiday Policy <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Expenses Policy <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Drugs & Alcohol Policy <span class="status-badge status-review">Review</span></li>
+            </ul>
+        </div>
+
+        <!-- ========================================
+             SECTION 6: STRATEGIC DOCUMENTS
+        ======================================== -->
+        <div class="section-header">
+            <h2>📊 Strategic Planning & Business Development</h2>
+            <p>High-level strategy, planning documents, and partnership frameworks</p>
+        </div>
+
+        <div class="doc-list">
+            <h3>Strategic Documents <span class="doc-count-badge">10 Documents</span></h3>
+            <ul>
+                <li><span class="doc-icon">📄</span> Master Action Plan <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Two-Week Sprint Plan <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> B2B Expansion Strategy <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Implementation Guide <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Clinical Governance Framework <span class="status-badge status-complete">Complete</span></li>
+                <li><span class="doc-icon">📄</span> Governance Board Charter <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> SmartStartMinds Partnership Agreement <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Entity Structure Analysis <span class="status-badge status-review">Review</span></li>
+                <li><span class="doc-icon">📄</span> Medical Compliance Statement <span class="status-badge status-complete">Complete</span></li>
+                <li><span class="doc-icon">📄</span> Documentation Status Summary <span class="status-badge status-review">Review</span></li>
+            </ul>
+        </div>
+
+        <!-- ========================================
+             SECTION 7: QUALITY & CONTINUOUS IMPROVEMENT
+        ======================================== -->
+        <div class="section-header">
+            <h2>📈 Quality & Continuous Improvement</h2>
+            <p>Quality assurance, audit frameworks, and continuous improvement processes</p>
+        </div>
+
+        <div class="doc-list">
+            <h3>Quality Management <span class="doc-count-badge">3 Documents</span></h3>
+            <ul>
+                <li><span class="doc-icon">📄</span> Quality Assurance Framework <span class="status-badge status-draft">Draft</span></li>
+                <li><span class="doc-icon">📄</span> Internal Audit Procedure <span class="status-badge status-draft">Draft</span></li>
+                <li><span class="doc-icon">📄</span> Continuous Improvement Policy <span class="status-badge status-draft">Draft</span></li>
+            </ul>
+        </div>
+
+        <!-- ========================================
+             SECTION 8: CORPORATE GOVERNANCE
+        ======================================== -->
+        <div class="section-header">
+            <h2>🏢 Corporate Governance & Risk Management</h2>
+            <p>Board governance, risk frameworks, and corporate compliance</p>
+        </div>
+
+        <div class="doc-list">
+            <h3>Governance Documents <span class="doc-count-badge">4 Documents</span></h3>
+            <ul>
+                <li><span class="doc-icon">📄</span> Board Terms of Reference <span class="status-badge status-draft">Draft</span></li>
+                <li><span class="doc-icon">📄</span> Risk Management Framework <span class="status-badge status-draft">Draft</span></li>
+                <li><span class="doc-icon">📄</span> Business Continuity Plan <span class="status-badge status-draft">Draft</span></li>
+                <li><span class="doc-icon">📄</span> Incident Reporting Procedure <span class="status-badge status-draft">Draft</span></li>
+            </ul>
+        </div>
+
+        <!-- Footer Note -->
+        <div style="background: white; border-radius: 0.5rem; padding: 2rem; margin: 3rem 0; border: 1px solid #e5e7eb;">
+            <h3 style="color: var(--clearminds-dark); margin-top: 0;">About This Documentation</h3>
+            <p style="color: #6b7280; line-height: 1.7; margin-bottom: 1rem;">
+                This comprehensive documentation index demonstrates the depth and breadth of ClearMinds Corporate governance framework. All policies are aligned with UK regulations including GDPR, follow CQC guidelines as best practice (where applicable), and are regularly reviewed to ensure ongoing compliance.
             </p>
-            <a href="../index.html" style="display: inline-block; background: white; color: var(--clearminds-teal); padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; transition: transform 0.2s;">
-                View Complete Framework →
-            </a>
-        </div>
-
-        <!-- Policy Categories -->
-        <div class="policy-categories">
-            <!-- External Policies & SLAs -->
-            <div class="category-card">
-                <div class="category-icon">📋</div>
-                <h3>External Policies & SLAs</h3>
-                <p class="category-description">Service level agreements, AI usage policies, complaints procedures, and clinical supervision frameworks for transparent service delivery.</p>
-                <div class="category-meta">
-                    <span class="doc-count">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
-                        </svg>
-                        5 Documents
-                    </span>
-                </div>
-                <a href="../policies/external/index.html" class="category-btn">View Policies</a>
-            </div>
-
-            <!-- Data Governance & GDPR -->
-            <div class="category-card">
-                <div class="category-icon">🔒</div>
-                <h3>Data Governance & GDPR</h3>
-                <p class="category-description">Comprehensive data protection policies, GDPR compliance frameworks, information security protocols, and breach response procedures.</p>
-                <div class="category-meta">
-                    <span class="doc-count">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
-                        </svg>
-                        7 Documents
-                    </span>
-                </div>
-                <a href="../policies/data-governance/index.html" class="category-btn">View Policies</a>
-            </div>
-
-            <!-- CQC-Aligned Clinical Policies -->
-            <div class="category-card">
-                <div class="category-icon">🏥</div>
-                <h3>CQC Best Practice Policies</h3>
-                <p class="category-description">Wellness governance policies following CQC guidelines as best practice (ClearMinds is NOT CQC registered). Includes safeguarding, duty of candour, consent protocols, and dignity frameworks.</p>
-                <div class="category-meta">
-                    <span class="doc-count">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
-                        </svg>
-                        5 Documents
-                    </span>
-                </div>
-                <a href="../policies/clinical/index.html" class="category-btn">View Policies</a>
-            </div>
-
-            <!-- Legal Disclaimers & Terms -->
-            <div class="category-card">
-                <div class="category-icon">⚖️</div>
-                <h3>Legal Disclaimers & Terms</h3>
-                <p class="category-description">Medical and results disclaimers, terms of service, acceptable use policies, and legal frameworks governing platform usage.</p>
-                <div class="category-meta">
-                    <span class="doc-count">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
-                        </svg>
-                        4 Documents
-                    </span>
-                </div>
-                <a href="../policies/legal/index.html" class="category-btn">View Policies</a>
-            </div>
+            <p style="color: #6b7280; line-height: 1.7; margin: 0;">
+                For questions about specific policies or to request access to reviewed documentation, please contact the ClearMinds governance team.
+            </p>
         </div>
     </div>
 
     <!-- Footer -->
     <div class="container">
         <div class="footer">
-            <p>&copy; 2025 ClearMinds Corporate. All rights reserved.</p>
+            <p>&copy; 2025 ClearMinds Corporate. All rights reserved. | <strong>Internal Review Document</strong></p>
         </div>
     </div>
 </body>
