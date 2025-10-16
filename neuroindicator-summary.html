@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearMinds Neuroindicator - Project Summary</title>
+    <style>
+        :root {
+            --clearminds-teal: #007a87;
+            --clearminds-dark: #0d3b3e;
+            --clearminds-green: #dff4da;
+            --clearminds-cream: #fffbf5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--clearminds-cream) 0%, #fff 100%);
+            color: #333;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--clearminds-teal) 0%, var(--clearminds-dark) 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .link-card {
+            background: var(--clearminds-green);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--clearminds-teal);
+        }
+
+        .link-card h3 {
+            color: var(--clearminds-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .link-card a {
+            color: var(--clearminds-teal);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .link-card a:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: var(--clearminds-dark);
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--clearminds-teal);
+        }
+
+        h3 {
+            color: var(--clearminds-teal);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .checklist {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .checklist li {
+            list-style: none;
+            padding: 0.5rem 0;
+        }
+
+        .checklist li::before {
+            content: "☐ ";
+            color: var(--clearminds-teal);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .feature-box {
+            background: var(--clearminds-cream);
+            border-left: 4px solid var(--clearminds-teal);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box {
+            background: #fff9e6;
+            border-left: 4px solid #ff9800;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        th {
+            background: var(--clearminds-teal);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .sharing-section {
+            background: var(--clearminds-green);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 ClearMinds Neuroindicator</h1>
+            <p>Project Summary & Resources</p>
+            <span class="status-badge">✅ Complete & Live</span>
+            <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
+                October 16, 2025 | Version 1.0
+            </div>
+        </header>
+
+        <section>
+            <h2>🔗 Quick Links</h2>
+            <div class="quick-links">
+                <div class="link-card">
+                    <h3>🎯 Live Tool</h3>
+                    <p>Try the neuroindicator screening</p>
+                    <a href="https://thrive-work.vercel.app/neuroindicator.html" target="_blank">Open Tool →</a>
+                </div>
+                <div class="link-card">
+                    <h3>📚 Clinical Rationale</h3>
+                    <p>Question design & evidence base</p>
+                    <a href="https://thrive-work.vercel.app/neuroindicator-rationale.html" target="_blank">Read Rationale →</a>
+                </div>
+                <div class="link-card">
+                    <h3>📋 Question Export</h3>
+                    <p>Plain text for Quizzle team</p>
+                    <a href="https://github.com/thomascassidyzm/thrive-work/blob/main/neuroindicator-questions.txt" target="_blank">View Questions →</a>
+                </div>
+                <div class="link-card">
+                    <h3>🏢 Corporate Policies</h3>
+                    <p>Updated governance framework</p>
+                    <a href="https://thrive-work.vercel.app/corporate/" target="_blank">View Framework →</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>📦 What We Built</h2>
+
+            <div class="feature-box">
+                <h3>1. Neuroindicator Screening Tool</h3>
+                <p><strong>Single HTML file</strong> - Fully portable, no dependencies</p>
+                <ul>
+                    <li><strong>15 evidence-based questions</strong> covering stress, anxiety, sleep, mood, focus</li>
+                    <li><strong>7 outcome pathways</strong> - Crisis, baseline wellness, stress/anxiety, mood, attention/focus, general support</li>
+                    <li><strong>ClearMinds branding</strong> - Teal/cream color scheme</li>
+                    <li><strong>PDF generation</strong> - Downloadable GP summaries</li>
+                    <li><strong>Mobile responsive</strong> - Works on all devices</li>
+                    <li><strong>Ethical design</strong> - "You're fine" is valid outcome, transparent about commercial relationships</li>
+                </ul>
+            </div>
+
+            <div class="feature-box">
+                <h3>2. Clinical Rationale Document</h3>
+                <p><strong>Comprehensive explanation</strong> of question design and sequencing</p>
+                <ul>
+                    <li>Clinical evidence base (PHQ-9, GAD-7, ASRS, ISI, PSS)</li>
+                    <li>Question-by-question breakdown</li>
+                    <li>Sequencing strategy (funnel approach, safety-first)</li>
+                    <li>Comparison to validated scales</li>
+                    <li>Clinical validation plan</li>
+                </ul>
+            </div>
+
+            <div class="feature-box">
+                <h3>3. Question Export for Quizzle</h3>
+                <p><strong>Plain text format</strong> with all questions, options, and scoring logic</p>
+                <ul>
+                    <li>All 15 questions with exact wording</li>
+                    <li>7 outcome pathways detailed</li>
+                    <li>Implementation notes for Quizzle team</li>
+                    <li>Warning about probabilistic scoring complexity</li>
+                </ul>
+            </div>
+
+            <div class="feature-box">
+                <h3>4. Updated Corporate Governance Framework</h3>
+                <p><strong>Simplified and toned down</strong> to reflect wellness positioning</p>
+                <ul>
+                    <li>Simplified from 6 to 4 components</li>
+                    <li>Removed clinical/CQC language (not medical service)</li>
+                    <li>Added prominent disclaimer ("ClearMinds is NOT a Medical Service")</li>
+                    <li>Updated standards to "guided by principles"</li>
+                    <li>Added GDPR Article 15 details and DBS requirements</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>🎨 Key Design Principles</h2>
+
+            <div class="feature-box">
+                <h3>Ethical Framework</h3>
+                <ul>
+                    <li><strong>Safety-first:</strong> Crisis screening at Q2 (early intervention)</li>
+                    <li><strong>Balanced recommendations:</strong> Non-commercial options prominent</li>
+                    <li><strong>"You're fine" is valid:</strong> Not just a sales funnel</li>
+                    <li><strong>Transparent:</strong> Commercial relationships clearly flagged</li>
+                    <li><strong>Privacy-first:</strong> Browser-only processing, optional email</li>
+                </ul>
+            </div>
+
+            <div class="feature-box">
+                <h3>Clinical Foundation</h3>
+                <ul>
+                    <li>Evidence-based questions (validated screening tools)</li>
+                    <li>Multi-dimensional assessment (8 dimensions tracked)</li>
+                    <li>Contextual interpretation (duration, impact, attempts)</li>
+                    <li>Appropriate escalation (GP, specialist, crisis services)</li>
+                    <li>Probabilistic scoring (not boolean logic)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>📋 Next Steps</h2>
+
+            <h3>Phase 1: Testing & Validation (Current)</h3>
+            <div class="checklist">
+                <ul>
+                    <li>Test tool with 5-10 internal users</li>
+                    <li>Collect feedback on UX, question clarity, outcomes</li>
+                    <li>Review with Dr. Thomas Dannhauser (clinical validation)</li>
+                    <li>Check mobile responsiveness across devices</li>
+                    <li>Test PDF generation</li>
+                </ul>
+            </div>
+
+            <h3>Phase 2: Quizzle Decision</h3>
+            <div class="checklist">
+                <ul>
+                    <li>Share neuroindicator-questions.txt with Quizzle team</li>
+                    <li>Assess Quizzle's ability to handle probabilistic scoring</li>
+                    <li>Decide: Quizzle import vs stand-alone HTML</li>
+                    <li>If Quizzle: export questions to their format</li>
+                    <li>If stand-alone: keep current implementation</li>
+                </ul>
+            </div>
+
+            <h3>Phase 3: Refinement</h3>
+            <div class="checklist">
+                <ul>
+                    <li>Adjust thresholds based on pilot testing</li>
+                    <li>Refine outcome text based on feedback</li>
+                    <li>Add auto-progression (click → auto-advance)</li>
+                    <li>Optional: Add symptom tracker download</li>
+                    <li>Optional: Add "share results" URL functionality</li>
+                </ul>
+            </div>
+
+            <h3>Phase 4: Production Deployment</h3>
+            <div class="checklist">
+                <ul>
+                    <li>Move to clearminds.business (when site ready)</li>
+                    <li>Update corporate governance policies on clearminds.business</li>
+                    <li>Add medical disclaimer prominently</li>
+                    <li>Set up email automation (if desired)</li>
+                    <li>Add analytics tracking</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>🤝 Sharing with Stakeholders</h2>
+
+            <div class="sharing-section">
+                <h3>For Team Testing:</h3>
+                <pre style="background: white; padding: 1rem;">Hi team,
+
+Please test our new neuroindicator screening tool:
+https://thrive-work.vercel.app/neuroindicator.html
+
+Takes 5-10 minutes. Looking for feedback on:
+- Is the flow clear and intuitive?
+- Are questions appropriate?
+- Do outcomes feel helpful and balanced?
+- Any technical issues?
+
+Thanks!</pre>
+            </div>
+
+            <div class="sharing-section">
+                <h3>For Dr. Dannhauser Clinical Review:</h3>
+                <pre style="background: white; padding: 1rem;">Hi Dr. Dannhauser,
+
+We've built a mental wellness screening tool and would value your clinical review:
+
+Tool: https://thrive-work.vercel.app/neuroindicator.html
+Rationale: https://thrive-work.vercel.app/neuroindicator-rationale.html
+
+Questions adapted from PHQ-9, GAD-7, ASRS, ISI. Would appreciate feedback on:
+- Clinical accuracy of questions
+- Appropriateness of outcome pathways
+- Threshold settings for intervention routing
+- Any red flags or concerns
+
+Many thanks,
+ClearMinds Team</pre>
+            </div>
+
+            <div class="sharing-section">
+                <h3>For Quizzle Team:</h3>
+                <pre style="background: white; padding: 1rem;">Hi Quizzle team,
+
+We're considering importing our mental health screening tool into your platform.
+Please review the question bank and scoring logic:
+
+Questions: https://github.com/thomascassidyzm/thrive-work/blob/main/neuroindicator-questions.txt
+Live tool: https://thrive-work.vercel.app/neuroindicator.html
+
+Key question: Can Quizzle handle probabilistic scoring across multiple dimensions
+simultaneously? Or is it limited to simple linear point totals?
+
+Let us know feasibility.
+
+Thanks,
+ClearMinds</pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>📊 Technical Specifications</h2>
+
+            <h3>Question Bank</h3>
+            <table>
+                <tr>
+                    <th>Count</th>
+                    <th>Time</th>
+                    <th>Type</th>
+                    <th>Evidence Base</th>
+                </tr>
+                <tr>
+                    <td>15 questions</td>
+                    <td>5-10 minutes</td>
+                    <td>Mix of scales & multiple choice</td>
+                    <td>PHQ-9, GAD-7, ASRS, ISI, PSS</td>
+                </tr>
+            </table>
+
+            <h3>Dimensions Tracked (8 total)</h3>
+            <ol>
+                <li>Crisis/safety</li>
+                <li>Baseline wellness</li>
+                <li>Stress/anxiety</li>
+                <li>Sleep/energy</li>
+                <li>Attention/focus</li>
+                <li>Mood regulation</li>
+                <li>Somatic symptoms</li>
+                <li>Life stressors</li>
+            </ol>
+
+            <h3>Scoring Logic</h3>
+            <div class="feature-box">
+                <p><strong>Probabilistic (not boolean)</strong></p>
+                <ul>
+                    <li>Multiple dimensions scored simultaneously</li>
+                    <li>Signal types: direct, inverse, moderate, contextual</li>
+                    <li>Thresholds: Low (0-2.5), Medium (2.5-3.5), High (3.5+)</li>
+                    <li>Outcome based on highest confidence + contextual modifiers</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>🔄 Recent Changes (Oct 16, 2025)</h2>
+
+            <h3>Neuroindicator Tool</h3>
+            <ul>
+                <li>✅ Built complete screening tool (neuroindicator.html)</li>
+                <li>✅ Created clinical rationale (HTML + markdown)</li>
+                <li>✅ Exported questions for Quizzle (plain text)</li>
+                <li>✅ Deployed all to Vercel</li>
+            </ul>
+
+            <h3>Corporate Governance Framework</h3>
+            <ul>
+                <li>✅ Simplified 6→4 components</li>
+                <li>✅ Removed clinical/CQC language</li>
+                <li>✅ Added prominent medical disclaimer</li>
+                <li>✅ Toned down governance applications</li>
+                <li>✅ Updated standards to "guided by principles"</li>
+                <li>✅ Added GDPR Article 15 details</li>
+                <li>✅ Renamed section 2 to "Data and Information Governance"</li>
+                <li>✅ Added DBS requirements for practitioners</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>📞 Resources & Contacts</h2>
+
+            <h3>Clinical Validation</h3>
+            <ul>
+                <li>Dr. Thomas Dannhauser - MindFit.Clinic</li>
+                <li>SmartStartMinds (CQC 1-2950268195) - Partner for clinical cases</li>
+            </ul>
+
+            <h3>Technical</h3>
+            <ul>
+                <li>Repository: <a href="https://github.com/thomascassidyzm/thrive-work" target="_blank">GitHub</a></li>
+                <li>Deployment: Vercel (thrive-work project)</li>
+                <li>Live site: <a href="https://thrive-work.vercel.app" target="_blank">thrive-work.vercel.app</a></li>
+            </ul>
+
+            <h3>Business</h3>
+            <ul>
+                <li>Main site: <a href="https://clearminds.com" target="_blank">clearminds.com</a></li>
+                <li>Future home: clearminds.business (in development)</li>
+            </ul>
+        </section>
+
+        <div class="highlight-box" style="margin-top: 3rem; text-align: center;">
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">
+                <strong>This tool represents a fundamental shift from generic wellness content to intelligent diagnostic triage</strong>
+            </p>
+            <p>Matching each individual with the most appropriate pathway while maintaining ethical, transparent, and privacy-first principles.</p>
+        </div>
+
+        <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 2px solid #e5e7eb; text-align: center; color: #666;">
+            <p><strong>ClearMinds Neuroindicator - Project Summary</strong></p>
+            <p>Version 1.0 | October 16, 2025</p>
+            <p style="margin-top: 1rem;">
+                <a href="neuroindicator.html" style="color: var(--clearminds-teal); text-decoration: none; margin: 0 1rem;">Try Tool</a>
+                <a href="neuroindicator-rationale.html" style="color: var(--clearminds-teal); text-decoration: none; margin: 0 1rem;">Read Rationale</a>
+                <a href="https://github.com/thomascassidyzm/thrive-work" style="color: var(--clearminds-teal); text-decoration: none; margin: 0 1rem;" target="_blank">View on GitHub</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
