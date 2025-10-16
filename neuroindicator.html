@@ -380,7 +380,8 @@
             margin: 1rem 0;
         }
 
-        .email-form input[type="email"] {
+        .email-form input[type="email"],
+        .email-form input[type="text"] {
             width: 100%;
             padding: 0.75rem;
             border: 2px solid var(--border-light);
@@ -389,7 +390,8 @@
             margin-bottom: 0.75rem;
         }
 
-        .email-form input[type="email"]:focus {
+        .email-form input[type="email"]:focus,
+        .email-form input[type="text"]:focus {
             outline: none;
             border-color: var(--clearminds-teal);
         }
@@ -511,14 +513,17 @@
             </div>
 
             <div class="email-form">
-                <h3>Email Results (Optional)</h3>
-                <p style="margin-bottom: 1rem;">Receive your personalised report and GP summary by email.</p>
+                <h3>📄 Download GP Summary</h3>
+                <p style="margin-bottom: 0.75rem; font-size: 0.9rem;">For a detailed clinical summary, please provide your name:</p>
+                <input type="text" id="name-input" placeholder="Your name" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-light); border-radius: 8px; font-size: 0.9rem; margin-bottom: 0.75rem;">
+                <button class="btn" onclick="app.downloadPDF()">📄 Download Detailed GP Summary</button>
+
+                <p style="margin: 1rem 0 0.5rem 0; font-size: 0.9rem;">Or email your results (optional):</p>
                 <input type="email" id="email-input" placeholder="your.email@example.com">
-                <button class="btn" onclick="app.emailResults()">Send Results</button>
+                <button class="btn btn-secondary" onclick="app.emailResults()">Send Results</button>
             </div>
 
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
-                <button class="btn" onclick="app.downloadPDF()">📄 Download PDF Summary</button>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
                 <button class="btn btn-secondary" onclick="app.restart()">Start New Assessment</button>
             </div>
         </div>
@@ -1264,62 +1269,280 @@
 
             // Download PDF
             downloadPDF() {
+                const name = document.getElementById('name-input').value;
+                if (!name || name.trim() === '') {
+                    alert('Please enter your name before downloading the GP summary.');
+                    document.getElementById('name-input').focus();
+                    return;
+                }
+
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF();
 
-                // Header
-                doc.setFontSize(20);
-                doc.setTextColor(0, 122, 135);
-                doc.text('ClearMinds Neuroindicator Results', 20, 20);
-
-                doc.setFontSize(12);
+                // Use monospace font for better formatting
+                doc.setFont('courier');
+                doc.setFontSize(9);
                 doc.setTextColor(51, 51, 51);
-                doc.text(`Assessment Date: ${new Date().toLocaleDateString('en-GB')}`, 20, 30);
 
-                // Summary
-                doc.setFontSize(14);
-                doc.text('Summary for GP/Healthcare Provider:', 20, 45);
-
-                doc.setFontSize(11);
+                // Generate the full summary text
                 const summary = this.generateGPSummary();
-                const splitSummary = doc.splitTextToSize(summary, 170);
-                doc.text(splitSummary, 20, 55);
 
-                // Save
-                doc.save('clearminds-neuroindicator-results.pdf');
+                // Split text into lines and handle page breaks
+                const lines = summary.split('\n');
+                let y = 15; // Starting y position
+                const lineHeight = 5;
+                const pageHeight = 280; // A4 page height in mm
+                const marginBottom = 20;
+
+                lines.forEach((line) => {
+                    // Check if we need a new page
+                    if (y > pageHeight - marginBottom) {
+                        doc.addPage();
+                        y = 15; // Reset y position for new page
+                    }
+
+                    // Handle long lines (split if necessary)
+                    const splitLines = doc.splitTextToSize(line, 180);
+                    splitLines.forEach((splitLine) => {
+                        if (y > pageHeight - marginBottom) {
+                            doc.addPage();
+                            y = 15;
+                        }
+                        doc.text(splitLine, 15, y);
+                        y += lineHeight;
+                    });
+                });
+
+                // Add page numbers
+                const pageCount = doc.internal.getNumberOfPages();
+                for (let i = 1; i <= pageCount; i++) {
+                    doc.setPage(i);
+                    doc.setFontSize(8);
+                    doc.setTextColor(128, 128, 128);
+                    doc.text(`Page ${i} of ${pageCount}`, 105, 290, { align: 'center' });
+                }
+
+                // Save with patient name in filename
+                const filename = `ClearMinds-GP-Summary-${name.replace(/\s+/g, '-')}.pdf`;
+                doc.save(filename);
             },
 
             // Generate GP summary
             generateGPSummary() {
                 const scores = this.confidenceScores;
-                let summary = 'Patient completed ClearMinds Neuroindicator screening tool.\n\n';
-                summary += 'Key Areas Identified:\n';
+                const name = document.getElementById('name-input').value || 'Patient';
 
-                if (scores.crisis > 2.5) summary += '- Crisis/safety concerns flagged\n';
-                if (scores.stressAnxiety > 3) summary += '- Elevated stress/anxiety symptoms\n';
-                if (scores.sleepEnergy > 3) summary += '- Sleep and energy difficulties\n';
-                if (scores.moodRegulation > 3) summary += '- Low mood/depressive symptoms\n';
-                if (scores.attentionFocus > 3) summary += '- Concentration and focus difficulties\n';
-                if (scores.somaticSymptoms > 2.5) summary += '- Physical symptoms (headaches, tension, GI issues)\n';
+                let summary = '';
 
-                summary += '\nDuration: ';
+                // Header
+                summary += `PATIENT NAME: ${name}\n`;
+                summary += `ASSESSMENT DATE: ${new Date().toLocaleDateString('en-GB')}\n\n`;
+
+                summary += '='.repeat(60) + '\n';
+                summary += 'CLEARMINDS NEUROINDICATOR - GP SUMMARY\n';
+                summary += '='.repeat(60) + '\n\n';
+
+                // Important disclaimer
+                summary += 'IMPORTANT: SCREENING TOOL ONLY - NOT A DIAGNOSTIC ASSESSMENT\n';
+                summary += 'Questions adapted from validated scales: PHQ-9 (depression), GAD-7 (anxiety),\n';
+                summary += 'ASRS (ADHD screening), ISI (Insomnia Severity Index)\n\n';
+
+                // Crisis screening
+                const crisisQ = this.responses.find(r => r.questionId === 2);
+                summary += 'CRISIS SCREENING:\n';
+                if (crisisQ && crisisQ.value >= 5) {
+                    summary += '  ⚠️ POSITIVE - Patient endorsed thoughts of self-harm/suicide\n';
+                    summary += '  Patient was provided immediate crisis resources (999, Samaritans 116 123)\n\n';
+                } else if (crisisQ && crisisQ.value === 3) {
+                    summary += '  BORDERLINE - Brief thoughts of self-harm reported, but not serious\n';
+                    summary += '  Recommend clinical assessment for risk\n\n';
+                } else {
+                    summary += '  NEGATIVE - No immediate safety concerns indicated\n\n';
+                }
+
+                // Symptom profile
+                summary += 'SYMPTOM PROFILE:\n';
+                summary += '-'.repeat(60) + '\n';
+
+                // Q1: Overall wellbeing
+                const wellbeingQ = this.responses.find(r => r.questionId === 1);
+                if (wellbeingQ) {
+                    const wellbeingLabels = ['Very poor', 'Poor', 'Fair', 'Good', 'Very good'];
+                    summary += `• Overall wellbeing: ${wellbeingLabels[wellbeingQ.value - 1]} (${wellbeingQ.value}/5)\n`;
+                }
+
+                // Q4: Stress/anxiety frequency
+                const stressQ = this.responses.find(r => r.questionId === 4);
+                if (stressQ) {
+                    const stressLabels = ['Rarely', 'Sometimes', 'Often', 'Most days', 'Constantly'];
+                    summary += `• Stress/anxiety frequency: ${stressLabels[stressQ.value - 1]} (${stressQ.value}/5)\n`;
+                }
+
+                // Q3: Sleep quality
+                const sleepQ = this.responses.find(r => r.questionId === 3);
+                if (sleepQ) {
+                    const sleepLabels = [
+                        'Very well - 7-9 hours, restful',
+                        'Fairly well - occasional disruption',
+                        'Poorly - difficulty falling or staying asleep',
+                        'Very poorly - significant sleep problems'
+                    ];
+                    summary += `• Sleep quality: ${sleepLabels[sleepQ.value - 1]}\n`;
+                }
+
+                // Q6: Mood/depression
+                const moodQ = this.responses.find(r => r.questionId === 6);
+                if (moodQ) {
+                    const moodLabels = ['Not at all', 'Several days', 'More than half the days', 'Nearly every day'];
+                    summary += `• Low mood/feeling hopeless (past month): ${moodLabels[moodQ.value - 1]}\n`;
+                }
+
+                // Q5: Concentration/focus
+                const focusQ = this.responses.find(r => r.questionId === 5);
+                if (focusQ) {
+                    const focusLabels = ['Excellent', 'Good', 'Fair', 'Poor'];
+                    summary += `• Concentration/focus: ${focusLabels[focusQ.value - 1]}\n`;
+                }
+
+                // Q14: Energy levels
+                const energyQ = this.responses.find(r => r.questionId === 14);
+                if (energyQ) {
+                    const energyLabels = ['Very low', 'Low', 'Moderate', 'Good', 'Excellent'];
+                    summary += `• Energy levels: ${energyLabels[energyQ.value - 1]} (${energyQ.value}/5)\n`;
+                }
+
+                // Q7: Physical/somatic symptoms
+                const somaticQ = this.responses.find(r => r.questionId === 7);
+                if (somaticQ) {
+                    const somaticLabels = ['Rarely/never', 'Occasionally', 'Frequently', 'Daily or almost daily'];
+                    summary += `• Physical symptoms (headaches, tension, GI): ${somaticLabels[somaticQ.value - 1]}\n`;
+                }
+
+                // Q8: Life stressors
+                const stressorsQ = this.responses.find(r => r.questionId === 8);
+                if (stressorsQ) {
+                    const stressorsLabels = ['Not at all', 'A little', 'Moderately', 'Significantly', 'Severely'];
+                    summary += `• Work/life stressor impact: ${stressorsLabels[stressorsQ.value - 1]}\n`;
+                }
+
+                summary += '\n';
+
+                // Timeline & Impact
+                summary += 'TIMELINE & FUNCTIONAL IMPACT:\n';
+                summary += '-'.repeat(60) + '\n';
+
                 const durationQ = this.responses.find(r => r.questionId === 9);
                 if (durationQ) {
-                    const duration = ['<2 weeks', '2-4 weeks', '1-3 months', '>3 months', '>6 months'][durationQ.value - 1];
-                    summary += duration + '\n';
+                    const durationLabels = ['Not applicable/no difficulties', 'Less than 2 weeks', '2-4 weeks', '1-3 months', 'More than 3 months', 'More than 6 months'];
+                    summary += `• Duration: ${durationLabels[durationQ.value - 1]}\n`;
                 }
 
-                summary += '\nFunctional Impact: ';
                 const impactQ = this.responses.find(r => r.questionId === 10);
                 if (impactQ) {
-                    const impact = ['Minimal', 'Slight', 'Moderate', 'Significant', 'Severe'][impactQ.value - 1];
-                    summary += impact + '\n';
+                    const impactLabels = ['Not at all', 'Slightly', 'Moderately', 'Significantly', 'Severely'];
+                    summary += `• Functional impact (work/relationships/self-care): ${impactLabels[impactQ.value - 1]}\n`;
                 }
 
-                summary += '\nRecommended Actions:\n';
-                summary += '- Clinical assessment for presenting symptoms\n';
-                summary += '- Consider mental health referral if indicated\n';
-                summary += '- Rule out medical causes (thyroid, vitamin deficiencies, etc.)\n';
+                summary += '\n';
+
+                // Context
+                summary += 'CONTEXT:\n';
+                summary += '-'.repeat(60) + '\n';
+
+                // Q11: Goals/expectations
+                const goalsQ = this.responses.find(r => r.questionId === 11);
+                if (goalsQ) {
+                    const goalsLabels = [
+                        'Just checking in - feeling generally okay',
+                        'Looking for ways to optimize wellbeing',
+                        'Want to understand what I\'m experiencing',
+                        'Need help managing specific symptoms',
+                        'Seeking professional support recommendations'
+                    ];
+                    summary += `• Patient goals: ${goalsLabels[goalsQ.value - 1]}\n`;
+                }
+
+                // Q12: Self-help attempts
+                const selfHelpQ = this.responses.find(r => r.questionId === 12);
+                if (selfHelpQ) {
+                    const selfHelpLabels = [
+                        'No, haven\'t needed to',
+                        'Yes, and they\'ve helped',
+                        'Yes, but minimal improvement',
+                        'Yes, but no improvement at all'
+                    ];
+                    summary += `• Self-help strategies tried: ${selfHelpLabels[selfHelpQ.value - 1]}\n`;
+                }
+
+                // Q13: Current support
+                const supportQ = this.responses.find(r => r.questionId === 13);
+                if (supportQ) {
+                    const supportLabels = [
+                        'No current mental health support',
+                        'Yes, and it\'s helping',
+                        'Yes, but not helping much',
+                        'Previously received support, but not currently'
+                    ];
+                    summary += `• Current mental health support: ${supportLabels[supportQ.value - 1]}\n`;
+                }
+
+                // Q15: Social support
+                const socialQ = this.responses.find(r => r.questionId === 15);
+                if (socialQ) {
+                    const socialLabels = ['Yes, strong support network', 'Some support, but limited', 'Very little support', 'No support at all'];
+                    summary += `• Social support: ${socialLabels[socialQ.value - 1]}\n`;
+                }
+
+                summary += '\n';
+
+                // Clinical recommendations
+                summary += 'CLINICAL RECOMMENDATIONS:\n';
+                summary += '-'.repeat(60) + '\n';
+
+                // Generate recommendations based on symptom profile
+                summary += '• Full clinical assessment indicated for presenting symptoms\n';
+
+                if (scores.crisis > 3.5) {
+                    summary += '• URGENT: Risk assessment required - patient endorsed suicidal ideation\n';
+                }
+
+                if (scores.moodRegulation > 3) {
+                    summary += '• Consider depression screening (PHQ-9) and mental health referral\n';
+                    summary += '• Assess need for antidepressant therapy and/or psychological intervention\n';
+                }
+
+                if (scores.stressAnxiety > 3.5) {
+                    summary += '• Anxiety disorder assessment recommended (GAD-7 or equivalent)\n';
+                    summary += '• Consider CBT referral via NHS IAPT or similar pathway\n';
+                }
+
+                if (scores.attentionFocus > 3.5) {
+                    summary += '• Concentration difficulties noted - consider ADHD screening if appropriate\n';
+                    summary += '• Rule out other causes: sleep disorders, thyroid, anxiety, depression\n';
+                    summary += '• May benefit from specialist neurological/cognitive assessment\n';
+                }
+
+                if (scores.sleepEnergy > 3) {
+                    summary += '• Sleep difficulties significant - assess for primary sleep disorder\n';
+                    summary += '• Consider sleep hygiene interventions and/or specialist referral\n';
+                }
+
+                if (scores.somaticSymptoms > 2.5) {
+                    summary += '• Physical symptoms noted - rule out medical causes:\n';
+                    summary += '  - Thyroid function tests (TSH, T3, T4)\n';
+                    summary += '  - Full blood count (anaemia, infection)\n';
+                    summary += '  - Vitamin D, B12, iron/ferritin levels\n';
+                    summary += '  - Consider cardiovascular assessment if chest pain/palpitations\n';
+                }
+
+                summary += '• Patient self-referred for this mental wellness screening\n';
+                summary += '• All responses processed in patient\'s browser (privacy-protected)\n\n';
+
+                summary += 'NOTE: This is a screening tool only. Clinical judgment should guide\n';
+                summary += 'further assessment and management decisions.\n\n';
+
+                summary += 'Tool developed with Dr. Thomas Dannhauser (MindFit.Clinic)\n';
+                summary += 'ClearMinds Mental Wellness Platform | clearminds.business\n';
 
                 return summary;
             },
