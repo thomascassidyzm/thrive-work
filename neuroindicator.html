@@ -489,8 +489,8 @@
                 <!-- Questions will be inserted here -->
             </div>
 
-            <p style="text-align: center; color: var(--text-light); font-size: 0.9rem; margin: 1rem 0;">
-                Select an answer to automatically continue
+            <p style="text-align: center; color: var(--text-light); font-size: 0.85rem; margin: 0.75rem 0;">
+                Select an answer to automatically continue (or use Next if reviewing)
             </p>
 
             <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
@@ -841,8 +841,10 @@
                 // Show/hide back button
                 document.getElementById('btn-back').style.display = this.currentQuestion > 0 ? 'inline-block' : 'none';
 
-                // Hide next button (auto-progression handles it)
-                document.getElementById('btn-next').style.display = 'none';
+                // Show next button if question already answered (user went back to review)
+                // This lets them proceed without re-selecting their answer
+                const isAnswered = !!this.responses[this.currentQuestion];
+                document.getElementById('btn-next').style.display = isAnswered ? 'inline-block' : 'none';
 
                 // Pre-select if we've already answered
                 if (this.responses[this.currentQuestion]) {
