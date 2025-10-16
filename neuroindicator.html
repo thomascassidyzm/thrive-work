@@ -41,27 +41,27 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0.75rem;
         }
 
         /* Header */
         .header {
             text-align: center;
-            padding: 3rem 0 2rem;
+            padding: 1rem;
             background: linear-gradient(135deg, var(--clearminds-teal) 0%, var(--clearminds-dark) 100%);
             color: white;
-            border-radius: 0 0 20px 20px;
-            margin-bottom: 3rem;
+            border-radius: 0 0 12px 12px;
+            margin-bottom: 1rem;
         }
 
         .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
             font-weight: 700;
         }
 
         .header p {
-            font-size: 1.2rem;
+            font-size: 0.9rem;
             opacity: 0.95;
             max-width: 700px;
             margin: 0 auto;
@@ -72,52 +72,54 @@
         .card {
             background: white;
             border-radius: 12px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             border: 1px solid var(--border-light);
         }
 
         .card h2 {
             color: var(--clearminds-dark);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
         }
 
         .card h3 {
             color: var(--clearminds-teal);
-            margin: 1.5rem 0 1rem;
-            font-size: 1.3rem;
+            margin: 1rem 0 0.75rem;
+            font-size: 1.1rem;
         }
 
         /* Warning box */
         .warning-box {
             background: var(--warning-yellow);
             border-left: 4px solid var(--warning-orange);
-            padding: 1.5rem;
+            padding: 0.75rem;
             border-radius: 8px;
-            margin: 2rem 0;
+            margin: 1rem 0;
         }
 
         .warning-box h3 {
             color: #856404;
             margin: 0 0 0.5rem 0;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
         }
 
         .warning-box p {
             color: #856404;
             margin: 0.5rem 0;
+            font-size: 0.85rem;
         }
 
         /* Crisis banner */
         .crisis-banner {
             background: var(--crisis-red);
             color: white;
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 8px;
-            margin: 2rem 0;
+            margin: 1rem 0;
             font-weight: 600;
+            font-size: 0.9rem;
         }
 
         .crisis-banner a {
@@ -128,12 +130,12 @@
         /* Buttons */
         .btn {
             display: inline-block;
-            padding: 1rem 2rem;
+            padding: 0.75rem 1.5rem;
             background: var(--clearminds-teal);
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
@@ -163,13 +165,13 @@
 
         /* Progress bar */
         .progress-container {
-            margin: 2rem 0;
+            margin: 1rem 0 0.5rem;
         }
 
         .progress-bar {
             background: var(--border-light);
-            border-radius: 10px;
-            height: 20px;
+            border-radius: 8px;
+            height: 8px;
             overflow: hidden;
             position: relative;
         }
@@ -178,45 +180,48 @@
             background: linear-gradient(90deg, var(--clearminds-teal), var(--clearminds-dark));
             height: 100%;
             transition: width 0.5s ease;
-            border-radius: 10px;
+            border-radius: 8px;
         }
 
         .progress-text {
             text-align: center;
             color: var(--text-light);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
         }
 
         /* Question card */
         .question-card {
             background: white;
             border-radius: 12px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
+            padding: 1.25rem;
+            margin-bottom: 0.75rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             border: 2px solid var(--clearminds-teal);
+            max-height: 60vh;
+            overflow-y: auto;
         }
 
         .question-number {
             color: var(--clearminds-teal);
             font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
         }
 
         .question-text {
-            font-size: 1.3rem;
+            font-size: 1.05rem;
             color: var(--clearminds-dark);
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             font-weight: 500;
+            line-height: 1.4;
         }
 
         /* Radio buttons styled as cards */
         .option-group {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.5rem;
         }
 
         .option-card {
@@ -230,13 +235,14 @@
 
         .option-card label {
             display: block;
-            padding: 1.25rem;
+            padding: 0.85rem;
             background: var(--clearminds-cream);
             border: 2px solid var(--border-light);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
+            line-height: 1.3;
         }
 
         .option-card input[type="radio"]:checked + label {
@@ -253,9 +259,9 @@
         /* Scale options */
         .scale-group {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            gap: 0.75rem;
-            margin: 1rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0;
         }
 
         .scale-option {
@@ -272,25 +278,27 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 1rem 0.5rem;
+            padding: 0.75rem 0.25rem;
             background: white;
             border: 2px solid var(--border-light);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
+            min-height: 70px;
         }
 
         .scale-number {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--clearminds-teal);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.15rem;
         }
 
         .scale-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-light);
+            line-height: 1.2;
         }
 
         .scale-option input[type="radio"]:checked + label {
@@ -306,37 +314,40 @@
         /* Results page */
         .result-header {
             background: var(--clearminds-green);
-            padding: 2rem;
+            padding: 1rem;
             border-radius: 12px;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             border-left: 6px solid var(--clearminds-teal);
         }
 
         .result-header h2 {
             color: var(--clearminds-dark);
             margin-bottom: 0.5rem;
+            font-size: 1.3rem;
         }
 
         .pathway-card {
             background: white;
             border: 2px solid var(--clearminds-teal);
             border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
         }
 
         .pathway-card h3 {
             color: var(--clearminds-teal);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
         }
 
         .pathway-card ul {
-            margin-left: 1.5rem;
-            margin-top: 1rem;
+            margin-left: 1rem;
+            margin-top: 0.5rem;
         }
 
         .pathway-card li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
         }
 
         .evidence-badge {
@@ -364,9 +375,9 @@
         /* Email form */
         .email-form {
             background: var(--clearminds-cream);
-            padding: 1.5rem;
+            padding: 0.75rem;
             border-radius: 8px;
-            margin: 2rem 0;
+            margin: 1rem 0;
         }
 
         .email-form input[type="email"] {
@@ -374,8 +385,8 @@
             padding: 0.75rem;
             border: 2px solid var(--border-light);
             border-radius: 8px;
-            font-size: 1rem;
-            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
         }
 
         .email-form input[type="email"]:focus {
@@ -391,20 +402,20 @@
         /* Responsive */
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 2rem;
+                font-size: 1.3rem;
             }
 
             .header p {
-                font-size: 1rem;
+                font-size: 0.85rem;
             }
 
             .card {
-                padding: 1.5rem;
+                padding: 0.75rem;
             }
 
             .scale-group {
-                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-                gap: 0.5rem;
+                grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
+                gap: 0.4rem;
             }
         }
     </style>
@@ -422,7 +433,7 @@
         <div id="pre-assessment" class="card">
             <h2>Welcome to the ClearMinds Neuroindicator</h2>
 
-            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+            <p style="font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.5;">
                 This isn't a typical wellness quiz designed to sell you something. We'll give you honest insights and sometimes tell you that you're actually fine, or that you need lifestyle changes rather than professional help.
             </p>
 
@@ -433,32 +444,32 @@
             </div>
 
             <h3>Developed with Dr. Thomas Dannhauser</h3>
-            <p style="margin-bottom: 1.5rem;">
+            <p style="margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.5;">
                 This tool has been developed in partnership with <strong>Dr. Thomas Dannhauser</strong> (MindFit.Clinic) to provide evidence-based screening and balanced recommendations across multiple support pathways.
             </p>
 
             <h3>What to expect:</h3>
-            <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
-                <li>10-15 questions (5-10 minutes)</li>
-                <li>Questions about stress, sleep, mood, focus, and wellbeing</li>
-                <li>Personalised results with multiple pathway options</li>
-                <li>Downloadable summary for GP consultation (if relevant)</li>
-                <li>Transparent about commercial relationships</li>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem; font-size: 0.9rem;">
+                <li style="margin-bottom: 0.3rem;">10-15 questions (5-10 minutes)</li>
+                <li style="margin-bottom: 0.3rem;">Questions about stress, sleep, mood, focus, and wellbeing</li>
+                <li style="margin-bottom: 0.3rem;">Personalised results with multiple pathway options</li>
+                <li style="margin-bottom: 0.3rem;">Downloadable summary for GP consultation (if relevant)</li>
+                <li style="margin-bottom: 0.3rem;">Transparent about commercial relationships</li>
             </ul>
 
             <h3>Possible outcomes include:</h3>
-            <ul style="margin-left: 2rem; margin-bottom: 2rem;">
-                <li><strong>You're fine</strong> - Validation and wellness optimization tips</li>
-                <li><strong>Lifestyle changes</strong> - Evidence-based self-management strategies</li>
-                <li><strong>GP consultation</strong> - With printable summary</li>
-                <li><strong>Hypnotherapy</strong> - ClearMinds platform (when evidence supports it)</li>
-                <li><strong>Comprehensive evaluation</strong> - MindFit.Clinic neuroevaluation</li>
-                <li><strong>Specialist care</strong> - SmartStartMinds precision psychiatry</li>
-                <li><strong>Crisis support</strong> - Immediate safety pathways</li>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem; font-size: 0.9rem;">
+                <li style="margin-bottom: 0.3rem;"><strong>You're fine</strong> - Validation and wellness optimization tips</li>
+                <li style="margin-bottom: 0.3rem;"><strong>Lifestyle changes</strong> - Evidence-based self-management strategies</li>
+                <li style="margin-bottom: 0.3rem;"><strong>GP consultation</strong> - With printable summary</li>
+                <li style="margin-bottom: 0.3rem;"><strong>Hypnotherapy</strong> - ClearMinds platform (when evidence supports it)</li>
+                <li style="margin-bottom: 0.3rem;"><strong>Comprehensive evaluation</strong> - MindFit.Clinic neuroevaluation</li>
+                <li style="margin-bottom: 0.3rem;"><strong>Specialist care</strong> - SmartStartMinds precision psychiatry</li>
+                <li style="margin-bottom: 0.3rem;"><strong>Crisis support</strong> - Immediate safety pathways</li>
             </ul>
 
             <h3>Privacy & Data</h3>
-            <p style="margin-bottom: 2rem;">
+            <p style="margin-bottom: 1rem; font-size: 0.9rem;">
                 Your responses are processed in your browser. No data is stored unless you choose to receive results by email. See our <a href="/corporate/policies/data-governance/privacy-policy.html" style="color: var(--clearminds-teal);">Privacy Policy</a> for details.
             </p>
 
