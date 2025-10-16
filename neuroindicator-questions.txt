@@ -110,9 +110,10 @@ Options:
 
 QUESTION 9: Duration
 Type: Multiple choice
-Question: How long have you been experiencing these difficulties?
+Question: If you've been experiencing any difficulties, how long have they been present?
 
 Options:
+1 - Not applicable / No significant difficulties
 1 - Less than 2 weeks
 2 - 2-4 weeks
 3 - 1-3 months
@@ -123,7 +124,7 @@ Options:
 
 QUESTION 10: Functional Impact
 Type: 5-point scale
-Question: How much are these issues affecting your daily activities (work, relationships, self-care)?
+Question: How much (if at all) are any concerns affecting your daily activities (work, relationships, self-care)?
 
 Options:
 1 - Not at all
