@@ -478,9 +478,13 @@
                 <!-- Questions will be inserted here -->
             </div>
 
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <button class="btn btn-secondary" id="btn-back" onclick="app.previousQuestion()" style="display: none;">← Previous</button>
-                <button class="btn" id="btn-next" onclick="app.nextQuestion()">Next →</button>
+            <p style="text-align: center; color: var(--text-light); font-size: 0.9rem; margin: 1rem 0;">
+                Select an answer to automatically continue
+            </p>
+
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                <button class="btn btn-secondary" id="btn-back" onclick="app.previousQuestion()" style="display: none;">← Back</button>
+                <button class="btn" id="btn-next" onclick="app.nextQuestion()" style="display: none;">Next →</button>
             </div>
         </div>
 
@@ -824,7 +828,10 @@
                 document.getElementById('progress-text').textContent = `Question ${this.currentQuestion + 1} of ${this.questions.length}`;
 
                 // Show/hide back button
-                document.getElementById('btn-back').style.display = this.currentQuestion > 0 ? 'block' : 'none';
+                document.getElementById('btn-back').style.display = this.currentQuestion > 0 ? 'inline-block' : 'none';
+
+                // Hide next button (auto-progression handles it)
+                document.getElementById('btn-next').style.display = 'none';
 
                 // Pre-select if we've already answered
                 if (this.responses[this.currentQuestion]) {
@@ -832,6 +839,23 @@
                     const radio = card.querySelector(`input[value="${selected}"]`);
                     if (radio) radio.checked = true;
                 }
+
+                // Add auto-progression on selection
+                const radios = card.querySelectorAll('input[type="radio"]');
+                radios.forEach(radio => {
+                    radio.addEventListener('change', (e) => {
+                        // Visual feedback - highlight selection
+                        const label = e.target.nextElementSibling || e.target.parentElement.querySelector('label');
+                        if (label) {
+                            label.style.transition = 'all 0.3s ease';
+                        }
+
+                        // Auto-advance after 800ms
+                        setTimeout(() => {
+                            this.nextQuestion();
+                        }, 800);
+                    });
+                });
             },
 
             // Next question
@@ -840,7 +864,7 @@
                 const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
 
                 if (!selected) {
-                    alert('Please select an answer before continuing.');
+                    // Silently return if nothing selected (auto-progression will handle it)
                     return;
                 }
 
