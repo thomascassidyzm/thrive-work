@@ -82,63 +82,55 @@
 
         .policy-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
         }
 
         .policy-card {
             background: white;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            transition: all 0.2s ease;
         }
 
         .policy-card:hover {
             border-color: var(--clearminds-teal);
-            box-shadow: 0 8px 20px rgba(0, 122, 135, 0.15);
-            transform: translateY(-4px);
+            box-shadow: 0 2px 8px rgba(0, 122, 135, 0.1);
         }
 
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--clearminds-green);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .policy-card h3 {
+        .policy-name {
             color: var(--clearminds-dark);
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-            line-height: 1.3;
-        }
-
-        .policy-card p {
-            color: #6b7280;
             font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
+            font-weight: 500;
+            line-height: 1.3;
+            flex: 1;
         }
 
-        .doc-count {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--clearminds-teal);
-            font-weight: 600;
-            font-size: 0.85rem;
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
         }
 
-        .doc-count svg {
-            width: 14px;
-            height: 14px;
+        .status-complete {
+            background-color: #10b981;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+        }
+
+        .status-review {
+            background-color: #f59e0b;
+            box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+        }
+
+        .status-draft {
+            background-color: #6b7280;
+            box-shadow: 0 0 8px rgba(107, 114, 128, 0.4);
         }
 
         @media (max-width: 768px) {
@@ -164,73 +156,32 @@
             </div>
             <div class="policy-grid">
                 <div class="policy-card">
-                    <div class="card-icon">🔒</div>
-                    <h3>Data Protection Policy</h3>
-                    <p>GDPR-compliant data handling, processing, and storage frameworks</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Complete
-                    </span>
+                    <div class="policy-name">Data Protection Policy</div>
+                    <div class="status-indicator status-complete"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">🔐</div>
-                    <h3>Privacy Policy</h3>
-                    <p>User data rights, transparency, and privacy-first principles</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Complete
-                    </span>
+                    <div class="policy-name">Privacy Policy</div>
+                    <div class="status-indicator status-complete"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">🚨</div>
-                    <h3>Data Breach Response Plan</h3>
-                    <p>72-hour breach notification, containment, and ICO reporting procedures</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Complete
-                    </span>
+                    <div class="policy-name">Data Breach Response Plan</div>
+                    <div class="status-indicator status-complete"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">📋</div>
-                    <h3>Subject Access Requests (SARs)</h3>
-                    <p>GDPR Article 15 compliance, 1-month response procedures</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Complete
-                    </span>
+                    <div class="policy-name">Subject Access Requests (SARs)</div>
+                    <div class="status-indicator status-complete"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">📁</div>
-                    <h3>Data Retention Policy</h3>
-                    <p>Lawful retention periods, secure deletion, archiving protocols</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        In Review
-                    </span>
+                    <div class="policy-name">Data Retention Policy</div>
+                    <div class="status-indicator status-review"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">📄</div>
-                    <h3>Data Processing Agreement</h3>
-                    <p>GDPR Article 28 compliance, processor obligations, audit rights</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Complete
-                    </span>
+                    <div class="policy-name">Data Processing Agreement</div>
+                    <div class="status-indicator status-complete"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">📊</div>
-                    <h3>DPIA Template</h3>
-                    <p>Privacy impact assessments, risk identification, mitigation measures</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Complete
-                    </span>
+                    <div class="policy-name">DPIA Template</div>
+                    <div class="status-indicator status-complete"></div>
                 </div>
             </div>
         </div>
@@ -243,83 +194,36 @@
             </div>
             <div class="policy-grid">
                 <div class="policy-card">
-                    <div class="card-icon">🛡️</div>
-                    <h3>Safeguarding Adults Policy</h3>
-                    <p>Vulnerability identification, protection protocols, multi-agency working</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Complete
-                    </span>
+                    <div class="policy-name">Safeguarding Adults Policy</div>
+                    <div class="status-indicator status-complete"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">✅</div>
-                    <h3>Consent & Capacity Policy</h3>
-                    <p>Mental Capacity Act 2005 compliance, informed consent procedures</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Complete
-                    </span>
+                    <div class="policy-name">Consent & Capacity Policy</div>
+                    <div class="status-indicator status-complete"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">💬</div>
-                    <h3>Duty of Candour Policy</h3>
-                    <p>Transparency in service delivery, incident disclosure, apology frameworks</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Complete
-                    </span>
+                    <div class="policy-name">Duty of Candour Policy</div>
+                    <div class="status-indicator status-complete"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">🏥</div>
-                    <h3>Clinical Governance Framework</h3>
-                    <p>Quality assurance, clinical effectiveness, continuous improvement</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Complete
-                    </span>
+                    <div class="policy-name">Clinical Governance Framework</div>
+                    <div class="status-indicator status-complete"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">👨‍⚕️</div>
-                    <h3>Clinical Supervision Policy</h3>
-                    <p>Practitioner support, reflective practice, competency frameworks</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        In Review
-                    </span>
+                    <div class="policy-name">Clinical Supervision Policy</div>
+                    <div class="status-indicator status-review"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">🤝</div>
-                    <h3>Dignity & Respect Policy</h3>
-                    <p>Person-centred care, cultural sensitivity, anti-discrimination frameworks</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Complete
-                    </span>
+                    <div class="policy-name">Dignity & Respect Policy</div>
+                    <div class="status-indicator status-complete"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">⚕️</div>
-                    <h3>Medical Disclaimer</h3>
-                    <p>Non-medical service statement, SSM partnership, CQC positioning</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Complete
-                    </span>
+                    <div class="policy-name">Medical Disclaimer</div>
+                    <div class="status-indicator status-complete"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">🧼</div>
-                    <h3>Infection Control Policy</h3>
-                    <p>IPC best practices, hygiene standards, outbreak management</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Complete
-                    </span>
+                    <div class="policy-name">Infection Control Policy</div>
+                    <div class="status-indicator status-complete"></div>
                 </div>
             </div>
         </div>
@@ -332,33 +236,16 @@
             </div>
             <div class="policy-grid">
                 <div class="policy-card">
-                    <div class="card-icon">📊</div>
-                    <h3>Service Level Agreements</h3>
-                    <p>Group & individual SLAs, performance metrics, delivery standards</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        In Review
-                    </span>
+                    <div class="policy-name">Service Level Agreements</div>
+                    <div class="status-indicator status-review"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">📝</div>
-                    <h3>Complaints Policy</h3>
-                    <p>Transparent complaint handling, 48-hour acknowledgment, resolution pathways</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        In Review
-                    </span>
+                    <div class="policy-name">Complaints Policy</div>
+                    <div class="status-indicator status-review"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">🤖</div>
-                    <h3>AI Usage Policy</h3>
-                    <p>Ethical AI deployment, transparency, human oversight requirements</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        In Review
-                    </span>
+                    <div class="policy-name">AI Usage Policy</div>
+                    <div class="status-indicator status-review"></div>
                 </div>
             </div>
         </div>
@@ -371,83 +258,36 @@
             </div>
             <div class="policy-grid">
                 <div class="policy-card">
-                    <div class="card-icon">👥</div>
-                    <h3>Employee Handbook</h3>
-                    <p>Comprehensive staff guide, policies, procedures, expectations</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        In Review
-                    </span>
+                    <div class="policy-name">Employee Handbook</div>
+                    <div class="status-indicator status-review"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">🔍</div>
-                    <h3>Recruitment Policy</h3>
-                    <p>Fair hiring practices, DBS checks, equality frameworks</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        In Review
-                    </span>
+                    <div class="policy-name">Recruitment Policy</div>
+                    <div class="status-indicator status-review"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">🌈</div>
-                    <h3>Equality, Diversity & Inclusion</h3>
-                    <p>Protected characteristics, anti-discrimination, inclusive culture</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        In Review
-                    </span>
+                    <div class="policy-name">Equality, Diversity & Inclusion</div>
+                    <div class="status-indicator status-review"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">⚠️</div>
-                    <h3>Disciplinary Procedure</h3>
-                    <p>ACAS-compliant investigations, warnings, appeals process</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        In Review
-                    </span>
+                    <div class="policy-name">Disciplinary Procedure</div>
+                    <div class="status-indicator status-review"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">🗣️</div>
-                    <h3>Grievance Policy</h3>
-                    <p>Staff concerns procedure, mediation, resolution pathways</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        In Review
-                    </span>
+                    <div class="policy-name">Grievance Policy</div>
+                    <div class="status-indicator status-review"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">📚</div>
-                    <h3>Training & Development</h3>
-                    <p>Continuous professional development, mandatory training, competency</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        In Review
-                    </span>
+                    <div class="policy-name">Training & Development</div>
+                    <div class="status-indicator status-review"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">💼</div>
-                    <h3>Hybrid Working Policy</h3>
-                    <p>Flexible working arrangements, equipment provision, expectations</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        In Review
-                    </span>
+                    <div class="policy-name">Hybrid Working Policy</div>
+                    <div class="status-indicator status-review"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">📈</div>
-                    <h3>Performance Appraisal Policy</h3>
-                    <p>Annual reviews, objective setting, development planning</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        In Review
-                    </span>
+                    <div class="policy-name">Performance Appraisal Policy</div>
+                    <div class="status-indicator status-review"></div>
                 </div>
             </div>
         </div>
@@ -460,33 +300,16 @@
             </div>
             <div class="policy-grid">
                 <div class="policy-card">
-                    <div class="card-icon">🛡️</div>
-                    <h3>Information Security Policy</h3>
-                    <p>Cybersecurity, access controls, and system protection protocols</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Complete
-                    </span>
+                    <div class="policy-name">Information Security Policy</div>
+                    <div class="status-indicator status-complete"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">⚡</div>
-                    <h3>Risk Management Framework</h3>
-                    <p>Risk identification, assessment, mitigation, monitoring protocols</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Draft
-                    </span>
+                    <div class="policy-name">Risk Management Framework</div>
+                    <div class="status-indicator status-draft"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">🔄</div>
-                    <h3>Business Continuity Plan</h3>
-                    <p>Disaster recovery, service resilience, crisis management</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        Draft
-                    </span>
+                    <div class="policy-name">Business Continuity Plan</div>
+                    <div class="status-indicator status-draft"></div>
                 </div>
             </div>
         </div>
@@ -499,23 +322,12 @@
             </div>
             <div class="policy-grid">
                 <div class="policy-card">
-                    <div class="card-icon">⚖️</div>
-                    <h3>Terms of Service</h3>
-                    <p>Platform usage terms, liability limitations, termination clauses</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        In Review
-                    </span>
+                    <div class="policy-name">Terms of Service</div>
+                    <div class="status-indicator status-review"></div>
                 </div>
-
                 <div class="policy-card">
-                    <div class="card-icon">🚫</div>
-                    <h3>Acceptable Use Policy</h3>
-                    <p>User conduct standards, prohibited activities, enforcement procedures</p>
-                    <span class="doc-count">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
-                        In Review
-                    </span>
+                    <div class="policy-name">Acceptable Use Policy</div>
+                    <div class="status-indicator status-review"></div>
                 </div>
             </div>
         </div>
