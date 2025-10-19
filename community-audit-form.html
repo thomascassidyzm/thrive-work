@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearMinds Community Audit - Preparation Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c5282;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        h2 {
+            color: #2c5282;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 22px;
+        }
+        
+        h3 {
+            color: #4a5568;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .header {
+            background: #ebf4ff;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        
+        .meta-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .meta-info strong {
+            color: #2c5282;
+        }
+        
+        .purpose-box {
+            background: #fff5f5;
+            border-left: 4px solid #fc8181;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .purpose-box h4 {
+            color: #c53030;
+            margin-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+        
+        .checkbox-group {
+            margin-left: 20px;
+        }
+        
+        .checkbox-item {
+            margin-bottom: 10px;
+        }
+        
+        .radio-group {
+            margin-left: 20px;
+        }
+        
+        .radio-item {
+            margin-bottom: 8px;
+        }
+        
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+        
+        .inline-input {
+            display: inline-block;
+            width: auto;
+            min-width: 100px;
+            margin: 0 5px;
+        }
+        
+        .note {
+            font-style: italic;
+            color: #718096;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            padding: 3px 8px;
+            background: #c6f6d5;
+            color: #22543d;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .section-intro {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .button-group {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            text-align: right;
+        }
+        
+        button {
+            background: #4299e1;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        button:hover {
+            background: #3182ce;
+        }
+        
+        button.secondary {
+            background: #a0aec0;
+        }
+        
+        button.secondary:hover {
+            background: #718096;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            
+            .button-group {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ClearMinds Community Audit</h1>
+        <p style="color: #718096; margin-bottom: 20px;">Preparation Document for B2B/EAP Deployment</p>
+        
+        <div class="header">
+            <div class="meta-info">
+                <div><strong>Prepared for:</strong> Rachel Goodley, Head of Customer Care/Support</div>
+                <div><strong>Requested by:</strong> Tom Cassidy, CDO</div>
+                <div><strong>Purpose:</strong> Towergate Partnership Documentation</div>
+                <div><strong>Date:</strong> October 2025</div>
+            </div>
+        </div>
+        
+        <div class="purpose-box">
+            <h4>Why We Need This</h4>
+            <p>We're positioning ClearMinds as a "Premium Mental Health EAP" for corporate deployment, starting with a potential <strong>250,000-user contract with Towergate</strong>. Enterprise buyers will scrutinize our:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Community safety & crisis management protocols</li>
+                <li>Governance, policies, and track record</li>
+                <li>Scalability (can we handle 3x growth?)</li>
+                <li>Liability protection through documented processes</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Your team already does this brilliantly at 91k+ members.</strong> We just need to document and formalize what you're already doing.</p>
+        </div>
+
+        <!-- PART 1 -->
+        <h2>Part 1: Current Operations & Metrics</h2>
+        
+        <h3>1.1 Community Size & Activity</h3>
+        <div class="section-intro">
+            Please provide current stats from Facebook Insights or your records:
+        </div>
+        
+        <div class="form-group">
+            <label>Total members in English community: <span class="status-indicator">91,000 ✓</span></label>
+        </div>
+        
+        <div class="form-group">
+            <label>Active members in last 28 days:</label>
+            <input type="number" placeholder="Enter number">
+        </div>
+        
+        <div class="form-group">
+            <label>Members who posted in last 28 days:</label>
+            <input type="number" placeholder="Enter number">
+        </div>
+        
+        <div class="form-group">
+            <label>Members who commented in last 28 days:</label>
+            <input type="number" placeholder="Enter number">
+        </div>
+        
+        <div class="form-group">
+            <label>Average daily posts:</label>
+            <input type="number" placeholder="Enter number">
+        </div>
+        
+        <div class="form-group">
+            <label>Average daily comments:</label>
+            <input type="number" placeholder="Enter number">
+        </div>
+
+        <h3>1.2 Moderation Team</h3>
+        
+        <div class="form-group">
+            <label>Total moderators: <span class="status-indicator">3 ✓</span></label>
+        </div>
+        
+        <div class="form-group">
+            <label>Coverage model: <span class="status-indicator">24/7 international team ✓</span></label>
+        </div>
+        
+        <div class="form-group">
+            <label>Time zones represented:</label>
+            <input type="text" placeholder="e.g., UK, US East Coast, Australia">
+        </div>
+        
+        <div class="form-group">
+            <label>Team structure/reporting:</label>
+            <textarea placeholder="Describe how the team is organized and who reports to whom"></textarea>
+        </div>
+
+        <h3>1.3 Response Times</h3>
+        
+        <div class="form-group">
+            <label>Average response time to crisis posts (suicide/self-harm):</label>
+            <input type="text" placeholder="e.g., within 5 minutes">
+            <p class="note">Currently documented as "within minutes" - please be more specific if possible</p>
+        </div>
+        
+        <div class="form-group">
+            <label>Average response time to policy violations (spam, harassment):</label>
+            <input type="text" placeholder="e.g., within 30 minutes">
+        </div>
+        
+        <div class="form-group">
+            <label>Average response time to general member questions:</label>
+            <input type="text" placeholder="e.g., within 2 hours">
+        </div>
+        
+        <div class="form-group">
+            <label>Longest response time in past 6 months - Crisis situation:</label>
+            <input type="text" placeholder="e.g., 15 minutes">
+        </div>
+        
+        <div class="form-group">
+            <label>Longest response time in past 6 months - Policy violation:</label>
+            <input type="text" placeholder="e.g., 4 hours">
+        </div>
+        
+        <div class="form-group">
+            <label>Do you track these metrics formally?</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" name="tracking" id="track-yes">
+                    <label for="track-yes" style="display: inline;">Yes, in <input type="text" class="inline-input" placeholder="system/tool name"></label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="tracking" id="track-no">
+                    <label for="track-no" style="display: inline;">No, anecdotal estimates</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- PART 2 -->
+        <h2>Part 2: Crisis Management</h2>
+        
+        <h3>2.1 Crisis Frequency</h3>
+        <div class="section-intro">
+            In the past 12 months (approximate numbers are fine):
+        </div>
+        
+        <div class="form-group">
+            <label>Posts indicating suicidal ideation:</label>
+            <input type="number" placeholder="Approximate number">
+        </div>
+        
+        <div class="form-group">
+            <label>Posts indicating self-harm:</label>
+            <input type="number" placeholder="Approximate number">
+        </div>
+        
+        <div class="form-group">
+            <label>Other crisis situations (psychosis, severe distress):</label>
+            <input type="number" placeholder="Approximate number">
+        </div>
+
+        <h3>2.2 Crisis Response Protocol</h3>
+        
+        <div class="form-group">
+            <label>When someone posts crisis content, first action:</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="remove-post">
+                    <label for="remove-post" style="display: inline;">Remove post immediately</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="leave-post">
+                    <label for="leave-post" style="display: inline;">Leave post up</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="other-action">
+                    <label for="other-action" style="display: inline;">Other: <input type="text" class="inline-input" placeholder="describe"></label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Do you DM the person directly?</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" name="dm" id="dm-yes">
+                    <label for="dm-yes" style="display: inline;">Yes, always</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="dm" id="dm-sometimes">
+                    <label for="dm-sometimes" style="display: inline;">Sometimes (depends on severity)</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="dm" id="dm-no">
+                    <label for="dm-no" style="display: inline;">No</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Do you have a template/script for crisis messages?</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" name="template" id="template-yes">
+                    <label for="template-yes" style="display: inline;">Yes</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="template" id="template-no">
+                    <label for="template-no" style="display: inline;">No</label>
+                </div>
+            </div>
+            <p class="note">If yes, please share or describe the key elements</p>
+            <textarea placeholder="Paste template or describe approach"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Resources provided to members in crisis:</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="helpline">
+                    <label for="helpline" style="display: inline;">Helpline numbers (Samaritans, etc.)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="emergency">
+                    <label for="emergency" style="display: inline;">Emergency services information (999/911)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="other-resources">
+                    <label for="other-resources" style="display: inline;">Other: <input type="text" class="inline-input" placeholder="describe"></label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Internal escalation procedures:</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="notify-lead">
+                    <label for="notify-lead" style="display: inline;">Notify team lead</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="document">
+                    <label for="document" style="display: inline;">Document incident</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="other-escalation">
+                    <label for="other-escalation" style="display: inline;">Other: <input type="text" class="inline-input" placeholder="describe"></label>
+                </div>
+            </div>
+        </div>
+
+        <h3>Emergency Services Contact</h3>
+        
+        <div class="form-group">
+            <label>Have you ever contacted emergency services (999/911)?</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" name="emergency-contact" id="emergency-yes">
+                    <label for="emergency-yes" style="display: inline;">Yes</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="emergency-contact" id="emergency-no">
+                    <label for="emergency-no" style="display: inline;">No</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>If yes, how many times in past 12 months?</label>
+            <input type="number" placeholder="Number of times">
+        </div>
+        
+        <div class="form-group">
+            <label>Under what circumstances do you contact emergency services?</label>
+            <textarea placeholder="Describe criteria/decision tree (e.g., immediate threat, specific plan, unable to contact member, etc.)"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Who makes the decision to contact authorities?</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" name="authority-decision" id="any-mod">
+                    <label for="any-mod" style="display: inline;">Any moderator can make the call</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="authority-decision" id="lead-only">
+                    <label for="lead-only" style="display: inline;">Team lead only</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="authority-decision" id="other-decision">
+                    <label for="other-decision" style="display: inline;">Other: <input type="text" class="inline-input" placeholder="describe"></label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>How do you obtain member location/contact information?</label>
+            <textarea placeholder="Describe your process for getting emergency contact details"></textarea>
+        </div>
+
+        <h3>2.3 Serious Incidents</h3>
+        
+        <div class="form-group">
+            <label>Member harmed themselves after posting:</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" name="self-harm-incident" id="harm-yes">
+                    <label for="harm-yes" style="display: inline;">Yes</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="self-harm-incident" id="harm-no">
+                    <label for="harm-no" style="display: inline;">No</label>
+                </div>
+            </div>
+            <textarea placeholder="If yes, please provide brief details (anonymized)"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Family member contacted you for help:</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" name="family-contact" id="family-yes">
+                    <label for="family-yes" style="display: inline;">Yes</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="family-contact" id="family-no">
+                    <label for="family-no" style="display: inline;">No</label>
+                </div>
+            </div>
+            <textarea placeholder="If yes, please provide brief details"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Police/authorities involved:</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" name="police" id="police-yes">
+                    <label for="police-yes" style="display: inline;">Yes</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="police" id="police-no">
+                    <label for="police-no" style="display: inline;">No</label>
+                </div>
+            </div>
+            <textarea placeholder="If yes, please provide brief details"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Legal concerns or complaints:</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" name="legal" id="legal-yes">
+                    <label for="legal-yes" style="display: inline;">Yes</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="legal" id="legal-no">
+                    <label for="legal-no" style="display: inline;">No</label>
+                </div>
+            </div>
+            <textarea placeholder="If yes, please provide brief details"></textarea>
+        </div>
+
+        <h3>2.4 Documentation</h3>
+        
+        <div class="form-group">
+            <label>Do you have written crisis protocols?</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" name="protocol" id="protocol-written">
+                    <label for="protocol-written" style="display: inline;">Yes, documented</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="protocol" id="protocol-informal">
+                    <label for="protocol-informal" style="display: inline;">Informal/unwritten</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="protocol" id="protocol-no">
+                    <label for="protocol-no" style="display: inline;">No</label>
+                </div>
+            </div>
+            <textarea placeholder="If yes, please describe or share the protocols. If no, describe the informal process your team follows."></textarea>
+        </div>
+
+        <!-- PART 3 -->
+        <h2>Part 3: Policies & Enforcement</h2>
+        
+        <h3>3.1 Community Guidelines</h3>
+        
+        <div class="form-group">
+            <label>Do you have written rules posted in the Facebook group?</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" name="guidelines" id="guidelines-yes">
+                    <label for="guidelines-yes" style="display: inline;">Yes</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="guidelines" id="guidelines-no">
+                    <label for="guidelines-no" style="display: inline;">No</label>
+                </div>
+            </div>
+            <textarea placeholder="If yes, please paste them here or summarize the key points"></textarea>
+        </div>
+
+        <h3>3.2 Prohibited Content</h3>
+        
+        <div class="form-group">
+            <label>What's explicitly prohibited? (Check all that apply)</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="medical-advice">
+                    <label for="medical-advice" style="display: inline;">Medical advice (diagnosing, prescribing)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="pro-harm">
+                    <label for="pro-harm" style="display: inline;">Promotion of self-harm or pro-ED content</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="spam">
+                    <label for="spam" style="display: inline;">Spam or commercial promotion</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="harassment">
+                    <label for="harassment" style="display: inline;">Harassment or personal attacks</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="doxxing">
+                    <label for="doxxing" style="display: inline;">Sharing private information (doxxing)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="politics">
+                    <label for="politics" style="display: inline;">Political/religious debates</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="graphic">
+                    <label for="graphic" style="display: inline;">Graphic content (self-harm images, etc.)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="other-prohibited">
+                    <label for="other-prohibited" style="display: inline;">Other: <input type="text" class="inline-input" placeholder="describe"></label>
+                </div>
+            </div>
+        </div>
+
+        <h3>3.3 Enforcement Process</h3>
+        
+        <div class="form-group">
+            <label>First offense - what happens?</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="warning">
+                    <label for="warning" style="display: inline;">Warning (private message)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="post-removal">
+                    <label for="post-removal" style="display: inline;">Post removal</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="temp-restriction">
+                    <label for="temp-restriction" style="display: inline;">Temporary restriction</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="immediate-ban">
+                    <label for="immediate-ban" style="display: inline;">Immediate ban (for serious violations)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="other-first">
+                    <label for="other-first" style="display: inline;">Other: <input type="text" class="inline-input" placeholder="describe"></label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Repeat offenses - what happens?</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="second-warning">
+                    <label for="second-warning" style="display: inline;">Second warning</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="temp-ban">
+                    <label for="temp-ban" style="display: inline;">Temporary ban (duration: <input type="text" class="inline-input" placeholder="e.g., 7 days">)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="perm-ban">
+                    <label for="perm-ban" style="display: inline;">Permanent ban</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="other-repeat">
+                    <label for="other-repeat" style="display: inline;">Other: <input type="text" class="inline-input" placeholder="describe"></label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Serious violations (threats, illegal content) - what happens?</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="immediate-perm">
+                    <label for="immediate-perm" style="display: inline;">Immediate permanent ban</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="report-fb">
+                    <label for="report-fb" style="display: inline;">Report to Facebook</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="report-authorities">
+                    <label for="report-authorities" style="display: inline;">Report to authorities</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="other-serious">
+                    <label for="other-serious" style="display: inline;">Other: <input type="text" class="inline-input" placeholder="describe"></label>
+                </div>
+            </div>
+        </div>
+
+        <h3>3.4 Enforcement Metrics</h3>
+        
+        <div class="form-group">
+            <label>In the past 12 months (approximate):</label>
+            <div class="grid-2">
+                <div>
+                    <label>Posts removed:</label>
+                    <input type="number" placeholder="Number">
+                </div>
+                <div>
+                    <label>Users warned:</label>
+                    <input type="number" placeholder="Number">
+                </div>
+                <div>
+                    <label>Users temporarily banned:</label>
+                    <input type="number" placeholder="Number">
+                </div>
+                <div>
+                    <label>Users permanently banned:</label>
+                    <input type="number" placeholder="Number">
+                </div>
+            </div>
+        </div>
+
+        <!-- PART 4 -->
+        <h2>Part 4: Operations & Tools</h2>
+        
+        <h3>4.1 Moderation Tools</h3>
+        
+        <div class="form-group">
+            <label>What do you use to manage the community?</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="fb-native">
+                    <label for="fb-native" style="display: inline;">Facebook native tools only</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="keyword-alerts">
+                    <label for="keyword-alerts" style="display: inline;">Keyword alerts/auto-flagging</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="third-party">
+                    <label for="third-party" style="display: inline;">Third-party moderation software: <input type="text" class="inline-input" placeholder="name"></label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="ticketing">
+                    <label for="ticketing" style="display: inline;">Shared queue/ticketing system: <input type="text" class="inline-input" placeholder="name"></label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="other-tools">
+                    <label for="other-tools" style="display: inline;">Other: <input type="text" class="inline-input" placeholder="describe"></label>
+                </div>
+            </div>
+        </div>
+
+        <h3>4.2 Team Coordination</h3>
+        
+        <div class="form-group">
+            <label>How do moderators coordinate across time zones?</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="handoff">
+                    <label for="handoff" style="display: inline;">Handoff notes (where? <input type="text" class="inline-input" placeholder="system/tool">)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="shared-docs">
+                    <label for="shared-docs" style="display: inline;">Shared documentation/logs (what system? <input type="text" class="inline-input" placeholder="system/tool">)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="team-chat">
+                    <label for="team-chat" style="display: inline;">Team communication (Slack/WhatsApp/etc.: <input type="text" class="inline-input" placeholder="platform">)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="schedule">
+                    <label for="schedule" style="display: inline;">Shift schedule/coverage tracker</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="other-coord">
+                    <label for="other-coord" style="display: inline;">Other: <input type="text" class="inline-input" placeholder="describe"></label>
+                </div>
+            </div>
+        </div>
+
+        <h3>4.3 Daily Workload</h3>
+        
+        <div class="form-group">
+            <label>On an average day, each moderator:</label>
+            <div style="margin-top: 10px;">
+                <label>Reviews approximately:</label>
+                <input type="number" placeholder="Number of posts">
+            </div>
+            <div style="margin-top: 10px;">
+                <label>Removes/hides approximately:</label>
+                <input type="number" placeholder="Number of posts">
+            </div>
+            <div style="margin-top: 10px;">
+                <label>Sends direct messages to approximately:</label>
+                <input type="number" placeholder="Number of users">
+            </div>
+            <div style="margin-top: 10px;">
+                <label>Spends approximately:</label>
+                <input type="number" placeholder="Number of hours"> hours on moderation
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Time allocation estimate (should total 100%):</label>
+            <div style="margin-top: 10px;">
+                <label>Crisis management:</label>
+                <input type="number" min="0" max="100" placeholder="% of time">%
+            </div>
+            <div style="margin-top: 10px;">
+                <label>Routine moderation (rule enforcement):</label>
+                <input type="number" min="0" max="100" placeholder="% of time">%
+            </div>
+            <div style="margin-top: 10px;">
+                <label>Positive engagement (welcoming, encouraging):</label>
+                <input type="number" min="0" max="100" placeholder="% of time">%
+            </div>
+        </div>
+
+        <!-- PART 5 -->
+        <h2>Part 5: Scalability & Challenges</h2>
+        
+        <h3>5.1 Current Challenges</h3>
+        
+        <div class="form-group">
+            <label>What's the hardest part of moderating a 91k mental health community?</label>
+            <textarea placeholder="Describe your biggest challenges"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>What keeps you up at night regarding community safety?</label>
+            <textarea placeholder="Describe your primary concerns"></textarea>
+        </div>
+
+        <h3>5.2 Scaling to 250k Users</h3>
+        
+        <div class="form-group">
+            <label>To scale from 91k to 250k users, what would you need?</label>
+            
+            <div style="margin-top: 15px;">
+                <label>Additional moderators (estimated number):</label>
+                <input type="number" placeholder="Number of additional moderators needed">
+            </div>
+            
+            <div style="margin-top: 15px;">
+                <label>Enhanced tools/technology:</label>
+                <textarea placeholder="What tools or technology would help?"></textarea>
+            </div>
+            
+            <div style="margin-top: 15px;">
+                <label>Additional training:</label>
+                <textarea placeholder="What training would the team need?"></textarea>
+            </div>
+            
+            <div style="margin-top: 15px;">
+                <label>Improved processes:</label>
+                <textarea placeholder="What processes need to be improved or formalized?"></textarea>
+            </div>
+            
+            <div style="margin-top: 15px;">
+                <label>Other resources:</label>
+                <textarea placeholder="Any other resources or support needed?"></textarea>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>What would need to change for corporate EAP deployment specifically?</label>
+            <p class="note">Consider: privacy requirements, employer boundaries, professional vs. consumer context</p>
+            <textarea placeholder="Describe what would be different for B2B/EAP communities"></textarea>
+        </div>
+
+        <!-- PART 6 -->
+        <h2>Part 6: Documentation to Share</h2>
+        
+        <div class="form-group">
+            <label>Please indicate what documentation exists (check all that you have):</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="doc-guidelines">
+                    <label for="doc-guidelines" style="display: inline;">Written community guidelines (Facebook group description/rules)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="doc-sops">
+                    <label for="doc-sops" style="display: inline;">Internal moderation SOPs/handbook</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="doc-crisis">
+                    <label for="doc-crisis" style="display: inline;">Crisis response protocol document</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="doc-enforcement">
+                    <label for="doc-enforcement" style="display: inline;">Enforcement/discipline procedures</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="doc-incidents">
+                    <label for="doc-incidents" style="display: inline;">Incident log or escalation records (anonymized, last 6-12 months)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="doc-training">
+                    <label for="doc-training" style="display: inline;">Moderator training materials</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="doc-other">
+                    <label for="doc-other" style="display: inline;">Other relevant documentation: <input type="text" class="inline-input" placeholder="describe"></label>
+                </div>
+            </div>
+            <p class="note" style="margin-top: 10px;">We'll collect these documents separately - just indicate what exists for now</p>
+        </div>
+
+        <!-- NEXT STEPS -->
+        <div style="background: #ebf4ff; padding: 20px; border-radius: 6px; margin-top: 40px;">
+            <h3 style="margin-top: 0;">Next Steps</h3>
+            <ol style="margin-left: 20px; line-height: 1.8;">
+                <li><strong>Rachel reviews this document</strong> and fills in what she can</li>
+                <li><strong>Schedule call</strong> to discuss, clarify, and capture anything missing</li>
+                <li><strong>We'll synthesize</strong> into professional documentation for Towergate:
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>Community Safety & Moderation Framework</li>
+                        <li>Crisis Management Protocols</li>
+                        <li>Scalability Plan</li>
+                        <li>Track Record & Metrics</li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <div style="background: white; padding: 15px; border-radius: 4px; margin-top: 15px;">
+                <strong>This positions us to show Towergate:</strong>
+                <ul style="margin-left: 20px; margin-top: 5px;">
+                    <li>✅ Proven capability at enterprise scale (91k members, 24/7 moderation)</li>
+                    <li>✅ Professional crisis management with real-world experience</li>
+                    <li>✅ Documented processes and governance</li>
+                    <li>✅ Clear path to scaling 3x reliably</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="secondary" onclick="window.print()">Print / Save as PDF</button>
+            <button onclick="alert('In a production version, this would save your progress')">Save Progress</button>
+        </div>
+    </div>
+</body>
+</html>
