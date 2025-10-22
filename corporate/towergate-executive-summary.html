@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clear minds - Executive Summary for Towergate Partnership</title>
+    <style>
+        :root {
+            --clearminds-teal: #007a87;
+            --clearminds-dark: #0d3b3e;
+            --clearminds-green: #dff4da;
+            --clearminds-cream: #fffbf5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background-color: white;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page {
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--clearminds-teal) 0%, var(--clearminds-dark) 100%);
+            color: white;
+            padding: 2rem;
+            margin: -2rem -2rem 2rem -2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .header-left .tagline {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .header-right {
+            text-align: right;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .value-prop {
+            background: var(--clearminds-green);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 6px solid var(--clearminds-teal);
+        }
+
+        .value-prop h2 {
+            color: var(--clearminds-dark);
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .value-prop p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 6px;
+            text-align: center;
+            border: 2px solid var(--clearminds-teal);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--clearminds-teal);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--clearminds-teal);
+        }
+
+        .section h3 {
+            color: var(--clearminds-dark);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .section ul {
+            margin-left: 1.25rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .differentiators {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .differentiator {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 8px;
+            border-top: 4px solid var(--clearminds-teal);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .differentiator-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .differentiator h4 {
+            color: var(--clearminds-dark);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .differentiator p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .next-steps {
+            background: #fff9e6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 6px solid #ff9800;
+            margin-top: auto;
+        }
+
+        .next-steps h3 {
+            color: #5d4037;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .next-steps ol {
+            margin-left: 1.5rem;
+        }
+
+        .next-steps li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1rem 0;
+            color: #666;
+            font-size: 0.85rem;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 1rem;
+        }
+
+        .checkmark {
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 0.25rem;
+        }
+
+        @media print {
+            .page {
+                padding: 1rem;
+            }
+            .header {
+                background: white !important;
+                color: var(--clearminds-dark) !important;
+                border-bottom: 3px solid var(--clearminds-teal);
+            }
+            .header-left h1 {
+                color: var(--clearminds-dark);
+            }
+            .header-right {
+                color: #666;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <div class="header-left">
+                <h1>clear minds</h1>
+                <div class="tagline">Enterprise Mental Wellness Platform</div>
+            </div>
+            <div class="header-right">
+                <strong>Executive Summary</strong><br>
+                Towergate Partnership Proposal<br>
+                October 2025
+            </div>
+        </div>
+
+        <div class="value-prop">
+            <h2>What clear minds Offers Towergate</h2>
+            <p>A differentiated mental wellness platform combining digital hypnotherapy (70k+ users), professionally moderated peer community (91k members, zero serious incidents), and clinical referral pathways (CQC-registered partners) — backed by enterprise-grade governance frameworks and data protection. <strong>NOT a traditional EAP</strong> — a standalone wellness offering that sets Towergate apart.</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">70k+</div>
+                <div class="stat-label">Digital Platform Users</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">91k</div>
+                <div class="stat-label">Community Members</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Professional Moderation</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">Zero</div>
+                <div class="stat-label">Serious Incidents</div>
+            </div>
+        </div>
+
+        <h3 style="color: var(--clearminds-dark); margin-bottom: 1rem; font-size: 1.3rem;">Three Differentiators (Why clear minds, Not Another EAP)</h3>
+
+        <div class="differentiators">
+            <div class="differentiator">
+                <div class="differentiator-icon">📋</div>
+                <h4>1. Governance Framework</h4>
+                <p>31 policies across 6 categories, GDPR-compliant data architecture, Cyber Essentials Plus certified, DPIA completed. Enterprise buyers get audit-ready documentation from day one.</p>
+            </div>
+            <div class="differentiator">
+                <div class="differentiator-icon">🤝</div>
+                <h4>2. Peer Community</h4>
+                <p>91k-member professionally moderated community. Traditional EAPs don't offer this. Headspace/Calm don't offer this. Zero serious incidents, crisis response in minutes, proven safety protocols.</p>
+            </div>
+            <div class="differentiator">
+                <div class="differentiator-icon">🏥</div>
+                <h4>3. Clinical Pathways</h4>
+                <p>Seamless referral to CQC-registered partners (Smart Start Minds) for employees needing CBT, psychotherapy, or psychiatric treatment. Digital wellness + clinical care in one platform.</p>
+            </div>
+        </div>
+
+        <div class="two-column">
+            <div class="section">
+                <h3>Why This Works for Towergate</h3>
+                <ul>
+                    <li><span class="checkmark">✓</span> <strong>Scale:</strong> Digital platform = unlimited capacity (no counselor bottlenecks)</li>
+                    <li><span class="checkmark">✓</span> <strong>Engagement:</strong> 34.6% active rate vs. 5-10% typical EAP usage</li>
+                    <li><span class="checkmark">✓</span> <strong>Confidentiality:</strong> Zero employer visibility (k≥10 anonymization standard)</li>
+                    <li><span class="checkmark">✓</span> <strong>Risk mitigation:</strong> Proven crisis protocols, zero incidents at scale</li>
+                    <li><span class="checkmark">✓</span> <strong>Market differentiator:</strong> Unique offering vs. commodity EAPs</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3>Risk Mitigation & Governance</h3>
+                <ul>
+                    <li><span class="checkmark">✓</span> <strong>Data protection:</strong> Employee data confidential from employer (contractual + technical)</li>
+                    <li><span class="checkmark">✓</span> <strong>Crisis management:</strong> 91k members, 3-5 suicidal ideation posts/year, all handled safely</li>
+                    <li><span class="checkmark">✓</span> <strong>Legal compliance:</strong> GDPR, Care Act 2014, Mental Capacity Act, Equality Act</li>
+                    <li><span class="checkmark">✓</span> <strong>Professional indemnity:</strong> Insurance coverage in place</li>
+                    <li><span class="checkmark">✓</span> <strong>Audit trail:</strong> All incidents logged, 12-month retention</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" style="margin-bottom: 2rem;">
+            <h3>Scaling Plan: 91k → 250k Employees</h3>
+            <p style="margin-bottom: 0.75rem;"><strong>Clear path to 3x growth:</strong></p>
+            <ul>
+                <li><strong>Moderators:</strong> Add 2-3 additional trained moderators (current: 3, target: 5-6)</li>
+                <li><strong>Tools:</strong> Implement ticket queue system for efficiency at scale</li>
+                <li><strong>Training:</strong> B2B-specific training on workplace sensitivities</li>
+                <li><strong>Timeline:</strong> 4 months from contract signing to full capacity</li>
+                <li><strong>Investment:</strong> Moderator recruitment + tooling (~£50-75k)</li>
+            </ul>
+        </div>
+
+        <div class="two-column" style="margin-bottom: 2rem;">
+            <div class="section">
+                <h3>What Towergate Receives</h3>
+                <ul>
+                    <li>Unlimited employee access (digital platform)</li>
+                    <li>91k-member community access (professionally moderated)</li>
+                    <li>Clinical referral pathway (via CQC-registered partners)</li>
+                    <li>Quarterly utilization reports (aggregated, anonymized)</li>
+                    <li>Dedicated account management</li>
+                    <li>Full policy documentation (audit-ready)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3>What Towergate Does NOT Receive</h3>
+                <ul>
+                    <li>Individual employee names or identifiers</li>
+                    <li>Which employees registered/used service</li>
+                    <li>Individual usage patterns or listening history</li>
+                    <li>Any data enabling identification</li>
+                    <li><strong>Guarantee:</strong> Zero individual visibility</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="next-steps">
+            <h3>Next Steps</h3>
+            <ol>
+                <li><strong>Governance Review:</strong> Debra reviews full documentation (Community Safety Framework, Data Governance Framework, Policy Library)</li>
+                <li><strong>Legal Review:</strong> Contract terms with Towergate legal team (data controller relationship, liability boundaries, confidentiality guarantees)</li>
+                <li><strong>Commercial Terms:</strong> Pricing proposal for 250k employees</li>
+                <li><strong>Pilot or Full Launch:</strong> Decision on deployment approach (phased rollout vs. full launch)</li>
+                <li><strong>Target Launch:</strong> Q1 2026 (4-month preparation from contract signing)</li>
+            </ol>
+        </div>
+
+        <div class="footer">
+            <p><strong>Supporting Documentation Available:</strong></p>
+            <p>Community Safety & Moderation Framework | Data Governance Framework | Care Quality Governance Framework | 31 Policy Library</p>
+            <p style="margin-top: 0.5rem;">Contact: info@clearminds.com | www.clearminds.com</p>
+        </div>
+    </div>
+</body>
+</html>
