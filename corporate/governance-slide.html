@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearMinds Corporate Documentation Hub</title>
+    <style>
+        :root {
+            --clearminds-teal: #007a87;
+            --clearminds-dark: #0d3b3e;
+            --clearminds-green: #dff4da;
+            --clearminds-cream: #fffbf5;
+        }
+
+        body {
+            background-color: var(--clearminds-cream);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        .slide-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .three-column-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .column {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 2px solid #e5e7eb;
+        }
+
+        .column h2 {
+            color: var(--clearminds-dark);
+            font-size: 1.3rem;
+            margin: 0 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--clearminds-teal);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .column h2 .emoji {
+            font-size: 1.5rem;
+        }
+
+        .policy-mini-card {
+            background: white;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 0.375rem;
+            border: 1px solid #e5e7eb;
+            font-size: 0.9rem;
+        }
+
+        .policy-mini-card .emoji {
+            margin-right: 0.5rem;
+        }
+
+        .policy-mini-card .count {
+            color: #666;
+            font-size: 0.85rem;
+            margin-left: 0.25rem;
+        }
+
+        .policy-feature-card {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            border: 2px solid var(--clearminds-teal);
+            border-left: 6px solid var(--clearminds-teal);
+        }
+
+        .policy-feature-card h3 {
+            color: var(--clearminds-dark);
+            font-size: 1rem;
+            margin: 0 0 0.5rem 0;
+            font-weight: 700;
+        }
+
+        .policy-feature-card p {
+            color: #333;
+            font-size: 0.85rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .validation-item {
+            background: white;
+            padding: 0.65rem 1rem;
+            margin-bottom: 0.6rem;
+            border-radius: 0.375rem;
+            border: 1px solid #d1fae5;
+            background-color: #ecfdf5;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .validation-item .check {
+            color: #059669;
+            font-weight: bold;
+        }
+
+        /* Highlight marker for B2B section */
+        .column.highlight {
+            background: #fff9e6;
+            border: 3px solid #ff9800;
+        }
+
+        .star-marker {
+            color: #ff9800;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="three-column-grid">
+            <!-- Column 1: Core Governance -->
+            <div class="column">
+                <h2><span class="emoji">📚</span> Core Governance</h2>
+
+                <div class="policy-mini-card">
+                    <span class="emoji">📘</span><strong>Data Protection & Privacy</strong><span class="count">(8 policies)</span>
+                </div>
+
+                <div class="policy-mini-card">
+                    <span class="emoji">🏥</span><strong>Clinical Safeguarding</strong><span class="count">(6 policies)</span>
+                </div>
+
+                <div class="policy-mini-card">
+                    <span class="emoji">🎯</span><strong>Service Delivery & Quality</strong><span class="count">(5 policies)</span>
+                </div>
+
+                <div class="policy-mini-card">
+                    <span class="emoji">👥</span><strong>HR & People Management</strong><span class="count">(4 policies)</span>
+                </div>
+
+                <div class="policy-mini-card">
+                    <span class="emoji">🔒</span><strong>Information Security</strong><span class="count">(4 policies)</span>
+                </div>
+
+                <div class="policy-mini-card">
+                    <span class="emoji">⚖️</span><strong>Legal & Compliance</strong><span class="count">(5 policies)</span>
+                </div>
+            </div>
+
+            <!-- Column 2: B2B Enterprise-Specific -->
+            <div class="column highlight">
+                <h2><span class="emoji">🤝</span> B2B Enterprise-Specific <span class="star-marker">⭐</span></h2>
+
+                <div class="policy-feature-card">
+                    <h3>🚫 Employer Non-Snooping Agreement</h3>
+                    <p>Contractual prohibition with enforceable breach penalties</p>
+                </div>
+
+                <div class="policy-feature-card">
+                    <h3>📊 Community Risk Assessment</h3>
+                    <p>8 privacy/safety risks identified & mitigated</p>
+                </div>
+
+                <div class="policy-feature-card">
+                    <h3>🛡️ 24/7 Enhanced Moderation</h3>
+                    <p>Employer infiltration detection protocols</p>
+                </div>
+            </div>
+
+            <!-- Column 3: External Validation -->
+            <div class="column">
+                <h2><span class="emoji">✅</span> External Validation</h2>
+
+                <div class="validation-item">
+                    <span class="check">✓</span>
+                    <strong>Cyber Essentials Plus</strong> (Q2 2025)
+                </div>
+
+                <div class="validation-item">
+                    <span class="check">✓</span>
+                    <strong>Annual Penetration Testing</strong>
+                </div>
+
+                <div class="validation-item">
+                    <span class="check">✓</span>
+                    <strong>ICO Registered</strong> (Data Controller)
+                </div>
+
+                <div class="validation-item">
+                    <span class="check">✓</span>
+                    <strong>DPIA Completed</strong>
+                </div>
+
+                <div class="validation-item">
+                    <span class="check">✓</span>
+                    <strong>Professional Indemnity Insurance</strong>
+                </div>
+
+                <div class="validation-item">
+                    <span class="check">✓</span>
+                    <strong>CQC Partnership</strong> (SmartStartMinds)
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

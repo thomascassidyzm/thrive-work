@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, initial-scale=1.0">
+    <title>Complete Policy Data Room - ClearMinds</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #7ba396 0%, #6b9489 100%);
+            width: 1920px;
+            height: 1080px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            color: white;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        h1 {
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 32px;
+            font-weight: 300;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1600px;
+            margin-bottom: 60px;
+        }
+
+        .policy-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .policy-card.featured {
+            background: #f0f7f5;
+            border: 3px solid #7ba396;
+            position: relative;
+        }
+
+        .policy-card.featured::before {
+            content: '⭐ NEW';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #7ba396;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .policy-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+
+        .policy-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .policy-count {
+            font-size: 20px;
+            color: #7ba396;
+            font-weight: 600;
+        }
+
+        .highlights {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkmark {
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">clearminds</div>
+        <h1>Complete Policy Data Room</h1>
+        <div class="subtitle">40+ policies across 7 governance domains - documented, reviewed, and audit-ready</div>
+    </div>
+
+    <div class="policy-grid">
+        <div class="policy-card">
+            <div class="policy-icon">🔒</div>
+            <div class="policy-title">Data Protection & Privacy</div>
+            <div class="policy-count">8 policies</div>
+        </div>
+
+        <div class="policy-card">
+            <div class="policy-icon">🏥</div>
+            <div class="policy-title">Clinical Governance</div>
+            <div class="policy-count">6 policies</div>
+        </div>
+
+        <div class="policy-card">
+            <div class="policy-icon">📋</div>
+            <div class="policy-title">Service Delivery</div>
+            <div class="policy-count">7 policies</div>
+        </div>
+
+        <div class="policy-card">
+            <div class="policy-icon">👥</div>
+            <div class="policy-title">HR & Employment</div>
+            <div class="policy-count">5 policies</div>
+        </div>
+
+        <div class="policy-card">
+            <div class="policy-icon">🔐</div>
+            <div class="policy-title">Information Security</div>
+            <div class="policy-count">6 policies</div>
+        </div>
+
+        <div class="policy-card">
+            <div class="policy-icon">⚖️</div>
+            <div class="policy-title">Legal & Compliance</div>
+            <div class="policy-count">4 policies</div>
+        </div>
+
+        <div class="policy-card featured">
+            <div class="policy-icon">🤝</div>
+            <div class="policy-title">B2B Community & Enterprise Governance</div>
+            <div class="policy-count">8 policies</div>
+        </div>
+    </div>
+
+    <div class="highlights">
+        <div class="highlight-item">
+            <span class="checkmark">✓</span>
+            <span>All policies legally reviewed</span>
+        </div>
+        <div class="highlight-item">
+            <span class="checkmark">✓</span>
+            <span>GDPR compliant</span>
+        </div>
+        <div class="highlight-item">
+            <span class="checkmark">✓</span>
+            <span>Employer non-snooping guarantee</span>
+        </div>
+        <div class="highlight-item">
+            <span class="checkmark">✓</span>
+            <span>Risk assessments completed</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -242,6 +242,157 @@
                 content: '';
             }
         }
+
+        @media print {
+            /* Print-friendly page setup */
+            @page {
+                margin: 2cm;
+                size: A4;
+            }
+
+            body {
+                background-color: white !important;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            /* Remove page header gradient background for print */
+            .page-header {
+                background: white !important;
+                color: #0d3b3e !important;
+                border-bottom: 3px solid #007a87;
+                page-break-after: avoid;
+            }
+
+            .page-header h1 {
+                color: #0d3b3e !important;
+            }
+
+            .page-header p {
+                color: #333 !important;
+            }
+
+            .breadcrumb a {
+                color: #007a87 !important;
+            }
+
+            /* Prevent awkward page breaks */
+            h1, h2, h3, h4 {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            /* Keep cards together */
+            .component-card,
+            .framework-overview,
+            .standards-section,
+            .clearminds-application,
+            .pathway-diagram,
+            .implementation-checklist {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            /* Component grid: stack for print to avoid breaks */
+            .component-grid {
+                display: block;
+            }
+
+            .component-card {
+                margin-bottom: 1.5rem;
+                page-break-inside: avoid;
+                break-inside: avoid;
+                box-shadow: none;
+                border: 2px solid #e5e7eb;
+            }
+
+            .component-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            /* Pathway steps: stack vertically for print */
+            .pathway-steps {
+                display: block;
+            }
+
+            .pathway-step {
+                margin-bottom: 1rem;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .pathway-step::after {
+                content: '↓';
+                position: static;
+                display: block;
+                text-align: center;
+                margin: 0.5rem 0;
+                transform: none;
+            }
+
+            .pathway-step:last-child::after {
+                content: '';
+            }
+
+            /* Checklist items: keep together */
+            .checklist-item {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            /* Standards grid: adjust for print */
+            .standards-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
+
+            .standard-badge {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            /* Benefits section */
+            div[style*="display: grid"] {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            /* Remove shadows for cleaner print */
+            .framework-overview,
+            .pathway-diagram,
+            .standard-badge {
+                box-shadow: none !important;
+            }
+
+            /* Keep logical sections together */
+            .framework-overview + h2 + .component-grid {
+                page-break-before: auto;
+            }
+
+            /* Ensure colored backgrounds print */
+            .standards-section,
+            .clearminds-application,
+            div[style*="background: #fff9e6"],
+            div[style*="background: #fff3cd"] {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            /* Hide interactive elements */
+            a[href^="http"]::after {
+                content: " (" attr(href) ")";
+                font-size: 0.8em;
+                color: #666;
+            }
+
+            /* Remove unnecessary elements for print */
+            .component-icon {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+        }
     </style>
 </head>
 <body>
