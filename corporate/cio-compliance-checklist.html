@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIO Compliance Checklist - clear minds</title>
+    <style>
+        :root {
+            --clearminds-teal: #007a87;
+            --clearminds-dark: #0d3b3e;
+            --clearminds-green: #dff4da;
+            --clearminds-cream: #fffbf5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--clearminds-cream);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--clearminds-teal) 0%, var(--clearminds-dark) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid var(--clearminds-teal);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--clearminds-teal);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: var(--clearminds-dark);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--clearminds-green);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section h3 {
+            color: var(--clearminds-teal);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist-item {
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 6px;
+            border-left: 4px solid #e0e0e0;
+            background: #f9fafb;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.2s;
+        }
+
+        .checklist-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .checklist-item.complete {
+            background: #ecfdf5;
+            border-left-color: #10b981;
+        }
+
+        .checklist-item.critical {
+            background: #fff9e6;
+            border-left-color: #ff9800;
+        }
+
+        .checkbox {
+            min-width: 24px;
+            height: 24px;
+            border: 2px solid #cbd5e0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-top: 2px;
+        }
+
+        .checkbox.checked {
+            background: #10b981;
+            border-color: #10b981;
+        }
+
+        .checkbox.checked::after {
+            content: '✓';
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .item-content {
+            flex: 1;
+        }
+
+        .item-title {
+            font-weight: 600;
+            color: var(--clearminds-dark);
+            margin-bottom: 0.25rem;
+            font-size: 1.05rem;
+        }
+
+        .item-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .priority {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .priority.critical {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .priority.high {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .priority.medium {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .note {
+            background: #e0f2f1;
+            border-left: 4px solid #00897b;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .note strong {
+            color: #00695c;
+        }
+
+        @media (max-width: 768px) {
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .header {
+                background: var(--clearminds-dark) !important;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CIO Compliance Checklist</h1>
+            <p>Data Governance & Documentation Audit - clear minds</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.85;">Last Updated: October 2025</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number" id="total-items">0</div>
+                <div class="stat-label">Total Items</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="completed-items">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="pending-items">0</div>
+                <div class="stat-label">Pending</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="completion-rate">0%</div>
+                <div class="stat-label">Completion Rate</div>
+            </div>
+        </div>
+
+        <!-- SECTION 1: Operational Requirements -->
+        <div class="section">
+            <h2>🔒 1. Operational Requirements (Internal Documents)</h2>
+            <p style="margin-bottom: 1.5rem; color: #666;">Legally required or operationally critical documents for running the business.</p>
+
+            <h3>Critical Gaps</h3>
+            <ul class="checklist">
+                <li class="checklist-item critical" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Cookie Policy <span class="priority critical">CRITICAL</span></div>
+                        <div class="item-description">Legally required under PECR/UK GDPR. Website claims to have it - verify content is comprehensive and up to date.</div>
+                    </div>
+                </li>
+                <li class="checklist-item critical" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Data Retention Policy <span class="priority critical">CRITICAL</span></div>
+                        <div class="item-description">Referenced 6+ times in other policies but document is missing. Required for GDPR compliance (Article 5).</div>
+                    </div>
+                </li>
+                <li class="checklist-item critical" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Record of Processing Activities (ROPA) <span class="priority critical">CRITICAL</span></div>
+                        <div class="item-description">Legally required under GDPR Article 30. Must document all data processing activities.</div>
+                    </div>
+                </li>
+                <li class="checklist-item critical" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Completed DPIA <span class="priority critical">CRITICAL</span></div>
+                        <div class="item-description">Template exists but actual completed Data Protection Impact Assessment not found. Required for high-risk processing.</div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3>Important Updates Needed</h3>
+            <ul class="checklist">
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">ICO Registration Number <span class="priority high">HIGH</span></div>
+                        <div class="item-description">Claimed as complete but number not documented. Must add to Privacy Policy and corporate documentation.</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Fix DPO Email Address <span class="priority high">HIGH</span></div>
+                        <div class="item-description">Currently shown as dpo@clearmindseap.com - update to dpo@clearminds.com across all documentation.</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Cyber Essentials Plus Certificate <span class="priority high">HIGH</span></div>
+                        <div class="item-description">Documentation states "Q2 2025 target" - update status or obtain certificate.</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Signed Data Processing Agreements <span class="priority high">HIGH</span></div>
+                        <div class="item-description">Template exists but no evidence of signed agreements with processors (Shopify, hosting, payment providers, etc.).</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Incident Log <span class="priority medium">MEDIUM</span></div>
+                        <div class="item-description">Mentioned in policies but no actual log document. Create even if zero incidents - demonstrates process.</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Penetration Test Reports <span class="priority medium">MEDIUM</span></div>
+                        <div class="item-description">Policies mention annual testing but no reports in documentation. Obtain/document last 12 months.</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Professional Indemnity Insurance Certificate <span class="priority medium">MEDIUM</span></div>
+                        <div class="item-description">Claimed in policies but no evidence file. Required for B2B due diligence.</div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3>Already Complete ✓</h3>
+            <ul class="checklist">
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Privacy Policy</div>
+                        <div class="item-description">Comprehensive 12-section policy published on clearminds.com</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Data Protection Policy</div>
+                        <div class="item-description">Internal policy covering UK GDPR compliance framework</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Data Breach Response Plan</div>
+                        <div class="item-description">72-hour ICO notification process documented</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Terms of Service</div>
+                        <div class="item-description">Published on clearminds.com policies page</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Information Security Policy</div>
+                        <div class="item-description">Technical and organizational security measures documented</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Subject Access Request Procedure</div>
+                        <div class="item-description">30-day SAR response process documented</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">DPA Template</div>
+                        <div class="item-description">Data Processing Agreement template ready for B2B clients</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">DPIA Template</div>
+                        <div class="item-description">Template exists (needs completion for actual processing activities)</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- SECTION 2: B2C Website -->
+        <div class="section">
+            <h2>🌐 2. B2C Website (clearminds.com Legal Requirements)</h2>
+            <p style="margin-bottom: 1.5rem; color: #666;">Public-facing legal and compliance information required on consumer website.</p>
+
+            <h3>Currently Published ✓</h3>
+            <ul class="checklist">
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Privacy Policy</div>
+                        <div class="item-description">Visible at clearminds.com/pages/policies</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Terms of Service</div>
+                        <div class="item-description">Published and accessible</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Cookie Policy</div>
+                        <div class="item-description">Listed on policies page - verify content</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Disclaimer (Medical)</div>
+                        <div class="item-description">Published on policies page</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Refund Policy</div>
+                        <div class="item-description">Consumer rights documented</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Customer Experience & Support</div>
+                        <div class="item-description">Support processes documented</div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3>Updates Required</h3>
+            <ul class="checklist">
+                <li class="checklist-item critical" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Add ICO Registration Number to Privacy Policy <span class="priority critical">CRITICAL</span></div>
+                        <div class="item-description">Legal requirement for UK data controllers. Must be visible to users.</div>
+                    </div>
+                </li>
+                <li class="checklist-item critical" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Add DPO Contact to Privacy Policy <span class="priority critical">CRITICAL</span></div>
+                        <div class="item-description">Email: dpo@clearminds.com - required for GDPR compliance.</div>
+                    </div>
+                </li>
+                <li class="checklist-item critical" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Add Company Registration Details <span class="priority critical">CRITICAL</span></div>
+                        <div class="item-description">Companies House number and registered address required in footer/privacy policy.</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Verify Cookie Consent Banner <span class="priority high">HIGH</span></div>
+                        <div class="item-description">If using analytics/marketing cookies, ensure compliant consent mechanism is implemented.</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Add Formal Complaints Policy Link <span class="priority medium">MEDIUM</span></div>
+                        <div class="item-description">Have policy in corporate docs - consider publishing formal procedure separate from "Customer Experience".</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- SECTION 3: B2B Data Room -->
+        <div class="section">
+            <h2>📂 3. B2B Data Room (Enterprise Due Diligence)</h2>
+            <p style="margin-bottom: 1.5rem; color: #666;">Documentation required for Towergate and other enterprise partnerships.</p>
+
+            <h3>Available Now ✓</h3>
+            <ul class="checklist">
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">31+ Governance Policies</div>
+                        <div class="item-description">Complete policy library across 6 domains</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Community Safety & Moderation Framework</div>
+                        <div class="item-description">91k members, zero serious incidents track record</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Data Governance Framework</div>
+                        <div class="item-description">Enterprise-grade privacy & employer confidentiality (k≥10 standard)</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Towergate Executive Summary</div>
+                        <div class="item-description">Broker-positioned partnership proposal</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">DPA Template</div>
+                        <div class="item-description">Ready for B2B client contracts</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Privacy Policy (Public)</div>
+                        <div class="item-description">Comprehensive GDPR-compliant privacy notice</div>
+                    </div>
+                </li>
+                <li class="checklist-item complete" data-status="complete">
+                    <div class="checkbox checked"></div>
+                    <div class="item-content">
+                        <div class="item-title">Information Security Policy</div>
+                        <div class="item-description">Technical controls and organizational measures</div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3>Critical Evidence Needed</h3>
+            <ul class="checklist">
+                <li class="checklist-item critical" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Cyber Essentials Plus Certificate <span class="priority critical">CRITICAL</span></div>
+                        <div class="item-description">Documentation claims certification - provide actual certificate or update timeline if still in progress.</div>
+                    </div>
+                </li>
+                <li class="checklist-item critical" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">ICO Registration Certificate <span class="priority critical">CRITICAL</span></div>
+                        <div class="item-description">Provide registration number and certificate/confirmation from ICO portal.</div>
+                    </div>
+                </li>
+                <li class="checklist-item critical" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Professional Indemnity Insurance Certificate <span class="priority critical">CRITICAL</span></div>
+                        <div class="item-description">Current policy with coverage amounts. Essential for liability protection.</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Cyber Insurance Certificate <span class="priority high">HIGH</span></div>
+                        <div class="item-description">If separate from PI insurance - demonstrate cyber incident coverage.</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Completed DPIA <span class="priority high">HIGH</span></div>
+                        <div class="item-description">Not just template - actual completed assessment for community processing activities.</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">ROPA Document <span class="priority high">HIGH</span></div>
+                        <div class="item-description">Record of Processing Activities - legally required under GDPR Article 30.</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Penetration Test Report <span class="priority high">HIGH</span></div>
+                        <div class="item-description">Redacted executive summary from last 12 months showing vulnerability assessment.</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Incident Log (Last 12 Months) <span class="priority high">HIGH</span></div>
+                        <div class="item-description">Redacted log demonstrating "zero serious incidents" claim. Even if empty, shows process exists.</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">CQC Partnership Documentation <span class="priority high">HIGH</span></div>
+                        <div class="item-description">MOU or contract with Smart Start Minds proving clinical referral pathway exists.</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Sample Signed DPA with Processor <span class="priority medium">MEDIUM</span></div>
+                        <div class="item-description">Redacted example showing DPAs are actually signed (e.g., with Shopify, hosting provider).</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Financial Statements (Last 2 Years) <span class="priority medium">MEDIUM</span></div>
+                        <div class="item-description">For viability assessment by enterprise clients. Filed accounts from Companies House acceptable.</div>
+                    </div>
+                </li>
+                <li class="checklist-item" data-status="pending">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Data Retention Schedule <span class="priority medium">MEDIUM</span></div>
+                        <div class="item-description">Referenced in multiple policies but standalone document not found.</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="note">
+            <strong>Priority Definitions:</strong><br>
+            <strong>CRITICAL:</strong> Legal requirement or deal-breaker for B2B partnerships. Must complete ASAP.<br>
+            <strong>HIGH:</strong> Essential for due diligence or operational compliance. Complete within 30 days.<br>
+            <strong>MEDIUM:</strong> Best practice or supporting evidence. Complete within 90 days.
+        </div>
+
+        <div class="note" style="margin-top: 1rem;">
+            <strong>Next Actions:</strong> Focus on CRITICAL items first. For Section 1 (Operational), prioritize Data Retention Policy and ROPA. For Section 2 (Website), update Privacy Policy footer immediately. For Section 3 (Data Room), gather existing certificates and evidence documents.
+        </div>
+    </div>
+
+    <script>
+        // Make checkboxes interactive
+        document.querySelectorAll('.checklist-item').forEach(item => {
+            const checkbox = item.querySelector('.checkbox');
+            checkbox.addEventListener('click', function() {
+                if (item.dataset.status === 'complete') {
+                    item.dataset.status = 'pending';
+                    item.classList.remove('complete');
+                    checkbox.classList.remove('checked');
+                } else {
+                    item.dataset.status = 'complete';
+                    item.classList.add('complete');
+                    checkbox.classList.add('checked');
+                }
+                updateStats();
+            });
+        });
+
+        // Update statistics
+        function updateStats() {
+            const allItems = document.querySelectorAll('.checklist-item');
+            const completedItems = document.querySelectorAll('.checklist-item[data-status="complete"]');
+            const pendingItems = allItems.length - completedItems.length;
+            const completionRate = Math.round((completedItems.length / allItems.length) * 100);
+
+            document.getElementById('total-items').textContent = allItems.length;
+            document.getElementById('completed-items').textContent = completedItems.length;
+            document.getElementById('pending-items').textContent = pendingItems;
+            document.getElementById('completion-rate').textContent = completionRate + '%';
+        }
+
+        // Initial stats calculation
+        updateStats();
+    </script>
+</body>
+</html>
