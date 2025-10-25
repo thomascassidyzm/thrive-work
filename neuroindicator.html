@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClearMinds Neuroindicator Screening - Mental Wellness Assessment</title>
-    <meta name="description" content="Free, evidence-based mental wellness screening tool. Get personalised recommendations from lifestyle changes to professional support.">
+    <title>ClearMinds Wellness Check-In - How Are You Doing?</title>
+    <meta name="description" content="Quick 2-minute check-in to connect you with the right support and welcome you to our 91,000-member community.">
 
     <!-- jsPDF for PDF generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -256,61 +256,6 @@
             background: var(--clearminds-green);
         }
 
-        /* Scale options */
-        .scale-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-            gap: 0.5rem;
-            margin: 0.5rem 0;
-        }
-
-        .scale-option {
-            position: relative;
-        }
-
-        .scale-option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-        }
-
-        .scale-option label {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 0.25rem;
-            background: white;
-            border: 2px solid var(--border-light);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            min-height: 70px;
-        }
-
-        .scale-number {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--clearminds-teal);
-            margin-bottom: 0.15rem;
-        }
-
-        .scale-label {
-            font-size: 0.7rem;
-            color: var(--text-light);
-            line-height: 1.2;
-        }
-
-        .scale-option input[type="radio"]:checked + label {
-            background: var(--clearminds-teal);
-            border-color: var(--clearminds-dark);
-        }
-
-        .scale-option input[type="radio"]:checked + label .scale-number,
-        .scale-option input[type="radio"]:checked + label .scale-label {
-            color: white;
-        }
-
         /* Results page */
         .result-header {
             background: var(--clearminds-green);
@@ -350,50 +295,28 @@
             font-size: 0.9rem;
         }
 
-        .evidence-badge {
+        .ocean-promo {
+            background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .ocean-promo h3 {
+            color: #1e40af;
+            margin-top: 0;
+        }
+
+        .ocean-badge {
             display: inline-block;
-            background: var(--clearminds-green);
-            color: var(--clearminds-dark);
+            background: #3b82f6;
+            color: white;
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
             margin-left: 0.5rem;
-        }
-
-        .commercial-badge {
-            display: inline-block;
-            background: var(--warning-yellow);
-            color: #856404;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-left: 0.5rem;
-        }
-
-        /* Email form */
-        .email-form {
-            background: var(--clearminds-cream);
-            padding: 0.75rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-
-        .email-form input[type="email"],
-        .email-form input[type="text"] {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid var(--border-light);
-            border-radius: 8px;
-            font-size: 0.9rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .email-form input[type="email"]:focus,
-        .email-form input[type="text"]:focus {
-            outline: none;
-            border-color: var(--clearminds-teal);
         }
 
         /* Hidden class */
@@ -414,11 +337,6 @@
             .card {
                 padding: 0.75rem;
             }
-
-            .scale-group {
-                grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
-                gap: 0.4rem;
-            }
         }
     </style>
 </head>
@@ -426,56 +344,39 @@
 
     <!-- Header -->
     <div class="header">
-        <h1>🧠 ClearMinds Neuroindicator Screening</h1>
-        <p>Free, evidence-based mental wellness assessment. Get honest recommendations from "you're fine" to professional support.</p>
+        <h1>🧠 How Are You Doing Right Now?</h1>
+        <p>A quick 2-minute check-in to connect you with the right support and welcome you to our community.</p>
     </div>
 
     <div class="container">
         <!-- Pre-Assessment Page -->
         <div id="pre-assessment" class="card">
-            <h2>Welcome to the ClearMinds Neuroindicator</h2>
+            <h2>Welcome to Clear Minds</h2>
 
             <p style="font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.5;">
-                This isn't a typical wellness quiz designed to sell you something. We'll give you honest insights and sometimes tell you that you're actually fine, or that you need lifestyle changes rather than professional help.
+                Let's start with a quick check-in. This takes about 2 minutes and helps us connect you with the right support and welcome you to our 91,000-member community.
             </p>
 
             <div class="warning-box">
-                <h3>⚠️ Important: This is NOT a diagnostic tool</h3>
-                <p>This screening provides educational insights and recommendations. It does not diagnose mental health conditions. Only qualified healthcare professionals can provide diagnoses.</p>
+                <h3>⚠️ Important: This is NOT a clinical assessment</h3>
+                <p>This is a starting point to understand what you're experiencing. It's not a medical diagnosis—only qualified healthcare professionals can provide diagnoses.</p>
                 <p><strong>If you're in crisis:</strong> Call 999, visit A&amp;E, or contact Samaritans (116 123)</p>
             </div>
 
-            <h3>Developed with Dr. Thomas Dannhauser</h3>
-            <p style="margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.5;">
-                This tool has been developed in partnership with <strong>Dr. Thomas Dannhauser</strong> (MindFit.Clinic) to provide evidence-based screening and balanced recommendations across multiple support pathways.
-            </p>
-
             <h3>What to expect:</h3>
             <ul style="margin-left: 1.5rem; margin-bottom: 1rem; font-size: 0.9rem;">
-                <li style="margin-bottom: 0.3rem;">10-15 questions (5-10 minutes)</li>
-                <li style="margin-bottom: 0.3rem;">Questions about stress, sleep, mood, focus, and wellbeing</li>
-                <li style="margin-bottom: 0.3rem;">Personalised results with multiple pathway options</li>
-                <li style="margin-bottom: 0.3rem;">Downloadable summary for GP consultation (if relevant)</li>
-                <li style="margin-bottom: 0.3rem;">Transparent about commercial relationships</li>
+                <li style="margin-bottom: 0.3rem;">5 questions (2 minutes)</li>
+                <li style="margin-bottom: 0.3rem;">Immediate welcome to our support community</li>
+                <li style="margin-bottom: 0.3rem;">Personalized pathway recommendations</li>
+                <li style="margin-bottom: 0.3rem;">Optional GP summary if you want to involve your doctor</li>
             </ul>
 
-            <h3>Possible outcomes include:</h3>
-            <ul style="margin-left: 1.5rem; margin-bottom: 1rem; font-size: 0.9rem;">
-                <li style="margin-bottom: 0.3rem;"><strong>You're fine</strong> - Validation and wellness optimization tips</li>
-                <li style="margin-bottom: 0.3rem;"><strong>Lifestyle changes</strong> - Evidence-based self-management strategies</li>
-                <li style="margin-bottom: 0.3rem;"><strong>GP consultation</strong> - With printable summary</li>
-                <li style="margin-bottom: 0.3rem;"><strong>Hypnotherapy</strong> - ClearMinds platform (when evidence supports it)</li>
-                <li style="margin-bottom: 0.3rem;"><strong>Comprehensive evaluation</strong> - MindFit.Clinic neuroevaluation</li>
-                <li style="margin-bottom: 0.3rem;"><strong>Specialist care</strong> - SmartStartMinds precision psychiatry</li>
-                <li style="margin-bottom: 0.3rem;"><strong>Crisis support</strong> - Immediate safety pathways</li>
-            </ul>
-
-            <h3>Privacy & Data</h3>
+            <h3>Your Privacy</h3>
             <p style="margin-bottom: 1rem; font-size: 0.9rem;">
-                Your responses are processed in your browser. No data is stored unless you choose to receive results by email. See our <a href="/corporate/policies/data-governance/privacy-policy.html" style="color: var(--clearminds-teal);">Privacy Policy</a> for details.
+                Your responses are processed in your browser and never shared with your employer. See our <a href="/corporate/policies/data-governance/privacy-policy.html" style="color: var(--clearminds-teal);">Privacy Policy</a> for details.
             </p>
 
-            <button class="btn btn-block" onclick="app.startAssessment()">Start Assessment</button>
+            <button class="btn btn-block" onclick="app.startAssessment()">Start Check-In</button>
         </div>
 
         <!-- Assessment Page -->
@@ -484,7 +385,7 @@
                 <div class="progress-bar">
                     <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
                 </div>
-                <div class="progress-text" id="progress-text">Question 1 of 15</div>
+                <div class="progress-text" id="progress-text">Question 1 of 5</div>
             </div>
 
             <div class="question-card" id="question-card">
@@ -492,7 +393,7 @@
             </div>
 
             <p style="text-align: center; color: var(--text-light); font-size: 0.85rem; margin: 0.75rem 0;">
-                Select an answer to automatically continue (or use Next if reviewing)
+                Select an answer to automatically continue
             </p>
 
             <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
@@ -504,7 +405,7 @@
         <!-- Results Page -->
         <div id="results" class="hidden">
             <div class="result-header">
-                <h2 id="result-title">Your Results</h2>
+                <h2 id="result-title">Welcome to Clear Minds</h2>
                 <p id="result-summary"></p>
             </div>
 
@@ -512,282 +413,109 @@
                 <!-- Outcome pathways will be inserted here -->
             </div>
 
-            <div class="email-form">
-                <h3>📄 Download GP Summary</h3>
-                <p style="margin-bottom: 0.75rem; font-size: 0.9rem;">For a detailed clinical summary, please provide your name:</p>
-                <input type="text" id="name-input" placeholder="Your name" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-light); border-radius: 8px; font-size: 0.9rem; margin-bottom: 0.75rem;">
-                <button class="btn" onclick="app.downloadPDF()">📄 Download Detailed GP Summary</button>
-
-                <p style="margin: 1rem 0 0.5rem 0; font-size: 0.9rem;">Or email your results (optional):</p>
-                <input type="email" id="email-input" placeholder="your.email@example.com">
-                <button class="btn btn-secondary" onclick="app.emailResults()">Send Results</button>
-            </div>
-
             <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
-                <button class="btn btn-secondary" onclick="app.restart()">Start New Assessment</button>
+                <button class="btn btn-secondary" onclick="app.restart()">Start New Check-In</button>
             </div>
         </div>
     </div>
 
     <script>
-        // ClearMinds Neuroindicator Application
+        // ClearMinds Wellness Check-In Application
         const app = {
             // State
             currentQuestion: 0,
             responses: [],
-            confidenceScores: {
-                crisis: 0,
-                baselineWellness: 0,
-                stressAnxiety: 0,
-                sleepEnergy: 0,
-                attentionFocus: 0,
-                moodRegulation: 0,
-                somaticSymptoms: 0,
-                lifeStressors: 0
+            userProfile: {
+                wellness: 0,
+                pathway: '',
+                chronicity: '',
+                readiness: '',
+                crisis: false,
+                oceanCandidate: false,
+                needsClinical: false,
+                monitor: false
             },
 
-            // Question bank
+            // Question bank (5 questions)
             questions: [
                 {
                     id: 1,
-                    text: "How would you describe your overall wellbeing right now?",
-                    type: "scale",
-                    scale: [
-                        { value: 1, label: "Very poor" },
-                        { value: 2, label: "Poor" },
-                        { value: 3, label: "Fair" },
-                        { value: 4, label: "Good" },
-                        { value: 5, label: "Very good" }
-                    ],
-                    signals: {
-                        baselineWellness: 'direct',
-                        crisis: 'inverse'
-                    }
+                    text: "How are you feeling overall right now?",
+                    type: "options",
+                    options: [
+                        {
+                            value: 1,
+                            text: "I'm doing well—just checking in or curious",
+                            signals: { wellness: 5, oceanCandidate: true }
+                        },
+                        {
+                            value: 2,
+                            text: "Managing okay, but could use some support",
+                            signals: { wellness: 3, needsSupport: true }
+                        },
+                        {
+                            value: 3,
+                            text: "Struggling—things feel hard right now",
+                            signals: { wellness: 2, needsIntervention: true }
+                        },
+                        {
+                            value: 4,
+                            text: "In crisis—I need immediate help",
+                            signals: { crisis: true }
+                        }
+                    ]
                 },
                 {
                     id: 2,
-                    text: "In the past 2 weeks, have you had thoughts of self-harm or suicide?",
+                    text: "What's your main reason for checking in today?",
                     type: "options",
                     options: [
-                        { value: 1, text: "No, not at all" },
-                        { value: 3, text: "Briefly, but not seriously" },
-                        { value: 5, text: "Yes, frequently" },
-                        { value: 5, text: "Yes, and I have a plan" }
-                    ],
-                    signals: {
-                        crisis: 'direct',
-                        moodRegulation: 'direct'
-                    },
-                    critical: true
+                        { value: 1, text: "Just exploring / general curiosity", pathway: "wellness", oceanCandidate: true },
+                        { value: 2, text: "Work stress or burnout", pathway: "stress" },
+                        { value: 3, text: "Sleep problems or low energy", pathway: "sleep" },
+                        { value: 4, text: "Feeling anxious or worried a lot", pathway: "anxiety" },
+                        { value: 5, text: "Low mood or feeling hopeless", pathway: "mood" },
+                        { value: 6, text: "Trouble concentrating or staying focused", pathway: "focus" },
+                        { value: 7, text: "Specific habit I want to change (smoking, drinking, weight)", pathway: "habits" },
+                        { value: 8, text: "I want to understand myself better", pathway: "wellness", oceanCandidate: true },
+                        { value: 9, text: "Looking for community support", pathway: "community" }
+                    ]
                 },
                 {
                     id: 3,
-                    text: "How well are you sleeping?",
+                    text: "How long has this been going on?",
                     type: "options",
                     options: [
-                        { value: 1, text: "Very well - 7-9 hours, restful" },
-                        { value: 2, text: "Fairly well - occasional disruption" },
-                        { value: 3, text: "Poorly - difficulty falling or staying asleep" },
-                        { value: 4, text: "Very poorly - significant sleep problems" }
-                    ],
-                    signals: {
-                        sleepEnergy: 'direct',
-                        stressAnxiety: 'moderate',
-                        baselineWellness: 'inverse'
-                    }
+                        { value: 1, text: "Just started (last few days)", chronicity: "acute" },
+                        { value: 2, text: "A few weeks", chronicity: "subacute" },
+                        { value: 3, text: "A few months", chronicity: "chronic" },
+                        { value: 4, text: "More than 6 months", chronicity: "chronic", clinicalConsideration: true },
+                        { value: 5, text: "This is ongoing / chronic", chronicity: "chronic", clinicalConsideration: true },
+                        { value: 6, text: "Not applicable—I'm here for prevention/optimization", chronicity: "none", oceanCandidate: true }
+                    ]
                 },
                 {
                     id: 4,
-                    text: "How often do you feel stressed or anxious?",
-                    type: "scale",
-                    scale: [
-                        { value: 1, label: "Rarely" },
-                        { value: 2, label: "Sometimes" },
-                        { value: 3, label: "Often" },
-                        { value: 4, label: "Most days" },
-                        { value: 5, label: "Constantly" }
-                    ],
-                    signals: {
-                        stressAnxiety: 'direct',
-                        baselineWellness: 'inverse',
-                        somaticSymptoms: 'moderate'
-                    }
+                    text: "Have you tried anything to help so far?",
+                    type: "options",
+                    options: [
+                        { value: 1, text: "Nothing yet—this is my first step", readiness: "beginner" },
+                        { value: 2, text: "Lifestyle changes (exercise, sleep, etc.) and they're helping a bit", readiness: "engaged" },
+                        { value: 3, text: "I've tried things but not seeing much improvement", readiness: "frustrated", escalate: true },
+                        { value: 4, text: "I'm currently getting professional help (therapy, medication, etc.)", readiness: "clinical" },
+                        { value: 5, text: "I want to optimize even though I'm doing okay", readiness: "optimization", oceanCandidate: true }
+                    ]
                 },
                 {
                     id: 5,
-                    text: "How is your ability to concentrate and focus?",
+                    text: "One more important question: Are you having thoughts of harming yourself or ending your life?",
                     type: "options",
                     options: [
-                        { value: 1, text: "Excellent - no problems" },
-                        { value: 2, text: "Good - minor difficulties" },
-                        { value: 3, text: "Fair - noticeable difficulties" },
-                        { value: 4, text: "Poor - significant problems focusing" }
+                        { value: 1, text: "No, not at all", crisis: false },
+                        { value: 2, text: "I've had passing thoughts, but I'm safe", crisis: false, monitor: true },
+                        { value: 3, text: "Yes, I'm having these thoughts", crisis: true }
                     ],
-                    signals: {
-                        attentionFocus: 'direct',
-                        sleepEnergy: 'moderate',
-                        stressAnxiety: 'moderate'
-                    }
-                },
-                {
-                    id: 6,
-                    text: "Over the past month, how often have you felt down, depressed, or hopeless?",
-                    type: "scale",
-                    scale: [
-                        { value: 1, label: "Not at all" },
-                        { value: 2, label: "Several days" },
-                        { value: 3, label: "More than half" },
-                        { value: 4, label: "Nearly every day" }
-                    ],
-                    signals: {
-                        moodRegulation: 'direct',
-                        crisis: 'moderate',
-                        baselineWellness: 'inverse'
-                    }
-                },
-                {
-                    id: 7,
-                    text: "Do you experience physical symptoms like headaches, muscle tension, or stomach issues?",
-                    type: "options",
-                    options: [
-                        { value: 1, text: "No, rarely or never" },
-                        { value: 2, text: "Occasionally" },
-                        { value: 3, text: "Frequently" },
-                        { value: 4, text: "Daily or almost daily" }
-                    ],
-                    signals: {
-                        somaticSymptoms: 'direct',
-                        stressAnxiety: 'moderate'
-                    }
-                },
-                {
-                    id: 8,
-                    text: "How much are work or life stressors impacting your wellbeing?",
-                    type: "scale",
-                    scale: [
-                        { value: 1, label: "Not at all" },
-                        { value: 2, label: "A little" },
-                        { value: 3, label: "Moderately" },
-                        { value: 4, label: "Significantly" },
-                        { value: 5, label: "Severely" }
-                    ],
-                    signals: {
-                        lifeStressors: 'direct',
-                        stressAnxiety: 'moderate',
-                        baselineWellness: 'inverse'
-                    }
-                },
-                {
-                    id: 9,
-                    text: "If you've been experiencing any difficulties, how long have they been present?",
-                    type: "options",
-                    options: [
-                        { value: 1, text: "Not applicable / No significant difficulties" },
-                        { value: 1, text: "Less than 2 weeks" },
-                        { value: 2, text: "2-4 weeks" },
-                        { value: 3, text: "1-3 months" },
-                        { value: 4, text: "More than 3 months" },
-                        { value: 5, text: "More than 6 months" }
-                    ],
-                    signals: {
-                        crisis: 'moderate',
-                        chronicPattern: 'direct'
-                    }
-                },
-                {
-                    id: 10,
-                    text: "How much (if at all) are any concerns affecting your daily activities (work, relationships, self-care)?",
-                    type: "scale",
-                    scale: [
-                        { value: 1, label: "Not at all" },
-                        { value: 2, label: "Slightly" },
-                        { value: 3, label: "Moderately" },
-                        { value: 4, label: "Significantly" },
-                        { value: 5, label: "Severely" }
-                    ],
-                    signals: {
-                        functionalImpact: 'direct',
-                        crisis: 'moderate',
-                        baselineWellness: 'inverse'
-                    }
-                },
-                {
-                    id: 11,
-                    text: "What are you hoping to achieve from this assessment?",
-                    type: "options",
-                    options: [
-                        { value: 1, text: "Just checking in - feeling generally okay" },
-                        { value: 2, text: "Looking for ways to optimize my wellbeing" },
-                        { value: 3, text: "Want to understand what I'm experiencing" },
-                        { value: 4, text: "Need help managing specific symptoms" },
-                        { value: 5, text: "Seeking professional support recommendations" }
-                    ],
-                    signals: {
-                        baselineWellness: 'contextual',
-                        helpseeking: 'direct'
-                    }
-                },
-                {
-                    id: 12,
-                    text: "Have you tried any self-help strategies (e.g., exercise, meditation, sleep hygiene)?",
-                    type: "options",
-                    options: [
-                        { value: 1, text: "No, haven't needed to" },
-                        { value: 2, text: "Yes, and they've helped" },
-                        { value: 3, text: "Yes, but minimal improvement" },
-                        { value: 4, text: "Yes, but no improvement at all" }
-                    ],
-                    signals: {
-                        selfManagementCapacity: 'inverse',
-                        baselineWellness: 'contextual'
-                    }
-                },
-                {
-                    id: 13,
-                    text: "Are you currently receiving any mental health support (therapy, medication, etc.)?",
-                    type: "options",
-                    options: [
-                        { value: 1, text: "No" },
-                        { value: 2, text: "Yes, and it's helping" },
-                        { value: 3, text: "Yes, but not helping much" },
-                        { value: 4, text: "Previously, but not currently" }
-                    ],
-                    signals: {
-                        currentSupport: 'direct',
-                        treatmentResistant: 'contextual'
-                    }
-                },
-                {
-                    id: 14,
-                    text: "How would you describe your energy levels?",
-                    type: "scale",
-                    scale: [
-                        { value: 1, label: "Very low" },
-                        { value: 2, label: "Low" },
-                        { value: 3, label: "Moderate" },
-                        { value: 4, label: "Good" },
-                        { value: 5, label: "Excellent" }
-                    ],
-                    signals: {
-                        sleepEnergy: 'direct',
-                        moodRegulation: 'moderate',
-                        baselineWellness: 'direct'
-                    }
-                },
-                {
-                    id: 15,
-                    text: "Do you have good social support (friends, family, community)?",
-                    type: "options",
-                    options: [
-                        { value: 1, text: "Yes, strong support network" },
-                        { value: 2, text: "Some support, but limited" },
-                        { value: 3, text: "Very little support" },
-                        { value: 4, text: "No support at all" }
-                    ],
-                    signals: {
-                        socialSupport: 'inverse',
-                        crisis: 'moderate'
-                    }
+                    critical: true
                 }
             ],
 
@@ -808,35 +536,19 @@
                 let html = `
                     <div class="question-number">Question ${this.currentQuestion + 1} of ${this.questions.length}</div>
                     <div class="question-text">${question.text}</div>
+                    <div class="option-group">
                 `;
 
-                if (question.type === 'scale') {
-                    html += '<div class="scale-group">';
-                    question.scale.forEach((option, index) => {
-                        html += `
-                            <div class="scale-option">
-                                <input type="radio" name="q${question.id}" id="q${question.id}_${index}" value="${option.value}">
-                                <label for="q${question.id}_${index}">
-                                    <div class="scale-number">${option.value}</div>
-                                    <div class="scale-label">${option.label}</div>
-                                </label>
-                            </div>
-                        `;
-                    });
-                    html += '</div>';
-                } else if (question.type === 'options') {
-                    html += '<div class="option-group">';
-                    question.options.forEach((option, index) => {
-                        html += `
-                            <div class="option-card">
-                                <input type="radio" name="q${question.id}" id="q${question.id}_${index}" value="${option.value}">
-                                <label for="q${question.id}_${index}">${option.text}</label>
-                            </div>
-                        `;
-                    });
-                    html += '</div>';
-                }
+                question.options.forEach((option, index) => {
+                    html += `
+                        <div class="option-card">
+                            <input type="radio" name="q${question.id}" id="q${question.id}_${index}" value="${index}">
+                            <label for="q${question.id}_${index}">${option.text}</label>
+                        </div>
+                    `;
+                });
 
+                html += '</div>';
                 card.innerHTML = html;
 
                 // Update progress
@@ -847,32 +559,24 @@
                 // Show/hide back button
                 document.getElementById('btn-back').style.display = this.currentQuestion > 0 ? 'inline-block' : 'none';
 
-                // Show next button if question already answered (user went back to review)
-                // This lets them proceed without re-selecting their answer
+                // Show next button if question already answered
                 const isAnswered = !!this.responses[this.currentQuestion];
                 document.getElementById('btn-next').style.display = isAnswered ? 'inline-block' : 'none';
 
                 // Pre-select if we've already answered
                 if (this.responses[this.currentQuestion]) {
-                    const selected = this.responses[this.currentQuestion].value;
-                    const radio = card.querySelector(`input[value="${selected}"]`);
+                    const selectedIndex = this.responses[this.currentQuestion].selectedIndex;
+                    const radio = card.querySelector(`input[value="${selectedIndex}"]`);
                     if (radio) radio.checked = true;
                 }
 
                 // Add auto-progression on selection
                 const radios = card.querySelectorAll('input[type="radio"]');
                 radios.forEach(radio => {
-                    radio.addEventListener('change', (e) => {
-                        // Visual feedback - highlight selection
-                        const label = e.target.nextElementSibling || e.target.parentElement.querySelector('label');
-                        if (label) {
-                            label.style.transition = 'all 0.3s ease';
-                        }
-
-                        // Auto-advance after 800ms
+                    radio.addEventListener('change', () => {
                         setTimeout(() => {
                             this.nextQuestion();
-                        }, 800);
+                        }, 600);
                     });
                 });
             },
@@ -883,19 +587,36 @@
                 const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
 
                 if (!selected) {
-                    // Silently return if nothing selected (auto-progression will handle it)
                     return;
                 }
+
+                const selectedIndex = parseInt(selected.value);
+                const selectedOption = question.options[selectedIndex];
 
                 // Save response
                 this.responses[this.currentQuestion] = {
                     questionId: question.id,
-                    value: parseInt(selected.value),
+                    selectedIndex: selectedIndex,
+                    option: selectedOption,
                     question: question
                 };
 
-                // Check for crisis
-                if (question.critical && parseInt(selected.value) >= 5) {
+                // Update user profile
+                if (selectedOption.signals) {
+                    if (selectedOption.signals.wellness) this.userProfile.wellness = selectedOption.signals.wellness;
+                    if (selectedOption.signals.crisis) this.userProfile.crisis = true;
+                    if (selectedOption.signals.oceanCandidate) this.userProfile.oceanCandidate = true;
+                }
+                if (selectedOption.pathway) this.userProfile.pathway = selectedOption.pathway;
+                if (selectedOption.chronicity) this.userProfile.chronicity = selectedOption.chronicity;
+                if (selectedOption.readiness) this.userProfile.readiness = selectedOption.readiness;
+                if (selectedOption.clinicalConsideration) this.userProfile.needsClinical = true;
+                if (selectedOption.escalate) this.userProfile.needsClinical = true;
+                if (selectedOption.crisis) this.userProfile.crisis = true;
+                if (selectedOption.monitor) this.userProfile.monitor = true;
+
+                // Check for crisis on critical question
+                if (question.critical && selectedOption.crisis) {
                     this.showCrisisIntervention();
                     return;
                 }
@@ -905,7 +626,7 @@
                     this.currentQuestion++;
                     this.renderQuestion();
                 } else {
-                    this.calculateResults();
+                    this.showResults();
                 }
             },
 
@@ -923,7 +644,7 @@
                 document.getElementById('results').classList.remove('hidden');
 
                 document.getElementById('result-title').textContent = '🚨 Immediate Support Needed';
-                document.getElementById('result-summary').textContent = 'Based on your responses, we strongly recommend seeking immediate support.';
+                document.getElementById('result-summary').textContent = 'Based on your response, we strongly recommend seeking immediate support.';
 
                 const pathways = document.getElementById('result-pathways');
                 pathways.innerHTML = `
@@ -939,51 +660,12 @@
 
                     <div class="pathway-card">
                         <h3>You Are Not Alone</h3>
-                        <p>What you're experiencing is serious, but help is available. Please reach out to one of the services above right now. They are trained to help and want to support you.</p>
+                        <p>What you're experiencing is serious, but help is available. Please reach out to one of the services above right now.</p>
 
-                        <h4 style="margin-top: 1.5rem;">Next Steps:</h4>
-                        <ul>
-                            <li>Contact a crisis service above immediately</li>
-                            <li>Tell someone you trust how you're feeling</li>
-                            <li>Make an urgent GP appointment</li>
-                            <li>Remove any means of self-harm from your environment</li>
-                        </ul>
-
-                        <h4 style="margin-top: 1.5rem;">Additional Resources:</h4>
-                        <ul>
-                            <li><strong>Mind:</strong> 0300 123 3393 (mental health support)</li>
-                            <li><strong>Papyrus (under 35s):</strong> 0800 068 4141</li>
-                            <li><strong>Campaign Against Living Miserably (CALM):</strong> 0800 58 58 58</li>
-                        </ul>
+                        <h4 style="margin-top: 1.5rem;">Our Community is Here Too</h4>
+                        <p>When you're ready, our 91,000-member community with 24/7 professional moderation can provide ongoing support. But right now, please contact a crisis service.</p>
                     </div>
                 `;
-            },
-
-            // Calculate results
-            calculateResults() {
-                // Process all responses and calculate confidence scores
-                this.responses.forEach(response => {
-                    const signals = response.question.signals;
-                    const value = response.value;
-
-                    for (let [dimension, type] of Object.entries(signals)) {
-                        if (type === 'direct') {
-                            this.confidenceScores[dimension] = (this.confidenceScores[dimension] || 0) + value;
-                        } else if (type === 'inverse') {
-                            this.confidenceScores[dimension] = (this.confidenceScores[dimension] || 0) + (6 - value);
-                        } else if (type === 'moderate') {
-                            this.confidenceScores[dimension] = (this.confidenceScores[dimension] || 0) + (value * 0.5);
-                        }
-                    }
-                });
-
-                // Normalize scores
-                for (let dimension in this.confidenceScores) {
-                    this.confidenceScores[dimension] = Math.min(this.confidenceScores[dimension] / this.questions.length, 5);
-                }
-
-                // Determine primary outcome
-                this.showResults();
             },
 
             // Show results
@@ -991,320 +673,208 @@
                 document.getElementById('assessment').classList.add('hidden');
                 document.getElementById('results').classList.remove('hidden');
 
-                // Determine outcome based on scores
-                const scores = this.confidenceScores;
-
-                // Crisis check (already handled)
-                if (scores.crisis > 3.5) {
-                    this.showCrisisIntervention();
-                    return;
-                }
-
-                // Baseline wellness (you're fine)
-                if (scores.baselineWellness >= 4) {
-                    this.showBaselineWellnessOutcome();
-                }
-                // High stress/anxiety
-                else if (scores.stressAnxiety >= 3.5 || scores.sleepEnergy >= 3.5) {
-                    this.showStressAnxietyOutcome();
-                }
-                // Mood/depression indicators
-                else if (scores.moodRegulation >= 3.5) {
-                    this.showMoodRegulationOutcome();
-                }
-                // Focus/ADHD indicators
-                else if (scores.attentionFocus >= 3.5) {
-                    this.showAttentionFocusOutcome();
-                }
-                // General wellbeing support
-                else {
-                    this.showGeneralSupportOutcome();
-                }
-            },
-
-            // Baseline wellness outcome (you're fine)
-            showBaselineWellnessOutcome() {
-                document.getElementById('result-title').textContent = '✅ You\'re Doing Well';
-                document.getElementById('result-summary').textContent = 'Based on your responses, you\'re managing well overall. Here are some ways to optimize further.';
-
+                const profile = this.userProfile;
                 const pathways = document.getElementById('result-pathways');
-                pathways.innerHTML = `
-                    <div class="pathway-card">
-                        <h3>What This Means</h3>
-                        <p>Your responses indicate good baseline mental wellness. You're coping well with day-to-day challenges and maintaining healthy functioning.</p>
 
-                        <h4 style="margin-top: 1.5rem;">Wellness Optimization Strategies:</h4>
+                // Build results based on profile
+                let resultsHTML = '';
+
+                // Community welcome (ALWAYS FIRST)
+                resultsHTML += `
+                    <div class="pathway-card" style="border: 3px solid var(--clearminds-teal); background: var(--clearminds-green);">
+                        <h3>🤝 First: You're Part of Something Bigger</h3>
+                        <p><strong>Welcome to our 91,000-member support community</strong></p>
+                        <p>You're not alone in what you're experiencing. Our community is:</p>
                         <ul>
-                            <li><strong>Maintain good habits:</strong> Continue your sleep, exercise, and social routines</li>
-                            <li><strong>Preventive practices:</strong> Meditation, breathwork, or hypnotherapy for stress management</li>
-                            <li><strong>Self-awareness:</strong> Consider OCEAN personality assessment for deeper insights</li>
-                            <li><strong>Stay connected:</strong> Maintain social support networks</li>
+                            <li>Active 24/7 with peer support from people who understand</li>
+                            <li>Professionally moderated (zero serious incidents across 91k members)</li>
+                            <li>Private and safe (your employer can't see your activity)</li>
+                            <li>A place where most healing happens</li>
                         </ul>
-                    </div>
-
-                    <div class="pathway-card">
-                        <h3>Optional Support Options</h3>
-
-                        <h4><a href="https://clearminds.business" style="color: var(--clearminds-teal);">ClearMinds Wellness Platform</a> <span class="commercial-badge">Our Service</span></h4>
-                        <p><strong>Why:</strong> Preventive wellness and stress optimization when you're already functioning well</p>
-                        <p><strong>What:</strong> Hypnotherapy, meditation, breathwork for peak performance</p>
-
-                        <h4 style="margin-top: 1.5rem;">OCEAN Personality Assessment</h4>
-                        <p><strong>Why:</strong> Deepen self-understanding and optimize strengths</p>
-                        <p><strong>What:</strong> Evidence-based personality profiling (Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism)</p>
+                        <button class="btn btn-block" style="margin-top: 1rem;">Enter Community Now</button>
                     </div>
                 `;
-            },
 
-            // Stress/anxiety outcome
-            showStressAnxietyOutcome() {
-                document.getElementById('result-title').textContent = '😰 Stress & Anxiety Patterns Detected';
-                document.getElementById('result-summary').textContent = 'Your responses indicate elevated stress and/or anxiety. Here are evidence-based pathways to consider.';
+                // Personalized pathway based on Q2
+                resultsHTML += `<div class="pathway-card"><h3>🎯 Your Personalized Pathway</h3>`;
+                resultsHTML += `<p>Based on your check-in, here's support that matches what you're experiencing:</p>`;
 
-                const pathways = document.getElementById('result-pathways');
-                pathways.innerHTML = `
-                    <div class="pathway-card">
-                        <h3>What This Means</h3>
-                        <p>You're experiencing stress or anxiety that's impacting your wellbeing. This is very common and there are effective evidence-based approaches available.</p>
-                    </div>
-
-                    <div class="pathway-card">
-                        <h3>Try These First (2-4 weeks):</h3>
-                        <ul>
-                            <li><strong>Sleep hygiene:</strong> Regular schedule, reduce screen time before bed, cool dark room</li>
-                            <li><strong>Caffeine reduction:</strong> Limit to mornings only, max 2 cups/day</li>
-                            <li><strong>Daily breathwork:</strong> 10 minutes box breathing (4-4-4-4 pattern)</li>
-                            <li><strong>Physical activity:</strong> 30 minutes moderate exercise 3-5x/week</li>
-                            <li><strong>Magnesium supplement:</strong> 200-400mg before bed (consult GP if on medications)</li>
-                        </ul>
-                        <p><strong>Monitor for 2-4 weeks.</strong> If no improvement, consider professional support below.</p>
-                    </div>
-
-                    <div class="pathway-card">
-                        <h3>Professional Support Options:</h3>
-
-                        <h4>1. GP Consultation</h4>
-                        <p><strong>Why:</strong> Rule out medical causes (thyroid, heart conditions, etc.)</p>
-                        <p><strong>When:</strong> If symptoms persist >4 weeks or worsen</p>
-                        <p><strong>Action:</strong> <button class="btn" onclick="app.downloadPDF()">Download GP Summary</button></p>
-
-                        <h4 style="margin-top: 1.5rem;">2. <a href="https://clearminds.business" style="color: var(--clearminds-teal);">ClearMinds Hypnotherapy</a> <span class="commercial-badge">Our Service</span> <span class="evidence-badge">Evidence-Based</span></h4>
-                        <p><strong>Why:</strong> Clinical evidence for stress, anxiety, and sleep issues</p>
-                        <p><strong>What:</strong> Self-guided hypnotherapy, meditation, breathwork on digital platform</p>
-                        <p><strong>Evidence:</strong> Meta-analyses show hypnotherapy effective for anxiety and stress management</p>
-                        <p><strong>Cost:</strong> Subscription-based, more affordable than traditional therapy</p>
-
-                        <h4 style="margin-top: 1.5rem;">3. CBT/Talking Therapy</h4>
-                        <p><strong>Why:</strong> Gold-standard treatment for anxiety disorders</p>
-                        <p><strong>How:</strong> NHS IAPT (free) or private therapist</p>
-                        <p><strong>Link:</strong> <a href="https://www.nhs.uk/service-search/mental-health/find-a-psychological-therapies-service/" target="_blank">Find NHS IAPT Service</a></p>
-
-                        <h4 style="margin-top: 1.5rem;">4. <a href="https://mindfit.clinic" style="color: var(--clearminds-teal);" target="_blank">MindFit.Clinic Neuroevaluation</a></h4>
-                        <p><strong>Why:</strong> If symptoms are complex or not responding to standard approaches</p>
-                        <p><strong>What:</strong> Comprehensive cognitive and neurological assessment with Dr. Thomas Dannhauser</p>
-                    </div>
-
-                    <div class="pathway-card">
-                        <h3>When to Escalate:</h3>
-                        <ul>
-                            <li>Symptoms significantly interfering with work, relationships, or daily life</li>
-                            <li>No improvement after 4 weeks of self-management strategies</li>
-                            <li>Symptoms worsening despite interventions</li>
-                            <li>New physical symptoms emerge (chest pain, breathing difficulties - call 111/999)</li>
-                        </ul>
-                    </div>
-                `;
-            },
-
-            // Mood regulation outcome
-            showMoodRegulationOutcome() {
-                document.getElementById('result-title').textContent = '😔 Low Mood Patterns Detected';
-                document.getElementById('result-summary').textContent = 'Your responses suggest difficulties with mood regulation. Professional support is recommended.';
-
-                const pathways = document.getElementById('result-pathways');
-                pathways.innerHTML = `
-                    <div class="pathway-card">
-                        <h3>What This Means</h3>
-                        <p>You're experiencing low mood or depressive symptoms. This is a medical condition that responds well to treatment. Please don't try to "tough it out" alone.</p>
-                    </div>
-
-                    <div class="pathway-card">
-                        <h3>Recommended Actions:</h3>
-
-                        <h4>1. GP Consultation (Priority)</h4>
-                        <p><strong>Why:</strong> Depression is a medical condition requiring professional assessment</p>
-                        <p><strong>What to expect:</strong> Screening questions, discussion of treatment options (therapy, medication, or both)</p>
-                        <p><strong>Action:</strong> <button class="btn" onclick="app.downloadPDF()">Download GP Summary</button></p>
-                        <p style="margin-top: 0.5rem;"><strong>Book appointment:</strong> This week if possible</p>
-
-                        <h4 style="margin-top: 1.5rem;">2. NHS Talking Therapies (IAPT)</h4>
-                        <p><strong>Why:</strong> Free, evidence-based psychological therapy</p>
-                        <p><strong>How:</strong> Self-refer or GP referral</p>
-                        <p><strong>Link:</strong> <a href="https://www.nhs.uk/service-search/mental-health/find-a-psychological-therapies-service/" target="_blank">Find Your Local Service</a></p>
-
-                        <h4 style="margin-top: 1.5rem;">3. <a href="https://smartstartminds.co.uk" style="color: var(--clearminds-teal);" target="_blank">SmartStartMinds Precision Psychiatry</a></h4>
-                        <p><strong>Why:</strong> If symptoms are treatment-resistant or complex</p>
-                        <p><strong>What:</strong> Advanced psychiatric care, neurofeedback, precision medication management</p>
-                        <p><strong>Note:</strong> CQC-registered mental health service (1-2950268195)</p>
-                    </div>
-
-                    <div class="pathway-card">
-                        <h3>Supportive Strategies (Alongside Professional Help):</h3>
-                        <ul>
-                            <li><strong>Physical activity:</strong> 30 mins/day shown to improve mood</li>
-                            <li><strong>Social connection:</strong> Even when you don't feel like it</li>
-                            <li><strong>Sleep routine:</strong> Regular wake/sleep times</li>
-                            <li><strong>Avoid alcohol:</strong> Worsens depression</li>
-                            <li><strong>Sunlight exposure:</strong> Especially important in winter</li>
-                        </ul>
-                        <p><strong>Important:</strong> These support professional treatment, they don't replace it.</p>
-                    </div>
-
-                    <div class="warning-box">
-                        <h3>If Symptoms Worsen:</h3>
-                        <p>Contact your GP urgently or call NHS 111 if you develop thoughts of self-harm or suicide. These services are available 24/7 and want to help you.</p>
-                    </div>
-                `;
-            },
-
-            // Attention/focus outcome
-            showAttentionFocusOutcome() {
-                document.getElementById('result-title').textContent = '🎯 Attention & Focus Difficulties Detected';
-                document.getElementById('result-summary').textContent = 'Your responses indicate challenges with concentration and focus. This could have multiple causes.';
-
-                const pathways = document.getElementById('result-pathways');
-                pathways.innerHTML = `
-                    <div class="pathway-card">
-                        <h3>What This Means</h3>
-                        <p>Difficulty concentrating can stem from many sources: stress, sleep problems, ADHD, anxiety, or other conditions. Proper assessment helps identify the cause.</p>
-                    </div>
-
-                    <div class="pathway-card">
-                        <h3>Recommended Pathway:</h3>
-
-                        <h4>1. <a href="https://mindfit.clinic" style="color: var(--clearminds-teal);" target="_blank">MindFit.Clinic Neuroevaluation</a> <span class="evidence-badge">Recommended</span></h4>
-                        <p><strong>Why:</strong> Comprehensive cognitive assessment to identify the root cause</p>
-                        <p><strong>What:</strong> Detailed neurological and cognitive testing with Dr. Thomas Dannhauser</p>
-                        <p><strong>Outcomes:</strong> Clear diagnosis and personalized treatment plan</p>
-                        <p><strong>Useful for:</strong> ADHD assessment, cognitive profiling, attention difficulties</p>
-
-                        <h4 style="margin-top: 1.5rem;">2. GP Consultation</h4>
-                        <p><strong>Why:</strong> Rule out medical causes (thyroid, vitamin deficiencies, sleep disorders)</p>
-                        <p><strong>Action:</strong> <button class="btn" onclick="app.downloadPDF()">Download GP Summary</button></p>
-                    </div>
-
-                    <div class="pathway-card">
-                        <h3>Try These While Awaiting Assessment:</h3>
-                        <ul>
-                            <li><strong>Sleep optimization:</strong> 7-9 hours, consistent schedule</li>
-                            <li><strong>Reduce multitasking:</strong> Single-task focus blocks (Pomodoro technique)</li>
-                            <li><strong>Environmental control:</strong> Minimize distractions, noise-cancelling headphones</li>
-                            <li><strong>Caffeine timing:</strong> Morning only, avoid afternoon/evening</li>
-                            <li><strong>Physical breaks:</strong> 5-10 minutes movement every hour</li>
-                        </ul>
-                    </div>
-
-                    <div class="pathway-card">
-                        <h3>If ADHD is Suspected:</h3>
-                        <p>Proper ADHD diagnosis requires comprehensive assessment. MindFit.Clinic or NHS psychiatry referral (via GP) are appropriate pathways.</p>
-                        <p><strong>Note:</strong> ADHD is highly treatable with medication, therapy, or both. Don't delay assessment if symptoms are impacting your life.</p>
-                    </div>
-                `;
-            },
-
-            // General support outcome
-            showGeneralSupportOutcome() {
-                document.getElementById('result-title').textContent = '🤝 General Wellbeing Support';
-                document.getElementById('result-summary').textContent = 'Your responses suggest moderate wellbeing concerns. Here are balanced recommendations.';
-
-                const pathways = document.getElementById('result-pathways');
-                pathways.innerHTML = `
-                    <div class="pathway-card">
-                        <h3>What This Means</h3>
-                        <p>You're experiencing some wellbeing challenges, but they're manageable with the right support. Start with lifestyle strategies and consider professional options if needed.</p>
-                    </div>
-
-                    <div class="pathway-card">
-                        <h3>Start Here (2-4 weeks):</h3>
-                        <ul>
-                            <li><strong>Sleep hygiene:</strong> Prioritize 7-9 hours, consistent schedule</li>
-                            <li><strong>Regular exercise:</strong> 30 minutes, 3-5x/week (walking counts!)</li>
-                            <li><strong>Social connection:</strong> Regular contact with friends/family</li>
-                            <li><strong>Stress management:</strong> Meditation, breathwork, or mindfulness</li>
-                            <li><strong>Limit alcohol:</strong> Can worsen mood and sleep</li>
-                        </ul>
-                        <p><strong>Monitor progress:</strong> Track symptoms for 2-4 weeks. If no improvement, consider options below.</p>
-                    </div>
-
-                    <div class="pathway-card">
-                        <h3>Professional Support Options:</h3>
-
-                        <h4>1. <a href="https://clearminds.business" style="color: var(--clearminds-teal);">ClearMinds Digital Wellness</a> <span class="commercial-badge">Our Service</span></h4>
-                        <p><strong>Why:</strong> Accessible, affordable self-guided support for stress, sleep, and anxiety</p>
-                        <p><strong>What:</strong> Hypnotherapy, meditation, breathwork library</p>
-
-                        <h4 style="margin-top: 1.5rem;">2. GP Discussion</h4>
-                        <p><strong>Why:</strong> Professional assessment and guidance</p>
-                        <p><strong>When:</strong> If symptoms persist >4 weeks or worsen</p>
-                        <p><strong>Action:</strong> <button class="btn" onclick="app.downloadPDF()">Download GP Summary</button></p>
-
-                        <h4 style="margin-top: 1.5rem;">3. NHS Talking Therapies</h4>
-                        <p><strong>Why:</strong> Free evidence-based psychological support</p>
-                        <p><strong>Link:</strong> <a href="https://www.nhs.uk/service-search/mental-health/find-a-psychological-therapies-service/" target="_blank">Find Your Local Service</a></p>
-                    </div>
-                `;
-            },
-
-            // Email results
-            emailResults() {
-                const email = document.getElementById('email-input').value;
-                if (!email || !email.includes('@')) {
-                    alert('Please enter a valid email address.');
-                    return;
+                switch(profile.pathway) {
+                    case 'stress':
+                        resultsHTML += `
+                            <h4 style="margin-top: 1rem;">For Work Stress & Burnout:</h4>
+                            <ul>
+                                <li><strong>Stress Management Hypnotherapy</strong> - 300+ sessions</li>
+                                <li><strong>Burnout Prevention Program</strong></li>
+                                <li><strong>AI Coach: Edward</strong> - Workplace stress specialist (unlimited conversations)</li>
+                            </ul>
+                        `;
+                        break;
+                    case 'sleep':
+                        resultsHTML += `
+                            <h4 style="margin-top: 1rem;">For Sleep Problems:</h4>
+                            <ul>
+                                <li><strong>Sleep Support Hypnotherapy</strong> - 8-week program</li>
+                                <li><strong>Insomnia CBT techniques</strong></li>
+                                <li><strong>AI Coach: Kainne</strong> - Work-life balance & sleep hygiene</li>
+                            </ul>
+                        `;
+                        break;
+                    case 'anxiety':
+                        resultsHTML += `
+                            <h4 style="margin-top: 1rem;">For Anxiety:</h4>
+                            <ul>
+                                <li><strong>Anxiety Relief Hypnotherapy</strong> - Evidence-based sessions</li>
+                                <li><strong>AI Coach: Lucy</strong> - CBT thought pattern specialist</li>
+                                <li><strong>Breathwork & Relaxation</strong> techniques</li>
+                            </ul>
+                        `;
+                        break;
+                    case 'mood':
+                        resultsHTML += `
+                            <h4 style="margin-top: 1rem;">For Low Mood:</h4>
+                            <ul>
+                                <li><strong>Mood Support Sessions</strong></li>
+                                <li><strong>AI Coach: Tom</strong> - Identity, purpose, transitions</li>
+                                <li><strong>GP Summary Available</strong> - We recommend involving your doctor</li>
+                            </ul>
+                        `;
+                        break;
+                    case 'focus':
+                        resultsHTML += `
+                            <h4 style="margin-top: 1rem;">For Concentration Issues:</h4>
+                            <ul>
+                                <li><strong>Focus Enhancement Sessions</strong></li>
+                                <li><strong>AI Coach: Alastair</strong> - ADHD & concentration specialist</li>
+                                <li><strong>Comprehensive Assessment</strong> - Clinical partner available for ADHD screening</li>
+                            </ul>
+                        `;
+                        break;
+                    case 'habits':
+                        resultsHTML += `
+                            <h4 style="margin-top: 1rem;">For Habit Change:</h4>
+                            <ul>
+                                <li><strong>Targeted Hypnotherapy</strong> - Smoking, drinking, weight management</li>
+                                <li><strong>Behavior Change Programs</strong></li>
+                                <li><strong>Community Support</strong> for accountability</li>
+                            </ul>
+                        `;
+                        break;
+                    case 'community':
+                        resultsHTML += `
+                            <p style="margin-top: 1rem;">You came looking for community support—you're in the right place! Our 91,000 members are here for you.</p>
+                        `;
+                        break;
+                    default: // wellness
+                        resultsHTML += `
+                            <p style="margin-top: 1rem;">Explore our full range of support options available anytime.</p>
+                        `;
                 }
 
-                // In production, this would send to a backend
-                alert(`Results would be sent to ${email}. (Email integration not implemented in standalone version)`);
+                resultsHTML += `<button class="btn btn-secondary" style="margin-top: 1rem;">Explore Your Pathway</button></div>`;
+
+                // OCEAN promotion (if applicable)
+                if (profile.oceanCandidate) {
+                    resultsHTML += `
+                        <div class="ocean-promo">
+                            <h3>🎯 Recommended: OCEAN Personality Assessment <span class="ocean-badge">Deep Dive</span></h3>
+                            <p>You mentioned wanting to understand yourself better or optimize your wellbeing. The OCEAN assessment is perfect for this.</p>
+
+                            <h4 style="margin-top: 1rem;">What You'll Discover:</h4>
+                            <ul>
+                                <li><strong>Openness</strong> - Your creativity, curiosity, and approach to new experiences</li>
+                                <li><strong>Conscientiousness</strong> - Your organization, responsibility, and goal-orientation</li>
+                                <li><strong>Extraversion</strong> - Your social energy and how you recharge</li>
+                                <li><strong>Agreeableness</strong> - Your cooperation, empathy, and relationships</li>
+                                <li><strong>Neuroticism</strong> - Your emotional stability and stress response patterns</li>
+                            </ul>
+
+                            <p style="margin-top: 1rem;"><strong>Takes 20-30 minutes. Provides insights you'll use for years.</strong></p>
+
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #666;">Do it now if you're curious, or save it for this weekend when you have time to reflect.</p>
+
+                            <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+                                <button class="btn">Start OCEAN Assessment</button>
+                                <button class="btn btn-secondary">Tell Me More About OCEAN</button>
+                            </div>
+                        </div>
+                    `;
+                } else if (profile.wellness < 3) {
+                    // Low prominence OCEAN for struggling users
+                    resultsHTML += `
+                        <div class="pathway-card">
+                            <h3>📊 Coming Soon: OCEAN Personality Deep-Dive</h3>
+                            <p>Once you're feeling better, consider our OCEAN personality assessment to understand yourself at a deeper level. It'll be here when you're ready.</p>
+                            <button class="btn btn-secondary">Learn More</button>
+                        </div>
+                    `;
+                }
+
+                // GP Summary option (if needed)
+                if (profile.needsClinical || profile.wellness < 3) {
+                    resultsHTML += `
+                        <div class="pathway-card">
+                            <h3>📄 Optional: Talk to Your GP</h3>
+                            <p>If you'd like to involve your doctor, you can download a summary of your check-in to bring to your appointment.</p>
+                            <input type="text" id="name-input" placeholder="Your name" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-light); border-radius: 8px; font-size: 0.9rem; margin: 0.75rem 0;">
+                            <button class="btn" onclick="app.downloadPDF()">Download GP Summary</button>
+                        </div>
+                    `;
+                }
+
+                pathways.innerHTML = resultsHTML;
             },
 
             // Download PDF
             downloadPDF() {
-                const name = document.getElementById('name-input').value;
+                const name = document.getElementById('name-input')?.value;
                 if (!name || name.trim() === '') {
                     alert('Please enter your name before downloading the GP summary.');
-                    document.getElementById('name-input').focus();
+                    document.getElementById('name-input')?.focus();
                     return;
                 }
 
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF();
 
-                // Use monospace font for better formatting
-                doc.setFont('courier');
-                doc.setFontSize(9);
-                doc.setTextColor(51, 51, 51);
+                doc.setFont('helvetica');
+                doc.setFontSize(10);
 
-                // Generate the full summary text
-                const summary = this.generateGPSummary();
+                let summary = `PATIENT NAME: ${name}\n`;
+                summary += `CHECK-IN DATE: ${new Date().toLocaleDateString('en-GB')}\n\n`;
+                summary += '='.repeat(60) + '\n';
+                summary += 'CLEAR MINDS WELLNESS CHECK-IN SUMMARY FOR GP\n';
+                summary += '='.repeat(60) + '\n\n';
 
-                // Split text into lines and handle page breaks
+                summary += 'IMPORTANT: This is a wellness check-in, not a clinical assessment.\n\n';
+
+                summary += 'RESPONSES:\n\n';
+                this.responses.forEach((response, idx) => {
+                    summary += `${idx + 1}. ${response.question.text}\n`;
+                    summary += `   Answer: ${response.option.text}\n\n`;
+                });
+
+                summary += '\nRECOMMENDATIONS:\n';
+                summary += `Primary concern: ${this.userProfile.pathway}\n`;
+                summary += `Duration: ${this.userProfile.chronicity}\n`;
+                if (this.userProfile.needsClinical) {
+                    summary += '\nClinical assessment recommended based on duration and severity.\n';
+                }
+
+                summary += '\n\nClear Minds Mental Wellness Platform | clearminds.business';
+
                 const lines = summary.split('\n');
-                let y = 15; // Starting y position
+                let y = 15;
                 const lineHeight = 5;
-                const pageHeight = 280; // A4 page height in mm
-                const marginBottom = 20;
 
                 lines.forEach((line) => {
-                    // Check if we need a new page
-                    if (y > pageHeight - marginBottom) {
+                    if (y > 270) {
                         doc.addPage();
-                        y = 15; // Reset y position for new page
+                        y = 15;
                     }
-
-                    // Handle long lines (split if necessary)
                     const splitLines = doc.splitTextToSize(line, 180);
                     splitLines.forEach((splitLine) => {
-                        if (y > pageHeight - marginBottom) {
+                        if (y > 270) {
                             doc.addPage();
                             y = 15;
                         }
@@ -1313,253 +883,22 @@
                     });
                 });
 
-                // Add page numbers
-                const pageCount = doc.internal.getNumberOfPages();
-                for (let i = 1; i <= pageCount; i++) {
-                    doc.setPage(i);
-                    doc.setFontSize(8);
-                    doc.setTextColor(128, 128, 128);
-                    doc.text(`Page ${i} of ${pageCount}`, 105, 290, { align: 'center' });
-                }
-
-                // Save with patient name in filename
-                const filename = `ClearMinds-GP-Summary-${name.replace(/\s+/g, '-')}.pdf`;
-                doc.save(filename);
-            },
-
-            // Generate GP summary
-            generateGPSummary() {
-                const scores = this.confidenceScores;
-                const name = document.getElementById('name-input').value || 'Patient';
-
-                let summary = '';
-
-                // Header
-                summary += `PATIENT NAME: ${name}\n`;
-                summary += `ASSESSMENT DATE: ${new Date().toLocaleDateString('en-GB')}\n\n`;
-
-                summary += '='.repeat(60) + '\n';
-                summary += 'CLEARMINDS NEUROINDICATOR - GP SUMMARY\n';
-                summary += '='.repeat(60) + '\n\n';
-
-                // Important disclaimer
-                summary += 'IMPORTANT: SCREENING TOOL ONLY - NOT A DIAGNOSTIC ASSESSMENT\n';
-                summary += 'Questions adapted from validated scales: PHQ-9 (depression), GAD-7 (anxiety),\n';
-                summary += 'ASRS (ADHD screening), ISI (Insomnia Severity Index)\n\n';
-
-                // Crisis screening
-                const crisisQ = this.responses.find(r => r.questionId === 2);
-                summary += 'CRISIS SCREENING:\n';
-                if (crisisQ && crisisQ.value >= 5) {
-                    summary += '  ⚠️ POSITIVE - Patient endorsed thoughts of self-harm/suicide\n';
-                    summary += '  Patient was provided immediate crisis resources (999, Samaritans 116 123)\n\n';
-                } else if (crisisQ && crisisQ.value === 3) {
-                    summary += '  BORDERLINE - Brief thoughts of self-harm reported, but not serious\n';
-                    summary += '  Recommend clinical assessment for risk\n\n';
-                } else {
-                    summary += '  NEGATIVE - No immediate safety concerns indicated\n\n';
-                }
-
-                // Symptom profile
-                summary += 'SYMPTOM PROFILE:\n';
-                summary += '-'.repeat(60) + '\n';
-
-                // Q1: Overall wellbeing
-                const wellbeingQ = this.responses.find(r => r.questionId === 1);
-                if (wellbeingQ) {
-                    const wellbeingLabels = ['Very poor', 'Poor', 'Fair', 'Good', 'Very good'];
-                    summary += `• Overall wellbeing: ${wellbeingLabels[wellbeingQ.value - 1]} (${wellbeingQ.value}/5)\n`;
-                }
-
-                // Q4: Stress/anxiety frequency
-                const stressQ = this.responses.find(r => r.questionId === 4);
-                if (stressQ) {
-                    const stressLabels = ['Rarely', 'Sometimes', 'Often', 'Most days', 'Constantly'];
-                    summary += `• Stress/anxiety frequency: ${stressLabels[stressQ.value - 1]} (${stressQ.value}/5)\n`;
-                }
-
-                // Q3: Sleep quality
-                const sleepQ = this.responses.find(r => r.questionId === 3);
-                if (sleepQ) {
-                    const sleepLabels = [
-                        'Very well - 7-9 hours, restful',
-                        'Fairly well - occasional disruption',
-                        'Poorly - difficulty falling or staying asleep',
-                        'Very poorly - significant sleep problems'
-                    ];
-                    summary += `• Sleep quality: ${sleepLabels[sleepQ.value - 1]}\n`;
-                }
-
-                // Q6: Mood/depression
-                const moodQ = this.responses.find(r => r.questionId === 6);
-                if (moodQ) {
-                    const moodLabels = ['Not at all', 'Several days', 'More than half the days', 'Nearly every day'];
-                    summary += `• Low mood/feeling hopeless (past month): ${moodLabels[moodQ.value - 1]}\n`;
-                }
-
-                // Q5: Concentration/focus
-                const focusQ = this.responses.find(r => r.questionId === 5);
-                if (focusQ) {
-                    const focusLabels = ['Excellent', 'Good', 'Fair', 'Poor'];
-                    summary += `• Concentration/focus: ${focusLabels[focusQ.value - 1]}\n`;
-                }
-
-                // Q14: Energy levels
-                const energyQ = this.responses.find(r => r.questionId === 14);
-                if (energyQ) {
-                    const energyLabels = ['Very low', 'Low', 'Moderate', 'Good', 'Excellent'];
-                    summary += `• Energy levels: ${energyLabels[energyQ.value - 1]} (${energyQ.value}/5)\n`;
-                }
-
-                // Q7: Physical/somatic symptoms
-                const somaticQ = this.responses.find(r => r.questionId === 7);
-                if (somaticQ) {
-                    const somaticLabels = ['Rarely/never', 'Occasionally', 'Frequently', 'Daily or almost daily'];
-                    summary += `• Physical symptoms (headaches, tension, GI): ${somaticLabels[somaticQ.value - 1]}\n`;
-                }
-
-                // Q8: Life stressors
-                const stressorsQ = this.responses.find(r => r.questionId === 8);
-                if (stressorsQ) {
-                    const stressorsLabels = ['Not at all', 'A little', 'Moderately', 'Significantly', 'Severely'];
-                    summary += `• Work/life stressor impact: ${stressorsLabels[stressorsQ.value - 1]}\n`;
-                }
-
-                summary += '\n';
-
-                // Timeline & Impact
-                summary += 'TIMELINE & FUNCTIONAL IMPACT:\n';
-                summary += '-'.repeat(60) + '\n';
-
-                const durationQ = this.responses.find(r => r.questionId === 9);
-                if (durationQ) {
-                    const durationLabels = ['Not applicable/no difficulties', 'Less than 2 weeks', '2-4 weeks', '1-3 months', 'More than 3 months', 'More than 6 months'];
-                    summary += `• Duration: ${durationLabels[durationQ.value - 1]}\n`;
-                }
-
-                const impactQ = this.responses.find(r => r.questionId === 10);
-                if (impactQ) {
-                    const impactLabels = ['Not at all', 'Slightly', 'Moderately', 'Significantly', 'Severely'];
-                    summary += `• Functional impact (work/relationships/self-care): ${impactLabels[impactQ.value - 1]}\n`;
-                }
-
-                summary += '\n';
-
-                // Context
-                summary += 'CONTEXT:\n';
-                summary += '-'.repeat(60) + '\n';
-
-                // Q11: Goals/expectations
-                const goalsQ = this.responses.find(r => r.questionId === 11);
-                if (goalsQ) {
-                    const goalsLabels = [
-                        'Just checking in - feeling generally okay',
-                        'Looking for ways to optimize wellbeing',
-                        'Want to understand what I\'m experiencing',
-                        'Need help managing specific symptoms',
-                        'Seeking professional support recommendations'
-                    ];
-                    summary += `• Patient goals: ${goalsLabels[goalsQ.value - 1]}\n`;
-                }
-
-                // Q12: Self-help attempts
-                const selfHelpQ = this.responses.find(r => r.questionId === 12);
-                if (selfHelpQ) {
-                    const selfHelpLabels = [
-                        'No, haven\'t needed to',
-                        'Yes, and they\'ve helped',
-                        'Yes, but minimal improvement',
-                        'Yes, but no improvement at all'
-                    ];
-                    summary += `• Self-help strategies tried: ${selfHelpLabels[selfHelpQ.value - 1]}\n`;
-                }
-
-                // Q13: Current support
-                const supportQ = this.responses.find(r => r.questionId === 13);
-                if (supportQ) {
-                    const supportLabels = [
-                        'No current mental health support',
-                        'Yes, and it\'s helping',
-                        'Yes, but not helping much',
-                        'Previously received support, but not currently'
-                    ];
-                    summary += `• Current mental health support: ${supportLabels[supportQ.value - 1]}\n`;
-                }
-
-                // Q15: Social support
-                const socialQ = this.responses.find(r => r.questionId === 15);
-                if (socialQ) {
-                    const socialLabels = ['Yes, strong support network', 'Some support, but limited', 'Very little support', 'No support at all'];
-                    summary += `• Social support: ${socialLabels[socialQ.value - 1]}\n`;
-                }
-
-                summary += '\n';
-
-                // Clinical recommendations
-                summary += 'CLINICAL RECOMMENDATIONS:\n';
-                summary += '-'.repeat(60) + '\n';
-
-                // Generate recommendations based on symptom profile
-                summary += '• Full clinical assessment indicated for presenting symptoms\n';
-
-                if (scores.crisis > 3.5) {
-                    summary += '• URGENT: Risk assessment required - patient endorsed suicidal ideation\n';
-                }
-
-                if (scores.moodRegulation > 3) {
-                    summary += '• Consider depression screening (PHQ-9) and mental health referral\n';
-                    summary += '• Assess need for antidepressant therapy and/or psychological intervention\n';
-                }
-
-                if (scores.stressAnxiety > 3.5) {
-                    summary += '• Anxiety disorder assessment recommended (GAD-7 or equivalent)\n';
-                    summary += '• Consider CBT referral via NHS IAPT or similar pathway\n';
-                }
-
-                if (scores.attentionFocus > 3.5) {
-                    summary += '• Concentration difficulties noted - consider ADHD screening if appropriate\n';
-                    summary += '• Rule out other causes: sleep disorders, thyroid, anxiety, depression\n';
-                    summary += '• May benefit from specialist neurological/cognitive assessment\n';
-                }
-
-                if (scores.sleepEnergy > 3) {
-                    summary += '• Sleep difficulties significant - assess for primary sleep disorder\n';
-                    summary += '• Consider sleep hygiene interventions and/or specialist referral\n';
-                }
-
-                if (scores.somaticSymptoms > 2.5) {
-                    summary += '• Physical symptoms noted - rule out medical causes:\n';
-                    summary += '  - Thyroid function tests (TSH, T3, T4)\n';
-                    summary += '  - Full blood count (anaemia, infection)\n';
-                    summary += '  - Vitamin D, B12, iron/ferritin levels\n';
-                    summary += '  - Consider cardiovascular assessment if chest pain/palpitations\n';
-                }
-
-                summary += '• Patient self-referred for this mental wellness screening\n';
-                summary += '• All responses processed in patient\'s browser (privacy-protected)\n\n';
-
-                summary += 'NOTE: This is a screening tool only. Clinical judgment should guide\n';
-                summary += 'further assessment and management decisions.\n\n';
-
-                summary += 'Tool developed with Dr. Thomas Dannhauser (MindFit.Clinic)\n';
-                summary += 'ClearMinds Mental Wellness Platform | clearminds.business\n';
-
-                return summary;
+                doc.save(`ClearMinds-Check-In-Summary-${name.replace(/\s+/g, '-')}.pdf`);
             },
 
             // Restart assessment
             restart() {
                 this.currentQuestion = 0;
                 this.responses = [];
-                this.confidenceScores = {
-                    crisis: 0,
-                    baselineWellness: 0,
-                    stressAnxiety: 0,
-                    sleepEnergy: 0,
-                    attentionFocus: 0,
-                    moodRegulation: 0,
-                    somaticSymptoms: 0,
-                    lifeStressors: 0
+                this.userProfile = {
+                    wellness: 0,
+                    pathway: '',
+                    chronicity: '',
+                    readiness: '',
+                    crisis: false,
+                    oceanCandidate: false,
+                    needsClinical: false,
+                    monitor: false
                 };
 
                 document.getElementById('results').classList.add('hidden');

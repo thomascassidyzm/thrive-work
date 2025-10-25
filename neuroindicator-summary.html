@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClearMinds Neuroindicator - Project Summary</title>
+    <title>ClearMinds Wellness Check-In - Project Summary</title>
     <style>
         :root {
             --clearminds-teal: #007a87;
@@ -116,25 +116,6 @@
             margin-bottom: 0.5rem;
         }
 
-        .checklist {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-
-        .checklist li {
-            list-style: none;
-            padding: 0.5rem 0;
-        }
-
-        .checklist li::before {
-            content: "☐ ";
-            color: var(--clearminds-teal);
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
-
         .feature-box {
             background: var(--clearminds-cream);
             border-left: 4px solid var(--clearminds-teal);
@@ -169,28 +150,6 @@
             border-bottom: 1px solid #e5e7eb;
         }
 
-        code {
-            background: #f4f4f4;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-        }
-
-        pre {
-            background: #f4f4f4;
-            padding: 1.5rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 1.5rem 0;
-        }
-
-        .sharing-section {
-            background: var(--clearminds-green);
-            padding: 2rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
-
         @media (max-width: 768px) {
             .container {
                 padding: 1.5rem;
@@ -209,11 +168,11 @@
 <body>
     <div class="container">
         <header>
-            <h1>🧠 ClearMinds Neuroindicator</h1>
-            <p>Project Summary & Resources</p>
-            <span class="status-badge">✅ Complete & Live</span>
+            <h1>🧠 ClearMinds Wellness Check-In</h1>
+            <p>Community-First Support Routing Tool</p>
+            <span class="status-badge">✅ V2.0 Complete & Live</span>
             <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
-                October 16, 2025 | Version 1.0
+                October 2025 | Version 2.0 - Community-First Redesign
             </div>
         </header>
 
@@ -222,21 +181,16 @@
             <div class="quick-links">
                 <div class="link-card">
                     <h3>🎯 Live Tool</h3>
-                    <p>Try the neuroindicator screening</p>
+                    <p>Try the wellness check-in</p>
                     <a href="https://thrive-work.vercel.app/neuroindicator.html" target="_blank">Open Tool →</a>
                 </div>
                 <div class="link-card">
-                    <h3>📚 Clinical Rationale</h3>
-                    <p>Question design & evidence base</p>
-                    <a href="https://thrive-work.vercel.app/neuroindicator-rationale.html" target="_blank">Read Rationale →</a>
+                    <h3>🏢 Community Framework</h3>
+                    <p>91k member safety protocols</p>
+                    <a href="https://thrive-work.vercel.app/corporate/community-safety-framework.html" target="_blank">View Framework →</a>
                 </div>
                 <div class="link-card">
-                    <h3>📋 Question Export</h3>
-                    <p>Plain text for Quizzle team</p>
-                    <a href="https://github.com/thomascassidyzm/thrive-work/blob/main/neuroindicator-questions.txt" target="_blank">View Questions →</a>
-                </div>
-                <div class="link-card">
-                    <h3>🏢 Corporate Policies</h3>
+                    <h3>📋 Corporate Policies</h3>
                     <p>Updated governance framework</p>
                     <a href="https://thrive-work.vercel.app/corporate/" target="_blank">View Framework →</a>
                 </div>
@@ -244,53 +198,67 @@
         </section>
 
         <section>
-            <h2>📦 What We Built</h2>
+            <h2>📦 What We Built (V2.0)</h2>
 
             <div class="feature-box">
-                <h3>1. Neuroindicator Screening Tool</h3>
-                <p><strong>Single HTML file</strong> - Fully portable, no dependencies</p>
+                <h3>1. Simplified 5-Question Check-In</h3>
+                <p><strong>Reduced from 15 clinical questions to 5 conversational questions</strong></p>
                 <ul>
-                    <li><strong>15 evidence-based questions</strong> covering stress, anxiety, sleep, mood, focus</li>
-                    <li><strong>7 outcome pathways</strong> - Crisis, baseline wellness, stress/anxiety, mood, attention/focus, general support</li>
-                    <li><strong>ClearMinds branding</strong> - Teal/cream color scheme</li>
-                    <li><strong>PDF generation</strong> - Downloadable GP summaries</li>
-                    <li><strong>Mobile responsive</strong> - Works on all devices</li>
-                    <li><strong>Ethical design</strong> - "You're fine" is valid outcome, transparent about commercial relationships</li>
+                    <li><strong>Q1:</strong> How are you feeling overall?</li>
+                    <li><strong>Q2:</strong> What's your main reason for checking in?</li>
+                    <li><strong>Q3:</strong> How long has this been going on?</li>
+                    <li><strong>Q4:</strong> Have you tried anything to help?</li>
+                    <li><strong>Q5:</strong> Crisis check (thoughts of self-harm)</li>
+                </ul>
+                <p><strong>Time:</strong> 2 minutes (down from 5-10 minutes)</p>
+                <p><strong>Tone:</strong> Conversational wellness check, not clinical screening</p>
+            </div>
+
+            <div class="feature-box">
+                <h3>2. Community-First Results Page</h3>
+                <p><strong>Lead with 91,000-member community, not clinical pathways</strong></p>
+                <ul>
+                    <li><strong>Primary CTA:</strong> "Enter Community Now" (always first)</li>
+                    <li><strong>Secondary:</strong> Personalized pathway based on Q2</li>
+                    <li><strong>Tertiary:</strong> OCEAN assessment (for optimization users)</li>
+                    <li><strong>Optional:</strong> GP summary (for clinical escalation)</li>
+                </ul>
+                <p><strong>Positioning:</strong> Community is where most healing happens</p>
+            </div>
+
+            <div class="feature-box">
+                <h3>3. OCEAN Personality Assessment Integration</h3>
+                <p><strong>Gateway to deeper self-understanding</strong></p>
+                <ul>
+                    <li><strong>High prominence:</strong> For "wellness/optimization" users (Q1: doing well, Q2: understand myself better, Q3: not applicable, Q4: optimize)</li>
+                    <li><strong>Low prominence:</strong> For struggling users ("available when you're feeling better")</li>
+                    <li><strong>Future retention tool:</strong> Email campaigns Week 2-4 promoting OCEAN</li>
                 </ul>
             </div>
 
             <div class="feature-box">
-                <h3>2. Clinical Rationale Document</h3>
-                <p><strong>Comprehensive explanation</strong> of question design and sequencing</p>
+                <h3>4. De-Clinicalized Language</h3>
+                <p><strong>Removed all clinical/medical positioning</strong></p>
                 <ul>
-                    <li>Clinical evidence base (PHQ-9, GAD-7, ASRS, ISI, PSS)</li>
-                    <li>Question-by-question breakdown</li>
-                    <li>Sequencing strategy (funnel approach, safety-first)</li>
-                    <li>Comparison to validated scales</li>
-                    <li>Clinical validation plan</li>
+                    <li>❌ "Neuroindicator Screening" → ✅ "Wellness Check-In"</li>
+                    <li>❌ "Clinical assessment" → ✅ "Starting point"</li>
+                    <li>❌ "PHQ-9, GAD-7, ASRS, ISI" → ✅ (removed from user-facing copy)</li>
+                    <li>❌ "Developed with Dr. Thomas Dannhauser" → ✅ (removed due to conflict of interest)</li>
                 </ul>
             </div>
 
             <div class="feature-box">
-                <h3>3. Question Export for Quizzle</h3>
-                <p><strong>Plain text format</strong> with all questions, options, and scoring logic</p>
+                <h3>5. Intelligent Routing Logic</h3>
+                <p><strong>8 pathways based on user responses:</strong></p>
                 <ul>
-                    <li>All 15 questions with exact wording</li>
-                    <li>7 outcome pathways detailed</li>
-                    <li>Implementation notes for Quizzle team</li>
-                    <li>Warning about probabilistic scoring complexity</li>
-                </ul>
-            </div>
-
-            <div class="feature-box">
-                <h3>4. Updated Corporate Governance Framework</h3>
-                <p><strong>Simplified and toned down</strong> to reflect wellness positioning</p>
-                <ul>
-                    <li>Simplified from 6 to 4 components</li>
-                    <li>Removed clinical/CQC language (not medical service)</li>
-                    <li>Added prominent disclaimer ("ClearMinds is NOT a Medical Service")</li>
-                    <li>Updated standards to "guided by principles"</li>
-                    <li>Added GDPR Article 15 details and DBS requirements</li>
+                    <li><strong>Crisis:</strong> Immediate safety resources + community</li>
+                    <li><strong>Wellness/Optimization:</strong> Community + OCEAN (high prominence)</li>
+                    <li><strong>Work Stress:</strong> Community + stress hypnotherapy + Edward (AI coach)</li>
+                    <li><strong>Sleep:</strong> Community + sleep programs + Kainne</li>
+                    <li><strong>Anxiety:</strong> Community + anxiety sessions + Lucy</li>
+                    <li><strong>Mood:</strong> Community + mood support + Tom + GP summary</li>
+                    <li><strong>Focus:</strong> Community + focus sessions + Alastair + clinical partner</li>
+                    <li><strong>Habits:</strong> Community + targeted hypnotherapy</li>
                 </ul>
             </div>
         </section>
@@ -299,131 +267,31 @@
             <h2>🎨 Key Design Principles</h2>
 
             <div class="feature-box">
-                <h3>Ethical Framework</h3>
+                <h3>Community-First, Not Crisis-Only</h3>
                 <ul>
-                    <li><strong>Safety-first:</strong> Crisis screening at Q2 (early intervention)</li>
-                    <li><strong>Balanced recommendations:</strong> Non-commercial options prominent</li>
-                    <li><strong>"You're fine" is valid:</strong> Not just a sales funnel</li>
-                    <li><strong>Transparent:</strong> Commercial relationships clearly flagged</li>
-                    <li><strong>Privacy-first:</strong> Browser-only processing, optional email</li>
+                    <li><strong>Old EAP model:</strong> "Call when desperate" → isolating</li>
+                    <li><strong>Clear Minds model:</strong> "Join 91k members" → welcoming</li>
+                    <li><strong>Result:</strong> 30-40% engagement vs 5-10% traditional EAP</li>
                 </ul>
             </div>
 
             <div class="feature-box">
-                <h3>Clinical Foundation</h3>
+                <h3>De-Stigmatized Entry Point</h3>
                 <ul>
-                    <li>Evidence-based questions (validated screening tools)</li>
-                    <li>Multi-dimensional assessment (8 dimensions tracked)</li>
-                    <li>Contextual interpretation (duration, impact, attempts)</li>
-                    <li>Appropriate escalation (GP, specialist, crisis services)</li>
-                    <li>Probabilistic scoring (not boolean logic)</li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
-            <h2>📋 Next Steps</h2>
-
-            <h3>Phase 1: Testing & Validation (Current)</h3>
-            <div class="checklist">
-                <ul>
-                    <li>Test tool with 5-10 internal users</li>
-                    <li>Collect feedback on UX, question clarity, outcomes</li>
-                    <li>Review with Dr. Thomas Dannhauser (clinical validation)</li>
-                    <li>Check mobile responsiveness across devices</li>
-                    <li>Test PDF generation</li>
+                    <li><strong>Not:</strong> "Take a mental health screening"</li>
+                    <li><strong>Instead:</strong> "How are you doing right now?"</li>
+                    <li><strong>Barrier removed:</strong> Feels like checking in with a friend, not admitting you need help</li>
                 </ul>
             </div>
 
-            <h3>Phase 2: Quizzle Decision</h3>
-            <div class="checklist">
+            <div class="feature-box">
+                <h3>OCEAN as Retention & Premium Engagement</h3>
                 <ul>
-                    <li>Share neuroindicator-questions.txt with Quizzle team</li>
-                    <li>Assess Quizzle's ability to handle probabilistic scoring</li>
-                    <li>Decide: Quizzle import vs stand-alone HTML</li>
-                    <li>If Quizzle: export questions to their format</li>
-                    <li>If stand-alone: keep current implementation</li>
+                    <li><strong>Wellness check-in:</strong> Triage + onboarding (2 minutes)</li>
+                    <li><strong>OCEAN:</strong> Deep self-discovery (20-30 minutes)</li>
+                    <li><strong>Strategy:</strong> Hook with quick check-in, retain with OCEAN</li>
+                    <li><strong>B2B value:</strong> Aggregated OCEAN insights = unique employer reporting</li>
                 </ul>
-            </div>
-
-            <h3>Phase 3: Refinement</h3>
-            <div class="checklist">
-                <ul>
-                    <li>Adjust thresholds based on pilot testing</li>
-                    <li>Refine outcome text based on feedback</li>
-                    <li>Add auto-progression (click → auto-advance)</li>
-                    <li>Optional: Add symptom tracker download</li>
-                    <li>Optional: Add "share results" URL functionality</li>
-                </ul>
-            </div>
-
-            <h3>Phase 4: Production Deployment</h3>
-            <div class="checklist">
-                <ul>
-                    <li>Move to clearminds.business (when site ready)</li>
-                    <li>Update corporate governance policies on clearminds.business</li>
-                    <li>Add medical disclaimer prominently</li>
-                    <li>Set up email automation (if desired)</li>
-                    <li>Add analytics tracking</li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
-            <h2>🤝 Sharing with Stakeholders</h2>
-
-            <div class="sharing-section">
-                <h3>For Team Testing:</h3>
-                <pre style="background: white; padding: 1rem;">Hi team,
-
-Please test our new neuroindicator screening tool:
-https://thrive-work.vercel.app/neuroindicator.html
-
-Takes 5-10 minutes. Looking for feedback on:
-- Is the flow clear and intuitive?
-- Are questions appropriate?
-- Do outcomes feel helpful and balanced?
-- Any technical issues?
-
-Thanks!</pre>
-            </div>
-
-            <div class="sharing-section">
-                <h3>For Dr. Dannhauser Clinical Review:</h3>
-                <pre style="background: white; padding: 1rem;">Hi Dr. Dannhauser,
-
-We've built a mental wellness screening tool and would value your clinical review:
-
-Tool: https://thrive-work.vercel.app/neuroindicator.html
-Rationale: https://thrive-work.vercel.app/neuroindicator-rationale.html
-
-Questions adapted from PHQ-9, GAD-7, ASRS, ISI. Would appreciate feedback on:
-- Clinical accuracy of questions
-- Appropriateness of outcome pathways
-- Threshold settings for intervention routing
-- Any red flags or concerns
-
-Many thanks,
-ClearMinds Team</pre>
-            </div>
-
-            <div class="sharing-section">
-                <h3>For Quizzle Team:</h3>
-                <pre style="background: white; padding: 1rem;">Hi Quizzle team,
-
-We're considering importing our mental health screening tool into your platform.
-Please review the question bank and scoring logic:
-
-Questions: https://github.com/thomascassidyzm/thrive-work/blob/main/neuroindicator-questions.txt
-Live tool: https://thrive-work.vercel.app/neuroindicator.html
-
-Key question: Can Quizzle handle probabilistic scoring across multiple dimensions
-simultaneously? Or is it limited to simple linear point totals?
-
-Let us know feasibility.
-
-Thanks,
-ClearMinds</pre>
             </div>
         </section>
 
@@ -436,71 +304,144 @@ ClearMinds</pre>
                     <th>Count</th>
                     <th>Time</th>
                     <th>Type</th>
-                    <th>Evidence Base</th>
+                    <th>Clinical Foundation</th>
                 </tr>
                 <tr>
-                    <td>15 questions</td>
-                    <td>5-10 minutes</td>
-                    <td>Mix of scales & multiple choice</td>
-                    <td>PHQ-9, GAD-7, ASRS, ISI, PSS</td>
+                    <td>5 questions</td>
+                    <td>2 minutes</td>
+                    <td>Multiple choice</td>
+                    <td>Based on validated wellness frameworks (not explicitly stated to users)</td>
                 </tr>
             </table>
 
-            <h3>Dimensions Tracked (8 total)</h3>
+            <h3>Pathways Tracked (8 total)</h3>
             <ol>
-                <li>Crisis/safety</li>
-                <li>Baseline wellness</li>
-                <li>Stress/anxiety</li>
-                <li>Sleep/energy</li>
-                <li>Attention/focus</li>
-                <li>Mood regulation</li>
-                <li>Somatic symptoms</li>
-                <li>Life stressors</li>
+                <li>Crisis/safety (immediate intervention)</li>
+                <li>Wellness/optimization (OCEAN candidates)</li>
+                <li>Work stress/burnout</li>
+                <li>Sleep problems</li>
+                <li>Anxiety</li>
+                <li>Low mood</li>
+                <li>Focus/concentration issues</li>
+                <li>Habit change (smoking, drinking, weight)</li>
             </ol>
 
-            <h3>Scoring Logic</h3>
+            <h3>User Profile Attributes</h3>
             <div class="feature-box">
-                <p><strong>Probabilistic (not boolean)</strong></p>
+                <p><strong>Tracked for routing:</strong></p>
                 <ul>
-                    <li>Multiple dimensions scored simultaneously</li>
-                    <li>Signal types: direct, inverse, moderate, contextual</li>
-                    <li>Thresholds: Low (0-2.5), Medium (2.5-3.5), High (3.5+)</li>
-                    <li>Outcome based on highest confidence + contextual modifiers</li>
+                    <li>wellness (1-5 scale)</li>
+                    <li>pathway (8 options above)</li>
+                    <li>chronicity (acute, subacute, chronic, none)</li>
+                    <li>readiness (beginner, engaged, frustrated, clinical, optimization)</li>
+                    <li>crisis (boolean)</li>
+                    <li>oceanCandidate (boolean)</li>
+                    <li>needsClinical (boolean)</li>
+                    <li>monitor (boolean)</li>
                 </ul>
             </div>
         </section>
 
         <section>
-            <h2>🔄 Recent Changes (Oct 16, 2025)</h2>
+            <h2>🔄 What Changed from V1.0</h2>
 
-            <h3>Neuroindicator Tool</h3>
+            <h3>Questions</h3>
             <ul>
-                <li>✅ Built complete screening tool (neuroindicator.html)</li>
-                <li>✅ Created clinical rationale (HTML + markdown)</li>
-                <li>✅ Exported questions for Quizzle (plain text)</li>
-                <li>✅ Deployed all to Vercel</li>
+                <li>❌ 15 clinical questions → ✅ 5 conversational questions</li>
+                <li>❌ 5-10 minutes → ✅ 2 minutes</li>
+                <li>❌ Clinical screening language → ✅ Wellness check-in language</li>
             </ul>
 
-            <h3>Corporate Governance Framework</h3>
+            <h3>Results Page</h3>
             <ul>
-                <li>✅ Simplified 6→4 components</li>
-                <li>✅ Removed clinical/CQC language</li>
-                <li>✅ Added prominent medical disclaimer</li>
-                <li>✅ Toned down governance applications</li>
-                <li>✅ Updated standards to "guided by principles"</li>
-                <li>✅ Added GDPR Article 15 details</li>
-                <li>✅ Renamed section 2 to "Data and Information Governance"</li>
-                <li>✅ Added DBS requirements for practitioners</li>
+                <li>❌ Clinical pathways first → ✅ Community welcome first</li>
+                <li>❌ "You're fine" buried → ✅ Wellness optimization prominent</li>
+                <li>❌ No OCEAN → ✅ OCEAN integrated for optimization users</li>
+            </ul>
+
+            <h3>Positioning</h3>
+            <ul>
+                <li>❌ "Intelligent clinical triage" → ✅ "Community + smart routing"</li>
+                <li>❌ "Developed with Dr. Dannhauser" → ✅ (Removed - conflict of interest)</li>
+                <li>❌ EAP add-on → ✅ EAP replacement (community-first positioning)</li>
+            </ul>
+
+            <h3>Attribution</h3>
+            <ul>
+                <li>❌ Dr. Thomas Dannhauser → ✅ "Our clinical team" / "evidence-based principles"</li>
+                <li><strong>Reason:</strong> Dr. Dannhauser is Smart Start Minds (one of our clinical pathways) = conflict of interest</li>
             </ul>
         </section>
 
         <section>
-            <h2>📞 Resources & Contacts</h2>
+            <h2>📋 Next Steps</h2>
 
-            <h3>Clinical Validation</h3>
+            <h3>Phase 1: Current (Complete)</h3>
             <ul>
-                <li>Dr. Thomas Dannhauser - MindFit.Clinic</li>
-                <li>SmartStartMinds (CQC 1-2950268195) - Partner for clinical cases</li>
+                <li>✅ Simplify to 5 questions</li>
+                <li>✅ Remove Dr. Dannhauser references</li>
+                <li>✅ Add community-first results page</li>
+                <li>✅ Integrate OCEAN pathway</li>
+            </ul>
+
+            <h3>Phase 2: Integration (Next 2 Weeks)</h3>
+            <ul>
+                <li>⏳ Build OCEAN assessment tool</li>
+                <li>⏳ Create OCEAN landing page</li>
+                <li>⏳ Email sequence for OCEAN promotion (Week 2-4 post-check-in)</li>
+                <li>⏳ Link check-in to actual community platform</li>
+            </ul>
+
+            <h3>Phase 3: B2B Deployment (Month 1-2)</h3>
+            <ul>
+                <li>⏳ Embed check-in on clearminds.business</li>
+                <li>⏳ Add employer-specific branding options</li>
+                <li>⏳ Aggregated OCEAN employer reporting (k≥10 threshold)</li>
+                <li>⏳ Analytics dashboard for engagement tracking</li>
+            </ul>
+
+            <h3>Phase 4: Towergate Pilot (Month 3+)</h3>
+            <ul>
+                <li>⏳ 250k employee deployment</li>
+                <li>⏳ Community segmentation (optional company-specific groups)</li>
+                <li>⏳ Outcome tracking (Neuroindicator score changes over time)</li>
+                <li>⏳ Pilot results case study</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>🤝 Positioning for Towergate</h2>
+
+            <div class="highlight-box">
+                <h3 style="margin-top: 0; color: var(--clearminds-dark);">The Pitch</h3>
+                <p><strong>"Traditional EAPs fail because they're crisis-only and isolating. Clear Minds achieves 30-40% engagement because we start with community, not crisis."</strong></p>
+
+                <p style="margin-top: 1rem;"><strong>Employee Journey:</strong></p>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>2-minute check-in</strong> (not intimidating clinical screening)</li>
+                    <li><strong>Immediate welcome to 91k members</strong> (peer support 24/7)</li>
+                    <li><strong>Personalized pathway</strong> (hypnotherapy, AI coaching, clinical referral)</li>
+                    <li><strong>OCEAN deep-dive</strong> (for optimization & retention)</li>
+                </ul>
+
+                <p style="margin-top: 1rem;"><strong>Result:</strong> Employees actually want to use it (30-40% vs 5-10% traditional EAP)</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>📞 Key Contacts</h2>
+
+            <h3>Community Safety</h3>
+            <ul>
+                <li>Rachel Goodley - Head of Customer Care/Support</li>
+                <li>91,000 members, zero serious incidents</li>
+                <li>24/7 moderation, crisis response in minutes</li>
+            </ul>
+
+            <h3>Clinical Pathway Partners</h3>
+            <ul>
+                <li>Smart Start Minds (CQC 1-2950268195) - ADHD, complex cases</li>
+                <li>MindFit.Clinic - Comprehensive neuroevaluation</li>
             </ul>
 
             <h3>Technical</h3>
@@ -509,27 +450,21 @@ ClearMinds</pre>
                 <li>Deployment: Vercel (thrive-work project)</li>
                 <li>Live site: <a href="https://thrive-work.vercel.app" target="_blank">thrive-work.vercel.app</a></li>
             </ul>
-
-            <h3>Business</h3>
-            <ul>
-                <li>Main site: <a href="https://clearminds.com" target="_blank">clearminds.com</a></li>
-                <li>Future home: clearminds.business (in development)</li>
-            </ul>
         </section>
 
         <div class="highlight-box" style="margin-top: 3rem; text-align: center;">
             <p style="font-size: 1.2rem; margin-bottom: 1rem;">
-                <strong>This tool represents a fundamental shift from generic wellness content to intelligent diagnostic triage</strong>
+                <strong>This tool represents a fundamental shift: from clinical triage to community-first support routing</strong>
             </p>
-            <p>Matching each individual with the most appropriate pathway while maintaining ethical, transparent, and privacy-first principles.</p>
+            <p>We're not asking "what's wrong with you?" We're asking "how can we support you?" and immediately connecting you to 91,000 people who understand.</p>
         </div>
 
         <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 2px solid #e5e7eb; text-align: center; color: #666;">
-            <p><strong>ClearMinds Neuroindicator - Project Summary</strong></p>
-            <p>Version 1.0 | October 16, 2025</p>
+            <p><strong>ClearMinds Wellness Check-In - Project Summary</strong></p>
+            <p>Version 2.0 | October 2025 | Community-First Redesign</p>
             <p style="margin-top: 1rem;">
                 <a href="neuroindicator.html" style="color: var(--clearminds-teal); text-decoration: none; margin: 0 1rem;">Try Tool</a>
-                <a href="neuroindicator-rationale.html" style="color: var(--clearminds-teal); text-decoration: none; margin: 0 1rem;">Read Rationale</a>
+                <a href="corporate/community-safety-framework.html" style="color: var(--clearminds-teal); text-decoration: none; margin: 0 1rem;">View Community Framework</a>
                 <a href="https://github.com/thomascassidyzm/thrive-work" style="color: var(--clearminds-teal); text-decoration: none; margin: 0 1rem;" target="_blank">View on GitHub</a>
             </p>
         </footer>
