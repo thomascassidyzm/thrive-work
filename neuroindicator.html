@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClearMinds Wellness Check-In - How Are You Doing?</title>
-    <meta name="description" content="Quick 2-minute check-in to connect you with the right support and welcome you to our 91,000-member community.">
+    <meta name="description" content="Quick 4-minute check-in (9 questions) to connect you with the right support and welcome you to our 91,000-member community.">
 
     <!-- jsPDF for PDF generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -354,7 +354,7 @@
             <h2>Welcome to Clear Minds</h2>
 
             <p style="font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.5;">
-                Let's start with a quick check-in. This takes about 2 minutes and helps us connect you with the right support and welcome you to our 91,000-member community.
+                Let's start with a quick check-in. This takes about 4 minutes (9 questions) and helps us connect you with the right support and welcome you to our 91,000-member community.
             </p>
 
             <div class="warning-box">
@@ -365,7 +365,8 @@
 
             <h3>What to expect:</h3>
             <ul style="margin-left: 1.5rem; margin-bottom: 1rem; font-size: 0.9rem;">
-                <li style="margin-bottom: 0.3rem;">5 questions (2 minutes)</li>
+                <li style="margin-bottom: 0.3rem;">9 questions (4 minutes)</li>
+                <li style="margin-bottom: 0.3rem;">Questions about wellbeing, work impact, and support needs</li>
                 <li style="margin-bottom: 0.3rem;">Immediate welcome to our support community</li>
                 <li style="margin-bottom: 0.3rem;">Personalized pathway recommendations</li>
                 <li style="margin-bottom: 0.3rem;">Optional GP summary if you want to involve your doctor</li>
@@ -385,7 +386,7 @@
                 <div class="progress-bar">
                     <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
                 </div>
-                <div class="progress-text" id="progress-text">Question 1 of 5</div>
+                <div class="progress-text" id="progress-text">Question 1 of 9</div>
             </div>
 
             <div class="question-card" id="question-card">
@@ -427,16 +428,20 @@
             responses: [],
             userProfile: {
                 wellness: 0,
+                impact: 0,
+                physicalSymptoms: 0,
                 pathway: '',
                 chronicity: '',
+                socialConnection: 0,
                 readiness: '',
+                workImpact: 0,
                 crisis: false,
                 oceanCandidate: false,
                 needsClinical: false,
                 monitor: false
             },
 
-            // Question bank (5 questions)
+            // Question bank (9 questions)
             questions: [
                 {
                     id: 1,
@@ -467,6 +472,29 @@
                 },
                 {
                     id: 2,
+                    text: "How much is this affecting your daily life?",
+                    type: "options",
+                    options: [
+                        { value: 1, text: "Not affecting my life at all", impact: 0 },
+                        { value: 2, text: "Minor impact, but I'm managing", impact: 1 },
+                        { value: 3, text: "Moderate impact on work or relationships", impact: 2, needsClinical: true },
+                        { value: 4, text: "Significant impact, struggling to function", impact: 3, needsClinical: true },
+                        { value: 5, text: "Severe impact, can barely cope", impact: 4, needsClinical: true }
+                    ]
+                },
+                {
+                    id: 3,
+                    text: "Are you experiencing any physical symptoms?",
+                    type: "options",
+                    options: [
+                        { value: 1, text: "No physical symptoms", physicalSymptoms: 0 },
+                        { value: 2, text: "Occasional (tension, headaches, fatigue)", physicalSymptoms: 1 },
+                        { value: 3, text: "Frequent (multiple times per week)", physicalSymptoms: 2, needsClinical: true },
+                        { value: 4, text: "Constant symptoms affecting daily life", physicalSymptoms: 3, needsClinical: true }
+                    ]
+                },
+                {
+                    id: 4,
                     text: "What's your main reason for checking in today?",
                     type: "options",
                     options: [
@@ -482,7 +510,7 @@
                     ]
                 },
                 {
-                    id: 3,
+                    id: 5,
                     text: "How long has this been going on?",
                     type: "options",
                     options: [
@@ -495,7 +523,18 @@
                     ]
                 },
                 {
-                    id: 4,
+                    id: 6,
+                    text: "How are your relationships and social connections?",
+                    type: "options",
+                    options: [
+                        { value: 1, text: "Strong support network, feeling connected", socialConnection: 3 },
+                        { value: 2, text: "Some good relationships, could be better", socialConnection: 2 },
+                        { value: 3, text: "Feeling somewhat isolated or disconnected", socialConnection: 1, needsCommunity: true },
+                        { value: 4, text: "Very isolated, struggling to maintain relationships", socialConnection: 0, needsCommunity: true, needsClinical: true }
+                    ]
+                },
+                {
+                    id: 7,
                     text: "Have you tried anything to help so far?",
                     type: "options",
                     options: [
@@ -507,7 +546,19 @@
                     ]
                 },
                 {
-                    id: 5,
+                    id: 8,
+                    text: "How is this affecting your work or productivity?",
+                    type: "options",
+                    options: [
+                        { value: 1, text: "Not affecting my work", workImpact: 0 },
+                        { value: 2, text: "Occasionally distracted, but getting things done", workImpact: 1 },
+                        { value: 3, text: "Noticeably impacting my performance", workImpact: 2 },
+                        { value: 4, text: "Struggling to meet responsibilities", workImpact: 3, needsClinical: true },
+                        { value: 5, text: "Unable to work effectively", workImpact: 4, needsClinical: true }
+                    ]
+                },
+                {
+                    id: 9,
                     text: "One more important question: Are you having thoughts of harming yourself or ending your life?",
                     type: "options",
                     options: [
@@ -607,13 +658,20 @@
                     if (selectedOption.signals.crisis) this.userProfile.crisis = true;
                     if (selectedOption.signals.oceanCandidate) this.userProfile.oceanCandidate = true;
                 }
+                if (selectedOption.impact !== undefined) this.userProfile.impact = selectedOption.impact;
+                if (selectedOption.physicalSymptoms !== undefined) this.userProfile.physicalSymptoms = selectedOption.physicalSymptoms;
                 if (selectedOption.pathway) this.userProfile.pathway = selectedOption.pathway;
                 if (selectedOption.chronicity) this.userProfile.chronicity = selectedOption.chronicity;
+                if (selectedOption.socialConnection !== undefined) this.userProfile.socialConnection = selectedOption.socialConnection;
                 if (selectedOption.readiness) this.userProfile.readiness = selectedOption.readiness;
+                if (selectedOption.workImpact !== undefined) this.userProfile.workImpact = selectedOption.workImpact;
                 if (selectedOption.clinicalConsideration) this.userProfile.needsClinical = true;
+                if (selectedOption.needsClinical) this.userProfile.needsClinical = true;
                 if (selectedOption.escalate) this.userProfile.needsClinical = true;
                 if (selectedOption.crisis) this.userProfile.crisis = true;
                 if (selectedOption.monitor) this.userProfile.monitor = true;
+                if (selectedOption.oceanCandidate) this.userProfile.oceanCandidate = true;
+                if (selectedOption.needsCommunity) this.userProfile.needsCommunity = true;
 
                 // Check for crisis on critical question
                 if (question.critical && selectedOption.crisis) {
@@ -679,10 +737,14 @@
                 // Build results based on profile
                 let resultsHTML = '';
 
-                // Community welcome (ALWAYS FIRST)
+                // Community welcome (ALWAYS FIRST) - Emphasize if isolated
+                const communityEmphasis = profile.needsCommunity ?
+                    '<p style="background: #fff9e6; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;"><strong>⭐ Based on your responses, connecting with our community is especially important for you right now.</strong> You mentioned feeling isolated—our 91,000 members are here to change that.</p>' : '';
+
                 resultsHTML += `
                     <div class="pathway-card" style="border: 3px solid var(--clearminds-teal); background: var(--clearminds-green);">
                         <h3>🤝 First: You're Part of Something Bigger</h3>
+                        ${communityEmphasis}
                         <p><strong>Welcome to our 91,000-member support community</strong></p>
                         <p>You're not alone in what you're experiencing. Our community is:</p>
                         <ul>
@@ -892,9 +954,13 @@
                 this.responses = [];
                 this.userProfile = {
                     wellness: 0,
+                    impact: 0,
+                    physicalSymptoms: 0,
                     pathway: '',
                     chronicity: '',
+                    socialConnection: 0,
                     readiness: '',
+                    workImpact: 0,
                     crisis: false,
                     oceanCandidate: false,
                     needsClinical: false,
