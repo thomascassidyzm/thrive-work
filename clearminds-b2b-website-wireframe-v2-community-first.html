@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearMinds B2B - Community-First Workplace Wellness (Alternative Wireframe)</title>
+    <style>
+        :root {
+            --clearminds-teal: #007a87;
+            --clearminds-dark: #0d3b3e;
+            --clearminds-green: #dff4da;
+            --clearminds-cream: #fffbf5;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-600: #6c757d;
+            --gray-800: #343a40;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--gray-100);
+        }
+
+        .nav-container {
+            background: linear-gradient(135deg, var(--clearminds-teal) 0%, var(--clearminds-dark) 100%);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .page-section {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: var(--clearminds-dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            color: var(--clearminds-dark);
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--clearminds-teal);
+        }
+
+        h3 {
+            font-size: 1.75rem;
+            color: var(--clearminds-teal);
+            margin: 2rem 0 1rem;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+            color: var(--clearminds-dark);
+            margin: 1.5rem 0 0.75rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: var(--clearminds-green);
+            border-radius: 8px;
+            border-top: 4px solid var(--clearminds-teal);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--clearminds-teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 122, 135, 0.15);
+            border-color: var(--clearminds-teal);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--clearminds-teal) 0%, var(--clearminds-dark) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .cta-container {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 3rem;
+            background: var(--clearminds-green);
+            border-radius: 12px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--clearminds-teal);
+            color: white;
+            padding: 1.25rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            margin: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--clearminds-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 122, 135, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: white;
+            color: var(--clearminds-teal);
+            padding: 1.25rem 2.5rem;
+            border: 2px solid var(--clearminds-teal);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            margin: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--clearminds-teal);
+            color: white;
+        }
+
+        .highlight-box {
+            background: var(--clearminds-green);
+            border-left: 6px solid var(--clearminds-teal);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 6px solid #ff9800;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: var(--clearminds-teal);
+            color: white;
+            padding: 1.25rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--gray-200);
+            background: white;
+        }
+
+        .comparison-table tr:hover td {
+            background: var(--clearminds-cream);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin: 3rem 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 3rem;
+            border-left: 3px solid var(--clearminds-teal);
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -1.25rem;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--clearminds-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .proof-points {
+            list-style: none;
+            padding: 0;
+        }
+
+        .proof-points li {
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            background: var(--clearminds-cream);
+            border-left: 4px solid var(--clearminds-teal);
+            border-radius: 4px;
+        }
+
+        .proof-points li::before {
+            content: '✓';
+            color: var(--clearminds-teal);
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .wireframe-note {
+            background: #e7f3ff;
+            border-left: 6px solid #2196F3;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            font-style: italic;
+            color: #0d47a1;
+        }
+
+        footer {
+            background: var(--clearminds-dark);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .board-member {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--clearminds-cream);
+            border-radius: 8px;
+        }
+
+        .board-member h4 {
+            margin: 0.5rem 0;
+        }
+
+        .board-member p {
+            font-size: 0.95rem;
+            margin: 0.25rem 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            h3 { font-size: 1.5rem; }
+
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .page-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="nav">
+            <a href="#home" class="logo">ClearMinds</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#approach">Our Approach</a></li>
+                <li><a href="#chairman">Our Story</a></li>
+                <li><a href="#evidence">The Data</a></li>
+                <li><a href="#governance">Governance</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HOMEPAGE -->
+    <section id="home" class="container">
+        <div class="page-section">
+            <div style="text-align: center; padding: 3rem 0;">
+                <h1>Community-First Workplace Wellness</h1>
+                <p style="font-size: 1.5rem; color: var(--gray-600); max-width: 900px; margin: 1.5rem auto;">
+                    Where 91,000+ people support each other through change, not just coping
+                </p>
+
+                <div class="stats-bar">
+                    <div class="stat">
+                        <div class="stat-number">91,000+</div>
+                        <div class="stat-label">Community Members</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">9.5x</div>
+                        <div class="stat-label">Better Retention</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">38%</div>
+                        <div class="stat-label">Still Active at 3 Months</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">1.1 Years</div>
+                        <div class="stat-label">Average Engagement</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <a href="#chairman" class="btn-primary">Read Our Story</a>
+                    <a href="#contact" class="btn-secondary">Start a Conversation</a>
+                </div>
+            </div>
+
+            <div class="wireframe-note">
+                <strong>Design Note:</strong> Hero should feel warm and human, not clinical. Consider photography showing real people in community connection (not stock medical imagery). Soft, welcoming visual language.
+            </div>
+        </div>
+
+        <!-- What Makes Us Different -->
+        <div class="page-section">
+            <h2>What Makes Us Different</h2>
+
+            <div class="highlight-box">
+                <p style="font-size: 1.3rem; line-height: 1.8; margin: 0;">
+                    Most workplace wellbeing feels isolating—call a number when you're desperate, use an app alone. We built something fundamentally different: <strong>a community where 91,000+ people support each other, guided by hypnotherapy that creates lasting change.</strong>
+                </p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Community, Not Isolation</h3>
+                    <p><strong>91,000+ members | 24/7 professional moderation | Zero serious incidents</strong></p>
+                    <p style="margin-top: 1rem; line-height: 1.8;">
+                        Traditional EAPs: call when desperate, speak to someone once, feel alone.<br><br>
+                        ClearMinds: immediate connection to 91,000+ people who understand. Peer support that reinforces change. Community that keeps you engaged.
+                    </p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>62% actively participate by 90 days</li>
+                        <li>24/7 professional moderation team</li>
+                        <li>Crisis response protocols proven at scale</li>
+                        <li>Shared experiences reduce stigma</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌱</div>
+                    <h3>Change, Not Just Coping</h3>
+                    <p><strong>Hypnotherapy for lasting pattern shifts, not daily symptom management</strong></p>
+                    <p style="margin-top: 1rem; line-height: 1.8;">
+                        Meditation apps: practice daily forever, stop practicing and symptoms return.<br><br>
+                        ClearMinds: target the underlying patterns. Users average 8.4 sessions per month working toward lasting change. Effects strengthen over time.
+                    </p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>1.1 year average engagement (vs <3 months industry)</li>
+                        <li>21-minute sessions showing real commitment</li>
+                        <li>Multi-condition platform (anxiety, sleep, stress, habits)</li>
+                        <li>Workplace-specific content (decompress at work, client-facing stress)</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Proven at Scale</h3>
+                    <p><strong>100,000+ users over 4.5 years showing what actually works</strong></p>
+                    <p style="margin-top: 1rem; line-height: 1.8;">
+                        Most platforms launch B2B with assumptions.<br><br>
+                        We spent 4.5 years understanding human behavior. 100,000+ people showed us what creates sustained engagement. Now we're bringing that proven model to workplaces.
+                    </p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>38% still engaged at 3 months (vs 4% industry)</li>
+                        <li>34% still active at 12 months (vs 1-3% industry)</li>
+                        <li>4x more frequent use than meditation apps</li>
+                        <li>Behavioral data informing every decision</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR APPROACH -->
+    <section id="approach" class="container">
+        <div class="page-section">
+            <h1>How It Works</h1>
+            <p style="font-size: 1.3rem; color: var(--gray-600); margin-bottom: 3rem;">
+                Community-integrated hypnotherapy that employees actually use
+            </p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h4>Simple Wellness Check-In (2 minutes)</h4>
+                        <p><strong>Not a clinical screening. Not intimidating. Just "how are you doing right now?"</strong></p>
+                        <ul style="margin-top: 1rem; line-height: 1.8;">
+                            <li>5 conversational questions</li>
+                            <li>Intelligent routing to right support</li>
+                            <li>Removes stigma barrier</li>
+                            <li>Optional safety screening</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h4>Immediate Community Welcome</h4>
+                        <p><strong>You're not alone: 91,000+ members understand</strong></p>
+                        <ul style="margin-top: 1rem; line-height: 1.8;">
+                            <li>24/7 peer support and connection</li>
+                            <li>Professional moderation (not automated)</li>
+                            <li>Shared experiences and practical tips</li>
+                            <li>Sense of belonging, not isolation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h4>Personalized Hypnotherapy Pathway</h4>
+                        <p><strong>Targeted support for your specific challenge</strong></p>
+                        <ul style="margin-top: 1rem; line-height: 1.8;">
+                            <li>Work stress & burnout prevention</li>
+                            <li>Sleep improvement programs</li>
+                            <li>Anxiety & stress management</li>
+                            <li>Confidence & performance</li>
+                            <li>Habit change (smoking, drinking, weight)</li>
+                            <li>300+ sessions refined through real use</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h4>Additional Support When Needed</h4>
+                        <p><strong>Seamless pathways to deeper help</strong></p>
+                        <ul style="margin-top: 1rem; line-height: 1.8;">
+                            <li>AI wellness coaching (24/7 availability)</li>
+                            <li>OCEAN personality assessment (deeper self-understanding)</li>
+                            <li>Partnership with CQC-registered providers for therapy access</li>
+                            <li>Crisis signposting (999, 111, Samaritans)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h4 style="margin-top: 0;">The Complete Support Model</h4>
+                <p style="font-size: 1.1rem;">
+                    <strong>Self-directed wellness</strong> (hypnotherapy, community, AI coaching) → <strong>Diagnostic insight</strong> (assessment tools) → <strong>Professional support</strong> (CQC-registered therapy partners)
+                </p>
+                <p style="font-size: 1.1rem; margin-top: 1rem;">
+                    Employees move between these as needs change. Start with community and hypnotherapy, escalate if needed. Complete pathway in one platform.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAIRMAN'S STORY -->
+    <section id="chairman" class="container">
+        <div class="page-section">
+            <h1>A Message from Our Chairman</h1>
+            <p style="font-size: 1.3rem; color: var(--gray-600); margin-bottom: 3rem;">
+                Why we built this for the long term, not the quick exit
+            </p>
+
+            <div class="warning-box" style="background: var(--clearminds-cream); border-color: var(--clearminds-teal);">
+                <p style="font-size: 1.2rem; line-height: 1.9; margin-bottom: 1.5rem;">
+                    I'm certain other companies will want to know: <strong>is ClearMinds planning to be around for a long time, or make a fast buck and sell?</strong>
+                </p>
+                <p style="font-size: 1.2rem; line-height: 1.9; margin-bottom: 1.5rem;">
+                    We've seen what happens when companies chase fast growth with investor money—it's invariably customer service and customers who get let down. You know who I'm talking about. The meditation giant that raised hundreds of millions, then gutted the very features users loved.
+                </p>
+                <p style="font-size: 1.2rem; line-height: 1.9; margin-bottom: 0;">
+                    <strong>We actively decided against that path.</strong> We're driven by having a transformative impact with mental health and wellbeing, not by chasing valuation milestones.
+                </p>
+            </div>
+
+            <h2>The Context We're Operating In</h2>
+
+            <p style="font-size: 1.15rem; line-height: 1.8;">
+                The workforce needs guided support with clear pathways—self-directed—more than at any time since the industrial revolution. We're living through the third technological revolution, and it's having a detrimental effect as much as it's a force for good.
+            </p>
+
+            <h3>The Compound Crisis</h3>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🌐 Uncertainty Everywhere</h4>
+                    <p>The biggest issue facing companies of almost all sizes is uncertainty. This drives diffused communication to workers—managers don't know the answers or the way ahead—which drives anxieties around job security, progression, affordability.</p>
+                    <p style="margin-top: 1rem; font-style: italic;">Even when my own workforce knew we were navigating a downturn, it stopped none of them approaching me: "I need more money and it's stressing me and my family out." Some hit the booze. Others just got mentally unwell.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🤖 AI & Job Anxiety</h4>
+                    <p>AI is and will continue to take jobs. There's a tsunami of unemployment coming and people know this—it's driving fear into the workforce. This isn't speculation; it's the lived reality for millions of employees right now.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🏠 Remote Work Isolation</h4>
+                    <p>People who decided to work from home are struggling, and many can't return as employers have let buildings go. The isolation is real. The wearable tech explosion constantly tells us we're not sleeping or we're anxious—but offers no solution.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>💬 Communication Gap</h4>
+                    <p>Paradoxically, at a time when communication between executives, managers, and workforce is paramount, evolving legislation around disabilities and reasonable adjustments has stopped many employers from opening discussions with struggling employees.</p>
+                    <p style="margin-top: 1rem;">This widens the gap of trust-based communication that affects the underlying culture of any organization.</p>
+                </div>
+            </div>
+
+            <h2>Our Response: Community-First, For the Long Term</h2>
+
+            <div class="highlight-box">
+                <p style="font-size: 1.2rem; line-height: 1.9;">
+                    The founding vision of ClearMinds was, and remains to this day, <strong>a community-first approach.</strong> We launched in 2021, amidst the pandemic and its aftermath, as most of us were trying to find and fit with a "new normalcy."
+                </p>
+                <p style="font-size: 1.2rem; line-height: 1.9; margin-top: 1.5rem;">
+                    For some, this involved a whole new work-life balance. For others, new work patterns including working from home. For almost everyone affected, these changes came with their own challenges—ones which brought to conscious awareness how we live and work, and the need to address things holding us back or disrupting our balance.
+                </p>
+            </div>
+
+            <h3>Why Community Matters More Than Ever</h3>
+
+            <p style="font-size: 1.15rem; line-height: 1.8;">
+                The explosion of wearable tech constantly tells us if we're not sleeping or if we're anxious—<strong>but doesn't venture a solution or help.</strong> What followed was increasing demand for psychological support and medical intervention, all with challenges from cost to availability, and the fundamental issue of "where to start."
+            </p>
+
+            <p style="font-size: 1.15rem; line-height: 1.8;">
+                By 2023/24, with emerging patterns becoming clearer, we knew it was time to take the established product and <strong>the power of community</strong> directly into the workforce.
+            </p>
+
+            <h2>Market Context: The Growth Opportunity</h2>
+
+            <p style="font-size: 1.15rem; line-height: 1.8;">
+                The hypnotherapy market is expanding exponentially—predicted to go from <strong>$15 billion to $131 billion in the next 7 years</strong>, driven by mobile apps and AI.
+            </p>
+
+            <p style="font-size: 1.15rem; line-height: 1.8;">
+                But here's our difference: <strong>we've set sights and targets calibrated to our values</strong> and knowledge of what it takes to invest in a client's success. For this, we have to concentrate effort and focus on a relatively small number of deep partnerships.
+            </p>
+
+            <div class="highlight-box">
+                <p style="font-size: 1.2rem; line-height: 1.9; margin: 0;">
+                    <strong>We're in for the long haul.</strong> We actively decided against investment for fast growth for the reasons I've highlighted. This gives assurance to partners like Towergate—and any other B2B customer—that we're building something sustainable, not chasing an exit.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE DATA / EVIDENCE -->
+    <section id="evidence" class="container">
+        <div class="page-section">
+            <h1>The Data: Proven Engagement at Scale</h1>
+            <p style="font-size: 1.3rem; color: var(--gray-600); margin-bottom: 3rem;">
+                100,000+ users over 4.5 years showing what actually works
+            </p>
+
+            <div class="warning-box" style="background: var(--clearminds-green); border-color: var(--clearminds-teal);">
+                <h3 style="margin-top: 0; color: var(--clearminds-dark);">The Bottom Line</h3>
+                <p style="font-size: 1.2rem; line-height: 1.9;">
+                    ClearMinds achieves <strong>9.5x better retention, 4x more frequent use, and 3.1x higher community engagement</strong> than industry benchmarks—demonstrating that community-integrated hypnotherapy delivers sustained value that meditation-only apps cannot match.
+                </p>
+            </div>
+
+            <h2>Key Engagement Metrics</h2>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>What We Measure</th>
+                        <th>ClearMinds Performance</th>
+                        <th>Industry Average</th>
+                        <th>ClearMinds Advantage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>3-Month Retention</strong></td>
+                        <td>38% still active</td>
+                        <td>4% still active</td>
+                        <td><strong>9.5x better ✓</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Average User Lifetime</strong></td>
+                        <td>1.1 years engaged</td>
+                        <td>&lt;3 months engaged</td>
+                        <td><strong>4.4x longer ✓</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>12-Month Active Rate</strong></td>
+                        <td>34% still using</td>
+                        <td>1-3% still using</td>
+                        <td><strong>11-34x higher ✓</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sessions per Month</strong></td>
+                        <td>8.4 sessions</td>
+                        <td>2.1 sessions</td>
+                        <td><strong>4x more frequent ✓</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Session Duration</strong></td>
+                        <td>21 minutes</td>
+                        <td>10 minutes</td>
+                        <td><strong>2.1x deeper ✓</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Community Engagement (90 days)</strong></td>
+                        <td>62% participating</td>
+                        <td>20% participating</td>
+                        <td><strong>3.1x higher ✓</strong></td>
+                    </tr>
+                    <tr style="background: var(--clearminds-green);">
+                        <td><strong>Cost per Retained User (3 months)</strong></td>
+                        <td>£210</td>
+                        <td>£2,000+</td>
+                        <td><strong>10x more efficient ✓</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>What This Proves</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📅 They Stay Engaged</h4>
+                    <p>38% still active at 3 months, 34% at 12 months. Users don't just download and abandon—they stay engaged for over a year. This isn't novelty effect; it's sustained value delivery.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🤝 Community Drives Retention</h4>
+                    <p>62% actively participating in community by 90 days. This predicts long-term retention and creates accountability that helps people follow through on change.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>⏱️ Deeper Engagement</h4>
+                    <p>21-minute average sessions indicate genuine commitment, not casual browsing. 8.4 sessions per month shows people working consistently toward change.</p>
+                </div>
+            </div>
+
+            <h3>For Enterprise Buyers: The ROI Story</h3>
+
+            <div class="highlight-box">
+                <ul style="font-size: 1.1rem; line-height: 1.9; margin: 0;">
+                    <li><strong>38% retention at 3 months</strong> means £210 cost per retained user (vs £300+ traditional EAP)</li>
+                    <li><strong>1.1 year average engagement</strong> means employees use it throughout the year, not just during crisis</li>
+                    <li><strong>34% still active at 12 months</strong> means ROI compounds over time</li>
+                    <li><strong>8.4 sessions per month</strong> suggests working toward change, not just dabbling</li>
+                </ul>
+            </div>
+
+            <h2>Market Comparison: Our Competitive Position</h2>
+
+            <p style="font-size: 1.15rem; line-height: 1.8;">
+                The global hypnosis app market is <strong>$892.3 million by 2031</strong> with <strong>9.2% annual growth</strong>. It's fragmented across 20+ players with no dominant leader.
+            </p>
+
+            <h3>How We Compare to Key Competitors</h3>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>vs. Reveri Health (Stanford Medicine)</h4>
+                    <p><strong>Their strength:</strong> Medical credentials, U.S. market</p>
+                    <p><strong>Our advantage:</strong> Community infrastructure (they have none), B2B-ready, UK market positioning, 100k+ behavioral data</p>
+                    <p style="margin-top: 1rem; font-weight: 600;">Threat level: LOW (different markets)</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>vs. Nerva (AR/VR Technology)</h4>
+                    <p><strong>Their strength:</strong> Technology innovation, IBS niche</p>
+                    <p><strong>Our advantage:</strong> Multi-condition platform, community, B2B infrastructure, broader addressable market</p>
+                    <p style="margin-top: 1rem; font-weight: 600;">Threat level: LOW-MEDIUM (niche focus)</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>vs. HelloMind (European Consumer Brand)</h4>
+                    <p><strong>Their strength:</strong> Consumer brand, multi-language</p>
+                    <p><strong>Our advantage:</strong> Diagnostic assessment, community, B2B infrastructure, behavioral data at scale</p>
+                    <p style="margin-top: 1rem; font-weight: 600;">Threat level: LOW (B2C only)</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h4 style="margin-top: 0;">Our Unique Position</h4>
+                <p style="font-size: 1.1rem; line-height: 1.9;">
+                    <strong>ClearMinds is the only platform with established community at scale.</strong> 91,000+ members with 4.5 years of community management experience. This is a barrier to entry competitors would need years to replicate.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GOVERNANCE & LEADERSHIP -->
+    <section id="governance" class="container">
+        <div class="page-section">
+            <h1>Governance & Leadership</h1>
+            <p style="font-size: 1.3rem; color: var(--gray-600); margin-bottom: 3rem;">
+                Enterprise-ready structure with board accountability
+            </p>
+
+            <h2>The Governance and Advisory Board</h2>
+
+            <p style="font-size: 1.15rem; line-height: 1.8;">
+                The Company board of directors act as the governing body for ClearMinds. The governing body has direct oversight and jurisdiction to ClearMinds corporate and is set up with a clear mandate with responsibility for the governance document, related policies, and all associated frameworks necessary to manage and maintain quality assurance and safe, effective delivery of services.
+            </p>
+
+            <div class="board-grid">
+                <div class="board-member">
+                    <h4>Kainne Clements</h4>
+                    <p>Executive Chairman</p>
+                    <p style="font-style: italic;">Governance Board</p>
+                </div>
+
+                <div class="board-member">
+                    <h4>Alastair Stewart</h4>
+                    <p>Founder & CEO</p>
+                    <p style="font-style: italic;">Governance Board</p>
+                </div>
+
+                <div class="board-member">
+                    <h4>Tom Cassidy</h4>
+                    <p>CIO</p>
+                    <p style="font-style: italic;">Governance Board</p>
+                </div>
+
+                <div class="board-member">
+                    <h4>Sarita Manzi</h4>
+                    <p>Head of Corporate Partnerships</p>
+                    <p style="font-style: italic;">Governance Board</p>
+                </div>
+
+                <div class="board-member">
+                    <h4>Ron Stewart</h4>
+                    <p>CFO & Quality Control</p>
+                    <p style="font-style: italic;">Governance Board</p>
+                </div>
+
+                <div class="board-member">
+                    <h4>Catherine Jackson</h4>
+                    <p>Head Hypnotherapist</p>
+                    <p style="font-style: italic;">Advisory Board</p>
+                </div>
+
+                <div class="board-member">
+                    <h4>Edward Omran</h4>
+                    <p>Head Hypnotherapist</p>
+                    <p style="font-style: italic;">Advisory Board</p>
+                </div>
+
+                <div class="board-member">
+                    <h4>Mandy Kloppers</h4>
+                    <p>Cognitive Behavioural Therapist</p>
+                    <p style="font-style: italic;">Advisory Board</p>
+                </div>
+            </div>
+
+            <h2>Four Core Pillars of Governance</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🛡️ User Safety & Safeguarding</h4>
+                    <ul style="line-height: 1.8; margin-top: 1rem;">
+                        <li>Crisis protocols and duty of candour</li>
+                        <li>Emergency signposting (999, 111, Samaritans)</li>
+                        <li>Safeguarding procedures and reporting</li>
+                        <li>Risk management and incident tracking</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔒 Data & Information Governance</h4>
+                    <ul style="line-height: 1.8; margin-top: 1rem;">
+                        <li>Privacy-first design, minimal data collection</li>
+                        <li>GDPR compliance and k≥10 anonymization</li>
+                        <li>Employee confidentiality from employers</li>
+                        <li>Cyber Essentials Plus certified</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🏢 Corporate Governance</h4>
+                    <ul style="line-height: 1.8; margin-top: 1rem;">
+                        <li>Board accountability and oversight</li>
+                        <li>Financial governance and risk management</li>
+                        <li>Regulatory compliance (GDPR, Care Act, Mental Capacity Act)</li>
+                        <li>Transparent reporting and policy updates</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📈 Quality & Continuous Improvement</h4>
+                    <ul style="line-height: 1.8; margin-top: 1rem;">
+                        <li>Evidence-based content by qualified practitioners</li>
+                        <li>99.5% uptime monitoring</li>
+                        <li>User satisfaction tracking</li>
+                        <li>Monthly content releases and updates</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Employee Confidentiality: Zero Individual Visibility</h2>
+
+            <div class="highlight-box">
+                <h4 style="margin-top: 0;">What Employers NEVER See</h4>
+                <ul style="font-size: 1.1rem; line-height: 1.9; margin-bottom: 2rem;">
+                    <li>❌ Employee names or identifiers</li>
+                    <li>❌ Which employees registered or used service</li>
+                    <li>❌ Individual usage patterns or participation</li>
+                    <li>❌ Any data enabling individual identification</li>
+                </ul>
+
+                <h4>What Employers CAN See</h4>
+                <ul style="font-size: 1.1rem; line-height: 1.9; margin: 0;">
+                    <li>✅ Total uptake statistics (overall numbers)</li>
+                    <li>✅ Aggregated utilization rates (% using the service)</li>
+                    <li>✅ Anonymized trends (popular content categories)</li>
+                    <li>✅ Demographics (only if ≥10 users in subgroup)</li>
+                </ul>
+            </div>
+
+            <p style="font-size: 1.15rem; line-height: 1.8; margin-top: 2rem;">
+                <strong>Protected by:</strong> Contractual agreements • Technical controls • GDPR compliance • k≥10 anonymization standard
+            </p>
+
+            <h2>External Validation & Compliance</h2>
+
+            <div class="stats-bar" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+                <div class="stat">
+                    <div class="stat-label">Cyber Essentials Plus<br>(Q2 2025)</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Annual Penetration<br>Testing</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">ICO Registered<br>(Data Controller)</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">DPIA<br>Completed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Professional<br>Indemnity Insurance</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">CQC Partnership<br>(SmartStartMinds)</div>
+                </div>
+            </div>
+
+            <div class="wireframe-note">
+                <strong>Design Note:</strong> Include access to full documentation data room. Create visual showing the complete policy framework (32 policies across 6 categories). Consider downloadable governance summary PDF.
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="container">
+        <div class="page-section">
+            <h1>Start a Conversation</h1>
+            <p style="font-size: 1.3rem; color: var(--gray-600); margin-bottom: 3rem;">
+                Whether you're exploring partnerships or have questions about our approach
+            </p>
+
+            <div class="highlight-box">
+                <h3 style="margin-top: 0;">Our Approach to Partnerships</h3>
+                <p style="font-size: 1.15rem; line-height: 1.9;">
+                    We're not looking for hundreds of clients—we're looking for the right partnerships where we can invest deeply in success. We listen, adapt, and build together for the long term.
+                </p>
+            </div>
+
+            <div class="feature-grid" style="margin-bottom: 3rem;">
+                <div class="feature-card" style="background: var(--clearminds-green); border: 2px solid var(--clearminds-teal);">
+                    <h4>For Benefits Brokers</h4>
+                    <p style="line-height: 1.8;">Explore how ClearMinds can differentiate your portfolio with proven engagement that traditional EAPs can't match.</p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Partnership terms and exclusivity</li>
+                        <li>Adviser training programs</li>
+                        <li>Implementation timelines</li>
+                        <li>Commission structures</li>
+                    </ul>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#" class="btn-primary">Schedule Partnership Call</a>
+                    </div>
+                </div>
+
+                <div class="feature-card" style="background: var(--clearminds-cream); border: 2px solid var(--clearminds-teal);">
+                    <h4>For Enterprise HR Leaders</h4>
+                    <p style="line-height: 1.8;">See how community-integrated hypnotherapy works for your organization.</p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Platform walkthrough and user journey</li>
+                        <li>Governance & compliance review</li>
+                        <li>ROI modeling for your workforce</li>
+                        <li>Pilot program discussion</li>
+                    </ul>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#" class="btn-primary">Book Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Contact Form</h2>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <form style="background: white; padding: 3rem; border-radius: 12px; border: 2px solid var(--gray-200);">
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Name *</label>
+                        <input type="text" style="width: 100%; padding: 1rem; border: 2px solid var(--gray-200); border-radius: 8px; font-size: 1rem;" placeholder="Your full name">
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Email *</label>
+                        <input type="email" style="width: 100%; padding: 1rem; border: 2px solid var(--gray-200); border-radius: 8px; font-size: 1rem;" placeholder="your.email@company.com">
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Organization *</label>
+                        <input type="text" style="width: 100%; padding: 1rem; border: 2px solid var(--gray-200); border-radius: 8px; font-size: 1rem;" placeholder="Company name">
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">I'm interested in *</label>
+                        <select style="width: 100%; padding: 1rem; border: 2px solid var(--gray-200); border-radius: 8px; font-size: 1rem;">
+                            <option value="">Select...</option>
+                            <option value="broker">Benefits Broker Partnership</option>
+                            <option value="enterprise">Enterprise Demo/Purchase</option>
+                            <option value="learn">Learning More About Your Approach</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Message</label>
+                        <textarea style="width: 100%; padding: 1rem; border: 2px solid var(--gray-200); border-radius: 8px; font-size: 1rem; min-height: 150px;" placeholder="Tell us about your interest..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; margin: 0;">Send Message</button>
+                </form>
+            </div>
+
+            <h3 style="margin-top: 3rem; text-align: center;">Direct Contacts</h3>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Partnership Inquiries</h4>
+                    <p>For benefits brokers and strategic partners</p>
+                    <p style="margin-top: 1rem;"><a href="mailto:partnerships@clearminds.business" style="color: var(--clearminds-teal); font-weight: 600;">partnerships@clearminds.business</a></p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>Enterprise Sales</h4>
+                    <p>For direct corporate purchases</p>
+                    <p style="margin-top: 1rem;"><a href="mailto:enterprise@clearminds.business" style="color: var(--clearminds-teal); font-weight: 600;">enterprise@clearminds.business</a></p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>General Inquiries</h4>
+                    <p>For all other questions</p>
+                    <p style="margin-top: 1rem;"><a href="mailto:info@clearminds.business" style="color: var(--clearminds-teal); font-weight: 600;">info@clearminds.business</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <div>
+                    <h3 style="color: white; margin-bottom: 1rem;">ClearMinds</h3>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.8;">Community-first workplace wellness where 91,000+ people support each other through lasting change.</p>
+                </div>
+
+                <div>
+                    <h4 style="color: white; margin-bottom: 1rem;">Quick Links</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="#approach" style="color: rgba(255,255,255,0.8); text-decoration: none;">Our Approach</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#chairman" style="color: rgba(255,255,255,0.8); text-decoration: none;">Chairman's Story</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#evidence" style="color: rgba(255,255,255,0.8); text-decoration: none;">The Data</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#governance" style="color: rgba(255,255,255,0.8); text-decoration: none;">Governance</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#contact" style="color: rgba(255,255,255,0.8); text-decoration: none;">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color: white; margin-bottom: 1rem;">Documentation</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="https://clearminds.business/corporate/" style="color: rgba(255,255,255,0.8); text-decoration: none;" target="_blank">Governance Framework</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="https://clearminds.business/corporate/community-safety-framework.html" style="color: rgba(255,255,255,0.8); text-decoration: none;" target="_blank">Community Safety</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="https://clearminds.business/corporate/documentation/" style="color: rgba(255,255,255,0.8); text-decoration: none;" target="_blank">Policy Library</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color: white; margin-bottom: 1rem;">Contact</h4>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 0.5rem;">Partnerships: <a href="mailto:partnerships@clearminds.business" style="color: var(--clearminds-green); text-decoration: none;">partnerships@clearminds.business</a></p>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 0.5rem;">Enterprise: <a href="mailto:enterprise@clearminds.business" style="color: var(--clearminds-green); text-decoration: none;">enterprise@clearminds.business</a></p>
+                    <p style="color: rgba(255,255,255,0.8);">General: <a href="mailto:info@clearminds.business" style="color: var(--clearminds-green); text-decoration: none;">info@clearminds.business</a></p>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem; text-align: center;">
+                <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">
+                    © 2025 ClearMinds. All rights reserved. |
+                    <a href="#" style="color: var(--clearminds-green); text-decoration: none;" target="_blank">Terms</a> |
+                    <a href="#" style="color: var(--clearminds-green); text-decoration: none;" target="_blank">Privacy</a>
+                </p>
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">
+                    <strong>Alternative Wireframe v2:</strong> Community-first positioning emphasizing engagement data, board governance, and chairman's long-term commitment narrative. This version avoids aggressive "resolution" language and clinical framing in favor of "change vs cope" and community-integrated support.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
