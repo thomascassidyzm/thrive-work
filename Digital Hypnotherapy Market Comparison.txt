@@ -1,0 +1,224 @@
+﻿1. ClearMinds vs. Reveri Health
+Company Profile: Reveri Health
+Positioning: "Clinical hypnosis backed by Stanford Medicine"
+Strengths:
+* Founded by Dr. David Spiegel (Stanford psychiatrist, 50+ years hypnosis research)
+* Strong academic and medical credentials
+* Evidence-based approach with published research
+* Medical professional endorsements
+* Focus on pain, anxiety, insomnia, smoking cessation
+Business Model:
+* B2C app ($14.99/month or $99.99/year)
+* Some B2B partnerships emerging
+* Individual session focus (not community-based)
+Market Position:
+* Premium pricing justified by medical credentials
+* Strong in clinical conditions (pain, insomnia)
+* U.S.-focused market
+________________
+
+
+Direct Comparison:
+
+
+Dimension
+	Reveri Health
+	ClearMinds
+	Winner
+	Clinical Credibility
+	✅ Stanford Medicine affiliation
+	✅ 65 years hypnotherapy research + SmartStartMinds (CQC)
+	TIE
+	Evidence Base
+	Published research (Spiegel studies)
+	Meta-analyses (d=1.17-1.58 PTSD, etc.)
+	TIE
+	Community Model
+	❌ None - individual use only
+	✅ 91,000+ members, 24/7 moderation
+	ClearMinds
+	Customer Support
+	Standard support
+	✅ 24/7 manned support + class-leading response times
+	ClearMinds
+	B2B Readiness
+	🔶 Emerging, no enterprise infrastructure
+	✅ Purpose-built workplace content, employer portal
+	ClearMinds
+	Personalization
+	🔶 Session selection by user
+	✅ Neuroindicator triage + intelligent routing
+	ClearMinds
+	Geographic Focus
+	U.S. market
+	UK market + UK legal compliance (Equality Act)
+	ClearMinds (UK)
+	Technology
+	Standard app delivery
+	AI coaching + assessment + community platform
+	ClearMinds
+	Pricing
+	$99.99/year B2C
+	£80-120/employee/year B2B
+	Different segments
+	Market Proven
+	Newer to market
+	100,000+ users, 4.5 years data
+	ClearMinds
+	Time to Market
+	Available now
+	Available now
+	TIE
+	
+
+
+
+Strategic Assessment:
+Reveri's Advantage: Stanford brand, U.S. market penetration, medical establishment credibility
+ClearMinds' Advantage: Community infrastructure (cannot be replicated quickly), B2B-ready, UK market positioning, behavioral data from 100K+ users, intelligent triage system
+Market Positioning: Not directly competitive - Reveri focuses on premium individual consumers in U.S., ClearMinds focuses on UK enterprise market with community-integrated model.
+Threat Level: LOW - Different geographic markets, different business models, no community offering
+________________
+  ________________
+2. ClearMinds vs. Nerva
+Company Profile: Nerva
+Positioning: "Digital gut-directed hypnotherapy for IBS"
+Strengths:
+* Niche focus on IBS (strong clinical evidence for hypnotherapy + IBS)
+* AR/VR technology integration
+* NICE recognition for gut-directed hypnotherapy
+* 6-week program structure
+* Some partnerships with healthcare providers
+Business Model:
+* B2C app (subscription model)
+* Healthcare provider partnerships
+* Condition-specific (IBS primarily)
+Market Position:
+* Technology innovation leader (AR/VR)
+* Clinical validation for specific condition
+* Growing in digital therapeutics space
+________________
+
+
+Direct Comparison
+Dimension
+	Nerva
+	ClearMinds
+	Winner
+	Technology Innovation
+	✅ AR/VR immersive experiences
+	🔶 Standard app + AI
+	Nerva
+	Clinical Evidence (IBS)
+	✅ NICE-recognized gut-directed hypnotherapy
+	✅ NICE-recognized (same evidence base)
+	TIE
+	Condition Breadth
+	❌ IBS-focused only
+	✅ Anxiety, PTSD, pain, IBS, sleep, smoking
+	ClearMinds
+	Community
+	❌ None
+	✅ 91,000+ members
+	ClearMinds
+	Customer Support
+	Standard support
+	✅ 24/7 manned support + class-leading response times
+	ClearMinds
+	B2B Infrastructure
+	❌ B2C focused
+	✅ Employer portal, workplace content
+	ClearMinds
+	Market Scale
+	Niche (IBS sufferers)
+	Broad (multiple high-prevalence conditions)
+	ClearMinds
+	Personalization
+	🔶 6-week program
+	✅ Neuroindicator assessment + routing
+	ClearMinds
+	Geographic
+	Global (limited UK-specific)
+	UK-focused + legal compliance
+	ClearMinds (UK)
+	Price Point
+	B2C subscription
+	B2B enterprise pricing
+	Different segments
+	Strategic Assessment:
+Nerva's Advantage: AR/VR technology leadership, strong single-condition focus, established in digital therapeutics space
+ClearMinds' Advantage: Multi-condition platform, community infrastructure, B2B-ready, broader addressable market, UK positioning
+Market Positioning: Nerva is technology innovator in narrow niche. ClearMinds is platform play across multiple conditions. Nerva's technology could be replicated by ClearMinds if needed, but ClearMinds' community cannot be quickly replicated by Nerva.
+Threat Level: LOW-MEDIUM - Different market strategy (niche vs. platform), but could expand beyond IBS over time
+
+
+  ________________
+3. ClearMinds vs. HelloMind
+Company Profile: HelloMind
+Positioning: "Personalized hypnotherapy programs"
+Strengths:
+* User customization and tailored programs
+* Multiple condition coverage (anxiety, stress, sleep, habits)
+* Consumer-friendly interface
+* Established B2C brand in Europe
+* Multiple language support
+Business Model:
+* B2C subscription app
+* Individual programs purchased
+* Consumer self-service model
+Market Position:
+* European market presence
+* Consumer wellness positioning
+* Mid-market pricing
+________________
+Direct Comparison
+Dimension
+	HelloMind
+	ClearMinds
+	Winner
+	Personalization
+	🔶 User selects programs
+	✅ Neuroindicator diagnostic assessment
+	ClearMinds
+	Condition Coverage
+	✅ Anxiety, stress, sleep, habits
+	✅ Plus PTSD, pain, IBS (broader clinical)
+	ClearMinds
+	Clinical Evidence
+	🔶 Limited published evidence
+	✅ 65 years meta-analyses, effect sizes
+	ClearMinds
+	Community
+	❌ None
+	✅ 91,000+ members, 24/7 moderation
+	ClearMinds
+	Customer Support
+	Standard support
+	✅ 24/7 manned support + class-leading response times
+	ClearMinds
+	B2B Infrastructure
+	❌ B2C only
+	✅ Enterprise-ready
+	ClearMinds
+	Technology
+	Standard app
+	AI coaching + assessment + community
+	ClearMinds
+	Market Data
+	Limited disclosure
+	100,000+ users, 4.5 years behavioral data
+	ClearMinds
+	Geographic
+	European focus
+	UK-focused + compliance
+	ClearMinds (UK)
+	Price
+	B2C mid-market
+	B2B premium
+	Different segments
+	Strategic Assessment:
+HelloMind's Advantage: Established European consumer brand, multi-language support, user-friendly consumer experience
+ClearMinds' Advantage: Diagnostic assessment (not just browsing), community infrastructure, clinical depth, B2B infrastructure, behavioral data at scale, UK market positioning
+Market Positioning: HelloMind is consumer wellness app. ClearMinds is clinical resolution platform. HelloMind competes in "browse and choose" consumer market. ClearMinds competes in "assess and resolve" enterprise market.
+Threat Level: LOW - Different business model (B2C vs. B2B), no enterprise infrastructure, no community, limited clinical depth
+________________

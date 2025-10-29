@@ -1,0 +1,1967 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearMinds B2B Website Wireframe & Narrative</title>
+    <style>
+        :root {
+            --clearminds-teal: #007a87;
+            --clearminds-dark: #0d3b3e;
+            --clearminds-green: #dff4da;
+            --clearminds-cream: #fffbf5;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-600: #6c757d;
+            --gray-800: #343a40;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--gray-100);
+        }
+
+        /* Navigation */
+        .nav-container {
+            background: linear-gradient(135deg, var(--clearminds-teal) 0%, var(--clearminds-dark) 100%);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Page Sections */
+        .page-section {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3rem;
+            color: var(--clearminds-dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            color: var(--clearminds-dark);
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--clearminds-teal);
+        }
+
+        h3 {
+            font-size: 1.75rem;
+            color: var(--clearminds-teal);
+            margin: 2rem 0 1rem;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+            color: var(--clearminds-dark);
+            margin: 1.5rem 0 0.75rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: var(--clearminds-green);
+            border-radius: 8px;
+            border-top: 4px solid var(--clearminds-teal);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--clearminds-teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 122, 135, 0.15);
+            border-color: var(--clearminds-teal);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--clearminds-teal) 0%, var(--clearminds-dark) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        /* CTA Buttons */
+        .cta-container {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 3rem;
+            background: var(--clearminds-green);
+            border-radius: 12px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--clearminds-teal);
+            color: white;
+            padding: 1.25rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            margin: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--clearminds-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 122, 135, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: white;
+            color: var(--clearminds-teal);
+            padding: 1.25rem 2.5rem;
+            border: 2px solid var(--clearminds-teal);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            margin: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--clearminds-teal);
+            color: white;
+        }
+
+        /* Highlight Boxes */
+        .highlight-box {
+            background: var(--clearminds-green);
+            border-left: 6px solid var(--clearminds-teal);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 6px solid #ff9800;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: var(--clearminds-teal);
+            color: white;
+            padding: 1.25rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--gray-200);
+            background: white;
+        }
+
+        .comparison-table tr:hover td {
+            background: var(--clearminds-cream);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin: 3rem 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 3rem;
+            border-left: 3px solid var(--clearminds-teal);
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -1.25rem;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--clearminds-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Proof Points */
+        .proof-points {
+            list-style: none;
+            padding: 0;
+        }
+
+        .proof-points li {
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            background: var(--clearminds-cream);
+            border-left: 4px solid var(--clearminds-teal);
+            border-radius: 4px;
+        }
+
+        .proof-points li::before {
+            content: '✓';
+            color: var(--clearminds-teal);
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        /* Wireframe Notes */
+        .wireframe-note {
+            background: #e7f3ff;
+            border-left: 6px solid #2196F3;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            font-style: italic;
+            color: #0d47a1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--clearminds-dark);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            h3 { font-size: 1.5rem; }
+
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .page-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav">
+            <a href="#home" class="logo">ClearMinds</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#solution">The Solution</a></li>
+                <li><a href="#partners">For Partners</a></li>
+                <li><a href="#evidence">Evidence</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HOMEPAGE -->
+    <section id="home" class="container">
+        <div class="page-section">
+            <!-- Hero Section -->
+            <div style="text-align: center; padding: 3rem 0;">
+                <h1>Mental Health Resolution, Not Management</h1>
+                <p style="font-size: 1.5rem; color: var(--gray-600); max-width: 900px; margin: 1.5rem auto;">
+                    The UK's first community-first platform delivering lasting change in 6-18 hours, not indefinite symptom management
+                </p>
+
+                <!-- Stats Bar -->
+                <div class="stats-bar">
+                    <div class="stat">
+                        <div class="stat-number">100,000+</div>
+                        <div class="stat-label">Users Proven</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">91,000+</div>
+                        <div class="stat-label">Community Members</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4 Years</div>
+                        <div class="stat-label">Behavioral Data</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">6x Better</div>
+                        <div class="stat-label">Engagement vs EAP</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <a href="#partners" class="btn-primary">Explore Partnership</a>
+                    <a href="#contact" class="btn-secondary">Book Demo</a>
+                </div>
+            </div>
+
+            <div class="wireframe-note">
+                <strong>Design Note:</strong> Hero section should include high-impact visual (abstract illustration or data visualization showing resolution journey). Consider animation showing transformation from crisis/management to resolution/thriving.
+            </div>
+        </div>
+
+        <!-- Why We're Different -->
+        <div class="page-section">
+            <h2>Why We're Different</h2>
+
+            <div class="highlight-box">
+                <h3 style="margin-top: 0;">The Journey: From Data to Delivery</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    <strong>We spent 4 years understanding human behavior before serving corporations.</strong> While others rushed to B2B with unproven solutions, we deliberately built the largest behavioral dataset in digital mental health.
+                </p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h4>2020-2024: The Proving Ground</h4>
+                        <p>Launched B2C deliberately to understand human behavior around wellbeing. "Whether B2C or B2B, it ultimately goes to C—it's still an individual mind."</p>
+                        <ul class="proof-points" style="margin-top: 1rem;">
+                            <li>100,000+ users providing empirical data</li>
+                            <li>520,000 total people engaged</li>
+                            <li>34M+ app opens demonstrating sustained engagement</li>
+                            <li>280-day average lifetime after first month</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h4>2024: The Strategic Pivot</h4>
+                        <p>With facts and evidence—not theories—we pivoted to B2B. Onboarded corporate veterans from highly regulated markets (insurance, healthcare, finance).</p>
+                        <ul class="proof-points" style="margin-top: 1rem;">
+                            <li>Corporate expertise from regulated sectors</li>
+                            <li>Focus on health, wellbeing, insurance</li>
+                            <li>Specialists in education, AI, regulatory frameworks</li>
+                            <li>Partnership mindset with 20-30 year veterans</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h4>2025: Ready for Partnership</h4>
+                        <p>Investment shifted from B2C marketing to B2B value: customer service, analytics, partnership management, B2B-specific content.</p>
+                        <ul class="proof-points" style="margin-top: 1rem;">
+                            <li>Relational, not transactional approach</li>
+                            <li>Deep partnerships with organizations who share our values</li>
+                            <li>Enterprise-ready with full governance frameworks</li>
+                            <li>Purpose-built workplace content</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Three Differentiators -->
+        <div class="page-section">
+            <h2>Three Differentiators: Why ClearMinds, Not Another EAP</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Community-First</h3>
+                    <p><strong>91,000+ members with 24/7 professional moderation</strong></p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Zero serious incidents (proven safety record)</li>
+                        <li>3-5 crisis interventions/year, all handled successfully</li>
+                        <li>Peer support creates immediate connection</li>
+                        <li>35-50% active engagement vs 3-5% traditional EAP</li>
+                        <li>Community cannot be replicated quickly by competitors</li>
+                    </ul>
+                    <div class="highlight-box" style="margin-top: 1.5rem;">
+                        <strong>Why it matters:</strong> Traditional EAPs fail because they're crisis-only and isolating. We start with community, not crisis.
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Resolution Model</h3>
+                    <p><strong>Lasting change in 6-18 hours, not indefinite symptom management</strong></p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Clinical hypnotherapy targets subconscious patterns</li>
+                        <li>PTSD: d=1.17-1.58 effect size (very large)</li>
+                        <li>Anxiety: d=0.99 (strengthens at follow-up)</li>
+                        <li>Chronic Pain: d=0.60, 42% reduction</li>
+                        <li>65 years of research, AMA recognition since 1958</li>
+                    </ul>
+                    <div class="highlight-box" style="margin-top: 1.5rem;">
+                        <strong>Why it matters:</strong> Employers pay for ongoing management of conditions that could be resolved. Resolution changes the ROI calculation entirely.
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Data-Driven</h3>
+                    <p><strong>100,000+ users proving what works at scale</strong></p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Empirical behavioral data, not assumptions</li>
+                        <li>Personalized pathways based on real patterns</li>
+                        <li>Neuroindicator assessment routes intelligently</li>
+                        <li>OCEAN personality profiling for deeper insight</li>
+                        <li>4 years of refinement and optimization</li>
+                    </ul>
+                    <div class="highlight-box" style="margin-top: 1.5rem;">
+                        <strong>Why it matters:</strong> Most competitors launched B2B with no behavioral data. We have 4 years of proof showing what creates transformation.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Towergate Partnership -->
+        <div class="page-section">
+            <h2>Creating the Mental Health Resolution Category</h2>
+
+            <div class="highlight-box">
+                <h3 style="margin-top: 0;">Partnership with Towergate Employee Benefits</h3>
+                <p style="font-size: 1.2rem; line-height: 1.8;">
+                    "Don't be another EAP. Create something distinctive." — Iain Laws, Towergate CEO
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    We're partnering with Towergate Employee Benefits to launch a new category in workplace mental health: <strong>Mental Health Resolution Platform</strong>. While competitors offer commodity EAP at £30-50/employee, Towergate can position mental health resolution at £80-120/employee—not as more expensive EAP, but as fundamentally different intervention.
+                </p>
+            </div>
+
+            <h3>Scale Opportunity</h3>
+            <div class="stats-bar" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="stat">
+                    <div class="stat-number">15,000</div>
+                    <div class="stat-label">Client Companies</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">250,000+</div>
+                    <div class="stat-label">Total Employees</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">12 Months</div>
+                    <div class="stat-label">Exclusive Partnership</div>
+                </div>
+            </div>
+
+            <div class="wireframe-note">
+                <strong>Design Note:</strong> Include Towergate logo (with permission), case study preview, and quote from partnership discussion. Consider animated infographic showing category creation concept.
+            </div>
+        </div>
+
+        <!-- Target Sectors -->
+        <div class="page-section">
+            <h2>Built for Your Sector</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                We focused on <strong>health, wellbeing, and insurance sectors</strong> for a specific reason: from our lived experience, these areas don't seem well catered for. We saw the opportunity to serve the people who serve others.
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🏥 Healthcare</h4>
+                    <p>Healthcare organizations employ wellbeing professionals, yet their own workforces often struggle to access effective support.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🛡️ Insurance</h4>
+                    <p>Insurance companies sell wellbeing benefits, but their high-stress, client-facing teams need accessible, flexible support.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>💼 Professional Services</h4>
+                    <p>High-pressure roles with demanding clients need something immediately available, on-demand, that fits capacity constraints.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>👥 Recruitment</h4>
+                    <p>Recruitment firms dealing with productivity loss, remote worker isolation, and performance anxiety.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-container">
+            <h2 style="border: none; color: var(--clearminds-dark);">Ready to Lead the Category?</h2>
+            <p style="font-size: 1.2rem; color: var(--gray-600); max-width: 800px; margin: 1rem auto 2rem;">
+                Join Towergate and other forward-thinking organizations creating the Mental Health Resolution category.
+            </p>
+            <a href="#contact" class="btn-primary">Start the Conversation</a>
+        </div>
+    </section>
+
+    <!-- OUR STORY PAGE -->
+    <section id="story" class="container">
+        <div class="page-section">
+            <h1>Our Story: From Data to Delivery</h1>
+            <p style="font-size: 1.3rem; color: var(--gray-600); margin-bottom: 3rem;">
+                Four years of learning, one strategic pivot, and a commitment to relationships over transactions
+            </p>
+
+            <h2>Why We Started with B2C (2020-2024)</h2>
+
+            <div class="highlight-box">
+                <p style="font-size: 1.2rem; line-height: 1.8;">
+                    When we launched ClearMinds four years ago, we could have gone straight to the corporate market. We had the content, the credentials, the connections. But we chose a different path—and it's made all the difference.
+                </p>
+            </div>
+
+            <p>
+                We started with B2C for one simple reason: <strong>whether it's B2C or B2B, it ultimately goes to C. It's still an individual mind.</strong> Before we could serve corporations effectively, we needed to deeply understand human behavior around wellbeing.
+            </p>
+
+            <p>
+                How do people actually engage with hypnotherapy? What makes someone move from curiosity to commitment? When does impulse become habit? These weren't questions we could answer through market research or focus groups. We needed real users, real data, real behavior.
+            </p>
+
+            <h3>The Learning Phase: What We Built</h3>
+
+            <p>Those four years became our proving ground. We modeled behavioral patterns—impulse purchases versus subscriptions, casual users versus committed members, individual sessions versus comprehensive programs. We made our platform as flexible as possible, learning what worked and what didn't from real choices.</p>
+
+            <ul class="proof-points">
+                <li><strong>100,000+ users</strong> engaged with the platform</li>
+                <li><strong>520,000 total people</strong> have used ClearMinds</li>
+                <li><strong>3.2M+ website visitors</strong> exploring the platform</li>
+                <li><strong>1.26M app downloads</strong> across iOS/Android</li>
+                <li><strong>34M+ app opens</strong> demonstrating sustained engagement</li>
+                <li><strong>280-day average lifetime</strong> after first month (extraordinarily high retention)</li>
+                <li><strong>18,500 five-star reviews</strong> across platforms</li>
+                <li><strong>35,000+ monthly active users</strong> at scale</li>
+            </ul>
+
+            <p>
+                More recently, we introduced data analysts and specialists who could draw meaningful insights from hundreds of thousands of data points: purchases, utilization patterns, efficacy indicators, engagement trajectories. We tracked where the effort led, what created lasting change, which content resonated most deeply.
+            </p>
+
+            <div class="highlight-box">
+                <p style="font-size: 1.2rem;">
+                    By 2024, we had something invaluable: <strong>empirical evidence of human behavior around digital hypnotherapy.</strong> Not theories. Not projections. Actual data from 100,000+ users showing us exactly how people engage, what they need, and what creates transformation.
+                </p>
+            </div>
+
+            <h3>The Critical Discovery: Community Amplifies Everything</h3>
+
+            <p>
+                But the most important learning was this: <strong>the best model isn't transactional—it's relational.</strong>
+            </p>
+
+            <p>
+                We moved from impulse purchases to subscriptions, from casual users to committed community members, from transactions to trust. We created "super fans" from casual voyeurs through consistent value and genuine support.
+            </p>
+
+            <p>
+                By 2024, we had <strong>91,000+ community members</strong> with 24/7 professional moderation, crisis response protocols, and a proven safety record. Community wasn't a "nice to have"—it became the architecture that makes digital mental health intervention actually work.
+            </p>
+
+            <div class="highlight-box">
+                <p style="font-size: 1.2rem;">
+                    <strong>That's when we knew we were ready for B2B.</strong> Not because we thought we knew it all, but because we had facts and evidence to back every claim.
+                </p>
+            </div>
+
+            <h2>The Strategic Pivot (2024-2025)</h2>
+
+            <p>
+                Having harvested data and proven our approach with real users, we made a deliberate pivot. We onboarded expertise from the corporate world—specifically from highly regulated markets like healthcare, insurance, and financial services. People who understand compliance, governance, and the careful dance of B2B relationships in sensitive sectors.
+            </p>
+
+            <h3>Why We Brought On Corporate Expertise</h3>
+
+            <p>
+                We recognized something critical from our B2C experience: <strong>people don't just wake up and demand wellbeing services. They need to be guided.</strong> Most people think they know what meditation is, or hypnotherapy, but there's tremendous value in proper education. Understanding the science, the mechanism, the "why it works" makes all the difference in engagement and results.
+            </p>
+
+            <p>
+                So we brought on specialists in AI, education backgrounds, and regulatory frameworks. Not because we love complexity, but because <strong>effective wellbeing requires effective education.</strong>
+            </p>
+
+            <h3>Why Health, Wellbeing & Insurance?</h3>
+
+            <p>
+                We could have targeted any sector. Tech, finance, retail—they all need workplace wellbeing. But we focused on <strong>health, wellbeing, and insurance</strong> for a specific reason drawn from our own lived experience: <strong>it doesn't seem well catered for or easy to access in these sectors.</strong>
+            </p>
+
+            <div class="warning-box">
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Think about it: insurance companies sell wellbeing benefits, healthcare organizations employ wellbeing professionals, yet their own employees often struggle to access effective support. The irony isn't lost on us.
+                </p>
+            </div>
+
+            <p>
+                We saw an opportunity to serve the people who serve others. And we had exactly what they needed: <strong>something immediately available, on-demand, that fits anyone's capacity to pick it up and put it down.</strong> For a busy workforce juggling client needs, regulatory demands, and high-stress environments? That flexibility is essential.
+            </p>
+
+            <h2>From Transactional to Relational</h2>
+
+            <p>Here's what four years of B2C taught us: <strong>the best model isn't transactional—it's relational.</strong></p>
+
+            <p>
+                B2C can be faddish. People try things on impulse, influenced by inflation, cost of living, the latest wellness trend. They pick things up, put them down, try multiple apps. There's value there, but there's also instability.
+            </p>
+
+            <p>
+                We'd already started moving away from that in our B2C model—building subscriptions, fostering community, creating super fans from casual voyeurs. That shift was the forebearer of our B2B direction. It proved we could build trust, create communities, and turn casual interest into committed transformation.
+            </p>
+
+            <div class="highlight-box">
+                <h4 style="margin-top: 0;">B2B Amplifies Everything We Learned to Do Well</h4>
+                <p>It's inherently relational, not transactional. It's built on trust and long-term relationships. It allows us to use our customer service expertise in a concentrated, meaningful way rather than spreading it thin across thousands of individual impulse buyers.</p>
+            </div>
+
+            <p>
+                So we partnered with people who have 20-30 years of experience in specific sectors—recruitment, healthcare, insurance. People who understand that <strong>B2B is relational</strong>, who've built careers on trust and partnership, who know how to listen to what organizations actually need.
+            </p>
+
+            <h2>The Investment Shift</h2>
+
+            <p>Here's what's changed in our resource allocation: instead of channeling money into broad B2C marketing (chasing impulse buyers alongside subscriptions), <strong>we're pivoting investment into what B2B actually needs:</strong></p>
+
+            <ul class="proof-points">
+                <li><strong>Enhanced customer service and onboarding</strong> (Rachel Goodley and her team)</li>
+                <li><strong>Data analytics and reporting</strong> (showing what's working, what's not)</li>
+                <li><strong>Partnership management</strong> (deeper relationships, better listening)</li>
+                <li><strong>B2B-specific content development</strong> (workplace-focused modules)</li>
+                <li><strong>Educational resources</strong> (helping organizations understand hypnotherapy)</li>
+            </ul>
+
+            <p>We're reducing spray-and-pray marketing spend and concentrating resources on high-yielding relationships where we can make real impact.</p>
+
+            <h2>Our B2B Promise</h2>
+
+            <div class="highlight-box">
+                <p style="font-size: 1.3rem; line-height: 1.8;">
+                    Our aim now is clear: <strong>assist our B2B partners to amplify their brand trustworthiness and expertise with our unique offer to their customers.</strong>
+                </p>
+            </div>
+
+            <p>
+                When we partner with an organization like Towergate, we're not just a vendor in their benefits portfolio. We're invested in their success. We bring them a unique, brilliant, proven, trusted brand—and then we partner with them to shape it for their specific workforce needs.
+            </p>
+
+            <p>
+                We have more time within customer relationships to listen, to understand downstream needs, to refine and adapt. Our team with extensive corporate reach is already talking to businesses across sectors—recruitment firms dealing with productivity loss and isolation, healthcare organizations managing burnout, insurance companies addressing fear and anxiety among client-facing staff.
+            </p>
+
+            <div class="highlight-box">
+                <h4 style="margin-top: 0;">We Listen. We Adapt. We Deliver.</h4>
+                <p>We act transparently, work closely with client-based organizations, and prioritize their success alongside ours. Because we learned in B2C that the path from casual interest to committed transformation is built on trust and value.</p>
+            </div>
+
+            <p style="font-size: 1.2rem; margin-top: 3rem; padding: 2rem; background: var(--clearminds-cream); border-radius: 8px; text-align: center;">
+                <strong>That's the ClearMinds journey.</strong> Four years of learning how human beings engage with wellbeing. One strategic pivot to serve organizations who serve others. And a commitment to relationships over transactions, trust over marketing, and lasting transformation over quick fixes.
+            </p>
+
+            <h2>This is who we are. This is why we're ready. This is what we offer.</h2>
+        </div>
+    </section>
+
+    <!-- THE SOLUTION PAGE -->
+    <section id="solution" class="container">
+        <div class="page-section">
+            <h1>The Solution: How Resolution Works</h1>
+            <p style="font-size: 1.3rem; color: var(--gray-600); margin-bottom: 3rem;">
+                Understanding the difference between resolution and management—and why it matters
+            </p>
+
+            <h2>Resolution vs Management: The Fundamental Difference</h2>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Dimension</th>
+                        <th>Traditional Approach (Management)</th>
+                        <th>ClearMinds (Resolution)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Model</strong></td>
+                        <td>Traditional EAP, meditation apps</td>
+                        <td>Mental Health Resolution Platform</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Engagement</strong></td>
+                        <td>3-5% utilization</td>
+                        <td>35-50% active engagement</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Approach</strong></td>
+                        <td>Crisis-only, isolating</td>
+                        <td>Community-first, welcoming</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Timeline</strong></td>
+                        <td>Indefinite symptom management</td>
+                        <td>6-18 hours to resolution</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mechanism</strong></td>
+                        <td>Conscious self-regulation, ongoing practice required</td>
+                        <td>Subconscious pattern reprogramming, lasting change</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Outcome</strong></td>
+                        <td>Stop practicing → symptoms return</td>
+                        <td>Effects strengthen over time</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ROI</strong></td>
+                        <td>Recurring annual costs, condition not resolved</td>
+                        <td>One-time intervention, 383% ROI in Year 1</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box" style="margin: 3rem 0;">
+                <h3 style="margin-top: 0;">The Market Failure Creating This Opportunity</h3>
+                <p style="font-size: 1.2rem;">
+                    UK employers lose <strong>£51-65 billion annually</strong> to poor mental health. Current solutions are demonstrably failing:
+                </p>
+                <ul style="margin-top: 1rem; font-size: 1.1rem; line-height: 1.8;">
+                    <li><strong>Traditional EAP:</strong> 3-5% utilization despite 24.45 million UK employees covered</li>
+                    <li><strong>NHS Talking Therapies:</strong> 47-day median wait, 60% dropout rate</li>
+                    <li><strong>Meditation Apps:</strong> Require ongoing daily practice, no resolution endpoint</li>
+                </ul>
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;">
+                    <strong>The Gap:</strong> Employers are paying for ongoing management of conditions that could be resolved in 6-18 hours of clinical intervention.
+                </p>
+            </div>
+
+            <h2>The Clinical Foundation for Resolution</h2>
+
+            <h3>65 Years of Research</h3>
+            <p>
+                Clinical hypnotherapy isn't experimental. It's one of the most extensively researched mental health interventions available:
+            </p>
+            <ul class="proof-points">
+                <li>65+ years of peer-reviewed research</li>
+                <li>AMA recognition since 1958</li>
+                <li>Systematic reviews and meta-analyses across multiple conditions</li>
+                <li>NICE recognition for specific conditions (IBS)</li>
+            </ul>
+
+            <h3>The Mechanism: Why Resolution Is Possible</h3>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Meditation/Mindfulness</h4>
+                    <ul style="line-height: 1.8;">
+                        <li>Builds conscious self-regulatory capacity</li>
+                        <li>Strengthens prefrontal control over automatic responses</li>
+                        <li>Requires ongoing daily practice to maintain benefits</li>
+                        <li>Manages symptoms while practicing</li>
+                        <li><strong>Stop practicing → symptoms return</strong></li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" style="border: 3px solid var(--clearminds-teal);">
+                    <h4>Clinical Hypnotherapy</h4>
+                    <ul style="line-height: 1.8;">
+                        <li>Bypasses critical faculty to access subconscious patterns</li>
+                        <li>Directly reprograms neural pathways causing symptoms</li>
+                        <li>Achieves lasting pattern change in 6-18 hours</li>
+                        <li>Effects strengthen over time (not maintenance-dependent)</li>
+                        <li><strong>Resolution rather than management</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem; font-size: 1.1rem; padding: 1.5rem; background: var(--clearminds-cream); border-radius: 8px;">
+                <strong>Note:</strong> This isn't about one being "better"—it's about them achieving fundamentally different outcomes. Both have value. But when an organization needs to address clinical conditions with measurable ROI, resolution delivers what management cannot.
+            </p>
+
+            <h3>Efficacy by Condition</h3>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Condition</th>
+                        <th>Effect Size</th>
+                        <th>Resolution Timeline</th>
+                        <th>UK Employer Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>PTSD</strong></td>
+                        <td>d=1.17-1.58 (very large)</td>
+                        <td>6-10 sessions</td>
+                        <td>£40bn+ annual, £14,781 per patient/year</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Anxiety</strong></td>
+                        <td>d=0.79→0.99 (strengthens at follow-up)</td>
+                        <td>6-12 sessions</td>
+                        <td>£24bn presenteeism, 42% of disability claims</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chronic Pain</strong></td>
+                        <td>d=0.60, 42% pain reduction</td>
+                        <td>Under 12 weeks</td>
+                        <td>£10bn economy cost, 40% of NHS sick leave</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IBS</strong></td>
+                        <td>NICE-recognized</td>
+                        <td>6-12 sessions</td>
+                        <td>£1.27-2.07bn NHS, 8.5-21.6 days off/year</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>How It Works: The User Journey</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h4>Wellness Check-In (Neuroindicator)</h4>
+                        <p><strong>2 minutes, 5 conversational questions</strong></p>
+                        <ul style="margin-top: 1rem;">
+                            <li>How are you feeling overall?</li>
+                            <li>What's your main reason for checking in?</li>
+                            <li>How long has this been going on?</li>
+                            <li>Have you tried anything to help?</li>
+                            <li>Crisis check (safety screening)</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>Not a clinical screening</strong> — a welcoming check-in that removes stigma and barrier to entry.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h4>Community Welcome</h4>
+                        <p><strong>Immediate connection to 91,000+ members</strong></p>
+                        <ul style="margin-top: 1rem;">
+                            <li>24/7 peer support and professional moderation</li>
+                            <li>Zero serious incidents (proven safety record)</li>
+                            <li>Crisis response protocols (3-5 interventions/year, all successful)</li>
+                            <li>Ongoing engagement and connection</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>Community-first approach</strong> creates immediate belonging, not isolation.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h4>Personalized Pathway</h4>
+                        <p><strong>Intelligent routing based on check-in responses</strong></p>
+                        <p style="margin-top: 1rem;"><strong>8 pathways:</strong></p>
+                        <ul style="margin-top: 0.5rem;">
+                            <li>Crisis/Safety (immediate resources + community)</li>
+                            <li>Wellness/Optimization (OCEAN assessment + community)</li>
+                            <li>Work Stress (hypnotherapy + AI coach + community)</li>
+                            <li>Sleep (targeted programs + community)</li>
+                            <li>Anxiety (clinical sessions + community)</li>
+                            <li>Mood (support + clinical referral option)</li>
+                            <li>Focus (ADHD pathways + clinical partner)</li>
+                            <li>Habits (hypnotherapy + behavior change)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h4>Clinical Escalation (If Needed)</h4>
+                        <p><strong>Seamless referral to CQC-registered partners</strong></p>
+                        <ul style="margin-top: 1rem;">
+                            <li>Smart Start Minds (CQC: 1-2950268195)</li>
+                            <li>Medical diagnosis and treatment</li>
+                            <li>Psychiatric/psychological care</li>
+                            <li>Ongoing clinical monitoring</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>Complete pathway</strong> from wellness to clinical care in one platform.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Three-Pathway Support Model</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card" style="background: #c8e6c9;">
+                    <h4>Pathway 1: Wellness & Prevention</h4>
+                    <p><strong>Self-Directed ClearMinds Platform</strong></p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>500+ hypnotherapy sessions</li>
+                        <li>Guided meditation & breathwork</li>
+                        <li>Sleep support & stress management</li>
+                        <li>Confidence & lifestyle goals</li>
+                        <li>Unlimited digital access</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-style: italic;">Perfect for general wellbeing and prevention</p>
+                </div>
+
+                <div class="feature-card" style="background: #fff9c4;">
+                    <h4>Pathway 2: Diagnostic Insight</h4>
+                    <p><strong>Neuro-Evaluator Assessment</strong></p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>AI-powered psychometric assessment</li>
+                        <li>OCEAN personality profiling</li>
+                        <li>Root cause analysis (stress patterns)</li>
+                        <li>Behavioral tendency insights</li>
+                        <li>Treatment pathway recommendations</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-style: italic;">For deeper self-understanding and guidance</p>
+                </div>
+
+                <div class="feature-card" style="background: #90caf9;">
+                    <h4>Pathway 3: Clinical Treatment</h4>
+                    <p><strong>Smart Start Minds (CQC-Regulated)</strong></p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Live therapy sessions</li>
+                        <li>Clinical diagnosis & treatment</li>
+                        <li>Psychiatric/psychological care</li>
+                        <li>Ongoing clinical monitoring</li>
+                        <li>Full CQC compliance (1-2950268195)</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-style: italic;">For clinical mental health conditions</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h4 style="margin-top: 0;">Seamless Escalation</h4>
+                <p style="font-size: 1.1rem;">
+                    Employees can move between pathways as their needs change. ClearMinds wellness users can access the neuro-evaluator for diagnostic insight, and those requiring clinical care are seamlessly referred to Smart Start Minds' CQC-regulated services.
+                </p>
+            </div>
+
+            <div class="wireframe-note">
+                <strong>Design Note:</strong> Include visual journey map showing user flow through all three pathways. Consider interactive element showing different scenarios (wellness seeker vs crisis vs clinical need) and how each is routed.
+            </div>
+        </div>
+    </section>
+
+    <!-- FOR PARTNERS PAGE -->
+    <section id="partners" class="container">
+        <div class="page-section">
+            <h1>For Partners: Category Creation Opportunity</h1>
+            <p style="font-size: 1.3rem; color: var(--gray-600); margin-bottom: 3rem;">
+                First-mover advantage in Mental Health Resolution before competitors realize what we've built
+            </p>
+
+            <div class="warning-box">
+                <h3 style="margin-top: 0; color: #5d4037;">The Strategic Opportunity</h3>
+                <p style="font-size: 1.2rem; line-height: 1.8;">
+                    "Don't be another EAP. Create something distinctive." — Iain Laws, Towergate CEO
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    That guidance is a gift. It gives us permission to define a new category rather than compete in an existing one. More importantly, it positions benefits brokers to lead that category before any competitors realize what we've built.
+                </p>
+            </div>
+
+            <h2>Category Creation: Mental Health Resolution Platform</h2>
+
+            <div class="feature-grid" style="grid-template-columns: 1fr 1fr; margin: 3rem 0;">
+                <div class="feature-card" style="background: #ffebee; border: 2px solid #f44336;">
+                    <h3 style="color: #c62828; margin-top: 0;">❌ We Are NOT:</h3>
+                    <ul style="line-height: 1.8; font-size: 1.1rem;">
+                        <li>"Better EAP"</li>
+                        <li>"Digital wellness benefit"</li>
+                        <li>"Alternative therapy access"</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" style="background: #e8f5e9; border: 2px solid #4caf50;">
+                    <h3 style="color: #2e7d32; margin-top: 0;">✅ We ARE:</h3>
+                    <ul style="line-height: 1.8; font-size: 1.1rem;">
+                        <li>Mental Health Resolution Platform</li>
+                        <li>Transformational benefit, not transactional support</li>
+                        <li>Clinical intervention ecosystem</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>The Broker Value Proposition</h2>
+
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                <strong>Current market reality:</strong> Every benefits broker in the UK offers essentially the same portfolio: traditional EAP from Health Assured or similar, PMI from standard insurers, cash plans, dental. It's a commodity market where brokers compete primarily on price and relationship quality.
+            </p>
+
+            <div class="highlight-box">
+                <h3 style="margin-top: 0;">What Benefits Brokers Gain</h3>
+                <ul class="proof-points" style="font-size: 1.1rem;">
+                    <li><strong>Portfolio differentiation:</strong> Unique offering vs commodity EAPs your competitors sell</li>
+                    <li><strong>Category leadership:</strong> The first major broker to offer genuinely new category</li>
+                    <li><strong>Higher margins:</strong> £80-120/employee vs £30-50 traditional EAP = 2-4x margin per employee</li>
+                    <li><strong>Client retention:</strong> 35-50% engagement vs 3-5% traditional EAP = visible value</li>
+                    <li><strong>Thought leadership:</strong> Industry press, conference keynotes, co-authored research</li>
+                    <li><strong>Competitive moat:</strong> 12-month exclusive partnership while competitors fall behind</li>
+                </ul>
+            </div>
+
+            <h3>Market Positioning</h3>
+            <p style="font-size: 1.2rem; padding: 2rem; background: var(--clearminds-green); border-radius: 8px; border-left: 6px solid var(--clearminds-teal);">
+                "Towergate Employee Benefits: The broker that brought resolution to workplace mental health."
+            </p>
+
+            <h2>Revenue & Margin Opportunity</h2>
+
+            <h3>Addressable Market Scale (Towergate Example)</h3>
+            <div class="stats-bar" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="stat">
+                    <div class="stat-number">15,000</div>
+                    <div class="stat-label">Client Companies</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">250,000+</div>
+                    <div class="stat-label">Total Employees</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">£80-120</div>
+                    <div class="stat-label">Per Employee/Year</div>
+                </div>
+            </div>
+
+            <h3>Revenue Scenarios</h3>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Client Adoption</th>
+                        <th>Covered Employees</th>
+                        <th>Annual Recurring Revenue</th>
+                        <th>Broker Commission (15-20%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Conservative (Year 1)</strong></td>
+                        <td>10% (1,500 companies)</td>
+                        <td>247,500</td>
+                        <td>£19.8M @ £80</td>
+                        <td><strong>£3-4M</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Moderate (Year 2)</strong></td>
+                        <td>25% (3,750 companies)</td>
+                        <td>625,000</td>
+                        <td>£62.5M @ £100</td>
+                        <td><strong>£9-12.5M</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Margin Comparison</strong></td>
+                        <td colspan="4">Traditional EAP: £30-50/employee, 10-15% = £3-7.50 commission<br>ClearMinds: £80-120/employee, 15-20% = £12-24 commission<br><strong>2-4x margin per employee covered</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <h4 style="margin-top: 0;">Investment vs Return</h4>
+                <p style="font-size: 1.1rem;"><strong>Broker Investment:</strong> £30-40K (internal deployment, adviser training, materials)</p>
+                <p style="font-size: 1.1rem;"><strong>Expected Return:</strong> £3-5M annual commission (Year 1)</p>
+                <p style="font-size: 1.3rem; color: var(--clearminds-teal); margin-top: 1rem;"><strong>Risk-reward ratio:</strong> £40K investment with £3-5M+ annual upside = exceptional opportunity</p>
+            </div>
+
+            <h2>Implementation Timeline</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1-2</div>
+                    <div class="timeline-content">
+                        <h4>Weeks 1-2: Foundation</h4>
+                        <ul style="margin-top: 1rem; line-height: 1.8;">
+                            <li>Partnership contracts finalized</li>
+                            <li>Technical integration protocols</li>
+                            <li>Employer portal setup</li>
+                            <li>Commission structure confirmed</li>
+                            <li>Internal deployment begins</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">3-4</div>
+                    <div class="timeline-content">
+                        <h4>Weeks 3-4: Adviser Training</h4>
+                        <ul style="margin-top: 1rem; line-height: 1.8;">
+                            <li>Train benefits consultants (2-day intensive)</li>
+                            <li>Sales enablement materials finalized</li>
+                            <li>Proposal templates ready</li>
+                            <li>Pricing and positioning guidance</li>
+                            <li>Practice pitches and role-playing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">5-6</div>
+                    <div class="timeline-content">
+                        <h4>Weeks 5-6: Friendly Client Selection</h4>
+                        <ul style="margin-top: 1rem; line-height: 1.8;">
+                            <li>Identify 3-5 pilot clients</li>
+                            <li>Client agreements finalized</li>
+                            <li>Communications co-created with HR teams</li>
+                            <li>Onboarding materials prepared</li>
+                            <li>Soft launch planning</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">7-10</div>
+                    <div class="timeline-content">
+                        <h4>Weeks 7-10: Pilot Client Deployment</h4>
+                        <ul style="margin-top: 1rem; line-height: 1.8;">
+                            <li>Full rollout to pilot clients</li>
+                            <li>Intensive support from Rachel's team</li>
+                            <li>Weekly engagement tracking</li>
+                            <li>Early feedback collection</li>
+                            <li>Iterative improvements</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">11-12</div>
+                    <div class="timeline-content">
+                        <h4>Weeks 11-12: Case Study Development</h4>
+                        <ul style="margin-top: 1rem; line-height: 1.8;">
+                            <li>Quantitative results compiled</li>
+                            <li>Client testimonials recorded</li>
+                            <li>ROI calculations finalized</li>
+                            <li>Marketing materials created</li>
+                            <li>Lessons learned documented</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">4+</div>
+                    <div class="timeline-content">
+                        <h4>Month 4+: Broad Market Launch</h4>
+                        <ul style="margin-top: 1rem; line-height: 1.8;">
+                            <li>Product launch announcement</li>
+                            <li>Press campaign</li>
+                            <li>Conference presentations</li>
+                            <li>Full portfolio rollout</li>
+                            <li>Scale across client base</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Why Speed Matters: The Competitive Window</h2>
+
+            <div class="warning-box">
+                <h3 style="margin-top: 0; color: #5d4037;">The First-Mover Advantage</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    <strong>Current state:</strong> No major benefits broker offers clinical hypnotherapy or a true "resolution platform." The category doesn't exist yet. Competitors are all offering the same commodity EAP.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    <strong>Competitive threat:</strong> Once you launch this with press coverage and thought leadership, competitors will notice. Larger broker groups (Aon, Mercer, WTW) could approach Headspace or Calm to develop competing offerings. Or they could approach us.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    <strong>First-mover advantage:</strong> Every month you have this exclusively, you gain more client deployments, case studies, adviser expertise, market positioning, and PR momentum.
+                </p>
+                <p style="font-size: 1.3rem; color: var(--clearminds-teal); margin-top: 1.5rem;">
+                    <strong>By 6 months:</strong> If you have 50+ deployed clients with measurable results, that's a nearly insurmountable lead. Competitors would need 12-18 months to catch up.
+                </p>
+            </div>
+
+            <h2>Partnership Terms</h2>
+
+            <div class="highlight-box">
+                <h3 style="margin-top: 0;">12-Month Exclusive Partnership</h3>
+                <ul style="font-size: 1.1rem; line-height: 1.8;">
+                    <li><strong>UK exclusivity</strong> in benefits broker channel</li>
+                    <li><strong>Performance-based extension:</strong> If agreed deployment targets hit, extend exclusivity</li>
+                    <li><strong>Revenue share model:</strong> Standard broker commission (15-20%) on all sales</li>
+                    <li><strong>Bonus commission tiers</strong> for volume milestones</li>
+                    <li><strong>Joint success:</strong> Partnership management, quarterly reviews, annual strategic planning</li>
+                </ul>
+            </div>
+
+            <div class="cta-container">
+                <h2 style="border: none; color: var(--clearminds-dark);">Ready to Create the Category?</h2>
+                <p style="font-size: 1.2rem; color: var(--gray-600); max-width: 800px; margin: 1rem auto 2rem;">
+                    Join us in defining Mental Health Resolution before competitors realize what we've built.
+                </p>
+                <a href="#contact" class="btn-primary">Start Partnership Discussion</a>
+                <a href="#evidence" class="btn-secondary">Review Evidence & Governance</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVIDENCE & GOVERNANCE PAGE -->
+    <section id="evidence" class="container">
+        <div class="page-section">
+            <h1>Evidence & Governance: Enterprise-Ready</h1>
+            <p style="font-size: 1.3rem; color: var(--gray-600); margin-bottom: 3rem;">
+                Clinical evidence, safety track record, and comprehensive governance frameworks
+            </p>
+
+            <h2>Clinical Evidence Hub</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>PTSD</h4>
+                    <p><strong>Effect Size: d=1.17-1.58</strong> (Very Large)</p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Among highest effect sizes for any intervention</li>
+                        <li>Effects strengthen at follow-up (d=1.58 at 4-week post-treatment)</li>
+                        <li>Resolution in 6-10 sessions</li>
+                        <li>Complete symptom elimination documented</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-weight: 600;">UK Impact: £40bn+ annual, £14,781 per patient/year</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>Anxiety Disorders</h4>
+                    <p><strong>Effect Size: d=0.79→0.99</strong> (Large, strengthens at follow-up)</p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>6-12 sessions to resolution</li>
+                        <li>Effects maintain and amplify over time</li>
+                        <li>No ongoing practice required</li>
+                        <li>Lasting neural pathway changes</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-weight: 600;">UK Impact: £24bn presenteeism, 42% of disability claims</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>Chronic Pain</h4>
+                    <p><strong>Effect Size: d=0.60, 42% pain reduction</strong></p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Results emerge under 12 weeks</li>
+                        <li>Non-pharmaceutical approach</li>
+                        <li>Particularly effective in high suggestibles</li>
+                        <li>Targets pain perception mechanisms</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-weight: 600;">UK Impact: £10bn economy cost, 40% of NHS sick leave</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>IBS (Irritable Bowel Syndrome)</h4>
+                    <p><strong>NICE-Recognized Efficacy</strong></p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Gut-brain connection targeted directly</li>
+                        <li>Significant symptom reduction</li>
+                        <li>6-12 sessions typical</li>
+                        <li>National Institute for Health and Care Excellence approved</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-weight: 600;">UK Impact: £1.27-2.07bn NHS, 8.5-21.6 days off/year</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="margin-top: 0;">The ROI Case: Resolution vs Management</h3>
+
+                <h4>Traditional Anxiety Treatment (Management Model):</h4>
+                <ul style="line-height: 1.8; font-size: 1.1rem;">
+                    <li>20 CBT sessions × £100 = £2,000</li>
+                    <li>12 months medication × £30 = £360</li>
+                    <li>10 days sick leave × £150 = £1,500</li>
+                    <li><strong>Total Year 1: £3,860</strong></li>
+                    <li style="color: #c62828; font-weight: 600;">Recurring annually (condition not resolved)</li>
+                </ul>
+
+                <h4 style="margin-top: 2rem;">Hypnotherapy Treatment (Resolution Model):</h4>
+                <ul style="line-height: 1.8; font-size: 1.1rem;">
+                    <li>8 sessions × £100 = £800</li>
+                    <li>Resolution achieved</li>
+                    <li>Reduced sick leave = £1,500 saved</li>
+                    <li><strong>Total: £800 one-time</strong></li>
+                    <li style="color: var(--clearminds-teal); font-weight: 600; font-size: 1.3rem;">Net saving: £3,060 per resolved case | ROI: 383% in Year 1</li>
+                </ul>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 8px;">
+                    Research shows <strong>£4.70-£10.85 return per £1 invested</strong> in effective mental health interventions. But that assumes the intervention actually works. With 60% dropout rates and 50% recovery rates, traditional pathways often fail to deliver that ROI. <strong>Resolution changes the calculation entirely.</strong>
+                </p>
+            </div>
+
+            <h2>Safety & Track Record</h2>
+
+            <div class="stats-bar">
+                <div class="stat">
+                    <div class="stat-number">91,000+</div>
+                    <div class="stat-label">Community Members</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">Zero</div>
+                    <div class="stat-label">Serious Incidents</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Professional Moderation</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3-5</div>
+                    <div class="stat-label">Crisis Interventions/Year</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="margin-top: 0;">Crisis Response Protocols</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    <strong>91,000 members, 3-5 suicidal ideation posts per year, all handled safely.</strong>
+                </p>
+                <ul style="margin-top: 1rem; font-size: 1.1rem; line-height: 1.8;">
+                    <li><strong>Immediate response:</strong> Professional moderators respond within minutes</li>
+                    <li><strong>Safety protocols:</strong> Risk assessment, emergency signposting (999, 111, Samaritans)</li>
+                    <li><strong>Follow-up:</strong> Monitoring and continued support</li>
+                    <li><strong>Escalation pathways:</strong> CQC-registered clinical partners when needed</li>
+                    <li><strong>Documentation:</strong> All incidents logged, 12-month retention, audit trail</li>
+                </ul>
+            </div>
+
+            <h2>Governance Framework</h2>
+
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                A <strong>Care Quality Governance Framework</strong> provides the systematic structure for maintaining and improving the quality, safety, and compliance of wellness services. This framework integrates clinical best practices with corporate governance, regulatory compliance, and operational excellence.
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h4>1. User Safety & Safeguarding</h4>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>User safety protocols and contraindications screening</li>
+                        <li>Safeguarding procedures and Designated Safeguarding Lead</li>
+                        <li>DBS requirements for practitioners</li>
+                        <li>Emergency signposting (999, 111, Samaritans)</li>
+                        <li>Duty of candour and incident reporting</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h4>2. Data & Information Governance</h4>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Privacy-first design (minimal data collection)</li>
+                        <li>GDPR compliance and data protection</li>
+                        <li>k≥10 anonymization standard</li>
+                        <li>No sensitive health data stored</li>
+                        <li>Subject Access Request (SAR) protocols</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏢</div>
+                    <h4>3. Corporate Governance</h4>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Board accountability and oversight</li>
+                        <li>Regulatory compliance (GDPR, Care Act, Mental Capacity Act)</li>
+                        <li>Transparent reporting and policy updates</li>
+                        <li>Complaints management procedures</li>
+                        <li>Strategic planning and risk management</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h4>4. Quality & Continuous Improvement</h4>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Evidence-based content by qualified practitioners</li>
+                        <li>Content quality assurance and reviews</li>
+                        <li>Platform performance monitoring (99.5% uptime)</li>
+                        <li>User satisfaction tracking (NPS, completion rates)</li>
+                        <li>Monthly content releases and updates</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Compliance Documentation</h2>
+
+            <div class="highlight-box">
+                <h3 style="margin-top: 0;">31 Policies Across 6 Categories</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                    <div>
+                        <h4>External Policies & SLAs (5)</h4>
+                        <ul style="line-height: 1.8;">
+                            <li>Group SLA</li>
+                            <li>Health Service SLA</li>
+                            <li>AI Usage Policy</li>
+                            <li>Complaints Policy</li>
+                            <li>Clinical Supervision</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Data Governance (7)</h4>
+                        <ul style="line-height: 1.8;">
+                            <li>GDPR Compliance</li>
+                            <li>Data Protection Policy</li>
+                            <li>Breach Response</li>
+                            <li>Privacy Policy</li>
+                            <li>Security Policy</li>
+                            <li>Data Processing Agreement</li>
+                            <li>DPIA & SAR Protocols</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Clinical Governance (5)</h4>
+                        <ul style="line-height: 1.8;">
+                            <li>Safeguarding Policy</li>
+                            <li>Infection Control</li>
+                            <li>Consent Procedures</li>
+                            <li>Dignity & Respect</li>
+                            <li>Duty of Candour</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Legal & Compliance (4)</h4>
+                        <ul style="line-height: 1.8;">
+                            <li>Terms of Service</li>
+                            <li>Acceptable Use Policy</li>
+                            <li>Medical Disclaimer</li>
+                            <li>Results Disclaimer</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Regulatory Standards</h3>
+            <div class="stats-bar" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                <div class="stat">
+                    <div class="stat-label">GDPR Data Protection</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">GDPR Article 15 (SARs)</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Care Act 2014</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Mental Capacity Act 2005</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Equality Act 2010</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Consumer Rights</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Cyber Essentials Plus</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Professional Indemnity</div>
+                </div>
+            </div>
+
+            <h2>Data Protection & Employer Confidentiality</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card" style="border: 2px solid var(--clearminds-teal);">
+                    <h4>What Employers GET:</h4>
+                    <ul style="line-height: 1.8;">
+                        <li>Aggregated utilization reports (k≥10 anonymization)</li>
+                        <li>Engagement metrics (% active users)</li>
+                        <li>Content usage trends (what's popular)</li>
+                        <li>Pathway distribution (wellness vs clinical)</li>
+                        <li>ROI indicators (sick day reduction trends)</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" style="border: 2px solid #f44336;">
+                    <h4>What Employers DO NOT GET:</h4>
+                    <ul style="line-height: 1.8;">
+                        <li>❌ Individual employee names or identifiers</li>
+                        <li>❌ Which employees registered/used service</li>
+                        <li>❌ Individual usage patterns or listening history</li>
+                        <li>❌ Any data enabling individual identification</li>
+                        <li>❌ Clinical information or pathway details</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="margin-top: 0;">Guarantee: Zero Individual Visibility</h3>
+                <p style="font-size: 1.2rem; line-height: 1.8;">
+                    <strong>k≥10 anonymization standard:</strong> No reporting at group sizes smaller than 10 individuals. Employee data remains confidential from employer (contractual + technical safeguards). This protects client relationships and ensures trust.
+                </p>
+            </div>
+
+            <div class="cta-container">
+                <h2 style="border: none; color: var(--clearminds-dark);">Explore Full Documentation</h2>
+                <p style="font-size: 1.2rem; color: var(--gray-600); max-width: 800px; margin: 1rem auto 2rem;">
+                    Access our complete policy library and governance frameworks
+                </p>
+                <a href="https://clearminds.business/corporate/" target="_blank" class="btn-primary">View Documentation Hub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESOURCES PAGE -->
+    <section id="resources" class="container">
+        <div class="page-section">
+            <h1>Resources: Insights & Tools</h1>
+            <p style="font-size: 1.3rem; color: var(--gray-600); margin-bottom: 3rem;">
+                Thought leadership, case studies, and decision-making tools
+            </p>
+
+            <h2>Thought Leadership</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Resolution vs Management: The New Category in Workplace Mental Health</h4>
+                    <p>Why employers are paying for ongoing management of conditions that could be resolved in 6-18 hours of clinical intervention.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#contact" class="btn-secondary">Download Whitepaper</a>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <h4>Why Traditional EAPs Fail (And What Works Instead)</h4>
+                    <p>3-5% utilization vs 35-50% engagement: understanding the crisis-only vs community-first approaches.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#contact" class="btn-secondary">Download Whitepaper</a>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <h4>From 100,000 Users: What Behavioral Data Tells Us</h4>
+                    <p>Four years of empirical evidence showing exactly how people engage with digital mental health at scale.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#contact" class="btn-secondary">Download Whitepaper</a>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <h4>The Community-First Approach: 6x Better Engagement</h4>
+                    <p>How 91,000+ members with 24/7 moderation creates the architecture for digital mental health that actually works.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#contact" class="btn-secondary">Download Whitepaper</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wireframe-note">
+                <strong>Design Note:</strong> These whitepapers would be created based on the internal strategy documents. They would serve as lead generation tools and thought leadership positioning pieces. Consider gated content (email required) vs freely available.
+            </div>
+
+            <h2>Case Studies</h2>
+
+            <div class="warning-box">
+                <h3 style="margin-top: 0; color: #5d4037;">Coming Soon: Pilot Client Results</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Following the Towergate partnership launch and pilot client deployments (weeks 7-12 of implementation), this section will feature:
+                </p>
+                <ul style="margin-top: 1rem; font-size: 1.1rem; line-height: 1.8;">
+                    <li><strong>Engagement metrics:</strong> Active user rates vs traditional EAP benchmarks</li>
+                    <li><strong>ROI calculations:</strong> Sick day reduction, presenteeism improvement, cost savings</li>
+                    <li><strong>Client testimonials:</strong> HR leaders and employees sharing experiences</li>
+                    <li><strong>Quantified outcomes:</strong> Neuroindicator score improvements, pathway utilization</li>
+                </ul>
+            </div>
+
+            <h2>Tools & Calculators</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card" style="border: 2px solid var(--clearminds-teal);">
+                    <h4>ROI Calculator</h4>
+                    <p>Calculate potential cost savings and return on investment for your organization or client base.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <strong>Inputs:</strong>
+                        <ul style="margin-top: 0.5rem; line-height: 1.8;">
+                            <li>Number of employees</li>
+                            <li>Current mental health-related costs</li>
+                            <li>Average sick days per employee</li>
+                            <li>Traditional EAP costs</li>
+                        </ul>
+                        <strong>Outputs:</strong>
+                        <ul style="margin-top: 0.5rem; line-height: 1.8;">
+                            <li>Projected engagement rates</li>
+                            <li>Cost per resolution vs management</li>
+                            <li>Annual savings potential</li>
+                            <li>ROI percentage and payback period</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#contact" class="btn-primary">Access Calculator</a>
+                    </div>
+                </div>
+
+                <div class="feature-card" style="border: 2px solid var(--clearminds-teal);">
+                    <h4>Engagement Comparison Tool</h4>
+                    <p>Interactive comparison showing traditional EAP engagement vs ClearMinds community-first approach.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <strong>Visualizes:</strong>
+                        <ul style="margin-top: 0.5rem; line-height: 1.8;">
+                            <li>3-5% EAP utilization vs 35-50% ClearMinds</li>
+                            <li>Crisis-only vs community-first models</li>
+                            <li>Time to support (immediate vs waitlists)</li>
+                            <li>One-time resolution vs ongoing costs</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#contact" class="btn-primary">Try Comparison Tool</a>
+                    </div>
+                </div>
+
+                <div class="feature-card" style="border: 2px solid var(--clearminds-teal);">
+                    <h4>Implementation Readiness Checklist</h4>
+                    <p>Assessment tool for organizations or brokers evaluating readiness for partnership.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <strong>Covers:</strong>
+                        <ul style="margin-top: 0.5rem; line-height: 1.8;">
+                            <li>Current mental health support gaps</li>
+                            <li>Organizational readiness factors</li>
+                            <li>Technical requirements (minimal)</li>
+                            <li>Communication planning</li>
+                            <li>Success metrics definition</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#contact" class="btn-primary">Download Checklist</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wireframe-note">
+                <strong>Design Note:</strong> These tools would be built as interactive web applications or downloadable Excel/PDF calculators. They serve as lead generation and sales enablement tools. Consider partnerships with data visualization specialists for interactive demos.
+            </div>
+
+            <h2>Webinars & Events</h2>
+
+            <div class="highlight-box">
+                <h3 style="margin-top: 0;">Upcoming Presentations</h3>
+                <ul style="font-size: 1.1rem; line-height: 1.8;">
+                    <li><strong>Category Creation in Mental Health:</strong> How Towergate is Leading (Industry conference keynote)</li>
+                    <li><strong>From 100k Users to Enterprise Scale:</strong> Data-Driven Insights (Webinar for HR leaders)</li>
+                    <li><strong>Resolution vs Management:</strong> The Economic Case (Benefits broker roundtable)</li>
+                    <li><strong>Community-First Mental Health:</strong> Why It Works (Panel discussion with Rachel Goodley)</li>
+                </ul>
+            </div>
+
+            <h3>On-Demand Recordings</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                Access recordings of past presentations and webinars (available after initial live events).
+            </p>
+
+            <div class="cta-container">
+                <h2 style="border: none; color: var(--clearminds-dark);">Stay Updated</h2>
+                <p style="font-size: 1.2rem; color: var(--gray-600); max-width: 800px; margin: 1rem auto 2rem;">
+                    Subscribe to receive new research, case studies, and thought leadership
+                </p>
+                <a href="#contact" class="btn-primary">Subscribe</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT PAGE -->
+    <section id="contact" class="container">
+        <div class="page-section">
+            <h1>Start the Conversation</h1>
+            <p style="font-size: 1.3rem; color: var(--gray-600); margin-bottom: 3rem;">
+                Whether you're a benefits broker, enterprise buyer, or interested stakeholder—let's talk
+            </p>
+
+            <div class="feature-grid" style="margin-bottom: 3rem;">
+                <div class="feature-card" style="background: var(--clearminds-green); border: 2px solid var(--clearminds-teal);">
+                    <h4>For Benefits Brokers</h4>
+                    <p style="line-height: 1.8;">Explore category partnership opportunities and first-mover advantage in Mental Health Resolution Platform.</p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>12-month exclusive partnership terms</li>
+                        <li>Revenue scenarios and margin analysis</li>
+                        <li>Implementation timeline and support</li>
+                        <li>Adviser training programs</li>
+                    </ul>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#" class="btn-primary">Schedule Partnership Call</a>
+                    </div>
+                </div>
+
+                <div class="feature-card" style="background: var(--clearminds-cream); border: 2px solid var(--clearminds-teal);">
+                    <h4>For Enterprise Buyers</h4>
+                    <p style="line-height: 1.8;">Book a demo to see how resolution-based mental health works for your organization.</p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Platform walkthrough and user journey</li>
+                        <li>Governance & compliance review</li>
+                        <li>ROI modeling for your workforce</li>
+                        <li>Pilot program discussion</li>
+                    </ul>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#" class="btn-primary">Book Demo</a>
+                    </div>
+                </div>
+
+                <div class="feature-card" style="background: white; border: 2px solid var(--gray-200);">
+                    <h4>For Press & Media</h4>
+                    <p style="line-height: 1.8;">Access media kit, research summaries, and arrange interviews.</p>
+                    <ul style="margin-top: 1rem; line-height: 1.8;">
+                        <li>Press releases and announcements</li>
+                        <li>Executive interviews</li>
+                        <li>Research data and evidence</li>
+                        <li>High-resolution assets</li>
+                    </ul>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#" class="btn-secondary">Download Media Kit</a>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Contact Form</h2>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <form style="background: white; padding: 3rem; border-radius: 12px; border: 2px solid var(--gray-200);">
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Name *</label>
+                        <input type="text" style="width: 100%; padding: 1rem; border: 2px solid var(--gray-200); border-radius: 8px; font-size: 1rem;" placeholder="Your full name">
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Email *</label>
+                        <input type="email" style="width: 100%; padding: 1rem; border: 2px solid var(--gray-200); border-radius: 8px; font-size: 1rem;" placeholder="your.email@company.com">
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Organization *</label>
+                        <input type="text" style="width: 100%; padding: 1rem; border: 2px solid var(--gray-200); border-radius: 8px; font-size: 1rem;" placeholder="Company name">
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Role *</label>
+                        <input type="text" style="width: 100%; padding: 1rem; border: 2px solid var(--gray-200); border-radius: 8px; font-size: 1rem;" placeholder="Your job title">
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Interest Type *</label>
+                        <select style="width: 100%; padding: 1rem; border: 2px solid var(--gray-200); border-radius: 8px; font-size: 1rem;">
+                            <option value="">Select interest type...</option>
+                            <option value="broker">Broker Partnership</option>
+                            <option value="enterprise">Enterprise Demo/Purchase</option>
+                            <option value="media">Press/Media Inquiry</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Message</label>
+                        <textarea style="width: 100%; padding: 1rem; border: 2px solid var(--gray-200); border-radius: 8px; font-size: 1rem; min-height: 150px;" placeholder="Tell us about your interest in ClearMinds..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; margin: 0;">Submit Inquiry</button>
+                </form>
+            </div>
+
+            <h2 style="margin-top: 4rem;">Direct Contacts</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Partnership Inquiries</h4>
+                    <p><strong>For benefits brokers and strategic partners</strong></p>
+                    <p style="margin-top: 1rem;">Email: <a href="mailto:partnerships@clearminds.business" style="color: var(--clearminds-teal); font-weight: 600;">partnerships@clearminds.business</a></p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>Enterprise Sales</h4>
+                    <p><strong>For direct corporate purchases</strong></p>
+                    <p style="margin-top: 1rem;">Email: <a href="mailto:enterprise@clearminds.business" style="color: var(--clearminds-teal); font-weight: 600;">enterprise@clearminds.business</a></p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>General Support</h4>
+                    <p><strong>For all other inquiries</strong></p>
+                    <p style="margin-top: 1rem;">Email: <a href="mailto:info@clearminds.business" style="color: var(--clearminds-teal); font-weight: 600;">info@clearminds.business</a></p>
+                </div>
+            </div>
+
+            <div class="wireframe-note">
+                <strong>Design Note:</strong> Consider integrating Calendly for direct booking, HubSpot or similar CRM for form submissions, and potentially live chat for immediate questions. Form should route to appropriate teams based on "Interest Type" selection.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <div>
+                    <h3 style="color: white; margin-bottom: 1rem;">ClearMinds</h3>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.8;">Mental Health Resolution Platform delivering lasting change in 6-18 hours through community-first support and clinical hypnotherapy.</p>
+                </div>
+
+                <div>
+                    <h4 style="color: white; margin-bottom: 1rem;">Quick Links</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="#story" style="color: rgba(255,255,255,0.8); text-decoration: none;">Our Story</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#solution" style="color: rgba(255,255,255,0.8); text-decoration: none;">The Solution</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#partners" style="color: rgba(255,255,255,0.8); text-decoration: none;">For Partners</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#evidence" style="color: rgba(255,255,255,0.8); text-decoration: none;">Evidence & Governance</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#resources" style="color: rgba(255,255,255,0.8); text-decoration: none;">Resources</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#contact" style="color: rgba(255,255,255,0.8); text-decoration: none;">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color: white; margin-bottom: 1rem;">Documentation</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="https://clearminds.business/corporate/" style="color: rgba(255,255,255,0.8); text-decoration: none;" target="_blank">Governance Framework</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="https://clearminds.business/corporate/community-safety-framework.html" style="color: rgba(255,255,255,0.8); text-decoration: none;" target="_blank">Community Safety</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="https://clearminds.business/corporate/documentation/" style="color: rgba(255,255,255,0.8); text-decoration: none;" target="_blank">Policy Library</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="https://clearminds.business/corporate/policies/legal/medical-disclaimer.html" style="color: rgba(255,255,255,0.8); text-decoration: none;" target="_blank">Medical Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color: white; margin-bottom: 1rem;">Contact</h4>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 0.5rem;">Partnerships: <a href="mailto:partnerships@clearminds.business" style="color: var(--clearminds-green); text-decoration: none;">partnerships@clearminds.business</a></p>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 0.5rem;">Enterprise: <a href="mailto:enterprise@clearminds.business" style="color: var(--clearminds-green); text-decoration: none;">enterprise@clearminds.business</a></p>
+                    <p style="color: rgba(255,255,255,0.8);">General: <a href="mailto:info@clearminds.business" style="color: var(--clearminds-green); text-decoration: none;">info@clearminds.business</a></p>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem; text-align: center;">
+                <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">
+                    © 2025 ClearMinds. All rights reserved. |
+                    <a href="https://clearminds.business/corporate/policies/legal/terms-of-service.html" style="color: var(--clearminds-green); text-decoration: none;" target="_blank">Terms</a> |
+                    <a href="https://clearminds.business/corporate/policies/data-governance/privacy-policy.html" style="color: var(--clearminds-green); text-decoration: none;" target="_blank">Privacy</a>
+                </p>
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">
+                    <strong>Wireframe Document:</strong> This comprehensive wireframe represents the proposed structure, content, and narrative for the ClearMinds B2B website. All sections include complete messaging based on internal strategy documents, Towergate partnership positioning, and 4 years of empirical data from 100,000+ users.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
