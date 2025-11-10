@@ -1112,7 +1112,8 @@
                     case 'sleep':
                         resultsHTML += `
                             <ul style="margin-top: 1rem;">
-                                <li><strong>ClearMinds</strong> - Hypnotherapy + 91k community for clinical support</li>
+                                <li><strong>Concierge Health</strong> - Professional clinical assessment with specialists</li>
+                                <li><strong>ClearMinds</strong> - Hypnotherapy + peer community support</li>
                                 <li><strong>What Would You Choose</strong> - Life coaching for deeper insights</li>
                             </ul>
                         `;
@@ -1120,7 +1121,8 @@
                     case 'focus':
                         resultsHTML += `
                             <ul style="margin-top: 1rem;">
-                                <li><strong>ClearMinds</strong> - ADHD screening + focus programs</li>
+                                <li><strong>Concierge Health</strong> - Comprehensive ADHD & neurodivergence assessment</li>
+                                <li><strong>ClearMinds</strong> - Focus programs + community support</li>
                                 <li><strong>What Would You Choose</strong> - Mindset & productivity coaches</li>
                             </ul>
                         `;
@@ -1196,18 +1198,30 @@
                     `;
                 }
 
-                // ClearMinds - for clinical support
+                // Clinical Pathways - for those needing professional support
                 if (profile.needsClinical || profile.wellness < 4) {
                     resultsHTML += `
                         <div class="pathway-card">
-                            <h3>🧠 ClearMinds - Clinical Support</h3>
-                            <p><strong>91,000-member community + professional hypnotherapy</strong></p>
-                            <p>For more structured support:</p>
+                            <h3>🏥 Clinical Support Options</h3>
+                            <p><strong>Professional assessment and treatment pathways</strong></p>
+
+                            <h4 style="margin-top: 1.5rem; color: var(--text-primary);">Concierge Health Advisors</h4>
+                            <p>Premium clinical pathway with Harley Street specialists:</p>
+                            <ul>
+                                <li>Comprehensive ADHD & neurodivergence assessments</li>
+                                <li>Mental wellbeing clinical evaluations</li>
+                                <li>Dedicated concierge team to coordinate care</li>
+                                <li>Detailed written reports & medical record support</li>
+                            </ul>
+                            <a href="https://www.conciergehealthadvisors.com/mental-health" target="_blank" class="btn btn-primary btn-block" style="margin-top: 1rem; text-decoration: none;">Explore Concierge Health →</a>
+
+                            <h4 style="margin-top: 1.5rem; color: var(--text-primary);">ClearMinds</h4>
+                            <p>Community-based hypnotherapy support:</p>
                             <ul>
                                 <li>Evidence-based hypnotherapy programs</li>
-                                <li>24/7 moderated peer support community</li>
+                                <li>91,000-member peer support community (24/7)</li>
                                 <li>GP summary generation</li>
-                                <li>Clinical partner referrals when needed</li>
+                                <li>Accessible, community-first approach</li>
                             </ul>
                             <button class="btn btn-secondary btn-block" style="margin-top: 1rem;">Explore ClearMinds →</button>
                         </div>
