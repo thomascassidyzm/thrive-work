@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wellness Check-In | ClearMinds</title>
-    <meta name="description" content="A quick 2-minute wellness check-in to connect you with the right support.">
+    <title>Wellness Check-In | THRIVE</title>
+    <meta name="description" content="A quick 2-minute wellness check-in to connect you with the right support from THRIVE's ecosystem.">
 
     <!-- jsPDF for PDF generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -751,10 +751,10 @@
         <!-- Pre-Assessment Page -->
         <div id="pre-assessment" class="page-transition">
             <div class="card">
-                <h2 style="color: var(--clearminds-dark); font-size: 1.5rem; margin-bottom: 1rem;">Welcome to ClearMinds</h2>
+                <h2 style="color: var(--text-primary); font-size: 1.5rem; margin-bottom: 1rem;">Welcome to THRIVE</h2>
 
                 <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.7;">
-                    Let's start with a quick check-in. This takes about 2 minutes (5 questions) and helps us connect you with the right support and welcome you to our 91,000-member community.
+                    Let's start with a quick check-in. This takes about 2 minutes (5 questions) and helps us connect you with the right support from our ecosystem of wellbeing tools.
                 </p>
 
                 <div class="info-box">
@@ -811,8 +811,8 @@
         <!-- Results Page -->
         <div id="results" class="hidden page-transition">
             <div class="result-header">
-                <h2 id="result-title">Welcome to ClearMinds</h2>
-                <p id="result-summary"></p>
+                <h2 id="result-title">Welcome to THRIVE</h2>
+                <p id="result-summary">Your personalized wellbeing ecosystem</p>
             </div>
 
             <div id="result-pathways">
@@ -1077,115 +1077,139 @@
 
                 let resultsHTML = '';
 
-                // Community welcome (ALWAYS FIRST)
+                // THRIVE Ecosystem Header
                 resultsHTML += `
-                    <div class="pathway-card" style="border: 3px solid var(--clearminds-teal); background: linear-gradient(135deg, rgba(223, 244, 218, 0.3), rgba(255, 255, 255, 0.9));">
-                        <h3>🤝 Welcome to Our Community</h3>
-                        <p><strong>You're now part of our 91,000-member support community</strong></p>
-                        <p>You're not alone in what you're experiencing. Our community is:</p>
-                        <ul>
-                            <li>Active 24/7 with peer support from people who understand</li>
-                            <li>Professionally moderated (zero serious incidents across 91k members)</li>
-                            <li>Private and safe (your employer can't see your activity)</li>
-                            <li>A place where most healing happens</li>
-                        </ul>
-                        <button class="btn btn-primary btn-block" style="margin-top: 1rem;">Enter Community Now →</button>
+                    <div class="pathway-card" style="border: 2px solid var(--primary-purple); background: rgba(100, 97, 224, 0.05);">
+                        <h3>✨ Your THRIVE Pathway</h3>
+                        <p>Based on your responses, here are the tools from our ecosystem that can help you right now:</p>
                     </div>
                 `;
 
-                // Personalized pathway
-                resultsHTML += `<div class="pathway-card"><h3>🎯 Your Personalized Pathway</h3>`;
-                resultsHTML += `<p>Based on your check-in, here's support that matches what you're experiencing:</p>`;
+                // ALWAYS SHOW: Mandy AI Coach
+                resultsHTML += `
+                    <div class="pathway-card">
+                        <h3>🤖 Chat with Mandy - Your AI Wellbeing Coach</h3>
+                        <p><strong>Available 24/7 for immediate support</strong></p>
+                        <p>Mandy is your CBT-trained AI coach who can help you with:</p>
+                        <ul>
+                            <li>Anxiety and stress management techniques</li>
+                            <li>Box breathing and relaxation exercises</li>
+                            <li>Working through difficult thoughts and feelings</li>
+                            <li>Building coping strategies</li>
+                        </ul>
+                        <a href="https://cowch.app/" target="_blank" class="btn btn-primary btn-block" style="margin-top: 1rem; text-decoration: none;">Start Chat with Mandy →</a>
+                    </div>
+                `;
+
+                // Personalized pathway recommendations
+                resultsHTML += `<div class="pathway-card"><h3>🎯 Additional Support Options</h3>`;
+                resultsHTML += `<p>Based on what you shared, these resources might also help:</p>`;
 
                 switch(profile.pathway) {
                     case 'stress':
-                        resultsHTML += `
-                            <h4 style="margin-top: 1rem; color: var(--clearminds-dark);">For Work Stress & Burnout:</h4>
-                            <ul>
-                                <li><strong>Stress Management Hypnotherapy</strong> - 300+ sessions</li>
-                                <li><strong>Burnout Prevention Program</strong></li>
-                                <li><strong>AI Coach: Edward</strong> - Workplace stress specialist</li>
-                            </ul>
-                        `;
-                        break;
+                    case 'anxiety':
+                    case 'mood':
                     case 'sleep':
                         resultsHTML += `
-                            <h4 style="margin-top: 1rem; color: var(--clearminds-dark);">For Sleep Problems:</h4>
-                            <ul>
-                                <li><strong>Sleep Support Hypnotherapy</strong> - 8-week program</li>
-                                <li><strong>Insomnia CBT techniques</strong></li>
-                                <li><strong>AI Coach: Kainne</strong> - Work-life balance & sleep</li>
-                            </ul>
-                        `;
-                        break;
-                    case 'anxiety':
-                        resultsHTML += `
-                            <h4 style="margin-top: 1rem; color: var(--clearminds-dark);">For Anxiety:</h4>
-                            <ul>
-                                <li><strong>Anxiety Relief Hypnotherapy</strong> - Evidence-based sessions</li>
-                                <li><strong>AI Coach: Lucy</strong> - CBT thought pattern specialist</li>
-                                <li><strong>Breathwork & Relaxation</strong> techniques</li>
-                            </ul>
-                        `;
-                        break;
-                    case 'mood':
-                        resultsHTML += `
-                            <h4 style="margin-top: 1rem; color: var(--clearminds-dark);">For Low Mood:</h4>
-                            <ul>
-                                <li><strong>Mood Support Sessions</strong></li>
-                                <li><strong>AI Coach: Tom</strong> - Identity, purpose, transitions</li>
-                                <li><strong>GP Summary Available</strong> - We recommend involving your doctor</li>
+                            <ul style="margin-top: 1rem;">
+                                <li><strong>ClearMinds</strong> - Hypnotherapy + 91k community for clinical support</li>
+                                <li><strong>What Would You Choose</strong> - Life coaching for deeper insights</li>
                             </ul>
                         `;
                         break;
                     case 'focus':
                         resultsHTML += `
-                            <h4 style="margin-top: 1rem; color: var(--clearminds-dark);">For Concentration Issues:</h4>
-                            <ul>
-                                <li><strong>Focus Enhancement Sessions</strong></li>
-                                <li><strong>AI Coach: Alastair</strong> - ADHD & concentration specialist</li>
-                                <li><strong>ADHD Screening</strong> - Clinical partner available</li>
+                            <ul style="margin-top: 1rem;">
+                                <li><strong>ClearMinds</strong> - ADHD screening + focus programs</li>
+                                <li><strong>What Would You Choose</strong> - Mindset & productivity coaches</li>
                             </ul>
                         `;
                         break;
                     case 'habits':
                         resultsHTML += `
-                            <h4 style="margin-top: 1rem; color: var(--clearminds-dark);">For Habit Change:</h4>
-                            <ul>
-                                <li><strong>Targeted Hypnotherapy</strong> - Smoking, drinking, weight</li>
-                                <li><strong>Behavior Change Programs</strong></li>
-                                <li><strong>Community Support</strong> for accountability</li>
+                            <ul style="margin-top: 1rem;">
+                                <li><strong>ClearMinds</strong> - Targeted hypnotherapy (smoking, drinking, weight)</li>
+                                <li><strong>What Would You Choose</strong> - Accountability coaching</li>
+                            </ul>
+                        `;
+                        break;
+                    case 'wellness':
+                    case 'community':
+                        resultsHTML += `
+                            <ul style="margin-top: 1rem;">
+                                <li><strong>OCEAN Assessment</strong> - Deep dive into your personality</li>
+                                <li><strong>What Would You Choose</strong> - Personal growth coaching</li>
+                                <li><strong>ClearMinds Community</strong> - Connect with 91k members</li>
                             </ul>
                         `;
                         break;
                     default:
-                        resultsHTML += `<p style="margin-top: 1rem;">Explore our full range of support options available anytime.</p>`;
+                        resultsHTML += `
+                            <ul style="margin-top: 1rem;">
+                                <li><strong>OCEAN Assessment</strong> - Understand yourself better</li>
+                                <li><strong>What Would You Choose</strong> - Explore different coaches</li>
+                                <li><strong>ClearMinds</strong> - Full wellbeing support</li>
+                            </ul>
+                        `;
                 }
 
-                resultsHTML += `<button class="btn btn-secondary" style="margin-top: 1rem;">Explore Your Pathway →</button></div>`;
+                resultsHTML += `</div>`;
+
+                // What Would You Choose - for growth/wellness focus
+                if (profile.pathway === 'wellness' || profile.pathway === 'community' || profile.oceanCandidate) {
+                    resultsHTML += `
+                        <div class="pathway-card">
+                            <h3>💭 What Would You Choose?</h3>
+                            <p><strong>Personal growth through powerful conversations</strong></p>
+                            <p>Connect with expert coaches who can help you explore:</p>
+                            <ul>
+                                <li>Life purpose and direction</li>
+                                <li>Business and entrepreneurship</li>
+                                <li>Personal development and mindset</li>
+                                <li>Relationships and communication</li>
+                            </ul>
+                            <a href="https://whatwouldyouchoose.app/" target="_blank" class="btn btn-secondary btn-block" style="margin-top: 1rem; text-decoration: none;">Explore Coaches →</a>
+                        </div>
+                    `;
+                }
 
                 // OCEAN promotion
                 if (profile.oceanCandidate) {
                     resultsHTML += `
-                        <div class="ocean-promo">
-                            <h3>🎯 Recommended: OCEAN Personality Assessment<span class="ocean-badge">Deep Dive</span></h3>
-                            <p>You mentioned wanting to understand yourself better or optimize your wellbeing. The OCEAN assessment is perfect for this.</p>
+                        <div class="pathway-card" style="border: 2px solid var(--accent-teal); background: rgba(85, 204, 153, 0.05);">
+                            <h3>🎯 OCEAN Personality Assessment <span class="ocean-badge" style="background: var(--accent-teal);">Recommended</span></h3>
+                            <p>You mentioned wanting to understand yourself better. The OCEAN assessment is perfect for deep self-discovery.</p>
 
-                            <h4 style="margin-top: 1.5rem; color: #1e40af;">What You'll Discover:</h4>
+                            <h4 style="margin-top: 1.5rem; color: var(--text-primary);">What You'll Discover:</h4>
                             <ul>
-                                <li><strong>Openness</strong> - Your creativity, curiosity, and approach to new experiences</li>
-                                <li><strong>Conscientiousness</strong> - Your organization and goal-orientation</li>
-                                <li><strong>Extraversion</strong> - Your social energy and how you recharge</li>
-                                <li><strong>Agreeableness</strong> - Your cooperation, empathy, and relationships</li>
-                                <li><strong>Neuroticism</strong> - Your emotional stability and stress patterns</li>
+                                <li><strong>Openness</strong> - Your creativity and curiosity</li>
+                                <li><strong>Conscientiousness</strong> - Your organization style</li>
+                                <li><strong>Extraversion</strong> - How you recharge</li>
+                                <li><strong>Agreeableness</strong> - Your relationship patterns</li>
+                                <li><strong>Neuroticism</strong> - Your stress responses</li>
                             </ul>
 
-                            <p style="margin-top: 1rem;"><strong>Takes 20-30 minutes. Provides insights you'll use for years.</strong></p>
+                            <p style="margin-top: 1rem;"><strong>20-30 minutes • Insights you'll use for years</strong></p>
 
-                            <div class="btn-group" style="margin-top: 1.5rem;">
-                                <button class="btn btn-primary">Start OCEAN Assessment →</button>
-                                <button class="btn btn-secondary">Tell Me More</button>
-                            </div>
+                            <button class="btn btn-primary btn-block" style="margin-top: 1rem; background: var(--accent-teal);">Start OCEAN Assessment →</button>
+                        </div>
+                    `;
+                }
+
+                // ClearMinds - for clinical support
+                if (profile.needsClinical || profile.wellness < 4) {
+                    resultsHTML += `
+                        <div class="pathway-card">
+                            <h3>🧠 ClearMinds - Clinical Support</h3>
+                            <p><strong>91,000-member community + professional hypnotherapy</strong></p>
+                            <p>For more structured support:</p>
+                            <ul>
+                                <li>Evidence-based hypnotherapy programs</li>
+                                <li>24/7 moderated peer support community</li>
+                                <li>GP summary generation</li>
+                                <li>Clinical partner referrals when needed</li>
+                            </ul>
+                            <button class="btn btn-secondary btn-block" style="margin-top: 1rem;">Explore ClearMinds →</button>
                         </div>
                     `;
                 }
