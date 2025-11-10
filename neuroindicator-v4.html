@@ -13,36 +13,36 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
         :root {
-            /* Wellness Quiz Color Palette - Inspired by Calm/Breeze */
-            --primary-purple: #6461E0;
-            --primary-blue: #60B4E7;
-            --accent-teal: #55CC99;
-            --accent-lavender: #9b87f5;
-            --soft-purple: #EEEFFD;
-            --soft-blue: #E8F4F8;
+            /* THRIVE Brand Colors - Bold & Energetic */
+            --thrive-yellow: #FFD700;
+            --thrive-gold: #FFA500;
+            --thrive-dark: #1a1a2e;
+            --thrive-navy: #2d3561;
+            --accent-teal: #00d4aa;
+            --accent-coral: #ff6b6b;
 
             /* Gradient Backgrounds */
-            --bg-gradient-start: #E8F4F8;
-            --bg-gradient-mid: #F0ECFE;
-            --bg-gradient-end: #FFF5F7;
+            --bg-gradient-start: #fff9e6;
+            --bg-gradient-mid: #fffaed;
+            --bg-gradient-end: #ffffff;
 
             /* Text Colors */
-            --text-primary: #282B56;
-            --text-secondary: #5a6c7d;
-            --text-muted: #8494a6;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
 
             /* UI Elements */
-            --border-subtle: rgba(100, 97, 224, 0.15);
-            --shadow-sm: 0 2px 8px rgba(100, 97, 224, 0.08);
-            --shadow-md: 0 4px 16px rgba(100, 97, 224, 0.12);
-            --shadow-lg: 0 8px 32px rgba(100, 97, 224, 0.16);
-            --shadow-glow: 0 0 40px rgba(100, 97, 224, 0.2);
+            --border-subtle: rgba(255, 215, 0, 0.2);
+            --shadow-sm: 0 2px 8px rgba(255, 215, 0, 0.1);
+            --shadow-md: 0 4px 16px rgba(255, 215, 0, 0.15);
+            --shadow-lg: 0 8px 32px rgba(255, 215, 0, 0.2);
+            --shadow-glow: 0 0 40px rgba(255, 215, 0, 0.3);
 
             /* Status Colors */
-            --success: #55CC99;
-            --warning: #FDC02E;
-            --error: #ef4444;
-            --info: #60B4E7;
+            --success: #00d4aa;
+            --warning: #FFA500;
+            --error: #ff6b6b;
+            --info: #4299e1;
         }
 
         * {
@@ -85,8 +85,8 @@
         .bg-circle-1 {
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, var(--primary-purple) 0%, transparent 70%);
-            opacity: 0.15;
+            background: radial-gradient(circle, var(--thrive-yellow) 0%, transparent 70%);
+            opacity: 0.08;
             top: -150px;
             right: -150px;
             animation-delay: 0s;
@@ -95,8 +95,8 @@
         .bg-circle-2 {
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, var(--primary-blue) 0%, transparent 70%);
-            opacity: 0.2;
+            background: radial-gradient(circle, var(--thrive-gold) 0%, transparent 70%);
+            opacity: 0.1;
             bottom: -100px;
             left: -100px;
             animation-delay: 8s;
@@ -106,7 +106,7 @@
             width: 350px;
             height: 350px;
             background: radial-gradient(circle, var(--accent-teal) 0%, transparent 70%);
-            opacity: 0.12;
+            opacity: 0.08;
             top: 40%;
             left: 60%;
             animation-delay: 16s;
@@ -115,8 +115,8 @@
         .bg-circle-4 {
             width: 300px;
             height: 300px;
-            background: radial-gradient(circle, var(--accent-lavender) 0%, transparent 70%);
-            opacity: 0.1;
+            background: radial-gradient(circle, var(--thrive-navy) 0%, transparent 70%);
+            opacity: 0.06;
             top: 20%;
             left: 10%;
             animation-delay: 12s;
@@ -161,7 +161,7 @@
         .header h1 {
             font-size: 2rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            background: linear-gradient(135deg, var(--thrive-gold), var(--thrive-yellow));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -191,7 +191,7 @@
         .card:hover {
             box-shadow: var(--shadow-glow);
             transform: translateY(-2px);
-            border-color: rgba(100, 97, 224, 0.2);
+            border-color: rgba(255, 215, 0, 0.3);
         }
 
         /* Progress Bar */
@@ -201,7 +201,7 @@
 
         .progress-track {
             height: 8px;
-            background: rgba(100, 97, 224, 0.15);
+            background: rgba(255, 215, 0, 0.15);
             border-radius: 100px;
             overflow: hidden;
             position: relative;
@@ -209,12 +209,12 @@
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary-blue), var(--primary-purple), var(--accent-lavender));
+            background: linear-gradient(90deg, var(--thrive-gold), var(--thrive-yellow), var(--accent-teal));
             border-radius: 100px;
             transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 2px 12px rgba(100, 97, 224, 0.3);
+            box-shadow: 0 2px 12px rgba(255, 215, 0, 0.4);
         }
 
         .progress-fill::after {
@@ -238,7 +238,7 @@
             margin-top: 0.75rem;
             font-size: 0.875rem;
             font-weight: 600;
-            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            background: linear-gradient(135deg, var(--thrive-gold), var(--accent-teal));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -273,16 +273,16 @@
 
         .question-number {
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
-            color: white;
+            background: linear-gradient(135deg, var(--thrive-gold), var(--thrive-yellow));
+            color: var(--thrive-dark);
             padding: 0.375rem 1rem;
             border-radius: 100px;
             font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 1rem;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            box-shadow: 0 2px 12px rgba(100, 97, 224, 0.3);
+            box-shadow: 0 2px 12px rgba(255, 215, 0, 0.4);
         }
 
         .question-text {
@@ -315,8 +315,8 @@
             display: flex;
             align-items: center;
             padding: 1rem 1.25rem;
-            background: rgba(255, 255, 255, 0.7);
-            border: 2px solid rgba(100, 97, 224, 0.2);
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(255, 215, 0, 0.25);
             border-radius: 16px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -336,25 +336,25 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, var(--soft-purple), var(--soft-blue));
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 212, 170, 0.1));
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
         .option-item input[type="radio"]:checked + .option-label {
-            background: rgba(100, 97, 224, 0.15);
-            border-color: var(--primary-purple);
+            background: rgba(255, 215, 0, 0.15);
+            border-color: var(--thrive-yellow);
             transform: scale(1.02);
-            box-shadow: 0 4px 16px rgba(100, 97, 224, 0.25);
+            box-shadow: 0 4px 16px rgba(255, 215, 0, 0.3);
         }
 
         .option-item input[type="radio"]:checked + .option-label::before {
-            opacity: 0.6;
+            opacity: 1;
         }
 
         .option-item input[type="radio"]:checked + .option-label .option-radio {
-            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
-            border-color: var(--primary-purple);
+            background: linear-gradient(135deg, var(--thrive-gold), var(--thrive-yellow));
+            border-color: var(--thrive-yellow);
         }
 
         .option-item input[type="radio"]:checked + .option-label .option-radio::after {
@@ -362,10 +362,10 @@
         }
 
         .option-label:hover {
-            border-color: var(--primary-purple);
-            background: rgba(100, 97, 224, 0.08);
+            border-color: var(--thrive-yellow);
+            background: rgba(255, 215, 0, 0.1);
             transform: translateX(4px);
-            box-shadow: 0 2px 12px rgba(100, 97, 224, 0.15);
+            box-shadow: 0 2px 12px rgba(255, 215, 0, 0.2);
         }
 
         .option-radio {
@@ -437,15 +437,16 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
-            color: white;
-            box-shadow: 0 4px 20px rgba(100, 97, 224, 0.35);
+            background: linear-gradient(135deg, var(--thrive-gold), var(--thrive-yellow));
+            color: var(--thrive-dark);
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+            font-weight: 700;
         }
 
         .btn-primary:hover {
-            box-shadow: 0 6px 28px rgba(100, 97, 224, 0.45);
+            box-shadow: 0 6px 28px rgba(255, 215, 0, 0.5);
             transform: translateY(-2px);
-            filter: brightness(1.05);
+            filter: brightness(1.1);
         }
 
         .btn-primary:active {
@@ -453,17 +454,17 @@
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.8);
-            color: var(--primary-purple);
-            border: 2px solid var(--primary-purple);
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--thrive-dark);
+            border: 2px solid var(--thrive-yellow);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-            background: rgba(100, 97, 224, 0.1);
+            background: rgba(255, 215, 0, 0.15);
             transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(100, 97, 224, 0.2);
+            box-shadow: 0 4px 16px rgba(255, 215, 0, 0.25);
         }
 
         .btn-block {
@@ -610,8 +611,8 @@
 
         input[type="text"]:focus {
             outline: none;
-            border-color: var(--primary-purple);
-            box-shadow: 0 0 0 4px rgba(100, 97, 224, 0.15);
+            border-color: var(--thrive-yellow);
+            box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2);
             background: white;
         }
 
@@ -1079,7 +1080,7 @@
 
                 // THRIVE Ecosystem Header
                 resultsHTML += `
-                    <div class="pathway-card" style="border: 2px solid var(--primary-purple); background: rgba(100, 97, 224, 0.05);">
+                    <div class="pathway-card" style="border: 2px solid var(--thrive-yellow); background: rgba(255, 215, 0, 0.08);">
                         <h3>✨ Your THRIVE Pathway</h3>
                         <p>Based on your responses, here are the tools from our ecosystem that can help you right now:</p>
                     </div>
