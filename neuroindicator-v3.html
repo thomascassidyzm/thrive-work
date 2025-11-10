@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Check-In | ClearMinds</title>
+    <meta name="description" content="A quick 2-minute wellness check-in to connect you with the right support.">
+
+    <!-- jsPDF for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            /* ClearMinds Brand Colors */
+            --clearminds-teal: #007a87;
+            --clearminds-dark: #0d3b3e;
+            --clearminds-green: #dff4da;
+            --clearminds-cream: #fffbf5;
+
+            /* THRIVE Integration */
+            --thrive-yellow: #FFD700;
+            --thrive-dark: #1a1a2e;
+
+            /* Modern Palette */
+            --bg-gradient-start: #f8f9fa;
+            --bg-gradient-end: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --border-subtle: rgba(0, 122, 135, 0.1);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+
+            /* Status Colors */
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --info: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Animated Background Elements */
+        .bg-decoration {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.03;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .bg-circle-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--clearminds-teal);
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .bg-circle-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--thrive-yellow);
+            bottom: -50px;
+            left: -50px;
+            animation-delay: 7s;
+        }
+
+        .bg-circle-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--clearminds-green);
+            top: 50%;
+            left: 50%;
+            animation-delay: 14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        .header-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--clearminds-dark);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Glass Morphism Card */
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 2rem;
+        }
+
+        .progress-track {
+            height: 6px;
+            background: rgba(0, 122, 135, 0.1);
+            border-radius: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--clearminds-teal), var(--thrive-yellow));
+            border-radius: 100px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--clearminds-teal);
+        }
+
+        /* Question Card */
+        .question-card {
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .question-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--clearminds-teal), var(--clearminds-dark));
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .question-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            letter-spacing: -0.01em;
+        }
+
+        /* Custom Radio Buttons */
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .option-item {
+            position: relative;
+        }
+
+        .option-item input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(0, 122, 135, 0.15);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 500;
+            color: var(--text-primary);
+            user-select: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-label::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--clearminds-teal), var(--thrive-yellow));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .option-item input[type="radio"]:checked + .option-label {
+            background: rgba(0, 122, 135, 0.1);
+            border-color: var(--clearminds-teal);
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 122, 135, 0.15);
+        }
+
+        .option-item input[type="radio"]:checked + .option-label .option-radio {
+            background: var(--clearminds-teal);
+            border-color: var(--clearminds-teal);
+        }
+
+        .option-item input[type="radio"]:checked + .option-label .option-radio::after {
+            transform: scale(1);
+        }
+
+        .option-label:hover {
+            border-color: var(--clearminds-teal);
+            background: rgba(0, 122, 135, 0.05);
+            transform: translateX(4px);
+        }
+
+        .option-radio {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #d1d5db;
+            border-radius: 50%;
+            margin-right: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            background: white;
+        }
+
+        .option-radio::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .option-text {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--clearminds-teal), var(--clearminds-dark));
+            color: white;
+            box-shadow: 0 4px 16px rgba(0, 122, 135, 0.3);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 24px rgba(0, 122, 135, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: rgba(0, 122, 135, 0.1);
+            color: var(--clearminds-teal);
+            border: 2px solid var(--clearminds-teal);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 122, 135, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* Warning Box */
+        .info-box {
+            background: linear-gradient(135deg, rgba(255, 243, 205, 0.5), rgba(255, 237, 160, 0.5));
+            backdrop-filter: blur(10px);
+            border-left: 4px solid var(--warning);
+            padding: 1.25rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .info-box h3 {
+            color: #92400e;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-box p {
+            color: #78350f;
+            font-size: 0.875rem;
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+
+        /* Crisis Banner */
+        .crisis-banner {
+            background: linear-gradient(135deg, var(--error), #dc2626);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+            font-weight: 600;
+            box-shadow: 0 8px 24px rgba(239, 68, 68, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 8px 24px rgba(239, 68, 68, 0.3); }
+            50% { box-shadow: 0 8px 32px rgba(239, 68, 68, 0.5); }
+        }
+
+        .crisis-banner h3 {
+            color: white;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .crisis-banner ul {
+            margin-left: 1.5rem;
+        }
+
+        .crisis-banner li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        /* Results */
+        .result-header {
+            background: linear-gradient(135deg, rgba(223, 244, 218, 0.8), rgba(187, 247, 208, 0.8));
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            border-left: 6px solid var(--success);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .result-header h2 {
+            color: var(--clearminds-dark);
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .result-header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .pathway-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--clearminds-teal);
+            border-radius: 20px;
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .pathway-card:nth-child(2) { animation-delay: 0.1s; }
+        .pathway-card:nth-child(3) { animation-delay: 0.2s; }
+        .pathway-card:nth-child(4) { animation-delay: 0.3s; }
+
+        .pathway-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 122, 135, 0.15);
+        }
+
+        .pathway-card h3 {
+            color: var(--clearminds-teal);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pathway-card ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .pathway-card li {
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Input Fields */
+        input[type="text"] {
+            width: 100%;
+            padding: 0.875rem 1.25rem;
+            border: 2px solid rgba(0, 122, 135, 0.2);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--clearminds-teal);
+            box-shadow: 0 0 0 4px rgba(0, 122, 135, 0.1);
+            background: white;
+        }
+
+        /* OCEAN Promo */
+        .ocean-promo {
+            background: linear-gradient(135deg, rgba(224, 242, 254, 0.8), rgba(219, 234, 254, 0.8));
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--info);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+
+        .ocean-promo h3 {
+            color: #1e40af;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .ocean-badge {
+            display: inline-block;
+            background: var(--info);
+            color: white;
+            padding: 0.375rem 1rem;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-left: 0.75rem;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Button Group */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header-icon {
+                font-size: 2.5rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+                border-radius: 20px;
+            }
+
+            .question-text {
+                font-size: 1.125rem;
+            }
+
+            .option-label {
+                padding: 0.875rem 1rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* Smooth page transitions */
+        .page-transition {
+            animation: pageTransition 0.4s ease-out;
+        }
+
+        @keyframes pageTransition {
+            from {
+                opacity: 0;
+                transform: scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-decoration">
+        <div class="bg-circle bg-circle-1"></div>
+        <div class="bg-circle bg-circle-2"></div>
+        <div class="bg-circle bg-circle-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-icon">🧠</div>
+            <h1>How Are You Doing?</h1>
+            <p>A quick wellness check-in to connect you with the right support</p>
+        </div>
+
+        <!-- Pre-Assessment Page -->
+        <div id="pre-assessment" class="page-transition">
+            <div class="card">
+                <h2 style="color: var(--clearminds-dark); font-size: 1.5rem; margin-bottom: 1rem;">Welcome to ClearMinds</h2>
+
+                <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.7;">
+                    Let's start with a quick check-in. This takes about 2 minutes (5 questions) and helps us connect you with the right support and welcome you to our 91,000-member community.
+                </p>
+
+                <div class="info-box">
+                    <h3>⚠️ Important Notice</h3>
+                    <p>This is a wellness check-in, not a clinical assessment. Only qualified healthcare professionals can provide medical diagnoses.</p>
+                    <p><strong>If you're in crisis:</strong> Call 999, visit A&E, or contact Samaritans (116 123)</p>
+                </div>
+
+                <h3 style="color: var(--clearminds-teal); margin: 1.5rem 0 1rem; font-size: 1.125rem;">What to expect:</h3>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.8;">
+                    <li>5 simple questions (2 minutes)</li>
+                    <li>Personalized pathway recommendations</li>
+                    <li>Immediate community access</li>
+                    <li>Optional GP summary available</li>
+                </ul>
+
+                <h3 style="color: var(--clearminds-teal); margin: 1.5rem 0 1rem; font-size: 1.125rem;">Your Privacy</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.7;">
+                    Your responses are processed in your browser and never shared with your employer. See our <a href="/corporate/policies/data-governance/privacy-policy.html" style="color: var(--clearminds-teal); text-decoration: underline;">Privacy Policy</a> for details.
+                </p>
+
+                <button class="btn btn-primary btn-block" onclick="app.startAssessment()">
+                    <span>Start Check-In</span>
+                    <span>→</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Assessment Page -->
+        <div id="assessment" class="hidden">
+            <div class="progress-container">
+                <div class="progress-track">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="progress-text" id="progress-text">Question 1 of 5</div>
+            </div>
+
+            <div class="card question-card" id="question-card">
+                <!-- Questions will be inserted here -->
+            </div>
+
+            <p class="text-center" style="color: var(--text-secondary); font-size: 0.875rem; margin: 1rem 0;">
+                ✨ Select an answer to continue
+            </p>
+
+            <div class="btn-group">
+                <button class="btn btn-secondary" id="btn-back" onclick="app.previousQuestion()" style="display: none;">
+                    <span>←</span>
+                    <span>Back</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Page -->
+        <div id="results" class="hidden page-transition">
+            <div class="result-header">
+                <h2 id="result-title">Welcome to ClearMinds</h2>
+                <p id="result-summary"></p>
+            </div>
+
+            <div id="result-pathways">
+                <!-- Outcome pathways will be inserted here -->
+            </div>
+
+            <div class="btn-group" style="margin-top: 2rem;">
+                <button class="btn btn-secondary" onclick="app.restart()">
+                    <span>↻</span>
+                    <span>Start New Check-In</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ClearMinds Wellness Check-In Application V3
+        const app = {
+            // State
+            currentQuestion: 0,
+            responses: [],
+            userProfile: {
+                wellness: 0,
+                pathway: '',
+                chronicity: '',
+                readiness: '',
+                crisis: false,
+                oceanCandidate: false,
+                needsClinical: false,
+                monitor: false,
+                needsCommunity: false
+            },
+
+            // Simplified 5-question bank
+            questions: [
+                {
+                    id: 1,
+                    text: "How are you feeling overall right now?",
+                    options: [
+                        {
+                            value: 1,
+                            text: "I'm doing well—just checking in or curious",
+                            signals: { wellness: 5, oceanCandidate: true }
+                        },
+                        {
+                            value: 2,
+                            text: "Managing okay, but could use some support",
+                            signals: { wellness: 3, needsSupport: true }
+                        },
+                        {
+                            value: 3,
+                            text: "Struggling—things feel hard right now",
+                            signals: { wellness: 2, needsIntervention: true }
+                        },
+                        {
+                            value: 4,
+                            text: "In crisis—I need immediate help",
+                            signals: { crisis: true }
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    text: "What's your main reason for checking in today?",
+                    options: [
+                        { value: 1, text: "Just exploring / general curiosity", pathway: "wellness", oceanCandidate: true },
+                        { value: 2, text: "Work stress or burnout", pathway: "stress" },
+                        { value: 3, text: "Sleep problems or low energy", pathway: "sleep" },
+                        { value: 4, text: "Feeling anxious or worried a lot", pathway: "anxiety" },
+                        { value: 5, text: "Low mood or feeling hopeless", pathway: "mood" },
+                        { value: 6, text: "Trouble concentrating or staying focused", pathway: "focus" },
+                        { value: 7, text: "Specific habit I want to change", pathway: "habits" },
+                        { value: 8, text: "I want to understand myself better", pathway: "wellness", oceanCandidate: true },
+                        { value: 9, text: "Looking for community support", pathway: "community" }
+                    ]
+                },
+                {
+                    id: 3,
+                    text: "How long has this been going on?",
+                    options: [
+                        { value: 1, text: "Just started (last few days)", chronicity: "acute" },
+                        { value: 2, text: "A few weeks", chronicity: "subacute" },
+                        { value: 3, text: "A few months", chronicity: "chronic" },
+                        { value: 4, text: "More than 6 months", chronicity: "chronic", clinicalConsideration: true },
+                        { value: 5, text: "This is ongoing / chronic", chronicity: "chronic", clinicalConsideration: true },
+                        { value: 6, text: "Not applicable—I'm here for prevention/optimization", chronicity: "none", oceanCandidate: true }
+                    ]
+                },
+                {
+                    id: 4,
+                    text: "Have you tried anything to help so far?",
+                    options: [
+                        { value: 1, text: "Nothing yet—this is my first step", readiness: "beginner" },
+                        { value: 2, text: "Lifestyle changes and they're helping a bit", readiness: "engaged" },
+                        { value: 3, text: "I've tried things but not seeing improvement", readiness: "frustrated", escalate: true },
+                        { value: 4, text: "I'm currently getting professional help", readiness: "clinical" },
+                        { value: 5, text: "I want to optimize even though I'm doing okay", readiness: "optimization", oceanCandidate: true }
+                    ]
+                },
+                {
+                    id: 5,
+                    text: "Are you having thoughts of harming yourself or ending your life?",
+                    options: [
+                        { value: 1, text: "No, not at all", crisis: false },
+                        { value: 2, text: "I've had passing thoughts, but I'm safe", crisis: false, monitor: true },
+                        { value: 3, text: "Yes, I'm having these thoughts", crisis: true }
+                    ],
+                    critical: true
+                }
+            ],
+
+            // Start assessment
+            startAssessment() {
+                document.getElementById('pre-assessment').classList.add('hidden');
+                document.getElementById('assessment').classList.remove('hidden');
+                this.currentQuestion = 0;
+                this.responses = [];
+                this.renderQuestion();
+            },
+
+            // Render current question
+            renderQuestion() {
+                const question = this.questions[this.currentQuestion];
+                const card = document.getElementById('question-card');
+
+                let html = `
+                    <div class="question-number">Question ${this.currentQuestion + 1} of ${this.questions.length}</div>
+                    <div class="question-text">${question.text}</div>
+                    <div class="options-group">
+                `;
+
+                question.options.forEach((option, index) => {
+                    const checked = this.responses[this.currentQuestion]?.selectedIndex === index ? 'checked' : '';
+                    html += `
+                        <div class="option-item">
+                            <input type="radio" name="q${question.id}" id="q${question.id}_${index}" value="${index}" ${checked}>
+                            <label for="q${question.id}_${index}" class="option-label">
+                                <div class="option-radio"></div>
+                                <div class="option-text">${option.text}</div>
+                            </label>
+                        </div>
+                    `;
+                });
+
+                html += '</div>';
+                card.innerHTML = html;
+
+                // Update progress
+                const progress = ((this.currentQuestion + 1) / this.questions.length) * 100;
+                document.getElementById('progress-fill').style.width = progress + '%';
+                document.getElementById('progress-text').textContent = `Question ${this.currentQuestion + 1} of ${this.questions.length}`;
+
+                // Show/hide back button
+                document.getElementById('btn-back').style.display = this.currentQuestion > 0 ? 'inline-flex' : 'none';
+
+                // Add auto-progression on selection
+                const radios = card.querySelectorAll('input[type="radio"]');
+                radios.forEach(radio => {
+                    radio.addEventListener('change', () => {
+                        setTimeout(() => {
+                            this.nextQuestion();
+                        }, 400);
+                    });
+                });
+
+                // Smooth scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            },
+
+            // Next question
+            nextQuestion() {
+                const question = this.questions[this.currentQuestion];
+                const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
+
+                if (!selected) return;
+
+                const selectedIndex = parseInt(selected.value);
+                const selectedOption = question.options[selectedIndex];
+
+                // Save response
+                this.responses[this.currentQuestion] = {
+                    questionId: question.id,
+                    selectedIndex: selectedIndex,
+                    option: selectedOption,
+                    question: question
+                };
+
+                // Update user profile
+                if (selectedOption.signals) {
+                    if (selectedOption.signals.wellness) this.userProfile.wellness = selectedOption.signals.wellness;
+                    if (selectedOption.signals.crisis) this.userProfile.crisis = true;
+                    if (selectedOption.signals.oceanCandidate) this.userProfile.oceanCandidate = true;
+                }
+                if (selectedOption.pathway) this.userProfile.pathway = selectedOption.pathway;
+                if (selectedOption.chronicity) this.userProfile.chronicity = selectedOption.chronicity;
+                if (selectedOption.readiness) this.userProfile.readiness = selectedOption.readiness;
+                if (selectedOption.clinicalConsideration) this.userProfile.needsClinical = true;
+                if (selectedOption.escalate) this.userProfile.needsClinical = true;
+                if (selectedOption.crisis) this.userProfile.crisis = true;
+                if (selectedOption.monitor) this.userProfile.monitor = true;
+                if (selectedOption.oceanCandidate) this.userProfile.oceanCandidate = true;
+
+                // Check for crisis on critical question
+                if (question.critical && selectedOption.crisis) {
+                    this.showCrisisIntervention();
+                    return;
+                }
+
+                // Move to next question or show results
+                if (this.currentQuestion < this.questions.length - 1) {
+                    this.currentQuestion++;
+                    this.renderQuestion();
+                } else {
+                    this.showResults();
+                }
+            },
+
+            // Previous question
+            previousQuestion() {
+                if (this.currentQuestion > 0) {
+                    this.currentQuestion--;
+                    this.renderQuestion();
+                }
+            },
+
+            // Show crisis intervention
+            showCrisisIntervention() {
+                document.getElementById('assessment').classList.add('hidden');
+                document.getElementById('results').classList.remove('hidden');
+
+                document.getElementById('result-title').textContent = '🚨 Immediate Support Needed';
+                document.getElementById('result-summary').textContent = 'Based on your response, we strongly recommend seeking immediate support.';
+
+                const pathways = document.getElementById('result-pathways');
+                pathways.innerHTML = `
+                    <div class="crisis-banner">
+                        <h3>⚠️ If you're in immediate danger or having thoughts of self-harm:</h3>
+                        <ul>
+                            <li><strong>Call 999</strong> or go to your nearest A&E</li>
+                            <li><strong>Call Samaritans: 116 123</strong> (free, 24/7)</li>
+                            <li><strong>Text SHOUT to 85258</strong> (free crisis text line)</li>
+                            <li><strong>Call NHS 111</strong> for urgent mental health support</li>
+                        </ul>
+                    </div>
+
+                    <div class="pathway-card">
+                        <h3>💚 You Are Not Alone</h3>
+                        <p>What you're experiencing is serious, but help is available. Please reach out to one of the services above right now.</p>
+                        <h4 style="margin-top: 1.5rem; color: var(--clearminds-dark);">Our Community is Here Too</h4>
+                        <p>When you're ready, our 91,000-member community with 24/7 professional moderation can provide ongoing support. But right now, please contact a crisis service.</p>
+                    </div>
+                `;
+            },
+
+            // Show results
+            showResults() {
+                document.getElementById('assessment').classList.add('hidden');
+                document.getElementById('results').classList.remove('hidden');
+
+                const profile = this.userProfile;
+                const pathways = document.getElementById('result-pathways');
+
+                let resultsHTML = '';
+
+                // Community welcome (ALWAYS FIRST)
+                resultsHTML += `
+                    <div class="pathway-card" style="border: 3px solid var(--clearminds-teal); background: linear-gradient(135deg, rgba(223, 244, 218, 0.3), rgba(255, 255, 255, 0.9));">
+                        <h3>🤝 Welcome to Our Community</h3>
+                        <p><strong>You're now part of our 91,000-member support community</strong></p>
+                        <p>You're not alone in what you're experiencing. Our community is:</p>
+                        <ul>
+                            <li>Active 24/7 with peer support from people who understand</li>
+                            <li>Professionally moderated (zero serious incidents across 91k members)</li>
+                            <li>Private and safe (your employer can't see your activity)</li>
+                            <li>A place where most healing happens</li>
+                        </ul>
+                        <button class="btn btn-primary btn-block" style="margin-top: 1rem;">Enter Community Now →</button>
+                    </div>
+                `;
+
+                // Personalized pathway
+                resultsHTML += `<div class="pathway-card"><h3>🎯 Your Personalized Pathway</h3>`;
+                resultsHTML += `<p>Based on your check-in, here's support that matches what you're experiencing:</p>`;
+
+                switch(profile.pathway) {
+                    case 'stress':
+                        resultsHTML += `
+                            <h4 style="margin-top: 1rem; color: var(--clearminds-dark);">For Work Stress & Burnout:</h4>
+                            <ul>
+                                <li><strong>Stress Management Hypnotherapy</strong> - 300+ sessions</li>
+                                <li><strong>Burnout Prevention Program</strong></li>
+                                <li><strong>AI Coach: Edward</strong> - Workplace stress specialist</li>
+                            </ul>
+                        `;
+                        break;
+                    case 'sleep':
+                        resultsHTML += `
+                            <h4 style="margin-top: 1rem; color: var(--clearminds-dark);">For Sleep Problems:</h4>
+                            <ul>
+                                <li><strong>Sleep Support Hypnotherapy</strong> - 8-week program</li>
+                                <li><strong>Insomnia CBT techniques</strong></li>
+                                <li><strong>AI Coach: Kainne</strong> - Work-life balance & sleep</li>
+                            </ul>
+                        `;
+                        break;
+                    case 'anxiety':
+                        resultsHTML += `
+                            <h4 style="margin-top: 1rem; color: var(--clearminds-dark);">For Anxiety:</h4>
+                            <ul>
+                                <li><strong>Anxiety Relief Hypnotherapy</strong> - Evidence-based sessions</li>
+                                <li><strong>AI Coach: Lucy</strong> - CBT thought pattern specialist</li>
+                                <li><strong>Breathwork & Relaxation</strong> techniques</li>
+                            </ul>
+                        `;
+                        break;
+                    case 'mood':
+                        resultsHTML += `
+                            <h4 style="margin-top: 1rem; color: var(--clearminds-dark);">For Low Mood:</h4>
+                            <ul>
+                                <li><strong>Mood Support Sessions</strong></li>
+                                <li><strong>AI Coach: Tom</strong> - Identity, purpose, transitions</li>
+                                <li><strong>GP Summary Available</strong> - We recommend involving your doctor</li>
+                            </ul>
+                        `;
+                        break;
+                    case 'focus':
+                        resultsHTML += `
+                            <h4 style="margin-top: 1rem; color: var(--clearminds-dark);">For Concentration Issues:</h4>
+                            <ul>
+                                <li><strong>Focus Enhancement Sessions</strong></li>
+                                <li><strong>AI Coach: Alastair</strong> - ADHD & concentration specialist</li>
+                                <li><strong>ADHD Screening</strong> - Clinical partner available</li>
+                            </ul>
+                        `;
+                        break;
+                    case 'habits':
+                        resultsHTML += `
+                            <h4 style="margin-top: 1rem; color: var(--clearminds-dark);">For Habit Change:</h4>
+                            <ul>
+                                <li><strong>Targeted Hypnotherapy</strong> - Smoking, drinking, weight</li>
+                                <li><strong>Behavior Change Programs</strong></li>
+                                <li><strong>Community Support</strong> for accountability</li>
+                            </ul>
+                        `;
+                        break;
+                    default:
+                        resultsHTML += `<p style="margin-top: 1rem;">Explore our full range of support options available anytime.</p>`;
+                }
+
+                resultsHTML += `<button class="btn btn-secondary" style="margin-top: 1rem;">Explore Your Pathway →</button></div>`;
+
+                // OCEAN promotion
+                if (profile.oceanCandidate) {
+                    resultsHTML += `
+                        <div class="ocean-promo">
+                            <h3>🎯 Recommended: OCEAN Personality Assessment<span class="ocean-badge">Deep Dive</span></h3>
+                            <p>You mentioned wanting to understand yourself better or optimize your wellbeing. The OCEAN assessment is perfect for this.</p>
+
+                            <h4 style="margin-top: 1.5rem; color: #1e40af;">What You'll Discover:</h4>
+                            <ul>
+                                <li><strong>Openness</strong> - Your creativity, curiosity, and approach to new experiences</li>
+                                <li><strong>Conscientiousness</strong> - Your organization and goal-orientation</li>
+                                <li><strong>Extraversion</strong> - Your social energy and how you recharge</li>
+                                <li><strong>Agreeableness</strong> - Your cooperation, empathy, and relationships</li>
+                                <li><strong>Neuroticism</strong> - Your emotional stability and stress patterns</li>
+                            </ul>
+
+                            <p style="margin-top: 1rem;"><strong>Takes 20-30 minutes. Provides insights you'll use for years.</strong></p>
+
+                            <div class="btn-group" style="margin-top: 1.5rem;">
+                                <button class="btn btn-primary">Start OCEAN Assessment →</button>
+                                <button class="btn btn-secondary">Tell Me More</button>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // GP Summary option
+                if (profile.needsClinical || profile.wellness < 3) {
+                    resultsHTML += `
+                        <div class="pathway-card">
+                            <h3>📄 Optional: Talk to Your GP</h3>
+                            <p>If you'd like to involve your doctor, you can download a summary of your check-in to bring to your appointment.</p>
+                            <input type="text" id="name-input" placeholder="Your name" style="margin: 1rem 0;">
+                            <button class="btn btn-primary btn-block" onclick="app.downloadPDF()">Download GP Summary</button>
+                        </div>
+                    `;
+                }
+
+                pathways.innerHTML = resultsHTML;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            },
+
+            // Download PDF
+            downloadPDF() {
+                const name = document.getElementById('name-input')?.value;
+                if (!name || name.trim() === '') {
+                    alert('Please enter your name before downloading the GP summary.');
+                    document.getElementById('name-input')?.focus();
+                    return;
+                }
+
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                doc.setFont('helvetica');
+                doc.setFontSize(10);
+
+                let summary = `PATIENT NAME: ${name}\n`;
+                summary += `CHECK-IN DATE: ${new Date().toLocaleDateString('en-GB')}\n\n`;
+                summary += '='.repeat(60) + '\n';
+                summary += 'CLEARMINDS WELLNESS CHECK-IN SUMMARY FOR GP\n';
+                summary += '='.repeat(60) + '\n\n';
+
+                summary += 'IMPORTANT: This is a wellness check-in, not a clinical assessment.\n\n';
+
+                summary += 'RESPONSES:\n\n';
+                this.responses.forEach((response, idx) => {
+                    summary += `${idx + 1}. ${response.question.text}\n`;
+                    summary += `   Answer: ${response.option.text}\n\n`;
+                });
+
+                summary += '\nRECOMMENDATIONS:\n';
+                summary += `Primary concern: ${this.userProfile.pathway}\n`;
+                summary += `Duration: ${this.userProfile.chronicity}\n`;
+                if (this.userProfile.needsClinical) {
+                    summary += '\nClinical assessment recommended based on duration and severity.\n';
+                }
+
+                summary += '\n\nClearMinds Mental Wellness Platform | clearminds.business';
+
+                const lines = summary.split('\n');
+                let y = 15;
+                const lineHeight = 5;
+
+                lines.forEach((line) => {
+                    if (y > 270) {
+                        doc.addPage();
+                        y = 15;
+                    }
+                    const splitLines = doc.splitTextToSize(line, 180);
+                    splitLines.forEach((splitLine) => {
+                        if (y > 270) {
+                            doc.addPage();
+                            y = 15;
+                        }
+                        doc.text(splitLine, 15, y);
+                        y += lineHeight;
+                    });
+                });
+
+                doc.save(`ClearMinds-Check-In-Summary-${name.replace(/\s+/g, '-')}.pdf`);
+            },
+
+            // Restart assessment
+            restart() {
+                this.currentQuestion = 0;
+                this.responses = [];
+                this.userProfile = {
+                    wellness: 0,
+                    pathway: '',
+                    chronicity: '',
+                    readiness: '',
+                    crisis: false,
+                    oceanCandidate: false,
+                    needsClinical: false,
+                    monitor: false,
+                    needsCommunity: false
+                };
+
+                document.getElementById('results').classList.add('hidden');
+                document.getElementById('pre-assessment').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        };
+    </script>
+</body>
+</html>
