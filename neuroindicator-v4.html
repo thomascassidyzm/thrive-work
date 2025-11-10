@@ -599,9 +599,9 @@
         }
 
         .pathway-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: var(--glass-white);
             backdrop-filter: blur(20px);
-            border: 2px solid var(--clearminds-teal);
+            border: 1px solid rgba(255, 215, 0, 0.2);
             border-radius: 20px;
             padding: 1.75rem;
             margin-bottom: 1.5rem;
@@ -616,11 +616,12 @@
 
         .pathway-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(0, 122, 135, 0.15);
+            box-shadow: var(--shadow-yellow-glow);
+            border-color: var(--primary-yellow);
         }
 
         .pathway-card h3 {
-            color: var(--clearminds-teal);
+            color: var(--primary-yellow);
             font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 1rem;
@@ -636,8 +637,23 @@
 
         .pathway-card li {
             margin-bottom: 0.75rem;
-            color: var(--text-secondary);
+            color: var(--text-medium);
             line-height: 1.6;
+        }
+
+        .pathway-card p {
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        .pathway-card strong {
+            color: var(--text-white);
+        }
+
+        .pathway-card h4 {
+            color: var(--text-white);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
         }
 
         /* Input Fields */
@@ -798,9 +814,9 @@
         <!-- Pre-Assessment Page -->
         <div id="pre-assessment" class="page-transition">
             <div class="card">
-                <h2 style="color: var(--text-primary); font-size: 1.5rem; margin-bottom: 1rem;">Welcome to THRIVE</h2>
+                <h2 style="color: var(--primary-yellow); font-size: 1.5rem; margin-bottom: 1rem;">Welcome to THRIVE</h2>
 
-                <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.7;">
+                <p style="margin-bottom: 1.5rem; color: var(--text-medium); line-height: 1.7;">
                     Let's start with a quick check-in. This takes about 2 minutes (5 questions) and helps us connect you with the right support from our ecosystem of wellbeing tools.
                 </p>
 
@@ -810,17 +826,17 @@
                     <p><strong>If you're in crisis:</strong> Call 999, visit A&E, or contact Samaritans (116 123)</p>
                 </div>
 
-                <h3 style="color: var(--clearminds-teal); margin: 1.5rem 0 1rem; font-size: 1.125rem;">What to expect:</h3>
-                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.8;">
+                <h3 style="color: var(--primary-yellow); margin: 1.5rem 0 1rem; font-size: 1.125rem;">What to expect:</h3>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-medium); line-height: 1.8;">
                     <li>5 simple questions (2 minutes)</li>
                     <li>Personalized pathway recommendations</li>
                     <li>Immediate community access</li>
                     <li>Optional GP summary available</li>
                 </ul>
 
-                <h3 style="color: var(--clearminds-teal); margin: 1.5rem 0 1rem; font-size: 1.125rem;">Your Privacy</h3>
-                <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.7;">
-                    Your responses are processed in your browser and never shared with your employer. See our <a href="/corporate/policies/data-governance/privacy-policy.html" style="color: var(--clearminds-teal); text-decoration: underline;">Privacy Policy</a> for details.
+                <h3 style="color: var(--primary-yellow); margin: 1.5rem 0 1rem; font-size: 1.125rem;">Your Privacy</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--text-medium); line-height: 1.7;">
+                    Your responses are processed in your browser and never shared with your employer. See our <a href="/corporate/policies/data-governance/privacy-policy.html" style="color: var(--accent-teal); text-decoration: underline;">Privacy Policy</a> for details.
                 </p>
 
                 <button class="btn btn-primary btn-block" onclick="app.startAssessment()">
@@ -1126,9 +1142,9 @@
 
                 // THRIVE Ecosystem Header
                 resultsHTML += `
-                    <div class="pathway-card" style="border: 2px solid var(--thrive-yellow); background: rgba(255, 215, 0, 0.08);">
+                    <div class="pathway-card" style="border: 2px solid var(--primary-yellow); background: rgba(255, 215, 0, 0.1); box-shadow: var(--shadow-yellow-glow);">
                         <h3>✨ Your THRIVE Pathway</h3>
-                        <p>Based on your responses, here are the tools from our ecosystem that can help you right now:</p>
+                        <p style="color: var(--text-white);">Based on your responses, here are the tools from our ecosystem that can help you right now:</p>
                     </div>
                 `;
 
@@ -1225,11 +1241,11 @@
                 // OCEAN promotion
                 if (profile.oceanCandidate) {
                     resultsHTML += `
-                        <div class="pathway-card" style="border: 2px solid var(--accent-teal); background: rgba(85, 204, 153, 0.05);">
-                            <h3>🎯 OCEAN Personality Assessment <span class="ocean-badge" style="background: var(--accent-teal);">Recommended</span></h3>
+                        <div class="pathway-card" style="border: 2px solid var(--accent-teal); background: rgba(0, 212, 170, 0.08);">
+                            <h3>🎯 OCEAN Personality Assessment <span class="ocean-badge" style="background: var(--accent-teal); color: var(--bg-deep-blue);">Recommended</span></h3>
                             <p>You mentioned wanting to understand yourself better. The OCEAN assessment is perfect for deep self-discovery.</p>
 
-                            <h4 style="margin-top: 1.5rem; color: var(--text-primary);">What You'll Discover:</h4>
+                            <h4>What You'll Discover:</h4>
                             <ul>
                                 <li><strong>Openness</strong> - Your creativity and curiosity</li>
                                 <li><strong>Conscientiousness</strong> - Your organization style</li>
@@ -1252,7 +1268,7 @@
                             <h3>🏥 Clinical Support Options</h3>
                             <p><strong>Professional assessment and treatment pathways</strong></p>
 
-                            <h4 style="margin-top: 1.5rem; color: var(--text-primary);">Concierge Health Advisors</h4>
+                            <h4>Concierge Health Advisors</h4>
                             <p>Premium clinical pathway with Harley Street specialists:</p>
                             <ul>
                                 <li>Comprehensive ADHD & neurodivergence assessments</li>
@@ -1262,7 +1278,7 @@
                             </ul>
                             <a href="https://www.conciergehealthadvisors.com/mental-health" target="_blank" class="btn btn-primary btn-block" style="margin-top: 1rem; text-decoration: none;">Explore Concierge Health →</a>
 
-                            <h4 style="margin-top: 1.5rem; color: var(--text-primary);">ClearMinds</h4>
+                            <h4>ClearMinds</h4>
                             <p>Community-based hypnotherapy support:</p>
                             <ul>
                                 <li>Evidence-based hypnotherapy programs</li>
