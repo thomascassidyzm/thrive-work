@@ -442,13 +442,17 @@
         // Import question banks
         import { thriveVitalityQuestions } from './question-banks/thrive-vitality-questions.js';
         import { thriveRelationshipsQuestions } from './question-banks/thrive-relationships-questions.js';
-        import { thriveThoughtsQuestions } from './question-banks/thrive-thoughts-questions.js';
+        import { thriveHealthQuestions } from './question-banks/thrive-health-questions.js';
+        import { thriveIdentityQuestions } from './question-banks/thrive-identity-questions.js';
+        import { thriveTimeQuestions } from './question-banks/thrive-time-questions.js';
 
         // Combine and transform questions for viral game format
         const allQuestions = [
             ...thriveVitalityQuestions,
             ...thriveRelationshipsQuestions,
-            ...thriveThoughtsQuestions
+            ...thriveHealthQuestions,
+            ...thriveIdentityQuestions,
+            ...thriveTimeQuestions
         ];
 
         // Transform THRIVE questions to viral game format

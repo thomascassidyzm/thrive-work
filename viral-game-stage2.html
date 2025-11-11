@@ -444,17 +444,19 @@
         // Import question banks
         import { thriveVitalityQuestions } from './question-banks/thrive-vitality-questions.js';
         import { thriveRelationshipsQuestions } from './question-banks/thrive-relationships-questions.js';
-        import { thriveThoughtsQuestions } from './question-banks/thrive-thoughts-questions.js';
         import { thriveHealthQuestions } from './question-banks/thrive-health-questions.js';
-        import { thriveVisionQuestions } from './question-banks/thrive-vision-questions.js';
+        import { thriveIdentityQuestions } from './question-banks/thrive-identity-questions.js';
+        import { thriveTimeQuestions } from './question-banks/thrive-time-questions.js';
+        import { thriveEnvironmentQuestions } from './question-banks/thrive-environment-questions.js';
 
         // Combine all questions
         const allQuestions = [
             ...thriveVitalityQuestions,
             ...thriveRelationshipsQuestions,
-            ...thriveThoughtsQuestions,
             ...thriveHealthQuestions,
-            ...thriveVisionQuestions
+            ...thriveIdentityQuestions,
+            ...thriveTimeQuestions,
+            ...thriveEnvironmentQuestions
         ];
 
         // Load Stage 1 results
