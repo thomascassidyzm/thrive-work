@@ -616,14 +616,14 @@
 
             if (hasContradiction) {
                 if (stage2AutoPercent > (stage1Data.analysis?.automaticPercentage || 50)) {
-                    contradictionText = `🔍 <strong>Pattern Shift Detected:</strong> When we asked deeper questions, your automatic responses increased from ${stage1Data.analysis?.automaticPercentage.toFixed(0)}% to ${stage2AutoPercent.toFixed(0)}%. This suggests you're more conscious in general situations but fall back to automatic patterns when specifics get challenging.`;
+                    contradictionText = `🔍 <strong>Pattern Shift Detected:</strong> When we asked deeper questions, your automatic responses increased from ${stage1Data.analysis?.automaticPercentage.toFixed(0)}% to ${stage2AutoPercent.toFixed(0)}%. This suggests you\'re more conscious in general situations but fall back to automatic patterns when specifics get challenging.`;
                 } else {
                     contradictionText = `🔍 <strong>Interesting Pattern:</strong> Your conscious responses increased from ${stage1Data.analysis?.consciousPercentage.toFixed(0)}% to ${(100-stage2AutoPercent).toFixed(0)}%. The deeper questions actually revealed MORE consciousness. This suggests you have strong self-awareness but may struggle with how you describe your general tendencies.`;
                 }
             }
 
             title = `📊 Combined Profile: ${combinedAutoPercent.toFixed(0)}% Automatic`;
-            description = `Across both stages (20 questions total), your pattern is becoming clear. You're ${combinedAutoPercent >= 60 ? 'predominantly operating from automatic scripts' : combinedAutoPercent >= 40 ? 'split between automatic and conscious patterns' : 'unusually conscious in your choices'}. ${contradictionText}`;
+            description = `Across both stages (20 questions total), your pattern is becoming clear. You\'re ${combinedAutoPercent >= 60 ? 'predominantly operating from automatic scripts' : combinedAutoPercent >= 40 ? 'split between automatic and conscious patterns' : 'unusually conscious in your choices'}. ${contradictionText}`;
 
             return {
                 title,

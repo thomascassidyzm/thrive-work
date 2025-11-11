@@ -628,15 +628,15 @@
 
             if (automaticPercentage >= 70) {
                 patternType = 'significant_automatic';
-                patternTitle = '🎯 You're Running on Autopilot';
-                patternDescription = `Your responses reveal a strong tendency toward automatic, script-driven choices (${automaticPercentage.toFixed(0)}% automatic). This is incredibly common and represents your greatest opportunity for transformation. When you begin making more conscious choices aligned with your authentic desires, you'll unlock unprecedented levels of fulfillment.${reflectionCount > 0 ? ` The good news? You reflected on ${reflectionCount} of your answers, showing emerging self-awareness.` : ''}`;
+                patternTitle = '🎯 You\'re Running on Autopilot';
+                patternDescription = `Your responses reveal a strong tendency toward automatic, script-driven choices (${automaticPercentage.toFixed(0)}% automatic). This is incredibly common and represents your greatest opportunity for transformation. When you begin making more conscious choices aligned with your authentic desires, you\'ll unlock unprecedented levels of fulfillment.${reflectionCount > 0 ? ` The good news? You reflected on ${reflectionCount} of your answers, showing emerging self-awareness.` : ''}`;
             } else if (automaticPercentage >= 40) {
                 patternType = 'mixed_pattern';
-                patternTitle = '⚖️ You're in Transition';
-                patternDescription = `You show a blend of automatic (${automaticPercentage.toFixed(0)}%) and conscious (${(100-automaticPercentage).toFixed(0)}%) responses. You're conscious in some areas while still operating from unconscious scripts in others. This is the perfect stage for accelerated growth.${reflectionCount > 0 ? ` Your willingness to reflect on ${reflectionCount} answers shows you're actively developing conscious choice-making.` : ''}`;
+                patternTitle = '⚖️ You\'re in Transition';
+                patternDescription = `You show a blend of automatic (${automaticPercentage.toFixed(0)}%) and conscious (${(100-automaticPercentage).toFixed(0)}%) responses. You\'re conscious in some areas while still operating from unconscious scripts in others. This is the perfect stage for accelerated growth.${reflectionCount > 0 ? ` Your willingness to reflect on ${reflectionCount} answers shows you\'re actively developing conscious choice-making.` : ''}`;
             } else {
                 patternType = 'conscious_orientation';
-                patternTitle = '🌟 You're Unusually Conscious';
+                patternTitle = '🌟 You\'re Unusually Conscious';
                 patternDescription = `You demonstrate a strong tendency toward conscious, intentional decision-making (${(100-automaticPercentage).toFixed(0)}% conscious). This is relatively rare and indicates well-developed self-awareness.${reflectionCount > 0 ? ` Your reflection on ${reflectionCount} answers shows sophisticated self-monitoring.` : ''} Your next growth edge is deepening this consciousness and understanding exactly where your remaining automatic patterns show up.`;
             }
 
