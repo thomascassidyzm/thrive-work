@@ -542,6 +542,11 @@
 
         // Start Stage 2
         window.startDeepDive = function() {
+            // Blur the button that was clicked to prevent focus issues
+            if (document.activeElement) {
+                document.activeElement.blur();
+            }
+
             hideScreen('welcome-screen');
             setTimeout(() => {
                 showScreen('question-screen');
@@ -554,6 +559,11 @@
             if (currentQuestion >= stage2Questions.length) {
                 showResults();
                 return;
+            }
+
+            // Blur any focused element to prevent auto-focus on last option
+            if (document.activeElement) {
+                document.activeElement.blur();
             }
 
             const question = stage2Questions[currentQuestion];
@@ -570,6 +580,7 @@
                 const optionElement = document.createElement('div');
                 optionElement.className = 'option';
                 optionElement.textContent = option.text;
+                optionElement.tabIndex = -1; // Make non-focusable via keyboard
                 optionElement.onclick = () => selectOption(index, option, question);
                 optionsContainer.appendChild(optionElement);
             });
@@ -578,6 +589,7 @@
             setTimeout(() => {
                 document.querySelectorAll('.option').forEach(opt => {
                     opt.classList.remove('selected');
+                    opt.blur(); // Explicitly blur each option
                 });
             }, 10);
         }
