@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Adjustment Dashboard | THRIVE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2942 100%);
+            color: #e0e7ff;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.1em;
+        }
+
+        /* Section */
+        .section {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .section h2 {
+            color: #60a5fa;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        /* Current Profile Display */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .profile-dimension {
+            background: rgba(51, 65, 85, 0.5);
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .profile-dimension h3 {
+            color: #a78bfa;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .profile-value {
+            font-size: 3em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+        }
+
+        .profile-context {
+            color: #94a3b8;
+            font-size: 0.85em;
+        }
+
+        /* Goal Setting */
+        .goal-setter {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .goal-card {
+            background: rgba(51, 65, 85, 0.5);
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .goal-card h3 {
+            color: #e0e7ff;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .slider-container {
+            margin: 20px 0;
+        }
+
+        .slider {
+            width: 100%;
+            height: 8px;
+            background: rgba(100, 116, 139, 0.3);
+            border-radius: 4px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.85em;
+            color: #94a3b8;
+        }
+
+        .current-target-display {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .current-val, .target-val {
+            text-align: center;
+        }
+
+        .current-val span, .target-val span {
+            display: block;
+            color: #94a3b8;
+            font-size: 0.85em;
+            margin-bottom: 5px;
+        }
+
+        .current-val strong, .target-val strong {
+            font-size: 2em;
+            color: #60a5fa;
+        }
+
+        /* Motivation Display */
+        .motivation-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #60a5fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .motivation-box h4 {
+            color: #60a5fa;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .motivation-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .motivation-box li {
+            color: #cbd5e1;
+            font-size: 0.9em;
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .motivation-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+
+        /* Tradeoffs */
+        .tradeoffs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .tradeoff-column {
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .gains {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+        }
+
+        .costs {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+        }
+
+        .tradeoff-column h4 {
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .gains h4 {
+            color: #10b981;
+        }
+
+        .costs h4 {
+            color: #ef4444;
+        }
+
+        .tradeoff-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tradeoff-column li {
+            font-size: 0.85em;
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .gains li {
+            color: #a7f3d0;
+        }
+
+        .gains li::before {
+            content: '+';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .costs li {
+            color: #fca5a5;
+        }
+
+        .costs li::before {
+            content: '−';
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1em;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            color: #0a1628;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(96, 165, 250, 0.4);
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(96, 165, 250, 0.6);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: rgba(100, 116, 139, 0.3);
+            color: #e0e7ff;
+            box-shadow: none;
+        }
+
+        /* Active Adjustments */
+        .adjustment-card {
+            background: rgba(51, 65, 85, 0.5);
+            border: 2px solid #60a5fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .adjustment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .adjustment-header h3 {
+            color: #60a5fa;
+            font-size: 1.3em;
+        }
+
+        .progress-badge {
+            background: rgba(167, 139, 250, 0.2);
+            color: #a78bfa;
+            padding: 5px 15px;
+            border-radius: 12px;
+            font-size: 0.85em;
+        }
+
+        .progress-bar-container {
+            background: rgba(100, 116, 139, 0.3);
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 100%);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+
+        .timeline-info {
+            display: flex;
+            justify-content: space-between;
+            color: #94a3b8;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .practice-this-week {
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .practice-this-week h4 {
+            color: #60a5fa;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .scenario-item {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+
+        .scenario-item .scenario-text {
+            color: #e0e7ff;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+
+        .scenario-item .pattern-shift {
+            font-size: 0.85em;
+            color: #94a3b8;
+        }
+
+        .scenario-item .pattern-shift .old {
+            color: #fca5a5;
+        }
+
+        .scenario-item .pattern-shift .new {
+            color: #a7f3d0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .tradeoffs {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Pattern Adjustment Dashboard</h1>
+            <p>Shift your behavioral patterns to match your goals</p>
+        </div>
+
+        <!-- Current Profile -->
+        <div class="section">
+            <h2>Your Current Pattern Position</h2>
+            <p style="color: #94a3b8; margin-bottom: 20px;">
+                Out of 100 people in a room, here's how frequently you choose each pattern type:
+            </p>
+            <div class="profile-grid" id="currentProfile">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Goal Setting -->
+        <div class="section">
+            <h2>Set Your Pattern Goals</h2>
+            <p style="color: #94a3b8; margin-bottom: 20px;">
+                Adjust the sliders to set your target position. We'll show you exactly how to get there.
+            </p>
+            <div class="goal-setter" id="goalSetter">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Active Adjustments -->
+        <div class="section" id="activeAdjustmentsSection" style="display: none;">
+            <h2>Your Active Adjustments</h2>
+            <div id="activeAdjustments">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Start Button -->
+        <div class="section" style="text-align: center;">
+            <button class="btn" id="startAdjustmentBtn" disabled>
+                Generate My Adjustment Plan
+            </button>
+            <button class="btn btn-secondary" onclick="window.location.href='/dashboards/employee-ocean-results.html'" style="margin-top: 10px;">
+                ← Back to Results
+            </button>
+        </div>
+    </div>
+
+    <script type="module">
+        import { PatternAdjustmentEngine } from '../engines/pattern-adjustment-engine.js';
+
+        // Load OCEAN results from session storage
+        const resultsJSON = sessionStorage.getItem('oceanResults');
+        if (!resultsJSON) {
+            alert('No OCEAN results found. Please complete the assessment first.');
+            window.location.href = '/ocean-assessment.html';
+        }
+
+        const results = JSON.parse(resultsJSON);
+        const currentProfile = results.oceanPercentiles;
+
+        console.log('Current OCEAN profile:', currentProfile);
+
+        // Initialize engine
+        const engine = new PatternAdjustmentEngine();
+
+        // Store user goals
+        const userGoals = {};
+
+        // Dimension info
+        const dimensionInfo = {
+            O: { name: 'Openness/Exploration', short: 'Openness' },
+            C: { name: 'Conscientiousness/Structure', short: 'Structure' },
+            E: { name: 'Extraversion/Social Energy', short: 'Social Energy' },
+            A: { name: 'Agreeableness/Harmony', short: 'Harmony' },
+            N: { name: 'Neuroticism/Emotional Sensitivity', short: 'Sensitivity' }
+        };
+
+        // Display current profile
+        function displayCurrentProfile() {
+            const container = document.getElementById('currentProfile');
+
+            Object.entries(currentProfile).forEach(([dimension, value]) => {
+                const info = dimensionInfo[dimension];
+                const card = document.createElement('div');
+                card.className = 'profile-dimension';
+
+                card.innerHTML = `
+                    <h3>${info.short}</h3>
+                    <div class="profile-value">${value}</div>
+                    <div class="profile-context">out of 100 people</div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        // Display goal setters
+        function displayGoalSetters() {
+            const container = document.getElementById('goalSetter');
+
+            Object.entries(currentProfile).forEach(([dimension, currentValue]) => {
+                const info = dimensionInfo[dimension];
+                const card = document.createElement('div');
+                card.className = 'goal-card';
+                card.id = `goal-${dimension}`;
+
+                card.innerHTML = `
+                    <h3>${info.name}</h3>
+
+                    <div class="current-target-display">
+                        <div class="current-val">
+                            <span>Current</span>
+                            <strong>${currentValue}</strong>
+                        </div>
+                        <div class="target-val">
+                            <span>Target</span>
+                            <strong id="target-${dimension}">${currentValue}</strong>
+                        </div>
+                    </div>
+
+                    <div class="slider-container">
+                        <input
+                            type="range"
+                            min="5"
+                            max="95"
+                            value="${currentValue}"
+                            class="slider"
+                            id="slider-${dimension}"
+                            data-dimension="${dimension}"
+                        >
+                        <div class="slider-labels">
+                            <span>5</span>
+                            <span>50</span>
+                            <span>95</span>
+                        </div>
+                    </div>
+
+                    <div id="motivation-${dimension}" class="motivation-box" style="display: none;">
+                        <!-- Populated when slider changes -->
+                    </div>
+
+                    <div id="tradeoffs-${dimension}" class="tradeoffs" style="display: none;">
+                        <!-- Populated when slider changes -->
+                    </div>
+                `;
+
+                container.appendChild(card);
+
+                // Add slider event listener
+                const slider = document.getElementById(`slider-${dimension}`);
+                slider.addEventListener('input', (e) => {
+                    handleSliderChange(dimension, parseInt(e.target.value), currentValue);
+                });
+            });
+        }
+
+        // Handle slider changes
+        function handleSliderChange(dimension, newValue, currentValue) {
+            // Update target display
+            document.getElementById(`target-${dimension}`).textContent = newValue;
+
+            // Update user goals
+            if (newValue !== currentValue) {
+                userGoals[dimension] = newValue;
+
+                // Show motivation and tradeoffs
+                displayMotivationAndTradeoffs(dimension, currentValue, newValue);
+            } else {
+                delete userGoals[dimension];
+
+                // Hide motivation and tradeoffs
+                document.getElementById(`motivation-${dimension}`).style.display = 'none';
+                document.getElementById(`tradeoffs-${dimension}`).style.display = 'none';
+            }
+
+            // Enable/disable start button
+            const startBtn = document.getElementById('startAdjustmentBtn');
+            startBtn.disabled = Object.keys(userGoals).length === 0;
+        }
+
+        // Display motivation and tradeoffs
+        function displayMotivationAndTradeoffs(dimension, currentValue, targetValue) {
+            const direction = targetValue > currentValue ? 'increase' : 'decrease';
+
+            // Get motivation
+            const motivation = engine.getShiftMotivation(dimension, direction, currentValue, targetValue);
+            const motivationContainer = document.getElementById(`motivation-${dimension}`);
+            motivationContainer.style.display = 'block';
+
+            motivationContainer.innerHTML = `
+                <h4>${motivation.title}</h4>
+                <ul>
+                    ${motivation.reasons.map(r => `<li>${r}</li>`).join('')}
+                </ul>
+            `;
+
+            // Get tradeoffs
+            const tradeoffs = engine.getTradeoffs(dimension, currentValue, targetValue);
+            const tradeoffsContainer = document.getElementById(`tradeoffs-${dimension}`);
+            tradeoffsContainer.style.display = 'grid';
+
+            tradeoffsContainer.innerHTML = `
+                <div class="tradeoff-column gains">
+                    <h4>What You'll Gain</h4>
+                    <ul>
+                        ${tradeoffs.gains.map(g => `<li>${g}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="tradeoff-column costs">
+                    <h4>Potential Trade-offs</h4>
+                    <ul>
+                        ${tradeoffs.costs.map(c => `<li>${c}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
+        // Generate adjustment plan
+        window.startAdjustmentBtn = document.getElementById('startAdjustmentBtn');
+        startAdjustmentBtn.addEventListener('click', () => {
+            console.log('Generating adjustment plan for goals:', userGoals);
+
+            // Generate plan
+            const plan = engine.generateAdjustmentPlan(currentProfile, userGoals);
+            console.log('Adjustment plan:', plan);
+
+            // Store in session storage
+            sessionStorage.setItem('adjustmentPlan', JSON.stringify(plan));
+
+            // Display active adjustments
+            displayActiveAdjustments(plan);
+        });
+
+        // Display active adjustments
+        function displayActiveAdjustments(plan) {
+            const section = document.getElementById('activeAdjustmentsSection');
+            const container = document.getElementById('activeAdjustments');
+            section.style.display = 'block';
+
+            container.innerHTML = '';
+
+            Object.entries(plan.plans).forEach(([dimension, adjustmentPlan]) => {
+                if (adjustmentPlan.status === 'at_target') return;
+
+                const card = document.createElement('div');
+                card.className = 'adjustment-card';
+
+                const progress = 0; // Week 0 of N
+                const progressPercent = 0;
+
+                card.innerHTML = `
+                    <div class="adjustment-header">
+                        <h3>${adjustmentPlan.dimensionName}</h3>
+                        <div class="progress-badge">Week ${adjustmentPlan.timeline.estimatedWeeks > 0 ? 1 : 0} of ${adjustmentPlan.timeline.estimatedWeeks}</div>
+                    </div>
+
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: ${progressPercent}%"></div>
+                    </div>
+
+                    <div class="timeline-info">
+                        <div>Current: ${adjustmentPlan.currentValue}/100</div>
+                        <div>Target: ${adjustmentPlan.targetValue}/100</div>
+                        <div>Distance: ${adjustmentPlan.distance} points</div>
+                    </div>
+
+                    <div class="motivation-box">
+                        <h4>${adjustmentPlan.motivation.title}</h4>
+                        <p style="color: #cbd5e1; font-size: 0.9em; margin-top: 10px;">
+                            ${adjustmentPlan.motivation.servesYouWhen}
+                        </p>
+                    </div>
+
+                    <div class="practice-this-week">
+                        <h4>This Week's Practice (Week 1: ${adjustmentPlan.weeklyPlan[0].focus})</h4>
+                        <p style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 15px;">
+                            ${adjustmentPlan.weeklyPlan[0].practiceGoal}
+                        </p>
+
+                        ${adjustmentPlan.practiceScenarios.slice(0, 3).map(scenario => `
+                            <div class="scenario-item">
+                                <div class="scenario-text"><strong>Scenario:</strong> ${scenario.scenario}</div>
+                                <div class="pattern-shift">
+                                    <div class="old">❌ Current: ${scenario.currentPattern}</div>
+                                    <div class="new">✓ Try instead: ${scenario.newPattern}</div>
+                                    <div style="color: #60a5fa; margin-top: 5px;">${scenario.pointShift}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <button class="btn" onclick="startWeek1('${dimension}')">
+                        Start Week 1 Tracking
+                    </button>
+                `;
+
+                container.appendChild(card);
+            });
+
+            // Scroll to active adjustments
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Start week 1 tracking
+        window.startWeek1 = function(dimension) {
+            alert(`Starting Week 1 tracking for ${dimension}. In production, this would open a weekly check-in interface.`);
+            // In production: Navigate to weekly tracking dashboard
+        };
+
+        // Initialize
+        displayCurrentProfile();
+        displayGoalSetters();
+    </script>
+</body>
+</html>

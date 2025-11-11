@@ -68,12 +68,12 @@ export default async function handler(req, res) {
   }
   
   try {
-    const { message, coach = 'tom', conversation_history = [], session_id } = req.body;
-    
+    const { message, coach = 'tom', conversation_history = [], session_id, ocean_context } = req.body;
+
     if (!message) {
       return res.status(400).json({ error: 'Message is required' });
     }
-    
+
     // Track session metrics for feedback loop
     const sessionMetrics = {
       session_id: session_id || `session_${Date.now()}`,
@@ -81,14 +81,20 @@ export default async function handler(req, res) {
       message_count: conversation_history.length + 1,
       timestamp: new Date().toISOString(),
       message_length: message.length,
-      conversation_depth: conversation_history.length
+      conversation_depth: conversation_history.length,
+      has_ocean_context: !!ocean_context
     };
-    
+
     // Get coaching prompts
     const coachingPrompts = await getCoachingPrompts();
-    
+
     // Build system prompt based on coach
     let systemPrompt = coachingPrompts;
+
+    // ENHANCE: Add OCEAN personality context if available
+    if (ocean_context && ocean_context.system_prompt) {
+      systemPrompt += `\n\n# CLIENT'S PERSONALITY PROFILE\n\n${ocean_context.system_prompt}\n\n---\n\nUse this personality profile to deeply personalize your coaching. Adapt your communication style, questions, and recommendations based on their specific patterns, challenges, and goals.`;
+    }
     
     // Add coach-specific focus
     if (coach !== 'tom') {

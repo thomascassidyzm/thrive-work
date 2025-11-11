@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your OCEAN Profile - THRIVE Workplace Wellness</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2942 100%);
+            color: #e0e7ff;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Privacy Badge */
+        .privacy-notice {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .privacy-notice h2 {
+            color: white;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .privacy-notice p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 0.95em;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.1em;
+        }
+
+        /* Section */
+        .section {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(100, 116, 139, 0.3);
+        }
+
+        .section-header h2 {
+            font-size: 1.8em;
+            color: #60a5fa;
+        }
+
+        .section-header .badge {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        /* OCEAN Dimension Cards */
+        .ocean-dimensions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .dimension-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dimension-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 100%);
+        }
+
+        .dimension-card h3 {
+            font-size: 1.3em;
+            color: #60a5fa;
+            margin-bottom: 5px;
+        }
+
+        .dimension-card .dimension-name {
+            color: #94a3b8;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .percentile {
+            font-size: 3em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .percentile-label {
+            color: #94a3b8;
+            font-size: 0.85em;
+        }
+
+        .dimension-bar {
+            height: 8px;
+            background: rgba(100, 116, 139, 0.3);
+            border-radius: 4px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .dimension-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 100%);
+            border-radius: 4px;
+            transition: width 1s ease-out;
+        }
+
+        .dimension-description {
+            color: #cbd5e1;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        /* Behavioral Patterns */
+        .patterns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .pattern-card {
+            background: rgba(51, 65, 85, 0.5);
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .pattern-card h4 {
+            color: #a78bfa;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pattern-count {
+            background: rgba(167, 139, 250, 0.2);
+            color: #a78bfa;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .pattern-description {
+            color: #94a3b8;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .pattern-type-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .workplace-badge {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .personal-badge {
+            background: rgba(251, 146, 60, 0.2);
+            color: #fb923c;
+        }
+
+        /* Home→Work Influence */
+        .influence-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .influence-card {
+            background: rgba(51, 65, 85, 0.5);
+            border-left: 4px solid #ef4444;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .influence-card.severity-0 {
+            border-left-color: #22c55e;
+        }
+
+        .influence-card.severity-1 {
+            border-left-color: #eab308;
+        }
+
+        .influence-card.severity-2 {
+            border-left-color: #f97316;
+        }
+
+        .influence-card.severity-3 {
+            border-left-color: #ef4444;
+        }
+
+        .influence-card h4 {
+            color: #e0e7ff;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .severity-indicator {
+            display: flex;
+            gap: 5px;
+            margin: 10px 0;
+        }
+
+        .severity-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(100, 116, 139, 0.3);
+        }
+
+        .severity-dot.active {
+            background: #ef4444;
+        }
+
+        .influence-insight {
+            color: #cbd5e1;
+            font-size: 0.95em;
+            margin: 15px 0;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .action-plan {
+            margin-top: 15px;
+        }
+
+        .action-plan h5 {
+            color: #60a5fa;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .action-plan ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .action-plan li {
+            color: #94a3b8;
+            font-size: 0.85em;
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .action-plan li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+
+        /* 30-Day Action Plan */
+        .action-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .action-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(51, 65, 85, 0.5);
+            border-radius: 10px;
+            border-left: 3px solid #60a5fa;
+        }
+
+        .action-week {
+            font-weight: 700;
+            color: #60a5fa;
+            min-width: 70px;
+        }
+
+        .action-content {
+            flex: 1;
+        }
+
+        .action-content h4 {
+            color: #e0e7ff;
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        .action-content p {
+            color: #94a3b8;
+            font-size: 0.9em;
+        }
+
+        /* Predictions */
+        .predictions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .prediction-item {
+            padding: 15px;
+            background: rgba(51, 65, 85, 0.5);
+            border-radius: 10px;
+            border-left: 3px solid #a78bfa;
+        }
+
+        .prediction-item h4 {
+            color: #a78bfa;
+            font-size: 1em;
+            margin-bottom: 8px;
+        }
+
+        .prediction-item p {
+            color: #cbd5e1;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(96, 165, 250, 0.3);
+            border-top-color: #60a5fa;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .ocean-dimensions {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Privacy Notice -->
+        <div class="privacy-notice">
+            <h2>🔒 Your Complete Personal Profile</h2>
+            <p>
+                This is your full OCEAN personality assessment. <strong>Only you can see this information.</strong>
+                Your employer receives only anonymized, aggregated workplace patterns (and only when your team has 10+ respondents).
+                None of your personal insights, relationships, or specific details are shared.
+            </p>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <h1>Your OCEAN Profile</h1>
+            <p>A comprehensive map of your behavioral tendencies, patterns, and pathways for growth</p>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="loading">
+            <div class="loading-spinner"></div>
+            <p>Analyzing your responses and generating your personalized profile...</p>
+        </div>
+
+        <!-- Results Container (hidden until loaded) -->
+        <div id="results" style="display: none;">
+            <!-- OCEAN Dimensions -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>Your OCEAN Big Five Profile</h2>
+                    <span class="badge">Personal Insights</span>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 20px;">
+                    These numbers show how frequently you choose each pattern type compared to 100 other people.
+                    <strong>Want to adjust any of these?</strong> We'll show you exactly how.
+                </p>
+                <div class="ocean-dimensions" id="oceanDimensions">
+                    <!-- Populated by JavaScript -->
+                </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn btn-primary" onclick="window.location.href='/dashboards/pattern-adjustment-dashboard.html'" style="display: inline-block; padding: 15px 40px; background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%); color: #0a1628; border: none; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; text-decoration: none; margin: 10px;">
+                        🎯 Adjust Your Patterns
+                    </button>
+                    <button class="btn btn-secondary" onclick="chatWithCoach()" style="display: inline-block; padding: 15px 40px; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: white; border: none; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; text-decoration: none; margin: 10px;">
+                        💬 Chat with AI Coach
+                    </button>
+                    <button class="btn btn-tertiary" onclick="downloadResultsPDF()" style="display: inline-block; padding: 15px 40px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; text-decoration: none; margin: 10px;">
+                        📄 Download PDF
+                    </button>
+                    <button class="btn btn-quaternary" onclick="window.print()" style="display: inline-block; padding: 15px 40px; background: rgba(100, 116, 139, 0.4); color: #e0e7ff; border: none; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; text-decoration: none; margin: 10px;">
+                        🖨️ Print Results
+                    </button>
+                    <p style="color: #94a3b8; font-size: 0.9em; margin-top: 15px;">
+                        Adjust patterns, chat with an AI coach, or save your results for later
+                    </p>
+                </div>
+            </div>
+
+            <!-- Behavioral Patterns - All -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>Your Behavioral Patterns</h2>
+                    <span class="badge">Complete Analysis</span>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 20px;">
+                    These patterns show how you tend to respond across different situations.
+                    Remember: these are tendencies ("verb not noun") - you're choosing these patterns, not defined by them.
+                </p>
+                <div class="patterns-grid" id="allPatterns">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Behavioral Patterns - Workplace -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>Workplace Behavioral Style</h2>
+                    <span class="badge workplace-badge">Workplace Context</span>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 20px;">
+                    How you tend to show up in work settings, teams, and professional relationships.
+                </p>
+                <div class="patterns-grid" id="workplacePatterns">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Behavioral Patterns - Personal -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>Personal Life Patterns</h2>
+                    <span class="badge personal-badge">Personal Context</span>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 20px;">
+                    How you show up with friends, family, and in personal relationships.
+                    <strong>This section is completely private - your employer never sees this.</strong>
+                </p>
+                <div class="patterns-grid" id="personalPatterns">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Home→Work Influence -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>Home Environment → Work Energy</h2>
+                    <span class="badge">Private Details</span>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 20px;">
+                    How your home environment and personal life affect your work energy and focus.
+                    <strong>You see specific details and action plans. Your employer only sees aggregated percentages (e.g., "27% of team affected").</strong>
+                </p>
+                <div class="influence-cards" id="homeWorkInfluence">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Behavioral Predictions -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>Behavioral Predictions</h2>
+                    <span class="badge">Forward-Looking Insights</span>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 20px;">
+                    Based on your OCEAN profile, here are tendencies to watch for. These aren't fixed - awareness gives you choice.
+                </p>
+                <div class="predictions-list" id="predictions">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- 30-Day Action Plan -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>Your 30-Day Sausage Machine Plan</h2>
+                    <span class="badge">Action Pathway</span>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 20px;">
+                    A structured pathway to shift from autopilot patterns (scripts) to conscious choice (Sausage Machine).
+                    Week by week, build awareness and create new behavioral options.
+                </p>
+                <div class="action-timeline" id="actionPlan">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { DynamicOceanAnalysis } from '../engines/dynamic-ocean-analysis.js';
+        import coachContextLoader from '../services/coach-context-loader.js';
+
+        // OCEAN dimension info
+        const oceanInfo = {
+            O: {
+                name: 'Openness',
+                fullName: 'Openness to Experience',
+                description: 'How much you seek novelty, explore ideas, and embrace new experiences'
+            },
+            C: {
+                name: 'Conscientiousness',
+                fullName: 'Conscientiousness',
+                description: 'Your tendency toward organization, planning, and follow-through'
+            },
+            E: {
+                name: 'Extraversion',
+                fullName: 'Extraversion',
+                description: 'Where you direct energy - outward toward people and stimulation, or inward toward reflection'
+            },
+            A: {
+                name: 'Agreeableness',
+                fullName: 'Agreeableness',
+                description: 'How you balance harmony with others vs. self-advocacy'
+            },
+            N: {
+                name: 'Neuroticism',
+                fullName: 'Emotional Stability',
+                description: 'Your emotional regulation and stress response patterns (inverted: lower = more stable)'
+            }
+        };
+
+        // Pattern descriptions
+        const patternDescriptions = {
+            harmony_keeper: 'Prioritizes group harmony and smooth relationships',
+            curious_explorer: 'Seeks novel experiences and ideas',
+            boundary_setter: 'Advocates for self while respecting others',
+            conflict_avoider: 'Prefers to sidestep tense situations',
+            careful_planner: 'Organizes and prepares thoroughly',
+            spontaneous_adapter: 'Flows with circumstances, less structure',
+            social_energizer: 'Draws energy from people and activity',
+            reflective_observer: 'Processes internally, observes before engaging',
+            emotion_regulator: 'Stays steady under stress',
+            stress_reactor: 'Feels emotions intensely',
+            empathy_driver: 'Tunes into others\' feelings and needs',
+            self_advocate: 'Speaks up for own needs and boundaries',
+            detail_oriented: 'Focuses on specifics and accuracy',
+            big_picture_thinker: 'Sees patterns and connections',
+            routine_creator: 'Builds consistent habits and systems',
+            flexible_improviser: 'Adjusts easily to changing situations'
+        };
+
+        async function loadEmployeeResults() {
+            try {
+                // In production, this would fetch from API
+                // For demo, using mock data
+                const mockResponses = generateMockResponses();
+
+                const analyzer = new DynamicOceanAnalysis();
+                const results = analyzer.analyzeBehavioralTendencies(mockResponses);
+
+                console.log('Employee Results:', results);
+
+                // Hide loading, show results
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('results').style.display = 'block';
+
+                // Render each section
+                renderOceanDimensions(results.oceanPercentiles);
+                renderAllPatterns(results.patternBreakdown.all);
+                renderWorkplacePatterns(results.patternBreakdown.workplace);
+                renderPersonalPatterns(results.patternBreakdown.personal);
+                renderHomeWorkInfluence(results.homeWorkInfluence);
+                renderPredictions(results.behavioralPredictions);
+                renderActionPlan(results.actionAlgorithms);
+
+            } catch (error) {
+                console.error('Error loading employee results:', error);
+                document.getElementById('loading').innerHTML = `
+                    <h2 style="color: #ef4444;">Error Loading Results</h2>
+                    <p style="color: #94a3b8;">${error.message}</p>
+                `;
+            }
+        }
+
+        function renderOceanDimensions(percentiles) {
+            const container = document.getElementById('oceanDimensions');
+
+            Object.entries(percentiles).forEach(([dimension, percentile]) => {
+                const info = oceanInfo[dimension];
+                const card = document.createElement('div');
+                card.className = 'dimension-card';
+
+                card.innerHTML = `
+                    <h3>${info.name}</h3>
+                    <div class="dimension-name">${info.fullName}</div>
+                    <div class="percentile">${percentile}<span style="font-size: 0.4em;">th</span></div>
+                    <div class="percentile-label">percentile</div>
+                    <div class="dimension-bar">
+                        <div class="dimension-bar-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="dimension-description">${info.description}</div>
+                `;
+
+                container.appendChild(card);
+
+                // Animate bar fill
+                setTimeout(() => {
+                    const bar = card.querySelector('.dimension-bar-fill');
+                    bar.style.width = percentile + '%';
+                }, 100);
+            });
+        }
+
+        function renderAllPatterns(patterns) {
+            renderPatterns(patterns, 'allPatterns', 'all');
+        }
+
+        function renderWorkplacePatterns(patterns) {
+            renderPatterns(patterns, 'workplacePatterns', 'workplace');
+        }
+
+        function renderPersonalPatterns(patterns) {
+            renderPatterns(patterns, 'personalPatterns', 'personal');
+        }
+
+        function renderPatterns(patterns, containerId, type) {
+            const container = document.getElementById(containerId);
+
+            if (!patterns || Object.keys(patterns).length === 0) {
+                container.innerHTML = '<p style="color: #94a3b8;">No patterns detected in this category.</p>';
+                return;
+            }
+
+            // Sort by count
+            const sorted = Object.entries(patterns).sort((a, b) => b[1] - a[1]);
+
+            sorted.forEach(([pattern, count]) => {
+                const card = document.createElement('div');
+                card.className = 'pattern-card';
+
+                const description = patternDescriptions[pattern] || 'Behavioral pattern';
+                const badgeClass = type === 'workplace' ? 'workplace-badge' :
+                                  type === 'personal' ? 'personal-badge' : '';
+
+                card.innerHTML = `
+                    <h4>
+                        ${formatPatternName(pattern)}
+                        <span class="pattern-count">${count}</span>
+                    </h4>
+                    <p class="pattern-description">${description}</p>
+                    ${badgeClass ? `<span class="pattern-type-badge ${badgeClass}">${type}</span>` : ''}
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function renderHomeWorkInfluence(influence) {
+            const container = document.getElementById('homeWorkInfluence');
+
+            if (!influence || Object.keys(influence).length === 0) {
+                container.innerHTML = '<p style="color: #94a3b8;">No significant home→work stressors detected. Your home environment appears stable and supportive of your work.</p>';
+                return;
+            }
+
+            const categories = {
+                childcare: 'Childcare Unpredictability',
+                eldercare: 'Eldercare Responsibilities',
+                financial: 'Financial Stress',
+                relationships: 'Relationship Stress',
+                housing: 'Housing Concerns',
+                commute: 'Commute Burden'
+            };
+
+            Object.entries(influence).forEach(([category, data]) => {
+                if (data.severity === null || data.severity === 0) return;
+
+                const card = document.createElement('div');
+                card.className = `influence-card severity-${data.severity}`;
+
+                const severityDots = Array.from({ length: 3 }, (_, i) =>
+                    `<div class="severity-dot ${i < data.severity ? 'active' : ''}"></div>`
+                ).join('');
+
+                const actionItems = data.actionPlan.map(action =>
+                    `<li>${action}</li>`
+                ).join('');
+
+                card.innerHTML = `
+                    <h4>${categories[category] || category}</h4>
+                    <div class="severity-indicator">
+                        ${severityDots}
+                        <span style="color: #94a3b8; font-size: 0.85em; margin-left: 10px;">
+                            Level ${data.severity}/3
+                        </span>
+                    </div>
+                    <div class="influence-insight">${data.impact}</div>
+                    <div class="action-plan">
+                        <h5>Recommended Actions:</h5>
+                        <ul>${actionItems}</ul>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function renderPredictions(predictions) {
+            const container = document.getElementById('predictions');
+
+            if (!predictions || Object.keys(predictions).length === 0) {
+                container.innerHTML = '<p style="color: #94a3b8;">No specific predictions generated.</p>';
+                return;
+            }
+
+            Object.entries(predictions).forEach(([dimension, prediction]) => {
+                const item = document.createElement('div');
+                item.className = 'prediction-item';
+
+                item.innerHTML = `
+                    <h4>${oceanInfo[dimension]?.fullName || dimension}</h4>
+                    <p>${prediction}</p>
+                `;
+
+                container.appendChild(item);
+            });
+        }
+
+        function renderActionPlan(algorithms) {
+            const container = document.getElementById('actionPlan');
+
+            if (!algorithms || algorithms.length === 0) {
+                container.innerHTML = '<p style="color: #94a3b8;">No specific action plan generated.</p>';
+                return;
+            }
+
+            // Group into 4 weeks
+            const weeks = [
+                { label: 'Week 1', title: 'Awareness', items: algorithms.slice(0, 2) },
+                { label: 'Week 2', title: 'Observation', items: algorithms.slice(2, 4) },
+                { label: 'Week 3', title: 'Experimentation', items: algorithms.slice(4, 6) },
+                { label: 'Week 4', title: 'Integration', items: algorithms.slice(6, 8) }
+            ];
+
+            weeks.forEach(week => {
+                if (week.items.length === 0) return;
+
+                const item = document.createElement('div');
+                item.className = 'action-item';
+
+                const content = week.items.map(algo => `<p>• ${algo}</p>`).join('');
+
+                item.innerHTML = `
+                    <div class="action-week">${week.label}</div>
+                    <div class="action-content">
+                        <h4>${week.title}</h4>
+                        ${content}
+                    </div>
+                `;
+
+                container.appendChild(item);
+            });
+        }
+
+        function formatPatternName(pattern) {
+            return pattern
+                .split('_')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+        }
+
+        function generateMockResponses() {
+            // Mock response data for demo
+            // In production, this comes from actual user assessment
+            return [
+                {
+                    question: {
+                        id: 'Q001',
+                        category: 'group_dynamics',
+                        dataAccess: { employerShareable: true }
+                    },
+                    selectedOption: { pattern_type: 'harmony_keeper', value: 3 }
+                },
+                {
+                    question: {
+                        id: 'Q002',
+                        category: 'universal_launch',
+                        dataAccess: { employerShareable: false }
+                    },
+                    selectedOption: { pattern_type: 'curious_explorer', value: 4 }
+                },
+                {
+                    question: {
+                        id: 'Q003',
+                        category: 'conflict_patterns',
+                        dataAccess: { employerShareable: true }
+                    },
+                    selectedOption: { pattern_type: 'conflict_avoider', value: 3 }
+                },
+                {
+                    question: {
+                        id: 'Q004',
+                        category: 'discipline_impulse',
+                        dataAccess: { employerShareable: true }
+                    },
+                    selectedOption: { pattern_type: 'careful_planner', value: 4 }
+                }
+                // Add more mock responses as needed
+            ];
+        }
+
+        // Chat with AI Coach (integrated chat interface)
+        window.chatWithCoach = async function() {
+            try {
+                // Load coach context
+                const contextResult = await coachContextLoader.loadContext();
+
+                if (!contextResult.available) {
+                    alert('No OCEAN results found. Please complete the assessment first.');
+                    return;
+                }
+
+                // Store coach context for chat interface to access
+                sessionStorage.setItem('coachContext', JSON.stringify(contextResult.context));
+                sessionStorage.setItem('coachContextTimestamp', contextResult.timestamp);
+
+                // Navigate to chat interface
+                // TODO: Replace with actual chat interface URL
+                // For now, open chat in new window/tab with context loaded
+                window.open('/chat-with-coach.html', '_blank');
+
+            } catch (error) {
+                console.error('Failed to open coach chat:', error);
+                alert('Failed to open chat. Please try again.');
+            }
+        };
+
+        // Download results as PDF
+        window.downloadResultsPDF = async function() {
+            try {
+                // Load html2pdf library if not already loaded
+                if (typeof html2pdf === 'undefined') {
+                    // Load html2pdf library
+                    const script = document.createElement('script');
+                    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+                    script.onload = () => {
+                        generatePDF();
+                    };
+                    document.head.appendChild(script);
+                } else {
+                    generatePDF();
+                }
+            } catch (error) {
+                console.error('Failed to download PDF:', error);
+                alert('Failed to generate PDF. Please try again.');
+            }
+        };
+
+        function generatePDF() {
+            // Get the main container
+            const element = document.querySelector('.container');
+
+            // Clone it for PDF generation (to avoid modifying display)
+            const clone = element.cloneNode(true);
+
+            // Remove buttons from clone (don't include in PDF)
+            clone.querySelectorAll('button').forEach(btn => btn.remove());
+
+            // PDF options
+            const opt = {
+                margin: [0.5, 0.5, 0.5, 0.5],
+                filename: `OCEAN-Profile-${new Date().toISOString().split('T')[0]}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: {
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: '#0a1628'
+                },
+                jsPDF: {
+                    unit: 'in',
+                    format: 'letter',
+                    orientation: 'portrait'
+                }
+            };
+
+            // Generate PDF
+            html2pdf().set(opt).from(clone).save();
+        }
+
+        // Load results on page load
+        loadEmployeeResults();
+    </script>
+</body>
+</html>

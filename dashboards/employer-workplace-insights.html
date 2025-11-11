@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THRIVE Workplace Insights Dashboard - Employer View</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e4e4e4;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .dashboard-header {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 184, 0, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-title h1 {
+            font-size: 2em;
+            color: #ffb800;
+            margin-bottom: 10px;
+        }
+
+        .header-title p {
+            color: #b0b0b0;
+            font-size: 1em;
+        }
+
+        .privacy-badge {
+            background: rgba(255, 184, 0, 0.2);
+            border: 2px solid #ffb800;
+            border-radius: 10px;
+            padding: 15px 25px;
+            text-align: center;
+        }
+
+        .privacy-badge .count {
+            font-size: 2.5em;
+            color: #ffb800;
+            font-weight: bold;
+        }
+
+        .privacy-badge .label {
+            color: #b0b0b0;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        /* Privacy Threshold Warning */
+        .threshold-warning {
+            background: rgba(255, 77, 77, 0.2);
+            border: 2px solid #ff4d4d;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .threshold-warning .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .threshold-warning h2 {
+            color: #ff4d4d;
+            margin-bottom: 15px;
+        }
+
+        .threshold-warning p {
+            color: #e4e4e4;
+            font-size: 1.1em;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Insights Grid */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .insight-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 184, 0, 0.3);
+        }
+
+        .insight-card h3 {
+            color: #ffb800;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .insight-card .icon {
+            font-size: 1.2em;
+        }
+
+        /* Pattern Distribution */
+        .pattern-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .pattern-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .pattern-name {
+            color: #e4e4e4;
+            font-weight: 600;
+            font-size: 1.05em;
+        }
+
+        .pattern-percentage {
+            color: #ffb800;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .pattern-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .pattern-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffb800, #ffd700);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .pattern-description {
+            color: #b0b0b0;
+            font-size: 0.9em;
+        }
+
+        /* Risk Factors */
+        .risk-item {
+            background: rgba(255, 77, 77, 0.1);
+            border-left: 4px solid #ff4d4d;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .risk-item h4 {
+            color: #ff4d4d;
+            margin-bottom: 8px;
+        }
+
+        .risk-item .percentage {
+            color: #ffb800;
+            font-weight: bold;
+        }
+
+        .risk-item .implication {
+            color: #e4e4e4;
+            margin: 8px 0;
+        }
+
+        .risk-item .recommendation {
+            color: #b0b0b0;
+            font-size: 0.95em;
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        /* Strengths */
+        .strength-item {
+            background: rgba(77, 255, 136, 0.1);
+            border-left: 4px solid #4dff88;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .strength-item h4 {
+            color: #4dff88;
+            margin-bottom: 8px;
+        }
+
+        .strength-item .percentage {
+            color: #ffb800;
+            font-weight: bold;
+        }
+
+        .strength-item .benefit {
+            color: #e4e4e4;
+            margin: 8px 0;
+        }
+
+        /* Home-Work Influence */
+        .home-work-item {
+            background: rgba(136, 136, 255, 0.1);
+            border-left: 4px solid #8888ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .home-work-item h4 {
+            color: #8888ff;
+            margin-bottom: 8px;
+        }
+
+        .home-work-item .percentage {
+            color: #ffb800;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .home-work-item .insight {
+            color: #e4e4e4;
+            margin: 8px 0;
+        }
+
+        .home-work-item .recommendation {
+            color: #b0b0b0;
+            font-size: 0.95em;
+            margin-top: 8px;
+        }
+
+        /* Privacy Notice */
+        .privacy-notice {
+            background: rgba(255, 184, 0, 0.1);
+            border: 2px solid rgba(255, 184, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .privacy-notice h3 {
+            color: #ffb800;
+            margin-bottom: 10px;
+        }
+
+        .privacy-notice p {
+            color: #e4e4e4;
+            line-height: 1.6;
+        }
+
+        .privacy-notice strong {
+            color: #ffb800;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #b0b0b0;
+        }
+
+        .empty-state .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="dashboard-header">
+            <div class="header-content">
+                <div class="header-title">
+                    <h1>🏢 Workplace Insights Dashboard</h1>
+                    <p>Aggregated team behavioral patterns - Individual privacy protected</p>
+                </div>
+                <div class="privacy-badge">
+                    <div class="count" id="respondentCount">--</div>
+                    <div class="label">Team Respondents<br>(Minimum 10 required)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Threshold Warning (shown when k<10) -->
+        <div class="threshold-warning" id="thresholdWarning" style="display: none;">
+            <div class="icon">🔒</div>
+            <h2>Privacy Threshold Not Met</h2>
+            <p>
+                To protect individual employee privacy, workplace insights require a minimum of <strong>10 respondents</strong>.<br>
+                Current team size: <strong id="currentTeamSize">--</strong><br><br>
+                Individual employee data is never shared. Once 10+ team members complete the assessment,
+                you'll see aggregated workplace patterns that can help improve team dynamics and culture.
+            </p>
+        </div>
+
+        <!-- Insights Grid (shown when k>=10) -->
+        <div id="insightsContainer" style="display: none;">
+            <!-- Pattern Distribution -->
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <h3><span class="icon">🎭</span> Behavioral Pattern Distribution</h3>
+                    <div id="patternDistribution"></div>
+                </div>
+
+                <!-- Risk Factors -->
+                <div class="insight-card">
+                    <h3><span class="icon">⚠️</span> Risk Factors</h3>
+                    <div id="riskFactors"></div>
+                </div>
+
+                <!-- Strengths -->
+                <div class="insight-card">
+                    <h3><span class="icon">✨</span> Team Strengths</h3>
+                    <div id="teamStrengths"></div>
+                </div>
+
+                <!-- Home-Work Influence -->
+                <div class="insight-card">
+                    <h3><span class="icon">🏠</span> Home → Work Influence</h3>
+                    <p style="color: #b0b0b0; margin-bottom: 20px; font-size: 0.95em;">
+                        Aggregated percentages only - individual circumstances are protected
+                    </p>
+                    <div id="homeWorkInfluence"></div>
+                </div>
+
+                <!-- Cultural Indicators -->
+                <div class="insight-card">
+                    <h3><span class="icon">🌍</span> Cultural Indicators</h3>
+                    <div id="culturalIndicators"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Privacy Notice -->
+        <div class="privacy-notice">
+            <h3>🔒 Privacy Protection</h3>
+            <p>
+                <strong>What you can see:</strong> Aggregated workplace behavioral patterns (when 10+ respondents)<br>
+                <strong>What you cannot see:</strong> Individual OCEAN scores, personal relationships, specific employee responses,
+                personal health information, identity exploration, or any data that could identify individuals<br><br>
+                <strong>Home environment data:</strong> You see only percentages (e.g., "42% report childcare affects work"),
+                never personal stories or individual circumstances
+            </p>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import the analysis engine
+        import { DynamicOceanAnalysis } from '../engines/dynamic-ocean-analysis.js';
+
+        // Mock data for demonstration - in production, this comes from API
+        const DEMO_MODE = true;  // Set to false in production
+
+        async function loadDashboard() {
+            if (DEMO_MODE) {
+                // Generate mock aggregated data
+                const mockData = generateMockAggregatedData(15);
+                renderDashboard(mockData);
+            } else {
+                // In production, fetch from API
+                try {
+                    const response = await fetch('/api/employer/workplace-insights', {
+                        credentials: 'include'
+                    });
+                    const data = await response.json();
+                    renderDashboard(data);
+                } catch (error) {
+                    console.error('Failed to load dashboard:', error);
+                    showError('Failed to load workplace insights');
+                }
+            }
+        }
+
+        function renderDashboard(data) {
+            // Check privacy threshold
+            if (data.error === 'PRIVACY_THRESHOLD_NOT_MET') {
+                showThresholdWarning(data.currentCount, data.minimumRequired);
+                return;
+            }
+
+            if (!data.privacyThresholdMet) {
+                showThresholdWarning(data.respondentCount, data.minimumRequired);
+                return;
+            }
+
+            // Show respondent count
+            document.getElementById('respondentCount').textContent = data.respondentCount;
+
+            // Hide warning, show insights
+            document.getElementById('thresholdWarning').style.display = 'none';
+            document.getElementById('insightsContainer').style.display = 'block';
+
+            // Render sections
+            renderPatternDistribution(data.patternDistribution);
+            renderRiskFactors(data.workplaceInsights.riskFactors);
+            renderStrengths(data.workplaceInsights.strengths);
+            renderHomeWorkInfluence(data.workplaceInsights.homeWorkInfluence || {});
+            renderCulturalIndicators(data.workplaceInsights.culturalIndicators);
+        }
+
+        function showThresholdWarning(currentCount, minimumRequired) {
+            document.getElementById('thresholdWarning').style.display = 'block';
+            document.getElementById('insightsContainer').style.display = 'none';
+            document.getElementById('currentTeamSize').textContent = currentCount;
+        }
+
+        function renderPatternDistribution(patterns) {
+            const container = document.getElementById('patternDistribution');
+
+            if (!patterns || Object.keys(patterns).length === 0) {
+                container.innerHTML = '<div class="empty-state"><div class="icon">📊</div><p>No pattern data available yet</p></div>';
+                return;
+            }
+
+            // Sort by percentage
+            const sortedPatterns = Object.entries(patterns).sort((a, b) => b[1].percentage - a[1].percentage);
+
+            container.innerHTML = sortedPatterns.map(([patternName, data]) => `
+                <div class="pattern-item">
+                    <div class="pattern-header">
+                        <span class="pattern-name">${formatPatternName(patternName)}</span>
+                        <span class="pattern-percentage">${data.percentage}%</span>
+                    </div>
+                    <div class="pattern-bar">
+                        <div class="pattern-bar-fill" style="width: ${data.percentage}%"></div>
+                    </div>
+                    <div class="pattern-description">${data.description}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderRiskFactors(risks) {
+            const container = document.getElementById('riskFactors');
+
+            if (!risks || risks.length === 0) {
+                container.innerHTML = '<div class="empty-state"><div class="icon">✅</div><p>No significant risk factors identified</p></div>';
+                return;
+            }
+
+            container.innerHTML = risks.map(risk => `
+                <div class="risk-item">
+                    <h4>${risk.indicator} <span class="percentage">(${risk.percentage}%)</span></h4>
+                    <div class="implication">💡 ${risk.implication}</div>
+                    <div class="recommendation">🔧 ${risk.recommendation}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderStrengths(strengths) {
+            const container = document.getElementById('teamStrengths');
+
+            if (!strengths || strengths.length === 0) {
+                container.innerHTML = '<div class="empty-state"><div class="icon">🔍</div><p>Continue collecting data to identify team strengths</p></div>';
+                return;
+            }
+
+            container.innerHTML = strengths.map(strength => `
+                <div class="strength-item">
+                    <h4>${strength.indicator} <span class="percentage">(${strength.percentage}%)</span></h4>
+                    <div class="benefit">✨ ${strength.benefit}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderHomeWorkInfluence(homeWorkData) {
+            const container = document.getElementById('homeWorkInfluence');
+
+            // Mock home-work data if not provided
+            const influences = homeWorkData.influences || [
+                { type: 'childcare', percentage: 27, insight: '27% of team report childcare unpredictability affects work preparation', recommendation: 'Consider flexible scheduling or childcare benefits' },
+                { type: 'financial', percentage: 34, insight: '34% report financial stress impacts work focus', recommendation: 'Financial wellness programs may help' },
+                { type: 'commute', percentage: 18, insight: '18% report commute significantly drains work energy', recommendation: 'Remote work flexibility could improve energy levels' }
+            ];
+
+            if (influences.length === 0) {
+                container.innerHTML = '<div class="empty-state"><div class="icon">📈</div><p>No significant home→work influence patterns detected</p></div>';
+                return;
+            }
+
+            container.innerHTML = influences.map(item => `
+                <div class="home-work-item">
+                    <h4>${formatInfluenceType(item.type)}</h4>
+                    <div class="percentage">${item.percentage}%</div>
+                    <div class="insight">${item.insight}</div>
+                    <div class="recommendation">💡 ${item.recommendation}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderCulturalIndicators(indicators) {
+            const container = document.getElementById('culturalIndicators');
+
+            if (!indicators || indicators.length === 0) {
+                container.innerHTML = '<div class="empty-state"><div class="icon">🔍</div><p>Continue collecting data to identify cultural patterns</p></div>';
+                return;
+            }
+
+            container.innerHTML = indicators.map(indicator => `
+                <div class="pattern-item">
+                    <h4 style="color: #ffb800; margin-bottom: 10px;">${indicator.indicator}</h4>
+                    <div style="color: #e4e4e4; margin-bottom: 8px;">${indicator.ratio || ''}</div>
+                    <div style="color: #b0b0b0; margin-bottom: 8px;">📊 ${indicator.implication}</div>
+                    <div style="color: #8888ff; font-style: italic;">💭 ${indicator.consideration}</div>
+                </div>
+            `).join('');
+        }
+
+        function formatPatternName(name) {
+            return name.split('_').map(word =>
+                word.charAt(0).toUpperCase() + word.slice(1)
+            ).join(' ');
+        }
+
+        function formatInfluenceType(type) {
+            const types = {
+                'childcare': 'Childcare Unpredictability',
+                'eldercare': 'Eldercare Responsibilities',
+                'financial': 'Financial Stress',
+                'relationship': 'Relationship Stress',
+                'housing': 'Housing Concerns',
+                'commute': 'Commute Impact'
+            };
+            return types[type] || formatPatternName(type);
+        }
+
+        function generateMockAggregatedData(teamSize) {
+            if (teamSize < 10) {
+                return {
+                    error: 'PRIVACY_THRESHOLD_NOT_MET',
+                    currentCount: teamSize,
+                    minimumRequired: 10
+                };
+            }
+
+            return {
+                respondentCount: teamSize,
+                privacyThresholdMet: true,
+                minimumRequired: 10,
+                patternDistribution: {
+                    'harmony_keeper': { percentage: 47, count: 7, description: 'Prioritizes group harmony' },
+                    'conflict_avoider': { percentage: 40, count: 6, description: 'Prefers to avoid tense situations' },
+                    'direct_communicator': { percentage: 27, count: 4, description: 'Addresses issues head-on' },
+                    'problem_solver': { percentage: 33, count: 5, description: 'Focuses on finding solutions' },
+                    'boundary_setter': { percentage: 20, count: 3, description: 'Maintains clear boundaries' }
+                },
+                workplaceInsights: {
+                    riskFactors: [
+                        {
+                            indicator: 'High conflict avoidance',
+                            percentage: 40,
+                            implication: 'Team may struggle with addressing tensions directly',
+                            recommendation: 'Consider psychological safety training and clear conflict resolution processes'
+                        },
+                        {
+                            indicator: 'Elevated people-pleasing',
+                            percentage: 33,
+                            implication: 'Team members may struggle with boundary-setting',
+                            recommendation: 'Support programs for assertiveness and self-advocacy'
+                        }
+                    ],
+                    strengths: [
+                        {
+                            indicator: 'Strong collaborative problem-solving',
+                            percentage: 33,
+                            benefit: 'Team works together effectively to find solutions'
+                        }
+                    ],
+                    homeWorkInfluence: {
+                        influences: [
+                            { type: 'childcare', percentage: 27, insight: '27% of team report childcare unpredictability affects work preparation', recommendation: 'Consider flexible scheduling or childcare benefits' },
+                            { type: 'financial', percentage: 34, insight: '34% report financial stress impacts work focus', recommendation: 'Financial wellness programs may help' },
+                            { type: 'commute', percentage: 18, insight: '18% report commute significantly drains work energy', recommendation: 'Remote work flexibility could improve energy levels' }
+                        ]
+                    },
+                    culturalIndicators: [
+                        {
+                            indicator: 'Strong harmony preference',
+                            ratio: '47% harmony vs 20% boundaries',
+                            implication: 'Culture may suppress authentic disagreement',
+                            consideration: 'May need to explicitly encourage diverse perspectives'
+                        }
+                    ]
+                }
+            };
+        }
+
+        function showError(message) {
+            const container = document.querySelector('.dashboard-container');
+            container.innerHTML = `
+                <div class="threshold-warning">
+                    <div class="icon">❌</div>
+                    <h2>Error Loading Dashboard</h2>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+
+        // Load dashboard on page load
+        loadDashboard();
+    </script>
+</body>
+</html>

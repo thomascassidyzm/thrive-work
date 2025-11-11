@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCEAN Assessment | THRIVE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2942 100%);
+            color: #e0e7ff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: rgba(30, 41, 59, 0.6);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 116, 139, 0.2);
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: rgba(100, 116, 139, 0.3);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 100%);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            color: #94a3b8;
+            font-size: 0.9em;
+        }
+
+        /* Question Card */
+        .question-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .question-number {
+            color: #60a5fa;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 1.4em;
+            color: #e0e7ff;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(167, 139, 250, 0.2);
+            color: #a78bfa;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-bottom: 20px;
+        }
+
+        /* Options */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option {
+            background: rgba(51, 65, 85, 0.5);
+            border: 2px solid rgba(100, 116, 139, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: #60a5fa;
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            background: rgba(96, 165, 250, 0.2);
+            border-color: #60a5fa;
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+        }
+
+        .option-text {
+            color: #e0e7ff;
+            font-size: 1.05em;
+            line-height: 1.5;
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1em;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back {
+            background: rgba(100, 116, 139, 0.3);
+            color: #e0e7ff;
+        }
+
+        .btn-back:hover {
+            background: rgba(100, 116, 139, 0.4);
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            color: #0a1628;
+            flex: 1;
+            max-width: 200px;
+            margin-left: auto;
+        }
+
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(96, 165, 250, 0.4);
+        }
+
+        .btn-next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Completion */
+        .completion-card {
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .completion-card h2 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .completion-card p {
+            color: #cbd5e1;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(96, 165, 250, 0.3);
+            border-top-color: #60a5fa;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .question-card {
+                padding: 25px;
+            }
+
+            .question-text {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="progress-text">
+                <span id="progress-text">Question 1 of 60</span>
+                <span id="progress-percent">0%</span>
+            </div>
+        </div>
+
+        <!-- Question Display -->
+        <div id="question-container">
+            <!-- Questions will be inserted here -->
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-buttons">
+            <button class="btn btn-back" id="btn-back" onclick="previousQuestion()" style="display: none;">
+                ← Back
+            </button>
+            <button class="btn btn-next" id="btn-next" onclick="nextQuestion()" disabled>
+                Next →
+            </button>
+        </div>
+    </div>
+
+    <script type="module">
+        import { DynamicOceanAnalysis } from './engines/dynamic-ocean-analysis.js';
+        import resultsCaptureService from './services/results-capture-service.js';
+
+        // Load questions from session storage
+        const questionsJSON = sessionStorage.getItem('oceanQuestions');
+        if (!questionsJSON) {
+            alert('No questions loaded. Redirecting to start page.');
+            window.location.href = '/ocean-assessment.html';
+        }
+
+        const allQuestions = JSON.parse(questionsJSON);
+        let currentQuestionIndex = 0;
+        let responses = [];
+
+        console.log(`Assessment flow: ${allQuestions.length} questions loaded`);
+
+        // Display current question
+        function displayQuestion() {
+            const question = allQuestions[currentQuestionIndex];
+            const container = document.getElementById('question-container');
+
+            const categoryLabels = {
+                'group_dynamics': 'Team Dynamics',
+                'authority_relationships': 'Authority & Leadership',
+                'conflict_patterns': 'Conflict & Tension',
+                'creative_expression': 'Creativity & Expression',
+                'trust_vulnerability': 'Trust & Openness',
+                'discipline_impulse': 'Planning & Structure',
+                'universal_launch': 'Personal Relationships',
+                'home_work_influence': 'Home → Work Influence'
+            };
+
+            const categoryLabel = categoryLabels[question.category] || question.category;
+
+            const optionsHTML = question.options.map((option, idx) => `
+                <div class="option" data-option-index="${idx}" onclick="selectOption(${idx})">
+                    <div class="option-text">${option.text}</div>
+                </div>
+            `).join('');
+
+            container.innerHTML = `
+                <div class="question-card">
+                    <div class="question-number">Question ${currentQuestionIndex + 1} of ${allQuestions.length}</div>
+                    <div class="category-badge">${categoryLabel}</div>
+                    <div class="question-text">${question.scenario || question.text}</div>
+                    <div class="options">
+                        ${optionsHTML}
+                    </div>
+                </div>
+            `;
+
+            // Update progress
+            const progress = ((currentQuestionIndex + 1) / allQuestions.length) * 100;
+            document.getElementById('progress-fill').style.width = progress + '%';
+            document.getElementById('progress-text').textContent = `Question ${currentQuestionIndex + 1} of ${allQuestions.length}`;
+            document.getElementById('progress-percent').textContent = Math.round(progress) + '%';
+
+            // Show/hide back button
+            document.getElementById('btn-back').style.display = currentQuestionIndex > 0 ? 'block' : 'none';
+
+            // Restore previous selection if going back
+            if (responses[currentQuestionIndex] !== undefined) {
+                const selectedIdx = responses[currentQuestionIndex].optionIndex;
+                document.querySelector(`.option[data-option-index="${selectedIdx}"]`)?.classList.add('selected');
+                document.getElementById('btn-next').disabled = false;
+            } else {
+                document.getElementById('btn-next').disabled = true;
+            }
+        }
+
+        window.selectOption = function(optionIndex) {
+            // Remove previous selection
+            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+
+            // Add selection to clicked option
+            document.querySelector(`.option[data-option-index="${optionIndex}"]`).classList.add('selected');
+
+            // Store response
+            const question = allQuestions[currentQuestionIndex];
+            const selectedOption = question.options[optionIndex];
+
+            responses[currentQuestionIndex] = {
+                question: question,
+                selectedOption: selectedOption,
+                optionIndex: optionIndex,
+                timestamp: new Date().toISOString()
+            };
+
+            // Enable next button
+            document.getElementById('btn-next').disabled = false;
+        };
+
+        window.nextQuestion = function() {
+            if (currentQuestionIndex < allQuestions.length - 1) {
+                currentQuestionIndex++;
+
+                // Show confidence checkpoints at 20 and 40 questions
+                if (currentQuestionIndex === 20) {
+                    showConfidenceCheckpoint(20, 50);
+                } else if (currentQuestionIndex === 40) {
+                    showConfidenceCheckpoint(40, 75);
+                } else {
+                    displayQuestion();
+                }
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                // Assessment complete
+                completeAssessment();
+            }
+        };
+
+        function showConfidenceCheckpoint(questionsCompleted, confidencePercent) {
+            const container = document.getElementById('question-container');
+
+            const encouragementMessages = {
+                20: {
+                    title: '✓ 20 questions complete',
+                    message: "We're building confidence in your profile...<br>Patterns are starting to emerge.",
+                    confidence: '~50%',
+                    progress: 33,
+                    encouragement: "Keep going - your responses are giving us valuable insights!"
+                },
+                40: {
+                    title: '✓ 40 questions complete',
+                    message: "Great progress! We're getting a clear picture now.<br>Your behavioral patterns are becoming distinct.",
+                    confidence: '~75%',
+                    progress: 67,
+                    encouragement: "Just 20 more questions for your complete profile."
+                }
+            };
+
+            const checkpoint = encouragementMessages[questionsCompleted];
+
+            container.innerHTML = `
+                <div class="question-card" style="text-align: center; padding: 50px 40px;">
+                    <div style="font-size: 3em; margin-bottom: 20px;">🎯</div>
+                    <h2 style="color: #60a5fa; font-size: 1.8em; margin-bottom: 20px;">
+                        ${checkpoint.title}
+                    </h2>
+
+                    <div style="background: rgba(96, 165, 250, 0.1); border: 1px solid rgba(96, 165, 250, 0.3); border-radius: 12px; padding: 25px; margin: 30px 0;">
+                        <p style="color: #cbd5e1; font-size: 1.1em; line-height: 1.8; margin-bottom: 15px;">
+                            ${checkpoint.message}
+                        </p>
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin: 20px 0;">
+                            <span style="color: #94a3b8; font-size: 0.95em;">Current confidence level:</span>
+                            <span style="color: #60a5fa; font-size: 1.3em; font-weight: 600;">${checkpoint.confidence}</span>
+                        </div>
+                    </div>
+
+                    <p style="color: #e0e7ff; font-size: 1.1em; margin: 25px 0;">
+                        ${checkpoint.encouragement}
+                    </p>
+
+                    <button class="btn btn-next" onclick="continueFromCheckpoint()" style="
+                        background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+                        color: #0a1628;
+                        padding: 18px 50px;
+                        font-size: 1.1em;
+                        font-weight: 600;
+                        border: none;
+                        border-radius: 12px;
+                        cursor: pointer;
+                        margin-top: 20px;
+                        box-shadow: 0 4px 20px rgba(96, 165, 250, 0.4);
+                    ">
+                        Continue Assessment →
+                    </button>
+
+                    <div style="margin-top: 30px;">
+                        <div style="color: #94a3b8; font-size: 0.9em; margin-bottom: 10px;">
+                            Progress: ${checkpoint.progress}%
+                        </div>
+                        <div style="height: 8px; background: rgba(100, 116, 139, 0.3); border-radius: 4px; overflow: hidden;">
+                            <div style="height: 100%; width: ${checkpoint.progress}%; background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 100%); transition: width 0.5s ease;"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Hide navigation buttons during checkpoint
+            document.querySelector('.nav-buttons').style.display = 'none';
+        }
+
+        window.continueFromCheckpoint = function() {
+            // Show navigation buttons again
+            document.querySelector('.nav-buttons').style.display = 'flex';
+
+            // Display next question
+            displayQuestion();
+        };
+
+        window.previousQuestion = function() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        };
+
+        async function completeAssessment() {
+            // Show completion screen
+            const container = document.getElementById('question-container');
+            container.innerHTML = `
+                <div class="question-card completion-card">
+                    <h2>🎉 Assessment Complete!</h2>
+                    <p>Analyzing your responses and generating your personalized OCEAN profile...</p>
+                    <div class="spinner"></div>
+                </div>
+            `;
+
+            // Hide navigation
+            document.querySelector('.nav-buttons').style.display = 'none';
+
+            // Analyze responses
+            setTimeout(async () => {
+                const analyzer = new DynamicOceanAnalysis();
+                const results = analyzer.analyzeBehavioralTendencies(responses);
+
+                // Store results in sessionStorage (for immediate use)
+                sessionStorage.setItem('oceanResults', JSON.stringify(results));
+                sessionStorage.setItem('oceanResponses', JSON.stringify(responses));
+                sessionStorage.setItem('oceanAssessmentCompleted', new Date().toISOString());
+
+                // Capture results in IndexedDB (for coach access)
+                try {
+                    const adjustmentPlan = sessionStorage.getItem('adjustmentPlan')
+                        ? JSON.parse(sessionStorage.getItem('adjustmentPlan'))
+                        : null;
+
+                    const resultsId = await resultsCaptureService.captureOceanResults(
+                        results,
+                        responses,
+                        adjustmentPlan
+                    );
+
+                    console.log('✅ Results captured for coach access:', resultsId);
+                    sessionStorage.setItem('oceanResultsId', resultsId);
+                } catch (error) {
+                    console.error('Failed to capture results:', error);
+                    // Continue anyway - results still in sessionStorage
+                }
+
+                // Navigate to results
+                window.location.href = '/dashboards/employee-ocean-results.html';
+            }, 2000);
+        }
+
+        // Initialize
+        displayQuestion();
+    </script>
+</body>
+</html>

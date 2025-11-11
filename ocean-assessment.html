@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCEAN Workplace Wellness Assessment | THRIVE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2942 100%);
+            color: #e0e7ff;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .header .subtitle {
+            color: #94a3b8;
+            font-size: 1.2em;
+        }
+
+        /* Card */
+        .card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #60a5fa;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #a78bfa;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            color: #cbd5e1;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul {
+            margin: 15px 0 15px 25px;
+            color: #cbd5e1;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: #e0e7ff;
+        }
+
+        /* Privacy Notice */
+        .privacy-notice {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .privacy-notice h3 {
+            color: white;
+            font-size: 1.2em;
+            margin: 0 0 10px 0;
+        }
+
+        .privacy-notice p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box h4 {
+            color: #60a5fa;
+            margin-bottom: 10px;
+        }
+
+        /* Dimension Cards */
+        .dimensions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .dimension-card {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .dimension-card h4 {
+            color: #60a5fa;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .dimension-card p {
+            color: #94a3b8;
+            font-size: 0.85em;
+            margin: 0;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 18px 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            color: #0a1628;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(96, 165, 250, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(96, 165, 250, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(100, 116, 139, 0.3);
+            color: #e0e7ff;
+            box-shadow: none;
+            margin-top: 15px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(100, 116, 139, 0.4);
+        }
+
+        /* Progress indicator */
+        .assessment-progress {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(96, 165, 250, 0.3);
+            border-top-color: #60a5fa;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .dimensions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Start Page -->
+        <div id="start-page">
+            <div class="header">
+                <h1>🌊 OCEAN Workplace Wellness Assessment</h1>
+                <p class="subtitle">Discover your behavioral patterns, strengths, and growth pathways</p>
+            </div>
+
+            <!-- Privacy Notice -->
+            <div class="privacy-notice">
+                <h3>🔒 Your Privacy is Guaranteed</h3>
+                <p><strong>You own your data.</strong> You see everything about your personality, patterns, and insights.</p>
+                <p><strong>Your employer only sees:</strong> Anonymized team patterns (when 10+ people complete the assessment). They never see your individual results, personal patterns, or specific answers.</p>
+                <p><strong>Complete transparency:</strong> We'll show you exactly what you see vs. what your employer sees.</p>
+            </div>
+
+            <div class="card">
+                <h2>What You'll Discover</h2>
+                <p>The OCEAN assessment reveals your behavioral tendencies through real workplace scenarios - not abstract personality labels.</p>
+
+                <h3>The Big Five Dimensions (OCEAN)</h3>
+                <div class="dimensions-grid">
+                    <div class="dimension-card">
+                        <h4>O</h4>
+                        <p>Openness to Experience</p>
+                    </div>
+                    <div class="dimension-card">
+                        <h4>C</h4>
+                        <p>Conscientiousness</p>
+                    </div>
+                    <div class="dimension-card">
+                        <h4>E</h4>
+                        <p>Extraversion</p>
+                    </div>
+                    <div class="dimension-card">
+                        <h4>A</h4>
+                        <p>Agreeableness</p>
+                    </div>
+                    <div class="dimension-card">
+                        <h4>N</h4>
+                        <p>Neuroticism</p>
+                    </div>
+                </div>
+
+                <h3>Your Complete Personal Profile Includes:</h3>
+                <ul>
+                    <li><strong>OCEAN Percentiles:</strong> Where you fall on each dimension (compared to population)</li>
+                    <li><strong>Behavioral Patterns:</strong> How you tend to respond in workplace and personal situations</li>
+                    <li><strong>Workplace Style:</strong> Your collaboration, communication, and conflict patterns at work</li>
+                    <li><strong>Personal Life Insights:</strong> How you show up with friends, family, relationships</li>
+                    <li><strong>Home→Work Influence:</strong> How your home environment affects your work energy</li>
+                    <li><strong>Behavioral Predictions:</strong> Likely tendencies in different scenarios</li>
+                    <li><strong>30-Day Action Plan:</strong> Structured pathway from autopilot to conscious choice</li>
+                    <li><strong>Growth Recommendations:</strong> Specific strategies based on your profile</li>
+                </ul>
+
+                <div class="info-box">
+                    <h4>⏱️ Time Required: 12-15 minutes</h4>
+                    <p>You'll answer 60 behavioral scenarios about how you handle:</p>
+                    <ul>
+                        <li>Team dynamics and group decisions</li>
+                        <li>Authority and leadership situations</li>
+                        <li>Conflict and tension</li>
+                        <li>Creative expression and new ideas</li>
+                        <li>Trust and vulnerability</li>
+                        <li>Planning vs. spontaneity</li>
+                        <li>Personal relationships and identity</li>
+                        <li>Home environment stressors</li>
+                    </ul>
+                </div>
+
+                <h3>How It Works</h3>
+                <p><strong>"Verb not noun" approach:</strong> We don't ask "Are you organized?" We present real scenarios and ask "What would you actually do?"</p>
+                <p>This reveals your <em>current behavioral patterns</em> - what you're choosing right now - not fixed personality traits.</p>
+
+                <h3>After You Complete</h3>
+                <ul>
+                    <li>✅ Instant access to your full results</li>
+                    <li>✅ Download/save your complete profile</li>
+                    <li>✅ See exactly what's private vs. what's shared</li>
+                    <li>✅ Optional: Connect with coaching or support resources</li>
+                </ul>
+
+                <button class="btn" onclick="startAssessment()">Start OCEAN Assessment →</button>
+                <button class="btn btn-secondary" onclick="goBack()">← Back to Wellness Check-In</button>
+            </div>
+        </div>
+
+        <!-- Progress Page (shown while loading assessment) -->
+        <div id="progress-page" class="assessment-progress">
+            <div class="spinner"></div>
+            <h2>Loading Your Assessment...</h2>
+            <p style="color: #94a3b8;">Preparing behavioral scenarios...</p>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import question banks
+        import { groupDynamicsQuestions } from './question-banks/group-dynamics-questions.js';
+        import { authorityRelationshipsQuestions } from './question-banks/authority-relationships-questions.js';
+        import { conflictPatternsQuestions } from './question-banks/conflict-patterns-questions.js';
+        import { creativeExpressionQuestions } from './question-banks/creative-expression-questions.js';
+        import { trustVulnerabilityQuestions } from './question-banks/trust-vulnerability-questions.js';
+        import { disciplineImpulseQuestions } from './question-banks/discipline-impulse-questions.js';
+        import { universalLaunchQuestions } from './question-banks/universal-launch-questions.js';
+        import { thriveTimeQuestions } from './question-banks/thrive-time-questions.js';
+        import { thriveHealthQuestions } from './question-banks/thrive-health-questions.js';
+        import { thriveRelationshipsQuestions } from './question-banks/thrive-relationships-questions.js';
+        import { thriveIdentityQuestions } from './question-banks/thrive-identity-questions.js';
+        import { thriveVitalityQuestions } from './question-banks/thrive-vitality-questions.js';
+        import { thriveEnvironmentQuestions } from './question-banks/thrive-environment-questions.js';
+        import { homeWorkInfluenceQuestions } from './question-banks/home-work-influence-questions.js';
+
+        // Combine all questions
+        const allQuestions = [
+            ...groupDynamicsQuestions,
+            ...authorityRelationshipsQuestions,
+            ...conflictPatternsQuestions,
+            ...creativeExpressionQuestions,
+            ...trustVulnerabilityQuestions,
+            ...disciplineImpulseQuestions,
+            ...universalLaunchQuestions,
+            ...thriveTimeQuestions,
+            ...thriveHealthQuestions,
+            ...thriveRelationshipsQuestions,
+            ...thriveIdentityQuestions,
+            ...thriveVitalityQuestions,
+            ...thriveEnvironmentQuestions,
+            ...homeWorkInfluenceQuestions
+        ];
+
+        console.log(`Loaded ${allQuestions.length} OCEAN behavioral scenarios`);
+
+        // Check if coming from neuroindicator
+        const neuroindicatorContext = sessionStorage.getItem('thriveNeuroindicatorProfile');
+        if (neuroindicatorContext) {
+            const context = JSON.parse(neuroindicatorContext);
+            console.log('Neuroindicator context:', context);
+        }
+
+        // Fisher-Yates shuffle algorithm
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        // Map questions to OCEAN dimensions based on their pattern types
+        function getQuestionDimension(question) {
+            const option = question.options[0];
+            if (!option || !option.pattern_type) return null;
+
+            const pattern = option.pattern_type;
+
+            // Map patterns to OCEAN dimensions
+            const dimensionMap = {
+                // Openness patterns
+                explorer: 'O', traditionalist: 'O', experimenter: 'O',
+                routine_seeker: 'O', idea_generator: 'O', practical_doer: 'O',
+
+                // Conscientiousness patterns
+                careful_planner: 'C', spontaneous_actor: 'C', perfectionist: 'C',
+                flexible_adapter: 'C', organized_executor: 'C', go_with_flow: 'C',
+
+                // Extraversion patterns
+                group_energizer: 'E', solo_recharger: 'E', social_connector: 'E',
+                quiet_observer: 'E', spotlight_seeker: 'E', behind_scenes: 'E',
+
+                // Agreeableness patterns
+                harmony_keeper: 'A', direct_confronter: 'A', people_pleaser: 'A',
+                boundary_setter: 'A', conflict_avoider: 'A', truth_teller: 'A',
+
+                // Neuroticism patterns
+                worry_anticipator: 'N', calm_steadiness: 'N', stress_responder: 'N',
+                emotional_regulator: 'N', anxious_planner: 'N', relaxed_adapter: 'N'
+            };
+
+            return dimensionMap[pattern] || null;
+        }
+
+        // Count coverage by dimension
+        function countCoverageByDimension(questions) {
+            const coverage = { O: 0, C: 0, E: 0, A: 0, N: 0 };
+            questions.forEach(q => {
+                const dimension = getQuestionDimension(q);
+                if (dimension) coverage[dimension]++;
+            });
+            return coverage;
+        }
+
+        // Ensure minimum coverage for all dimensions
+        function ensureBalancedCoverage(selected, allQuestions, minPerDimension = 8) {
+            const coverage = countCoverageByDimension(selected);
+            const result = [...selected];
+
+            // For each dimension that needs more questions
+            Object.keys(coverage).forEach(dimension => {
+                const needed = minPerDimension - coverage[dimension];
+
+                if (needed > 0) {
+                    // Find questions for this dimension that aren't already selected
+                    const availableForDimension = allQuestions.filter(q =>
+                        getQuestionDimension(q) === dimension &&
+                        !result.includes(q)
+                    );
+
+                    // Replace random questions with dimension-specific ones
+                    for (let i = 0; i < needed && i < availableForDimension.length; i++) {
+                        // Find a question to replace (prefer ones from over-represented dimensions)
+                        const overRepresentedDims = Object.keys(coverage).filter(d =>
+                            coverage[d] > minPerDimension
+                        );
+
+                        let replaceIdx = -1;
+                        if (overRepresentedDims.length > 0) {
+                            // Find question from over-represented dimension
+                            replaceIdx = result.findIndex(q =>
+                                overRepresentedDims.includes(getQuestionDimension(q))
+                            );
+                        }
+
+                        if (replaceIdx === -1) {
+                            // No over-represented dims, replace random
+                            replaceIdx = Math.floor(Math.random() * result.length);
+                        }
+
+                        // Replace
+                        const oldDimension = getQuestionDimension(result[replaceIdx]);
+                        if (oldDimension) coverage[oldDimension]--;
+
+                        result[replaceIdx] = availableForDimension[i];
+                        coverage[dimension]++;
+                    }
+                }
+            });
+
+            return result;
+        }
+
+        window.startAssessment = function() {
+            // Show progress indicator
+            document.getElementById('start-page').style.display = 'none';
+            document.getElementById('progress-page').style.display = 'block';
+
+            // Simulate loading (give user feedback)
+            setTimeout(() => {
+                // Shuffle all questions
+                const shuffled = shuffleArray(allQuestions);
+
+                // Take first 60 questions
+                let selectedQuestions = shuffled.slice(0, 60);
+
+                // Ensure balanced coverage (minimum 8 questions per OCEAN dimension)
+                selectedQuestions = ensureBalancedCoverage(selectedQuestions, allQuestions, 8);
+
+                // Log coverage for debugging
+                const finalCoverage = countCoverageByDimension(selectedQuestions);
+                console.log('Selected 60 questions with coverage:', finalCoverage);
+                console.log('Total coverage:', Object.values(finalCoverage).reduce((a, b) => a + b, 0));
+
+                // Store assessment start time
+                sessionStorage.setItem('oceanAssessmentStarted', new Date().toISOString());
+
+                // Store selected questions for the assessment
+                sessionStorage.setItem('oceanQuestions', JSON.stringify(selectedQuestions));
+
+                // Navigate to assessment flow
+                window.location.href = '/ocean-assessment-flow.html';
+            }, 800);
+        };
+
+        window.goBack = function() {
+            window.location.href = '/neuroindicator-v4.html';
+        };
+    </script>
+</body>
+</html>
