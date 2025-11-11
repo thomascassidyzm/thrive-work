@@ -349,8 +349,10 @@
                 timestamp: new Date().toISOString()
             };
 
-            // Enable next button
-            document.getElementById('btn-next').disabled = false;
+            // Auto-advance to next question after brief delay (so user sees selection)
+            setTimeout(() => {
+                nextQuestion();
+            }, 300);
         };
 
         window.nextQuestion = function() {
