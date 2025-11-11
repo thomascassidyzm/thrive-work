@@ -321,6 +321,8 @@
     </div>
 
     <script type="module">
+        console.log('OCEAN assessment script loading...');
+
         // Import question banks
         import { groupDynamicsQuestions } from './question-banks/group-dynamics-questions.js';
         import { authorityRelationshipsQuestions } from './question-banks/authority-relationships-questions.js';
@@ -355,7 +357,8 @@
             ...homeWorkInfluenceQuestions
         ];
 
-        console.log(`Loaded ${allQuestions.length} OCEAN behavioral scenarios`);
+        console.log(`✅ Loaded ${allQuestions.length} OCEAN behavioral scenarios`);
+        console.log('✅ Functions startAssessment and goBack are ready');
 
         // Check if coming from neuroindicator
         const neuroindicatorContext = sessionStorage.getItem('thriveNeuroindicatorProfile');
