@@ -1007,6 +1007,9 @@
                 const question = this.questions[this.currentQuestion];
                 const card = document.getElementById('question-card');
 
+                // Clear any existing content first to reset state
+                card.innerHTML = '';
+
                 let html = `
                     <div class="question-number">Question ${this.currentQuestion + 1} of ${this.questions.length}</div>
                     <div class="question-text">${question.text}</div>
@@ -1027,6 +1030,9 @@
                 });
 
                 html += '</div>';
+
+                // Force reflow to ensure clean state before rendering
+                void card.offsetHeight;
                 card.innerHTML = html;
 
                 // Update progress
@@ -1069,6 +1075,12 @@
                     question: question
                 };
 
+                // IMMEDIATE CRISIS CHECK - Check ANY answer for crisis signal
+                if (selectedOption.crisis || (selectedOption.signals && selectedOption.signals.crisis)) {
+                    this.showCrisisIntervention();
+                    return;
+                }
+
                 // Update user profile
                 if (selectedOption.signals) {
                     if (selectedOption.signals.wellness) this.userProfile.wellness = selectedOption.signals.wellness;
@@ -1083,12 +1095,6 @@
                 if (selectedOption.crisis) this.userProfile.crisis = true;
                 if (selectedOption.monitor) this.userProfile.monitor = true;
                 if (selectedOption.oceanCandidate) this.userProfile.oceanCandidate = true;
-
-                // Check for crisis on critical question
-                if (question.critical && selectedOption.crisis) {
-                    this.showCrisisIntervention();
-                    return;
-                }
 
                 // Move to next question or show results
                 if (this.currentQuestion < this.questions.length - 1) {
@@ -1130,7 +1136,7 @@
                     <div class="pathway-card">
                         <h3>💚 You Are Not Alone</h3>
                         <p>What you're experiencing is serious, but help is available. Please reach out to one of the services above right now.</p>
-                        <h4 style="margin-top: 1.5rem; color: var(--clearminds-dark);">Our Community is Here Too</h4>
+                        <h4>Our Community is Here Too</h4>
                         <p>When you're ready, our 91,000-member community with 24/7 professional moderation can provide ongoing support. But right now, please contact a crisis service.</p>
                     </div>
                 `;
@@ -1331,10 +1337,15 @@
                 let summary = `PATIENT NAME: ${name}\n`;
                 summary += `CHECK-IN DATE: ${new Date().toLocaleDateString('en-GB')}\n\n`;
                 summary += '='.repeat(60) + '\n';
-                summary += 'CLEARMINDS WELLNESS CHECK-IN SUMMARY FOR GP\n';
+                summary += 'THRIVE WELLNESS CHECK-IN SUMMARY FOR GP\n';
                 summary += '='.repeat(60) + '\n\n';
 
                 summary += 'IMPORTANT: This is a wellness check-in, not a clinical assessment.\n\n';
+
+                summary += 'ABOUT THRIVE:\n';
+                summary += 'THRIVE is a comprehensive wellbeing ecosystem providing personalized\n';
+                summary += 'pathways to mental health support through AI coaching, peer community,\n';
+                summary += 'life coaching, personality assessment, and clinical referral options.\n\n';
 
                 summary += 'RESPONSES:\n\n';
                 this.responses.forEach((response, idx) => {
@@ -1343,13 +1354,17 @@
                 });
 
                 summary += '\nRECOMMENDATIONS:\n';
-                summary += `Primary concern: ${this.userProfile.pathway}\n`;
-                summary += `Duration: ${this.userProfile.chronicity}\n`;
+                summary += `Primary concern: ${this.userProfile.pathway || 'general wellness'}\n`;
+                summary += `Duration: ${this.userProfile.chronicity || 'not specified'}\n`;
                 if (this.userProfile.needsClinical) {
                     summary += '\nClinical assessment recommended based on duration and severity.\n';
                 }
+                if (this.userProfile.monitor) {
+                    summary += '\nOngoing monitoring recommended - patient mentioned passing thoughts.\n';
+                }
 
-                summary += '\n\nClearMinds Mental Wellness Platform | clearminds.business';
+                summary += '\n\nTHRIVE Wellbeing Ecosystem | www.thrive-work.com';
+                summary += '\nFor clinical referrals: www.conciergehealthadvisors.com';
 
                 const lines = summary.split('\n');
                 let y = 15;
@@ -1371,7 +1386,7 @@
                     });
                 });
 
-                doc.save(`ClearMinds-Check-In-Summary-${name.replace(/\s+/g, '-')}.pdf`);
+                doc.save(`THRIVE-Wellness-Summary-${name.replace(/\s+/g, '-')}.pdf`);
             },
 
             // Restart assessment
