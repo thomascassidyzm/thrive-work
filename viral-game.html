@@ -199,12 +199,17 @@
             font-size: 1.05rem;
             line-height: 1.5;
             text-align: left;
+            outline: none;
         }
 
         .option:hover {
             background: rgba(255, 255, 0, 0.15);
             border-color: rgba(255, 255, 0, 0.5);
             transform: translateX(5px);
+        }
+
+        .option:focus {
+            outline: none;
         }
 
         .option.selected {
@@ -558,6 +563,13 @@
                 optionElement.onclick = () => selectOption(index, option, question);
                 optionsContainer.appendChild(optionElement);
             });
+
+            // Ensure no options are selected when question first loads
+            setTimeout(() => {
+                document.querySelectorAll('.option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+            }, 10);
         }
 
         // Handle option selection
