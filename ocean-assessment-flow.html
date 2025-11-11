@@ -78,6 +78,17 @@
             }
         }
 
+        .question-card.fade-out {
+            animation: fadeOut 0.3s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
         .question-number {
             color: #60a5fa;
             font-size: 0.9em;
@@ -356,22 +367,31 @@
         };
 
         window.nextQuestion = function() {
-            if (currentQuestionIndex < allQuestions.length - 1) {
-                currentQuestionIndex++;
+            // Add fade-out effect to current question
+            const questionCard = document.querySelector('.question-card');
+            if (questionCard && !questionCard.classList.contains('fade-out')) {
+                questionCard.classList.add('fade-out');
 
-                // Show confidence checkpoints at 20 and 40 questions
-                if (currentQuestionIndex === 20) {
-                    showConfidenceCheckpoint(20, 50);
-                } else if (currentQuestionIndex === 40) {
-                    showConfidenceCheckpoint(40, 75);
-                } else {
-                    displayQuestion();
-                }
+                // Wait for fade-out animation to complete, then show next question
+                setTimeout(() => {
+                    if (currentQuestionIndex < allQuestions.length - 1) {
+                        currentQuestionIndex++;
 
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                // Assessment complete
-                completeAssessment();
+                        // Show confidence checkpoints at 20 and 40 questions
+                        if (currentQuestionIndex === 20) {
+                            showConfidenceCheckpoint(20, 50);
+                        } else if (currentQuestionIndex === 40) {
+                            showConfidenceCheckpoint(40, 75);
+                        } else {
+                            displayQuestion();
+                        }
+
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        // Assessment complete
+                        completeAssessment();
+                    }
+                }, 300); // Match fadeOut animation duration
             }
         };
 
