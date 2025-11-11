@@ -22,7 +22,7 @@ const thriveVitalityQuestions = [
         options: [
             { text: 'Excited for the week ahead', domain: 'vitality', pattern_type: 'week_enthusiast', ocean: { E: 0.8, O: 0.6, N: -0.5 } },
             { text: 'Neutral - just another day', domain: 'vitality', pattern_type: 'week_neutral', ocean: { N: 0.1, C: 0.5, E: 0.2 } },
-            { text: 'Anxious about what\\'s coming', domain: 'vitality', pattern_type: 'week_dreader', ocean: { N: 0.8, E: -0.3, C: 0.2 } },
+            { text: 'Anxious about what\'s coming', domain: 'vitality', pattern_type: 'week_dreader', ocean: { N: 0.8, E: -0.3, C: 0.2 } },
             { text: 'Exhausted before it starts', domain: 'vitality', pattern_type: 'pre_exhausted', ocean: { N: 0.7, E: -0.5, C: -0.3 } }
         ],
         reveals: ['work_anticipation', 'energy_levels', 'emotional_state'],
@@ -70,7 +70,7 @@ const thriveVitalityQuestions = [
     
     {
         id: 'VIT006',
-        scenario: 'Signs of burnout you\\'re experiencing:',
+        scenario: 'Signs of burnout you\'re experiencing:',
         options: [
             { text: 'None - feeling energized', domain: 'vitality', pattern_type: 'burnout_free', ocean: { N: -0.5, E: 0.7, C: 0.6 } },
             { text: 'Some early warning signs', domain: 'vitality', pattern_type: 'burnout_early', ocean: { N: 0.5, E: 0.2, C: 0.3 } },
@@ -88,7 +88,7 @@ const thriveVitalityQuestions = [
             { text: 'Flowing freely and abundantly', domain: 'vitality', pattern_type: 'creative_flowing', ocean: { O: 0.9, E: 0.6, N: -0.4 } },
             { text: 'Present but constrained', domain: 'vitality', pattern_type: 'creative_limited', ocean: { O: 0.6, N: 0.3, C: 0.4 } },
             { text: 'Blocked or stifled', domain: 'vitality', pattern_type: 'creative_blocked', ocean: { N: 0.6, O: 0.2, E: -0.3 } },
-            { text: 'Don\\'t have energy for creativity', domain: 'vitality', pattern_type: 'creative_exhausted', ocean: { N: 0.8, E: -0.5, O: -0.3 } }
+            { text: 'Don\'t have energy for creativity', domain: 'vitality', pattern_type: 'creative_exhausted', ocean: { N: 0.8, E: -0.5, O: -0.3 } }
         ],
         reveals: ['creative_energy', 'innovation_capacity', 'mental_resources'],
         category: 'creative_vitality'
@@ -100,8 +100,8 @@ const thriveVitalityQuestions = [
         options: [
             { text: 'Regularly feel accomplished', domain: 'vitality', pattern_type: 'achievement_satisfied', ocean: { C: 0.7, E: 0.5, N: -0.4 } },
             { text: 'Occasionally feel successful', domain: 'vitality', pattern_type: 'moderate_achievement', ocean: { C: 0.5, N: 0.2, O: 0.4 } },
-            { text: 'Rarely feel I\\'ve achieved anything', domain: 'vitality', pattern_type: 'achievement_lacking', ocean: { N: 0.7, C: -0.2, E: -0.3 } },
-            { text: 'Can\\'t remember last accomplishment', domain: 'vitality', pattern_type: 'achievement_disconnected', ocean: { N: 0.8, E: -0.5, C: -0.4 } }
+            { text: 'Rarely feel I\'ve achieved anything', domain: 'vitality', pattern_type: 'achievement_lacking', ocean: { N: 0.7, C: -0.2, E: -0.3 } },
+            { text: 'Can\'t remember last accomplishment', domain: 'vitality', pattern_type: 'achievement_disconnected', ocean: { N: 0.8, E: -0.5, C: -0.4 } }
         ],
         reveals: ['accomplishment_sense', 'success_recognition', 'fulfillment'],
         category: 'achievement_feeling'
