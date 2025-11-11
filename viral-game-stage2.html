@@ -639,16 +639,21 @@
             const combinedAutoPercent = totalAutomatic / 20;
 
             // Detect contradictions (changed pattern between stages)
-            const patternShift = Math.abs(stage2AutoPercent - (stage1Data.analysis?.automaticPercentage || 50));
+            const stage1AutoPercent = stage1Data.analysis?.automaticPercentage || 50;
+            const patternShift = Math.abs(stage2AutoPercent - stage1AutoPercent);
             const hasContradiction = patternShift > 20;
 
             let title, description, contradictionText = '';
 
             if (hasContradiction) {
-                if (stage2AutoPercent > (stage1Data.analysis?.automaticPercentage || 50)) {
-                    contradictionText = `🔍 <strong>Pattern Shift Detected:</strong> When we asked deeper questions, your automatic responses increased from ${stage1Data.analysis?.automaticPercentage.toFixed(0)}% to ${stage2AutoPercent.toFixed(0)}%. This suggests you\'re more conscious in general situations but fall back to automatic patterns when specifics get challenging.`;
+                if (stage2AutoPercent > stage1AutoPercent) {
+                    // Became MORE automatic in Stage 2
+                    contradictionText = `🔍 <strong>Pattern Shift Detected:</strong> When we asked deeper questions, your automatic responses increased from ${stage1AutoPercent.toFixed(0)}% to ${stage2AutoPercent.toFixed(0)}%. This suggests you\'re more conscious in general situations but fall back to automatic patterns when specifics get challenging.`;
                 } else {
-                    contradictionText = `🔍 <strong>Interesting Pattern:</strong> Your conscious responses increased from ${stage1Data.analysis?.consciousPercentage.toFixed(0)}% to ${(100-stage2AutoPercent).toFixed(0)}%. The deeper questions actually revealed MORE consciousness. This suggests you have strong self-awareness but may struggle with how you describe your general tendencies.`;
+                    // Became LESS automatic (MORE conscious) in Stage 2
+                    const stage1Conscious = 100 - stage1AutoPercent;
+                    const stage2Conscious = 100 - stage2AutoPercent;
+                    contradictionText = `🔍 <strong>Interesting Pattern:</strong> Your conscious responses increased from ${stage1Conscious.toFixed(0)}% to ${stage2Conscious.toFixed(0)}%. The deeper questions revealed MORE consciousness, suggesting you have strong self-awareness that shows up more when facing specific situations.`;
                 }
             }
 
