@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete OCEAN Behavioral Analysis | Thrive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0A0E1A 0%, #0F172A 50%, #1E293B 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+            font-size: 2.2rem;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .question-card {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #FFD700;
+        }
+
+        .question-number {
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .question-text {
+            color: #1a1a2e;
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .option {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .option:hover {
+            border-color: #FFD700;
+            background: #f0f4ff;
+        }
+
+        .option input[type="radio"] {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .option input[type="radio"]:checked {
+            background: #FFD700;
+            border-color: #FFD700;
+            box-shadow: inset 0 0 0 3px white;
+        }
+
+        .option.selected {
+            border-color: #FFD700;
+            background: #f0f4ff;
+        }
+
+        .option-text {
+            flex: 1;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700, #FFED4A);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #FFD700, #FFED4A);
+            color: #0A0E1A;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 2rem;
+            transition: transform 0.2s ease;
+        }
+
+        .button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .results-container {
+            display: none;
+        }
+
+        .results-container.active {
+            display: block;
+        }
+
+        .dimension-result {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .dimension-name {
+            font-size: 1.4rem;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .dimension-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .dimension-score {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .score-bar {
+            flex: 1;
+            height: 28px;
+            background: #e0e0e0;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .score-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700, #FFED4A);
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: #0A0E1A;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .interpretation {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 8px;
+            border-left: 4px solid #FFD700;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        #intro-screen, #questions-screen {
+            display: block;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .recommendation-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .recommendation-box h3 {
+            color: #f57c00;
+            margin-bottom: 1rem;
+        }
+
+        .recommendation-item {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .recommendation-item:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #ffc107;
+            font-weight: bold;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+            margin-bottom: 2rem;
+        }
+
+        .info-box h3 {
+            color: #1565c0;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-box p {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .question-text {
+                font-size: 1.05rem;
+            }
+
+            .meta-info {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="intro-screen">
+            <h1>Complete OCEAN Behavioral Analysis</h1>
+            <p class="subtitle">Explore how you think, feel, and behave across all life domains - work, relationships, personal growth, and wellbeing.</p>
+
+            <div class="meta-info">
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>15-25 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>60 scenarios</span>
+                </div>
+                <div class="meta-item">
+                    <span>🎯</span>
+                    <span>Non-diagnostic</span>
+                </div>
+                <div class="meta-item">
+                    <span>🔒</span>
+                    <span>Privacy-protected</span>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>How it works:</h3>
+                <p>• Read each scenario and choose the response that best matches your natural behavior</p>
+                <p>• There are no right or wrong answers - be honest about how you actually act, not how you think you should</p>
+                <p>• You'll get insights across 5 personality dimensions: Openness, Conscientiousness, Extraversion, Agreeableness, and Emotional Stability</p>
+                <p>• Your responses create a rich profile of your behavioral patterns across relationships, work, and personal life</p>
+            </div>
+
+            <div class="info-box" style="background: #f3e5f5; border-color: #9c27b0;">
+                <h3 style="color: #6a1b9a;">Privacy Note:</h3>
+                <p>Some questions relate to workplace patterns and may be shared with employers (in aggregated form only, never individually). Personal questions about relationships, emotions, and family remain completely private to you.</p>
+            </div>
+
+            <button class="button" onclick="startAssessment()">Begin Assessment</button>
+        </div>
+
+        <div id="questions-screen" class="hidden">
+            <div class="progress-text">Question <span id="current-q">0</span> of 60</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+
+            <div id="questions-container"></div>
+
+            <button class="button" id="submit-btn" onclick="calculateResults()" disabled>Complete Assessment</button>
+        </div>
+
+        <div id="results-screen" class="results-container">
+            <h1>Your Complete OCEAN Personality Profile</h1>
+            <p class="subtitle">Based on your responses across 60 different life scenarios, here's what your behavioral patterns reveal.</p>
+
+            <div id="results-container"></div>
+
+            <div class="recommendation-box">
+                <h3>Personalized Recommendations</h3>
+                <div id="recommendations"></div>
+            </div>
+
+            <button class="button" onclick="location.reload()">Retake Assessment</button>
+        </div>
+    </div>
+
+    <script>
+        let questions = [];
+        let responses = {};
+
+        async function loadQuestions() {
+            const response = await fetch('questions.json');
+            const data = await response.json();
+            questions = data.questions;
+            return data;
+        }
+
+        function startAssessment() {
+            document.getElementById('intro-screen').classList.add('hidden');
+            document.getElementById('questions-screen').classList.remove('hidden');
+            renderQuestions();
+            updateProgress();
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = '';
+
+            questions.forEach((q, index) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.innerHTML = `
+                    <div class="question-number">Question ${index + 1} of 60</div>
+                    <div class="question-text">${q.text}</div>
+                    <div class="options-container">
+                        ${q.options.map(opt => `
+                            <label class="option" onclick="selectOption(this, '${q.id}', ${opt.value})">
+                                <input type="radio"
+                                       name="${q.id}"
+                                       value="${opt.value}">
+                                <span class="option-text">${opt.text}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function selectOption(labelElement, questionId, value) {
+            // Remove selected class from all options in this question
+            const allOptions = labelElement.parentElement.querySelectorAll('.option');
+            allOptions.forEach(opt => opt.classList.remove('selected'));
+
+            // Add selected class to clicked option
+            labelElement.classList.add('selected');
+
+            // Store response
+            responses[questionId] = value;
+            updateProgress();
+            checkCompletion();
+        }
+
+        function updateProgress() {
+            const answered = Object.keys(responses).length;
+            const total = questions.length;
+            const percent = (answered / total) * 100;
+
+            document.getElementById('progress-fill').style.width = percent + '%';
+            document.getElementById('current-q').textContent = answered;
+        }
+
+        function checkCompletion() {
+            const allAnswered = questions.every(q => responses[q.id] !== undefined);
+            document.getElementById('submit-btn').disabled = !allAnswered;
+        }
+
+        async function calculateResults() {
+            const data = await loadQuestions();
+            const dimensions = {};
+
+            // Calculate scores for each dimension
+            data.scoring.dimensions.forEach(dim => {
+                let total = 0;
+                let count = 0;
+
+                dim.questions.forEach(qId => {
+                    const question = questions.find(q => q.id === qId);
+                    let score = responses[qId];
+
+                    // Reverse score if needed
+                    if (question && question.reverse_scored) {
+                        score = 5 - score; // Convert 1->4, 2->3, 3->2, 4->1
+                    }
+
+                    total += score;
+                    count++;
+                });
+
+                const avgScore = total / count;
+                const percentile = ((avgScore - 1) / 3) * 100; // Convert 1-4 scale to 0-100%
+
+                dimensions[dim.name] = {
+                    score: avgScore.toFixed(1),
+                    percentile: Math.round(percentile),
+                    description: dim.description,
+                    interpretation: getInterpretation(percentile, dim.interpretation)
+                };
+            });
+
+            displayResults(dimensions);
+        }
+
+        function getInterpretation(percentile, interp) {
+            if (percentile >= 65) return interp.high;
+            if (percentile >= 35) return interp.medium;
+            return interp.low;
+        }
+
+        function displayResults(dimensions) {
+            document.getElementById('questions-screen').classList.add('hidden');
+            document.getElementById('results-screen').classList.add('active');
+
+            const container = document.getElementById('results-container');
+            container.innerHTML = '';
+
+            // Display in OCEAN order
+            const dimensionOrder = ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Emotional Stability'];
+
+            dimensionOrder.forEach(name => {
+                const data = dimensions[name];
+                if (!data) return;
+
+                const dimDiv = document.createElement('div');
+                dimDiv.className = 'dimension-result';
+                dimDiv.innerHTML = `
+                    <div class="dimension-name">${name}</div>
+                    <div class="dimension-description">${data.description}</div>
+                    <div class="dimension-score">
+                        <div class="score-bar">
+                            <div class="score-fill" style="width: ${data.percentile}%">
+                                ${data.percentile}%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="interpretation">${data.interpretation}</div>
+                `;
+                container.appendChild(dimDiv);
+            });
+
+            generateRecommendations(dimensions);
+        }
+
+        function generateRecommendations(dimensions) {
+            const container = document.getElementById('recommendations');
+            const sortedDims = Object.entries(dimensions).sort((a, b) => b[1].percentile - a[1].percentile);
+
+            const recommendations = [];
+
+            // Top strength
+            const topStrength = sortedDims[0];
+            if (topStrength[1].percentile > 65) {
+                recommendations.push(`Leverage your high ${topStrength[0]} - this is a core strength that can guide your personal and professional growth`);
+            }
+
+            // Development area
+            const lowestDim = sortedDims[sortedDims.length - 1];
+            if (lowestDim[1].percentile < 40) {
+                recommendations.push(`Explore resources for developing ${lowestDim[0]} - small changes in this area could significantly enhance your wellbeing`);
+            }
+
+            // Specific dimension-based recommendations
+            if (dimensions['Emotional Stability'] && dimensions['Emotional Stability'].percentile < 40) {
+                recommendations.push('Consider stress management resources like ClearMinds, mindfulness practices, or coaching support');
+            }
+
+            if (dimensions['Openness'] && dimensions['Openness'].percentile > 65) {
+                recommendations.push('Your curiosity and creativity are assets - seek out novel experiences and challenging ideas');
+            }
+
+            if (dimensions['Conscientiousness'] && dimensions['Conscientiousness'].percentile > 65) {
+                recommendations.push('Your discipline and organization help you excel - ensure you also make space for spontaneity and flexibility');
+            }
+
+            if (dimensions['Extraversion'] && dimensions['Extraversion'].percentile > 65) {
+                recommendations.push('Your social energy is a gift - consider leadership roles or collaborative projects where you can energize others');
+            }
+
+            if (dimensions['Agreeableness'] && dimensions['Agreeableness'].percentile < 40) {
+                recommendations.push('Your directness and boundary-setting are strengths - balance them with empathy when building long-term relationships');
+            }
+
+            // Balance recommendation
+            const range = sortedDims[0][1].percentile - sortedDims[sortedDims.length - 1][1].percentile;
+            if (range < 30) {
+                recommendations.push('Your balanced profile shows versatility across dimensions - you can adapt your approach to different situations');
+            }
+
+            container.innerHTML = recommendations.map(r =>
+                `<div class="recommendation-item">${r}</div>`
+            ).join('');
+        }
+
+        // Load questions on page load
+        loadQuestions();
+    </script>
+</body>
+</html>

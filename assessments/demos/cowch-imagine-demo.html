@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cowch IMAGINE Framework - Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #333;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .chat-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            min-height: 400px;
+        }
+
+        .message {
+            margin-bottom: 1.5rem;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.assistant {
+            text-align: left;
+        }
+
+        .message.user {
+            text-align: right;
+        }
+
+        .message-bubble {
+            display: inline-block;
+            padding: 1rem 1.5rem;
+            border-radius: 18px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .message.assistant .message-bubble {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .message.user .message-bubble {
+            background: #667eea;
+            color: white;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .option-btn {
+            background: white;
+            border: 2px solid #e0e0e0;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .option-btn:hover {
+            border-color: #667eea;
+            background: #f8f8ff;
+            transform: translateX(5px);
+        }
+
+        .follow-up {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 8px;
+            font-style: italic;
+        }
+
+        .reflection-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            margin-top: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .continue-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .continue-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .results {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .dimension-score {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .dimension-score:last-child {
+            border-bottom: none;
+        }
+
+        .dimension-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .score-bar {
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .score-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 0.75rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .interpretation {
+            color: #666;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+        }
+
+        .recommendations {
+            background: #f8f8ff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .recommendations h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .recommendation {
+            background: white;
+            border-left: 4px solid #667eea;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+
+        .recommendation strong {
+            color: #667eea;
+        }
+
+        .progress {
+            text-align: center;
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .metadata {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1rem;
+            color: white;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .metadata strong {
+            color: #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Cowch IMAGINE Framework</h1>
+            <p>Chat-based wellness assessment using Mandy's framework</p>
+        </div>
+
+        <div class="progress" id="progress"></div>
+
+        <div class="chat-container" id="chat-container">
+            <!-- Questions will appear here -->
+        </div>
+
+        <div class="metadata">
+            <strong>🔒 Privacy Note:</strong> This is a personal wellness assessment. Your responses are private and never shared with employers.
+            This demo runs entirely in your browser - no data is sent to any server.
+        </div>
+    </div>
+
+    <script src="../engines/generic-assessment-engine.js"></script>
+    <script>
+        // Load assessment JSON
+        let assessmentEngine;
+        let currentQuestion;
+        let totalQuestions;
+
+        // Initialize assessment
+        async function initAssessment() {
+            try {
+                const response = await fetch('../content/cowch-imagine-schema.json');
+                const assessmentData = await response.json();
+
+                assessmentEngine = new GenericAssessmentEngine(assessmentData);
+                totalQuestions = assessmentData.questions.length;
+
+                showNextQuestion();
+            } catch (error) {
+                console.error('Error loading assessment:', error);
+                document.getElementById('chat-container').innerHTML = `
+                    <div class="message assistant">
+                        <div class="message-bubble">
+                            Sorry, there was an error loading the assessment. Please refresh and try again.
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function showNextQuestion() {
+            currentQuestion = assessmentEngine.getNextQuestion();
+
+            if (!currentQuestion) {
+                // Assessment complete
+                showResults();
+                return;
+            }
+
+            updateProgress();
+            displayQuestion(currentQuestion);
+        }
+
+        function updateProgress() {
+            const answered = assessmentEngine.responses.length;
+            const progress = Math.round((answered / totalQuestions) * 100);
+            document.getElementById('progress').textContent =
+                `Question ${answered + 1} of ${totalQuestions} (${progress}% complete)`;
+        }
+
+        function displayQuestion(question) {
+            const chatContainer = document.getElementById('chat-container');
+
+            // Add question message
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message assistant';
+            messageDiv.innerHTML = `
+                <div class="message-bubble">${question.text}</div>
+            `;
+            chatContainer.appendChild(messageDiv);
+
+            // Add options
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options';
+
+            question.options.forEach(option => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = option.text;
+                btn.onclick = () => selectOption(question.id, option);
+                optionsDiv.appendChild(btn);
+            });
+
+            chatContainer.appendChild(optionsDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function selectOption(questionId, option) {
+            // Record response
+            const result = assessmentEngine.recordResponse(questionId, option.id);
+
+            // Show user's selected answer
+            const chatContainer = document.getElementById('chat-container');
+
+            // Remove options
+            const optionsDiv = chatContainer.querySelector('.options');
+            if (optionsDiv) optionsDiv.remove();
+
+            // Show user's choice
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user';
+            userMessage.innerHTML = `
+                <div class="message-bubble">${option.text}</div>
+            `;
+            chatContainer.appendChild(userMessage);
+
+            // Show follow-up if exists
+            if (result.followUp) {
+                setTimeout(() => {
+                    const followUpDiv = document.createElement('div');
+                    followUpDiv.className = 'message assistant';
+                    followUpDiv.innerHTML = `
+                        <div class="message-bubble">
+                            <div class="follow-up">${result.followUp}</div>
+                        </div>
+                    `;
+                    chatContainer.appendChild(followUpDiv);
+
+                    if (result.needsReflection) {
+                        showReflectionInput(questionId);
+                    } else {
+                        setTimeout(showNextQuestion, 1500);
+                    }
+
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                }, 500);
+            } else {
+                setTimeout(showNextQuestion, 1000);
+            }
+        }
+
+        function showReflectionInput(questionId) {
+            const chatContainer = document.getElementById('chat-container');
+
+            const reflectionDiv = document.createElement('div');
+            reflectionDiv.innerHTML = `
+                <textarea class="reflection-input" placeholder="Take a moment to reflect... (optional)" id="reflection-${questionId}"></textarea>
+                <button class="continue-btn" onclick="continueAfterReflection('${questionId}')">Continue</button>
+            `;
+            chatContainer.appendChild(reflectionDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function continueAfterReflection(questionId) {
+            const reflectionText = document.getElementById(`reflection-${questionId}`).value;
+
+            if (reflectionText) {
+                // Store reflection with response
+                const lastResponse = assessmentEngine.responses[assessmentEngine.responses.length - 1];
+                lastResponse.reflectionText = reflectionText;
+            }
+
+            showNextQuestion();
+        }
+
+        function showResults() {
+            const results = assessmentEngine.getResults();
+            const chatContainer = document.getElementById('chat-container');
+
+            // Clear chat
+            chatContainer.innerHTML = '';
+
+            // Show completion message
+            const completionMsg = document.createElement('div');
+            completionMsg.className = 'message assistant';
+            completionMsg.innerHTML = `
+                <div class="message-bubble">
+                    🎉 Assessment complete! Here's what we discovered about your IMAGINE profile...
+                </div>
+            `;
+            chatContainer.appendChild(completionMsg);
+
+            // Show results
+            const resultsDiv = document.createElement('div');
+            resultsDiv.className = 'results';
+            resultsDiv.innerHTML = `
+                <h2 style="color: #667eea; margin-bottom: 1.5rem;">Your IMAGINE Profile</h2>
+                ${Object.entries(results.interpretations).map(([dimension, data]) => `
+                    <div class="dimension-score">
+                        <div class="dimension-name">${data.dimensionName}</div>
+                        <div class="score-bar">
+                            <div class="score-fill" style="width: ${data.score}%">
+                                ${data.score}/100
+                            </div>
+                        </div>
+                        <div class="interpretation">${data.interpretation}</div>
+                    </div>
+                `).join('')}
+            `;
+            chatContainer.appendChild(resultsDiv);
+
+            // Show recommendations
+            if (results.recommendations.length > 0) {
+                const recsDiv = document.createElement('div');
+                recsDiv.className = 'recommendations';
+                recsDiv.innerHTML = `
+                    <h3>Recommended Next Steps</h3>
+                    ${results.recommendations.map(rec => `
+                        <div class="recommendation">
+                            <strong>${rec.provider}:</strong> ${rec.programme || rec.coachType}
+                            <div style="margin-top: 0.5rem; color: #666;">${rec.description || rec.reason}</div>
+                        </div>
+                    `).join('')}
+                `;
+                chatContainer.appendChild(recsDiv);
+            }
+
+            // Update progress
+            document.getElementById('progress').textContent = '✓ Assessment Complete';
+
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Start assessment on load
+        initAssessment();
+    </script>
+</body>
+</html>

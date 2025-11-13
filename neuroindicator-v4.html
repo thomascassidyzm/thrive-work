@@ -1254,21 +1254,33 @@
                 if (profile.oceanCandidate) {
                     resultsHTML += `
                         <div class="pathway-card" style="border: 2px solid var(--accent-teal); background: rgba(0, 212, 170, 0.08);">
-                            <h3>🎯 OCEAN Personality Assessment <span class="ocean-badge" style="background: var(--accent-teal); color: var(--bg-deep-blue);">Recommended</span></h3>
-                            <p>You mentioned wanting to understand yourself better. The OCEAN assessment is perfect for deep self-discovery.</p>
+                            <h3>🎯 OCEAN Workplace Wellness Assessment <span class="ocean-badge" style="background: var(--accent-teal); color: var(--bg-deep-blue);">Recommended For You</span></h3>
+                            <p>You mentioned wanting to understand yourself better. Our OCEAN assessment reveals your behavioral patterns through real workplace scenarios.</p>
 
-                            <h4>What You'll Discover:</h4>
+                            <h4 style="margin-top: 1.5rem;">What You'll Discover:</h4>
                             <ul>
-                                <li><strong>Openness</strong> - Your creativity and curiosity</li>
-                                <li><strong>Conscientiousness</strong> - Your organization style</li>
-                                <li><strong>Extraversion</strong> - How you recharge</li>
-                                <li><strong>Agreeableness</strong> - Your relationship patterns</li>
-                                <li><strong>Neuroticism</strong> - Your stress responses</li>
+                                <li><strong>Openness</strong> - How you approach new ideas and experiences</li>
+                                <li><strong>Conscientiousness</strong> - Your planning and follow-through style</li>
+                                <li><strong>Extraversion</strong> - How you recharge and engage with people</li>
+                                <li><strong>Agreeableness</strong> - Your approach to harmony vs. self-advocacy</li>
+                                <li><strong>Neuroticism</strong> - Your emotional regulation patterns</li>
                             </ul>
 
-                            <p style="margin-top: 1rem;"><strong>20-30 minutes • Insights you'll use for years</strong></p>
+                            <h4 style="margin-top: 1.5rem;">Plus: Your Complete Personal Profile</h4>
+                            <ul>
+                                <li>Behavioral patterns across work and personal life</li>
+                                <li>30-day action plan for conscious growth</li>
+                                <li>How home environment influences work energy</li>
+                                <li>Relationship and communication insights</li>
+                            </ul>
 
-                            <button class="btn btn-primary btn-block" style="margin-top: 1rem; background: var(--accent-teal);">Start OCEAN Assessment →</button>
+                            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(0, 0, 0, 0.2); border-radius: 8px; border-left: 3px solid var(--accent-teal);">
+                                <p style="margin: 0; font-size: 0.9rem;"><strong>🔒 Privacy Note:</strong> You see everything. Your employer only sees anonymized team patterns (10+ respondents required). Your personal insights stay private.</p>
+                            </div>
+
+                            <p style="margin-top: 1rem;"><strong>⏱️ 20-30 minutes • Insights you'll use for years</strong></p>
+
+                            <button class="btn btn-primary btn-block" onclick="app.startOceanAssessment()" style="margin-top: 1rem; background: var(--accent-teal);">Start OCEAN Assessment →</button>
                         </div>
                     `;
                 }
@@ -1387,6 +1399,20 @@
                 });
 
                 doc.save(`THRIVE-Wellness-Summary-${name.replace(/\s+/g, '-')}.pdf`);
+            },
+
+            // Start OCEAN Assessment
+            startOceanAssessment() {
+                // Store neuroindicator results in session storage for context
+                sessionStorage.setItem('thriveNeuroindicatorProfile', JSON.stringify({
+                    pathway: this.userProfile.pathway,
+                    wellness: this.userProfile.wellness,
+                    oceanCandidate: this.userProfile.oceanCandidate,
+                    timestamp: new Date().toISOString()
+                }));
+
+                // Navigate to OCEAN assessment start page
+                window.location.href = '/ocean-assessment.html';
             },
 
             // Restart assessment

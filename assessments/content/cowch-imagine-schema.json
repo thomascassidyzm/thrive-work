@@ -1,0 +1,264 @@
+{
+  "assessment": {
+    "id": "cowch-imagine-v1",
+    "name": "Cowch IMAGINE Framework Assessment",
+    "description": "Chat-based wellness assessment using Mandy's IMAGINE framework",
+    "version": "1.0.0",
+    "estimatedMinutes": 10,
+    "framework": "IMAGINE",
+    "author": "Mandy Lehto",
+    "sourceUrl": "https://thoughtsonlifeandlove.com/",
+
+    "frameworkDimensions": [
+      {
+        "id": "I",
+        "name": "Inspiration",
+        "description": "What inspires and motivates you"
+      },
+      {
+        "id": "M",
+        "name": "Mindset",
+        "description": "Your mental frameworks and beliefs"
+      },
+      {
+        "id": "A",
+        "name": "Action",
+        "description": "How you translate ideas into behavior"
+      },
+      {
+        "id": "G",
+        "name": "Growth",
+        "description": "Your capacity for learning and change"
+      },
+      {
+        "id": "I2",
+        "name": "Integration",
+        "description": "How you integrate experiences into identity"
+      },
+      {
+        "id": "N",
+        "name": "Nurture",
+        "description": "How you care for yourself and others"
+      },
+      {
+        "id": "E",
+        "name": "Evolution",
+        "description": "Your trajectory of personal development"
+      }
+    ]
+  },
+
+  "questions": [
+    {
+      "id": "IMAGINE-001",
+      "dimension": "I",
+      "category": "inspiration",
+      "text": "When you wake up in the morning, what typically gets you out of bed?",
+      "questionType": "chat-style",
+      "responseType": "multiple-choice-with-reflection",
+
+      "options": [
+        {
+          "id": "a",
+          "text": "A sense of duty or responsibility to others",
+          "pattern": "external_motivation",
+          "score": { "I": 0.3, "N": 0.7 },
+          "followUp": "What would happen if those responsibilities disappeared? What would you do then?"
+        },
+        {
+          "id": "b",
+          "text": "Excitement about projects or goals I'm working on",
+          "pattern": "intrinsic_motivation",
+          "score": { "I": 0.9, "A": 0.6 },
+          "followUp": "Tell me more about what excites you. What lights you up?"
+        },
+        {
+          "id": "c",
+          "text": "Honestly, mostly habit or necessity (bills to pay, etc.)",
+          "pattern": "survival_mode",
+          "score": { "I": 0.1, "M": 0.2 },
+          "followUp": "If money wasn't a concern, what would get you out of bed?"
+        },
+        {
+          "id": "d",
+          "text": "The possibility of what the day might bring",
+          "pattern": "openness_curiosity",
+          "score": { "I": 0.7, "G": 0.8 },
+          "followUp": "What's the best thing a day has brought you recently?"
+        }
+      ],
+
+      "privacySettings": {
+        "employerShareable": false,
+        "aggregationOnly": false,
+        "category": "personal_motivation"
+      }
+    },
+
+    {
+      "id": "IMAGINE-002",
+      "dimension": "M",
+      "category": "mindset",
+      "text": "When something goes wrong, what's your first thought?",
+      "questionType": "chat-style",
+      "responseType": "multiple-choice-with-reflection",
+
+      "conditionalDisplay": {
+        "previousAnswer": "IMAGINE-001",
+        "showIf": ["a", "c"],
+        "reason": "Exploring mindset patterns for those in duty/survival mode"
+      },
+
+      "options": [
+        {
+          "id": "a",
+          "text": "What did I do wrong? This is probably my fault.",
+          "pattern": "self_blame",
+          "score": { "M": 0.2, "N": 0.3 },
+          "flagForCoaching": true,
+          "coachingNote": "Pattern of negative self-attribution detected",
+          "followUp": "Is that always true? Can you think of a time when something went wrong and it genuinely wasn't about you?"
+        },
+        {
+          "id": "b",
+          "text": "What can I learn from this?",
+          "pattern": "growth_mindset",
+          "score": { "M": 0.9, "G": 0.8 },
+          "followUp": "Love that. What's something you've learned from a recent setback?"
+        },
+        {
+          "id": "c",
+          "text": "Why does this always happen to me?",
+          "pattern": "victim_mindset",
+          "score": { "M": 0.3, "E": 0.2 },
+          "flagForCoaching": true,
+          "coachingNote": "Possible victim narrative pattern",
+          "followUp": "I hear you. Does it really always happen, or does it just feel that way sometimes?"
+        },
+        {
+          "id": "d",
+          "text": "Okay, what's the next move?",
+          "pattern": "solution_focused",
+          "score": { "M": 0.7, "A": 0.9 },
+          "followUp": "That's powerful. How did you develop that ability to move forward?"
+        }
+      ],
+
+      "privacySettings": {
+        "employerShareable": false,
+        "aggregationOnly": false,
+        "category": "personal_mindset"
+      }
+    }
+  ],
+
+  "routingLogic": {
+    "type": "probabilistic-branching",
+    "description": "Questions adapt based on previous responses to deepen relevant areas",
+
+    "rules": [
+      {
+        "if": {
+          "question": "IMAGINE-001",
+          "selectedOption": ["a", "c"]
+        },
+        "then": {
+          "prioritize": ["mindset-questions", "nurture-questions"],
+          "reason": "External motivation or survival mode suggests need for self-care exploration"
+        }
+      },
+      {
+        "if": {
+          "question": "IMAGINE-002",
+          "selectedOption": ["a", "c"],
+          "and": {
+            "question": "IMAGINE-001",
+            "selectedOption": ["a", "c"]
+          }
+        },
+        "then": {
+          "flagForCoaching": "high-priority",
+          "recommendedModality": "human-coach-conversation",
+          "reason": "Negative self-attribution + external motivation suggests coaching support needed"
+        }
+      }
+    ]
+  },
+
+  "scoringAlgorithm": {
+    "type": "weighted-dimensional",
+    "description": "Each dimension scored 0-100 based on response patterns",
+
+    "dimensions": {
+      "I": {
+        "name": "Inspiration",
+        "calculation": "weighted-average-of-I-scores",
+        "interpretation": {
+          "0-30": "Struggling to find intrinsic motivation - may benefit from values exploration",
+          "31-60": "Mixed motivation patterns - some intrinsic, some external",
+          "61-100": "Strong intrinsic motivation and sense of purpose"
+        }
+      },
+      "M": {
+        "name": "Mindset",
+        "calculation": "weighted-average-of-M-scores",
+        "interpretation": {
+          "0-30": "Fixed or negative mindset patterns - growth mindset training recommended",
+          "31-60": "Situation-dependent mindset - some growth orientation",
+          "61-100": "Strong growth mindset and solution-focused thinking"
+        }
+      }
+    }
+  },
+
+  "resultActions": {
+    "recommendations": [
+      {
+        "if": {
+          "dimension": "I",
+          "score": "0-30"
+        },
+        "recommend": {
+          "type": "content",
+          "provider": "Cowch.app",
+          "programme": "Values Exploration Chat Series",
+          "duration": "7 days",
+          "description": "Daily chat-based prompts to uncover what truly matters to you"
+        }
+      },
+      {
+        "if": {
+          "dimension": "M",
+          "score": "0-30",
+          "and": {
+            "flagForCoaching": true
+          }
+        },
+        "recommend": {
+          "type": "coaching",
+          "provider": "Broadbanc",
+          "coachType": "Consciousness Coach",
+          "reason": "Negative mindset patterns + self-blame suggest need for deeper work"
+        }
+      }
+    ]
+  },
+
+  "privacyModel": {
+    "employeeAccess": "full",
+    "employerAccess": "none",
+    "aggregationRules": {
+      "minimumRespondents": 10,
+      "sharedMetrics": ["engagement-rate", "completion-rate", "satisfaction-score"],
+      "neverShared": ["individual-responses", "dimensional-scores", "coaching-flags"]
+    }
+  },
+
+  "metadata": {
+    "exportFormat": "json",
+    "versionControl": true,
+    "lastUpdated": "2025-01-13",
+    "compatibleWith": ["any-chat-interface", "web-app", "mobile-app", "slack-bot"],
+    "requiredFeatures": ["conditional-logic", "follow-up-prompts", "scoring-engine"]
+  }
+}

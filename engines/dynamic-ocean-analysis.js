@@ -1,6 +1,12 @@
 // DYNAMIC OCEAN ANALYSIS ENGINE
 // Progressive Big Five profiling with behavioral predictions and action algorithms
 // "You as a verb, not a noun" - dynamic behavioral tendencies, not fixed traits
+//
+// 🔒 PRIVACY-AWARE: Tracks employerShareable vs personal patterns
+// Employee gets: EVERYTHING (full OCEAN profile, personal insights, action plan)
+// Employer gets: Aggregated workplace patterns only (k>10 required)
+
+import { k10Enforcement } from '../config/question-privacy-schema.js';
 
 class DynamicOceanAnalysis {
     constructor() {
@@ -54,16 +60,23 @@ class DynamicOceanAnalysis {
     }
 
     // Generate progressive OCEAN analysis based on responses
+    // 🔒 PRIVACY: This generates INDIVIDUAL results - employee-only access
     analyzeBehavioralTendencies(responses) {
         console.log('🌊 Generating Dynamic OCEAN Analysis...');
-        
+
         const oceanScores = { O: 0, C: 0, E: 0, A: 0, N: 0 };
         const patternCounts = {};
         const responseCount = responses.length;
-        
+
+        // Separate workplace vs personal patterns for privacy tracking
+        const workplacePatterns = {};
+        const personalPatterns = {};
+
         // Calculate raw OCEAN scores from responses
         responses.forEach(response => {
             const patternType = response.selectedOption.pattern_type;
+            const isWorkplaceShareable = response.question?.dataAccess?.employerShareable === true;
+
             if (patternType && this.oceanMapping[patternType]) {
                 const mapping = this.oceanMapping[patternType];
                 oceanScores.O += mapping.O;
@@ -71,8 +84,15 @@ class DynamicOceanAnalysis {
                 oceanScores.E += mapping.E;
                 oceanScores.A += mapping.A;
                 oceanScores.N += mapping.N;
-                
+
                 patternCounts[patternType] = (patternCounts[patternType] || 0) + 1;
+
+                // Track workplace vs personal patterns separately
+                if (isWorkplaceShareable) {
+                    workplacePatterns[patternType] = (workplacePatterns[patternType] || 0) + 1;
+                } else {
+                    personalPatterns[patternType] = (personalPatterns[patternType] || 0) + 1;
+                }
             }
         });
         
@@ -87,16 +107,190 @@ class DynamicOceanAnalysis {
         
         // Generate action algorithms
         const actionAlgorithms = this.generateActionAlgorithms(oceanPercentiles, patternCounts);
-        
+
+        // Analyze home→work influence (employee gets full details)
+        const homeWorkInfluence = this.analyzeHomeWorkInfluence(responses);
+
         return {
+            // FULL INDIVIDUAL RESULTS (employee-only)
             oceanPercentiles,
             confidence,
             behavioralPredictions,
             actionAlgorithms,
             rawScores: oceanScores,
             responseCount,
-            progressiveInsight: this.generateProgressiveInsight(oceanPercentiles, confidence, responseCount)
+            progressiveInsight: this.generateProgressiveInsight(oceanPercentiles, confidence, responseCount),
+
+            // PRIVACY-SEPARATED PATTERNS
+            patternBreakdown: {
+                all: patternCounts,              // All patterns (employee sees this)
+                workplace: workplacePatterns,    // Workplace-shareable patterns
+                personal: personalPatterns       // Personal-only patterns
+            },
+
+            // HOME→WORK INFLUENCE (full details for employee)
+            homeWorkInfluence,
+
+            // METADATA
+            privacyContext: {
+                totalResponses: responseCount,
+                workplaceResponses: Object.values(workplacePatterns).reduce((a, b) => a + b, 0),
+                personalResponses: Object.values(personalPatterns).reduce((a, b) => a + b, 0),
+                dataAccess: {
+                    employee: 'full',  // Employee sees everything
+                    employer: 'aggregated_workplace_only'  // Employer sees aggregated workplace patterns (k>10)
+                }
+            }
         };
+    }
+
+    /**
+     * Generate employer-safe aggregated view
+     * 🔒 PRIVACY: Only workplace patterns, only if k>10
+     */
+    generateEmployerAggregatedView(allResponses, teamSize) {
+        // Validate k>10 requirement
+        const accessCheck = k10Enforcement.validateAccess({ respondentCount: teamSize });
+        if (!accessCheck.allowed) {
+            return {
+                error: 'PRIVACY_THRESHOLD_NOT_MET',
+                reason: accessCheck.reason,
+                message: accessCheck.employerMessage,
+                minimumRequired: k10Enforcement.MINIMUM_RESPONDENTS,
+                currentCount: teamSize
+            };
+        }
+
+        // Filter to only workplace-shareable responses
+        const workplaceResponses = allResponses.filter(r =>
+            r.question?.dataAccess?.employerShareable === true
+        );
+
+        // Calculate aggregated workplace patterns
+        const workplacePatternCounts = {};
+        workplaceResponses.forEach(response => {
+            const pattern = response.selectedOption?.pattern_type;
+            if (pattern) {
+                workplacePatternCounts[pattern] = (workplacePatternCounts[pattern] || 0) + 1;
+            }
+        });
+
+        // Convert to percentages
+        const patternPercentages = {};
+        Object.keys(workplacePatternCounts).forEach(pattern => {
+            patternPercentages[pattern] = {
+                count: workplacePatternCounts[pattern],
+                percentage: Math.round((workplacePatternCounts[pattern] / teamSize) * 100),
+                description: this.getPatternDescription(pattern)
+            };
+        });
+
+        // Generate workplace insights (aggregated only)
+        const workplaceInsights = this.generateWorkplaceInsights(patternPercentages, teamSize);
+
+        // Calculate home→work influence percentages (aggregated only)
+        const homeWorkInfluenceAggregated = this.aggregateHomeWorkInfluence(allResponses, teamSize);
+        workplaceInsights.homeWorkInfluence = homeWorkInfluenceAggregated;
+
+        return {
+            respondentCount: teamSize,
+            privacyThresholdMet: true,
+            minimumRequired: k10Enforcement.MINIMUM_RESPONDENTS,
+
+            // Aggregated workplace patterns (%)
+            patternDistribution: patternPercentages,
+
+            // Team-level insights (including home→work %)
+            workplaceInsights,
+
+            // What employer CANNOT see
+            individualScores: 'PROTECTED',
+            personalPatterns: 'PROTECTED',
+            specificResponses: 'PROTECTED',
+
+            // Metadata
+            timestamp: new Date().toISOString(),
+            privacyNote: 'Individual employee data is protected. Only aggregated workplace patterns shown (minimum 10 respondents).'
+        };
+    }
+
+    /**
+     * Get human-readable description of a pattern
+     */
+    getPatternDescription(patternType) {
+        const descriptions = {
+            'curious_explorer': 'Seeks new perspectives and approaches',
+            'harmony_keeper': 'Prioritizes group harmony',
+            'direct_communicator': 'Addresses issues head-on',
+            'problem_solver': 'Focuses on finding solutions',
+            'boundary_setter': 'Maintains clear boundaries',
+            'people_pleaser': 'Prioritizes others\' needs over own',
+            'conflict_avoider': 'Prefers to avoid tense situations',
+            'social_networker': 'Energized by social interaction',
+            'peacemaker': 'Mediates conflicts between others',
+            // Add more as needed
+        };
+        return descriptions[patternType] || patternType.replace(/_/g, ' ');
+    }
+
+    /**
+     * Generate workplace-specific insights from aggregated data
+     */
+    generateWorkplaceInsights(patternPercentages, teamSize) {
+        const insights = {
+            teamDynamics: [],
+            culturalIndicators: [],
+            riskFactors: [],
+            strengths: []
+        };
+
+        // Analyze conflict patterns
+        const conflictAvoidance = (patternPercentages['conflict_avoider']?.percentage || 0);
+        const directCommunication = (patternPercentages['direct_communicator']?.percentage || 0);
+
+        if (conflictAvoidance > 40) {
+            insights.riskFactors.push({
+                indicator: 'High conflict avoidance',
+                percentage: conflictAvoidance,
+                implication: 'Team may struggle with addressing tensions directly',
+                recommendation: 'Consider psychological safety training and clear conflict resolution processes'
+            });
+        }
+
+        if (directCommunication > 50) {
+            insights.strengths.push({
+                indicator: 'Strong direct communication',
+                percentage: directCommunication,
+                implication: 'Team addresses issues openly',
+                benefit: 'Likely to resolve problems efficiently'
+            });
+        }
+
+        // Analyze harmony vs authenticity balance
+        const harmonyKeeping = (patternPercentages['harmony_keeper']?.percentage || 0);
+        const boundarySetting = (patternPercentages['boundary_setter']?.percentage || 0);
+
+        if (harmonyKeeping > boundarySetting * 2) {
+            insights.culturalIndicators.push({
+                indicator: 'Strong harmony preference',
+                ratio: `${harmonyKeeping}% harmony vs ${boundarySetting}% boundaries`,
+                implication: 'Culture may suppress authentic disagreement',
+                consideration: 'May need to explicitly encourage diverse perspectives'
+            });
+        }
+
+        // Analyze people-pleasing patterns
+        const peoplePleasing = (patternPercentages['people_pleaser']?.percentage || 0);
+        if (peoplePleasing > 30) {
+            insights.riskFactors.push({
+                indicator: 'Elevated people-pleasing',
+                percentage: peoplePleasing,
+                implication: 'Team members may struggle with boundary-setting',
+                recommendation: 'Support programs for assertiveness and self-advocacy'
+            });
+        }
+
+        return insights;
     }
     
     // Convert raw scores to percentiles with realistic distribution
@@ -286,21 +480,243 @@ class DynamicOceanAnalysis {
     
     generateGrowthAlgorithm(ocean, patterns) {
         const dominantPatterns = Object.keys(patterns).sort((a, b) => patterns[b] - patterns[a]).slice(0, 3);
-        
+
         let algorithm = "For personal growth, consider: ";
-        
+
         // Growth suggestions based on OCEAN profile
         if (ocean.O < 40) algorithm += "Experimenting with new approaches, ";
         if (ocean.C < 40) algorithm += "Building small organizational habits, ";
         if (ocean.E < 40) algorithm += "Gradually expanding social comfort zone, ";
         if (ocean.A < 40) algorithm += "Practicing collaborative approaches, ";
         if (ocean.N > 60) algorithm += "Developing stress resilience strategies, ";
-        
+
         algorithm += "while honoring your natural strengths.";
-        
+
         return algorithm;
     }
-    
+
+    /**
+     * Analyze home→work influence from responses
+     * 🔒 PRIVACY: Employee sees full details, employer sees % only (aggregated)
+     */
+    analyzeHomeWorkInfluence(responses) {
+        const homeWorkResponses = responses.filter(r =>
+            r.question?.category === 'home_work_influence' &&
+            r.selectedOption?.severity !== undefined &&
+            r.selectedOption?.severity !== null
+        );
+
+        if (homeWorkResponses.length === 0) {
+            return {};
+        }
+
+        const influence = {};
+        const categories = {
+            childcare: { key: 'childcare', label: 'Childcare Unpredictability' },
+            eldercare: { key: 'eldercare', label: 'Eldercare Responsibilities' },
+            financial: { key: 'financial', label: 'Financial Stress' },
+            relationships: { key: 'relationships', label: 'Relationship Stress' },
+            housing: { key: 'housing', label: 'Housing Concerns' },
+            commute: { key: 'commute', label: 'Commute Burden' }
+        };
+
+        homeWorkResponses.forEach(response => {
+            const severity = response.selectedOption.severity;
+            const questionId = response.question.id;
+
+            // Map question IDs to categories
+            let category = null;
+            if (questionId === 'HW001') category = 'childcare';
+            else if (questionId === 'HW002') category = 'eldercare';
+            else if (questionId === 'HW003') category = 'financial';
+            else if (questionId === 'HW004') category = 'relationships';
+            else if (questionId === 'HW005') category = 'housing';
+            else if (questionId === 'HW006') category = 'commute';
+
+            if (category && severity > 0) {
+                influence[category] = {
+                    severity,
+                    impact: this.getHomeWorkImpactMessage(category, severity),
+                    actionPlan: this.getHomeWorkActionPlan(category, severity)
+                };
+            }
+        });
+
+        return influence;
+    }
+
+    getHomeWorkImpactMessage(category, severity) {
+        const messages = {
+            childcare: [
+                'Childcare is stable and supportive',
+                'Childcare unpredictability is beginning to affect your work preparation',
+                'Childcare challenges are regularly affecting your work preparation',
+                'Childcare unpredictability is significantly affecting your work preparation'
+            ],
+            eldercare: [
+                'Eldercare responsibilities are manageable',
+                'Eldercare responsibilities are occasionally affecting your work energy',
+                'Eldercare responsibilities are regularly draining your work energy',
+                'Eldercare responsibilities are significantly draining your work energy'
+            ],
+            financial: [
+                'Financial situation is stable',
+                'Financial stress is occasionally affecting your focus at work',
+                'Financial stress is frequently affecting your focus at work',
+                'Financial stress is constantly affecting your focus at work'
+            ],
+            relationships: [
+                'Personal relationships are supportive',
+                'Relationship stress is occasionally affecting your work performance',
+                'Relationship stress is frequently affecting your work performance',
+                'Relationship stress is significantly affecting your work performance'
+            ],
+            housing: [
+                'Housing situation is stable',
+                'Housing concerns are beginning to affect your ability to show up fully',
+                'Housing concerns are regularly affecting your ability to show up fully',
+                'Housing concerns are critically affecting your ability to show up fully'
+            ],
+            commute: [
+                'Commute is manageable',
+                'Commute is slightly draining your work energy',
+                'Commute is significantly draining your work energy',
+                'Commute is severely draining your work energy'
+            ]
+        };
+
+        return messages[category]?.[severity] || 'Impact detected';
+    }
+
+    getHomeWorkActionPlan(category, severity) {
+        const plans = {
+            childcare: [
+                'Create backup childcare plan for emergencies',
+                'Discuss flexible work arrangements with manager',
+                'Build buffer time into morning routine',
+                'Connect with other working parents for support network'
+            ],
+            eldercare: [
+                'Research eldercare resources and support services',
+                'Discuss flexible schedule needs with manager',
+                'Set boundaries around emergency availability',
+                'Join eldercare support group for coping strategies'
+            ],
+            financial: [
+                'Connect with financial counseling resources',
+                'Create budget visibility system',
+                'Discuss pay timing or advance options with HR',
+                'Separate work hours from financial planning time'
+            ],
+            relationships: [
+                'Consider couples counseling or relationship support',
+                'Create boundaries between home stress and work time',
+                'Practice emotional regulation techniques',
+                'Connect with Employee Assistance Program (EAP) resources'
+            ],
+            housing: [
+                'Connect with housing assistance programs',
+                'Discuss pay advance or housing subsidy options',
+                'Research emergency housing resources',
+                'Create housing stability plan with counselor'
+            ],
+            commute: [
+                'Explore remote work options for some days',
+                'Research alternative commute routes',
+                'Create energizing commute routine (podcast, audiobook, meditation)',
+                'Discuss flexible start times to avoid peak traffic'
+            ]
+        };
+
+        return plans[category] || [];
+    }
+
+    /**
+     * Aggregate home→work influence for employer view
+     * 🔒 PRIVACY: Employer sees ONLY percentages, NOT individual details
+     */
+    aggregateHomeWorkInfluence(allResponses, teamSize) {
+        const homeWorkResponses = allResponses.filter(r =>
+            r.question?.category === 'home_work_influence' &&
+            r.question?.dataAccess?.aggregationOnly === true &&
+            r.selectedOption?.severity !== undefined &&
+            r.selectedOption?.severity !== null
+        );
+
+        if (homeWorkResponses.length === 0) {
+            return {};
+        }
+
+        // Count affected individuals by category
+        const categoryCounts = {};
+        const categoryLabels = {
+            'HW001': 'childcare',
+            'HW002': 'eldercare',
+            'HW003': 'financial',
+            'HW004': 'relationships',
+            'HW005': 'housing',
+            'HW006': 'commute'
+        };
+
+        homeWorkResponses.forEach(response => {
+            const questionId = response.question.id;
+            const severity = response.selectedOption.severity;
+            const category = categoryLabels[questionId];
+
+            if (category && severity > 0) {
+                if (!categoryCounts[category]) {
+                    categoryCounts[category] = {
+                        affectedCount: 0,
+                        totalResponses: 0
+                    };
+                }
+                categoryCounts[category].affectedCount++;
+            }
+
+            if (category) {
+                if (!categoryCounts[category]) {
+                    categoryCounts[category] = {
+                        affectedCount: 0,
+                        totalResponses: 0
+                    };
+                }
+                categoryCounts[category].totalResponses++;
+            }
+        });
+
+        // Convert to percentages with recommendations
+        const aggregated = {};
+        Object.keys(categoryCounts).forEach(category => {
+            const data = categoryCounts[category];
+            const percentage = Math.round((data.affectedCount / teamSize) * 100);
+
+            if (percentage > 0) {
+                aggregated[category] = {
+                    percentage,
+                    affectedCount: data.affectedCount,
+                    totalCount: teamSize,
+                    insight: `${percentage}% of team (${data.affectedCount}/${teamSize}) report ${category} affects work`,
+                    recommendation: this.getEmployerRecommendation(category, percentage)
+                };
+            }
+        });
+
+        return aggregated;
+    }
+
+    getEmployerRecommendation(category, percentage) {
+        const recommendations = {
+            childcare: percentage > 25 ? 'Consider childcare benefits or flexible scheduling policies' : 'Monitor childcare needs',
+            eldercare: percentage > 25 ? 'Consider eldercare support benefits or flexible scheduling' : 'Monitor eldercare support needs',
+            financial: percentage > 30 ? 'Consider financial wellness programs or pay structure review' : 'Ensure financial resources are communicated',
+            relationships: percentage > 20 ? 'Ensure EAP benefits are well-communicated and accessible' : 'Maintain EAP visibility',
+            housing: percentage > 15 ? 'Consider housing assistance benefits or pay structure adjustments' : 'Monitor housing stability',
+            commute: percentage > 30 ? 'Consider remote work flexibility or transit subsidies' : 'Monitor commute impact'
+        };
+
+        return recommendations[category] || 'Monitor and support as needed';
+    }
+
     // Generate progressive insight summary
     generateProgressiveInsight(oceanPercentiles, confidence, responseCount) {
         const confidencePercent = Math.round(confidence * 100);

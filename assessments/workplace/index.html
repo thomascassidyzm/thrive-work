@@ -12,101 +12,203 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #0A0E1A 0%, #0F172A 50%, #1E293B 100%);
+            color: #ffffff;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            backdrop-filter: blur(8px);
+            overflow-x: hidden;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #FFD700;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-10px) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         .container {
             max-width: 800px;
-            width: 90%;
-            max-height: 90vh;
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
-            animation: modalSlideIn 0.4s ease-out;
-        }
-
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .modal-header {
-            background: linear-gradient(135deg, #FFD700 0%, #FFED4A 100%);
-            color: #0A0E1A;
-            padding: 30px 40px 25px;
+            margin: 0 auto;
+            padding: 2rem;
             position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .modal-body {
-            padding: 40px;
-            overflow-y: auto;
-            max-height: calc(90vh - 120px);
+        .assessment-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            opacity: 0;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .assessment-card.fade-out {
+            animation: fadeOut 0.2s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; }
         }
 
         h1 {
-            color: #0A0E1A;
-            margin: 0;
-            padding-right: 40px;
-            font-size: 1.75rem;
-            font-weight: 700;
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FFD700, #FFED4A, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
         }
 
         .subtitle {
-            color: rgba(10, 14, 26, 0.8);
-            margin-top: 0.5rem;
-            line-height: 1.5;
-            font-size: 1rem;
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+            line-height: 1.6;
         }
 
         .meta-info {
             display: flex;
             gap: 2rem;
             margin-bottom: 2rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .meta-item {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: #666;
-            font-size: 0.9rem;
+            color: #c0c0c0;
+            font-size: 0.95rem;
+        }
+
+        .info-box {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-box h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .info-box p {
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .button {
+            background: linear-gradient(45deg, #FFD700, #FFED4A);
+            color: #000;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        }
+
+        .button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700, #FFED4A);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .progress-text {
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
 
         .question-card {
             margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-radius: 12px;
-            border-left: 4px solid #FFD700;
         }
 
         .question-number {
             color: #FFD700;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
         }
 
         .question-text {
-            color: #1a1a2e;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
             line-height: 1.6;
         }
 
@@ -119,16 +221,9 @@
 
         .scale-label {
             font-size: 0.85rem;
-            color: #666;
-            min-width: 120px;
-        }
-
-        .scale-label.start {
-            text-align: left;
-        }
-
-        .scale-label.end {
-            text-align: right;
+            color: #c0c0c0;
+            min-width: 100px;
+            text-align: center;
         }
 
         .scale-options {
@@ -138,18 +233,15 @@
             justify-content: center;
         }
 
-        .scale-option {
-            position: relative;
-        }
-
         .scale-option input[type="radio"] {
             appearance: none;
             width: 40px;
             height: 40px;
-            border: 2px solid #ddd;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.2s ease;
+            position: relative;
         }
 
         .scale-option input[type="radio"]:hover {
@@ -160,6 +252,7 @@
         .scale-option input[type="radio"]:checked {
             background: #FFD700;
             border-color: #FFD700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
         }
 
         .scale-option label {
@@ -172,73 +265,26 @@
             cursor: pointer;
         }
 
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #e0e0e0;
-            border-radius: 4px;
-            margin-bottom: 2rem;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #FFD700, #FFED4A);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .progress-text {
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .button {
-            background: linear-gradient(135deg, #FFD700, #FFED4A);
-            color: #0A0E1A;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 2rem;
-            transition: transform 0.2s ease;
-        }
-
-        .button:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
-        }
-
-        .button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .results-container {
-            display: none;
-        }
-
-        .results-container.active {
-            display: block;
-        }
-
         .dimension-result {
             margin-bottom: 2rem;
             padding: 1.5rem;
-            background: #f8f9fa;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .dimension-name {
             font-size: 1.3rem;
-            color: #1a1a2e;
+            color: #FFD700;
             margin-bottom: 0.5rem;
             font-weight: bold;
+        }
+
+        .dimension-description {
+            color: #c0c0c0;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
 
         .dimension-score {
@@ -251,7 +297,7 @@
         .score-bar {
             flex: 1;
             height: 24px;
-            background: #e0e0e0;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             overflow: hidden;
         }
@@ -264,73 +310,73 @@
             align-items: center;
             justify-content: flex-end;
             padding-right: 8px;
-            color: #0A0E1A;
+            color: #000;
             font-weight: bold;
             font-size: 0.9rem;
         }
 
-        .dimension-description {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
         .interpretation {
-            background: white;
+            background: rgba(255, 215, 0, 0.1);
             padding: 1rem;
             border-radius: 8px;
             border-left: 4px solid #FFD700;
-            color: #333;
+            color: #e0e0e0;
             line-height: 1.6;
         }
 
-        #intro-screen, #questions-screen {
-            display: block;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
         .recommendation-box {
-            background: #fff8e1;
-            border-left: 4px solid #ffc107;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
             padding: 1.5rem;
-            border-radius: 8px;
+            border-radius: 12px;
             margin-top: 2rem;
         }
 
         .recommendation-box h3 {
-            color: #f57c00;
+            color: #FFD700;
             margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
 
         .recommendation-item {
             margin-bottom: 0.75rem;
             padding-left: 1.5rem;
             position: relative;
+            color: #e0e0e0;
+            line-height: 1.6;
         }
 
         .recommendation-item:before {
             content: "→";
             position: absolute;
             left: 0;
-            color: #ffc107;
+            color: #FFD700;
             font-weight: bold;
+        }
+
+        .hidden {
+            display: none !important;
         }
 
         @media (max-width: 768px) {
             .container {
-                padding: 1.5rem;
+                padding: 1rem;
+            }
+
+            .assessment-card {
+                padding: 2rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
             }
 
             .scale-container {
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 1rem;
             }
 
             .scale-label {
-                text-align: center;
                 min-width: auto;
             }
 
@@ -342,13 +388,14 @@
     </style>
 </head>
 <body>
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+
     <div class="container">
-        <div id="intro-screen">
-            <div class="modal-header">
-                <h1>Workplace Patterns Assessment</h1>
-                <p class="subtitle">Understand your behavioral patterns at work - how you collaborate, communicate, and contribute to your team.</p>
-            </div>
-            <div class="modal-body">
+        <div class="assessment-card" id="intro-screen">
+            <h1>Workplace Patterns Assessment</h1>
+            <p class="subtitle">Understand your behavioral patterns at work - how you collaborate, communicate, and contribute to your team.</p>
+
             <div class="meta-info">
                 <div class="meta-item">
                     <span>⏱️</span>
@@ -364,19 +411,17 @@
                 </div>
             </div>
 
-            <div style="background: #e3f2fd; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #2196f3; margin-bottom: 2rem;">
-                <h3 style="color: #1565c0; margin-bottom: 0.5rem;">How it works:</h3>
-                <p style="color: #333; line-height: 1.6; margin-bottom: 0.5rem;">• Rate each statement from 1 (Strongly Disagree) to 5 (Strongly Agree)</p>
-                <p style="color: #333; line-height: 1.6; margin-bottom: 0.5rem;">• There are no right or wrong answers</p>
-                <p style="color: #333; line-height: 1.6;">• Trust your first instinct - it's usually the most accurate</p>
+            <div class="info-box">
+                <h3>How it works:</h3>
+                <p>• Rate each statement from 1 (Strongly Disagree) to 5 (Strongly Agree)</p>
+                <p>• There are no right or wrong answers</p>
+                <p>• Trust your first instinct - it's usually the most accurate</p>
             </div>
 
             <button class="button" onclick="startAssessment()">Begin Assessment</button>
-            </div>
         </div>
 
-        <div id="questions-screen" class="hidden">
-            <div class="modal-body">
+        <div class="assessment-card hidden" id="questions-screen">
             <div class="progress-text">Question <span id="current-q">1</span> of 20</div>
             <div class="progress-bar">
                 <div class="progress-fill" id="progress-fill"></div>
@@ -385,15 +430,12 @@
             <div id="questions-container"></div>
 
             <button class="button" id="submit-btn" onclick="calculateResults()" disabled>Complete Assessment</button>
-            </div>
         </div>
 
-        <div id="results-screen" class="results-container">
-            <div class="modal-header">
-                <h1>Your Workplace Behavioral Pattern</h1>
-                <p class="subtitle">Here's what your responses reveal about your work style and team dynamics.</p>
-            </div>
-            <div class="modal-body">
+        <div class="assessment-card hidden" id="results-screen">
+            <h1>Your Workplace Pattern</h1>
+            <p class="subtitle">Here's what your responses reveal about your work style and team dynamics.</p>
+
             <div id="results-container"></div>
 
             <div class="recommendation-box">
@@ -402,11 +444,25 @@
             </div>
 
             <button class="button" onclick="location.reload()">Retake Assessment</button>
-            </div>
         </div>
     </div>
 
     <script>
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
         let questions = [];
         let responses = {};
 
@@ -418,9 +474,15 @@
         }
 
         function startAssessment() {
-            document.getElementById('intro-screen').classList.add('hidden');
-            document.getElementById('questions-screen').classList.remove('hidden');
-            renderQuestions();
+            const intro = document.getElementById('intro-screen');
+            const questionsScreen = document.getElementById('questions-screen');
+
+            intro.classList.add('fade-out');
+            setTimeout(() => {
+                intro.classList.add('hidden');
+                questionsScreen.classList.remove('hidden');
+                renderQuestions();
+            }, 200);
         }
 
         function renderQuestions() {
@@ -434,10 +496,10 @@
                     <div class="question-number">Question ${index + 1}</div>
                     <div class="question-text">${q.text}</div>
                     <div class="scale-container">
-                        <div class="scale-label start">Strongly<br>Disagree</div>
+                        <div class="scale-label">Strongly<br>Disagree</div>
                         <div class="scale-options">
                             ${[1, 2, 3, 4, 5].map(val => `
-                                <div class="scale-option">
+                                <div class="scale-option" style="position: relative;">
                                     <label for="${q.id}_${val}">${val}</label>
                                     <input type="radio"
                                            id="${q.id}_${val}"
@@ -447,7 +509,7 @@
                                 </div>
                             `).join('')}
                         </div>
-                        <div class="scale-label end">Strongly<br>Agree</div>
+                        <div class="scale-label">Strongly<br>Agree</div>
                     </div>
                 `;
                 container.appendChild(card);
@@ -478,7 +540,6 @@
             const data = await loadQuestions();
             const dimensions = {};
 
-            // Calculate scores for each dimension
             data.scoring.dimensions.forEach(dim => {
                 let total = 0;
                 let count = 0;
@@ -487,7 +548,6 @@
                     const question = questions.find(q => q.id === qId);
                     let score = responses[qId];
 
-                    // Reverse score if needed
                     if (question && question.reverse_scored) {
                         score = 6 - score;
                     }
@@ -497,7 +557,7 @@
                 });
 
                 const avgScore = total / count;
-                const percentile = ((avgScore - 1) / 4) * 100; // Convert 1-5 scale to 0-100%
+                const percentile = ((avgScore - 1) / 4) * 100;
 
                 dimensions[dim.name] = {
                     score: avgScore.toFixed(1),
@@ -517,31 +577,37 @@
         }
 
         function displayResults(dimensions) {
-            document.getElementById('questions-screen').classList.add('hidden');
-            document.getElementById('results-screen').classList.add('active');
+            const questionsScreen = document.getElementById('questions-screen');
+            const resultsScreen = document.getElementById('results-screen');
 
-            const container = document.getElementById('results-container');
-            container.innerHTML = '';
+            questionsScreen.classList.add('fade-out');
+            setTimeout(() => {
+                questionsScreen.classList.add('hidden');
+                resultsScreen.classList.remove('hidden');
 
-            Object.entries(dimensions).forEach(([name, data]) => {
-                const dimDiv = document.createElement('div');
-                dimDiv.className = 'dimension-result';
-                dimDiv.innerHTML = `
-                    <div class="dimension-name">${name}</div>
-                    <div class="dimension-description">${data.description}</div>
-                    <div class="dimension-score">
-                        <div class="score-bar">
-                            <div class="score-fill" style="width: ${data.percentile}%">
-                                ${data.percentile}%
+                const container = document.getElementById('results-container');
+                container.innerHTML = '';
+
+                Object.entries(dimensions).forEach(([name, data]) => {
+                    const dimDiv = document.createElement('div');
+                    dimDiv.className = 'dimension-result';
+                    dimDiv.innerHTML = `
+                        <div class="dimension-name">${name}</div>
+                        <div class="dimension-description">${data.description}</div>
+                        <div class="dimension-score">
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: ${data.percentile}%">
+                                    ${data.percentile}%
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="interpretation">${data.interpretation}</div>
-                `;
-                container.appendChild(dimDiv);
-            });
+                        <div class="interpretation">${data.interpretation}</div>
+                    `;
+                    container.appendChild(dimDiv);
+                });
 
-            generateRecommendations(dimensions);
+                generateRecommendations(dimensions);
+            }, 200);
         }
 
         function generateRecommendations(dimensions) {
@@ -550,17 +616,14 @@
 
             const recommendations = [];
 
-            // Top strength
             const topStrength = sortedDims[0];
             recommendations.push(`Leverage your high ${topStrength[0]} with leadership or mentoring opportunities`);
 
-            // Development area
             const lowestDim = sortedDims[sortedDims.length - 1];
             if (lowestDim[1].percentile < 40) {
                 recommendations.push(`Consider focused development in ${lowestDim[0]} through coaching or training`);
             }
 
-            // Specific recommendations based on patterns
             if (dimensions['Emotional Stability'] && dimensions['Emotional Stability'].percentile < 40) {
                 recommendations.push('Explore stress management resources like ClearMinds or coaching support');
             }
@@ -574,7 +637,6 @@
             ).join('');
         }
 
-        // Load questions on page load
         loadQuestions();
     </script>
 </body>
