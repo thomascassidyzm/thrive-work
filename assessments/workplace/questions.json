@@ -11,190 +11,290 @@
     "question_count": 20
   },
   "instructions": {
-    "intro": "This assessment helps you understand your natural patterns at work. There are no right or wrong answers - just choose the response that feels most like you.",
-    "response_format": "Rate each statement from 1 (Strongly Disagree) to 5 (Strongly Agree)",
+    "intro": "This assessment helps you understand your natural patterns at work through real scenarios. There are no right or wrong answers - just choose the response that feels most like you.",
+    "response_format": "Scenario-based: Choose the response that best matches how you'd naturally act",
     "time_guidance": "Take your time, but trust your first instinct. Most people complete this in 8-10 minutes."
   },
   "questions": [
     {
       "id": "WP001",
-      "text": "I prefer to work on one project at a time rather than juggling multiple tasks",
-      "category": "work_style",
-      "ocean_dimension": "conscientiousness",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "text": "At a team meeting, one person is dominating the conversation and others are clearly uncomfortable. You:",
+      "options": [
+        {"value": 1, "text": "Wait for someone else to say something"},
+        {"value": 2, "text": "Try to redirect with a question to the group"},
+        {"value": 3, "text": "Directly address the imbalance"},
+        {"value": 4, "text": "Signal support to quieter team members nonverbally"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "power_dynamics",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     },
     {
       "id": "WP002",
-      "text": "I get energized by brainstorming sessions with my team",
-      "category": "collaboration",
+      "text": "Your team is stuck on a decision and everyone is looking around waiting for someone to take charge. You:",
+      "options": [
+        {"value": 1, "text": "Wait to see if anyone else will lead"},
+        {"value": 2, "text": "Suggest we take a break to think it over"},
+        {"value": 3, "text": "Ask what everyone thinks we should do"},
+        {"value": 4, "text": "Step up and suggest a way forward"}
+      ],
       "ocean_dimension": "extraversion",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "category": "leadership_emergence",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     },
     {
       "id": "WP003",
-      "text": "When there's a conflict in the team, I tend to step in and mediate",
-      "category": "conflict_handling",
+      "text": "Someone takes credit for your idea in a group setting. You:",
+      "options": [
+        {"value": 1, "text": "Let it slide to avoid creating tension"},
+        {"value": 2, "text": "Address it privately with them later"},
+        {"value": 3, "text": "Mention it casually: \"I'm glad my suggestion is resonating\""},
+        {"value": 4, "text": "Immediately speak up: \"Actually, that was my suggestion\""}
+      ],
       "ocean_dimension": "agreeableness",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "category": "credit_and_recognition",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": true
     },
     {
       "id": "WP004",
-      "text": "I worry about making mistakes in my work more than most people",
-      "category": "stress_response",
-      "ocean_dimension": "neuroticism",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "text": "The group is enthusiastically supporting an idea you think is fundamentally flawed. You:",
+      "options": [
+        {"value": 1, "text": "Go along with it to maintain group harmony"},
+        {"value": 2, "text": "Stay quiet but prepare for when it fails"},
+        {"value": 3, "text": "Ask probing questions to help them see the issues"},
+        {"value": 4, "text": "Respectfully present your concerns"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "group_think_resistance",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     },
     {
       "id": "WP005",
-      "text": "I enjoy exploring new ways to solve problems, even if they're unconventional",
-      "category": "innovation",
-      "ocean_dimension": "openness",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "text": "You're in a meeting where everyone is agreeing with the boss's bad idea. You:",
+      "options": [
+        {"value": 1, "text": "Nod along like everyone else"},
+        {"value": 2, "text": "Stay silent but look skeptical"},
+        {"value": 3, "text": "Ask clarifying questions that expose the problems"},
+        {"value": 4, "text": "Find a diplomatic way to raise concerns"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "authority_dynamics",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     },
     {
       "id": "WP006",
-      "text": "I keep detailed to-do lists and feel satisfied checking items off",
-      "category": "organization",
-      "ocean_dimension": "conscientiousness",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "text": "You made a mistake at work that no one noticed yet. You:",
+      "options": [
+        {"value": 1, "text": "Wait to see if anyone notices first"},
+        {"value": 2, "text": "Quietly fix it and hope no one finds out"},
+        {"value": 3, "text": "Confide in a trusted colleague for advice"},
+        {"value": 4, "text": "Immediately tell your boss and own up to it"}
+      ],
+      "ocean_dimension": "neuroticism",
+      "category": "vulnerability",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": true
     },
     {
       "id": "WP007",
-      "text": "I prefer written communication over face-to-face meetings when possible",
-      "category": "communication_style",
+      "text": "In a group discussion, you have a great point to make but several people are talking. You:",
+      "options": [
+        {"value": 1, "text": "Let the moment pass rather than interrupt"},
+        {"value": 2, "text": "Wait for a natural pause in conversation"},
+        {"value": 3, "text": "Jump in when you can find an opening"},
+        {"value": 4, "text": "Gesture or say \"excuse me\" to get attention"}
+      ],
       "ocean_dimension": "extraversion",
-      "scale": "1-5",
-      "reverse_scored": true,
-      "workplace_shareable": true
+      "category": "speaking_patterns",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     },
     {
       "id": "WP008",
-      "text": "I find it easy to say no when I'm already overcommitted",
-      "category": "boundaries",
+      "text": "A colleague consistently misses deadlines, affecting your work. You:",
+      "options": [
+        {"value": 1, "text": "Complain to others but not address it directly"},
+        {"value": 2, "text": "Work around it without saying anything"},
+        {"value": 3, "text": "Mention it gently and offer to help"},
+        {"value": 4, "text": "Have a direct conversation about the impact"}
+      ],
       "ocean_dimension": "agreeableness",
-      "scale": "1-5",
-      "reverse_scored": true,
-      "workplace_shareable": true
+      "category": "conflict_handling",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": true
     },
     {
       "id": "WP009",
-      "text": "I often feel stressed about work even when I'm not at the office",
-      "category": "stress_response",
+      "text": "Your manager gives you critical feedback in front of the team. You:",
+      "options": [
+        {"value": 1, "text": "Feel embarrassed and replay it all day"},
+        {"value": 2, "text": "Get defensive and explain why they're wrong"},
+        {"value": 3, "text": "Take it in stride and ask for specifics later"},
+        {"value": 4, "text": "Thank them and immediately implement changes"}
+      ],
       "ocean_dimension": "neuroticism",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "category": "criticism_response",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     },
     {
       "id": "WP010",
-      "text": "I'm the person who suggests trying new tools or processes for the team",
-      "category": "innovation",
+      "text": "Your team is brainstorming and someone shares a wild, unconventional idea. You:",
+      "options": [
+        {"value": 1, "text": "Point out why it won't work practically"},
+        {"value": 2, "text": "Stay quiet and let others respond"},
+        {"value": 3, "text": "Build on it with related creative ideas"},
+        {"value": 4, "text": "Encourage them and ask them to elaborate"}
+      ],
       "ocean_dimension": "openness",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "category": "creativity_support",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     },
     {
       "id": "WP011",
-      "text": "I double-check my work multiple times before submitting it",
-      "category": "quality_focus",
+      "text": "You have a 2pm deadline but it's 11am and you're not quite done. You:",
+      "options": [
+        {"value": 1, "text": "Panic and rush through the rest"},
+        {"value": 2, "text": "Keep working at your normal pace"},
+        {"value": 3, "text": "Ask for an extension"},
+        {"value": 4, "text": "Stay calm, prioritize, and finish what matters most"}
+      ],
       "ocean_dimension": "conscientiousness",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "category": "deadline_pressure",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     },
     {
       "id": "WP012",
-      "text": "I volunteer to lead team meetings or presentations",
-      "category": "leadership",
-      "ocean_dimension": "extraversion",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "text": "Your team is celebrating a win, but you know you didn't contribute as much as others. You:",
+      "options": [
+        {"value": 1, "text": "Celebrate equally - you're part of the team"},
+        {"value": 2, "text": "Participate but feel a bit guilty"},
+        {"value": 3, "text": "Downplay your own involvement"},
+        {"value": 4, "text": "Actively credit those who did the heavy lifting"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "integrity",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     },
     {
       "id": "WP013",
-      "text": "I avoid giving negative feedback even when it's necessary",
-      "category": "conflict_handling",
-      "ocean_dimension": "agreeableness",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "text": "After a long meeting, you typically feel:",
+      "options": [
+        {"value": 1, "text": "Drained and need time alone"},
+        {"value": 2, "text": "Ready to process with a colleague"},
+        {"value": 3, "text": "Neutral - back to work"},
+        {"value": 4, "text": "Energized and ready to connect more"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "energy_management",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     },
     {
       "id": "WP014",
-      "text": "Small setbacks at work can ruin my whole day",
-      "category": "resilience",
-      "ocean_dimension": "neuroticism",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "text": "You're assigned a project with completely new tools/systems you've never used. You:",
+      "options": [
+        {"value": 1, "text": "Feel overwhelmed and anxious about learning"},
+        {"value": 2, "text": "Prefer to stick with what you know"},
+        {"value": 3, "text": "Feel a bit nervous but willing to try"},
+        {"value": 4, "text": "Get excited about learning something new"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "learning_orientation",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     },
     {
       "id": "WP015",
-      "text": "I'm curious about how other departments and teams operate",
-      "category": "curiosity",
-      "ocean_dimension": "openness",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "text": "A team member is struggling with something you know how to do. You:",
+      "options": [
+        {"value": 1, "text": "Wait for them to ask for help"},
+        {"value": 2, "text": "Drop hints that you're available"},
+        {"value": 3, "text": "Offer help proactively"},
+        {"value": 4, "text": "Jump in and show them how to do it"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "helping_behavior",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     },
     {
       "id": "WP016",
-      "text": "I struggle to start tasks without clear deadlines and structure",
-      "category": "self_motivation",
+      "text": "You discover your company is doing something you disagree with ethically. You:",
+      "options": [
+        {"value": 1, "text": "Keep your head down - it's not your problem"},
+        {"value": 2, "text": "Feel conflicted but stay silent"},
+        {"value": 3, "text": "Discuss it with trusted colleagues first"},
+        {"value": 4, "text": "Raise your concerns through proper channels"}
+      ],
       "ocean_dimension": "conscientiousness",
-      "scale": "1-5",
-      "reverse_scored": true,
-      "workplace_shareable": true
+      "category": "ethical_courage",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     },
     {
       "id": "WP017",
-      "text": "After a full day of meetings, I feel drained and need alone time",
-      "category": "energy_management",
-      "ocean_dimension": "extraversion",
-      "scale": "1-5",
-      "reverse_scored": true,
-      "workplace_shareable": true
+      "text": "Your boss asks you to take on extra work, but you're already stretched thin. You:",
+      "options": [
+        {"value": 1, "text": "Say yes and figure it out later"},
+        {"value": 2, "text": "Say yes but feel resentful"},
+        {"value": 3, "text": "Explain your workload and ask what to deprioritize"},
+        {"value": 4, "text": "Politely decline and explain your capacity"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "boundary_setting",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": true
     },
     {
       "id": "WP018",
-      "text": "I prioritize team harmony over pushing my own ideas",
-      "category": "team_dynamics",
-      "ocean_dimension": "agreeableness",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "text": "Before a big presentation, you typically:",
+      "options": [
+        {"value": 1, "text": "Feel sick with nerves and dread it"},
+        {"value": 2, "text": "Feel butterflies but push through"},
+        {"value": 3, "text": "Feel a bit nervous but mostly confident"},
+        {"value": 4, "text": "Feel energized and excited to share"}
+      ],
+      "ocean_dimension": "neuroticism",
+      "category": "performance_anxiety",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     },
     {
       "id": "WP019",
-      "text": "I need frequent reassurance that I'm doing a good job",
-      "category": "confidence",
-      "ocean_dimension": "neuroticism",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "text": "Your team adopted a new process that you think is inefficient. You:",
+      "options": [
+        {"value": 1, "text": "Follow it exactly as prescribed"},
+        {"value": 2, "text": "Follow it but mentally check out"},
+        {"value": 3, "text": "Test small improvements within the framework"},
+        {"value": 4, "text": "Propose modifications based on what you're seeing"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "adaptability",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     },
     {
       "id": "WP020",
-      "text": "I enjoy discussing abstract concepts and big-picture thinking at work",
-      "category": "thinking_style",
-      "ocean_dimension": "openness",
-      "scale": "1-5",
-      "reverse_scored": false,
-      "workplace_shareable": true
+      "text": "You notice a mistake in work that's already been submitted to leadership. You:",
+      "options": [
+        {"value": 1, "text": "Hope no one notices and let it go"},
+        {"value": 2, "text": "Lose sleep over it but don't say anything"},
+        {"value": 3, "text": "Quietly correct it if possible"},
+        {"value": 4, "text": "Flag it immediately and offer to fix it"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "accountability",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
     }
   ],
   "scoring": {
@@ -202,74 +302,53 @@
       {
         "name": "Openness",
         "description": "Curiosity, creativity, and willingness to try new approaches",
-        "questions": ["WP005", "WP010", "WP015", "WP020"],
+        "questions": ["WP004", "WP010", "WP014", "WP019"],
         "interpretation": {
-          "high": "You're innovative and enjoy exploring new ideas. You bring fresh perspectives to your team.",
-          "medium": "You balance traditional methods with occasional innovation.",
-          "low": "You prefer proven methods and consistent approaches at work."
+          "high": "You're innovative and enjoy exploring new ideas. You bring fresh perspectives to your team and aren't afraid to challenge the status quo.",
+          "medium": "You balance traditional methods with occasional innovation. You're open to new ideas when they make sense.",
+          "low": "You prefer proven methods and consistent approaches at work. Stability and reliability are your strengths."
         }
       },
       {
         "name": "Conscientiousness",
-        "description": "Organization, planning, and attention to detail",
-        "questions": ["WP001", "WP006", "WP011", "WP016"],
+        "description": "Organization, responsibility, and attention to detail",
+        "questions": ["WP005", "WP011", "WP012", "WP016", "WP020"],
         "interpretation": {
-          "high": "You're highly organized and reliable. Teams can count on you to deliver quality work.",
-          "medium": "You balance structure with flexibility in your work approach.",
-          "low": "You work best with flexibility and may struggle with rigid processes."
+          "high": "You're highly organized, reliable, and take ownership seriously. Teams can count on you to deliver quality work and maintain high standards.",
+          "medium": "You balance structure with flexibility in your work approach. You're dependable when it matters most.",
+          "low": "You work best with flexibility and spontaneity. You may struggle with rigid processes but excel at adaptability."
         }
       },
       {
         "name": "Extraversion",
         "description": "Energy from social interaction and team engagement",
-        "questions": ["WP002", "WP007", "WP012", "WP017"],
+        "questions": ["WP001", "WP002", "WP007", "WP013"],
         "interpretation": {
-          "high": "You're energized by teamwork and collaboration. You naturally engage with colleagues.",
-          "medium": "You enjoy both collaborative and independent work.",
-          "low": "You work best with focused solo time and may find constant interaction draining."
+          "high": "You're energized by teamwork and collaboration. You naturally engage with colleagues and thrive in group settings.",
+          "medium": "You enjoy both collaborative and independent work. You adapt your energy to the situation.",
+          "low": "You work best with focused solo time and may find constant interaction draining. Deep work is your sweet spot."
         }
       },
       {
         "name": "Agreeableness",
         "description": "Cooperation, empathy, and team harmony",
-        "questions": ["WP003", "WP008", "WP013", "WP018"],
+        "questions": ["WP003", "WP008", "WP015", "WP017"],
         "interpretation": {
-          "high": "You prioritize team harmony and are naturally empathetic. You're a strong mediator.",
-          "medium": "You balance team needs with your own boundaries.",
-          "low": "You're comfortable with healthy conflict and setting firm boundaries."
+          "high": "You prioritize team harmony and are naturally empathetic. You're a strong mediator and people feel heard around you.",
+          "medium": "You balance team needs with your own boundaries. You're collaborative without being a pushover.",
+          "low": "You're comfortable with healthy conflict and setting firm boundaries. You prioritize directness over diplomacy."
         }
       },
       {
         "name": "Emotional Stability",
-        "description": "Resilience under pressure and stress management (reverse of Neuroticism)",
-        "questions": ["WP004", "WP009", "WP014", "WP019"],
+        "description": "Resilience under pressure and stress management",
+        "questions": ["WP006", "WP009", "WP018"],
         "reverse_dimension": true,
         "interpretation": {
-          "high": "You handle workplace stress well and maintain perspective during challenges.",
-          "medium": "You experience normal workplace stress but generally manage it effectively.",
-          "low": "You may be more sensitive to workplace stressors. Consider stress management support."
+          "high": "You handle workplace stress well and maintain perspective during challenges. Pressure doesn't shake your confidence.",
+          "medium": "You experience normal workplace stress but generally manage it effectively. You have good coping strategies.",
+          "low": "You may be more sensitive to workplace stressors. Consider stress management support or coaching to build resilience."
         }
-      }
-    ]
-  },
-  "results_template": {
-    "title": "Your Workplace Behavioral Pattern",
-    "sections": [
-      {
-        "heading": "Your Top Strengths at Work",
-        "content": "Based on your highest scoring dimensions"
-      },
-      {
-        "heading": "Areas for Development",
-        "content": "Based on your lowest scoring dimensions"
-      },
-      {
-        "heading": "Team Contribution Style",
-        "content": "How you naturally contribute to team dynamics"
-      },
-      {
-        "heading": "Recommended Resources",
-        "content": "Personalized content suggestions from Thrive ecosystem"
       }
     ]
   }
