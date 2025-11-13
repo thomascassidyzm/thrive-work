@@ -1,0 +1,443 @@
+{
+  "assessment_meta": {
+    "id": "personality_game_v1",
+    "title": "What's Your Hidden Superpower?",
+    "description": "A fun, game-based personality quiz that reveals your unique strengths in just 5 minutes",
+    "version": "1.0",
+    "estimated_time_minutes": 5,
+    "target_audience": "General - Viral lead magnet",
+    "privacy_level": "shareable",
+    "ocean_alignment": true,
+    "question_count": 12,
+    "viral_features": {
+      "shareable_results": true,
+      "result_archetypes": 16,
+      "social_share_enabled": true,
+      "gamification": "high"
+    }
+  },
+  "instructions": {
+    "intro": "Discover your unique personality archetype through 12 quick scenarios. Your choices reveal patterns you might not even know about yourself!",
+    "response_format": "Choose the option that feels most natural to you - no thinking required!",
+    "time_guidance": "Go with your gut instinct. This should take about 5 minutes.",
+    "share_prompt": "Share your result and challenge friends to discover their archetype!"
+  },
+  "questions": [
+    {
+      "id": "VG001",
+      "text": "It's Friday night. What sounds most appealing?",
+      "options": [
+        {"value": 1, "text": "Cozy night in with a book or movie", "emoji": "📚"},
+        {"value": 2, "text": "Small gathering with close friends", "emoji": "👥"},
+        {"value": 3, "text": "Big party or social event", "emoji": "🎉"},
+        {"value": 4, "text": "Adventure - somewhere new and exciting", "emoji": "🚀"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "social_energy",
+      "privacy_level": "shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "VG002",
+      "text": "Your workspace says a lot about you. Yours is:",
+      "options": [
+        {"value": 1, "text": "Organized chaos - I know where everything is!", "emoji": "🌀"},
+        {"value": 2, "text": "Minimalist and clean", "emoji": "✨"},
+        {"value": 3, "text": "Color-coded and perfectly arranged", "emoji": "📊"},
+        {"value": 4, "text": "Full of creative inspiration and random items", "emoji": "🎨"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "organization",
+      "privacy_level": "shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "VG003",
+      "text": "When faced with a big decision, you:",
+      "options": [
+        {"value": 1, "text": "Make a pros/cons list and analyze everything", "emoji": "📝"},
+        {"value": 2, "text": "Sleep on it and trust your gut feeling", "emoji": "😴"},
+        {"value": 3, "text": "Ask trusted friends for their opinions", "emoji": "💬"},
+        {"value": 4, "text": "Jump in and figure it out as you go", "emoji": "⚡"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "decision_making",
+      "privacy_level": "shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "VG004",
+      "text": "Your ideal vacation involves:",
+      "options": [
+        {"value": 1, "text": "Relaxing at a familiar favorite spot", "emoji": "🏖️"},
+        {"value": 2, "text": "Trying something completely new", "emoji": "🗺️"},
+        {"value": 3, "text": "Cultural immersion and local experiences", "emoji": "🎭"},
+        {"value": 4, "text": "Adventure sports and adrenaline", "emoji": "🏄"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "adventure_seeking",
+      "privacy_level": "shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "VG005",
+      "text": "In group projects, you naturally become the:",
+      "options": [
+        {"value": 1, "text": "Leader who coordinates everything", "emoji": "👑"},
+        {"value": 2, "text": "Creative idea generator", "emoji": "💡"},
+        {"value": 3, "text": "Reliable executor who gets things done", "emoji": "✅"},
+        {"value": 4, "text": "Supportive team player", "emoji": "🤝"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "team_role",
+      "privacy_level": "shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "VG006",
+      "text": "When someone criticizes you unfairly, you:",
+      "options": [
+        {"value": 1, "text": "Feel hurt but don't show it", "emoji": "😔"},
+        {"value": 2, "text": "Calmly explain your perspective", "emoji": "🧘"},
+        {"value": 3, "text": "Get defensive and argue back", "emoji": "🔥"},
+        {"value": 4, "text": "Brush it off - their problem, not yours", "emoji": "🤷"}
+      ],
+      "ocean_dimension": "emotional_stability",
+      "category": "criticism_response",
+      "privacy_level": "shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "VG007",
+      "text": "You're at a party where you don't know anyone except the host. You:",
+      "options": [
+        {"value": 1, "text": "Stick close to the host all night", "emoji": "🔗"},
+        {"value": 2, "text": "Find one interesting person and deep-dive", "emoji": "💭"},
+        {"value": 3, "text": "Work the room and meet everyone", "emoji": "🌟"},
+        {"value": 4, "text": "Leave early - this isn't your scene", "emoji": "🚪"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "social_comfort",
+      "privacy_level": "shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "VG008",
+      "text": "Your phone's photo gallery is mostly:",
+      "options": [
+        {"value": 1, "text": "Screenshots and notes", "emoji": "📱"},
+        {"value": 2, "text": "Artsy shots and aesthetics", "emoji": "📸"},
+        {"value": 3, "text": "Friends and memories", "emoji": "👯"},
+        {"value": 4, "text": "Random chaos - never delete anything", "emoji": "🗂️"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "aesthetic_preference",
+      "privacy_level": "shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "VG009",
+      "text": "If you could have one superpower, it would be:",
+      "options": [
+        {"value": 1, "text": "Mind reading - know what people think", "emoji": "🧠"},
+        {"value": 2, "text": "Time travel - explore past and future", "emoji": "⏰"},
+        {"value": 3, "text": "Invisibility - observe without being seen", "emoji": "👻"},
+        {"value": 4, "text": "Flying - ultimate freedom", "emoji": "🦅"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "imagination",
+      "privacy_level": "shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "VG010",
+      "text": "When plans get cancelled last minute, you feel:",
+      "options": [
+        {"value": 1, "text": "Secretly relieved - more free time!", "emoji": "😌"},
+        {"value": 2, "text": "Disappointed but adapt quickly", "emoji": "🔄"},
+        {"value": 3, "text": "Frustrated - you were counting on it", "emoji": "😤"},
+        {"value": 4, "text": "Excited - now you can do something else!", "emoji": "🎲"}
+      ],
+      "ocean_dimension": "emotional_stability",
+      "category": "adaptability",
+      "privacy_level": "shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "VG011",
+      "text": "In a debate, you're more likely to:",
+      "options": [
+        {"value": 1, "text": "Avoid it - conflict makes you uncomfortable", "emoji": "🙈"},
+        {"value": 2, "text": "Listen to all sides and find common ground", "emoji": "⚖️"},
+        {"value": 3, "text": "Passionately defend your position", "emoji": "🎯"},
+        {"value": 4, "text": "Play devil's advocate for fun", "emoji": "😈"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "conflict_style",
+      "privacy_level": "shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "VG012",
+      "text": "Your morning routine is:",
+      "options": [
+        {"value": 1, "text": "Exactly the same every day - it's comforting", "emoji": "☕"},
+        {"value": 2, "text": "Flexible - depends on how you feel", "emoji": "🌈"},
+        {"value": 3, "text": "Rushed chaos - always running late", "emoji": "⏱️"},
+        {"value": 4, "text": "Carefully planned and optimized", "emoji": "🎯"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "routine_preference",
+      "privacy_level": "shareable",
+      "reverse_scored": false
+    }
+  ],
+  "scoring": {
+    "archetype_system": true,
+    "dimensions": [
+      {
+        "name": "Extraversion",
+        "description": "Energy from social interaction",
+        "questions": ["VG001", "VG007"],
+        "weight": 1.0
+      },
+      {
+        "name": "Conscientiousness",
+        "description": "Organization and planning",
+        "questions": ["VG002", "VG003", "VG012"],
+        "weight": 1.0
+      },
+      {
+        "name": "Openness",
+        "description": "Curiosity and imagination",
+        "questions": ["VG004", "VG008", "VG009"],
+        "weight": 1.0
+      },
+      {
+        "name": "Agreeableness",
+        "description": "Cooperation and harmony",
+        "questions": ["VG005", "VG011"],
+        "weight": 1.0
+      },
+      {
+        "name": "Emotional Stability",
+        "description": "Resilience and calm",
+        "questions": ["VG006", "VG010"],
+        "weight": 1.0
+      }
+    ],
+    "archetypes": [
+      {
+        "id": "visionary_leader",
+        "name": "The Visionary Leader",
+        "emoji": "🚀",
+        "tagline": "You see possibilities others miss and inspire people to follow",
+        "profile": "High Extraversion + High Openness + High Conscientiousness",
+        "strengths": ["Strategic thinking", "Innovation", "Inspiring others", "Big-picture vision"],
+        "famous_examples": ["Elon Musk", "Oprah Winfrey", "Steve Jobs"],
+        "ideal_roles": ["CEO", "Entrepreneur", "Creative Director", "Change Agent"],
+        "growth_tip": "Balance your vision with listening to others' concerns"
+      },
+      {
+        "id": "harmonizer",
+        "name": "The Harmonizer",
+        "emoji": "🕊️",
+        "tagline": "You create peace and connection wherever you go",
+        "profile": "High Agreeableness + High Emotional Stability + Moderate Extraversion",
+        "strengths": ["Conflict resolution", "Empathy", "Team building", "Emotional intelligence"],
+        "famous_examples": ["Mr. Rogers", "Barack Obama", "Ellen DeGeneres"],
+        "ideal_roles": ["HR Leader", "Therapist", "Mediator", "Community Builder"],
+        "growth_tip": "Don't lose yourself trying to please everyone"
+      },
+      {
+        "id": "strategic_architect",
+        "name": "The Strategic Architect",
+        "emoji": "🏗️",
+        "tagline": "You build systems and structures that last",
+        "profile": "High Conscientiousness + High Openness + Low-Moderate Extraversion",
+        "strengths": ["Systems thinking", "Detailed planning", "Long-term vision", "Problem solving"],
+        "famous_examples": ["Bill Gates", "Warren Buffett", "Marie Kondo"],
+        "ideal_roles": ["Strategist", "Engineer", "Architect", "COO"],
+        "growth_tip": "Sometimes good enough is better than perfect"
+      },
+      {
+        "id": "creative_free_spirit",
+        "name": "The Creative Free Spirit",
+        "emoji": "🎨",
+        "tagline": "You see the world through a kaleidoscope of possibilities",
+        "profile": "High Openness + Low Conscientiousness + Variable Extraversion",
+        "strengths": ["Creativity", "Adaptability", "Artistic expression", "Unconventional thinking"],
+        "famous_examples": ["David Bowie", "Frida Kahlo", "Robin Williams"],
+        "ideal_roles": ["Artist", "Designer", "Writer", "Innovator"],
+        "growth_tip": "Channel your creativity with some structure to see projects through"
+      },
+      {
+        "id": "reliable_guardian",
+        "name": "The Reliable Guardian",
+        "emoji": "🛡️",
+        "tagline": "People count on you because you always come through",
+        "profile": "High Conscientiousness + High Agreeableness + High Emotional Stability",
+        "strengths": ["Dependability", "Loyalty", "Consistency", "Responsibility"],
+        "famous_examples": ["Tom Hanks", "Dolly Parton", "Keanu Reeves"],
+        "ideal_roles": ["Project Manager", "Teacher", "Healthcare", "Administrator"],
+        "growth_tip": "It's okay to take risks and break the rules sometimes"
+      },
+      {
+        "id": "social_butterfly",
+        "name": "The Social Butterfly",
+        "emoji": "🦋",
+        "tagline": "Your energy lights up every room you enter",
+        "profile": "High Extraversion + High Agreeableness + Moderate-High Openness",
+        "strengths": ["Networking", "Enthusiasm", "Bringing people together", "Positive energy"],
+        "famous_examples": ["Jimmy Fallon", "Ryan Reynolds", "Lizzo"],
+        "ideal_roles": ["Sales", "Event Planning", "Marketing", "Public Relations"],
+        "growth_tip": "Make time for quiet reflection to recharge your core"
+      },
+      {
+        "id": "analytical_sage",
+        "name": "The Analytical Sage",
+        "emoji": "🔬",
+        "tagline": "You understand the world through logic and careful observation",
+        "profile": "High Conscientiousness + High Openness + Low Extraversion + High Emotional Stability",
+        "strengths": ["Critical thinking", "Research", "Depth of knowledge", "Objectivity"],
+        "famous_examples": ["Albert Einstein", "Marie Curie", "Stephen Hawking"],
+        "ideal_roles": ["Scientist", "Researcher", "Analyst", "Professor"],
+        "growth_tip": "Don't forget that emotions and intuition have value too"
+      },
+      {
+        "id": "empathetic_healer",
+        "name": "The Empathetic Healer",
+        "emoji": "💚",
+        "tagline": "You feel deeply and help others through their pain",
+        "profile": "High Agreeableness + Low Emotional Stability + Moderate Openness",
+        "strengths": ["Deep empathy", "Compassion", "Understanding suffering", "Helping others heal"],
+        "famous_examples": ["Princess Diana", "Fred Rogers", "Brené Brown"],
+        "ideal_roles": ["Counselor", "Social Worker", "Nurse", "Life Coach"],
+        "growth_tip": "Remember to heal yourself while healing others"
+      },
+      {
+        "id": "adventurous_explorer",
+        "name": "The Adventurous Explorer",
+        "emoji": "🧭",
+        "tagline": "Life is an adventure and you're here for all of it",
+        "profile": "High Openness + High Extraversion + Low Conscientiousness + High Emotional Stability",
+        "strengths": ["Courage", "Spontaneity", "Adaptability", "Living in the moment"],
+        "famous_examples": ["Anthony Bourdain", "Bear Grylls", "Amelia Earhart"],
+        "ideal_roles": ["Travel Writer", "Entrepreneur", "Adventure Guide", "Photographer"],
+        "growth_tip": "Some planning can make adventures even better"
+      },
+      {
+        "id": "quiet_observer",
+        "name": "The Quiet Observer",
+        "emoji": "👁️",
+        "tagline": "You see what others miss because you take time to watch",
+        "profile": "Low Extraversion + High Openness + High Emotional Stability",
+        "strengths": ["Observation", "Listening", "Depth", "Thoughtfulness"],
+        "famous_examples": ["Keanu Reeves", "Audrey Hepburn", "Mr. Rogers"],
+        "ideal_roles": ["Writer", "Therapist", "Researcher", "Designer"],
+        "growth_tip": "Your voice matters - share your insights more often"
+      },
+      {
+        "id": "charismatic_performer",
+        "name": "The Charismatic Performer",
+        "emoji": "⭐",
+        "tagline": "The world is your stage and you were born to shine",
+        "profile": "High Extraversion + High Openness + Low Emotional Stability",
+        "strengths": ["Charisma", "Self-expression", "Entertainment", "Passion"],
+        "famous_examples": ["Lady Gaga", "Jim Carrey", "Freddie Mercury"],
+        "ideal_roles": ["Performer", "Influencer", "Speaker", "Entertainer"],
+        "growth_tip": "Build resilience to criticism - not everyone will love every performance"
+      },
+      {
+        "id": "pragmatic_realist",
+        "name": "The Pragmatic Realist",
+        "emoji": "⚙️",
+        "tagline": "You keep everyone grounded with your practical wisdom",
+        "profile": "High Conscientiousness + Low Openness + High Emotional Stability",
+        "strengths": ["Practicality", "Realism", "Efficiency", "Common sense"],
+        "famous_examples": ["Warren Buffett", "Angela Merkel", "Tim Cook"],
+        "ideal_roles": ["Operations", "Finance", "Project Management", "Administration"],
+        "growth_tip": "Stay open to new ideas that might seem impractical at first"
+      },
+      {
+        "id": "passionate_advocate",
+        "name": "The Passionate Advocate",
+        "emoji": "🔥",
+        "tagline": "You fight for what you believe in with fierce dedication",
+        "profile": "Low Agreeableness + High Conscientiousness + High Openness",
+        "strengths": ["Conviction", "Determination", "Courage", "Standing up for beliefs"],
+        "famous_examples": ["Malala Yousafzai", "Greta Thunberg", "Ruth Bader Ginsburg"],
+        "ideal_roles": ["Activist", "Lawyer", "Journalist", "Politician"],
+        "growth_tip": "Pick your battles - you can't fight every fight"
+      },
+      {
+        "id": "spontaneous_improviser",
+        "name": "The Spontaneous Improviser",
+        "emoji": "🎭",
+        "tagline": "You thrive in chaos and make magic from the unexpected",
+        "profile": "Low Conscientiousness + High Extraversion + High Openness",
+        "strengths": ["Spontaneity", "Quick thinking", "Flexibility", "Making the best of situations"],
+        "famous_examples": ["Robin Williams", "Jennifer Lawrence", "Chris Pratt"],
+        "ideal_roles": ["Comedy", "Sales", "Startups", "Emergency Response"],
+        "growth_tip": "A little planning goes a long way for long-term goals"
+      },
+      {
+        "id": "independent_maverick",
+        "name": "The Independent Maverick",
+        "emoji": "🏴",
+        "tagline": "You forge your own path and refuse to follow the crowd",
+        "profile": "Low Agreeableness + High Openness + Low Extraversion",
+        "strengths": ["Independence", "Originality", "Self-reliance", "Unconventional thinking"],
+        "famous_examples": ["Elon Musk", "Steve Jobs", "Bjork"],
+        "ideal_roles": ["Entrepreneur", "Artist", "Inventor", "Researcher"],
+        "growth_tip": "Collaboration can amplify your unique vision"
+      },
+      {
+        "id": "balanced_integrator",
+        "name": "The Balanced Integrator",
+        "emoji": "☯️",
+        "tagline": "Your superpower is seeing all sides and finding the middle way",
+        "profile": "Moderate on all dimensions",
+        "strengths": ["Balance", "Versatility", "Adaptability", "Perspective-taking"],
+        "famous_examples": ["Michelle Obama", "Tom Hanks", "Meryl Streep"],
+        "ideal_roles": ["Consultant", "Mediator", "General Manager", "Diplomat"],
+        "growth_tip": "It's okay to take strong stands - you don't always need to be neutral"
+      }
+    ]
+  },
+  "results_template": {
+    "title": "Your Personality Archetype",
+    "structure": "archetype_reveal",
+    "sections": [
+      {
+        "heading": "Your Archetype",
+        "content": "Display dominant archetype with emoji and tagline"
+      },
+      {
+        "heading": "What This Means",
+        "content": "Full profile description with strengths"
+      },
+      {
+        "heading": "Famous Examples",
+        "content": "Relatable celebrities/figures with this archetype"
+      },
+      {
+        "heading": "Where You Thrive",
+        "content": "Ideal roles and environments"
+      },
+      {
+        "heading": "Growth Edge",
+        "content": "One personalized tip for development"
+      },
+      {
+        "heading": "Want Deeper Insights?",
+        "content": "CTA for full OCEAN assessment + email capture"
+      }
+    ],
+    "social_share": {
+      "enabled": true,
+      "platforms": ["Twitter", "LinkedIn", "Facebook", "Instagram"],
+      "template": "I'm a {archetype_name}! {emoji} What's your personality archetype? Take the quiz: {url}"
+    }
+  }
+}

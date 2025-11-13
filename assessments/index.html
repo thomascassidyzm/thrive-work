@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrive Assessment Demos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #ffff00, #ffc107);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .demo-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .demo-card h2 {
+            color: #ffff00;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .demo-card p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        .status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status.ready {
+            background: rgba(76, 175, 80, 0.3);
+            color: #a5d6a7;
+        }
+
+        .status.coming-soon {
+            background: rgba(255, 193, 7, 0.3);
+            color: #ffd54f;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ffff00;
+            color: #1a1a2e;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #ffc107;
+            transform: scale(1.05);
+        }
+
+        .btn.disabled {
+            background: rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.5);
+            cursor: not-allowed;
+        }
+
+        .btn.disabled:hover {
+            transform: none;
+        }
+
+        .info-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-left: 4px solid #ffff00;
+        }
+
+        .info-section h3 {
+            color: #ffff00;
+            margin-bottom: 1rem;
+        }
+
+        .info-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-section li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .info-section li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #ffff00;
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #a5d6a7;
+        }
+
+        .architecture {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Thrive Assessment Demos</h1>
+            <p class="subtitle">Portable, Content-First Assessment Architecture</p>
+        </header>
+
+        <div class="demo-grid">
+            <!-- Cowch IMAGINE Framework -->
+            <div class="demo-card" onclick="window.location.href='demos/cowch-imagine-demo.html'">
+                <h2>🗨️ Cowch IMAGINE Framework</h2>
+                <p><strong>Purpose:</strong> Chat-based wellness assessment using Mandy Lehto's IMAGINE framework</p>
+                <p><strong>Dimensions:</strong> Inspiration, Mindset, Action, Growth, Integration, Nurture, Evolution</p>
+                <p><strong>Time:</strong> 10 minutes</p>
+                <div class="meta">
+                    <span class="status ready">✓ Ready to Demo</span>
+                    <a href="demos/cowch-imagine-demo.html" class="btn" onclick="event.stopPropagation()">Try Demo →</a>
+                </div>
+            </div>
+
+            <!-- Neuroindicator -->
+            <div class="demo-card">
+                <h2>🎯 Neuroindicator Triage</h2>
+                <p><strong>Purpose:</strong> Quick assessment to route users to wellness or clinical pathway</p>
+                <p><strong>Output:</strong> Wellness tier (ClearMinds, Cowch, Limitless) or Clinical tier (Smart Start Minds)</p>
+                <p><strong>Time:</strong> 5-10 minutes</p>
+                <div class="meta">
+                    <span class="status coming-soon">Coming Soon</span>
+                    <a href="#" class="btn disabled" onclick="event.stopPropagation(); return false;">Demo TBD</a>
+                </div>
+            </div>
+
+            <!-- OCEAN Assessment -->
+            <div class="demo-card">
+                <h2>🌊 OCEAN Personality Assessment</h2>
+                <p><strong>Purpose:</strong> Behavioral profiling for workplace wellness insights</p>
+                <p><strong>Dimensions:</strong> Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism</p>
+                <p><strong>Time:</strong> 20-30 minutes</p>
+                <div class="meta">
+                    <span class="status coming-soon">In Development</span>
+                    <a href="#" class="btn disabled" onclick="event.stopPropagation(); return false;">Demo TBD</a>
+                </div>
+            </div>
+
+            <!-- Home→Work Influence -->
+            <div class="demo-card">
+                <h2>🏠→💼 Home→Work Influence</h2>
+                <p><strong>Purpose:</strong> Organizational insights (childcare, financial stress, etc.)</p>
+                <p><strong>Privacy:</strong> Aggregation-only (employer sees %, not individuals)</p>
+                <p><strong>Time:</strong> 2 minutes</p>
+                <div class="meta">
+                    <span class="status coming-soon">Coming Soon</span>
+                    <a href="#" class="btn disabled" onclick="event.stopPropagation(); return false;">Demo TBD</a>
+                </div>
+            </div>
+
+            <!-- Limitless (Tom's 13) -->
+            <div class="demo-card">
+                <h2>🚀 Limitless - Tom's 13 Framework</h2>
+                <p><strong>Purpose:</strong> Assessment for Edward Orman's "Conquering Life" programme</p>
+                <p><strong>Dimensions:</strong> 13 personal development dimensions (TBD)</p>
+                <p><strong>Time:</strong> 15 minutes</p>
+                <div class="meta">
+                    <span class="status coming-soon">Schema Needed</span>
+                    <a href="#" class="btn disabled" onclick="event.stopPropagation(); return false;">Demo TBD</a>
+                </div>
+            </div>
+
+            <!-- Quarterly Pulse -->
+            <div class="demo-card">
+                <h2>📊 Quarterly Wellness Pulse</h2>
+                <p><strong>Purpose:</strong> Ongoing engagement and trend tracking for B2B clients</p>
+                <p><strong>Questions:</strong> Stress, sleep, support, workload, overall wellbeing</p>
+                <p><strong>Time:</strong> 2-3 minutes</p>
+                <div class="meta">
+                    <span class="status coming-soon">Coming Soon</span>
+                    <a href="#" class="btn disabled" onclick="event.stopPropagation(); return false;">Demo TBD</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>🏗️ Architecture Highlights</h3>
+            <ul>
+                <li><strong>Content-first design:</strong> All questions, logic, and scoring in JSON</li>
+                <li><strong>Portable:</strong> Rebuild in React/Vue/Flutter/Swift using extraction guide</li>
+                <li><strong>Privacy-aware:</strong> Employee sees everything, employer sees aggregated data (k>10)</li>
+                <li><strong>Modular:</strong> Generic assessment engine runs any JSON-defined assessment</li>
+            </ul>
+
+            <div class="architecture">
+CONTENT (JSON) → LOGIC (JSON) → PRESENTATION (HTML/CSS/JS)
+    ↓                ↓                    ↓
+ Portable        Portable           Replaceable
+ Reusable        Reusable          (rebuild in any stack)
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>📚 For Developers</h3>
+            <ul>
+                <li><strong>Extraction Guide:</strong> <code>docs/ASSESSMENT_EXTRACTION_GUIDE.md</code></li>
+                <li><strong>Assessment Engine:</strong> <code>assessments/engines/generic-assessment-engine.js</code></li>
+                <li><strong>JSON Schemas:</strong> <code>assessments/content/*.json</code></li>
+                <li><strong>Working Demos:</strong> <code>assessments/demos/*.html</code></li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h3>🚀 Quick Start</h3>
+            <p>To run demos locally:</p>
+            <div class="architecture">
+# Serve files (demos need HTTP server to load JSON)
+python -m http.server 8000
+
+# Open in browser
+http://localhost:8000/assessments/
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's Your Hidden Superpower? | Personality Quiz</title>
+    <meta property="og:title" content="What's Your Hidden Superpower? | Personality Quiz">
+    <meta property="og:description" content="Discover your unique personality archetype in just 5 minutes!">
+    <meta property="og:type" content="website">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .question-card {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 16px;
+            border-left: 6px solid #667eea;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .question-number {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .question-text {
+            color: #1a1a2e;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        .options-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: 1fr;
+        }
+
+        .option {
+            background: white;
+            border: 3px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .option.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #667eea;
+            color: white;
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .option-emoji {
+            font-size: 2rem;
+            min-width: 40px;
+        }
+
+        .option-text {
+            flex: 1;
+            font-size: 1.05rem;
+            line-height: 1.4;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1.25rem 2.5rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .button:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .results-container {
+            display: none;
+        }
+
+        .results-container.active {
+            display: block;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .archetype-reveal {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 16px;
+        }
+
+        .archetype-emoji {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: bounce 1s ease-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .archetype-name {
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .archetype-tagline {
+            font-size: 1.3rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .section-heading {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .section-content {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .strengths-list, .roles-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .strength-item, .role-item {
+            background: white;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .famous-examples {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .famous-person {
+            background: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            color: #667eea;
+            font-weight: 600;
+            border: 2px solid #667eea;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .email-capture {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .email-capture input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .email-capture button {
+            padding: 1rem 2rem;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .email-capture button:hover {
+            transform: scale(1.05);
+        }
+
+        .social-share {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .social-share h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .question-text {
+                font-size: 1.1rem;
+            }
+
+            .archetype-name {
+                font-size: 2rem;
+            }
+
+            .archetype-emoji {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="intro-screen">
+            <h1>🌟 What's Your Hidden Superpower? 🌟</h1>
+            <p class="subtitle">A fun personality quiz that reveals your unique archetype in just 12 quick scenarios!</p>
+
+            <div class="meta-info">
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>5 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <span>🎯</span>
+                    <span>12 scenarios</span>
+                </div>
+                <div class="meta-item">
+                    <span>🎉</span>
+                    <span>16 archetypes</span>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 6px solid #667eea;">
+                <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.3rem;">✨ How it works:</h3>
+                <p style="color: #333; line-height: 1.8; margin-bottom: 0.75rem;">🎮 Choose your natural response to 12 fun scenarios</p>
+                <p style="color: #333; line-height: 1.8; margin-bottom: 0.75rem;">🧠 No thinking required - trust your gut!</p>
+                <p style="color: #333; line-height: 1.8; margin-bottom: 0.75rem;">🎊 Discover your unique personality archetype</p>
+                <p style="color: #333; line-height: 1.8;">📤 Share with friends and compare results!</p>
+            </div>
+
+            <button class="button" onclick="startAssessment()">Discover My Superpower! 🚀</button>
+        </div>
+
+        <div id="questions-screen" class="hidden">
+            <div class="progress-text">Question <span id="current-q">1</span> of 12</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+
+            <div id="questions-container"></div>
+
+            <button class="button" id="next-btn" onclick="nextQuestion()" disabled>Next Question ➡️</button>
+            <button class="button hidden" id="submit-btn" onclick="calculateResults()">See My Results! 🎉</button>
+        </div>
+
+        <div id="results-screen" class="results-container">
+            <div class="archetype-reveal" id="archetype-reveal"></div>
+
+            <div id="archetype-details"></div>
+
+            <div class="cta-box">
+                <h3>Want Even Deeper Insights?</h3>
+                <p>Take our comprehensive OCEAN assessment to unlock your complete behavioral profile, personalized growth strategies, and career recommendations!</p>
+
+                <div class="email-capture">
+                    <input type="email" id="email-input" placeholder="Enter your email for results + free resources">
+                    <button onclick="captureEmail()">Get Access</button>
+                </div>
+
+                <div class="social-share">
+                    <h4>📤 Share Your Result!</h4>
+                    <div class="share-buttons">
+                        <a href="#" class="share-btn" onclick="shareTwitter(); return false;">Twitter</a>
+                        <a href="#" class="share-btn" onclick="shareLinkedIn(); return false;">LinkedIn</a>
+                        <a href="#" class="share-btn" onclick="shareFacebook(); return false;">Facebook</a>
+                        <a href="#" class="share-btn" onclick="copyLink(); return false;">Copy Link</a>
+                    </div>
+                </div>
+            </div>
+
+            <button class="button" onclick="location.reload()" style="margin-top: 2rem;">Take Again 🔄</button>
+        </div>
+    </div>
+
+    <script>
+        let questions = [];
+        let responses = {};
+        let currentQuestionIndex = 0;
+        let assessmentData = null;
+        let userArchetype = null;
+
+        async function loadQuestions() {
+            const response = await fetch('questions.json');
+            const data = await response.json();
+            assessmentData = data;
+            questions = data.questions;
+            return data;
+        }
+
+        function startAssessment() {
+            document.getElementById('intro-screen').classList.add('hidden');
+            document.getElementById('questions-screen').classList.remove('hidden');
+            loadQuestions().then(() => {
+                renderQuestion(currentQuestionIndex);
+            });
+        }
+
+        function renderQuestion(index) {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = '';
+
+            const q = questions[index];
+            const card = document.createElement('div');
+            card.className = 'question-card';
+
+            card.innerHTML = `
+                <div class="question-number">Question ${index + 1} of 12</div>
+                <div class="question-text">${q.text}</div>
+                <div class="options-grid">
+                    ${q.options.map((opt, i) => `
+                        <div class="option" id="option-${i}" onclick="selectOption(${i}, '${q.id}', ${opt.value})">
+                            <div class="option-emoji">${opt.emoji}</div>
+                            <div class="option-text">${opt.text}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            container.appendChild(card);
+
+            // Restore previous selection if exists
+            if (responses[q.id]) {
+                const selectedValue = responses[q.id];
+                const optionIndex = q.options.findIndex(opt => opt.value === selectedValue);
+                if (optionIndex !== -1) {
+                    document.getElementById(`option-${optionIndex}`).classList.add('selected');
+                }
+            }
+
+            updateButtonVisibility();
+        }
+
+        function selectOption(optionIndex, questionId, value) {
+            // Remove selected class from all options
+            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+
+            // Add selected class to clicked option
+            document.getElementById(`option-${optionIndex}`).classList.add('selected');
+
+            // Store response
+            responses[questionId] = value;
+            updateProgress();
+
+            // Enable next button
+            document.getElementById('next-btn').disabled = false;
+
+            // Auto-advance after short delay for better UX
+            setTimeout(() => {
+                if (currentQuestionIndex < questions.length - 1) {
+                    nextQuestion();
+                } else {
+                    updateButtonVisibility();
+                }
+            }, 600);
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion(currentQuestionIndex);
+                document.getElementById('next-btn').disabled = true;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function updateProgress() {
+            const answered = Object.keys(responses).length;
+            const total = questions.length;
+            const percent = (answered / total) * 100;
+
+            document.getElementById('progress-fill').style.width = percent + '%';
+            document.getElementById('current-q').textContent = answered;
+        }
+
+        function updateButtonVisibility() {
+            const nextBtn = document.getElementById('next-btn');
+            const submitBtn = document.getElementById('submit-btn');
+
+            if (currentQuestionIndex === questions.length - 1 && responses[questions[currentQuestionIndex].id]) {
+                nextBtn.classList.add('hidden');
+                submitBtn.classList.remove('hidden');
+            } else {
+                nextBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+            }
+        }
+
+        function calculateResults() {
+            // Calculate dimension scores
+            const dimensionScores = {};
+
+            assessmentData.scoring.dimensions.forEach(dim => {
+                let total = 0;
+                let count = 0;
+
+                dim.questions.forEach(qId => {
+                    const question = questions.find(q => q.id === qId);
+                    let score = responses[qId];
+
+                    if (question && question.reverse_scored) {
+                        score = 5 - score;
+                    }
+
+                    total += score;
+                    count++;
+                });
+
+                const avgScore = total / count;
+                const percentile = ((avgScore - 1) / 3) * 100;
+
+                dimensionScores[dim.name] = {
+                    score: avgScore.toFixed(1),
+                    percentile: Math.round(percentile)
+                };
+            });
+
+            // Determine archetype based on scores
+            userArchetype = determineArchetype(dimensionScores);
+            displayResults(userArchetype, dimensionScores);
+        }
+
+        function determineArchetype(scores) {
+            // Simple archetype matching based on dimension patterns
+            const o = scores['Openness'].percentile;
+            const c = scores['Conscientiousness'].percentile;
+            const e = scores['Extraversion'].percentile;
+            const a = scores['Agreeableness'].percentile;
+            const s = scores['Emotional Stability'].percentile;
+
+            // Find matching archetype from predefined list
+            const archetypes = assessmentData.scoring.archetypes;
+
+            // Visionary Leader: High E, O, C
+            if (e > 65 && o > 65 && c > 65) return archetypes[0];
+
+            // Harmonizer: High A, S, moderate E
+            if (a > 65 && s > 65 && e > 40) return archetypes[1];
+
+            // Strategic Architect: High C, O, low-moderate E
+            if (c > 65 && o > 65 && e < 60) return archetypes[2];
+
+            // Creative Free Spirit: High O, low C
+            if (o > 65 && c < 40) return archetypes[3];
+
+            // Reliable Guardian: High C, A, S
+            if (c > 65 && a > 65 && s > 65) return archetypes[4];
+
+            // Social Butterfly: High E, A, moderate-high O
+            if (e > 65 && a > 65 && o > 50) return archetypes[5];
+
+            // Analytical Sage: High C, O, low E, high S
+            if (c > 65 && o > 65 && e < 40 && s > 65) return archetypes[6];
+
+            // Empathetic Healer: High A, low S
+            if (a > 65 && s < 40) return archetypes[7];
+
+            // Adventurous Explorer: High O, E, low C, high S
+            if (o > 65 && e > 65 && c < 40 && s > 65) return archetypes[8];
+
+            // Quiet Observer: Low E, high O, high S
+            if (e < 40 && o > 65 && s > 65) return archetypes[9];
+
+            // Charismatic Performer: High E, O, low S
+            if (e > 65 && o > 65 && s < 40) return archetypes[10];
+
+            // Pragmatic Realist: High C, low O, high S
+            if (c > 65 && o < 40 && s > 65) return archetypes[11];
+
+            // Passionate Advocate: Low A, high C, high O
+            if (a < 40 && c > 65 && o > 65) return archetypes[12];
+
+            // Spontaneous Improviser: Low C, high E, high O
+            if (c < 40 && e > 65 && o > 65) return archetypes[13];
+
+            // Independent Maverick: Low A, high O, low E
+            if (a < 40 && o > 65 && e < 40) return archetypes[14];
+
+            // Balanced Integrator: All moderate (default)
+            return archetypes[15];
+        }
+
+        function displayResults(archetype, scores) {
+            document.getElementById('questions-screen').classList.add('hidden');
+            document.getElementById('results-screen').classList.add('active');
+
+            // Archetype reveal
+            const revealDiv = document.getElementById('archetype-reveal');
+            revealDiv.innerHTML = `
+                <div class="archetype-emoji">${archetype.emoji}</div>
+                <div class="archetype-name">${archetype.name}</div>
+                <div class="archetype-tagline">"${archetype.tagline}"</div>
+            `;
+
+            // Archetype details
+            const detailsDiv = document.getElementById('archetype-details');
+            detailsDiv.innerHTML = `
+                <div class="section">
+                    <div class="section-heading">🎯 Your Superpower Strengths</div>
+                    <div class="strengths-list">
+                        ${archetype.strengths.map(s => `<div class="strength-item">${s}</div>`).join('')}
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-heading">⭐ Famous People Like You</div>
+                    <div class="famous-examples">
+                        ${archetype.famous_examples.map(p => `<div class="famous-person">${p}</div>`).join('')}
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-heading">💼 Where You Thrive</div>
+                    <div class="roles-list">
+                        ${archetype.ideal_roles.map(r => `<div class="role-item">${r}</div>`).join('')}
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-heading">🌱 Growth Edge</div>
+                    <div class="section-content">${archetype.growth_tip}</div>
+                </div>
+            `;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function captureEmail() {
+            const email = document.getElementById('email-input').value;
+            if (email && email.includes('@')) {
+                // In production, send to your email capture service
+                alert('Thank you! Check your email for your complete assessment results and free resources.');
+                // Redirect to full OCEAN assessment
+                window.location.href = '../ocean-full/index.html';
+            } else {
+                alert('Please enter a valid email address');
+            }
+        }
+
+        function shareTwitter() {
+            const text = `I'm a ${userArchetype.name}! ${userArchetype.emoji} What's your personality archetype? Take the quiz:`;
+            const url = window.location.href;
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+        }
+
+        function shareLinkedIn() {
+            const url = window.location.href;
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = window.location.href;
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('Link copied to clipboard!');
+            });
+        }
+
+        // Load questions on page load
+        loadQuestions();
+    </script>
+</body>
+</html>

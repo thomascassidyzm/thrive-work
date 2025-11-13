@@ -1,0 +1,937 @@
+{
+  "assessment_meta": {
+    "id": "ocean_full_v1",
+    "title": "Complete OCEAN Behavioral Analysis",
+    "description": "Comprehensive personality and behavioral assessment covering all life domains - work, relationships, personal growth, and wellbeing",
+    "version": "1.0",
+    "estimated_time_minutes": 20,
+    "target_audience": "General - All users",
+    "privacy_level": "mixed",
+    "ocean_alignment": true,
+    "question_count": 60
+  },
+  "instructions": {
+    "intro": "This comprehensive assessment explores how you think, feel, and behave across different life situations. Your responses help create a rich profile of your personality patterns.",
+    "response_format": "Scenario-based: Choose the response that best matches how you'd naturally act",
+    "time_guidance": "Take your time - most people need 15-25 minutes. You can pause and return anytime.",
+    "privacy_note": "Questions are classified by privacy level. Some workplace patterns may be shared with employers (aggregated only), while personal questions remain private to you."
+  },
+  "questions": [
+    {
+      "id": "OCEAN001",
+      "text": "Your friend group is planning something you don't want to do, but everyone else seems excited. You:",
+      "options": [
+        {"value": 1, "text": "Go along with it to avoid being difficult"},
+        {"value": 2, "text": "Make an excuse to get out of it"},
+        {"value": 3, "text": "Suggest an alternative that works for everyone"},
+        {"value": 4, "text": "Honestly say it's not for you"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "social_pressure",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN002",
+      "text": "At a party, you typically:",
+      "options": [
+        {"value": 1, "text": "Stay close to the people you came with"},
+        {"value": 2, "text": "Find one person to have a deep conversation with"},
+        {"value": 3, "text": "Help the host with things to stay busy"},
+        {"value": 4, "text": "Work the room and talk to lots of people"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "social_behavior",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN003",
+      "text": "You made a mistake at work that no one noticed yet. You:",
+      "options": [
+        {"value": 1, "text": "Wait to see if anyone notices first"},
+        {"value": 2, "text": "Quietly fix it and hope no one finds out"},
+        {"value": 3, "text": "Confide in a trusted colleague for advice"},
+        {"value": 4, "text": "Immediately tell your boss and own up to it"}
+      ],
+      "ocean_dimension": "neuroticism",
+      "category": "vulnerability",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN004",
+      "text": "You're decorating your living space. What actually happens?",
+      "options": [
+        {"value": 1, "text": "It stays pretty bare - decorating isn't your thing"},
+        {"value": 2, "text": "Keep it minimal and functional"},
+        {"value": 3, "text": "Display lots of photos and memories"},
+        {"value": 4, "text": "Carefully curate art, colors, and textures that inspire you"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "aesthetic_expression",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN005",
+      "text": "It's 11 PM and you planned to wake up early tomorrow. A new episode of your favorite show just dropped. You:",
+      "options": [
+        {"value": 1, "text": "Stay up watching - you'll figure it out tomorrow"},
+        {"value": 2, "text": "Watch 'just one episode' (but actually watch three)"},
+        {"value": 3, "text": "Set a timer for 30 minutes as a compromise"},
+        {"value": 4, "text": "Stick to your plan and go to bed"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "self_discipline",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN006",
+      "text": "A family member regularly makes comments that hurt your feelings. You:",
+      "options": [
+        {"value": 1, "text": "Try to develop thicker skin and not let it bother you"},
+        {"value": 2, "text": "Limit your time around them"},
+        {"value": 3, "text": "Make comments back to show them how it feels"},
+        {"value": 4, "text": "Tell them directly how their comments affect you"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "family_dynamics",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN007",
+      "text": "When you walk into a room full of people you don't know well, you:",
+      "options": [
+        {"value": 1, "text": "Wait for someone to approach you"},
+        {"value": 2, "text": "Find something to do (get a drink, check your phone)"},
+        {"value": 3, "text": "Look for someone you recognize to join"},
+        {"value": 4, "text": "Introduce yourself to whoever seems approachable"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "social_initiation",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN008",
+      "text": "You're going through something difficult emotionally. Who actually knows about it?",
+      "options": [
+        {"value": 1, "text": "Nobody - you handle things privately"},
+        {"value": 2, "text": "You hint at it but don't give details"},
+        {"value": 3, "text": "One or two very close people"},
+        {"value": 4, "text": "Anyone who asks how you're doing"}
+      ],
+      "ocean_dimension": "neuroticism",
+      "category": "emotional_vulnerability",
+      "privacy_level": "personal",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN009",
+      "text": "When listening to music, what's your actual pattern?",
+      "options": [
+        {"value": 1, "text": "Music is mainly background noise while doing other things"},
+        {"value": 2, "text": "Whatever's on the radio or popular"},
+        {"value": 3, "text": "Stick to your favorite playlists from years ago"},
+        {"value": 4, "text": "Actively seek out new artists and genres"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "musical_engagement",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN010",
+      "text": "Your room/workspace is getting messy. When do you actually clean it?",
+      "options": [
+        {"value": 1, "text": "You function fine in chaos"},
+        {"value": 2, "text": "Only when it's unbearable or someone's coming"},
+        {"value": 3, "text": "Weekly cleaning routine"},
+        {"value": 4, "text": "Keep it clean daily - mess bothers you"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "order_maintenance",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN011",
+      "text": "Someone consistently asks you to do favors that are inconvenient for you. You:",
+      "options": [
+        {"value": 1, "text": "Keep saying yes but feel increasingly overwhelmed"},
+        {"value": 2, "text": "Help them find alternative solutions"},
+        {"value": 3, "text": "Explain why the requests are difficult for you"},
+        {"value": 4, "text": "Start saying no more often"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "personal_boundaries",
+      "privacy_level": "personal",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN012",
+      "text": "At a team meeting, one person is dominating the conversation and others are clearly uncomfortable. You:",
+      "options": [
+        {"value": 1, "text": "Wait for someone else to say something"},
+        {"value": 2, "text": "Try to redirect with a question to the group"},
+        {"value": 3, "text": "Directly address the imbalance"},
+        {"value": 4, "text": "Step up and suggest a way forward"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "power_dynamics",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN013",
+      "text": "Someone compliments you genuinely. What's your real internal reaction?",
+      "options": [
+        {"value": 1, "text": "Feel uncomfortable and change the subject"},
+        {"value": 2, "text": "Wonder what they want from you"},
+        {"value": 3, "text": "Deflect or minimize it immediately"},
+        {"value": 4, "text": "Accept it gratefully and feel good"}
+      ],
+      "ocean_dimension": "neuroticism",
+      "category": "vulnerability",
+      "privacy_level": "personal",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN014",
+      "text": "You're daydreaming during a boring meeting. Where does your mind actually go?",
+      "options": [
+        {"value": 1, "text": "You rarely daydream - you stay focused on the present"},
+        {"value": 2, "text": "Practical plans for your upcoming tasks"},
+        {"value": 3, "text": "Replaying recent conversations and events"},
+        {"value": 4, "text": "Elaborate scenarios of alternative lives you could be living"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "fantasy_imagination",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN015",
+      "text": "You're working from home with a deadline. What's your actual pattern?",
+      "options": [
+        {"value": 1, "text": "Get distracted every 10 minutes"},
+        {"value": 2, "text": "Procrastinate until panic sets in"},
+        {"value": 3, "text": "Work in bursts with lots of breaks"},
+        {"value": 4, "text": "Focused work until it's done"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "work_habits",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN016",
+      "text": "Two of your friends are in a heated argument in front of you. You:",
+      "options": [
+        {"value": 1, "text": "Feel uncomfortable and look for an excuse to leave"},
+        {"value": 2, "text": "Stay neutral and let them work it out"},
+        {"value": 3, "text": "Suggest they take a break and cool down"},
+        {"value": 4, "text": "Try to mediate and help them find common ground"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "friend_conflict",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN017",
+      "text": "In group conversations, you tend to:",
+      "options": [
+        {"value": 1, "text": "Listen more than you speak"},
+        {"value": 2, "text": "Ask questions to understand others better"},
+        {"value": 3, "text": "Share stories and experiences"},
+        {"value": 4, "text": "Try to keep the conversation flowing"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "communication_preferences",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN018",
+      "text": "Your deepest insecurity gets triggered in conversation. What actually happens?",
+      "options": [
+        {"value": 1, "text": "You shut down or leave the conversation"},
+        {"value": 2, "text": "You get defensive or aggressive"},
+        {"value": 3, "text": "You deflect with humor or change topics"},
+        {"value": 4, "text": "You acknowledge it's a sensitive area for you"}
+      ],
+      "ocean_dimension": "neuroticism",
+      "category": "vulnerability",
+      "privacy_level": "personal",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN019",
+      "text": "Someone suggests trying an improv comedy class together. What's your real reaction?",
+      "options": [
+        {"value": 1, "text": "Make an excuse - that's way outside your comfort zone"},
+        {"value": 2, "text": "Suggest something else you'd prefer instead"},
+        {"value": 3, "text": "Anxious - but you'll try it for the experience"},
+        {"value": 4, "text": "Excited - you love trying creative challenges"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "creative_risk",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN020",
+      "text": "You set a personal goal (exercise, reading, meditation, etc.). What actually happens over the next month?",
+      "options": [
+        {"value": 1, "text": "Forget about it within a week"},
+        {"value": 2, "text": "Strong start, then gradually fade"},
+        {"value": 3, "text": "Inconsistent but keep trying"},
+        {"value": 4, "text": "Follow through consistently"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "goal_persistence",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN021",
+      "text": "Someone takes credit for your idea in a group setting. You:",
+      "options": [
+        {"value": 1, "text": "Let it slide to avoid creating tension"},
+        {"value": 2, "text": "Address it privately with them later"},
+        {"value": 3, "text": "Start documenting everything for future reference"},
+        {"value": 4, "text": "Immediately speak up: 'Actually, that was my suggestion'"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "credit_and_recognition",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN022",
+      "text": "Your team is stuck on a decision and everyone is looking around waiting for someone to take charge. You:",
+      "options": [
+        {"value": 1, "text": "Suggest we take a break to think it over"},
+        {"value": 2, "text": "Wait to see if anyone else will lead"},
+        {"value": 3, "text": "Ask what everyone thinks we should do"},
+        {"value": 4, "text": "Step up and suggest a way forward"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "leadership_emergence",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN023",
+      "text": "You realize you were wrong in an argument. What actually happens next?",
+      "options": [
+        {"value": 1, "text": "Double down to avoid looking weak"},
+        {"value": 2, "text": "Slowly change your position without admitting fault"},
+        {"value": 3, "text": "Admit it privately later when things calm down"},
+        {"value": 4, "text": "Immediately admit it and apologize"}
+      ],
+      "ocean_dimension": "neuroticism",
+      "category": "vulnerability",
+      "privacy_level": "personal",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN024",
+      "text": "When reading books or watching movies, what actually draws you in?",
+      "options": [
+        {"value": 1, "text": "You rarely read or watch anything for pleasure"},
+        {"value": 2, "text": "Feel-good stories with clear happy endings"},
+        {"value": 3, "text": "True stories and documentaries about real events"},
+        {"value": 4, "text": "Complex, ambiguous stories that make you think"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "narrative_preference",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN025",
+      "text": "You have multiple tasks due. How do you actually handle them?",
+      "options": [
+        {"value": 1, "text": "Panic and do them all last minute"},
+        {"value": 2, "text": "Jump between tasks based on mood"},
+        {"value": 3, "text": "Do the easy ones first to feel productive"},
+        {"value": 4, "text": "Make a list and work through systematically"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "task_management",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN026",
+      "text": "The group is enthusiastically supporting an idea you think is fundamentally flawed. You:",
+      "options": [
+        {"value": 1, "text": "Go along with it to maintain group harmony"},
+        {"value": 2, "text": "Stay quiet but prepare for when it fails"},
+        {"value": 3, "text": "Ask probing questions to help them see the issues"},
+        {"value": 4, "text": "Respectfully present your concerns"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "group_think_resistance",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN027",
+      "text": "In a group discussion, you have a great point to make but several people are talking. You:",
+      "options": [
+        {"value": 1, "text": "Let the moment pass rather than interrupt"},
+        {"value": 2, "text": "Wait for a natural pause in conversation"},
+        {"value": 3, "text": "Gesture or say 'excuse me' to get attention"},
+        {"value": 4, "text": "Jump in when you can find an opening"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "speaking_patterns",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN028",
+      "text": "You're angry about something. How long does it actually last?",
+      "options": [
+        {"value": 1, "text": "Days - you hold onto things"},
+        {"value": 2, "text": "Hours - need time to cool down"},
+        {"value": 3, "text": "Depends entirely on what it's about"},
+        {"value": 4, "text": "Minutes - you process and move on"}
+      ],
+      "ocean_dimension": "neuroticism",
+      "category": "emotional_duration",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN029",
+      "text": "A coworker shows you their hobby artwork during lunch. What's your genuine response?",
+      "options": [
+        {"value": 1, "text": "Feel uncomfortable - you don't know how to respond to art"},
+        {"value": 2, "text": "Compliment it politely and change the subject"},
+        {"value": 3, "text": "Share your own creative pursuits in return"},
+        {"value": 4, "text": "Get genuinely interested and ask about their process"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "creative_engagement",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN030",
+      "text": "You get an urge to buy something you want but don't need. What actually happens?",
+      "options": [
+        {"value": 1, "text": "Buy it immediately - life's short"},
+        {"value": 2, "text": "Research extensively then probably buy it"},
+        {"value": 3, "text": "Wait 24-48 hours to see if you still want it"},
+        {"value": 4, "text": "Talk yourself out of it successfully"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "impulse_control",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN031",
+      "text": "A friend consistently shows up late and cancels plans last minute. You:",
+      "options": [
+        {"value": 1, "text": "Accept it as part of who they are"},
+        {"value": 2, "text": "Stop making plans with them without explanation"},
+        {"value": 3, "text": "Make jokes about their lateness to hint at the problem"},
+        {"value": 4, "text": "Tell them directly how their behavior affects you"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "friendship_boundaries",
+      "privacy_level": "personal",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN032",
+      "text": "During an argument, the other person starts raising their voice and getting aggressive. You:",
+      "options": [
+        {"value": 1, "text": "Feel overwhelmed and shut down"},
+        {"value": 2, "text": "Walk away until they calm down"},
+        {"value": 3, "text": "Stay calm and speak more quietly"},
+        {"value": 4, "text": "Match their energy and get louder too"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "heated_conflict",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN033",
+      "text": "Someone asks 'How are you?' when you're really not okay. What do you actually say?",
+      "options": [
+        {"value": 1, "text": "'Fine' - always, regardless of truth"},
+        {"value": 2, "text": "'Surviving' - hint without details"},
+        {"value": 3, "text": "Depends entirely on who's asking"},
+        {"value": 4, "text": "'Not great actually' - you're honest"}
+      ],
+      "ocean_dimension": "neuroticism",
+      "category": "emotional_honesty",
+      "privacy_level": "personal",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN034",
+      "text": "Someone shares an unusual creative idea with you. What's your honest internal reaction?",
+      "options": [
+        {"value": 1, "text": "Immediately think of practical obstacles"},
+        {"value": 2, "text": "Skeptical - but you listen politely"},
+        {"value": 3, "text": "Inspired to share your own weird ideas"},
+        {"value": 4, "text": "Intrigued - you want to understand their vision"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "idea_receptivity",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN035",
+      "text": "Your phone buzzes while you're trying to focus. What's your actual behavior?",
+      "options": [
+        {"value": 1, "text": "Check immediately every time"},
+        {"value": 2, "text": "Try to ignore but usually fail"},
+        {"value": 3, "text": "Check at planned intervals"},
+        {"value": 4, "text": "Phone stays in another room when focusing"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "attention_control",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN036",
+      "text": "Your group has inside jokes and references that a new member doesn't understand. You:",
+      "options": [
+        {"value": 1, "text": "Continue with the group flow"},
+        {"value": 2, "text": "Pull them aside later to catch them up"},
+        {"value": 3, "text": "Suggest moving to topics everyone can follow"},
+        {"value": 4, "text": "Make sure to explain the context to them"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "newcomer_integration",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN037",
+      "text": "You're in a meeting where everyone is agreeing with the boss's bad idea. You:",
+      "options": [
+        {"value": 1, "text": "Nod along like everyone else"},
+        {"value": 2, "text": "Ask clarifying questions that expose the problems"},
+        {"value": 3, "text": "Find a diplomatic way to raise concerns"},
+        {"value": 4, "text": "Stay quiet but prepared for failure"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "authority_dynamics",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN038",
+      "text": "Someone accuses you of something you didn't do in front of others. You:",
+      "options": [
+        {"value": 1, "text": "Feel humiliated and don't know what to say"},
+        {"value": 2, "text": "Get angry and attack their credibility"},
+        {"value": 3, "text": "Calmly state the facts and ask to discuss privately"},
+        {"value": 4, "text": "Immediately defend yourself loudly and clearly"}
+      ],
+      "ocean_dimension": "neuroticism",
+      "category": "public_confrontation",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN039",
+      "text": "How do you actually engage with beauty in everyday life?",
+      "options": [
+        {"value": 1, "text": "Too busy or distracted to notice most of the time"},
+        {"value": 2, "text": "Occasionally appreciate beauty when it's obvious"},
+        {"value": 3, "text": "Often stop to notice beautiful moments (sunsets, architecture, etc.)"},
+        {"value": 4, "text": "Actively seek out beautiful experiences"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "aesthetic_attention",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN040",
+      "text": "You're trying to break a bad habit. What's your actual success pattern?",
+      "options": [
+        {"value": 1, "text": "Give up after the first relapse"},
+        {"value": 2, "text": "Multiple failed attempts but keep trying"},
+        {"value": 3, "text": "Gradual reduction with some setbacks"},
+        {"value": 4, "text": "Cold turkey and stick to it"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "habit_change",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN041",
+      "text": "Your group is making a decision that will negatively impact someone not present. You:",
+      "options": [
+        {"value": 1, "text": "Go along with the group's decision"},
+        {"value": 2, "text": "Ask if we should check with them first"},
+        {"value": 3, "text": "Suggest waiting until they can be included"},
+        {"value": 4, "text": "Speak up for the absent person's interests"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "absent_party_consideration",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN042",
+      "text": "Your romantic partner does something that really bothers you. You:",
+      "options": [
+        {"value": 1, "text": "Decide it's not worth fighting about"},
+        {"value": 2, "text": "Hint at your displeasure and hope they figure it out"},
+        {"value": 3, "text": "Wait until you're both calm and relaxed to discuss it"},
+        {"value": 4, "text": "Bring it up as soon as possible"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "romantic_conflict",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN043",
+      "text": "A friend asks to borrow a significant amount of money. What do you actually do?",
+      "options": [
+        {"value": 1, "text": "Make an excuse about not having it available"},
+        {"value": 2, "text": "Offer a smaller amount or alternative help"},
+        {"value": 3, "text": "Ask for details about why they need it first"},
+        {"value": 4, "text": "Lend it immediately if you have it"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "trust",
+      "privacy_level": "personal",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN044",
+      "text": "You're crying in public. What do you actually do?",
+      "options": [
+        {"value": 1, "text": "Fight to hold it back at all costs"},
+        {"value": 2, "text": "Make a joke about it to deflect"},
+        {"value": 3, "text": "Find somewhere private immediately"},
+        {"value": 4, "text": "Let it happen - emotions are human"}
+      ],
+      "ocean_dimension": "neuroticism",
+      "category": "vulnerability",
+      "privacy_level": "personal",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN045",
+      "text": "Your city offers free creative workshops (pottery, writing, dance, etc.). What's your actual pattern?",
+      "options": [
+        {"value": 1, "text": "No interest - you have better things to do"},
+        {"value": 2, "text": "Consider it but never actually register"},
+        {"value": 3, "text": "Only go if a friend drags you along"},
+        {"value": 4, "text": "Sign up for multiple workshops enthusiastically"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "creative_participation",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN046",
+      "text": "You said you'd do something but now you don't want to. What happens?",
+      "options": [
+        {"value": 1, "text": "Ghost and deal with consequences later"},
+        {"value": 2, "text": "Find a legitimate reason to cancel"},
+        {"value": 3, "text": "Be honest that you changed your mind"},
+        {"value": 4, "text": "Do it anyway - you gave your word"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "commitment_keeping",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN047",
+      "text": "Someone in your group consistently interrupts others. You:",
+      "options": [
+        {"value": 1, "text": "Feel annoyed but don't say anything"},
+        {"value": 2, "text": "Wait and see if anyone else addresses it"},
+        {"value": 3, "text": "Try to redirect: 'What do you think, Sarah?'"},
+        {"value": 4, "text": "Call it out directly: 'Let them finish'"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "behavioral_correction",
+      "privacy_level": "personal",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN048",
+      "text": "Your team is brainstorming and someone builds on your idea to make it much better. You:",
+      "options": [
+        {"value": 1, "text": "Step back and let them run with it"},
+        {"value": 2, "text": "Feel a bit territorial about your original concept"},
+        {"value": 3, "text": "Add more to build on their improvement"},
+        {"value": 4, "text": "Feel excited that the idea is improving"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "idea_building",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN049",
+      "text": "You need help with something you're struggling with. What's your actual behavior?",
+      "options": [
+        {"value": 1, "text": "Struggle alone until absolutely desperate"},
+        {"value": 2, "text": "Research solutions yourself before asking anyone"},
+        {"value": 3, "text": "Drop hints hoping someone offers help"},
+        {"value": 4, "text": "Ask for help as soon as you realize you need it"}
+      ],
+      "ocean_dimension": "neuroticism",
+      "category": "vulnerability",
+      "privacy_level": "personal",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN050",
+      "text": "Your boss asks you to do something that goes against your personal principles but isn't illegal. You:",
+      "options": [
+        {"value": 1, "text": "Do it without question - they're the boss"},
+        {"value": 2, "text": "Express your concerns but do it anyway"},
+        {"value": 3, "text": "Ask if there's another way to achieve the same goal"},
+        {"value": 4, "text": "Refuse and explain why you can't do it"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "workplace_authority",
+      "privacy_level": "workplace_shareable",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN051",
+      "text": "A close friend is going through a tough time and keeps venting to you. You:",
+      "options": [
+        {"value": 1, "text": "Encourage them to talk to a professional"},
+        {"value": 2, "text": "Listen but set some boundaries about when you're available"},
+        {"value": 3, "text": "Try to help them find solutions to their problems"},
+        {"value": 4, "text": "Listen and offer emotional support whenever they need it"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "emotional_support",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN052",
+      "text": "Your group is celebrating something but you're going through a tough time personally. You:",
+      "options": [
+        {"value": 1, "text": "Find a reason to leave early"},
+        {"value": 2, "text": "Try to focus on their joy to lift your spirits"},
+        {"value": 3, "text": "Join in the celebration despite how you feel"},
+        {"value": 4, "text": "Share that you're struggling and might not be fully present"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "mood_mismatch",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN053",
+      "text": "Someone betrayed your trust in the past. How does it actually affect new relationships?",
+      "options": [
+        {"value": 1, "text": "You're much more guarded with everyone"},
+        {"value": 2, "text": "You trust but verify everything now"},
+        {"value": 3, "text": "You test people extensively before trusting"},
+        {"value": 4, "text": "You give each new person a fresh start"}
+      ],
+      "ocean_dimension": "neuroticism",
+      "category": "trust_patterns",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN054",
+      "text": "Someone makes a comment that goes against your core values. You:",
+      "options": [
+        {"value": 1, "text": "Change the subject to avoid conflict"},
+        {"value": 2, "text": "Share your own values without attacking theirs"},
+        {"value": 3, "text": "Ask questions to understand their perspective"},
+        {"value": 4, "text": "Challenge their viewpoint directly"}
+      ],
+      "ocean_dimension": "openness",
+      "category": "values_conflict",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN055",
+      "text": "Someone cuts in line in front of you. You:",
+      "options": [
+        {"value": 1, "text": "Say nothing but feel annoyed"},
+        {"value": 2, "text": "Assume they didn't notice and give them the benefit of the doubt"},
+        {"value": 3, "text": "Loudly call them out for cutting"},
+        {"value": 4, "text": "Politely point out that there's a line"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "public_conflict",
+      "privacy_level": "personal",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN056",
+      "text": "There's obvious tension in your friend group that everyone's ignoring. You:",
+      "options": [
+        {"value": 1, "text": "Wait for someone else to address it"},
+        {"value": 2, "text": "Try to lighten the mood and distract from the tension"},
+        {"value": 3, "text": "Talk to individuals privately to understand what's happening"},
+        {"value": 4, "text": "Bring it up openly: 'Can we talk about the elephant in the room?'"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "group_tension",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN057",
+      "text": "You wake up not feeling great. What determines if you push through your day?",
+      "options": [
+        {"value": 1, "text": "Any excuse to take it easy"},
+        {"value": 2, "text": "Depends who's counting on you"},
+        {"value": 3, "text": "Assess honestly and adjust accordingly"},
+        {"value": 4, "text": "Push through regardless - duties first"}
+      ],
+      "ocean_dimension": "conscientiousness",
+      "category": "resilience",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN058",
+      "text": "In your hobby group, someone with more experience consistently dismisses your ideas. You:",
+      "options": [
+        {"value": 1, "text": "Defer to their experience and stay quiet"},
+        {"value": 2, "text": "Find a different group where your input is valued"},
+        {"value": 3, "text": "Ask them to explain why they think your ideas won't work"},
+        {"value": 4, "text": "Continue sharing ideas despite their dismissiveness"}
+      ],
+      "ocean_dimension": "agreeableness",
+      "category": "peer_authority",
+      "privacy_level": "personal",
+      "reverse_scored": true
+    },
+    {
+      "id": "OCEAN059",
+      "text": "In a competitive situation, someone is clearly cheating or bending rules. You:",
+      "options": [
+        {"value": 1, "text": "Lose interest in the competition"},
+        {"value": 2, "text": "Try to beat them despite their advantage"},
+        {"value": 3, "text": "Report it to the appropriate authority"},
+        {"value": 4, "text": "Call them out immediately"}
+      ],
+      "ocean_dimension": "extraversion",
+      "category": "competitive_conflict",
+      "privacy_level": "personal",
+      "reverse_scored": false
+    },
+    {
+      "id": "OCEAN060",
+      "text": "Someone gets emotional and starts crying during a discussion. You:",
+      "options": [
+        {"value": 1, "text": "Feel uncomfortable and unsure what to do"},
+        {"value": 2, "text": "Suggest taking a break for them to compose themselves"},
+        {"value": 3, "text": "Give them space while staying present"},
+        {"value": 4, "text": "Immediately offer comfort and support"}
+      ],
+      "ocean_dimension": "neuroticism",
+      "category": "emotional_situations",
+      "privacy_level": "personal",
+      "reverse_scored": true
+    }
+  ],
+  "scoring": {
+    "dimensions": [
+      {
+        "name": "Openness",
+        "description": "Curiosity, creativity, imagination, and willingness to try new experiences",
+        "questions": ["OCEAN004", "OCEAN009", "OCEAN014", "OCEAN019", "OCEAN024", "OCEAN029", "OCEAN034", "OCEAN039", "OCEAN045", "OCEAN054"],
+        "interpretation": {
+          "high": "You're intellectually curious and enjoy exploring new ideas, experiences, and creative pursuits. You appreciate complexity and abstract thinking.",
+          "medium": "You balance traditional approaches with occasional openness to new experiences. You're selectively curious about certain topics.",
+          "low": "You prefer familiar, conventional approaches and concrete, practical matters over abstract ideas."
+        }
+      },
+      {
+        "name": "Conscientiousness",
+        "description": "Organization, planning, self-discipline, and reliability",
+        "questions": ["OCEAN005", "OCEAN010", "OCEAN015", "OCEAN020", "OCEAN025", "OCEAN030", "OCEAN035", "OCEAN040", "OCEAN046", "OCEAN057"],
+        "interpretation": {
+          "high": "You're highly organized, disciplined, and reliable. You plan ahead, follow through on commitments, and maintain high standards.",
+          "medium": "You balance structure with flexibility. You're generally organized but can adapt when needed.",
+          "low": "You prefer spontaneity and flexibility over rigid planning. You work best without too much structure."
+        }
+      },
+      {
+        "name": "Extraversion",
+        "description": "Social energy, assertiveness, and enthusiasm in interpersonal situations",
+        "questions": ["OCEAN002", "OCEAN007", "OCEAN012", "OCEAN017", "OCEAN022", "OCEAN027", "OCEAN032", "OCEAN037", "OCEAN042", "OCEAN048", "OCEAN052", "OCEAN056", "OCEAN059"],
+        "interpretation": {
+          "high": "You're energized by social interaction, enjoy taking initiative in groups, and naturally engage with others. You're comfortable with attention and leadership.",
+          "medium": "You enjoy both social interaction and solitude. You can lead when needed but also appreciate following.",
+          "low": "You prefer smaller gatherings or one-on-one interactions. You need time alone to recharge and may avoid being the center of attention."
+        }
+      },
+      {
+        "name": "Agreeableness",
+        "description": "Cooperation, empathy, trust, and concern for social harmony",
+        "questions": ["OCEAN001", "OCEAN006", "OCEAN011", "OCEAN016", "OCEAN021", "OCEAN026", "OCEAN031", "OCEAN036", "OCEAN041", "OCEAN043", "OCEAN047", "OCEAN050", "OCEAN051", "OCEAN055", "OCEAN058"],
+        "interpretation": {
+          "high": "You're naturally cooperative, empathetic, and prioritize maintaining harmony in relationships. You're trusting and considerate of others' needs.",
+          "medium": "You balance cooperation with standing up for yourself. You're generally friendly but can be assertive when needed.",
+          "low": "You're comfortable with conflict and prioritize honesty over harmony. You're skeptical and maintain firm boundaries."
+        }
+      },
+      {
+        "name": "Emotional Stability",
+        "description": "Resilience, emotional regulation, and stress management (inverse of Neuroticism)",
+        "questions": ["OCEAN003", "OCEAN008", "OCEAN013", "OCEAN018", "OCEAN023", "OCEAN028", "OCEAN033", "OCEAN038", "OCEAN044", "OCEAN049", "OCEAN053", "OCEAN060"],
+        "reverse_dimension": true,
+        "interpretation": {
+          "high": "You handle stress well, remain calm under pressure, and don't take things too personally. You're emotionally resilient.",
+          "medium": "You experience normal emotional ups and downs but generally manage them effectively. You're somewhat sensitive to stress.",
+          "low": "You're more sensitive to stress and criticism. You experience emotions intensely and may worry frequently about potential problems."
+        }
+      }
+    ]
+  },
+  "results_template": {
+    "title": "Your Complete OCEAN Personality Profile",
+    "sections": [
+      {
+        "heading": "Your Personality Dimensions",
+        "content": "Based on your responses across 60 different life scenarios"
+      },
+      {
+        "heading": "Strengths & Natural Tendencies",
+        "content": "Your highest scoring dimensions reveal your natural strengths"
+      },
+      {
+        "heading": "Growth Opportunities",
+        "content": "Areas where developing new strategies could enhance your wellbeing"
+      },
+      {
+        "heading": "Personalized Recommendations",
+        "content": "Resources and next steps based on your unique profile"
+      }
+    ]
+  }
+}

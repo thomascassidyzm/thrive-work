@@ -1,0 +1,276 @@
+{
+  "assessment_meta": {
+    "id": "workplace_patterns_v1",
+    "title": "Workplace Patterns Assessment",
+    "description": "Understand your behavioral patterns at work - how you collaborate, communicate, and contribute to your team",
+    "version": "1.0",
+    "estimated_time_minutes": 8,
+    "target_audience": "B2B - Corporate employees",
+    "privacy_level": "workplace_shareable",
+    "ocean_alignment": true,
+    "question_count": 20
+  },
+  "instructions": {
+    "intro": "This assessment helps you understand your natural patterns at work. There are no right or wrong answers - just choose the response that feels most like you.",
+    "response_format": "Rate each statement from 1 (Strongly Disagree) to 5 (Strongly Agree)",
+    "time_guidance": "Take your time, but trust your first instinct. Most people complete this in 8-10 minutes."
+  },
+  "questions": [
+    {
+      "id": "WP001",
+      "text": "I prefer to work on one project at a time rather than juggling multiple tasks",
+      "category": "work_style",
+      "ocean_dimension": "conscientiousness",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP002",
+      "text": "I get energized by brainstorming sessions with my team",
+      "category": "collaboration",
+      "ocean_dimension": "extraversion",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP003",
+      "text": "When there's a conflict in the team, I tend to step in and mediate",
+      "category": "conflict_handling",
+      "ocean_dimension": "agreeableness",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP004",
+      "text": "I worry about making mistakes in my work more than most people",
+      "category": "stress_response",
+      "ocean_dimension": "neuroticism",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP005",
+      "text": "I enjoy exploring new ways to solve problems, even if they're unconventional",
+      "category": "innovation",
+      "ocean_dimension": "openness",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP006",
+      "text": "I keep detailed to-do lists and feel satisfied checking items off",
+      "category": "organization",
+      "ocean_dimension": "conscientiousness",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP007",
+      "text": "I prefer written communication over face-to-face meetings when possible",
+      "category": "communication_style",
+      "ocean_dimension": "extraversion",
+      "scale": "1-5",
+      "reverse_scored": true,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP008",
+      "text": "I find it easy to say no when I'm already overcommitted",
+      "category": "boundaries",
+      "ocean_dimension": "agreeableness",
+      "scale": "1-5",
+      "reverse_scored": true,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP009",
+      "text": "I often feel stressed about work even when I'm not at the office",
+      "category": "stress_response",
+      "ocean_dimension": "neuroticism",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP010",
+      "text": "I'm the person who suggests trying new tools or processes for the team",
+      "category": "innovation",
+      "ocean_dimension": "openness",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP011",
+      "text": "I double-check my work multiple times before submitting it",
+      "category": "quality_focus",
+      "ocean_dimension": "conscientiousness",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP012",
+      "text": "I volunteer to lead team meetings or presentations",
+      "category": "leadership",
+      "ocean_dimension": "extraversion",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP013",
+      "text": "I avoid giving negative feedback even when it's necessary",
+      "category": "conflict_handling",
+      "ocean_dimension": "agreeableness",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP014",
+      "text": "Small setbacks at work can ruin my whole day",
+      "category": "resilience",
+      "ocean_dimension": "neuroticism",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP015",
+      "text": "I'm curious about how other departments and teams operate",
+      "category": "curiosity",
+      "ocean_dimension": "openness",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP016",
+      "text": "I struggle to start tasks without clear deadlines and structure",
+      "category": "self_motivation",
+      "ocean_dimension": "conscientiousness",
+      "scale": "1-5",
+      "reverse_scored": true,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP017",
+      "text": "After a full day of meetings, I feel drained and need alone time",
+      "category": "energy_management",
+      "ocean_dimension": "extraversion",
+      "scale": "1-5",
+      "reverse_scored": true,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP018",
+      "text": "I prioritize team harmony over pushing my own ideas",
+      "category": "team_dynamics",
+      "ocean_dimension": "agreeableness",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP019",
+      "text": "I need frequent reassurance that I'm doing a good job",
+      "category": "confidence",
+      "ocean_dimension": "neuroticism",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    },
+    {
+      "id": "WP020",
+      "text": "I enjoy discussing abstract concepts and big-picture thinking at work",
+      "category": "thinking_style",
+      "ocean_dimension": "openness",
+      "scale": "1-5",
+      "reverse_scored": false,
+      "workplace_shareable": true
+    }
+  ],
+  "scoring": {
+    "dimensions": [
+      {
+        "name": "Openness",
+        "description": "Curiosity, creativity, and willingness to try new approaches",
+        "questions": ["WP005", "WP010", "WP015", "WP020"],
+        "interpretation": {
+          "high": "You're innovative and enjoy exploring new ideas. You bring fresh perspectives to your team.",
+          "medium": "You balance traditional methods with occasional innovation.",
+          "low": "You prefer proven methods and consistent approaches at work."
+        }
+      },
+      {
+        "name": "Conscientiousness",
+        "description": "Organization, planning, and attention to detail",
+        "questions": ["WP001", "WP006", "WP011", "WP016"],
+        "interpretation": {
+          "high": "You're highly organized and reliable. Teams can count on you to deliver quality work.",
+          "medium": "You balance structure with flexibility in your work approach.",
+          "low": "You work best with flexibility and may struggle with rigid processes."
+        }
+      },
+      {
+        "name": "Extraversion",
+        "description": "Energy from social interaction and team engagement",
+        "questions": ["WP002", "WP007", "WP012", "WP017"],
+        "interpretation": {
+          "high": "You're energized by teamwork and collaboration. You naturally engage with colleagues.",
+          "medium": "You enjoy both collaborative and independent work.",
+          "low": "You work best with focused solo time and may find constant interaction draining."
+        }
+      },
+      {
+        "name": "Agreeableness",
+        "description": "Cooperation, empathy, and team harmony",
+        "questions": ["WP003", "WP008", "WP013", "WP018"],
+        "interpretation": {
+          "high": "You prioritize team harmony and are naturally empathetic. You're a strong mediator.",
+          "medium": "You balance team needs with your own boundaries.",
+          "low": "You're comfortable with healthy conflict and setting firm boundaries."
+        }
+      },
+      {
+        "name": "Emotional Stability",
+        "description": "Resilience under pressure and stress management (reverse of Neuroticism)",
+        "questions": ["WP004", "WP009", "WP014", "WP019"],
+        "reverse_dimension": true,
+        "interpretation": {
+          "high": "You handle workplace stress well and maintain perspective during challenges.",
+          "medium": "You experience normal workplace stress but generally manage it effectively.",
+          "low": "You may be more sensitive to workplace stressors. Consider stress management support."
+        }
+      }
+    ]
+  },
+  "results_template": {
+    "title": "Your Workplace Behavioral Pattern",
+    "sections": [
+      {
+        "heading": "Your Top Strengths at Work",
+        "content": "Based on your highest scoring dimensions"
+      },
+      {
+        "heading": "Areas for Development",
+        "content": "Based on your lowest scoring dimensions"
+      },
+      {
+        "heading": "Team Contribution Style",
+        "content": "How you naturally contribute to team dynamics"
+      },
+      {
+        "heading": "Recommended Resources",
+        "content": "Personalized content suggestions from Thrive ecosystem"
+      }
+    ]
+  }
+}
