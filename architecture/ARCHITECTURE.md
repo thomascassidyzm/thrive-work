@@ -68,14 +68,20 @@ Human-supported coaching for deeper engagement:
   - Career transitions
   - Performance optimization
 
+- **Broadbanc Consciousness** - Consciousness-based coaching
+  - Self-awareness development
+  - Leadership from consciousness
+  - Transformational coaching
+
 - **FLOW (Hassan)** - Specialized coaching methodology
   - Flow state optimization
   - Performance psychology
 
-- **General Coaching Support** - Flexible coaching access
-  - Life coaching
-  - Wellness coaching
-  - Goal-oriented support
+- **SmartWisdom (Jonathan Kemp)** - Corporate mental health approach
+  - Thinking algorithms
+  - Regular practices for mental fitness
+  - Advanced note-taking techniques
+  - Proven in corporate settings
 
 ### Clinical Tier (10-15% of users)
 Medical and clinical intervention coordinated through Concierge Health:

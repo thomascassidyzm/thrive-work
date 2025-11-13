@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workplace Patterns Assessment | Thrive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .question-card {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .question-number {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-text {
+            color: #1a1a2e;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .scale-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .scale-label {
+            font-size: 0.85rem;
+            color: #666;
+            min-width: 120px;
+        }
+
+        .scale-label.start {
+            text-align: left;
+        }
+
+        .scale-label.end {
+            text-align: right;
+        }
+
+        .scale-options {
+            display: flex;
+            gap: 0.5rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .scale-option {
+            position: relative;
+        }
+
+        .scale-option input[type="radio"] {
+            appearance: none;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .scale-option input[type="radio"]:hover {
+            border-color: #667eea;
+            transform: scale(1.1);
+        }
+
+        .scale-option input[type="radio"]:checked {
+            background: #667eea;
+            border-color: #667eea;
+        }
+
+        .scale-option label {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            color: #999;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 2rem;
+            transition: transform 0.2s ease;
+        }
+
+        .button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .results-container {
+            display: none;
+        }
+
+        .results-container.active {
+            display: block;
+        }
+
+        .dimension-result {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .dimension-name {
+            font-size: 1.3rem;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .dimension-score {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .score-bar {
+            flex: 1;
+            height: 24px;
+            background: #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .score-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .dimension-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .interpretation {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        #intro-screen, #questions-screen {
+            display: block;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .recommendation-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .recommendation-box h3 {
+            color: #f57c00;
+            margin-bottom: 1rem;
+        }
+
+        .recommendation-item {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .recommendation-item:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #ffc107;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            .scale-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .scale-label {
+                text-align: center;
+                min-width: auto;
+            }
+
+            .scale-option input[type="radio"] {
+                width: 35px;
+                height: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="intro-screen">
+            <h1>Workplace Patterns Assessment</h1>
+            <p class="subtitle">Understand your behavioral patterns at work - how you collaborate, communicate, and contribute to your team.</p>
+
+            <div class="meta-info">
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>8-10 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>20 questions</span>
+                </div>
+                <div class="meta-item">
+                    <span>🎯</span>
+                    <span>Non-diagnostic</span>
+                </div>
+            </div>
+
+            <div style="background: #e3f2fd; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #2196f3; margin-bottom: 2rem;">
+                <h3 style="color: #1565c0; margin-bottom: 0.5rem;">How it works:</h3>
+                <p style="color: #333; line-height: 1.6; margin-bottom: 0.5rem;">• Rate each statement from 1 (Strongly Disagree) to 5 (Strongly Agree)</p>
+                <p style="color: #333; line-height: 1.6; margin-bottom: 0.5rem;">• There are no right or wrong answers</p>
+                <p style="color: #333; line-height: 1.6;">• Trust your first instinct - it's usually the most accurate</p>
+            </div>
+
+            <button class="button" onclick="startAssessment()">Begin Assessment</button>
+        </div>
+
+        <div id="questions-screen" class="hidden">
+            <div class="progress-text">Question <span id="current-q">1</span> of 20</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+
+            <div id="questions-container"></div>
+
+            <button class="button" id="submit-btn" onclick="calculateResults()" disabled>Complete Assessment</button>
+        </div>
+
+        <div id="results-screen" class="results-container">
+            <h1>Your Workplace Behavioral Pattern</h1>
+            <p class="subtitle">Here's what your responses reveal about your work style and team dynamics.</p>
+
+            <div id="results-container"></div>
+
+            <div class="recommendation-box">
+                <h3>Recommended Next Steps</h3>
+                <div id="recommendations"></div>
+            </div>
+
+            <button class="button" onclick="location.reload()">Retake Assessment</button>
+        </div>
+    </div>
+
+    <script>
+        let questions = [];
+        let responses = {};
+
+        async function loadQuestions() {
+            const response = await fetch('questions.json');
+            const data = await response.json();
+            questions = data.questions;
+            return data;
+        }
+
+        function startAssessment() {
+            document.getElementById('intro-screen').classList.add('hidden');
+            document.getElementById('questions-screen').classList.remove('hidden');
+            renderQuestions();
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = '';
+
+            questions.forEach((q, index) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.innerHTML = `
+                    <div class="question-number">Question ${index + 1}</div>
+                    <div class="question-text">${q.text}</div>
+                    <div class="scale-container">
+                        <div class="scale-label start">Strongly<br>Disagree</div>
+                        <div class="scale-options">
+                            ${[1, 2, 3, 4, 5].map(val => `
+                                <div class="scale-option">
+                                    <label for="${q.id}_${val}">${val}</label>
+                                    <input type="radio"
+                                           id="${q.id}_${val}"
+                                           name="${q.id}"
+                                           value="${val}"
+                                           onchange="handleResponse('${q.id}', ${val})">
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="scale-label end">Strongly<br>Agree</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function handleResponse(questionId, value) {
+            responses[questionId] = value;
+            updateProgress();
+            checkCompletion();
+        }
+
+        function updateProgress() {
+            const answered = Object.keys(responses).length;
+            const total = questions.length;
+            const percent = (answered / total) * 100;
+
+            document.getElementById('progress-fill').style.width = percent + '%';
+            document.getElementById('current-q').textContent = answered;
+        }
+
+        function checkCompletion() {
+            const allAnswered = questions.every(q => responses[q.id] !== undefined);
+            document.getElementById('submit-btn').disabled = !allAnswered;
+        }
+
+        async function calculateResults() {
+            const data = await loadQuestions();
+            const dimensions = {};
+
+            // Calculate scores for each dimension
+            data.scoring.dimensions.forEach(dim => {
+                let total = 0;
+                let count = 0;
+
+                dim.questions.forEach(qId => {
+                    const question = questions.find(q => q.id === qId);
+                    let score = responses[qId];
+
+                    // Reverse score if needed
+                    if (question && question.reverse_scored) {
+                        score = 6 - score;
+                    }
+
+                    total += score;
+                    count++;
+                });
+
+                const avgScore = total / count;
+                const percentile = ((avgScore - 1) / 4) * 100; // Convert 1-5 scale to 0-100%
+
+                dimensions[dim.name] = {
+                    score: avgScore.toFixed(1),
+                    percentile: Math.round(percentile),
+                    description: dim.description,
+                    interpretation: getInterpretation(percentile, dim.interpretation)
+                };
+            });
+
+            displayResults(dimensions);
+        }
+
+        function getInterpretation(percentile, interp) {
+            if (percentile >= 65) return interp.high;
+            if (percentile >= 35) return interp.medium;
+            return interp.low;
+        }
+
+        function displayResults(dimensions) {
+            document.getElementById('questions-screen').classList.add('hidden');
+            document.getElementById('results-screen').classList.add('active');
+
+            const container = document.getElementById('results-container');
+            container.innerHTML = '';
+
+            Object.entries(dimensions).forEach(([name, data]) => {
+                const dimDiv = document.createElement('div');
+                dimDiv.className = 'dimension-result';
+                dimDiv.innerHTML = `
+                    <div class="dimension-name">${name}</div>
+                    <div class="dimension-description">${data.description}</div>
+                    <div class="dimension-score">
+                        <div class="score-bar">
+                            <div class="score-fill" style="width: ${data.percentile}%">
+                                ${data.percentile}%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="interpretation">${data.interpretation}</div>
+                `;
+                container.appendChild(dimDiv);
+            });
+
+            generateRecommendations(dimensions);
+        }
+
+        function generateRecommendations(dimensions) {
+            const container = document.getElementById('recommendations');
+            const sortedDims = Object.entries(dimensions).sort((a, b) => b[1].percentile - a[1].percentile);
+
+            const recommendations = [];
+
+            // Top strength
+            const topStrength = sortedDims[0];
+            recommendations.push(`Leverage your high ${topStrength[0]} with leadership or mentoring opportunities`);
+
+            // Development area
+            const lowestDim = sortedDims[sortedDims.length - 1];
+            if (lowestDim[1].percentile < 40) {
+                recommendations.push(`Consider focused development in ${lowestDim[0]} through coaching or training`);
+            }
+
+            // Specific recommendations based on patterns
+            if (dimensions['Emotional Stability'] && dimensions['Emotional Stability'].percentile < 40) {
+                recommendations.push('Explore stress management resources like ClearMinds or coaching support');
+            }
+
+            if (dimensions['Extraversion'] && dimensions['Extraversion'].percentile > 65) {
+                recommendations.push('Your energy from collaboration makes you ideal for team leadership roles');
+            }
+
+            container.innerHTML = recommendations.map(r =>
+                `<div class="recommendation-item">${r}</div>`
+            ).join('');
+        }
+
+        // Load questions on page load
+        loadQuestions();
+    </script>
+</body>
+</html>
