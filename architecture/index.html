@@ -180,29 +180,26 @@
 
             <div class="mermaid">
 graph TB
-    subgraph Thrive["THRIVE PLATFORM - Know Thyself & Do Something About It"]
-        Assessment["Assessment & Routing Intelligence<br/>(Core IP)"]
+    Assessment[Assessment Intelligence<br/>Core IP]
 
-        Assessment --> Wellness["Wellness Tier<br/>85-90% of users"]
-        Assessment --> Coaching["Coaching Tier<br/>15-25% of users"]
-        Assessment --> Clinical["Clinical Tier<br/>10-15% of users"]
+    Assessment --> Wellness[Wellness Tier<br/>85-90 users]
+    Assessment --> Coaching[Coaching Tier<br/>15-25 users]
+    Assessment --> Clinical[Clinical Tier<br/>10-15 users]
 
-        Wellness --> CM["ClearMinds<br/>Digital Hypnotherapy<br/>91K users"]
-        Wellness --> Cowch["Cowch.app<br/>IMAGINE Framework<br/>Chat-based"]
-        Wellness --> Limitless["Limitless<br/>Edward Orman<br/>Tom's 13 Framework"]
+    Wellness --> CM[ClearMinds<br/>91K users]
+    Wellness --> Cowch[Cowch.app<br/>IMAGINE]
+    Wellness --> Limitless[Limitless<br/>Tom 13]
 
-        Coaching --> Broadbanc["Broadbanc<br/>Consciousness Coaches"]
-        Coaching --> Superheroes["Superheroes<br/>Life Coaches"]
-        Coaching --> Jonathan["Jonathan Kemp<br/>TBD"]
+    Coaching --> Broadbanc[Broadbanc]
+    Coaching --> Superheroes[Superheroes]
+    Coaching --> Jonathan[J Kemp]
 
-        Clinical --> CH["Concierge Health<br/>Medical Umbrella"]
-        CH --> SSM["Smart Start Minds<br/>Clinical Hypnotherapy"]
-        CH --> Goodbody["Goodbody Clinic<br/>Physical Health"]
-        CH --> GP["GP/Specialist<br/>Network"]
-    end
+    Clinical --> CH[Concierge<br/>Health]
+    CH --> SSM[Smart Start<br/>Minds]
+    CH --> Goodbody[Goodbody<br/>Clinic]
+    CH --> GP[GP Network]
 
     style Assessment fill:#ffff00,stroke:#333,stroke-width:4px,color:#000
-    style Thrive fill:#1a1a2e,stroke:#ffff00,stroke-width:2px,color:#fff
             </div>
 
             <div class="info-box">
@@ -306,29 +303,20 @@ graph TD
             <p>Three separate databases with different access rules ensure employee privacy while providing useful organizational insights.</p>
 
             <div class="mermaid">
-graph TB
-    subgraph Employee["EMPLOYEE VIEW"]
-        EmpData[Full Assessment Data<br/>OCEAN Profile<br/>All Details]
-    end
+graph LR
+    EmpData[Employee<br/>Full Data]
+    Boundary[PRIVACY<br/>K greater 10]
+    EmpView[Employer<br/>Aggregate Only]
+    ClinDB[Clinical DB<br/>Separate]
 
-    PrivacyBoundary[PRIVACY K>10]
+    EmpData --> Boundary
+    Boundary --> EmpView
+    EmpData -.-> ClinDB
 
-    subgraph Employer["EMPLOYER VIEW"]
-        EmpInsights[Aggregate Only<br/>Team Patterns<br/>No Individual Data]
-    end
-
-    subgraph Clinical["CLINICAL DB"]
-        ClinicalData[Medical Records<br/>Provider Access<br/>Employer NO ACCESS]
-    end
-
-    EmpData --> PrivacyBoundary
-    PrivacyBoundary --> EmpInsights
-    Employee -.-|Separate| Clinical
-
-    style Employee fill:#4ecdc4,stroke:#333,stroke-width:2px,color:#000
-    style PrivacyBoundary fill:#ffff00,stroke:#ff0000,stroke-width:4px,color:#000
-    style Employer fill:#95e1d3,stroke:#333,stroke-width:2px,color:#000
-    style Clinical fill:#ff6b6b,stroke:#333,stroke-width:2px,color:#fff
+    style EmpData fill:#4ecdc4,stroke:#333,stroke-width:2px,color:#000
+    style Boundary fill:#ffff00,stroke:#ff0000,stroke-width:4px,color:#000
+    style EmpView fill:#95e1d3,stroke:#333,stroke-width:2px,color:#000
+    style ClinDB fill:#ff6b6b,stroke:#333,stroke-width:2px,color:#fff
             </div>
 
             <div class="info-box">
@@ -344,24 +332,17 @@ graph TB
 
             <div class="mermaid">
 graph TD
-    subgraph Core["ASSESSMENT INTELLIGENCE"]
-        Triage[1. TRIAGE<br/>Neuroindicator<br/>Crisis/Clinical/Wellness]
-
-        Profile[2. PROFILING<br/>OCEAN<br/>Personality Traits]
-
-        Context[3. CONTEXT<br/>Home to Work<br/>Life Factors]
-
-        Routing[4. ROUTING<br/>Match Resources<br/>Adaptive]
-
-        Privacy[5. PRIVACY<br/>K-Anonymity<br/>DB Constraints]
-    end
+    Triage[1 TRIAGE<br/>Neuroindicator]
+    Profile[2 PROFILING<br/>OCEAN]
+    Context[3 CONTEXT<br/>Home Work]
+    Routing[4 ROUTING<br/>Match]
+    Privacy[5 PRIVACY<br/>K-Anon]
 
     Triage --> Profile
     Profile --> Context
     Context --> Routing
     Routing --> Privacy
 
-    style Core fill:#1a1a2e,stroke:#ffff00,stroke-width:3px,color:#fff
     style Triage fill:#667eea,stroke:#333,stroke-width:2px,color:#fff
     style Profile fill:#764ba2,stroke:#333,stroke-width:2px,color:#fff
     style Context fill:#fa7c91,stroke:#333,stroke-width:2px,color:#fff
@@ -382,45 +363,23 @@ graph TD
 
             <div class="mermaid">
 graph LR
-    subgraph OCEAN["OCEAN"]
-        O[Openness<br/>72ile]
-        C[Conscient<br/>45ile]
-        E[Extravert<br/>38ile]
-        A[Agreeable<br/>81ile]
-        N[Neurotic<br/>67ile]
-    end
+    O[Open 72] --> HO[High O]
+    C[Consc 45] --> LC[Low C]
+    E[Extra 38] --> LE[Low E]
+    A[Agree 81] --> HA[High A]
+    N[Neuro 67] --> HN[High N]
 
-    subgraph Logic["Logic"]
-        HN[High N]
-        LC[Low C]
-        HA[High A]
-        LE[Low E]
-        HO[High O]
-    end
+    HO --> BRO[Broadbanc]
+    LC --> LIM[Limitless]
+    LE --> CM2[ClearMinds]
+    HA --> COW[Cowch]
+    HN --> CM1[ClearMinds]
 
-    subgraph Rec["Recommendations"]
-        CM1[ClearMinds<br/>Sleep]
-        LIM[Limitless<br/>Structure]
-        COW[Cowch<br/>Boundaries]
-        CM2[ClearMinds<br/>Confidence]
-        BRO[Broadbanc<br/>Coach]
-    end
-
-    N --> HN
-    C --> LC
-    A --> HA
-    E --> LE
-    O --> HO
-
-    HN --> CM1
-    LC --> LIM
-    HA --> COW
-    LE --> CM2
-    HO --> BRO
-
-    style OCEAN fill:#764ba2,stroke:#333,stroke-width:2px,color:#fff
-    style Logic fill:#667eea,stroke:#333,stroke-width:2px,color:#fff
-    style Rec fill:#4ecdc4,stroke:#333,stroke-width:2px,color:#000
+    style O fill:#764ba2,stroke:#333,color:#fff
+    style C fill:#764ba2,stroke:#333,color:#fff
+    style E fill:#764ba2,stroke:#333,color:#fff
+    style A fill:#764ba2,stroke:#333,color:#fff
+    style N fill:#764ba2,stroke:#333,color:#fff
             </div>
 
             <div class="info-box">
@@ -436,38 +395,45 @@ graph LR
 
             <div class="mermaid">
 graph TB
-    subgraph Complete["✓ COMPLETE"]
-        C1[Cowch IMAGINE]
-        C2[OCEAN 196Q]
-        C3[Privacy Docs]
-        C4[ClearMinds 91K]
-        C5[Partnerships]
-    end
+    C1[Cowch IMAGINE]
+    C2[OCEAN 196Q]
+    C3[Privacy Docs]
+    C4[ClearMinds 91K]
+    C5[Partnerships]
 
-    subgraph InProgress["~ IN PROGRESS"]
-        P1[OCEAN Engine]
-        P2[Home Work Logic]
-        P3[Cowch Integration]
-    end
+    P1[OCEAN Engine]
+    P2[Home Work Logic]
+    P3[Cowch Integration]
 
-    subgraph NotStarted["✗ NOT STARTED"]
-        N1[Neuroindicator]
-        N2[Employer Portal]
-        N3[Employee Dash]
-        N4[Backend API]
-        N5[Integrations]
-    end
+    N1[Neuroindicator]
+    N2[Employer Portal]
+    N3[Employee Dash]
+    N4[Backend API]
+    N5[Integrations]
 
-    subgraph Undefined["? UNDEFINED"]
-        U1[Tom Framework]
-        U2[Jonathan Kemp]
-        U3[Concierge Health]
-    end
+    U1[Tom Framework]
+    U2[Jonathan Kemp]
+    U3[Concierge Health]
 
-    style Complete fill:#4ecdc4,stroke:#333,stroke-width:2px,color:#000
-    style InProgress fill:#ffa500,stroke:#333,stroke-width:2px,color:#fff
-    style NotStarted fill:#ff6b6b,stroke:#333,stroke-width:2px,color:#fff
-    style Undefined fill:#95e1d3,stroke:#333,stroke-width:2px,color:#000
+    style C1 fill:#4ecdc4,stroke:#333,color:#000
+    style C2 fill:#4ecdc4,stroke:#333,color:#000
+    style C3 fill:#4ecdc4,stroke:#333,color:#000
+    style C4 fill:#4ecdc4,stroke:#333,color:#000
+    style C5 fill:#4ecdc4,stroke:#333,color:#000
+
+    style P1 fill:#ffa500,stroke:#333,color:#fff
+    style P2 fill:#ffa500,stroke:#333,color:#fff
+    style P3 fill:#ffa500,stroke:#333,color:#fff
+
+    style N1 fill:#ff6b6b,stroke:#333,color:#fff
+    style N2 fill:#ff6b6b,stroke:#333,color:#fff
+    style N3 fill:#ff6b6b,stroke:#333,color:#fff
+    style N4 fill:#ff6b6b,stroke:#333,color:#fff
+    style N5 fill:#ff6b6b,stroke:#333,color:#fff
+
+    style U1 fill:#95e1d3,stroke:#333,color:#000
+    style U2 fill:#95e1d3,stroke:#333,color:#000
+    style U3 fill:#95e1d3,stroke:#333,color:#000
             </div>
 
             <div class="info-box">
