@@ -400,14 +400,35 @@
         </div>
 
         <div class="assessment-card hidden" id="questions-screen">
-            <div class="progress-text">Question <span id="current-q">1</span> of 20</div>
+            <div class="progress-text">Question <span id="current-q">0</span> of 60</div>
             <div class="progress-bar">
                 <div class="progress-fill" id="progress-fill"></div>
             </div>
 
             <div id="questions-container"></div>
 
-            <button class="button" id="submit-btn" onclick="calculateResults()" disabled>Complete Assessment</button>
+            <button class="button hidden" id="next-section-btn" onclick="nextSection()">Continue to Next Section →</button>
+            <button class="button hidden" id="submit-btn" onclick="calculateResults()" disabled>Complete Assessment</button>
+        </div>
+
+        <div class="assessment-card hidden" id="waypoint-screen">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h1 id="waypoint-title" style="margin-bottom: 1rem;"></h1>
+                <p class="subtitle" id="waypoint-message"></p>
+            </div>
+
+            <div class="info-box" style="margin-bottom: 2rem;">
+                <h3>💡 Early Insight</h3>
+                <p id="waypoint-insight" style="font-size: 1.1rem; line-height: 1.8;"></p>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">⏱️</div>
+                <p style="color: #FFD700; font-size: 1.3rem; font-weight: bold;" id="waypoint-progress"></p>
+                <p style="color: rgba(255,255,255,0.8); margin-top: 0.5rem;">Take a quick break if you need one!</p>
+            </div>
+
+            <button class="button" onclick="continueToNextSection()">Continue to Section <span id="next-section-num"></span> →</button>
         </div>
 
         <div class="assessment-card hidden" id="results-screen">
@@ -443,6 +464,9 @@
 
         let questions = [];
         let responses = {};
+        let currentSection = 1;
+        const QUESTIONS_PER_SECTION = 20;
+        const TOTAL_SECTIONS = 3;
 
         async function loadQuestions() {
             const response = await fetch('questions.json');
@@ -459,19 +483,24 @@
             setTimeout(() => {
                 intro.classList.add('hidden');
                 questionsScreen.classList.remove('hidden');
-                renderQuestions();
+                renderSection(currentSection);
             }, 200);
         }
 
-        function renderQuestions() {
+        function renderSection(sectionNum) {
             const container = document.getElementById('questions-container');
             container.innerHTML = '';
 
-            questions.forEach((q, index) => {
+            const startIdx = (sectionNum - 1) * QUESTIONS_PER_SECTION;
+            const endIdx = Math.min(startIdx + QUESTIONS_PER_SECTION, questions.length);
+            const sectionQuestions = questions.slice(startIdx, endIdx);
+
+            sectionQuestions.forEach((q, idx) => {
+                const globalIndex = startIdx + idx;
                 const card = document.createElement('div');
                 card.className = 'question-card';
                 card.innerHTML = `
-                    <div class="question-number">Question ${index + 1} of 60</div>
+                    <div class="question-number">Question ${globalIndex + 1} of 60 • Section ${sectionNum} of 3</div>
                     <div class="question-text">${q.text}</div>
                     <div class="options-grid">
                         ${q.options.map(opt => `
@@ -482,7 +511,21 @@
                     </div>
                 `;
                 container.appendChild(card);
+
+                // Restore previous selection
+                if (responses[q.id]) {
+                    setTimeout(() => {
+                        const selectedOption = container.querySelector(`[data-question="${q.id}"][data-value="${responses[q.id]}"]`);
+                        if (selectedOption) {
+                            selectedOption.classList.add('selected');
+                        }
+                    }, 0);
+                }
             });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            updateProgress();
+            updateSectionButton();
         }
 
         function selectOption(questionId, value, element) {
@@ -500,7 +543,7 @@
         function handleResponse(questionId, value) {
             responses[questionId] = value;
             updateProgress();
-            checkCompletion();
+            updateSectionButton();
         }
 
         function updateProgress() {
@@ -515,6 +558,97 @@
         function checkCompletion() {
             const allAnswered = questions.every(q => responses[q.id] !== undefined);
             document.getElementById('submit-btn').disabled = !allAnswered;
+        }
+
+        function updateSectionButton() {
+            const nextBtn = document.getElementById('next-section-btn');
+            const submitBtn = document.getElementById('submit-btn');
+
+            const startIdx = (currentSection - 1) * QUESTIONS_PER_SECTION;
+            const endIdx = Math.min(startIdx + QUESTIONS_PER_SECTION, questions.length);
+            const sectionQuestions = questions.slice(startIdx, endIdx);
+
+            const sectionComplete = sectionQuestions.every(q => responses[q.id] !== undefined);
+
+            if (currentSection < TOTAL_SECTIONS) {
+                nextBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+                nextBtn.disabled = !sectionComplete;
+            } else {
+                nextBtn.classList.add('hidden');
+                submitBtn.classList.remove('hidden');
+                submitBtn.disabled = !sectionComplete;
+            }
+        }
+
+        function nextSection() {
+            if (currentSection < TOTAL_SECTIONS) {
+                showWaypoint(currentSection);
+            }
+        }
+
+        function showWaypoint(completedSection) {
+            const waypoints = {
+                1: {
+                    title: "Great Start! 🎉",
+                    message: "You've completed Section 1! You're exploring how you handle social situations and personal boundaries.",
+                    insight: `So far, your responses suggest you have a ${getEarlyInsight(completedSection)} approach to relationships and social dynamics.`,
+                    progress: "33% complete"
+                },
+                2: {
+                    title: "You're Halfway There! 🌟",
+                    message: "Section 2 complete! You're diving into your work habits, creativity, and how you manage challenges.",
+                    insight: `Your patterns are emerging - you seem to balance ${getEarlyInsight(completedSection)} across different life domains.`,
+                    progress: "67% complete"
+                }
+            };
+
+            const waypoint = waypoints[completedSection];
+            const questionsScreen = document.getElementById('questions-screen');
+            const waypointScreen = document.getElementById('waypoint-screen');
+
+            document.getElementById('waypoint-title').textContent = waypoint.title;
+            document.getElementById('waypoint-message').textContent = waypoint.message;
+            document.getElementById('waypoint-insight').textContent = waypoint.insight;
+            document.getElementById('waypoint-progress').textContent = waypoint.progress;
+            document.getElementById('next-section-num').textContent = completedSection + 1;
+
+            questionsScreen.classList.add('fade-out');
+            setTimeout(() => {
+                questionsScreen.classList.add('hidden');
+                questionsScreen.classList.remove('fade-out');
+                waypointScreen.classList.remove('hidden');
+            }, 200);
+        }
+
+        function continueToNextSection() {
+            currentSection++;
+            const waypointScreen = document.getElementById('waypoint-screen');
+            const questionsScreen = document.getElementById('questions-screen');
+
+            waypointScreen.classList.add('fade-out');
+            setTimeout(() => {
+                waypointScreen.classList.add('hidden');
+                waypointScreen.classList.remove('fade-out');
+                questionsScreen.classList.remove('hidden');
+                renderSection(currentSection);
+            }, 200);
+        }
+
+        function getEarlyInsight(section) {
+            const answered = Object.keys(responses).length;
+            const totalScore = Object.values(responses).reduce((a, b) => a + b, 0);
+            const avgScore = totalScore / answered;
+
+            if (section === 1) {
+                if (avgScore > 3) return "direct and authentic";
+                if (avgScore > 2.5) return "balanced and thoughtful";
+                return "considerate and reflective";
+            } else {
+                if (avgScore > 3) return "initiative and structure";
+                if (avgScore > 2.5) return "flexibility and adaptability";
+                return "careful consideration and planning";
+            }
         }
 
         async function calculateResults() {
