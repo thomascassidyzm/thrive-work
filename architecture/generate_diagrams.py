@@ -58,10 +58,11 @@ def create_platform_overview():
         {'x': 1.5, 'y': 5.5, 'label': 'ClearMinds\n91K users', 'color': '#4ecdc4'},
         {'x': 1.5, 'y': 4.5, 'label': 'Cowch.app\nIMAGINE', 'color': '#4ecdc4'},
         {'x': 1.5, 'y': 3.5, 'label': 'Limitless\nTom\'s 13', 'color': '#4ecdc4'},
+        {'x': 1.5, 'y': 2.5, 'label': 'OCEAN Analysis\nBehavioral Insights', 'color': '#4ecdc4'},
         # Coaching
-        {'x': 4.5, 'y': 5.5, 'label': 'Broadbanc\nConsciousness', 'color': '#764ba2'},
-        {'x': 4.5, 'y': 4.5, 'label': 'Superheroes\nLife Coaches', 'color': '#764ba2'},
-        {'x': 4.5, 'y': 3.5, 'label': 'Jonathan Kemp\nTBD', 'color': '#764ba2'},
+        {'x': 4.5, 'y': 5.5, 'label': 'Executive Coaching\n1-on-1', 'color': '#764ba2'},
+        {'x': 4.5, 'y': 4.5, 'label': 'FLOW\nHassan', 'color': '#764ba2'},
+        {'x': 4.5, 'y': 3.5, 'label': 'Coaching Support\nGeneral', 'color': '#764ba2'},
         # Clinical
         {'x': 7.5, 'y': 5.5, 'label': 'Concierge Health\nMedical Umbrella', 'color': '#ffa500'},
         {'x': 7.5, 'y': 4.5, 'label': 'Smart Start Minds\nClinical Hyp', 'color': '#ffa500'},
