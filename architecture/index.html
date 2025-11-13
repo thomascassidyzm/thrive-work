@@ -180,23 +180,23 @@
 
             <div class="mermaid">
 graph TB
-    Assessment[Assessment Intelligence<br/>Core IP]
+    Assessment[Assessment Intelligence]
 
-    Assessment --> Wellness[Wellness Tier<br/>85-90 users]
-    Assessment --> Coaching[Coaching Tier<br/>15-25 users]
-    Assessment --> Clinical[Clinical Tier<br/>10-15 users]
+    Assessment --> Wellness[Wellness Tier]
+    Assessment --> Coaching[Coaching Tier]
+    Assessment --> Clinical[Clinical Tier]
 
-    Wellness --> CM[ClearMinds<br/>91K users]
-    Wellness --> Cowch[Cowch.app<br/>IMAGINE]
-    Wellness --> Limitless[Limitless<br/>Tom 13]
+    Wellness --> CM[ClearMinds]
+    Wellness --> Cowch[Cowch.app]
+    Wellness --> Limitless[Limitless]
 
     Coaching --> Broadbanc[Broadbanc]
     Coaching --> Superheroes[Superheroes]
     Coaching --> Jonathan[J Kemp]
 
-    Clinical --> CH[Concierge<br/>Health]
-    CH --> SSM[Smart Start<br/>Minds]
-    CH --> Goodbody[Goodbody<br/>Clinic]
+    Clinical --> CH[Concierge Health]
+    CH --> SSM[Smart Start Minds]
+    CH --> Goodbody[Goodbody Clinic]
     CH --> GP[GP Network]
 
     style Assessment fill:#ffff00,stroke:#333,stroke-width:4px,color:#000
@@ -217,15 +217,15 @@ graph TB
 graph TD
     Start([Invitation]) --> Landing[Landing Page]
     Landing --> Consent[Consent]
-    Consent --> Neuro[Neuroindicator<br/>5-10 min]
+    Consent --> Neuro[Neuroindicator]
 
     Neuro --> Crisis{Risk?}
 
-    Crisis -->|High 2-3pct| Support[Crisis Support]
-    Crisis -->|Clinical 10-15pct| Clinical[Clinical Path]
-    Crisis -->|Wellness 85-90pct| OCEAN[OCEAN<br/>15-20 min]
+    Crisis -->|High| Support[Crisis Support]
+    Crisis -->|Clinical| Clinical[Clinical Path]
+    Crisis -->|Wellness| OCEAN[OCEAN Assessment]
 
-    OCEAN --> HomeWork[Home to Work<br/>2 min]
+    OCEAN --> HomeWork[Home to Work]
     HomeWork --> Results[Results]
 
     Results --> Recs[Recommendations]
@@ -268,9 +268,9 @@ graph TD
 graph TD
     Neuro[NEUROINDICATOR] --> Split{Triage}
 
-    Split -->|2-3pct| Crisis[CRISIS]
-    Split -->|10-15pct| Clinical[CLINICAL]
-    Split -->|85-90pct| Wellness[WELLNESS]
+    Split -->|Crisis| Crisis[CRISIS PATH]
+    Split -->|Clinical| Clinical[CLINICAL PATH]
+    Split -->|Wellness| Wellness[WELLNESS PATH]
 
     Crisis --> CS[Immediate Support]
     Clinical --> CH[Concierge Health]
@@ -304,10 +304,10 @@ graph TD
 
             <div class="mermaid">
 graph LR
-    EmpData[Employee<br/>Full Data]
-    Boundary[PRIVACY<br/>K greater 10]
-    EmpView[Employer<br/>Aggregate Only]
-    ClinDB[Clinical DB<br/>Separate]
+    EmpData[Employee Full Data]
+    Boundary[PRIVACY LAYER]
+    EmpView[Employer Aggregate]
+    ClinDB[Clinical Database]
 
     EmpData --> Boundary
     Boundary --> EmpView
@@ -332,11 +332,11 @@ graph LR
 
             <div class="mermaid">
 graph TD
-    Triage[1 TRIAGE<br/>Neuroindicator]
-    Profile[2 PROFILING<br/>OCEAN]
-    Context[3 CONTEXT<br/>Home Work]
-    Routing[4 ROUTING<br/>Match]
-    Privacy[5 PRIVACY<br/>K-Anon]
+    Triage[1 TRIAGE Neuroindicator]
+    Profile[2 PROFILING OCEAN]
+    Context[3 CONTEXT Home Work]
+    Routing[4 ROUTING Match]
+    Privacy[5 PRIVACY K-Anon]
 
     Triage --> Profile
     Profile --> Context
@@ -498,17 +498,19 @@ gantt
     <script>
         mermaid.initialize({
             startOnLoad: true,
-            theme: 'default',
+            theme: 'base',
             flowchart: {
-                useMaxWidth: true,
-                htmlLabels: true,
+                useMaxWidth: false,
+                htmlLabels: false,
                 curve: 'basis',
-                nodeSpacing: 50,
-                rankSpacing: 50
+                nodeSpacing: 100,
+                rankSpacing: 100,
+                padding: 20
             },
             gantt: {
                 useMaxWidth: true,
-                fontSize: 11
+                fontSize: 12,
+                leftPadding: 100
             },
             themeVariables: {
                 primaryColor: '#667eea',
@@ -517,7 +519,8 @@ gantt
                 lineColor: '#333',
                 secondaryColor: '#764ba2',
                 tertiaryColor: '#4ecdc4',
-                fontSize: '14px'
+                fontSize: '16px',
+                fontFamily: 'arial'
             }
         });
 
