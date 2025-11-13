@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thrive Platform - Interactive Diagrams</title>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -107,11 +106,12 @@
             line-height: 1.6;
         }
 
-        .mermaid {
+        .diagram {
             background: #f8f9fa;
             padding: 2rem;
             border-radius: 8px;
             margin: 1rem 0;
+            overflow-x: auto;
         }
 
         .info-box {
@@ -134,24 +134,249 @@
             opacity: 0.7;
         }
 
-        .controls {
+        footer a {
+            color: #ffff00;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Diagram Styles */
+        .flow-diagram {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
         }
 
-        .controls button {
+        .flow-row {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .node {
+            background: white;
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            min-width: 150px;
+            text-align: center;
+            font-weight: 500;
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .node.highlight {
+            background: #ffff00;
+            border-color: #333;
+            border-width: 3px;
+        }
+
+        .node.wellness {
+            background: #4ecdc4;
+            color: #fff;
+        }
+
+        .node.coaching {
+            background: #764ba2;
+            color: #fff;
+        }
+
+        .node.clinical {
+            background: #ffa500;
+            color: #fff;
+        }
+
+        .node.crisis {
+            background: #ff6b6b;
+            color: #fff;
+        }
+
+        .node.complete {
+            background: #4ecdc4;
+            color: #000;
+        }
+
+        .node.in-progress {
+            background: #ffa500;
+            color: #fff;
+        }
+
+        .node.not-started {
+            background: #ff6b6b;
+            color: #fff;
+        }
+
+        .node.undefined {
+            background: #95e1d3;
+            color: #000;
+        }
+
+        .arrow {
+            color: #666;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .arrow-down {
+            display: block;
+            text-align: center;
+            font-size: 2rem;
+            color: #666;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .card h3 {
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .legend {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-box {
+            width: 30px;
+            height: 30px;
+            border: 2px solid #333;
+            border-radius: 4px;
+        }
+
+        .timeline {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            color: #333;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-marker {
+            width: 40px;
+            height: 40px;
             background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            font-weight: bold;
+            flex-shrink: 0;
         }
 
-        .controls button:hover {
-            background: #5568d3;
+        .timeline-content h3 {
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: #666;
+            margin: 0;
+        }
+
+        .privacy-flow {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .privacy-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .privacy-box h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .privacy-box ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .privacy-box li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .privacy-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+        }
+
+        .privacy-box.employee {
+            background: #4ecdc4;
+            color: #000;
+        }
+
+        .privacy-box.boundary {
+            background: #ffff00;
+            color: #000;
+            border: 3px solid #ff0000;
+            font-weight: bold;
+        }
+
+        .privacy-box.employer {
+            background: #95e1d3;
+            color: #000;
+        }
+
+        .privacy-box.clinical {
+            background: #ff6b6b;
+            color: #fff;
         }
     </style>
 </head>
@@ -168,7 +393,6 @@
             <button onclick="showDiagram('decision-tree')">Decision Tree</button>
             <button onclick="showDiagram('privacy')">Privacy Architecture</button>
             <button onclick="showDiagram('assessment')">Assessment Intelligence</button>
-            <button onclick="showDiagram('routing')">Content Routing</button>
             <button onclick="showDiagram('lego')">LEGO Pieces Status</button>
             <button onclick="showDiagram('timeline')">Build Timeline</button>
         </nav>
@@ -178,28 +402,55 @@
             <h2>Platform Overview - The Complete Ecosystem</h2>
             <p>Thrive acts as an intelligent routing platform connecting employees to the right resources based on their assessment results.</p>
 
-            <div class="mermaid">
-graph TB
-    Assessment[Assessment Intelligence]
-
-    Assessment --> Wellness[Wellness Tier]
-    Assessment --> Coaching[Coaching Tier]
-    Assessment --> Clinical[Clinical Tier]
-
-    Wellness --> CM[ClearMinds]
-    Wellness --> Cowch[Cowch.app]
-    Wellness --> Limitless[Limitless]
-
-    Coaching --> Broadbanc[Broadbanc]
-    Coaching --> Superheroes[Superheroes]
-    Coaching --> Jonathan[J Kemp]
-
-    Clinical --> CH[Concierge Health]
-    CH --> SSM[Smart Start Minds]
-    CH --> Goodbody[Goodbody Clinic]
-    CH --> GP[GP Network]
-
-    style Assessment fill:#ffff00,stroke:#333,stroke-width:4px,color:#000
+            <div class="diagram">
+                <div class="flow-diagram">
+                    <div class="node highlight">Assessment & Routing Intelligence<br>(Core IP)</div>
+                    <div class="arrow-down">↓</div>
+                    <div class="flow-row">
+                        <div class="node wellness">Wellness Tier<br>85-90% of users</div>
+                        <div class="node coaching">Coaching Tier<br>15-25% of users</div>
+                        <div class="node clinical">Clinical Tier<br>10-15% of users</div>
+                    </div>
+                    <div class="arrow-down">↓</div>
+                    <div class="grid-3">
+                        <div class="card">
+                            <h3>ClearMinds</h3>
+                            <p>Digital Hypnotherapy<br>91K users</p>
+                        </div>
+                        <div class="card">
+                            <h3>Cowch.app</h3>
+                            <p>IMAGINE Framework<br>Chat-based</p>
+                        </div>
+                        <div class="card">
+                            <h3>Limitless</h3>
+                            <p>Edward Orman<br>Tom's 13 Framework</p>
+                        </div>
+                        <div class="card">
+                            <h3>Broadbanc</h3>
+                            <p>Consciousness Coaches</p>
+                        </div>
+                        <div class="card">
+                            <h3>Superheroes</h3>
+                            <p>Life Coaches</p>
+                        </div>
+                        <div class="card">
+                            <h3>Jonathan Kemp</h3>
+                            <p>TBD</p>
+                        </div>
+                        <div class="card">
+                            <h3>Concierge Health</h3>
+                            <p>Medical Umbrella</p>
+                        </div>
+                        <div class="card">
+                            <h3>Smart Start Minds</h3>
+                            <p>Clinical Hypnotherapy</p>
+                        </div>
+                        <div class="card">
+                            <h3>Goodbody Clinic</h3>
+                            <p>Physical Health</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="info-box">
@@ -213,43 +464,58 @@ graph TB
             <h2>Employee Journey - From Invitation to Ongoing Engagement</h2>
             <p>Complete flow showing how an employee moves through the Thrive platform, from initial assessment to quarterly check-ins.</p>
 
-            <div class="mermaid">
-graph TD
-    Start([Invitation]) --> Landing[Landing Page]
-    Landing --> Consent[Consent]
-    Consent --> Neuro[Neuroindicator]
-
-    Neuro --> Crisis{Risk?}
-
-    Crisis -->|High| Support[Crisis Support]
-    Crisis -->|Clinical| Clinical[Clinical Path]
-    Crisis -->|Wellness| OCEAN[OCEAN Assessment]
-
-    OCEAN --> HomeWork[Home to Work]
-    HomeWork --> Results[Results]
-
-    Results --> Recs[Recommendations]
-
-    Recs --> Content[Content]
-    Recs --> Coach[Coaching]
-    Recs --> Clin[Clinical]
-
-    Content --> Dash[Dashboard]
-    Coach --> Dash
-    Clin --> Dash
-
-    Dash --> Pulse[Quarterly Pulse]
-    Pulse --> Check{Change?}
-    Check -->|Yes| Update[Update Plan]
-    Check -->|No| Continue[Continue]
-
-    Update --> Dash
-    Continue --> Dash
-
-    style Neuro fill:#667eea,stroke:#333,stroke-width:2px,color:#fff
-    style OCEAN fill:#764ba2,stroke:#333,stroke-width:2px,color:#fff
-    style Results fill:#ffff00,stroke:#333,stroke-width:2px,color:#000
-    style Dash fill:#00d4aa,stroke:#333,stroke-width:2px,color:#fff
+            <div class="diagram">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <h3>Invitation & Landing</h3>
+                            <p>Employee receives invitation → Landing page with privacy notice → Consent & account creation</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">2</div>
+                        <div class="timeline-content">
+                            <h3>Neuroindicator (5-10 min)</h3>
+                            <p>Triage assessment determines risk level: Crisis (2-3%) | Clinical (10-15%) | Wellness (85-90%)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">3</div>
+                        <div class="timeline-content">
+                            <h3>OCEAN Assessment (15-20 min)</h3>
+                            <p>For wellness pathway: 60-80 questions profiling personality traits</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">4</div>
+                        <div class="timeline-content">
+                            <h3>Home→Work Influence (2 min)</h3>
+                            <p>6 questions about childcare, eldercare, financial stress, etc.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">5</div>
+                        <div class="timeline-content">
+                            <h3>Results & Recommendations</h3>
+                            <p>OCEAN profile generated → Personalized content, coaching, and clinical recommendations</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">6</div>
+                        <div class="timeline-content">
+                            <h3>Dashboard Access</h3>
+                            <p>Employee sees results, accesses content library, tracks progress</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">7</div>
+                        <div class="timeline-content">
+                            <h3>Quarterly Pulse (2-3 min)</h3>
+                            <p>5 questions to detect deterioration → May trigger clinical escalation</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="info-box">
@@ -264,31 +530,33 @@ graph TD
             <h2>Decision Tree - How Employees Are Routed</h2>
             <p>Neuroindicator assessment splits employees into three pathways based on their needs and risk level.</p>
 
-            <div class="mermaid">
-graph TD
-    Neuro[NEUROINDICATOR] --> Split{Triage}
-
-    Split -->|Crisis| Crisis[CRISIS PATH]
-    Split -->|Clinical| Clinical[CLINICAL PATH]
-    Split -->|Wellness| Wellness[WELLNESS PATH]
-
-    Crisis --> CS[Immediate Support]
-    Clinical --> CH[Concierge Health]
-    Wellness --> WS[Thrive Wellness]
-
-    CS --> Monitor[Can Escalate]
-    CH --> Monitor
-    WS --> Monitor
-
-    Monitor --> Pulse[Quarterly Pulse]
-    Pulse --> Check{Change?}
-    Check -->|Yes| Split
-    Check -->|No| Continue[Continue]
-
-    style Crisis fill:#ff6b6b,stroke:#333,stroke-width:2px,color:#fff
-    style Clinical fill:#ffa500,stroke:#333,stroke-width:2px,color:#fff
-    style Wellness fill:#4ecdc4,stroke:#333,stroke-width:2px,color:#fff
-    style Pulse fill:#95e1d3,stroke:#333,stroke-width:2px,color:#000
+            <div class="diagram">
+                <div class="flow-diagram">
+                    <div class="node">NEUROINDICATOR ASSESSMENT</div>
+                    <div class="arrow-down">↓</div>
+                    <div class="flow-row">
+                        <div class="node crisis">CRISIS<br>2-3%</div>
+                        <div class="node clinical">CLINICAL<br>10-15%</div>
+                        <div class="node wellness">WELLNESS<br>85-90%</div>
+                    </div>
+                    <div class="arrow-down">↓</div>
+                    <div class="grid-3">
+                        <div class="card" style="border-color: #ff6b6b;">
+                            <h3 style="color: #ff6b6b;">Immediate Support</h3>
+                            <p>Crisis hotline<br>Safety resources<br>Emergency services<br>Follow-up scheduling</p>
+                        </div>
+                        <div class="card" style="border-color: #ffa500;">
+                            <h3 style="color: #ffa500;">Concierge Health</h3>
+                            <p>Smart Start Minds<br>Clinical hypnotherapy<br>Goodbody Clinic<br>GP referrals</p>
+                        </div>
+                        <div class="card" style="border-color: #4ecdc4;">
+                            <h3 style="color: #4ecdc4;">Thrive Wellness</h3>
+                            <p>ClearMinds content<br>Cowch.app<br>Limitless programme<br>Coaching access</p>
+                        </div>
+                    </div>
+                    <div class="arrow-down">↓</div>
+                    <div class="node">Quarterly Pulse Check<br>All paths can escalate if situation changes</div>
+                </div>
             </div>
 
             <div class="info-box">
@@ -302,21 +570,66 @@ graph TD
             <h2>Privacy Architecture - Data Separation Model</h2>
             <p>Three separate databases with different access rules ensure employee privacy while providing useful organizational insights.</p>
 
-            <div class="mermaid">
-graph LR
-    EmpData[Employee Full Data]
-    Boundary[PRIVACY LAYER]
-    EmpView[Employer Aggregate]
-    ClinDB[Clinical Database]
+            <div class="diagram">
+                <div class="privacy-flow">
+                    <div class="privacy-box employee">
+                        <h3>EMPLOYEE VIEW</h3>
+                        <p><strong>Full Access</strong></p>
+                        <ul>
+                            <li>All assessment responses</li>
+                            <li>Complete OCEAN profile</li>
+                            <li>Personal patterns</li>
+                            <li>Home→Work details</li>
+                            <li>Recommendations</li>
+                            <li>Content usage</li>
+                            <li>Full history</li>
+                        </ul>
+                    </div>
 
-    EmpData --> Boundary
-    Boundary --> EmpView
-    EmpData -.-> ClinDB
+                    <div class="arrow" style="font-size: 3rem;">→</div>
 
-    style EmpData fill:#4ecdc4,stroke:#333,stroke-width:2px,color:#000
-    style Boundary fill:#ffff00,stroke:#ff0000,stroke-width:4px,color:#000
-    style EmpView fill:#95e1d3,stroke:#333,stroke-width:2px,color:#000
-    style ClinDB fill:#ff6b6b,stroke:#333,stroke-width:2px,color:#fff
+                    <div class="privacy-box boundary">
+                        <h3>PRIVACY<br>BOUNDARY</h3>
+                        <p style="font-size: 1.5rem; margin: 1rem 0;">K ≥ 10</p>
+                        <p>Enforcement</p>
+                    </div>
+
+                    <div class="arrow" style="font-size: 3rem;">→</div>
+
+                    <div class="privacy-box employer">
+                        <h3>EMPLOYER VIEW</h3>
+                        <p><strong>Aggregated Only (k≥10)</strong></p>
+                        <ul>
+                            <li>Team OCEAN patterns %</li>
+                            <li>Home→Work prevalence %</li>
+                            <li>Engagement metrics</li>
+                            <li>Quarterly trends</li>
+                        </ul>
+                        <p style="margin-top: 1rem; color: #ff0000; font-weight: bold;">
+                            ❌ NO Individual Data<br>
+                            ❌ NO Names/IDs<br>
+                            ❌ NO Personal Scores
+                        </p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <div class="privacy-box clinical" style="display: inline-block; max-width: 400px;">
+                        <h3>CLINICAL DATABASE (Separate)</h3>
+                        <p><strong>Medical Privacy</strong></p>
+                        <ul>
+                            <li>Patient records</li>
+                            <li>Diagnoses & treatments</li>
+                            <li>Session notes</li>
+                            <li>Medications & outcomes</li>
+                        </ul>
+                        <p style="margin-top: 1rem; font-weight: bold;">
+                            Managed by Concierge Health<br>
+                            Patient + Provider Access Only<br>
+                            <span style="color: #ffff00;">EMPLOYER: NO ACCESS</span>
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <div class="info-box">
@@ -330,24 +643,44 @@ graph LR
             <h2>Assessment Intelligence - Thrive's Core IP</h2>
             <p>Five components that make up the assessment and routing intelligence layer.</p>
 
-            <div class="mermaid">
-graph TD
-    Triage[1 TRIAGE Neuroindicator]
-    Profile[2 PROFILING OCEAN]
-    Context[3 CONTEXT Home Work]
-    Routing[4 ROUTING Match]
-    Privacy[5 PRIVACY K-Anon]
-
-    Triage --> Profile
-    Profile --> Context
-    Context --> Routing
-    Routing --> Privacy
-
-    style Triage fill:#667eea,stroke:#333,stroke-width:2px,color:#fff
-    style Profile fill:#764ba2,stroke:#333,stroke-width:2px,color:#fff
-    style Context fill:#fa7c91,stroke:#333,stroke-width:2px,color:#fff
-    style Routing fill:#4ecdc4,stroke:#333,stroke-width:2px,color:#000
-    style Privacy fill:#ffff00,stroke:#333,stroke-width:2px,color:#000
+            <div class="diagram">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker" style="background: #667eea;">1</div>
+                        <div class="timeline-content">
+                            <h3>TRIAGE: Neuroindicator</h3>
+                            <p>Crisis detection (2-3%) | Clinical need (10-15%) | Wellness pathway (85-90%)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker" style="background: #764ba2;">2</div>
+                        <div class="timeline-content">
+                            <h3>PROFILING: OCEAN</h3>
+                            <p>Openness | Conscientiousness | Extraversion | Agreeableness | Neuroticism</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker" style="background: #fa7c91;">3</div>
+                        <div class="timeline-content">
+                            <h3>CONTEXT: Home→Work Influence</h3>
+                            <p>Childcare stress | Eldercare burden | Financial pressure | Relationship strain | Housing instability | Commute impact</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker" style="background: #4ecdc4;">4</div>
+                        <div class="timeline-content">
+                            <h3>ROUTING ENGINE</h3>
+                            <p>Content matching | Coach matching | Clinical escalation | Adaptive over time</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker" style="background: #ffff00; color: #000;">5</div>
+                        <div class="timeline-content">
+                            <h3>PRIVACY ENFORCEMENT</h3>
+                            <p>K-Anonymity (k≥10) | Database constraints | Employee full access | Employer aggregated only</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="info-box">
@@ -356,84 +689,43 @@ graph TD
             </div>
         </div>
 
-        <!-- Content Routing -->
-        <div id="routing" class="diagram-section">
-            <h2>Content Routing Logic - OCEAN to Recommendations</h2>
-            <p>Example showing how an OCEAN profile generates personalized content and coaching recommendations.</p>
-
-            <div class="mermaid">
-graph LR
-    O[Open 72] --> HO[High O]
-    C[Consc 45] --> LC[Low C]
-    E[Extra 38] --> LE[Low E]
-    A[Agree 81] --> HA[High A]
-    N[Neuro 67] --> HN[High N]
-
-    HO --> BRO[Broadbanc]
-    LC --> LIM[Limitless]
-    LE --> CM2[ClearMinds]
-    HA --> COW[Cowch]
-    HN --> CM1[ClearMinds]
-
-    style O fill:#764ba2,stroke:#333,color:#fff
-    style C fill:#764ba2,stroke:#333,color:#fff
-    style E fill:#764ba2,stroke:#333,color:#fff
-    style A fill:#764ba2,stroke:#333,color:#fff
-    style N fill:#764ba2,stroke:#333,color:#fff
-            </div>
-
-            <div class="info-box">
-                <h3>Personalized Matching</h3>
-                <p>Each employee gets a unique combination of recommendations based on their OCEAN profile, context (home→work influence), and goals.</p>
-            </div>
-        </div>
-
-        <!-- LEGO Pieces -->
+        <!-- LEGO Pieces Status -->
         <div id="lego" class="diagram-section">
             <h2>LEGO Pieces Status - What We Have vs Need</h2>
             <p>Current state of all platform components.</p>
 
-            <div class="mermaid">
-graph TB
-    C1[Cowch IMAGINE]
-    C2[OCEAN 196Q]
-    C3[Privacy Docs]
-    C4[ClearMinds 91K]
-    C5[Partnerships]
+            <div class="diagram">
+                <h3 style="color: #333; margin-bottom: 1rem;">✓ COMPLETE</h3>
+                <div class="flow-row" style="margin-bottom: 2rem;">
+                    <div class="node complete">Cowch IMAGINE<br>JSON + Demo</div>
+                    <div class="node complete">OCEAN Questions<br>196 scenarios</div>
+                    <div class="node complete">Privacy Architecture<br>Documented</div>
+                    <div class="node complete">ClearMinds<br>91K users, proven</div>
+                    <div class="node complete">Partnerships<br>Dr Thomas, Goodbody</div>
+                </div>
 
-    P1[OCEAN Engine]
-    P2[Home Work Logic]
-    P3[Cowch Integration]
+                <h3 style="color: #333; margin-bottom: 1rem;">~ IN PROGRESS</h3>
+                <div class="flow-row" style="margin-bottom: 2rem;">
+                    <div class="node in-progress">OCEAN Engine<br>436 uncommitted lines</div>
+                    <div class="node in-progress">Home→Work Logic<br>In analysis engine</div>
+                    <div class="node in-progress">Cowch Integration<br>Have IMAGINE schema</div>
+                </div>
 
-    N1[Neuroindicator]
-    N2[Employer Portal]
-    N3[Employee Dash]
-    N4[Backend API]
-    N5[Integrations]
+                <h3 style="color: #333; margin-bottom: 1rem;">✗ NOT STARTED</h3>
+                <div class="flow-row" style="margin-bottom: 2rem;">
+                    <div class="node not-started">Neuroindicator<br>Need schema + demo</div>
+                    <div class="node not-started">Employer Portal<br>Dashboard + enrollment</div>
+                    <div class="node not-started">Employee Dashboard<br>Results + content access</div>
+                    <div class="node not-started">Backend API<br>Database + privacy</div>
+                    <div class="node not-started">Partner Integrations<br>APIs + booking systems</div>
+                </div>
 
-    U1[Tom Framework]
-    U2[Jonathan Kemp]
-    U3[Concierge Health]
-
-    style C1 fill:#4ecdc4,stroke:#333,color:#000
-    style C2 fill:#4ecdc4,stroke:#333,color:#000
-    style C3 fill:#4ecdc4,stroke:#333,color:#000
-    style C4 fill:#4ecdc4,stroke:#333,color:#000
-    style C5 fill:#4ecdc4,stroke:#333,color:#000
-
-    style P1 fill:#ffa500,stroke:#333,color:#fff
-    style P2 fill:#ffa500,stroke:#333,color:#fff
-    style P3 fill:#ffa500,stroke:#333,color:#fff
-
-    style N1 fill:#ff6b6b,stroke:#333,color:#fff
-    style N2 fill:#ff6b6b,stroke:#333,color:#fff
-    style N3 fill:#ff6b6b,stroke:#333,color:#fff
-    style N4 fill:#ff6b6b,stroke:#333,color:#fff
-    style N5 fill:#ff6b6b,stroke:#333,color:#fff
-
-    style U1 fill:#95e1d3,stroke:#333,color:#000
-    style U2 fill:#95e1d3,stroke:#333,color:#000
-    style U3 fill:#95e1d3,stroke:#333,color:#000
+                <h3 style="color: #333; margin-bottom: 1rem;">? UNDEFINED</h3>
+                <div class="flow-row">
+                    <div class="node undefined">Tom's 13 Framework<br>Need documentation</div>
+                    <div class="node undefined">Jonathan Kemp<br>Scope TBD</div>
+                    <div class="node undefined">Concierge Health<br>Formal structure</div>
+                </div>
             </div>
 
             <div class="info-box">
@@ -450,80 +742,57 @@ graph TB
             <h2>Build Timeline - Three Possible Approaches</h2>
             <p>Different strategies for building the platform, with varying timelines and deliverables.</p>
 
-            <div class="mermaid">
-gantt
-    title Thrive Build Timeline - Three Options
-    dateFormat YYYY-MM-DD
-
-    section Option A: Content-First
-    Assessment JSONs     :a1, 2025-01-14, 14d
-    OCEAN Demo           :a2, after a1, 7d
-    Neuroindicator Demo  :a3, after a1, 7d
-    Home→Work Demo       :a4, after a1, 3d
-
-    section Option B: Thin Slice End-to-End
-    Assessments (minimal)    :b1, 2025-01-14, 14d
-    Backend API + DB         :b2, after b1, 14d
-    Employee Dashboard       :b3, after b2, 14d
-    Employer Portal          :b4, after b2, 14d
-
-    section Option C: B2B-First
-    Minimal Assessments  :c1, 2025-01-14, 7d
-    Backend (aggregation):c2, after c1, 14d
-    Employer Portal      :c3, after c2, 21d
-
-    section Milestones
-    Content Complete     :milestone, m1, 2025-02-04, 0d
-    Thin Slice Demo      :milestone, m2, 2025-03-25, 0d
-    B2B Demo Ready       :milestone, m3, 2025-03-04, 0d
+            <div class="diagram">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker" style="background: #667eea;">A</div>
+                        <div class="timeline-content">
+                            <h3>Option A: Content-First (3 weeks)</h3>
+                            <p><strong>Deliverable:</strong> All assessment JSONs + demos (portable, reusable)</p>
+                            <p><strong>Work:</strong> Neuroindicator schema + demo | OCEAN 60-80 questions | Home→Work schema + demo | Quarterly pulse</p>
+                            <p><strong>Pros:</strong> Portable, no tech stack decision needed yet<br>
+                            <strong>Cons:</strong> Doesn't demo full B2B value</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker" style="background: #764ba2;">B</div>
+                        <div class="timeline-content">
+                            <h3>Option B: Thin Slice End-to-End (8 weeks)</h3>
+                            <p><strong>Deliverable:</strong> Working demo of complete employee + employer journey</p>
+                            <p><strong>Work:</strong> Assessments (minimal viable) | Backend API + database | Employee dashboard | Employer dashboard</p>
+                            <p><strong>Pros:</strong> Complete story for Towergate<br>
+                            <strong>Cons:</strong> Longer timeline</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker" style="background: #4ecdc4; color: #000;">C</div>
+                        <div class="timeline-content">
+                            <h3>Option C: Employer Dashboard Focus (6 weeks)</h3>
+                            <p><strong>Deliverable:</strong> HR-facing dashboard showing ROI</p>
+                            <p><strong>Work:</strong> Minimal assessments | Backend (aggregation logic priority) | Impressive employer dashboard | Mock employee data</p>
+                            <p><strong>Pros:</strong> Fast to Towergate value prop<br>
+                            <strong>Cons:</strong> Can't show employee experience</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="info-box">
-                <h3>Timeline Options</h3>
-                <p><strong>Option A (3 weeks):</strong> Complete assessment library, portable and reusable<br>
-                <strong>Option B (8 weeks):</strong> Working end-to-end demo, both employee and employer journeys<br>
-                <strong>Option C (6 weeks):</strong> Employer-focused demo showing B2B value proposition</p>
+                <h3>Recommended Approach</h3>
+                <p>Start with <strong>Option A</strong> (content-first) to build portable assessment library, then move to <strong>Option B</strong> for full end-to-end demo. This gives us reusable assets while building toward complete Towergate pitch.</p>
             </div>
         </div>
 
         <footer>
             <p>Thrive Platform Architecture | Last Updated: 2025-01-13</p>
             <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                <a href="docs/DIAGRAMS_MERMAID.md" style="color: #ffff00;">View Mermaid Source Code</a> |
-                <a href="docs/THRIVE_ARCHITECTURE.md" style="color: #ffff00;">Full Architecture Docs</a>
+                <a href="../docs/DIAGRAMS_MERMAID.md">View Mermaid Source Code</a> |
+                <a href="../docs/THRIVE_ARCHITECTURE.md">Full Architecture Docs</a>
             </p>
         </footer>
     </div>
 
     <script>
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: 'base',
-            flowchart: {
-                useMaxWidth: false,
-                htmlLabels: false,
-                curve: 'basis',
-                nodeSpacing: 100,
-                rankSpacing: 100,
-                padding: 20
-            },
-            gantt: {
-                useMaxWidth: true,
-                fontSize: 12,
-                leftPadding: 100
-            },
-            themeVariables: {
-                primaryColor: '#667eea',
-                primaryTextColor: '#fff',
-                primaryBorderColor: '#333',
-                lineColor: '#333',
-                secondaryColor: '#764ba2',
-                tertiaryColor: '#4ecdc4',
-                fontSize: '16px',
-                fontFamily: 'arial'
-            }
-        });
-
         function showDiagram(id) {
             // Hide all sections
             const sections = document.querySelectorAll('.diagram-section');
