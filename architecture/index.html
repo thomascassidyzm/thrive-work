@@ -404,50 +404,62 @@
 
             <div class="diagram">
                 <div class="flow-diagram">
-                    <div class="node highlight">Assessment & Routing Intelligence<br>(Core IP)</div>
-                    <div class="arrow-down">↓</div>
-                    <div class="flow-row">
-                        <div class="node wellness">Wellness Tier<br>85-90% of users</div>
-                        <div class="node coaching">Coaching Tier<br>15-25% of users</div>
-                        <div class="node clinical">Clinical Tier<br>10-15% of users</div>
-                    </div>
-                    <div class="arrow-down">↓</div>
-                    <div class="grid-3">
-                        <div class="card">
-                            <h3>ClearMinds</h3>
-                            <p>Digital Hypnotherapy<br>91K users</p>
+                    <div class="node highlight" style="font-size: 1.2rem; padding: 1.5rem 2rem;">Assessment & Routing Intelligence<br>(Core IP)</div>
+                    <div class="arrow-down" style="font-size: 3rem; margin: 0.5rem 0;">↓</div>
+
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; width: 100%; max-width: 1200px;">
+                        <!-- Wellness Column -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                            <div class="node wellness" style="width: 100%; font-size: 1.1rem;">Wellness Tier<br>85-90%</div>
+                            <div class="arrow-down">↓</div>
+                            <div class="card" style="border-color: #4ecdc4; border-width: 3px;">
+                                <h3 style="color: #4ecdc4;">ClearMinds</h3>
+                                <p>Digital Hypnotherapy<br>91K users</p>
+                            </div>
+                            <div class="card" style="border-color: #4ecdc4; border-width: 3px;">
+                                <h3 style="color: #4ecdc4;">Cowch.app</h3>
+                                <p>IMAGINE Framework<br>Chat-based</p>
+                            </div>
+                            <div class="card" style="border-color: #4ecdc4; border-width: 3px;">
+                                <h3 style="color: #4ecdc4;">Limitless</h3>
+                                <p>Edward Orman<br>Tom's 13 Framework</p>
+                            </div>
                         </div>
-                        <div class="card">
-                            <h3>Cowch.app</h3>
-                            <p>IMAGINE Framework<br>Chat-based</p>
+
+                        <!-- Coaching Column -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                            <div class="node coaching" style="width: 100%; font-size: 1.1rem;">Coaching Tier<br>15-25%</div>
+                            <div class="arrow-down">↓</div>
+                            <div class="card" style="border-color: #764ba2; border-width: 3px;">
+                                <h3 style="color: #764ba2;">Broadbanc</h3>
+                                <p>Consciousness Coaches</p>
+                            </div>
+                            <div class="card" style="border-color: #764ba2; border-width: 3px;">
+                                <h3 style="color: #764ba2;">Superheroes</h3>
+                                <p>Life Coaches</p>
+                            </div>
+                            <div class="card" style="border-color: #764ba2; border-width: 3px;">
+                                <h3 style="color: #764ba2;">Jonathan Kemp</h3>
+                                <p>TBD</p>
+                            </div>
                         </div>
-                        <div class="card">
-                            <h3>Limitless</h3>
-                            <p>Edward Orman<br>Tom's 13 Framework</p>
-                        </div>
-                        <div class="card">
-                            <h3>Broadbanc</h3>
-                            <p>Consciousness Coaches</p>
-                        </div>
-                        <div class="card">
-                            <h3>Superheroes</h3>
-                            <p>Life Coaches</p>
-                        </div>
-                        <div class="card">
-                            <h3>Jonathan Kemp</h3>
-                            <p>TBD</p>
-                        </div>
-                        <div class="card">
-                            <h3>Concierge Health</h3>
-                            <p>Medical Umbrella</p>
-                        </div>
-                        <div class="card">
-                            <h3>Smart Start Minds</h3>
-                            <p>Clinical Hypnotherapy</p>
-                        </div>
-                        <div class="card">
-                            <h3>Goodbody Clinic</h3>
-                            <p>Physical Health</p>
+
+                        <!-- Clinical Column -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                            <div class="node clinical" style="width: 100%; font-size: 1.1rem;">Clinical Tier<br>10-15%</div>
+                            <div class="arrow-down">↓</div>
+                            <div class="card" style="border-color: #ffa500; border-width: 3px;">
+                                <h3 style="color: #ffa500;">Concierge Health</h3>
+                                <p>Medical Umbrella</p>
+                            </div>
+                            <div class="card" style="border-color: #ffa500; border-width: 3px;">
+                                <h3 style="color: #ffa500;">Smart Start Minds</h3>
+                                <p>Clinical Hypnotherapy</p>
+                            </div>
+                            <div class="card" style="border-color: #ffa500; border-width: 3px;">
+                                <h3 style="color: #ffa500;">Goodbody Clinic</h3>
+                                <p>Physical Health</p>
+                            </div>
                         </div>
                     </div>
                 </div>
