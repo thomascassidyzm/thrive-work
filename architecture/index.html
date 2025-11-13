@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thrive Platform - Interactive Diagrams</title>
+    <title>Thrive Platform - Architecture Diagrams</title>
     <style>
         * {
             margin: 0;
@@ -25,11 +25,11 @@
 
         header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
             background: linear-gradient(90deg, #ffff00, #ffc107);
             -webkit-background-clip: text;
@@ -38,41 +38,9 @@
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             opacity: 0.8;
-        }
-
-        nav {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 1rem;
-            margin-bottom: 2rem;
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        nav button {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        nav button:hover {
-            background: #ffff00;
-            color: #1a1a2e;
-            transform: translateY(-2px);
-        }
-
-        nav button.active {
-            background: #ffff00;
-            color: #1a1a2e;
+            margin-bottom: 1rem;
         }
 
         .diagram-section {
@@ -80,17 +48,6 @@
             border-radius: 16px;
             padding: 2rem;
             margin-bottom: 2rem;
-            display: none;
-        }
-
-        .diagram-section.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .diagram-section h2 {
@@ -106,12 +63,17 @@
             line-height: 1.6;
         }
 
-        .diagram {
-            background: #f8f9fa;
-            padding: 2rem;
+        .diagram-image {
+            width: 100%;
+            height: auto;
             border-radius: 8px;
-            margin: 1rem 0;
-            overflow-x: auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .diagram-image:hover {
+            transform: scale(1.02);
         }
 
         .info-box {
@@ -143,240 +105,56 @@
             text-decoration: underline;
         }
 
-        /* Diagram Styles */
-        .flow-diagram {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .flow-row {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .node {
-            background: white;
-            border: 2px solid #333;
-            border-radius: 8px;
-            padding: 1rem 1.5rem;
-            min-width: 150px;
-            text-align: center;
-            font-weight: 500;
-            color: #333;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .node.highlight {
+        .download-btn {
             background: #ffff00;
-            border-color: #333;
-            border-width: 3px;
-        }
-
-        .node.wellness {
-            background: #4ecdc4;
-            color: #fff;
-        }
-
-        .node.coaching {
-            background: #764ba2;
-            color: #fff;
-        }
-
-        .node.clinical {
-            background: #ffa500;
-            color: #fff;
-        }
-
-        .node.crisis {
-            background: #ff6b6b;
-            color: #fff;
-        }
-
-        .node.complete {
-            background: #4ecdc4;
-            color: #000;
-        }
-
-        .node.in-progress {
-            background: #ffa500;
-            color: #fff;
-        }
-
-        .node.not-started {
-            background: #ff6b6b;
-            color: #fff;
-        }
-
-        .node.undefined {
-            background: #95e1d3;
-            color: #000;
-        }
-
-        .arrow {
-            color: #666;
-            font-size: 2rem;
-            font-weight: bold;
-        }
-
-        .arrow-down {
-            display: block;
-            text-align: center;
-            font-size: 2rem;
-            color: #666;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .card {
-            background: white;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .card h3 {
             color: #1a1a2e;
-            margin-bottom: 0.5rem;
-        }
-
-        .card p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .legend {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .legend-box {
-            width: 30px;
-            height: 30px;
-            border: 2px solid #333;
-            border-radius: 4px;
-        }
-
-        .timeline {
-            background: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
             border-radius: 8px;
-            padding: 2rem;
-            color: #333;
-        }
-
-        .timeline-item {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .timeline-item:last-child {
-            border-bottom: none;
-        }
-
-        .timeline-marker {
-            width: 40px;
-            height: 40px;
-            background: #667eea;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
             font-weight: bold;
-            flex-shrink: 0;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-size: 1rem;
+            transition: transform 0.2s ease;
         }
 
-        .timeline-content h3 {
-            color: #1a1a2e;
-            margin-bottom: 0.5rem;
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255,255,0,0.3);
         }
 
-        .timeline-content p {
-            color: #666;
-            margin: 0;
-        }
-
-        .privacy-flow {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            gap: 2rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-
-        .privacy-box {
-            flex: 1;
-            min-width: 200px;
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .privacy-box h3 {
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .privacy-box ul {
-            list-style: none;
-            text-align: left;
-        }
-
-        .privacy-box li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .privacy-box li:before {
-            content: "✓";
-            position: absolute;
+        /* Lightbox for full-size viewing */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
         }
 
-        .privacy-box.employee {
-            background: #4ecdc4;
-            color: #000;
+        .lightbox.active {
+            display: flex;
         }
 
-        .privacy-box.boundary {
-            background: #ffff00;
-            color: #000;
-            border: 3px solid #ff0000;
+        .lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
             font-weight: bold;
-        }
-
-        .privacy-box.employer {
-            background: #95e1d3;
-            color: #000;
-        }
-
-        .privacy-box.clinical {
-            background: #ff6b6b;
-            color: #fff;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -384,193 +162,26 @@
     <div class="container">
         <header>
             <h1>Thrive Platform</h1>
-            <p class="subtitle">Interactive Architecture Diagrams</p>
+            <p class="subtitle">Architecture Diagrams</p>
+            <p style="opacity: 0.7; font-size: 0.9rem;">Click any diagram to view full-size</p>
         </header>
 
-        <nav id="nav">
-            <button onclick="showDiagram('overview')" class="active">Platform Overview</button>
-            <button onclick="showDiagram('employee-journey')">Employee Journey</button>
-            <button onclick="showDiagram('decision-tree')">Decision Tree</button>
-            <button onclick="showDiagram('privacy')">Privacy Architecture</button>
-            <button onclick="showDiagram('assessment')">Assessment Intelligence</button>
-            <button onclick="showDiagram('lego')">LEGO Pieces Status</button>
-            <button onclick="showDiagram('timeline')">Build Timeline</button>
-        </nav>
-
         <!-- Platform Overview -->
-        <div id="overview" class="diagram-section active">
-            <h2>Platform Overview - The Complete Ecosystem</h2>
+        <div class="diagram-section">
+            <h2>1. Platform Overview - The Complete Ecosystem</h2>
             <p>Thrive acts as an intelligent routing platform connecting employees to the right resources based on their assessment results.</p>
-
-            <div class="diagram">
-                <div class="flow-diagram">
-                    <div class="node highlight" style="font-size: 1.2rem; padding: 1.5rem 2rem;">Assessment & Routing Intelligence<br>(Core IP)</div>
-                    <div class="arrow-down" style="font-size: 3rem; margin: 0.5rem 0;">↓</div>
-
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; width: 100%; max-width: 1200px;">
-                        <!-- Wellness Column -->
-                        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-                            <div class="node wellness" style="width: 100%; font-size: 1.1rem;">Wellness Tier<br>85-90%</div>
-                            <div class="arrow-down">↓</div>
-                            <div class="card" style="border-color: #4ecdc4; border-width: 3px;">
-                                <h3 style="color: #4ecdc4;">ClearMinds</h3>
-                                <p>Digital Hypnotherapy<br>91K users</p>
-                            </div>
-                            <div class="card" style="border-color: #4ecdc4; border-width: 3px;">
-                                <h3 style="color: #4ecdc4;">Cowch.app</h3>
-                                <p>IMAGINE Framework<br>Chat-based</p>
-                            </div>
-                            <div class="card" style="border-color: #4ecdc4; border-width: 3px;">
-                                <h3 style="color: #4ecdc4;">Limitless</h3>
-                                <p>Edward Orman<br>Tom's 13 Framework</p>
-                            </div>
-                        </div>
-
-                        <!-- Coaching Column -->
-                        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-                            <div class="node coaching" style="width: 100%; font-size: 1.1rem;">Coaching Tier<br>15-25%</div>
-                            <div class="arrow-down">↓</div>
-                            <div class="card" style="border-color: #764ba2; border-width: 3px;">
-                                <h3 style="color: #764ba2;">Broadbanc</h3>
-                                <p>Consciousness Coaches</p>
-                            </div>
-                            <div class="card" style="border-color: #764ba2; border-width: 3px;">
-                                <h3 style="color: #764ba2;">Superheroes</h3>
-                                <p>Life Coaches</p>
-                            </div>
-                            <div class="card" style="border-color: #764ba2; border-width: 3px;">
-                                <h3 style="color: #764ba2;">Jonathan Kemp</h3>
-                                <p>TBD</p>
-                            </div>
-                        </div>
-
-                        <!-- Clinical Column -->
-                        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-                            <div class="node clinical" style="width: 100%; font-size: 1.1rem;">Clinical Tier<br>10-15%</div>
-                            <div class="arrow-down">↓</div>
-                            <div class="card" style="border-color: #ffa500; border-width: 3px;">
-                                <h3 style="color: #ffa500;">Concierge Health</h3>
-                                <p>Medical Umbrella</p>
-                            </div>
-                            <div class="card" style="border-color: #ffa500; border-width: 3px;">
-                                <h3 style="color: #ffa500;">Smart Start Minds</h3>
-                                <p>Clinical Hypnotherapy</p>
-                            </div>
-                            <div class="card" style="border-color: #ffa500; border-width: 3px;">
-                                <h3 style="color: #ffa500;">Goodbody Clinic</h3>
-                                <p>Physical Health</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <img src="diagrams/01-platform-overview.png" alt="Platform Overview" class="diagram-image" onclick="openLightbox(this.src)">
             <div class="info-box">
                 <h3>Key Insight</h3>
                 <p>Thrive is a <strong>platform</strong>, not a single product. The assessment layer is the core IP that intelligently routes employees to the right combination of content, coaching, and clinical services.</p>
             </div>
         </div>
 
-        <!-- Employee Journey -->
-        <div id="employee-journey" class="diagram-section">
-            <h2>Employee Journey - From Invitation to Ongoing Engagement</h2>
-            <p>Complete flow showing how an employee moves through the Thrive platform, from initial assessment to quarterly check-ins.</p>
-
-            <div class="diagram">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker">1</div>
-                        <div class="timeline-content">
-                            <h3>Invitation & Landing</h3>
-                            <p>Employee receives invitation → Landing page with privacy notice → Consent & account creation</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker">2</div>
-                        <div class="timeline-content">
-                            <h3>Neuroindicator (5-10 min)</h3>
-                            <p>Triage assessment determines risk level: Crisis (2-3%) | Clinical (10-15%) | Wellness (85-90%)</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker">3</div>
-                        <div class="timeline-content">
-                            <h3>OCEAN Assessment (15-20 min)</h3>
-                            <p>For wellness pathway: 60-80 questions profiling personality traits</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker">4</div>
-                        <div class="timeline-content">
-                            <h3>Home→Work Influence (2 min)</h3>
-                            <p>6 questions about childcare, eldercare, financial stress, etc.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker">5</div>
-                        <div class="timeline-content">
-                            <h3>Results & Recommendations</h3>
-                            <p>OCEAN profile generated → Personalized content, coaching, and clinical recommendations</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker">6</div>
-                        <div class="timeline-content">
-                            <h3>Dashboard Access</h3>
-                            <p>Employee sees results, accesses content library, tracks progress</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker">7</div>
-                        <div class="timeline-content">
-                            <h3>Quarterly Pulse (2-3 min)</h3>
-                            <p>5 questions to detect deterioration → May trigger clinical escalation</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info-box">
-                <h3>Total Time Commitment</h3>
-                <p><strong>Initial:</strong> 25-30 minutes (Neuroindicator + OCEAN + Home→Work)<br>
-                <strong>Quarterly:</strong> 2-3 minutes (Pulse check)</p>
-            </div>
-        </div>
-
         <!-- Decision Tree -->
-        <div id="decision-tree" class="diagram-section">
-            <h2>Decision Tree - How Employees Are Routed</h2>
+        <div class="diagram-section">
+            <h2>2. Decision Tree - How Employees Are Routed</h2>
             <p>Neuroindicator assessment splits employees into three pathways based on their needs and risk level.</p>
-
-            <div class="diagram">
-                <div class="flow-diagram">
-                    <div class="node">NEUROINDICATOR ASSESSMENT</div>
-                    <div class="arrow-down">↓</div>
-                    <div class="flow-row">
-                        <div class="node crisis">CRISIS<br>2-3%</div>
-                        <div class="node clinical">CLINICAL<br>10-15%</div>
-                        <div class="node wellness">WELLNESS<br>85-90%</div>
-                    </div>
-                    <div class="arrow-down">↓</div>
-                    <div class="grid-3">
-                        <div class="card" style="border-color: #ff6b6b;">
-                            <h3 style="color: #ff6b6b;">Immediate Support</h3>
-                            <p>Crisis hotline<br>Safety resources<br>Emergency services<br>Follow-up scheduling</p>
-                        </div>
-                        <div class="card" style="border-color: #ffa500;">
-                            <h3 style="color: #ffa500;">Concierge Health</h3>
-                            <p>Smart Start Minds<br>Clinical hypnotherapy<br>Goodbody Clinic<br>GP referrals</p>
-                        </div>
-                        <div class="card" style="border-color: #4ecdc4;">
-                            <h3 style="color: #4ecdc4;">Thrive Wellness</h3>
-                            <p>ClearMinds content<br>Cowch.app<br>Limitless programme<br>Coaching access</p>
-                        </div>
-                    </div>
-                    <div class="arrow-down">↓</div>
-                    <div class="node">Quarterly Pulse Check<br>All paths can escalate if situation changes</div>
-                </div>
-            </div>
-
+            <img src="diagrams/02-decision-tree.png" alt="Decision Tree" class="diagram-image" onclick="openLightbox(this.src)">
             <div class="info-box">
                 <h3>Adaptive Routing</h3>
                 <p>Employees can move between pathways based on quarterly pulse results. Someone in wellness tier who shows deterioration can be escalated to clinical support.</p>
@@ -578,168 +189,21 @@
         </div>
 
         <!-- Privacy Architecture -->
-        <div id="privacy" class="diagram-section">
-            <h2>Privacy Architecture - Data Separation Model</h2>
+        <div class="diagram-section">
+            <h2>3. Privacy Architecture - Data Separation Model</h2>
             <p>Three separate databases with different access rules ensure employee privacy while providing useful organizational insights.</p>
-
-            <div class="diagram">
-                <div class="privacy-flow">
-                    <div class="privacy-box employee">
-                        <h3>EMPLOYEE VIEW</h3>
-                        <p><strong>Full Access</strong></p>
-                        <ul>
-                            <li>All assessment responses</li>
-                            <li>Complete OCEAN profile</li>
-                            <li>Personal patterns</li>
-                            <li>Home→Work details</li>
-                            <li>Recommendations</li>
-                            <li>Content usage</li>
-                            <li>Full history</li>
-                        </ul>
-                    </div>
-
-                    <div class="arrow" style="font-size: 3rem;">→</div>
-
-                    <div class="privacy-box boundary">
-                        <h3>PRIVACY<br>BOUNDARY</h3>
-                        <p style="font-size: 1.5rem; margin: 1rem 0;">K ≥ 10</p>
-                        <p>Enforcement</p>
-                    </div>
-
-                    <div class="arrow" style="font-size: 3rem;">→</div>
-
-                    <div class="privacy-box employer">
-                        <h3>EMPLOYER VIEW</h3>
-                        <p><strong>Aggregated Only (k≥10)</strong></p>
-                        <ul>
-                            <li>Team OCEAN patterns %</li>
-                            <li>Home→Work prevalence %</li>
-                            <li>Engagement metrics</li>
-                            <li>Quarterly trends</li>
-                        </ul>
-                        <p style="margin-top: 1rem; color: #ff0000; font-weight: bold;">
-                            ❌ NO Individual Data<br>
-                            ❌ NO Names/IDs<br>
-                            ❌ NO Personal Scores
-                        </p>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 2rem;">
-                    <div class="privacy-box clinical" style="display: inline-block; max-width: 400px;">
-                        <h3>CLINICAL DATABASE (Separate)</h3>
-                        <p><strong>Medical Privacy</strong></p>
-                        <ul>
-                            <li>Patient records</li>
-                            <li>Diagnoses & treatments</li>
-                            <li>Session notes</li>
-                            <li>Medications & outcomes</li>
-                        </ul>
-                        <p style="margin-top: 1rem; font-weight: bold;">
-                            Managed by Concierge Health<br>
-                            Patient + Provider Access Only<br>
-                            <span style="color: #ffff00;">EMPLOYER: NO ACCESS</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
+            <img src="diagrams/03-privacy-architecture.png" alt="Privacy Architecture" class="diagram-image" onclick="openLightbox(this.src)">
             <div class="info-box">
                 <h3>K-Anonymity Enforcement</h3>
                 <p>Employers see <strong>NO data</strong> until minimum 10 employees complete assessments. This is enforced at the database level with hard-coded constraints - no bypass possible.</p>
             </div>
         </div>
 
-        <!-- Assessment Intelligence -->
-        <div id="assessment" class="diagram-section">
-            <h2>Assessment Intelligence - Thrive's Core IP</h2>
-            <p>Five components that make up the assessment and routing intelligence layer.</p>
-
-            <div class="diagram">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker" style="background: #667eea;">1</div>
-                        <div class="timeline-content">
-                            <h3>TRIAGE: Neuroindicator</h3>
-                            <p>Crisis detection (2-3%) | Clinical need (10-15%) | Wellness pathway (85-90%)</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker" style="background: #764ba2;">2</div>
-                        <div class="timeline-content">
-                            <h3>PROFILING: OCEAN</h3>
-                            <p>Openness | Conscientiousness | Extraversion | Agreeableness | Neuroticism</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker" style="background: #fa7c91;">3</div>
-                        <div class="timeline-content">
-                            <h3>CONTEXT: Home→Work Influence</h3>
-                            <p>Childcare stress | Eldercare burden | Financial pressure | Relationship strain | Housing instability | Commute impact</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker" style="background: #4ecdc4;">4</div>
-                        <div class="timeline-content">
-                            <h3>ROUTING ENGINE</h3>
-                            <p>Content matching | Coach matching | Clinical escalation | Adaptive over time</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker" style="background: #ffff00; color: #000;">5</div>
-                        <div class="timeline-content">
-                            <h3>PRIVACY ENFORCEMENT</h3>
-                            <p>K-Anonymity (k≥10) | Database constraints | Employee full access | Employer aggregated only</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info-box">
-                <h3>Defensible IP</h3>
-                <p>This assessment layer is Thrive's core intellectual property. The combination of behavioral scenarios, routing algorithms, and privacy architecture is unique and defensible.</p>
-            </div>
-        </div>
-
         <!-- LEGO Pieces Status -->
-        <div id="lego" class="diagram-section">
-            <h2>LEGO Pieces Status - What We Have vs Need</h2>
+        <div class="diagram-section">
+            <h2>4. LEGO Pieces Status - What We Have vs Need</h2>
             <p>Current state of all platform components.</p>
-
-            <div class="diagram">
-                <h3 style="color: #333; margin-bottom: 1rem;">✓ COMPLETE</h3>
-                <div class="flow-row" style="margin-bottom: 2rem;">
-                    <div class="node complete">Cowch IMAGINE<br>JSON + Demo</div>
-                    <div class="node complete">OCEAN Questions<br>196 scenarios</div>
-                    <div class="node complete">Privacy Architecture<br>Documented</div>
-                    <div class="node complete">ClearMinds<br>91K users, proven</div>
-                    <div class="node complete">Partnerships<br>Dr Thomas, Goodbody</div>
-                </div>
-
-                <h3 style="color: #333; margin-bottom: 1rem;">~ IN PROGRESS</h3>
-                <div class="flow-row" style="margin-bottom: 2rem;">
-                    <div class="node in-progress">OCEAN Engine<br>436 uncommitted lines</div>
-                    <div class="node in-progress">Home→Work Logic<br>In analysis engine</div>
-                    <div class="node in-progress">Cowch Integration<br>Have IMAGINE schema</div>
-                </div>
-
-                <h3 style="color: #333; margin-bottom: 1rem;">✗ NOT STARTED</h3>
-                <div class="flow-row" style="margin-bottom: 2rem;">
-                    <div class="node not-started">Neuroindicator<br>Need schema + demo</div>
-                    <div class="node not-started">Employer Portal<br>Dashboard + enrollment</div>
-                    <div class="node not-started">Employee Dashboard<br>Results + content access</div>
-                    <div class="node not-started">Backend API<br>Database + privacy</div>
-                    <div class="node not-started">Partner Integrations<br>APIs + booking systems</div>
-                </div>
-
-                <h3 style="color: #333; margin-bottom: 1rem;">? UNDEFINED</h3>
-                <div class="flow-row">
-                    <div class="node undefined">Tom's 13 Framework<br>Need documentation</div>
-                    <div class="node undefined">Jonathan Kemp<br>Scope TBD</div>
-                    <div class="node undefined">Concierge Health<br>Formal structure</div>
-                </div>
-            </div>
-
+            <img src="diagrams/04-lego-status.png" alt="LEGO Status" class="diagram-image" onclick="openLightbox(this.src)">
             <div class="info-box">
                 <h3>Status Summary</h3>
                 <p><strong>✓ Complete:</strong> 5 components<br>
@@ -749,80 +213,56 @@
             </div>
         </div>
 
-        <!-- Build Timeline -->
-        <div id="timeline" class="diagram-section">
-            <h2>Build Timeline - Three Possible Approaches</h2>
-            <p>Different strategies for building the platform, with varying timelines and deliverables.</p>
-
-            <div class="diagram">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker" style="background: #667eea;">A</div>
-                        <div class="timeline-content">
-                            <h3>Option A: Content-First (3 weeks)</h3>
-                            <p><strong>Deliverable:</strong> All assessment JSONs + demos (portable, reusable)</p>
-                            <p><strong>Work:</strong> Neuroindicator schema + demo | OCEAN 60-80 questions | Home→Work schema + demo | Quarterly pulse</p>
-                            <p><strong>Pros:</strong> Portable, no tech stack decision needed yet<br>
-                            <strong>Cons:</strong> Doesn't demo full B2B value</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker" style="background: #764ba2;">B</div>
-                        <div class="timeline-content">
-                            <h3>Option B: Thin Slice End-to-End (8 weeks)</h3>
-                            <p><strong>Deliverable:</strong> Working demo of complete employee + employer journey</p>
-                            <p><strong>Work:</strong> Assessments (minimal viable) | Backend API + database | Employee dashboard | Employer dashboard</p>
-                            <p><strong>Pros:</strong> Complete story for Towergate<br>
-                            <strong>Cons:</strong> Longer timeline</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker" style="background: #4ecdc4; color: #000;">C</div>
-                        <div class="timeline-content">
-                            <h3>Option C: Employer Dashboard Focus (6 weeks)</h3>
-                            <p><strong>Deliverable:</strong> HR-facing dashboard showing ROI</p>
-                            <p><strong>Work:</strong> Minimal assessments | Backend (aggregation logic priority) | Impressive employer dashboard | Mock employee data</p>
-                            <p><strong>Pros:</strong> Fast to Towergate value prop<br>
-                            <strong>Cons:</strong> Can't show employee experience</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info-box">
-                <h3>Recommended Approach</h3>
-                <p>Start with <strong>Option A</strong> (content-first) to build portable assessment library, then move to <strong>Option B</strong> for full end-to-end demo. This gives us reusable assets while building toward complete Towergate pitch.</p>
-            </div>
-        </div>
-
         <footer>
             <p>Thrive Platform Architecture | Last Updated: 2025-01-13</p>
             <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                <a href="../docs/DIAGRAMS_MERMAID.md">View Mermaid Source Code</a> |
-                <a href="../docs/THRIVE_ARCHITECTURE.md">Full Architecture Docs</a>
+                <a href="../docs/THRIVE_ARCHITECTURE.md">Full Architecture Docs</a> |
+                <a href="../docs/DIAGRAMS_MERMAID.md">Mermaid Source Code</a>
+            </p>
+            <p style="margin-top: 1rem;">
+                <button class="download-btn" onclick="downloadAllDiagrams()">Download All Diagrams</button>
             </p>
         </footer>
     </div>
 
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Full size diagram">
+    </div>
+
     <script>
-        function showDiagram(id) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.diagram-section');
-            sections.forEach(s => s.classList.remove('active'));
-
-            // Remove active class from all buttons
-            const buttons = document.querySelectorAll('nav button');
-            buttons.forEach(b => b.classList.remove('active'));
-
-            // Show selected section
-            document.getElementById(id).classList.add('active');
-
-            // Add active class to clicked button
-            event.target.classList.add('active');
-
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function openLightbox(src) {
+            document.getElementById('lightbox').classList.add('active');
+            document.getElementById('lightbox-img').src = src;
         }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        function downloadAllDiagrams() {
+            const diagrams = [
+                'diagrams/01-platform-overview.png',
+                'diagrams/02-decision-tree.png',
+                'diagrams/03-privacy-architecture.png',
+                'diagrams/04-lego-status.png'
+            ];
+
+            diagrams.forEach((diagram, index) => {
+                setTimeout(() => {
+                    const link = document.createElement('a');
+                    link.href = diagram;
+                    link.download = diagram.split('/')[1];
+                    link.click();
+                }, index * 500);
+            });
+        }
+
+        // ESC key to close lightbox
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
     </script>
 </body>
 </html>
